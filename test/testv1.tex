@@ -1,0 +1,26 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\usepackage{pstricks}
+\usepackage{ifthen}
+\usepackage{geometry}
+
+\newrgbcolor{outline-color}{0.850 0.764 0.466}
+\pgfmathsetmacro{\generalbackgroundopacity}{0}
+\pgfmathsetmacro{\statsbackgroundopacity}{0}
+
+\begin{document}
+
+\newgeometry{left=-0.6cm,right=0cm,top=0cm,bottom=0cm}
+
+\newpage
+
+%\hspace*{-9mm}
+\makebox[\paperwidth][s]{
+%\newpage
+\thispagestyle{empty}
+\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}
+\begin{pspicture}(816,1056)
+	\input{template/background-sheet/allies-organization.tex}
+\end{pspicture}
+}
+\end{document}
