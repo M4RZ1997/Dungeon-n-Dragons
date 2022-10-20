@@ -1,0 +1,22 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+%\usepackage[dvipdfm]{graphicx} 
+
+\usepackage{fontspec}
+\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{ifthen}
+\usepackage{pstricks}
+
+\usepackage[UKenglish]{babel}
+\usepackage{\PATH dndtemplate}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+\begin{document}
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+\end{document}
