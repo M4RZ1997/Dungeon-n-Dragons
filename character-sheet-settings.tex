@@ -1,22 +1,18 @@
 % DEFINE FONT FOR USER INPUTTED TEXT
-%\newfontfamily\entryfont[UprightFont=Kalam-Regular.ttf]{Kalam}
-%\newfontfamily{\entryfont}{Kalam}[Extension = .ttf, UprightFont = Kalam-Regular, BoldFont=KalamBold]
-%\newfontfamily\entryfont{Kalam}[UprightFont=template/fonts/Kalam-Regular.ttf, BoldFont=template/fonts/Kalam-Bold.ttf]
 \newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold]
 
-%\newcommand\customfont[1]{{\usefont{T1}{custom}{m}{n} #1 }}
-
-%\newcommand{\entryfont}[1]{#1}
-%\newcommand{\justify}[1]{#1}
 
 % HEADER BACKGROUND COLOR AND OPACITY
-\newrgbcolor{header-background-color}{0.87058824 0.87450981 0.87450981}
+%\newrgbcolor{header-background-color}{0.87058824 0.87450981 0.87450981}
+\newrgbcolor{header-background-color}{0.78 0.82 0.82}
+\newrgbcolor{background-grey-color}{0.78 0.82 0.82}
 \pgfmathsetmacro{\headercolorbackgroundopacity}{1}
 
 % HEADER DRAWING (DRAGON ETC) COLOR AND OPACITY
 \newrgbcolor{character-sheet-dragon-color}{0 0 0}
 \newrgbcolor{character-sheet-dragon-eye-color}{1 0 0}
-\newrgbcolor{spell-sheet-fireball-color}{0 0 0}
+\newrgbcolor{spell-sheet-fireball-color}{0.7 0.1 0.1}
+\newrgbcolor{spell-sheet-fireball-color2}{1 0.5 0}
 \pgfmathsetmacro{\headerdragonopacity}{1}
 
 % HEADER TRIM
@@ -41,3 +37,6 @@
 % SPELL HEADER COLOR AND BACKGROUND OPACITY
 \pgfmathsetmacro{\spellheaderbackgroundopacity}{0}
 \pgfmathsetmacro{\spellheaderbackgroundinfillopacity}{1}
+
+% Textcolor for Light Grey Text
+\newrgbcolor{grey_text_color}{0.5 0.55 0.55}

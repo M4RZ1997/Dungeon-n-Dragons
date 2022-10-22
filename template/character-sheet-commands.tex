@@ -54,6 +54,14 @@
 \newcommand{\WisdomModifier}[1]{\renewcommand{\WisdomModifierValue}{#1}}
 \newcommand{\CharismaModifier}[1]{\renewcommand{\CharismaModifierValue}{#1}}
 
+\newcommand{\calculateModifier}[1]{
+	\ifnum #1<10
+		-\intcalcShr{\intcalcSub{11}{#1}}
+	\else
+		+\intcalcShr{\intcalcSub{#1}{10}}
+	\fi
+}
+
 % SAVING THROWS
 \newcommand{\StrengthSavingThrowModifierValue}{}
 \newcommand{\DexteritySavingThrowModifierValue}{}
@@ -68,6 +76,17 @@
 \newcommand{\IntelligenceSavingThrowModifier}[1]{\renewcommand{\IntelligenceSavingThrowModifierValue}{#1}}
 \newcommand{\WisdomSavingThrowModifier}[1]{\renewcommand{\WisdomSavingThrowModifierValue}{#1}}
 \newcommand{\CharismaSavingThrowModifier}[1]{\renewcommand{\CharismaSavingThrowModifierValue}{#1}}
+
+\newcommand{\calculateSavingThrow}[2]{%
+	\ifthenelse{\equal{#2}{True}}%
+		{%
+			\ifnum \intcalcAdd{#1}{\ProficiencyValue}>0%
+				+%
+			\fi%
+			\intcalcAdd{#1}{\ProficiencyValue}%
+		}%
+		{#1}%
+}
 
 %SKILLS
 \newcommand{\AcrobaticsSkillModifierValue}{}
@@ -206,13 +225,21 @@
 % SPELL MODIFIERS
 \newcommand{\SpellcastingClassValue}{}
 \newcommand{\SpellcastingAbilityValue}{}
-\newcommand{\SpellSaveDCValue}{}
-\newcommand{\SpellAttackBonusValue}{}
+\newcommand{\SpellSaveDCModifyValue}{}
 
 \newcommand{\SpellcastingClass}[1]{\renewcommand{\SpellcastingClassValue}{#1}}
 \newcommand{\SpellcastingAbility}[1]{\renewcommand{\SpellcastingAbilityValue}{#1}}
-\newcommand{\SpellSaveDC}[1]{\renewcommand{\SpellSaveDCValue}{#1}}
-\newcommand{\SpellAttackBonus}[1]{\renewcommand{\SpellAttackBonusValue}{#1}}
+\newcommand{\SpellSaveDCModifier}[1]{\renewcommand{\SpellSaveDCModifyValue}{#1}}
+
+\newcommand{\calculateSpellSaveDC}[1]{%
+	\intcalcAdd{8}{\intcalcAdd{#1}{\intcalcAdd{\ProficiencyValue}{\SpellSaveDCModifyValue}}}%
+	
+}
+
+\newcommand{\calculateSpellAttack}[1]{%
+	\ifnum \intcalcAdd{#1}{\ProficiencyValue}>0 +\fi%
+	\intcalcAdd{#1}{\ProficiencyValue}%
+}
 
 
 % TOTAL SPELL SLOTS
@@ -469,31 +496,59 @@
 \newcommand{\NinthLevelSpellSlotG}[1]{\renewcommand{\NinthLevelSpellSlotGValue}{#1}}
 
 % PROFICIENCY COLOR CHANGES
-\newrgbcolor{strengthproficiency}{1 1 1}\newcommand{\StrengthProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{strengthproficiency}{0 0 0}}{}}
-\newrgbcolor{dexterityproficiency}{1 1 1}\newcommand{\DexterityProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{dexterityproficiency}{0 0 0}}{}}
-\newrgbcolor{constitutionproficiency}{1 1 1}\newcommand{\ConstitutionProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{constitutionproficiency}{0 0 0}}{}}
-\newrgbcolor{intelligenceproficiency}{1 1 1}\newcommand{\IntelligenceProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{intelligenceproficiency}{0 0 0}}{}}
-\newrgbcolor{wisdomproficiency}{1 1 1}\newcommand{\WisdomProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{wisdomproficiency}{0 0 0}}{}}
-\newrgbcolor{charismaproficiency}{1 1 1}\newcommand{\CharismaProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{charismaproficiency}{0 0 0}}{}}
-\newrgbcolor{acrobaticsproficiency}{1 1 1}\newcommand{\AcrobaticsProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{acrobaticsproficiency}{0 0 0}}{}}
+\newcommand{\StrengthProficiencyValue}{}
+\newcommand{\DexterityProficiencyValue}{}
+\newcommand{\ConstitutionProficiencyValue}{}
+\newcommand{\IntelligenceProficiencyValue}{}
+\newcommand{\WisdomProficiencyValue}{}
+\newcommand{\CharismaProficiencyValue}{}
 
-\newrgbcolor{animalhandlingproficiency}{1 1 1}\newcommand{\AnimalHandlingProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{animalhandlingproficiency}{0 0 0}}{}}
-\newrgbcolor{arcanaproficiency}{1 1 1}\newcommand{\ArcanaProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{arcanaproficiency}{0 0 0}}{}}
-\newrgbcolor{athleticsproficiency}{1 1 1}\newcommand{\AthleticsProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{athleticsproficiency}{0 0 0}}{}}
-\newrgbcolor{deceptionproficiency}{1 1 1}\newcommand{\DeceptionProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{deceptionproficiency}{0 0 0}}{}}
-\newrgbcolor{historyproficiency}{1 1 1}\newcommand{\HistoryProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{historyproficiency}{0 0 0}}{}}
-\newrgbcolor{insightproficiency}{1 1 1}\newcommand{\InsightProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{insightproficiency}{0 0 0}}{}}
-\newrgbcolor{intimidationproficiency}{1 1 1}\newcommand{\IntimidationProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{intimidationproficiency}{0 0 0}}{}}
-\newrgbcolor{investigationproficiency}{1 1 1}\newcommand{\InvestigationProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{investigationproficiency}{0 0 0}}{}}
-\newrgbcolor{medicineproficiency}{1 1 1}\newcommand{\MedicineProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{medicineproficiency}{0 0 0}}{}}
-\newrgbcolor{natureproficiency}{1 1 1}\newcommand{\NatureProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{natureproficiency}{0 0 0}}{}}
-\newrgbcolor{perceptionproficiency}{1 1 1}\newcommand{\PerceptionProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{perceptionproficiency}{0 0 0}}{}}
-\newrgbcolor{performanceproficiency}{1 1 1}\newcommand{\PerformanceProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{performanceproficiency}{0 0 0}}{}}
-\newrgbcolor{persuasionproficiency}{1 1 1}\newcommand{\PersuasionProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{persuasionproficiency}{0 0 0}}{}}
-\newrgbcolor{religionproficiency}{1 1 1}\newcommand{\ReligionProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{religionproficiency}{0 0 0}}{}}
-\newrgbcolor{sleightofhandproficiency}{1 1 1}\newcommand{\SleightOfHandProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{sleightofhandproficiency}{0 0 0}}{}}
-\newrgbcolor{stealthproficiency}{1 1 1}\newcommand{\StealthProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{stealthproficiency}{0 0 0}}{}}
-\newrgbcolor{survivalproficiency}{1 1 1}\newcommand{\SurvivalProficiency}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{survivalproficiency}{0 0 0}}{}}
+\newrgbcolor{strengthproficiency}{1 1 1}\newcommand{\StrengthProficiency}[1]{\renewcommand{\StrengthProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{strengthproficiency}{0 0 0}}{}}
+\newrgbcolor{dexterityproficiency}{1 1 1}\newcommand{\DexterityProficiency}[1]{\renewcommand{\DexterityProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{dexterityproficiency}{0 0 0}}{}}
+\newrgbcolor{constitutionproficiency}{1 1 1}\newcommand{\ConstitutionProficiency}[1]{\renewcommand{\ConstitutionProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{constitutionproficiency}{0 0 0}}{}}
+\newrgbcolor{intelligenceproficiency}{1 1 1}\newcommand{\IntelligenceProficiency}[1]{\renewcommand{\IntelligenceProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{intelligenceproficiency}{0 0 0}}{}}
+\newrgbcolor{wisdomproficiency}{1 1 1}\newcommand{\WisdomProficiency}[1]{\renewcommand{\WisdomProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{wisdomproficiency}{0 0 0}}{}}
+\newrgbcolor{charismaproficiency}{1 1 1}\newcommand{\CharismaProficiency}[1]{\renewcommand{\CharismaProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{charismaproficiency}{0 0 0}}{}}
+
+\newcommand{\AcrobaticsProficiencyValue}{}
+\newcommand{\AnimalHandlingProficiencyValue}{}
+\newcommand{\ArcanaProficiencyValue}{}
+\newcommand{\AthleticsProficiencyValue}{}
+\newcommand{\DeceptionProficiencyValue}{}
+\newcommand{\HistoryProficiencyValue}{}
+\newcommand{\InsightProficiencyValue}{}
+\newcommand{\IntimidationProficiencyValue}{}
+\newcommand{\InvestigationProficiencyValue}{}
+\newcommand{\MedicineProficiencyValue}{}
+\newcommand{\NatureProficiencyValue}{}
+\newcommand{\PerceptionProficiencyValue}{}
+\newcommand{\PerformanceProficiencyValue}{}
+\newcommand{\PersuasionProficiencyValue}{}
+\newcommand{\ReligionProficiencyValue}{}
+\newcommand{\SleightOfHandProficiencyValue}{}
+\newcommand{\StealthProficiencyValue}{}
+\newcommand{\SurvivalProficiencyValue}{}
+
+\newrgbcolor{acrobaticsproficiency}{1 1 1}\newcommand{\AcrobaticsProficiency}[1]{\renewcommand{\AcrobaticsProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{acrobaticsproficiency}{0 0 0}}{}}
+\newrgbcolor{animalhandlingproficiency}{1 1 1}\newcommand{\AnimalHandlingProficiency}[1]{\renewcommand{\AnimalHandlingProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{animalhandlingproficiency}{0 0 0}}{}}
+\newrgbcolor{arcanaproficiency}{1 1 1}\newcommand{\ArcanaProficiency}[1]{\renewcommand{\ArcanaProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{arcanaproficiency}{0 0 0}}{}}
+\newrgbcolor{athleticsproficiency}{1 1 1}\newcommand{\AthleticsProficiency}[1]{\renewcommand{\AthleticsProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{athleticsproficiency}{0 0 0}}{}}
+\newrgbcolor{deceptionproficiency}{1 1 1}\newcommand{\DeceptionProficiency}[1]{\renewcommand{\DeceptionProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{deceptionproficiency}{0 0 0}}{}}
+\newrgbcolor{historyproficiency}{1 1 1}\newcommand{\HistoryProficiency}[1]{\renewcommand{\HistoryProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{historyproficiency}{0 0 0}}{}}
+\newrgbcolor{insightproficiency}{1 1 1}\newcommand{\InsightProficiency}[1]{\renewcommand{\InsightProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{insightproficiency}{0 0 0}}{}}
+\newrgbcolor{intimidationproficiency}{1 1 1}\newcommand{\IntimidationProficiency}[1]{\renewcommand{\IntimidationProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{intimidationproficiency}{0 0 0}}{}}
+\newrgbcolor{investigationproficiency}{1 1 1}\newcommand{\InvestigationProficiency}[1]{\renewcommand{\InvestigationProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{investigationproficiency}{0 0 0}}{}}
+\newrgbcolor{medicineproficiency}{1 1 1}\newcommand{\MedicineProficiency}[1]{\renewcommand{\MedicineProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{medicineproficiency}{0 0 0}}{}}
+\newrgbcolor{natureproficiency}{1 1 1}\newcommand{\NatureProficiency}[1]{\renewcommand{\NatureProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{natureproficiency}{0 0 0}}{}}
+\newrgbcolor{perceptionproficiency}{1 1 1}\newcommand{\PerceptionProficiency}[1]{\renewcommand{\PerceptionProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{perceptionproficiency}{0 0 0}}{}}
+\newrgbcolor{performanceproficiency}{1 1 1}\newcommand{\PerformanceProficiency}[1]{\renewcommand{\PerformanceProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{performanceproficiency}{0 0 0}}{}}
+\newrgbcolor{persuasionproficiency}{1 1 1}\newcommand{\PersuasionProficiency}[1]{\renewcommand{\PersuasionProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{persuasionproficiency}{0 0 0}}{}}
+\newrgbcolor{religionproficiency}{1 1 1}\newcommand{\ReligionProficiency}[1]{\renewcommand{\ReligionProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{religionproficiency}{0 0 0}}{}}
+\newrgbcolor{sleightofhandproficiency}{1 1 1}\newcommand{\SleightOfHandProficiency}[1]{\renewcommand{\SleightOfHandProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{sleightofhandproficiency}{0 0 0}}{}}
+\newrgbcolor{stealthproficiency}{1 1 1}\newcommand{\StealthProficiency}[1]{\renewcommand{\StealthProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{stealthproficiency}{0 0 0}}{}}
+\newrgbcolor{survivalproficiency}{1 1 1}\newcommand{\SurvivalProficiency}[1]{\renewcommand{\SurvivalProficiencyValue}{#1}\ifthenelse{\equal{#1}{True}}{\newrgbcolor{survivalproficiency}{0 0 0}}{}}
+
+
 % SPELL PREPARED COLOR CHANGES
 
 % LEVEL 1

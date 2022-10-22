@@ -7,6 +7,8 @@
 \usepackage{ifthen}
 \usepackage{pstricks}
 
+\usepackage{intcalc}
+
 \usepackage[UKenglish]{babel}
 \usepackage{\PATH dndtemplate}
 
@@ -31,42 +33,7 @@
 \WisdomScore{14}
 \CharismaScore{14}
 
-% Ability modifiers
-\StrengthModifier{+3}
-\DexterityModifier{+4}
-\ConstitutionModifier{+2}
-\IntelligenceModifier{+3}
-\WisdomModifier{+2}
-\CharismaModifier{+2}
-
-% Saving Throws
-\StrengthSavingThrowModifier{+7}
-\DexteritySavingThrowModifier{+9}
-\ConstitutionSavingThrowModifier{+2}
-\IntelligenceSavingThrowModifier{+3}
-\WisdomSavingThrowModifier{+2}
-\CharismaSavingThrowModifier{+2}
-
-\AcrobaticsSkillModifier{+4}
-\AnimalHandlingSkillModifier{+8}
-\ArcanaSkillModifier{+3}
-\AthleticsSkillModifier{+7}
-\DeceptionSkillModifier{+2}
-\HistorySkillModifier{+3}
-\InsightSkillModifier{+2}
-\IntimidationSkillModifier{+2}
-\InvestigationSkillModifier{+3}
-\MedicineSkillModifier{+2}
-\NatureSkillModifier{+7}
-\PerceptionSkillModifier{+6}
-\PerformanceSkillModifier{+2}
-\PersuasionSkillModifier{+2} 
-\ReligionSkillModifier{+3}
-\SleightOfHandSkillModifier{+4}
-\StealthSkillModifier{+9}
-\SurvivalSkillModifier{+6}
-
-% Prociciencies
+% Proficiencies
 \StrengthProficiency{True}
 \DexterityProficiency{True}
 \ConstitutionProficiency{}
@@ -239,14 +206,13 @@ A small pouch with a single silve piece. Lorem ipsum dolor sit amet, consectetur
 Allied with the cult of the dragon. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique.
 }
 \OrganizationName{Elf Tribe Forestia}
-\OrganizationSymbol{\includegraphics[width=100pt]{images/Tree_of_Forestia.jpg}}
+\OrganizationSymbol{images/Tree_of_Forestia.jpg}
 
 % Magic
 
 \SpellcastingClass{Ranger}
-\SpellcastingAbility{WIS}
-\SpellSaveDC{14}
-\SpellAttackBonus{+6}
+\SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 
 \CantripSlotA{Control Flames (S)}
 

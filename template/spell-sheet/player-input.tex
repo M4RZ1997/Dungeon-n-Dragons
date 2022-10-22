@@ -4,8 +4,65 @@
 \rput[cc](202.78439493,953.086909505){\LARGE \entryfont \SpellcastingClassValue}
 
 \rput[cc](421.60812279,965.002775875){\LARGE \entryfont \SpellcastingAbilityValue}
-\rput[cc](555.88958610,965.002775875){\LARGE \entryfont \SpellSaveDCValue}
-\rput[cc](694.28771598,965.002775875){\LARGE \entryfont \SpellAttackBonusValue}
+
+\StrengthModifier{\calculateModifier{\StrengthScoreValue}}
+\DexterityModifier{\calculateModifier{\DexterityScoreValue}}
+\ConstitutionModifier{\calculateModifier{\ConstitutionScoreValue}}
+\IntelligenceModifier{\calculateModifier{\IntelligenceScoreValue}}
+\WisdomModifier{\calculateModifier{\WisdomScoreValue}}
+\CharismaModifier{\calculateModifier{\CharismaScoreValue}}
+
+%\rput[cc](555.88958610,965.002775875){\LARGE \entryfont \SpellSaveDCValue}
+\rput[cc](555.88958610,965.002775875){\LARGE \entryfont{
+	\ifthenelse{\equal{\SpellcastingAbilityValue}{STR}}{
+		\calculateSpellSaveDC{\StrengthModifierValue}
+	}{
+		\ifthenelse{\equal{\SpellcastingAbilityValue}{DEX}}{
+			\calculateSpellSaveDC{\DexterityModifierValue}
+		}{
+			\ifthenelse{\equal{\SpellcastingAbilityValue}{CON}}{
+				\calculateSpellSaveDC{\ConstitutionModifierValue}
+			}{
+				\ifthenelse{\equal{\SpellcastingAbilityValue}{INT}}{
+					\calculateSpellSaveDC{\IntelligenceModifierValue}
+				}{
+					\ifthenelse{\equal{\SpellcastingAbilityValue}{WIS}}{
+						\calculateSpellSaveDC{\WisdomModifierValue}	
+					}{
+						\ifthenelse{\equal{\SpellcastingAbilityValue}{CHA}}{
+							\calculateSpellSaveDC{\CharismaModifierValue}					
+						}{NA}
+					}
+				}
+			}
+		}
+	}
+}}
+\rput[cc](694.28771598,965.002775875){\LARGE \entryfont{
+	\ifthenelse{\equal{\SpellcastingAbilityValue}{STR}}{
+		\calculateSpellAttack{\StrengthModifierValue}
+	}{
+		\ifthenelse{\equal{\SpellcastingAbilityValue}{DEX}}{
+			\calculateSpellAttack{\DexterityModifierValue}
+		}{
+			\ifthenelse{\equal{\SpellcastingAbilityValue}{CON}}{
+				\calculateSpellAttack{\ConstitutionModifierValue}
+			}{
+				\ifthenelse{\equal{\SpellcastingAbilityValue}{INT}}{
+					\calculateSpellAttack{\IntelligenceModifierValue}
+				}{
+					\ifthenelse{\equal{\SpellcastingAbilityValue}{WIS}}{
+						\calculateSpellAttack{\WisdomModifierValue}	
+					}{
+						\ifthenelse{\equal{\SpellcastingAbilityValue}{CHA}}{
+							\calculateSpellAttack{\CharismaModifierValue}					
+						}{NA}
+					}
+				}
+			}
+		}
+	}
+}}
 
 
 % TOTAL SPELL SLOTS
