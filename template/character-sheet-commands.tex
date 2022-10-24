@@ -1,6 +1,7 @@
 % BANNER INFO
 \newcommand{\CharacterNameValue}{}
 \newcommand{\ClassValue}{}
+\newcommand{\LevelValue}{}
 \newcommand{\BackgroundValue}{}
 \newcommand{\PlayerNameValue}{}
 \newcommand{\RaceValue}{}
@@ -9,6 +10,7 @@
 
 \newcommand{\CharacterName}[1]{\renewcommand{\CharacterNameValue}{#1}}
 \newcommand{\Class}[1]{\renewcommand{\ClassValue}{#1}}
+\newcommand{\Level}[1]{\renewcommand{\LevelValue}{#1}}
 \newcommand{\Background}[1]{\renewcommand{\BackgroundValue}{#1}}
 \newcommand{\PlayerName}[1]{\renewcommand{\PlayerNameValue}{#1}}
 \newcommand{\Race}[1]{\renewcommand{\RaceValue}{#1}}
@@ -77,16 +79,36 @@
 \newcommand{\WisdomSavingThrowModifier}[1]{\renewcommand{\WisdomSavingThrowModifierValue}{#1}}
 \newcommand{\CharismaSavingThrowModifier}[1]{\renewcommand{\CharismaSavingThrowModifierValue}{#1}}
 
+\newcommand{\JackOfAllTradesValue}{0}
+
+%\newcommand{\JackOfAllTrades}{%
+%	\ifthenelse{\equal{\ClassValue}{Ranger}}%
+%	{%
+%		\ifnum{\LevelValue >1}
+%			\renewcommand{\JackOfAllTradesValue}{1}
+%		\fi%
+%	}{}%
+%}%
+
 \newcommand{\calculateSavingThrow}[2]{%
 	\ifthenelse{\equal{#2}{True}}%
-		{%
-			\ifnum \intcalcAdd{#1}{\ProficiencyValue}>0%
+	{%
+		\ifnum \intcalcAdd{#1}{\ProficiencyValue}>0%
+			+%
+		\fi%
+		\intcalcAdd{#1}{\ProficiencyValue}%
+	}%
+	{
+		\ifthenelse{\equal{\JackOfAllTradesValue}{1}}
+		{
+			\ifnum \intcalcAdd{#1}{\intcalcShr{\ProficiencyValue}}>0%
 				+%
 			\fi%
-			\intcalcAdd{#1}{\ProficiencyValue}%
-		}%
-		{#1}%
-}
+			\intcalcAdd{#1}{\intcalcShr{\ProficiencyValue}}%
+		}
+		{#1}
+	}%
+}%
 
 %SKILLS
 \newcommand{\AcrobaticsSkillModifierValue}{}

@@ -2,7 +2,7 @@
 \rput[cc](201.61106163,957){\LARGE \entryfont \CharacterNameValue}
 
 % HEADER INFORMATION
-\rput[l](361.87600658,980){\Large \entryfont \ClassValue}
+\rput[l](361.87600658,980){\Large \entryfont{\ClassValue ~\LevelValue}}
 \rput[l](512.21666949,980){\Large \entryfont \BackgroundValue}
 \rput[l](641.23599959,980){\Large \entryfont \PlayerNameValue}
 \rput[l](361.87600658,945.226667535){\Large \entryfont \RaceValue}
@@ -50,7 +50,15 @@
 \CharismaSavingThrowModifier{\calculateSavingThrow{\CharismaModifierValue}{\CharismaProficiencyValue}}
 \rput[cc](160.14932933,684.25558289){\footnotesize \entryfont \CharismaSavingThrowModifierValue}
 
-% SKILS
+% Jack of all Trades Check
+\ifthenelse{\equal{\ClassValue}{Bard}}%
+{%
+	\ifnum \intcalcAdd{\LevelValue}{0} >1%
+		\renewcommand{\JackOfAllTradesValue}{1}%
+	\fi%
+}{}%
+
+% SKILLS
 \AcrobaticsSkillModifier{\calculateSavingThrow{\DexterityModifierValue}{\AcrobaticsProficiencyValue}}
 \rput[cc](158.81599603,620.5765178){\footnotesize \entryfont \AcrobaticsSkillModifierValue}
 \AnimalHandlingSkillModifier{\calculateSavingThrow{\WisdomModifierValue}{\AnimalHandlingProficiencyValue}}
