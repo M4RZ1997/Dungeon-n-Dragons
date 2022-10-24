@@ -12,7 +12,6 @@
 % PROFICIENCY ETC
 \rput[cc](143.42533022,869.816111585){\Large \entryfont \InspirationValue}
 \rput[cc](143.42533022,819.541712845){\Large \entryfont \ProficiencyValue}
-\rput[cc]( 57.99946577,256.785460244){\Large \entryfont \PerceptionValue}
 
 % ABILITY SCORES
 \rput[cc](76.251064759,830.67824602){\LARGE \entryfont \StrengthScoreValue}
@@ -98,13 +97,29 @@
 
 % BATTLE STATS
 \rput[cc](330.04105841,852.46451227){\LARGE \entryfont \ArmorClassValue}
-\rput[cc](405.17452320,847.59717893){\LARGE \entryfont \InitiativeValue}
+\rput[cc](405.17452320,847.59717893){\LARGE \entryfont{%
+	\ifnum \intcalcAdd{\DexterityModifierValue}{\InitiativeModifierValue}>0%
+		+%
+	\fi%
+	\intcalcAdd{\DexterityModifierValue}{\InitiativeModifierValue}%
+}}
 \rput[cc](483.04118792,847.59717893){\LARGE \entryfont \SpeedValue}
 \rput[cc](451.42132215,783.32600593){\footnotesize \entryfont \MaxHitPointsValue}
 \rput[cc](407.99998987,752.58358106){\LARGE \entryfont \CurrentHitPointsValue}
 \rput[cc](407.99998987,684.10878302){\LARGE \entryfont \TemporaryHitPointsValue}
 \rput[cc](362.57465764,622.54787662){\footnotesize \entryfont \MaxHitDiceValue}
 \rput[cc](350.73265790,600.18398492){\LARGE \entryfont \CurrentHitDiceValue}
+
+% PASSIVE PERCEPTION
+\rput[cc]( 57.99946577,256.785460244){\Large \entryfont{%
+	\ifthenelse{\equal{\PerceptionProficiencyValue}{True}}%
+	{%
+		\intcalcAdd{10}{\intcalcAdd{\WisdomModifierValue}{\ProficiencyValue}}%
+	}%
+	{%
+		\intcalcAdd{10}{\WisdomModifierValue}%
+	}%
+}}%
 
 
 % MONEY
