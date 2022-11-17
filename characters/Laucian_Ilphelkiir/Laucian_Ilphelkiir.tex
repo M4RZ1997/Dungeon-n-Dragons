@@ -76,7 +76,7 @@
 \CP{}
 \SP{}
 \EP{}
-\GP{2645}
+\GP{3633}
 \PP{}
 
 
@@ -86,8 +86,9 @@
 \AttacksAdditional{
 	\textbf{Anletta's Bow:}\\+1 Damage against Undead\\
 	\textbf{60 Arrows} (1 with Oil)\\
-	\textbf{5 Ice Arrows:}\\hit target must succeed DC 13 CON saving throw otherwise frozen for one turn, ends after 1 turn or if target takes heat damage\\
-	\textbf{Boomerang Arrow} (returns to shooter)\\
+	\textbf{Boomerang Arrow}\\
+	\textbf{50 Fire Arrows}\\
+	\textbf{5 Ice Arrows}\\
 	\textbf{Armor:}\\Chain Shirt +2, Leather Armor\\
 }
 
@@ -147,8 +148,7 @@
 \end{itemize}
 \textbf{Favored Enemy}
 \begin{itemize}
-	\item Elementals
-	\item Dragon
+	\item Elementals, Dragon
 \end{itemize}
 \textbf{Favorable Terrain}
 \begin{itemize}
@@ -177,6 +177,8 @@
 \begin{itemize}
 	\item Quiver of Ehlonna
 	\item Manual of Gainful Exercise (used)
+	\item Ioun Stone: Insight
+	\item Wand of Secrets
 \end{itemize}
 }
 
@@ -369,6 +371,16 @@ You can draw any item the quiver contains as if doing so from a regular quiver o
 
 This book describes fitness exercises, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's Contents and practicing its guidelines, your Strength score increases by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century.
 
+\subsection*{Ioun Stone: Insight}
+\textit{wondrous item, very rare (requires attunement)}
+The Insight Ioun Stone is an incandescent blue sphere. You can use an action to toss this stone into the air, it orbits your head at a distance of 1d3 feet. While this stone orbits, your Wisdom score increases by 2, to a maximum of 20. Another creature can use an action to grasp or snare the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.
+
+A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.
+
+\subsection*{Wand of Secrets}
+\textit{wondrous item, uncommon}
+The wand has 3 Charges. While holding it. you can use an Action to expend 1 of its Charges, and if a Secret door or trap is within 30 feet of you, the wand pulses and points at the one nearest to you. The wand regains 1d3 expended Charges daily at dawn.
+
 \section*{Spells}
 
 \subsection*{Bonus Spells}
@@ -501,6 +513,8 @@ The piece of ammunition or weapon then returns to its normal form.
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 4th level or higher, the damage for both effects of the spell increases by 1d8 for each slot level above 3rd.
 
+\subparagraph*{Miscellaneous} Dexterity and Sharpshooter can be applied to this spells Attack and Damage Roll.
+
 \DndSpellHeader
   {Conjure Barrage}
   {3rd-Level Conjuration}
@@ -510,4 +524,40 @@ The piece of ammunition or weapon then returns to its normal form.
   {Instantaneous}
 
 You throw a nonmagical weapon or fire a piece of nonmagical ammunition into the air to create a cone of identical weapons that shoot forward and then disappear. Each creature in a 60-foot cone must succeed on a Dexterity saving throw. A creature takes 3d8 damage on a failed save, or half as much damage on a successful one. The damage type is the same as that of the weapon or ammunition used as a component.
+
+
+\section*{Miscellaneous}
+
+\subsection*{Arrow-Types}
+\subsubsection*{Boomerang Arrow}
+On a miss the Boomerang Arrow returns to the owner's hand
+\subsubsection*{Ice Arrow}
+This magic arrow has a jagged arrowhead formed with a semitransparent pale blue material, reminiscent of ice. Once this arrow is drawn, you can use your bonus action to focus on the arrow, causing it to glow with icy evocation magic. If you make a ranged weapon attack with this glowing arrow before the start of your next turn, the attack deals magical cold damage instead of its normal damage type. If the hit target is a creature, it must succeed on a DC 13 Constitution saving throw or be frozen solid, effectively petrified, until the end of its next turn. If the target has resistance or immunity to cold damage, it automatically succeeds on this saving throw. If the target takes any fire damage while petrified in this manner, the conditions ends.
+
+Once it hits a target, this arrow is no longer magical.
+
+You can expend 1 magic point when you use the bonus action to cause the attack deal an extra 1d6 cold damage. If you have the Spellcasting feature when you do this, the DC becomes equal to your spell save DC if it would otherwise be lower.
+\subsubsection*{Fire Arrow}
+This arrow can be lit before using it either by spending an action from a Tinderbox, or spending a free action from an open flame, such as a torch, a bonfire, or a burning tree. When lit, this arrow sets alight any highly flammable materials on impact, and does the normal attack damage from the base weapon plus an extra 1d4 fire damage to the target. It will continue to do 1 fire damage until an action or bonus action is spent to remove it. One of the disadvantages of using the fire arrows is that you lose any advantage when attempting a surprise attacks with it due to its clear visibility, even during night time.
+
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Longbow}
+\paragraph*{Attack Roll}\hfill\\
+1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) + Bow Modifier (- 5 (Sharpshooter)) \\
+Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{1}}}} \\
+Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{1}}}}}{5}
+\paragraph*{Damage Roll}\hfill\\
+1d8 + 2 (Wedge Stone) + DEX-Modifier + Bow Modifier (+ 1 (Anletta's Bow: against Undead)) (+ 10 (Sharpshooter)) \\
+Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{1}}} \\
+Current Max (Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{1}}}} \\
+Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{10}}}} \\
+Current Max (Sharpshooter, Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{\intcalcAdd{1}{10}}}}}
+\subsubsection*{Finesse Weapons (Shortsword, etc.)}
+\paragraph*{Attack Roll}\hfill\\
+1d20 + DEX-Modifier + Proficiency Modifier \\
+Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+1d6 + DEX-Modifier \\
+Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
+
 \end{document}
