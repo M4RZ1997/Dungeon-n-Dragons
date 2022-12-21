@@ -151,7 +151,7 @@
 \newcommand{\ArmorClassValue}{}
 \newcommand{\InitiativeModifierValue}{}
 \newcommand{\SpeedValue}{}
-\newcommand{\MaxHitPointsValue}{}
+\newcommand{\MaxHitPointsRolledValue}{}
 \newcommand{\CurrentHitPointsValue}{}
 \newcommand{\TemporaryHitPointsValue}{}
 \newcommand{\HitDiceValue}{}
@@ -160,11 +160,21 @@
 \newcommand{\ArmorClass}[1]{\renewcommand{\ArmorClassValue}{#1}}
 \newcommand{\InitiativeModifier}[1]{\renewcommand{\InitiativeModifierValue}{#1}}
 \newcommand{\Speed}[1]{\renewcommand{\SpeedValue}{#1}}
-\newcommand{\MaxHitPoints}[1]{\renewcommand{\MaxHitPointsValue}{#1}}
+\newcommand{\MaxHitPointsRolled}[1]{\renewcommand{\MaxHitPointsRolledValue}{#1}}
 \newcommand{\CurrentHitPoints}[1]{\renewcommand{\CurrentHitPointsValue}{#1}}
 \newcommand{\TemporaryHitPoints}[1]{\renewcommand{\TemporaryHitPointsValue}{#1}}
 \newcommand{\HitDice}[1]{\renewcommand{\HitDiceValue}{#1}}
 \newcommand{\HitDiceSpent}[1]{\renewcommand{\HitDiceSpentValue}{#1}}
+
+\newcommand{\MaxHitPointsValue}{%
+	\ifthenelse{\ConstitutionScoreValue<10}%
+	{%
+		\intcalcSub{\MaxHitPointsRolledValue}{\intcalcMul{\LevelValue}{\intcalcShr{\intcalcSub{11}{\ConstitutionScoreValue}}}}%
+	}%
+	{%
+		\intcalcAdd{\MaxHitPointsRolledValue}{\intcalcMul{\LevelValue}{\intcalcShr{\intcalcSub{\ConstitutionScoreValue}{10}}}}%
+	}%
+}
 
 % MONEY
 \newcommand{\CPValue}{}
