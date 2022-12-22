@@ -86,22 +86,50 @@
 \AddWeapon{Greatsword}{0}{2d6 s}
 \AddWeapon{\footnotesize{Spear of the Green}}{0}{1d6/1d8 p}
 
+\def\BreathWeaponDamage{\ifthenelse{\LevelValue < 5}%
+	{1d10}%
+	{%
+		\ifthenelse{\LevelValue < 11}%
+		{2d10}%
+		{%
+			\ifthenelse{\LevelValue < 17}{3d10}{4d10}%
+		}%	
+	}%
+}
+
 \AttacksAdditional{
 	\textbf{Greatsword}\\
-	\textbf{Spear of the Green}\\
+	\textbf{Spear of the Green} (\textit{Throw, 1/2-Handed})\\
 	\textbf{Armor:}\\
-	Chain Mail (Stealth Disadvantage, STR 13), \textbf{Sentinel Shield}
+	Chain Mail (Stealth Disadvantage, STR 13), \textbf{Sentinel Shield} \\
+	\\
+	\textbf{Divine Sense} (\intcalcAdd{1}{\calculateModifier{\CharismaScoreValue}} uses) \\
+	\textbf{Lay on Hands} (Health Pool: \intcalcMul{\LevelValue}{5}) \\
+	\textbf{Divine Smite} \\
+	\textbf{Breath Weapon} (Damage: \BreathWeaponDamage)
 }
 
 \OtherProficienciesLanguages{
 \textbf{Languages:}\\Common, Draconic, Elvish\\
 \textbf{Armor:}\\All Armor, Shields\\
 \textbf{Weapons:}\\Simple Weapons, Martial Weapons\\
-\textbf{Tools:}\\None
+\textbf{Tools:}\\Long Horn
 }
 
 \Equipment{
-	A staff, a hunting trap, a bear claw, a set of traveler's clothes
+	A staff,
+	a hunting trap,
+	a bear claw,
+	a set of traveler's clothes,
+	backpack,
+	a bedroll,
+	a mess kit,
+	tinderbox,
+	10 torches,
+	10 days of rations,
+	a waterskin,
+	50 ft of hempen rope\\
+	\textbf{Amulet with a Scale of Sardior}
 }
 
 \PersonalityTraits{
@@ -172,10 +200,10 @@
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
 }
 \AlliesAndOrganizations{
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique.
+	The Oath of the Ancients is as old as the race of elves and the rituals of the druids. Sometimes called fey knights, green knights, or horned knights, paladins who swear this oath cast their lot with the side of the light in the cosmic struggle against darkness because they love the beautiful and life-giving things of the world, not necessarily because they believe in principles of honor, courage, and justice. They adorn their armor and clothing with images of growing things - leaves, antlers, or flowers - to reflect their commitment to preserving life and light in the world.
 }
 \OrganizationName{Oath of the Ancients}
-\OrganizationSymbol{example-image-a}
+\OrganizationSymbol{images/Oath_of_the_Ancients.png}
 
 % Magic
 
@@ -184,11 +212,11 @@
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 
 \FirstLevelSpellSlotsTotal{3}
-\FirstLevelSpellSlotA{Cure Wounds}
-\FirstLevelSpellSlotB{Thunderous Smite}
-\FirstLevelSpellSlotC{Wrathful Smite}
-\FirstLevelSpellSlotD{Ensnaring Strike (needs Holy Symbol)}
-\FirstLevelSpellSlotE{Speak with Animals (needs Holy Symbol)}
+\FirstLevelSpellSlotA{Cure Wounds (V, S)}
+\FirstLevelSpellSlotB{Thunderous Smite (V)}
+\FirstLevelSpellSlotC{Wrathful Smite (V)}
+\FirstLevelSpellSlotD{Ensnaring Strike (V)}
+\FirstLevelSpellSlotE{Speak with Animals (V, S)}
 
 \begin{document}
 
@@ -219,7 +247,8 @@ You can use this feature a number of times equal to 1 + your Charisma modifier. 
 Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level x 5.\\
 As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool.\\
 Alternatively, you can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it. You can cure multiple diseases and neutralize multiple poisons with a single use of Lay on Hands, expending hit points separately for each one.\\
-This feature has no effect on undead and constructs.
+This feature has no effect on undead and constructs. \\
+\textbf{(Healing Pool: \intcalcMul{\LevelValue}{5})}
 \subsection*{Fighting Style}
 Starting at 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.
 \subsubsection*{Protection}
@@ -262,21 +291,19 @@ A turned creature must spend its turns trying to move as far away from you as it
 If the creature's true form is concealed by an illusion, shapeshifting, or other effect, that form is revealed while it is turned.
 
 \section*{Gem Dragonborn Traits}
-Gem dragonborn partake of the heritage of gem dragons, who claim to be heirs of Sardior, the Ruby Dragon. The colors and mysterious powers of gem dragons — amethyst, crystal, emerald, sapphire, and topaz — gleam in these dragonborn’s scaled skin and course through their veins. Theirs are the wonders of the mind, the force of will, the brilliant light of insight, and the resounding echo of discovery — but also the desiccation of despair.
+Gem dragonborn partake of the heritage of gem dragons, who claim to be heirs of Sardior, the Ruby Dragon. The colors and mysterious powers of gem dragons — amethyst, crystal, emerald, sapphire, and topaz — gleam in these dragonborn's scaled skin and course through their veins. Theirs are the wonders of the mind, the force of will, the brilliant light of insight, and the resounding echo of discovery — but also the desiccation of despair.
 \subsection*{Gem Ancestry}
 \textbf{Sapphire} \\
 You trace your ancestry to a Gem dragon, granting you a special magical affinity. Choose one type of dragon from the Gem Ancestry table. This determines the damage type for your other traits as shown in the table.
-\subsection*{Breath Weapon}
-\textbf{Thunder - 15 ft. cone (DEX Save, DC = \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\ConstitutionScoreValue}}{\ProficiencyValue}})} \\
+\subsection*{Breath Weapon (Fizban's Treasury of Dragons)}
+\textbf{Thunder - 15 ft. cone (DEX Saving Throw, DC >= \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\ConstitutionScoreValue}}{\ProficiencyValue}}, Damage: \BreathWeaponDamage )} \\
 When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 15-foot cone. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Gem Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).
-
-After you use your breath weapon, you can’t use it again until you complete a short or Long Rest.
 \subsection*{Damage Resistance}
 You have Resistance to the \textbf{Thunder} damage type associated with your Draconic ancestry.
 \subsection*{Psionic Mind}
-You can telepathically speak to any creature you can see within 30 feet of you. You don’t need to share a language with the creature, but the creature must be able to understand at least one language.
+You can telepathically speak to any creature you can see within 30 feet of you. You don't need to share a language with the creature, but the creature must be able to understand at least one language.
 \subsection*{Gem Flight}
-Starting at 5th level, you can use a bonus action to manifest spectral wings on your body. These wings last for 1 minute. For the duration, you gain a flying speed equal to your walking speed and can hover. Once you use this trait, you can’t do so again until you finish a long rest.
+Starting at 5th level, you can use a bonus action to manifest spectral wings on your body. These wings last for 1 minute. For the duration, you gain a flying speed equal to your walking speed and can hover. Once you use this trait, you can't do so again until you finish a long rest.
 
 \section*{Background}
 \subsection*{Outlander}
@@ -301,11 +328,13 @@ When you take acid, cold, fire, lightning, or poison damage, you can use your re
 \section*{Magical Items}
 \subsection*{Spear of the Green}
 Weapon \textit{(spear)}, \textit{legendary (requires attunement by a paladin)}\\
-You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you cast a paladin spell with a target of Self, you can’t lose concentration on the spell from taking damage.\\
+You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you cast a paladin spell with a target of Self, you can't lose concentration on the spell from taking damage.\\
 While you hold the drawn spear, it creates an aura in a 10-foot radius around you. Creatures of your choice in that aura gain resistance to poison damage and have advantage on saving throws against the poisoned condition. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet.
 \subsection*{Sentinel Shield}
 Armor \textit{(shield)}, \textit{uncommon}\\
 While holding this shield, you have advantage on initiative rolls and Wisdom (Perception) checks. The shield is emblazoned with the symbol of an eye.
+\subsection*{Amulet with a Scale of Sardior}
+Is the holy symbol of this character and can be used as a \textit{Spellcasting Focus}. A Spellcasting Focus eliminates the need of most components of a spell, except major components with a GP value.
 
 \section*{Spells}
 \subsection*{Level 1}
@@ -367,5 +396,24 @@ While restrained by this spell, the target takes 1d6 piercing damage at the star
 You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the GM's discretion.
 
 \section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Battleaxe}
+\paragraph*{Attack Roll} \hfill\\
+1d20 + STR-Modifier + Proficiency Modifier
+Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll} \hfill\\
+2d6 + STR-Modifier \\
+Current Max: \intcalcAdd{\intcalcMul{2}{6}}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Spear}
+\paragraph*{Attack Roll} \hfill\\
+1d20 + STR-Modifier + Proficiency Modifier \\
+Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll} \hfill\\
+\textit{One-Handed or Thrown} \\
+1d6 + STR-Modifier \\
+Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\textit{Two-Handed} \\
+1d8 + STR-Modifier \\
+Current Max: \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
 
 \end{document}
