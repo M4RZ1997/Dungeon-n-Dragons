@@ -106,7 +106,8 @@
 	\textbf{Divine Sense} (\intcalcAdd{1}{\calculateModifier{\CharismaScoreValue}} uses) \\
 	\textbf{Lay on Hands} (Health Pool: \intcalcMul{\LevelValue}{5}) \\
 	\textbf{Divine Smite} \\
-	\textbf{Breath Weapon} (Damage: \BreathWeaponDamage)
+	\textbf{Breath Weapon} (Damage: \BreathWeaponDamage) \\
+	\textbf{Protective Wings} (\intcalcAdd{0}{\ProficiencyValue}~uses)
 }
 
 \OtherProficienciesLanguages{
@@ -172,7 +173,7 @@
 \end{itemize}
 \textbf{Feats}
 \begin{itemize}
-	\item Gift of the Chromatic Dragon
+	\item Gift of the Metallic Dragon
 \end{itemize}
 }
 
@@ -212,11 +213,12 @@
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 
 \FirstLevelSpellSlotsTotal{3}
-\FirstLevelSpellSlotA{Cure Wounds (V, S)}
-\FirstLevelSpellSlotB{Thunderous Smite (V)}
-\FirstLevelSpellSlotC{Wrathful Smite (V)}
-\FirstLevelSpellSlotD{Ensnaring Strike (V)}
-\FirstLevelSpellSlotE{Speak with Animals (V, S)}
+\FirstLevelSpellSlotA{Cure Wounds (V, S) (1x free per long rest)}
+\FirstLevelSpellSlotB{Protection from Evil and Good (V, S, M)}
+\FirstLevelSpellSlotC{Thunderous Smite (V)}
+\FirstLevelSpellSlotD{Wrathful Smite (V)}
+\FirstLevelSpellSlotE{Ensnaring Strike (V)}
+\FirstLevelSpellSlotF{Speak with Animals (V, S)}
 
 \begin{document}
 
@@ -296,7 +298,7 @@ Gem dragonborn partake of the heritage of gem dragons, who claim to be heirs of 
 \textbf{Sapphire} \\
 You trace your ancestry to a Gem dragon, granting you a special magical affinity. Choose one type of dragon from the Gem Ancestry table. This determines the damage type for your other traits as shown in the table.
 \subsection*{Breath Weapon (Fizban's Treasury of Dragons)}
-\textbf{Thunder - 15 ft. cone (DEX Saving Throw, DC >= \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\ConstitutionScoreValue}}{\ProficiencyValue}}, Damage: \BreathWeaponDamage )} \\
+\textbf{Thunder - 15 ft. cone (Dexterity Saving Throw, DC = \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\ConstitutionScoreValue}}{\ProficiencyValue}}, Damage: \BreathWeaponDamage )} \\
 When you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy in a 15-foot cone. Each creature in that area must make a Dexterity saving throw (DC = 8 + your Constitution modifier + your proficiency bonus). On a failed save, the creature takes 1d10 damage of the type associated with your Gem Ancestry. On a successful save, it takes half as much damage. This damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).
 \subsection*{Damage Resistance}
 You have Resistance to the \textbf{Thunder} damage type associated with your Draconic ancestry.
@@ -318,12 +320,13 @@ A staff, a hunting trap, a trophy from an animal you killed, a set of traveler's
 You have an excellent memory for maps and geography, and you can always recall the general layout of terrain, settlements, and other features around you. In addition, you can find food and fresh water for yourself and up to five other people each day, provided that the land offers berries, small game, water, and so forth.
 
 \section*{Feats}
-\subsection*{Gift of the Chromatic Dragon}
-You've manifested some of the power of chromatic dragons, granting you the following benefits:
-\subparagraph*{Chromatic Infusion}
-As a bonus action, you can touch a simple or martial weapon and infuse it with one of the following damage types: acid, cold, fire, lightning, or poison. For the next minute, the weapon deals an extra 1d4 damage of the chosen type when it hits. After you use this bonus action, you can't do so again until you finish a long rest.
-\subparagraph*{Reactive Resistance}
-When you take acid, cold, fire, lightning, or poison damage, you can use your reaction to give yourself resistance to that instance of damage. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+\subsection*{Gift of the Metallic Dragon}
+You've manifested some of the power of metallic dragons, granting you the following benefits:
+\subparagraph*{Draconic Healing}
+You learn the Cure Wounds spell. You can cast this spell without expending a spell slot. Once you cast this spell in this way, you can't do so again until you finish a long rest. You can also cast this spell using spell slots you have. The spell's spellcasting ability is Intelligence, Wisdom, or \textbf{Charisma} when you cast it with this feat (choose when you gain the feat).
+\subparagraph*{Protective Wings}
+You can manifest protective wings that can shield you or others. When you or another creature you can see within 5 feet of you is hit by an attack roll, you can use your reaction to manifest spectral wings from your back for a moment. You grant a bonus to the target's AC equal to your proficiency bonus against that attack roll, potentially causing it to miss. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.\\
+(\textbf{Usages: \intcalcAdd{0}{\ProficiencyValue}})
 
 \section*{Magical Items}
 \subsection*{Spear of the Green}
@@ -350,6 +353,18 @@ Is the holy symbol of this character and can be used as a \textit{Spellcasting F
 A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs.
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the Healing increases by 1d8 for each slot level above 1st.
+
+\DndSpellHeader
+  {Protection from Good and Evil}
+  {1st-Level Abjuration}
+  {1 Action}
+  {Touch}
+  {V, S,  M (holy water or powdered silver and iron, which the spell consumes)}
+  {Concentration, up to 10 minutes}
+
+Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.
+
+The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can't be charmed, frightened, or possessed by them. If the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect.
 
 \DndSpellHeader
   {Thunderous Smite}
