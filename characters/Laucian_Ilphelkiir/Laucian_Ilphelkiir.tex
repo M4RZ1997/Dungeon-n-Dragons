@@ -84,11 +84,14 @@
 \AddWeapon{Anletta's Bow}{+1}{1d8 p}
 
 \AttacksAdditional{
+	\textbf{Oathbow}\\
 	\textbf{Anletta's Bow:}\\+1 Damage against Undead\\
 	\textbf{60 Arrows} (1 with Oil)\\
 	\textbf{Boomerang Arrow}\\
 	\textbf{50 Fire Arrows}\\
-	\textbf{5 Ice Arrows}\\
+	\textbf{40 Drow Arrows}\\
+	\textbf{4 Ice Arrows}\\
+	\textbf{Arrow of Slaying (Dragon)}\\
 	\textbf{Armor:}\\Chain Shirt +2, Leather Armor\\
 }
 
@@ -356,6 +359,15 @@ You have mastered ranged weapons and can make shots that others find impossible.
 You learn the magic of the primeval woods, which are revered and protected by your people. You learn one Druid cantrip of your choice. You also learn the Longstrider and Pass Without Trace spells, each of which you can cast once without expending a spell slot. You regain the ability to cast these two spells in this way when you finish a long rest. Wisdom is your spellcasting ability for all three spells.
 
 \section*{Magical Items}
+\subsection*{Oathbow}
+\textit{very rare (requires attunement)}
+
+When you nock an arrow on this bow, it whispers in Elvish, "Swift defeat to my Enemies." When you use this weapon to make a Ranged Attack, you can, as a Command phrase, say, "Swift death to you who have wronged me." The target of your Attack becomes your Sworn Enemy until it dies or until dawn seven days later. You can have only one such Sworn Enemy at a time. When your Sworn Enemy dies, you can choose a new one after the next dawn.
+
+When you make a Ranged Attack roll with this weapon against your Sworn Enemy, you have advantage on the roll. In addition, your target gains no benefit from cover, other than total cover, and you suffer no disadvantage due to Long Range. If the Attack hits, your Sworn Enemy takes an extra 3d6 piercing damage.
+
+While your Sworn Enemy lives, you have disadvantage on Attack rolls with all other Weapons.
+
 \subsection*{Quiver of Ehlonna}
 \textit{wondrous item, uncommon}
 
@@ -536,35 +548,49 @@ For the Duration, the willing creature you touch has Resistance to one damage ty
 \section*{Miscellaneous}
 
 \subsection*{Arrow-Types}
+\subsubsection*{Arrow of Slaying (Dragon)}
+An arrow of slaying is a Magic Weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both Arrows of Dragon slaying and Arrows of blue Dragon slaying. If a creature belonging to the type, race, or group associated with an arrow of slaying takes damage from the arrow, the creature must make a DC 17 Constitution saving throw, taking an extra 6d10 piercing damage on a failed save, or half as much extra damage on a successful one.
 \subsubsection*{Boomerang Arrow}
-On a miss the Boomerang Arrow returns to the owner's hand
+On a miss the Boomerang Arrow returns to the owner's hand.
+\subsubsection*{Drow Arrow}
+When indoors or during the night the use of this arrow gives a +1 modifier to hit and damage dice.
+\subsubsection*{Fire Arrow}
+This arrow can be lit before using it either by spending an action from a Tinderbox, or spending a free action from an open flame, such as a torch, a bonfire, or a burning tree. When lit, this arrow sets alight any highly flammable materials on impact, and does the normal attack damage from the base weapon plus an extra 1d4 fire damage to the target. It will continue to do 1 fire damage until an action or bonus action is spent to remove it. One of the disadvantages of using the fire arrows is that you lose any advantage when attempting a surprise attacks with it due to its clear visibility.
 \subsubsection*{Ice Arrow}
 This magic arrow has a jagged arrowhead formed with a semitransparent pale blue material, reminiscent of ice. Once this arrow is drawn, you can use your bonus action to focus on the arrow, causing it to glow with icy evocation magic. If you make a ranged weapon attack with this glowing arrow before the start of your next turn, the attack deals magical cold damage instead of its normal damage type. If the hit target is a creature, it must succeed on a DC 13 Constitution saving throw or be frozen solid, effectively petrified, until the end of its next turn. If the target has resistance or immunity to cold damage, it automatically succeeds on this saving throw. If the target takes any fire damage while petrified in this manner, the conditions ends.
 
-Once it hits a target, this arrow is no longer magical.
-
 You can expend 1 magic point when you use the bonus action to cause the attack deal an extra 1d6 cold damage. If you have the Spellcasting feature when you do this, the DC becomes equal to your spell save DC if it would otherwise be lower.
-\subsubsection*{Fire Arrow}
-This arrow can be lit before using it either by spending an action from a Tinderbox, or spending a free action from an open flame, such as a torch, a bonfire, or a burning tree. When lit, this arrow sets alight any highly flammable materials on impact, and does the normal attack damage from the base weapon plus an extra 1d4 fire damage to the target. It will continue to do 1 fire damage until an action or bonus action is spent to remove it. One of the disadvantages of using the fire arrows is that you lose any advantage when attempting a surprise attacks with it due to its clear visibility, even during night time.
 
 \subsection*{Attack and Damage Rolls}
 \subsubsection*{Longbow}
 \paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Oathbow:}}\\
+1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) (- 5 (Sharpshooter)) \\
+\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{2}}} \\
+\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{2}}}}{5} \\
+\underline{\textit{Anletta's Bow:}}\\
 1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) + Bow Modifier (- 5 (Sharpshooter)) \\
-Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{1}}}} \\
-Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{1}}}}}{5}
+\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{1}}}} \\
+\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{1}}}}}{5}
 \paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Oathbow:}}\\
+1d8 + 2 (Wedge Stone) + DEX-Modifier (+ 3d6 (against Sworn Enemy)) (+ 10 (Sharpshooter)) \\
+\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\calculateModifier{\DexterityScoreValue}}} \\
+\indent Current Max (Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcMul{3}{6}}}} \\
+\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{10}}} \\
+\indent Current Max (Sharpshooter, Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{3}{6}}{10}}}}\\
+\underline{\textit{Anletta's Bow:}}\\
 1d8 + 2 (Wedge Stone) + DEX-Modifier + Bow Modifier (+ 1 (Anletta's Bow: against Undead)) (+ 10 (Sharpshooter)) \\
-Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{1}}} \\
-Current Max (Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{1}}}} \\
-Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{10}}}} \\
-Current Max (Sharpshooter, Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{\intcalcAdd{1}{10}}}}}
+\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{1}}} \\
+\indent Current Max (Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{1}}}} \\
+\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{10}}}} \\
+\indent Current Max (Sharpshooter, Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{\intcalcAdd{1}{10}}}}}
 \subsubsection*{Finesse Weapons (Shortsword, etc.)}
 \paragraph*{Attack Roll}\hfill\\
 1d20 + DEX-Modifier + Proficiency Modifier \\
-Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
 1d6 + DEX-Modifier \\
-Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
 
 \end{document}
