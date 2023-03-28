@@ -19,7 +19,7 @@
 \CharacterName{Laucian Ilphelkiir}
 
 \Class{Ranger}
-\Level{12}
+\Level{13}
 \Background{Folk Hero}
 \PlayerName{M4RZ}
 \Race{Wood Elf}
@@ -62,12 +62,12 @@
 \SurvivalProficiency{P}
 
 \Inspiration{}
-\Proficiency{+4}
+\Proficiency{+5}
 
 \ArmorClass{17}
 \InitiativeModifier{0}
 \Speed{35ft}
-\MaxHitPointsRolled{83}
+\MaxHitPointsRolled{92}
 \CurrentHitPoints{}
 \TemporaryHitPoints{}
 \HitDice{d10}
@@ -76,7 +76,7 @@
 \CP{}
 \SP{}
 \EP{}
-\GP{3633}
+\GP{3883}
 \PP{}
 
 
@@ -86,6 +86,7 @@
 \AttacksAdditional{
 	\textbf{Oathbow}\\
 	\textbf{Anletta's Bow:}\\+1 Damage against Undead\\
+	\textbf{Bracers of Trickshot}\\
 	\textbf{60 Arrows} (1 with Oil)\\
 	\textbf{Boomerang Arrow}\\
 	\textbf{50 Fire Arrows}\\
@@ -97,7 +98,7 @@
 
 \OtherProficienciesLanguages{
 	\textbf{Languages:}\\Common, Elvish, Sylvan, Draconic\\
-	\textbf{Armor:}\\Light, Medium Armor, Shields\\
+	\textbf{Armor:}\\Light, Medium Armor, Shields, Magical Shield (?)\\
 	\textbf{Weapons:}\\Shortsword, Longsword, Shortbow, Longbow, Simple, Martial Weapons\\
 	\textbf{Tools:}\\Woodcarver's Tools
 }
@@ -236,6 +237,9 @@ On a faithful day, nearly 200 years ago the tribe and the whole forest of "Easte
 \ThirdLevelSpellSlotB{Conjure Barrage (V, S, M)}
 \ThirdLevelSpellSlotC{Protection from Energy (V, S)}
 
+\FourthLevelSpellSlotsTotal{1}
+\FourthLevelSpellSlotA{Stoneskin (V, S, M)}
+
 \begin{document}
 
 \newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
@@ -367,6 +371,13 @@ When you nock an arrow on this bow, it whispers in Elvish, "Swift defeat to my E
 When you make a Ranged Attack roll with this weapon against your Sworn Enemy, you have advantage on the roll. In addition, your target gains no benefit from cover, other than total cover, and you suffer no disadvantage due to Long Range. If the Attack hits, your Sworn Enemy takes an extra 3d6 piercing damage.
 
 While your Sworn Enemy lives, you have disadvantage on Attack rolls with all other Weapons.
+
+\subsection*{Bracers of Trickshot}
+\textit{rare (requires attunement)}
+
+While wearing these bracers, you have proficiency with the longbow and shortbow, and you gain a +2 to attack and damage rolls on ranged attacks made with such weapons.
+
+Once per long rest you can make a trickshot with a bow.
 
 \subsection*{Quiver of Ehlonna}
 \textit{wondrous item, uncommon}
@@ -546,6 +557,17 @@ You throw a nonmagical weapon or fire a piece of nonmagical ammunition into the 
   
 For the Duration, the willing creature you touch has Resistance to one damage type of your choice - acid, cold, fire, lightning, or thunder.
 
+\subsection*{Level 4}
+
+\DndSpellHeader
+  {Stoneskin}
+  {4th-Level Abjuration}
+  {1 Action}
+  {Touch}
+  {V, S, M (Diamond dust wirth 100gp, which the spell consumes)}
+  {Concentration, up to 1 hour}
+  
+This spell turns the flesh of a willing creature you touch as hard as stone. Until the spell ends, the target has resistance to nonmagical bludgeoning, piercing, and slashing damage.
 
 \section*{Miscellaneous}
 
@@ -567,26 +589,26 @@ You can expend 1 magic point when you use the bonus action to cause the attack d
 \subsubsection*{Longbow}
 \paragraph*{Attack Roll}\hfill\\
 \underline{\textit{Oathbow:}}\\
-1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) (- 5 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{2}}} \\
-\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{2}}}}{5} \\
+1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) + 2 (Bracers of Trickshot) (- 5 (Sharpshooter)) \\
+\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{2}}}} \\
+\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{2}}}}}{5} \\
 \underline{\textit{Anletta's Bow:}}\\
-1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) + Bow Modifier (- 5 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{1}}}} \\
-\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{1}}}}}{5}
+1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) + Bow Modifier + 2 (Bracers of Trickshot) (- 5 (Sharpshooter)) \\
+\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{\intcalcAdd{2}{1}}}}} \\
+\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{\intcalcAdd{2}{1}}}}}}{5}
 \paragraph*{Damage Roll}\hfill\\
 \underline{\textit{Oathbow:}}\\
-1d8 + 2 (Wedge Stone) + DEX-Modifier (+ 3d6 (against Sworn Enemy)) (+ 10 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\calculateModifier{\DexterityScoreValue}}} \\
-\indent Current Max (Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcMul{3}{6}}}} \\
-\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{10}}} \\
-\indent Current Max (Sharpshooter, Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{3}{6}}{10}}}}\\
+1d8 + 2 (Wedge Stone) + DEX-Modifier + 2 (Bracers of Trickshot) (+ 3d6 (against Sworn Enemy)) (+ 10 (Sharpshooter)) \\
+\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}} \\
+\indent Current Max (Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}{\intcalcMul{3}{6}}}} \\
+\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}{10}}} \\
+\indent Current Max (Sharpshooter, Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}{\intcalcAdd{\intcalcMul{3}{6}}{10}}}}\\
 \underline{\textit{Anletta's Bow:}}\\
-1d8 + 2 (Wedge Stone) + DEX-Modifier + Bow Modifier (+ 1 (Anletta's Bow: against Undead)) (+ 10 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{1}}} \\
-\indent Current Max (Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{1}}}} \\
-\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{10}}}} \\
-\indent Current Max (Sharpshooter, Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{\intcalcAdd{1}{10}}}}}
+1d8 + 2 (Wedge Stone) + DEX-Modifier + Bow Modifier + 2 (Bracers of Trickshot) (+ 1 (Anletta's Bow: against Undead)) (+ 10 (Sharpshooter)) \\
+\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{2}}}} \\
+\indent Current Max (Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcAdd{1}{2}}{1}}}} \\
+\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcAdd{1}{2}}{10}}}} \\
+\indent Current Max (Sharpshooter, Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcAdd{1}{2}}{\intcalcAdd{1}{10}}}}}
 \subsubsection*{Finesse Weapons (Shortsword, etc.)}
 \paragraph*{Attack Roll}\hfill\\
 1d20 + DEX-Modifier + Proficiency Modifier \\
