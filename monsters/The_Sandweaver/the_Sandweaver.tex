@@ -1,0 +1,139 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+
+\usepackage{fontspec}
+\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{\PATH monsters/stylesheets/monster_stylesheet}
+\usepackage[english]{babel}
+
+\usepackage[utf8]{inputenc}
+
+%\newcommand{\entryfont}{\DndFontStatBlockBody}
+\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold]
+
+\begin{document}
+
+%\layout
+
+\mainmatter%
+
+\twocolumn[\section*{\entryfont Giant Sandweaver}]
+
+\entryfont \noindent \DndDropCapLine{N}ative to sandy deserts and shrugged canyons, the Giant Sandweaver is a horrendous sight to encounter. Different to common spiders these monsters do not spin large intricate webs, but instead cover large areas of their territory with a thick weave of silk to act as an alarm system for intruders. Furthermore, Giant Sandweaver live in large families, similar to hives, which form around a matriarch - a so-called Sandwidow.\\\\
+\textbf{Appearance.} Giant Sandweavers are large serpents that can reach lengths of up to 12 feet and have 6-8 spider-like legs. Individual specimens, especially Sandwidows, are said to have been up to 15 feet in length. The body itself is covered by hard plates, giving a very good resistance to any attack. Closer to the head these bodyplates form massive spikes. \\\\
+\textbf{Ritual Abomination.} The first Giant Sandweavers were created in dark rituals by the lizardfolk tribe Yuan-Shu during the war with the Yuan-Ti. These were released in crucial positions, most commonly canyons, to hinder the advances of the opponent's troops and attack any snakefolk that trespasses the terrain. The Yuan-Shu relished in the idea of turning snakes into spider-like monsters that preyed upon the snake worshipping Yuan-Ti, a metaphor of the lizardfolk's superiority.\\\\
+\textbf{Monstrous Mounts.} Over the centuries, Yuan-Ti were able to tame some Giant Seandweavers just enough to serve as mounts in combat. However, Giant Sandweaver are notoriously treacherous creatures and their alliance usually lies with whoever feeds them.\\\\
+- M4RZ.\\
+
+\MonsterGraphicAndShortInfo{7.8cm}{-1.5cm}{25}{15em}%
+{%
+	First created by the Yuan-Shu to gain an advantage in combat and war, these spider-like serpents roam through the vast deserts and deep canyons. These monsters are formidable foes and it is ill-advised to mess with their hive.%
+}{1cm}{375pt}{images/The_Sandweaver.png}%
+
+\vfill\eject
+
+\MonsterVariant{0.5em}{images/The_Sandweaver_variant.png}{Sandwidow}{%
+	The matriarch of a Giant Sandweaver family has more similarities to an actual snake and its legs are covered in hair, that can detect pressure differences and air movement in the Sandwidow's surroundings.
+	\DndMonsterAction{Hit Points} \DndDice{15d10 + 66}
+	\DndMonsterAction{Pit organs}
+	The Sandwidow has blindsight in a 50 ft. radius, on creatures whose body temperature is more than half than the temperature of its surroundings.
+	\DndMonsterAction{Trichobothria}
+	The Sandwidow can detect movement within a 100ft. radius.
+	\DndMonsterAction{Spit Venom (Recharge 5-6)}
+	The Sandwidow spits venom in a 40 foot line that is 5 feet wide. Each creature in that line must make a DC 15 Constitution saving throw, taking \DndDice{3d8 + 6} poison damage on a failed save, or half as much on a successful one.
+}%
+
+% Monster stat block
+\begin{DndMonster}[width=0.5\textwidth]{Giant Sandweaver}
+    \DndMonsterType{Huge monstrosity, unaligned}
+
+    % If you want to use commas in the key values, enclose the values in braces.
+    \DndMonsterBasics[
+        armor-class = {18 (natural armor)},
+        hit-points  = {\DndDice{8d10 + 42}},
+        speed       = {30 ft., climb 25 ft.},
+      ]
+
+    \DndMonsterAbilityScores[
+        str = 19,
+        dex = 15,
+        con = 21,
+        int = 4,
+        wis = 9,
+        cha = 5,
+      ]
+
+    \DndMonsterDetails[
+        %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+        %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
+        %damage-vulnerabilities = {cold},
+        damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks (not Sandwidow), poison},
+        %damage-immunities = {cold},
+        senses = {passive Perception 14},
+        condition-immunities = {frightened, poisoned, prone},
+        languages = {Primordial},
+        challenge = 9,
+      ]
+      
+    \DndMonsterAction{Spider Climb}
+    The Giant Sandweaver can climb difficult surfaces, including upside down ceilings, without the need of an ability check.
+      
+    \DndMonsterAction{Web Sense}
+    While in contact with a web, the Giant Sandweaver knows the exact location of any other creature in contact with the same web.
+      
+    \DndMonsterSection{Actions}
+    \DndMonsterAttack[
+      name=Poisonous Bite,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+7,
+      reach=5,
+      %range=20/60,
+      targets=one target,
+      dmg={\DndDice{2d6 + 1}},
+      dmg-type=piercing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={. The target must make a DC 15 Constitution saving throw, taking \DndDice{4d6} poison damage on failed save, or half as much damage on a successful one. On a failure, the target is poisoned},
+    ]
+    
+    \DndMonsterAttack[
+      name=Scythe Slashing,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+6,
+      reach=5,
+      %range=20/60,
+      targets=one target,
+      dmg={\DndDice{3d8 + 8}},
+      dmg-type=piercing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      %extra=,
+    ]
+      
+    \DndMonsterAttack[
+      name=Web Shooter (Recharge 5-6),
+      distance=ranged, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+3,
+      reach=20/60,
+      %range=20/60,
+      targets=5 ft. radius,
+      %dmg=,
+      %dmg-type=slashing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={Any target within the radius is restrained by webbing. As an action, the restrained target can make a DC 13 Strength check, bursting the web on a success. The webbing can also be attacked and destroyed (AC 19; HP 7; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)},
+    ]
+      
+\end{DndMonster}
+
+\end{document}

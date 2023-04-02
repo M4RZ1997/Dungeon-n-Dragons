@@ -1,0 +1,91 @@
+\usepackage[singlelinecheck=false]{caption}
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{shortvrb}
+\usepackage{stfloats}
+
+\usepackage{pstricks}
+\usepackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
+\usepackage{calc}
+\usepackage[absolute]{textpos}
+\usepackage{graphicx}
+
+\usepackage{tikzpagenodes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fadings} 
+\usepackage{varwidth}
+
+\captionsetup[table]{labelformat=empty,font={sf,sc,bf,},skip=0pt}
+
+\MakeShortVerb{|}
+
+\lstset{%
+  basicstyle=\ttfamily,
+  language=[LaTeX]{TeX},
+  breaklines=true,
+}
+
+% --------------------------------------------------------------------------------------------------- %
+% ################################################################################################### %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# New  Commands #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ################################################################################################### %
+% --------------------------------------------------------------------------------------------------- %
+\tikzfading[name=fade down,
+top color=transparent!60,
+bottom color=transparent!100]
+
+\newcommand{\MonsterBannerGraphic}[5]{
+	\newgeometry{
+		hmargin   = .5in,
+		top       = #2, % Top of text area to top of page
+		bottom    = .5in,
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}
+	\twocolumn[\section*{\entryfont #1}]
+	
+	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+		\node (posSW) at (current page text area.north west) {};%
+		\node[above left=#2 and 1.25cm of posSW, anchor=north west] (cornerSW) {%
+			\begin{minipage}{\paperwidth}%%
+	        	\centering\includegraphics[width=\paperwidth, height=#3#5]{#4}%
+	      	\end{minipage}%
+		};%
+	\end{tikzpicture}%
+}
+
+\newcommand{\MonsterGraphicAndShortInfo}[8]{%
+	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+		\node (posSW) at (current page text area.south west) {};%
+		\node[above right=#1 and #2 of posSW, anchor=south west] (infotext) {%
+			\begin{tikzpicture}%
+				\node [rotate=#3, inner sep=5pt, fill=PhbTan!20, path fading] {%
+					\begin{varwidth}{#4}%
+						\scriptsize{#5}%
+					\end{varwidth}%
+				};%
+			\end{tikzpicture}%
+		};%
+		\node[below left=#6 and 1cm of posSW, anchor=south west] (cornerSW) {%
+			\begin{minipage}{1.15\columnwidth}%%
+	        	\centering\includegraphics[width=1.025\columnwidth, height=#7, keepaspectratio]{#8}%
+	      	\end{minipage}%
+		};%
+	\end{tikzpicture}%
+}%
+
+\newcommand{\MonsterVariantInfoBox}[2]{
+	\begingroup%
+	\DndSetThemeColor[PhbLightCyan]%
+	\begin{DndSidebar}{\large \entryfont Variant: #1}%
+		\noindent\small\entryfont #2%
+	\end{DndSidebar}%
+	\endgroup%
+}
+
+\newcommand{\MonsterVariant}[4]{%
+	\vspace*{-2.75cm + #1}\begin{center}\begin{tikzpicture}%
+		\node (picture) at (0,0) {\includegraphics[width=\columnwidth -2em, height=190pt, keepaspectratio]{#2}};%
+	\end{tikzpicture}\end{center}\vspace*{-1cm}%
+	\MonsterVariantInfoBox{#3}{#4}
+}%

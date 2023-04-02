@@ -95,7 +95,7 @@
     colframe         = titlered,
     fonttitle        = \DndFontStatBlockTitle,
     coltitle         = titlered,
-    fontupper        = \DndFontStatBlockBody,
+    fontupper    	 = \small\entryfont,
     fontlower        = \DndFontStatBlockBody,
     title            = {#2},
     #1
@@ -134,7 +134,7 @@
 \setlist [__dnd_monster_attributes]
   {
     before   = \color {titlered},
-    font     = \DndFontStatBlockBody,
+    font     = \entryfont,
     labelsep = \l__dnd_space_dim,
     nosep,
   }
@@ -263,7 +263,7 @@
   senses .initial:n        = \defaultsensesname,
   senses .value_required:n = true,
   languages .tl_set:N         = \l__languages_tl,
-  languages .initial:n        = ---,
+  languages .initial:n        = -,
   languages .value_required:n = true,
   challenge .tl_set:N         = \l__challenge_tl,
   challenge .initial:n        = 1,
@@ -306,7 +306,7 @@
 
         #1 ~ (
         \int_compare:nNnTF {\l_tmpa_int} < {0}
-        { -- }
+        { - }
         {+}
         \int_abs:n \l_tmpa_int )
       }

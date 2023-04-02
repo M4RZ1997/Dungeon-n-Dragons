@@ -40,9 +40,11 @@
     % Set page geometry.
     \geometry
       {
-        hmargin   = .75in, % Left and right margins
+        %hmargin   = .75in, % Left and right margins
+		hmargin   = .5in,
         top       = .46in, % Top of text area to top of page
-        bottom    = .8in,  % Bottom of text area to bottom of page
+        %bottom    = .8in,  % Bottom of text area to bottom of page
+		bottom    = .4in,
         footskip  = .32in, % Bottom of text area to bottom of footer text
         columnsep = .33in, % Space between columns
       }
