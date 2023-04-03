@@ -35,6 +35,7 @@ top color=transparent!60,
 bottom color=transparent!100]
 
 \newcommand{\MonsterBannerGraphic}[5]{
+	\newpage
 	\newgeometry{
 		hmargin   = .5in,
 		top       = #2, % Top of text area to top of page
@@ -42,7 +43,6 @@ bottom color=transparent!100]
 		footskip  = .32in, % Bottom of text area to bottom of footer text
 		columnsep = .33in, % Space between columns
 	}
-	\twocolumn[\section*{\entryfont #1}]
 	
 	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 		\node (posSW) at (current page text area.north west) {};%
@@ -52,6 +52,8 @@ bottom color=transparent!100]
 	      	\end{minipage}%
 		};%
 	\end{tikzpicture}%
+	{\let\clearpage\relax \section*{\entryfont #1}}
+	%{\let\clearpage\relax\twocolumn[\section*{\entryfont #1}]}
 }
 
 \newcommand{\MonsterGraphicAndShortInfo}[8]{%
