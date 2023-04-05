@@ -298,13 +298,15 @@
 %% Ability scores
 % Print ability score stats with auto-computed modifier
 % e.g. \stat{12} prints "12 (+1)"
+\newcommand{\AbilityScoreSpacer}{~}
+
 \cs_new_protected_nopar:Npn \__dnd_ability_score_modifier:N #1
   {
     \regex_match:NnTF \c__pos_int_regex {#1}
       {
         \int_set:Nn \l_tmpa_int { \fp_eval:n { floor ( ( #1 - 10 ) / 2 ) } }
 
-        #1 ~ (
+        #1 \AbilityScoreSpacer (
         \int_compare:nNnTF {\l_tmpa_int} < {0}
         { - }
         {+}

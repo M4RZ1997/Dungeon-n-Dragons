@@ -155,5 +155,124 @@ During combat the Giant Sandweaver tries to catch or incapacitate its opponents 
 	{250pt}% max height of the image
 	{images/Desert_Lair.png}% image to be displayed as a banner
 	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
+	
+\entryfont \noindent \DndDropCapLine{B}uild by the snakefolk Yuan-Ti,\\ this monument to the snake deity Sseth\\ is winding across the peaks of a jagged cliff formation in the middle of the [Desert]. These rugged lands are home to Giant Sandweavers, huge abominations of part spider part snake. Occasionally, members of the Yuan-Ti are following the Path of Enlightenment visiting this shrine to bring offerings. Unbeknownst to many an even larger creature is calling this sanctum home - the Ancient Sandweaver. Legends are spreading around this ungodly creature and feared by those who live to tell the tale of its encounter.\\
+The desert is filled with stone pinnacles and broken obelisks and monument ruins clutter the area - But be aware, not everything is what it seems to be...
+	
+% Monster stat block
+\begin{DndMonster}[float*=b,width=\textwidth +8pt]{Ancient Sandweaver}
+    \begin{multicols}{2}\DndMonsterType{Gargantuan monstrosity, unaligned}
+
+    % If you want to use commas in the key values, enclose the values in braces.
+    \DndMonsterBasics[
+        armor-class = {22 (natural armor)},
+        hit-points  = {\DndDice{16d20 + 112}},
+        speed       = {50 ft., dig/tunneling 50 ft.},
+      ]
+      
+    \renewcommand{\AbilityScoreSpacer}{~}
+
+    \DndMonsterAbilityScores[
+        str = 24,
+        dex = 10,
+        con = 26,
+        int = 14,
+        wis = 15,
+        cha = 5,
+      ]
+
+    \DndMonsterDetails[
+        %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+        %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
+        %damage-vulnerabilities = {cold},
+        damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+        damage-immunities = {poison},
+        senses = {Tremorsense 3000ft., passive Perception 19},
+        condition-immunities = {frightened, poisoned, prone},
+        languages = {Primordial},
+        challenge = 15,
+      ] 
+    \DndMonsterAction{Web Sense}
+    While in contact with a web, the Ancient Sandweaver knows the exact location of any other creature in contact with the same web.
+      
+    \DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Ancient Sandweaver can attack twice each turn.   
+    
+    \DndMonsterAttack[
+      name=Poisonous Bite,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+10,
+      reach=25,
+      %range=20/60,
+      targets=one target,
+      dmg={\DndDice{10d6 + 13}},
+      dmg-type=piercing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={. The target must make a DC 20 Constitution saving throw, taking \DndDice{8d6 + 16} poison damage on failed save, or half as much damage on a successful one. On a failure, the target is poisoned},
+    ]
+    
+    \DndMonsterAttack[
+      name=Bash,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+12,
+      reach=35,
+      %range=20/60,
+      targets=one target,
+      dmg={\DndDice{12d12 + 12}},
+      dmg-type=bludgeoning,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={. If the targets are creatures, they must succeed on a DC 22 Strength or Dexterity saving throw or be knocked prone},
+    ]
+      
+    \DndMonsterAttack[
+      name=Web Shooter (Recharge 5-6),
+      distance=ranged, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+3,
+      reach=20/60,
+      %range=20/60,
+      targets=5 ft. radius,
+      %dmg=,
+      %dmg-type=slashing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={Any target within the radius is restrained by webbing. As an action, the restrained target can make a DC 16 Strength check, bursting the web on a success. The webbing can also be attacked and destroyed (AC 10; HP 7; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)},
+    ]
+    
+    \DndMonsterSection{Reaction}
+    \DndMonsterAction{Wrap}
+    When a creature is hit by the Sandweaver's poisonous bite attack and becomes paralyzed by its poison, the Ancient Sandweaver can use its silk webbing to restrain the target. If the target is Medium in size or smaller, the Ancient Sandweaver can then attach the target to its back or belly. The Ancient Sandweaver  can have only one creature attached to its body at a time. A creature freed from this webbing is no longer attached to the Ancient Sandweaver's body.
+    
+    \DndMonsterSection{Legendary Actions}
+    The Ancient Sandweaver can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the ned of another creature's turn. The Ancient Sandweaver regains spent legendary actions at the start of its turn.
+    \DndMonsterAction{Bite}
+    The Ancient Sandweaver makes one Poisonous Bite attack
+    \DndMonsterAction{Sandhide (Costs 2 Actions)}
+    The Ancient Sandweaver creates a 50ft. cloud of sand. A creature engulfed by the sand must make a DC 14 Constitution saving throw or is blinded until the end of their next turn.
+    \DndMonsterAction{Dig and Strike (Costs 3 Actions)}
+    The Ancient Sandweaver digs down, being hidden until it resurfaces, and has advantage and +30 ft. reach (cumulative) on its next melee attack.
+      
+\end{multicols}\end{DndMonster}
+\vfill\eject\hfill\vspace*{-0.175em}
+\subsection*{Lair Action}
+\DndMonsterAction{Passive Effect: Legendary Malevolence}
+In a radius of 10.000ft. around the lair no creature is benefitting from a long rest.\\
+On initiative count 20, the Ancient Sandweaver takes a lair action to cause one of the following effect. It can't use the same effect two rounds in a row:
+\begin{itemize}
+	\item A 30 foot square area of ground within 120 feet of the Ancient Sandweaver becomes quicksand.
+	\item A 5 foot rock the Sandweaver can see is crashing to the ground. Any creature within that area must succeed a DC 14 Dexterity saving throw or suffers \DndDice{2d10} bludgeoning damage and their movement rate is set to 0 until the end of their next turn.
+	\item A 10 foot wide, 20 foot deep hole within 120 feet of the Sandweaver is opening up.
+\end{itemize}
 
 \end{document}
