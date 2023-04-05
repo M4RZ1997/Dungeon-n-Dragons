@@ -41,7 +41,7 @@ This document uses the LaTeX dnd\textunderscore template provided in the GitHub 
 	{375pt}% maximum height of picture
 	{example-image-a}% picture
 
-\vfill\eject
+\vfill\eject % cammand to break to next column
 
 \MonsterVariant%
 	{1em}% offset to top of page for image
@@ -115,7 +115,7 @@ This document uses the LaTeX dnd\textunderscore template provided in the GitHub 
 
 % --------------------------------------------------------------------------------------------------- %
 % ################################################################################################### %
-% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Monster-Sheet  with full Banner #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-# Monster-Sheet with  full Banner-Graphic #-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % ################################################################################################### %
 % --------------------------------------------------------------------------------------------------- %
 
@@ -253,5 +253,81 @@ This document uses the LaTeX dnd\textunderscore template provided in the GitHub 
     ]
       
 \end{DndMonster}
+
+% --------------------------------------------------------------------------------------------------- %
+% ################################################################################################### %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-# Monster-Sheet with  full Footer-Graphic #-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ################################################################################################### %
+% --------------------------------------------------------------------------------------------------- %
+
+\MonsterFooterGraphic{175pt}% offset for text to bottom
+	{250pt}% max height of the image
+	{example-image-a}% image to be displayed as a banner
+	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
+
+% Monster stat block
+\vspace*{-1.3cm}\begin{DndMonster}[width=0.5\textwidth]{Blank Monster}
+    \DndMonsterType{Unidentified Monster, unaligned}
+
+    % If you want to use commas in the key values, enclose the values in braces.
+    \DndMonsterBasics[
+        armor-class = {10},
+        hit-points  = {\DndDice{1d12 + 6}},
+        speed       = {30 ft., climb 25 ft.},
+    ]
+
+    \DndMonsterAbilityScores[
+        %str = 19,
+        %dex = 15,
+        %con = 13,
+        %int = 4,
+        %wis = 9,
+        %cha = 5,
+    ]
+
+    \DndMonsterDetails[
+        %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+        %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
+        %damage-vulnerabilities = {cold},
+        %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+        %damage-immunities = {cold},
+        %senses = {passive Perception 14},
+        %condition-immunities = {frightened, poisoned},
+        %languages = {-},
+        challenge = 1,
+    ]
+    
+    \DndMonsterAction{One of Many}
+    The Invisible One has advantage against being detected and on hiding in large groups.\\\\
+    \lipsum[1-2]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Blank Monster makes two attacks with its dagger.
+	
+	\DndMonsterAttack[
+      name=Dagger,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+3,
+      reach=10,
+      %range=20/60,
+      targets=one target,
+      dmg=\DndDice{1d8 + 2},
+      dmg-type=slashing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      %extra=,
+    ]
+      
+\end{DndMonster}
+
+\vfill\eject % cammand to break to next column
+
+\nopagebreaksection{Blank Monster} % section that does not induce a new page
+
+\lipsum[1-3]
 
 \end{document}

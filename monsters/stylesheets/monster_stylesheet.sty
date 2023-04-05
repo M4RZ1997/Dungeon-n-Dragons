@@ -30,6 +30,10 @@
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# New  Commands #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % ################################################################################################### %
 % --------------------------------------------------------------------------------------------------- %
+\newcommand{\nopagebreaksection}[1]{
+	{\let\clearpage\relax \section*{\entryfont #1}}
+}
+
 \tikzfading[name=fade down,
 top color=transparent!60,
 bottom color=transparent!100]
@@ -52,7 +56,27 @@ bottom color=transparent!100]
 	      	\end{minipage}%
 		};%
 	\end{tikzpicture}%
-	{\let\clearpage\relax \section*{\entryfont #1}}
+	%{\let\clearpage\relax \section*{\entryfont #1}}
+	\nopagebreaksection{#1}
+}
+
+\newcommand{\MonsterFooterGraphic}[4]{
+	\newpage
+	\newgeometry{
+		hmargin   = .5in,
+		top       = .46in, % Top of text area to top of page
+		bottom    = #1,
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}
+	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+		\node (posSW) at (current page text area.south west) {};%
+		\node[below left=#1 and 1.25cm of posSW, anchor=south west] (cornerSW) {%
+			\begin{minipage}{\paperwidth}%%
+	        	\centering\includegraphics[width=\paperwidth, height=#2#4]{#3}%
+	      	\end{minipage}%
+		};%
+	\end{tikzpicture}%
 }
 
 \newcommand{\MonsterShortInfoBox}[5]{
