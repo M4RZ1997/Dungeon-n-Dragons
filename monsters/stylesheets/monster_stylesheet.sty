@@ -5,7 +5,7 @@
 \usepackage{stfloats}
 
 \usepackage{pstricks}
-\usepackage[pscoord]{eso-pic}% The zero point of the coordinate systemis the lower left corner of the page (the default).
+\usepackage[pscoord]{eso-pic}% The zero point of the coordinate system is the lower left corner of the page (the default).
 \usepackage{calc}
 \usepackage[absolute]{textpos}
 \usepackage{graphicx}
@@ -53,26 +53,33 @@ bottom color=transparent!100]
 		};%
 	\end{tikzpicture}%
 	{\let\clearpage\relax \section*{\entryfont #1}}
-	%{\let\clearpage\relax\twocolumn[\section*{\entryfont #1}]}
 }
 
-\newcommand{\MonsterGraphicAndShortInfo}[8]{%
+\newcommand{\MonsterShortInfoBox}[5]{
+	\node[above right=#1 and #2 of posSW, anchor=south west] (infotext) {%
+		\begin{tikzpicture}%
+			\node [rotate=#3, inner sep=5pt, fill=PhbTan!20, path fading] {%
+				\begin{varwidth}{#4}%
+					\scriptsize{#5}%
+				\end{varwidth}%
+			};%
+		\end{tikzpicture}%
+	};%
+}
+
+\def\PictureOverlay{pictureoverlay}
+\def\InfoBoxOverlay{infoboxoverlay}
+
+\newcommand{\MonsterGraphicAndShortInfo}[9]{%
 	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 		\node (posSW) at (current page text area.south west) {};%
-		\node[above right=#1 and #2 of posSW, anchor=south west] (infotext) {%
-			\begin{tikzpicture}%
-				\node [rotate=#3, inner sep=5pt, fill=PhbTan!20, path fading] {%
-					\begin{varwidth}{#4}%
-						\scriptsize{#5}%
-					\end{varwidth}%
-				};%
-			\end{tikzpicture}%
-		};%
-		\node[below left=#6 and 1cm of posSW, anchor=south west] (cornerSW) {%
+		\ifthenelse{\equal{#5}{\PictureOverlay}}{\MonsterShortInfoBox{#1}{#2}{#3}{#4}{#6}}{}%
+		\node[below left=#7 and 1cm of posSW, anchor=south west] (cornerSW) {%
 			\begin{minipage}{1.15\columnwidth}%%
-	        	\centering\includegraphics[width=1.025\columnwidth, height=#7, keepaspectratio]{#8}%
+	        	\centering\includegraphics[width=1.025\columnwidth, height=#8, keepaspectratio]{#9}%
 	      	\end{minipage}%
 		};%
+		\ifthenelse{\equal{#5}{\InfoBoxOverlay}}{\MonsterShortInfoBox{#1}{#2}{#3}{#4}{#6}}{}%
 	\end{tikzpicture}%
 }%
 
