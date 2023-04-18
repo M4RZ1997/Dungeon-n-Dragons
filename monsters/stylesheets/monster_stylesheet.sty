@@ -1,3 +1,5 @@
+\usepackage{fontspec}
+
 \usepackage[singlelinecheck=false]{caption}
 \usepackage{lipsum}
 \usepackage{listings}
@@ -30,9 +32,20 @@
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# New  Commands #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % ################################################################################################### %
 % --------------------------------------------------------------------------------------------------- %
-\newcommand{\nopagebreaksection}[1]{
-	{\let\clearpage\relax \section*{\entryfont #1}}
-}
+
+\newcommand{\MonsterSheetGeometry}{%
+	\newgeometry{%
+		hmargin 	= .5in, % Left and right margins
+		top 		= .46in, % Top of text area to top of page
+		bottom		= .4in, % Bottom of text area to bottom of page
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}%
+}%
+
+\newcommand{\nopagebreaksection}[1]{%
+	{\let\clearpage\relax \section*{\entryfont #1}}%
+}%
 
 \tikzfading[name=fade down,
 top color=transparent!60,
