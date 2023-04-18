@@ -1,0 +1,244 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+
+\usepackage{fontspec}
+\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{\PATH monsters/stylesheets/monster_stylesheet}
+\usepackage[english]{babel}
+
+\usepackage[utf8]{inputenc}
+
+%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
+\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
+
+\begin{document}
+
+%\layout
+
+\mainmatter%
+
+% --------------------------------------------------------------------------------------------------- %
+% ################################################################################################### %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-# Monster-Sheet with two Smaller Pictures #-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ################################################################################################### %
+% --------------------------------------------------------------------------------------------------- %
+
+\twocolumn[\section*{\entryfont Fleshgorger Ant}]
+
+\entryfont \noindent \DndDropCapLine{T}his document is a LaTeX-template for easily creating a DnD-Monster-Sheet. It provides many different environments and macros to build up many different blocks similar to the ones seen in the DnD books.\\\\
+This document uses the LaTeX dnd\textunderscore template provided in the GitHub repository:\\\\ https://github.com/rpgtex/DND-5e-LaTeX-Template\\\\ and requires of XeLaTeX or LuaTeX as the fontspec package is not part of the normal PDFLaTeX. By altering the \entryfont in the preamble this requirement can be excluded, however, the font has to be reset to the default one. \\\\
+... enjoy!\\\\
+- M4RZ.\\
+
+\MonsterGraphicAndShortInfo%
+	{8.7cm}{0cm}% Position of Mini-Info-Box relativ to bottom left corner
+	{25}% rotation of Mini-Info-Box
+	{13em}% maximum width of Mini-Info-Box
+	{infoboxoverlay} % What should be above? Picture or InfoBox {{pictureoverlay}, {infoboxoverlay}} - if something else is written in there no InfoBox is displayed
+	{This is the Mini-Info-Box:\\The Blank Monster has never been seen and there are no pictures of it as of now.}%
+	{0.95cm}% offset of picture to bottom of page
+	{375pt}% maximum height of picture
+	{images/Worker_Ant.png}% picture
+
+\vfill\eject % cammand to break to next column
+
+\MonsterVariant%
+	{1em}% offset to top of page for image
+	{example-image-a}% image above Info-Box
+	{The Mysterious One}% Name of the variant
+	{%
+		The Mysterious One is even more mysterious than the blank one.
+		\DndMonsterAction{Condition Immunities}
+		detection
+		\DndMonsterAction{Surprise}
+		Whenever someone sees the mysterious one it is charmed and thinks it didn't see anything
+	}% Monster Variant Info
+
+% Monster stat block
+\begin{DndMonster}[width=0.5\textwidth]{Fleshgorger Worker Ant}
+    \DndMonsterType{Unidentified Monster, unaligned}
+
+    % If you want to use commas in the key values, enclose the values in braces.
+    \DndMonsterBasics[
+        armor-class = {10},
+        hit-points  = {\DndDice{1d12 + 6}},
+        speed       = {30 ft., climb 25 ft.},
+    ]
+
+    \DndMonsterAbilityScores[
+        %str = 19,
+        %dex = 15,
+        %con = 13,
+        %int = 4,
+        %wis = 9,
+        %cha = 5,
+    ]
+
+    \DndMonsterDetails[
+        %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+        %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
+        %damage-vulnerabilities = {cold},
+        %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+        %damage-immunities = {cold},
+        %senses = {passive Perception 14},
+        %condition-immunities = {frightened, poisoned},
+        %languages = {-},
+        challenge = 1,
+    ]
+    
+    \DndMonsterAction{One of Many}
+    The Blank Monster has advantage against being detected and on hiding in large groups.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Blank Monster makes two attacks with its dagger.
+	
+	\DndMonsterAttack[
+      name=Dagger,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+3,
+      reach=10,
+      %range=20/60,
+      targets=one target,
+      dmg=\DndDice{1d8 + 2},
+      dmg-type=slashing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      %extra=,
+    ]
+      
+\end{DndMonster}
+
+% --------------------------------------------------------------------------------------------------- %
+% ################################################################################################### %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-# Monster-Sheet with  full Banner-Graphic #-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ################################################################################################### %
+% --------------------------------------------------------------------------------------------------- %
+
+\MonsterBannerGraphic%
+	{Giant Ant Queen}% name of the monster to be displayed as header
+	{250pt}% offset for the section header
+	{325pt}% max height of the image
+	{images/Queen_Ant.png}% image to be displayed as a banner
+	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
+	
+\noindent The Giant Ant Queen is, at least\\
+from the perspective of an ant,\\
+considered a divine being, which the colony obeys without question. The colony provides her protection and nurishment while the queen itself is laying thousands of eggs, giving birth to the next generation of the colony.
+
+% Monster stat block
+\begin{DndMonster}[float*=b, width=\textwidth +8pt]{Giant Ant Queen}
+    \vspace*{-17.5pt}\begin{multicols}{2}\DndMonsterType{Gragantuan Beast, unaligned}
+
+    % If you want to use commas in the key values, enclose the values in braces.
+    \DndMonsterBasics[
+        armor-class = {16 (natural armor)},
+        hit-points  = {\DndDice{7d20 + 28}},
+        speed       = {30 ft., climb 25 ft., burrow 25 ft.},
+    ]
+    
+    \renewcommand{\AbilityScoreSpacer}{~}
+
+    \DndMonsterAbilityScores[
+        str = 27,
+        dex = 10,
+        con = 18,
+        int = 10,
+        wis = 15,
+        cha = 21,
+    ]
+
+    \DndMonsterDetails[
+        %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+        skills = {Acrobatics +13, Perception +7},
+        %damage-vulnerabilities = {cold},
+        %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+        %damage-immunities = {cold},
+        senses = {blindsight 60ft, passive Perception 17},
+        condition-immunities = {poisoned, charmed, frightened},
+        %languages = {-},
+        challenge = 10,
+    ]
+    
+    \DndMonsterAction{Insect Climb}
+    The Giant Ant Queen can climb difficult surfaces without the need of performing ability checks.
+    
+    \DndMonsterAction{Swarmlord}
+    Ants that first enter or start their turn within 60 ft. of the Giant Ant Queen have advantage on attack rolls, ability checks, and saving throws of any kind.
+    
+    \DndMonsterAction{Swarm Frenzy}
+    Ants that first enter or start their turn within 60 ft. of the Giant Ant Queen can perform an additional Bite attack during their Attack Action.
+    
+    \DndMonsterAction{Undying Servitude}
+    Whenever an ant within 60 ft. of the Giant Ant Queen is reduced to 0 hitpoints, if it is not incapacitated, it can make a DC 10 Constitution Saving Throw regaining 1 hitpoint on a successful one.
+    
+    \DndMonsterAction{Hive Mind}
+    The Giant Ant Queen is immune to being charmed or frightened.
+	
+	\vfill\eject\vspace*{-30pt}
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Giant Ant Queen can make a Sting and a Bite attack each turn.
+	
+	\DndMonsterAttack[
+      name=Bite,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+11,
+      reach=10,
+      %range=20/60,
+      targets=one target,
+      dmg=\DndDice{4d10 + 7},
+      dmg-type=piercing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={. The target must make a DC 18 Constitution Saving throw, taking \DndDice{2d6} poison damage on a failed save, or half as much on a successful one},
+    ]
+    
+    \DndMonsterAttack[
+      name=Sting,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+11,
+      reach=10,
+      %range=20/60,
+      targets=one target,
+      dmg=\DndDice{4d4 + 7},
+      dmg-type=piercing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={. The target must make a DC 18 Constitution Saving throw, taking \DndDice{8d6} poison damage on a failed save, or half as much on a successful one},
+    ]
+    
+	\DndMonsterAction{Fury of the Swarm (Recharge 5-6)}
+	Each ant within a 60 ft. radius of the Giant Ant Queen can use its reaction to move up to its movement speed and to make an Attack Action.
+    
+    \DndMonsterSection{Legendary Actions}
+    The Giant Ant Queen can take 3 Legendary Actions, choosing from the options below. Only one Legendary Action can be used at a time and only at the end of a creature's turn. The Giant Ant Queen regains spent Legendary Actions at the start of its turn.
+    
+    \DndMonsterAction{Vitality Command}
+    The Giant Ant Queen can end one of the following effects on an ant it can see within 60 ft.: blinded, deafened, poisoned, stunned, paralyzed, or unconscious.
+    
+    \DndMonsterAction{Battle Command}
+    The Giant Ant Queen can command one ant it can see within 60ft. to move up to its movement speed and make a Bite attack againsta creature of the queen's choice.
+    
+    \DndMonsterAction{Burrow Shift}
+    The Giant Ant Queen can travel burrow up to its full movement speed to a spot it can see. This movement does not provoke opportunity attacks.
+      
+\end{multicols}\end{DndMonster}
+
+\vfill\eject\vspace*{10pt}
+
+\subsection*{Soul of the Hive}
+The very temperament and personality of the hive often reflects the nature of the queen. Some queens tend to be extremely aggressive resulting in deadly raids from ants. Others tend to be more passive and even tolerate the presence of other creatures like humanoids. Whenever a hive becomes dangerous or out of control, dealing with the queen is typically the most straight-forward solution.
+
+\end{document}

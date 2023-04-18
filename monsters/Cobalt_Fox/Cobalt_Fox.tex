@@ -1,12 +1,11 @@
-\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
 
 \newcommand{\PATH}{../../}
 
-\usepackage{fontspec}
 \usepackage[justified]{\PATH dndtemplate/dnd}
 \usepackage{\PATH monsters/stylesheets/monster_stylesheet}
-\usepackage[english]{babel}
 
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 
 %\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
@@ -15,6 +14,8 @@
 \begin{document}
 
 %\layout
+
+\MonsterSheetGeometry
 
 \mainmatter%
 % --------------------------------------------------------------------------------------------------- %
@@ -147,6 +148,7 @@ On initiative count 20, any Cobalt Fox considered to be part of the territory ta
 	\item A "fox gem" creates a burst of flickering lights targeting a creature within 10ft. of it. The target must succeed on a DC 12 Wisdom saving throw. On a failed save the target takes \DndDice{1d10} radiant damage and is blinded until the start of the fox's next turn.
 	\item A Cobalt Fox within 5ft. of a "fox gem" moves within 5ft. of another "fox gem".
 	\item The "fox gem" starts to shimmer. Any creature that isn't a Cobalt Fox has disadvantage on Wisdom and Charisma saving throws until the end of the fox's next turn.
+	\item The Zircon Fox can target \DndDice{1d8 + 1} "fox gems" it can see, teleporting to one of them and creating illusions of itself at the others. The illusions have 1 hitpoint and do not make any damage. \textbf{(Only Zircon Fox; 1/Day)}
 \end{itemize}
 
 \subsection*{Regional Effects}
@@ -189,7 +191,7 @@ If all the Cobalt Foxes die or leave the area, the effects fade over the course 
         senses = {darksight 60ft., passive Perception 14},
         %condition-immunities = {frightened, poisoned},
         languages = {Sylvan},
-        challenge = 5,
+        challenge = 6,
     ]
     
 	\DndMonsterAction{Fearsome Agility}
@@ -239,13 +241,13 @@ If all the Cobalt Foxes die or leave the area, the effects fade over the course 
     ]
     
     \DndMonsterAction{Achromatic Burst}
-    The Zircon Fox creates an aura of drakness targeting a creature within 30ft. of it. The target must succed on a DC 15 Wisdom saving throw. On a failed saved the target takes \DndDice{4d8 + 8} psychic damage, or half as much on a success, and is frightened by the Zircon Fox until the start of the fox's next turn.
+    The Zircon Fox creates an aura of darkness targeting a creature within 30ft. of it. The target must succeed on a DC 15 Wisdom saving throw. On a failed saved the target takes \DndDice{4d8 + 8} psychic damage, or half as much on a success, and is frightened by the Zircon Fox until the start of the fox's next turn.
       
 \end{DndMonster}
 
 \hspace*{-2.5em}\begin{tabular}{p{0.5\columnwidth}c}
 	\MonsterVariantInfoBox{Zircon Fox}{%
-		\noindent The Zircon Fox is a much more aggressive and powerful fey creature. It evolves from an orphan cub whose parents were killed. The usual blue fur of a Cobalt Fox becomes red and the most often helpful creature became more treacherous, seeking vengeance on those who mean harm on other Cobalt Fox cubs.
+		\noindent The Zircon Fox is a much more aggressive and powerful fey creature. It evolves from an orphan cub whose parents were killed. The usual blue fur of a Cobalt Fox becomes red and the most often helpful creature became more treacherous, seeking vengeance on those who mean harm on their kind and territory.
 	}
 	&
 	\includegraphics[width=0.65\columnwidth, height=155pt, keepaspectratio]{images/Zircon_Fox.png}
