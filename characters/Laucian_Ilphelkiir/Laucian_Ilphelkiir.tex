@@ -42,7 +42,7 @@
 \WisdomProficiency{}
 \CharismaProficiency{}
 
-\AcrobaticsProficiency{}
+\AcrobaticsProficiency{P}
 \AnimalHandlingProficiency{P}
 \ArcanaProficiency{}
 \AthleticsProficiency{P}
@@ -76,17 +76,15 @@
 \CP{}
 \SP{}
 \EP{}
-\GP{3883}
+\GP{7883}
 \PP{}
 
 
 \AddWeapon{2 Shortswords}{0}{1d6 p}
-\AddWeapon{Anletta's Bow}{+1}{1d8 p}
 \AddWeapon{Oathbow}{0}{1d8 p}
 
 \AttacksAdditional{
 	\textbf{Oathbow}\\
-	\textbf{Anletta's Bow}\\
 	\textbf{Bracers of Trickshot}\\
 	\textbf{60 Arrows} (1 with Oil)\\
 	\textbf{Boomerang Arrow}\\
@@ -120,13 +118,13 @@
 	Firewine,
 	a Tranquilizer Vial,
 	Wedge Stone (Arrows +1/+2 Damage),
-	a Potion of Greater Healing,
-	a Potion of Supreme Healing,
-	Ruby (500 gold) \\
+	3 Potion of Greater Healing,
+	2 Potion of Supreme Healing,
+	Ruby (500 gold),
+	2 Potion of Giant Size (1 x *) \\
 	\textbf{
 	Quiver of Ehlonna,
-	Manual of Gainful Exercise (used),
-	Ioun Stone: Insight,
+	Quiver of the Storm's Fury,
 	Wand of Secrets}
 	}
 }
@@ -387,17 +385,10 @@ Each of the quiver's three compartments connects to an extradimensional space th
 
 You can draw any item the quiver contains as if doing so from a regular quiver or scabbard.
 
-\subsection*{Manual of Gainful Exercise (used)}
+\subsection*{Quiver of the Storm's Fury}
 \textit{wondrous item, very rare}
 
-This book describes fitness exercises, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's Contents and practicing its guidelines, your Strength score increases by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century.
-
-\subsection*{Ioun Stone: Insight}
-\textit{wondrous item, very rare (requires attunement)}
-
-The Insight Ioun Stone is an incandescent blue sphere. You can use an action to toss this stone into the air, it orbits your head at a distance of 1d3 feet. While this stone orbits, your Wisdom score increases by 2, to a maximum of 20. Another creature can use an action to grasp or snare the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity (Acrobatics) check. You can use an action to seize and stow the stone, ending its effect.
-
-A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.
+This quiver is made from the hide of a storm giant's favorite hunting beast and is adorned with lightning motifs. When the ranger draws an arrow from the quiver, it becomes charged with electrical energy, granting a +2 bonus to attack and damage rolls. Additionally, once per short or long rest, the ranger can choose to imbue an arrow with the power of a storm, causing it to create a 20-foot radius sphere of lightning and thunder when it hits a target. Creatures within the sphere must make a DC 17 Dexterity saving throw taking 6d6 lightning damage and 6d6 thunder damage on a failed save, or half as much on a successful one.
 
 \subsection*{Wand of Secrets}
 \textit{wondrous item, uncommon}
@@ -565,7 +556,7 @@ For the Duration, the willing creature you touch has Resistance to one damage ty
   {4th-Level Abjuration}
   {1 Action}
   {Touch}
-  {V, S, M (Diamond dust wirth 100gp, which the spell consumes)}
+  {V, S, M (Diamond dust worth 100gp, which the spell consumes)}
   {Concentration, up to 1 hour}
   
 This spell turns the flesh of a willing creature you touch as hard as stone. Until the spell ends, the target has resistance to nonmagical bludgeoning, piercing, and slashing damage.
@@ -590,26 +581,16 @@ You can expend 1 magic point when you use the bonus action to cause the attack d
 \subsubsection*{Longbow}
 \paragraph*{Attack Roll}\hfill\\
 \underline{\textit{Oathbow:}}\\
-1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) + 2 (Bracers of Trickshot) (- 5 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{2}}}} \\
-\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{2}}}}}{5} \\
-\underline{\textit{Anletta's Bow:}}\\
-1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) + Bow Modifier + 2 (Bracers of Trickshot) (- 5 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{\intcalcAdd{2}{1}}}}} \\
-\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{\intcalcAdd{2}{1}}}}}}{5}
+1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) + 2 (Bracers of Trickshot) + 2 (Quiver of the Storm's Fury) (- 5 (Sharpshooter)) \\
+\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{\intcalcAdd{2}{2}}}}} \\
+\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{\intcalcAdd{2}{2}}}}}}{5} \\
 \paragraph*{Damage Roll}\hfill\\
 \underline{\textit{Oathbow:}}\\
-1d8 + 2 (Wedge Stone) + DEX-Modifier + 2 (Bracers of Trickshot) (+ 3d6 (against Sworn Enemy)) (+ 10 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}} \\
-\indent Current Max (Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}{\intcalcMul{3}{6}}}} \\
-\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}{10}}} \\
-\indent Current Max (Sharpshooter, Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}{\intcalcAdd{\intcalcMul{3}{6}}{10}}}}\\
-\underline{\textit{Anletta's Bow:}}\\
-1d8 + 2 (Wedge Stone) + DEX-Modifier + Bow Modifier + 2 (Bracers of Trickshot) (+ 1 (Anletta's Bow: against Undead)) (+ 10 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{1}{2}}}} \\
-\indent Current Max (Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcAdd{1}{2}}{1}}}} \\
-\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcAdd{1}{2}}{10}}}} \\
-\indent Current Max (Sharpshooter, Undead): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcAdd{1}{2}}{\intcalcAdd{1}{10}}}}}
+1d8 + 2 (Wedge Stone) + DEX-Modifier + 2 (Bracers of Trickshot) + 2 (Quiver of the Storm's Fury) (+ 3d6 (against Sworn Enemy)) (+ 10 (Sharpshooter))\\
+\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{2}{2}}}} \\
+\indent Current Max (Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{2}{2}}}{\intcalcMul{3}{6}}}} \\
+\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{2}{2}}}{10}}} \\
+\indent Current Max (Sharpshooter, Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{2}{2}}}{\intcalcAdd{\intcalcMul{3}{6}}{10}}}}
 \subsubsection*{Finesse Weapons (Shortsword, etc.)}
 \paragraph*{Attack Roll}\hfill\\
 1d20 + DEX-Modifier + Proficiency Modifier \\
