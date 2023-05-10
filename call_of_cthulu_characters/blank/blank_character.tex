@@ -1,0 +1,66 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+
+\usepackage{fontspec}
+\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{ifthen}
+\usepackage{pstricks}
+
+\usepackage{intcalc}
+
+\usepackage[UKenglish]{babel}
+\usepackage{\PATH coctemplate}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% Headline
+\CharacterName{Blank}
+
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+%\rendercharactersheet
+
+% BACKSTORY PAGE
+%\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderoutline
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Section 1}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+\subsection*{Subsection 1.1}
+Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare.
+\paragraph*{Paragraph 1.1.1}
+Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare.
+\subparagraph*{Subparagraph 1.1.1.1}
+Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas.
+
+\section*{Spells}
+\subsection*{Level X}
+
+\DndSpellHeader
+  {Spell Name}
+  {Spell Type}
+  {1 Bonus Action}
+  {Target}
+  {V, S, M}
+  {Duration}
+
+Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue.
+
+\subparagraph*{At Higher Levels} Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique.
+
+\end{document}

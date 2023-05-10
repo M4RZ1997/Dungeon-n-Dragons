@@ -1,0 +1,16 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{dndtemplate}[2021/08/07 DnD Character Template]
+
+%\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{ifthen}
+\usepackage{pstricks}
+
+\providecommand{\PATH}{}
+
+\input{\PATH character-sheet-settings}
+\input{\PATH call_of_cthulu_template/character-sheet-commands}
+
+\newcommand{\rendercharactersheet}{\input{\PATH call_of_cthulu_template/character-sheet.tex}}
+\newcommand{\renderbackgroundsheet}{\input{\PATH call_of_cthulu_template/background-sheet.tex}}
+\newcommand{\renderoutline}{\input{\PATH call_of_cthulu_template/page_outline.tex}}
