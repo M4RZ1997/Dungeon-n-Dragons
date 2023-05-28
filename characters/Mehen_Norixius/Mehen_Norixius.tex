@@ -28,12 +28,12 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{17}
-\DexterityScore{9}
-\ConstitutionScore{13}
-\IntelligenceScore{12}
-\WisdomScore{11}
-\CharismaScore{15}
+\StrengthScore{18}
+\DexterityScore{11}
+\ConstitutionScore{15}
+\IntelligenceScore{14}
+\WisdomScore{13}
+\CharismaScore{18}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -79,7 +79,7 @@
 \CP{}
 \SP{}
 \EP{}
-\GP{10}
+\GP{150}
 \PP{}
 
 % Weapon Arsenal
@@ -100,9 +100,11 @@
 \AttacksAdditional{
 	\textbf{Greatsword}\\
 	\textbf{Spear of the Green} (\textit{Throw, 1/2-Handed})\\
-	\textbf{Armor:}\\
-	Chain Mail (Stealth Disadvantage, STR 13), \textbf{Sentinel Shield} \\
-	\\
+	\textbf{Armor:}
+	\begin{itemize}
+		\item Chain Mail (Stealth Disadvantage)
+		\item \textbf{Celestial Aegis}
+	\end{itemize}
 	\textbf{Divine Sense} (\intcalcAdd{1}{\calculateModifier{\CharismaScoreValue}} uses) \\
 	\textbf{Lay on Hands} (Health Pool: \intcalcMul{\LevelValue}{5}) \\
 	\textbf{Divine Smite} \\
@@ -130,23 +132,23 @@
 	10 days of rations,
 	a waterskin,
 	50 ft of hempen rope\\
-	\textbf{Amulet with a Scale of Sardior}
+	\textbf{Amulet of Sardior's Scale}
 }
 
 \PersonalityTraits{
-	I have a lesson for every situation, drawn from observing nature.
+	\textbf{Lively Spirit:} Leaper has a vibrant and spirited personality, often radiating positive energy and inspiring those around him.
 }
 
 \Ideals{
-	\textbf{Honor.} If I dishonor myself, I dishonor my whole clan. (Lawful)
+	\textbf{Harmony:} Mehen strives to foster harmony and preserve the natural order, believing that balance is essential for the well-being of all living creatures.
 }
 
 \Bonds{
-	I suffer awful visions of a coming disaster and will do anything to prevent it.
+	\textbf{Nature's Guardianship:} Leaper feels a profound connection to nature, viewing himself as a guardian of the natural world and its inhabitants.
 }
 
 \Flaws{
-	Don't expect me to save those who can't save themselves. It is nature's way that the strong thrive and the weak perish.
+	\textbf{Impulsive:} Mehen's passionate nature sometimes leads him to act on impulse, potentially disregarding the consequences of his actions.
 }
 
 \FeaturesTraits{
@@ -189,16 +191,28 @@
 % background
 
 \CharacterAppearance{images/Mehen_Norixius.png}{
-	\noindent Mehen Norixius is a 6'5'' tall Sapphire Gem Dragonborn. Covered in turquoise-blue scales he radiates a sturdy but noble appearance. Nothing escapes his silvery eyes and he is always aware of his surroundings.
+	\noindent Mehen Norixius is a 6'5'' tall Sapphire Gem Dragonborn. Covered in turquoise-blue scales, he radiates a sturdy but noble appearance. Nothing escapes his silvery eyes and he is always aware of his surroundings.
 }
 \AdditionalFeaturesAndTraits{
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+	Mehen's scales shimmer with a prismatic iridescence, reflecting a myriad of colors as he moves. His Sapphire-Gem Dragonborn heritage manifests in his unique and captivating appearance, making him stand out among others.\\
+	Mehen has a resonant and melodious voice that carries a soothing quality. Whether in conversation, prayer, or inspiring speeches, his words flow like a captivating song, leaving a lasting impression on those who hear him.\\
+	Leaper has an innate connection with the natural world. He can sense subtle changes in the environment, read the intentions of animals, and understand the whispers of the wind. This attunement to nature provides him with valuable insights and aids his decision-making.\\
+	Mehen possesses a radiant aura that surrounds him, emanating a soft, warm light. This aura serves as a symbol of his connection to the divine and the presence of the Ancients, instilling hope and calmness in those around him.\\
+	Leaper possesses mental fortitude, able to withstand psychic assaults and resist manipulative influences. His strong will and disciplined mind allow him to maintain focus, even in the face of overwhelming odds or insidious enchantments.
 }
 \Characterbackground{
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+	Mehen Norixius, known by his nickname Leaper, was born into the rare clan of Sapphire-Gem Dragonborns. From a young age, Mehen showed an affinity for the natural world, feeling a deep connection to the vibrant beauty and life that surrounded him.
+	
+	Growing up within his clan, Mehen witnessed the destructive forces of darkness that threatened to extinguish the light. He watched as his people fought valiantly to protect their homeland from encroaching evils, and his resolve to bring peace and harmony to the world only grew stronger.
+	
+	Guided by his inherent sense of justice and a desire to preserve the natural order, Mehen embarked on a spiritual journey. He devoted himself to the path of the Oath of the Ancients, embracing the tenets of compassion, hope, and the eternal fight against darkness.
+	
+	As a paladin, Mehen became a beacon of light and unwavering determination. Clad in shimmering armor, he ventured forth into the world, seeking to restore balance and safeguard the realms from those who sought to exploit or desecrate the sacred essence of life.
 }
 \Treasure{
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+	\textbf{1. Celestial Aegis:} Mehen carries a shield adorned with intricate engravings depicting celestial beings. Crafted from a rare and resilient metal, it exudes an ethereal glow, emanating a protective aura that repels malevolent forces.\\
+	\textbf{2. Verdant Gauntlets:} Mehen wears a pair of gauntlets woven from magically enhanced vines and infused with the essence of the earth. These gauntlets not only grant enhanced strength but also allow him to manipulate and command plants, bolstering his connection to nature.\\
+	\textbf{3. Amulet of Sardior's Scale:} Mehen wears a pendant amulet featuring a brilliant, shimmering scale from Sardior, the ancient dragon of gemstones and gems. The scale is a radiant emerald-green hue, veined with streaks of vibrant sapphire. The amulet resonates with ancient magic, providing Mehen with enhanced protection against elemental forces and a deeper connection to dragonkind.
 }
 \AlliesAndOrganizations{
 	The Oath of the Ancients is as old as the race of elves and the rituals of the druids. Sometimes called fey knights, green knights, or horned knights, paladins who swear this oath cast their lot with the side of the light in the cosmic struggle against darkness because they love the beautiful and life-giving things of the world, not necessarily because they believe in principles of honor, courage, and justice. They adorn their armor and clothing with images of growing things - leaves, antlers, or flowers - to reflect their commitment to preserving life and light in the world.
@@ -273,13 +287,13 @@ Delight in song and laughter, in beauty and art. If you allow the light to die i
 Be a glorious beacon for all who live in despair. Let the light of your joy and courage shine forth in all your deeds.
 \subsubsection*{Oath Spells}
 You gain oath spells at the paladin levels listed.
-\begin{DndTable}[header=Oath of the Ancients Spells]{lX}
-\textbf{Paladin Level}  &\textbf{Spells}		\\
-3rd						&Ensnaring Strike, Speak with Animals	\\
-5th						&Moonbeam, Misty Step					\\
-9th						&Plant Growth, Protection from Energy	\\
-13th					&Ice Storm, Stoneskin					\\
-17th					&Commune with Nature, Tree Stride		\\
+\begin{DndTable}[header=Oath of the Ancients Spells]{llX}
+			& \textbf{Paladin Level}  	&\textbf{Spells}						\\
+$\bullet$	& 3rd						&Ensnaring Strike, Speak with Animals	\\
+			& 5th						&Moonbeam, Misty Step					\\
+			& 9th						&Plant Growth, Protection from Energy	\\
+			& 13th						&Ice Storm, Stoneskin					\\
+			& 17th						&Commune with Nature, Tree Stride		\\
 \end{DndTable}
 \subsubsection*{Channel Divinity}
 When you take this oath at 3rd level, you gain the following two Channel Divinity options.
@@ -333,10 +347,10 @@ You can manifest protective wings that can shield you or others. When you or ano
 Weapon \textit{(spear)}, \textit{legendary (requires attunement by a paladin)}\\
 You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you cast a paladin spell with a target of Self, you can't lose concentration on the spell from taking damage.\\
 While you hold the drawn spear, it creates an aura in a 10-foot radius around you. Creatures of your choice in that aura gain resistance to poison damage and have advantage on saving throws against the poisoned condition. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet.
-\subsection*{Sentinel Shield}
+\subsection*{Celestial Aegis}
 Armor \textit{(shield)}, \textit{uncommon}\\
-While holding this shield, you have advantage on initiative rolls and Wisdom (Perception) checks. The shield is emblazoned with the symbol of an eye.
-\subsection*{Amulet with a Scale of Sardior}
+While holding this shield, you have advantage on Initiative rolls and Wisdom (Perception) checks. Crafted from a rare and resilient metal, it exudes an ethereal glow, emanating a protective aura that repels malevolent forces.
+\subsection*{Amulet of Sardior's Scale}
 Is the holy symbol of this character and can be used as a \textit{Spellcasting Focus}. A Spellcasting Focus eliminates the need of most components of a spell, except major components with a GP value.
 
 \section*{Spells}
