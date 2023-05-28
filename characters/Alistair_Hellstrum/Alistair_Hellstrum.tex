@@ -1,0 +1,433 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+
+\usepackage{fontspec}
+\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{ifthen}
+\usepackage{pstricks}
+
+\usepackage{intcalc}
+
+\usepackage[UKenglish]{babel}
+\usepackage{\PATH dndtemplate}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% Headline
+\CharacterName{Alistair Hellstrum}
+
+\Class{Bard}
+\Level{3}
+\Background{Courtier}
+\PlayerName{M4RZ}
+\Race{Tiefling}
+\Alignment{Chaotic Good}
+\XP{}
+
+% Ability scores (correct scores, no modifiers are automatically applied)
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthScore{10}
+\DexterityScore{15}
+\ConstitutionScore{12}
+\IntelligenceScore{12}
+\WisdomScore{12}
+\CharismaScore{18}
+
+% Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
+\StrengthProficiency{}
+\DexterityProficiency{P}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{P}
+
+\AcrobaticsProficiency{P}
+\AnimalHandlingProficiency{}
+\ArcanaProficiency{P}
+\AthleticsProficiency{}
+\DeceptionProficiency{E}
+\HistoryProficiency{P}
+\InsightProficiency{P}
+\IntimidationProficiency{P}
+\InvestigationProficiency{}
+\MedicineProficiency{}
+\NatureProficiency{}
+\PerceptionProficiency{}
+\PerformanceProficiency{E}
+\PersuasionProficiency{E}
+\ReligionProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+\SurvivalProficiency{}
+
+
+\Inspiration{}
+\Proficiency{+2}
+
+% Armor Class is not automatically calculated
+\ArmorClass{13}
+\InitiativeModifier{0}
+\Speed{30ft}
+\MaxHitPointsRolled{21} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+
+\CP{}
+\SP{}
+\EP{}
+\GP{130}
+\PP{}
+
+% Weapon Arsenal
+\AddWeapon{Rapier}{0}{1d8 p}
+\AddWeapon{Dagger}{0}{1d4 p}
+
+\AttacksAdditional{
+	\textbf{Rapier}, \textbf{Dagger}\\
+	\textbf{Armor:}
+	\begin{itemize}
+		\item Leather Armor
+	\end{itemize}
+}
+
+\OtherProficienciesLanguages{
+\textbf{Languages:}\\Common, Infernal\\
+\textbf{Armor:}\\Light Armor\\
+\textbf{Weapons:}\\Simple Weapons, Hand Crossbows, Longswords, Rapiers, Shortswords\\
+\textbf{Tools:}\\Bagpipe, Lure, Violin
+}
+
+\Equipment{
+	a backpack, a bedroll, 2 costumes, 5 candles, 5 days of ration, a waterkin, a disguise kit\\
+	\textbf{Violin}
+}
+
+\PersonalityTraits{
+	\textbf{Charismatic:} Alistair possesses a natural charm and magnetic personality that draws people to him. He has a way with words and a captivating presence that allows him to easily connect with others.
+}
+
+\Ideals{
+	\textbf{Musical Legacy:} Alistair is deeply connected to his musical heritage. He carries the weight of his family's musical lineage and strives to honor their legacy through his performances.
+}
+
+\Bonds{
+	\textbf{Freedom of Expression:} Alistair believes in the power of artistic expression as a means of personal and societal liberation.
+}
+
+\Flaws{
+	\textbf{Impulsive:} Alistair's passionate nature sometimes leads him to act on impulse, without considering the potential consequences.
+}
+
+\FeaturesTraits{
+\textbf{Tiefling Traits}
+\begin{itemize}
+	\item Darkvision
+	\item Hellish Resistance
+	\item Infernal Legacy
+\end{itemize}
+\textbf{Court Functionary}\\
+\textbf{Silver Tongued}
+\begin{itemize}
+	\item Charismatic Presence
+	\item Charming Words
+	\item Eloquent Performer
+\end{itemize}
+\textbf{Bard}
+\begin{itemize}
+	\item Bardic Inspiration
+	\item Jack-of-All-Trades
+	\item Song of Rest
+	\item Bard College of Lore
+\end{itemize}
+}
+
+% Appearance
+
+\Age{34}
+\Height{6'1}
+\Weight{150lbs}
+\Eyes{Golden-Amber}
+\Skin{Burgundy}
+\Hair{Black}
+
+% background
+
+\CharacterAppearance{}{
+	\hspace*{-1.5em}\begin{tabular}{p{90pt}p{75pt}}
+		\begin{tabular}{p{90pt}}\vspace*{-2em}\includegraphics[width=100pt, height=140pt, keepaspectratio]{images/Alistair_appearance.png}\end{tabular}
+		&
+		\hspace*{-0.95em}\begin{tabular}{p{75pt}}Alistair Hellstrum stands at an average height with a lean and agile build. His skin has a rich, deep burgundy hue, a testament to his infernal heritage as a Tiefling. His eyes are a striking shade of golden ~~~~~~~~~\end{tabular}
+	\end{tabular}\\\vspace*{-1.6em}\hfill\\
+	amber, shimmering with a mischievous glint and an air of confidence. Alistair's dark, wavy hair cascades down to his shoulders, accentuating his charismatic and somewhat untamed demeanor.
+}
+\AdditionalFeaturesAndTraits{
+	Alistair is not only a skilled musician but also a versatile performer. He excels in various forms of artistic expression, including acting, storytelling, and dancing. His performances are captivating and immersive, captivating audiences with their richness and variety.\\
+	Alistair has a talent for languages and has devoted time to learning and mastering multiple tongues. In addition to Common and Infernal, he may be fluent in Elvish, Dwarvish, or other languages he has encountered during his travels. This linguistic ability allows him to connect with diverse cultures and communicate effectively with a wide range of individuals.\\
+	Alistair has developed impressive negotiation skills over the years. He can find common ground and resolve conflicts through diplomacy and tact. His silver tongue, combined with his ability to read people, gives him an advantage in navigating delicate social and political situations.\\
+	Alistair has a keen interest in the arcane arts and has studied magical theory and lore. Though not a full-fledged spellcaster, he possesses a solid understanding of magic and can identify magical items, comprehend magical writings, and recognize spells being cast.
+}
+\Characterbackground{
+	Alistair Hellstrum's journey began in a bustling port city, where he was born to a humble family. From a young age, Alistair showed a natural inclination towards music and performance. He would often spend his days enchanting passersby with his melodious voice and captivating tunes, earning him a few copper coins to help support his family.
+	
+	However, life in the city was not without its challenges. Alistair's Tiefling heritage made him a target of prejudice and mistrust from some of the city's residents. Determined to rise above the discrimination, Alistair honed his talents, pouring his heart and soul into his music. His enchanting performances became a beacon of hope and inspiration for others who faced similar struggles.
+	
+	With his silver tongue, mesmerizing melodies, and unwavering spirit, Alistair Hellstrum, the Tiefling Bard, carries the torch of hope and harmony wherever his journey takes him.
+}
+\Treasure{
+	\textbf{1. Ancient Manuscript:} Alistair possesses a weathered and meticulously preserved manuscript filled with ancient songs, stories, and forgotten lore. The pages are yellowed with age, and delicate illustrations adorn its margins. This precious relic is a treasure trove of inspiration, containing forgotten melodies, tales of legendary heroes, and cryptic clues that hint at hidden places of power.\\
+	\textbf{2. Curious Relic:} Alistair possesses a peculiar relic, a seemingly ordinary object that holds an enigmatic past. It could be an ornate key, a worn-out map, or a small figurine. Though its purpose remains unclear, Alistair believes it to be linked to a greater mystery. He carries it with a sense of anticipation, hoping that one day its true significance will be revealed.\\
+	\textbf{3. Personal Journal:} A weathered and dog-eared journal accompanies Alistair on his journeys. Its pages are filled with sketches, poetic verses, and fragments of ideas.
+}
+\AlliesAndOrganizations{
+	The Bard College of Lore is a renowned institution that attracts bards from all walks of life who have a deep appreciation for knowledge and a thirst for learning. It is a prestigious establishment that places a strong emphasis on academic pursuits, intellectual exploration, and the mastery of the bardic arts.
+	
+	The college's philosophy centers around the power of storytelling, rhetoric, and persuasive communication. Students learn to weave captivating narratives, employ their musical talents to convey emotions, and use their words to engage and inspire others. Improvisation and the exploration of various artistic expressions are encouraged, fostering a rich and vibrant environment for learning.
+}
+\OrganizationName{Bard College of Lore}
+\OrganizationSymbol{images/Bard_College_of_Lore.png}
+
+% Magic
+
+\SpellcastingClass{Bard}
+\SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+
+\CantripSlotA{Prestidigitation}
+\CantripSlotB{Vicious Mockery}
+\CantripSlotC{Thaumaturgy (once per day)}
+
+\FirstLevelSpellSlotsTotal{4}
+\FirstLevelSpellSlotA{Charm Person}
+\FirstLevelSpellSlotB{Dissonant Whispers}
+\FirstLevelSpellSlotC{Faerie Fire}
+\FirstLevelSpellSlotD{Healing Word}
+\FirstLevelSpellSlotE{Hellish Rebuke (once per day)}
+
+\SecondLevelSpellSlotsTotal{2}
+\SecondLevelSpellSlotA{Shatter}
+\SecondLevelSpellSlotB{Suggestion}
+
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Tiefling Traits}
+\subsection*{Darkvision}
+Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.
+\subsection*{Hellish Resistance}
+You have resistance to fire damage.
+\subsection*{Infernal Legacy}
+You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Hellish Rebuke spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Darkness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.
+
+\section*{Court Functionary}
+Your knowledge of how bureaucracies function lets you gain access to the records and inner workings of any noble court or government you encounter. You know who the movers and shakers are, whom to go to for the favors you seek, and what the current intrigues of interest in the group are.
+
+\section*{Silver Tongued}
+\subsection*{Charismatic Presence}
+You gain proficiency in the Persuasion skill if you don't already have it. If you already have proficiency in Persuasion, you gain expertise in that skill, doubling your proficiency bonus for ability checks made with it.
+\subsection*{Charming Words}
+You can spend 10 minutes engaging in conversation with a creature you can see, and if the creature's Intelligence is 6 or higher, you can attempt to charm it. Make a Charisma (Persuasion) check contested by the creature's Wisdom saving throw. If you succeed, the creature becomes charmed by you for 1 hour or until you or your companions harm it. The DM determines the specifics of the creature's behavior while charmed.
+\subsection*{Eloquent Performer}
+When you use the Performance skill to entertain, inspire, or captivate an audience, your performance is exceptionally compelling. You have advantage on Performance checks made to impress or engage a crowd.
+
+\section*{Bard}
+\subsection*{Bardic Inspiration}
+You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.
+
+Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the d20 before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time.
+
+You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain any expended uses when you finish a long rest.
+
+Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a d8 at 5th level, a d10 at 10th level, and a d12 at 15th level.
+
+(\textbf{Usages: \intcalcAdd{0}{\calculateModifier{\CharismaScoreValue}}})
+\subsection*{Jack-of-All-Trades}
+Starting at 2nd level, you can add half your proficiency bonus, rounded down, to any ability check you make that doesn't already include your proficiency bonus.
+\subsection*{Song of Rest}
+Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points at the end of the short rest by spending one or more Hit Dice, each of those creatures regains an extra 1d6 hit points.
+
+The extra Hit Points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.
+\subsection*{Bard College of Lore}
+Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate compositions in royal courts, these bards use their gifts to hold audiences spellbound. When the applause dies down, the audience members might find themselves questioning everything they held to be true, from their faith in the priesthood of the local temple to their loyalty to the king.
+
+The loyalty of these bards lies in the pursuit of beauty and truth, not in fealty to a monarch or following the tenets of a deity. A noble who keeps such a bard as a herald or advisor knows that the bard would rather be honest than politic.
+
+The college's members gather in libraries and sometimes in actual colleges, complete with classrooms and dormitories, to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority.
+\subsubsection*{Cutting Words}
+Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others. When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll. You can choose to use this feature after the creature makes its roll, but before the DM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can't hear you or if it's immune to being charmed.
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader
+  {Prestidigitation}
+  {Cantrip Transmutation}
+  {1 Action}
+  {10 feet}
+  {V, S}
+  {Up to 1 hour}
+
+This spell is a minor magical trick that novice spellcasters use for practice. You create one of the following magical effects within range:\\
+You create an instantaneous, harmless sensory effect, such as a shower of sparks, a puff of wind, faint musical notes, or an odd odor.\\
+You instantaneously light or snuff out a candle, a torch, or a small campfire.\\
+You instantaneously clean or soil an object no larger than 1 cubic foot.\\
+You chill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour.\\
+You make a color, a small mark, or a symbol appear on an object or a surface for 1 hour.\\
+You create a nonmagical trinket or an illusory image that can fit in your hand and that lasts until the end of your next turn.\\
+If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action.
+
+\DndSpellHeader
+  {Vicious Mockery}
+  {Cantrip Enchantment}
+  {1 Action}
+  {A creature you can see and that can hear you within range}
+  {V}
+  {Instantaneous}
+
+You unleash a string of insults laced with subtle enchantments at a creature you can see within range. If the target can hear you (though it need not understand you), it must succeed on a Wisdom saving throw or take \DndDice{1d4} psychic damage and have disadvantage on the next attack roll it makes before the end of its next turn.
+
+\DndSpellHeader
+  {Thaumaturgy}
+  {Cantrip Transmutation}
+  {1 Action}
+  {30 feet}
+  {V}
+  {Up to 1 minute}
+
+You manifest a minor wonder, a sign of supernatural power create one of the following magical effects within range:\\
+Your voice booms up to three times as loud as normal for 1 minute.\\
+You cause flames to flicker, brighten, dim, or change color for 1 minute.\\
+You cause harmless tremors in the ground for 1 minute.\\
+You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder.\\
+You instantaneously cause an unlocked door or window to fly open or slam shut.\\
+You alter the appearance of your eyes for 1 minute.\\
+If you cast this spell multiple times, you can have up to three of its effects active at a time, and you can dismiss such an effect as an action.\\
+
+\subsection*{Level 1}
+
+\DndSpellHeader
+  {Charm Person}
+  {1st Level Enchantment}
+  {1 Action}
+  {30 feet}
+  {V, S}
+  {1 hour}
+
+You attempt to charm a humanoid you can see within range. It must make a Wisdom saving throw, and does so with advantage if you or your companions are fighting it. If it fails the saving throw, it is charmed by you until the spell ends or until you or your companions do anything harmful to it. The charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was charmed by you.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st. The creatures must be within 30 feet of each other when you target them.
+
+\DndSpellHeader
+  {Dissonant Whispers}
+  {1st Level Enchantment}
+  {1 Action}
+  {60 feet}
+  {V}
+  {Instantaneous}
+
+You whisper a discordant melody that only one creature of your choice within range can hear, wracking it with terrible pain. The target must make a Wisdom saving throw. On a failed save, it takes \DndDice{3d6} psychic damage and must immediately use its reaction, if available, to move as far as its speed allows away from you. The creature doesn’t move into obviously dangerous ground, such as a fire or a pit. On a successful save, the target takes half as much damage and doesn’t have to move away. A deafened creature automatically succeeds on the save.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by \DndDice{1d6} for each slot level above 1st.
+
+\DndSpellHeader
+  {Faerie Fire}
+  {1st-Level Evocation}
+  {1 Action}
+  {60 feet}
+  {V}
+  {Concentration, up to 1 minute}
+
+Each object in a 20-foot cube within range is outlined in blue, green, or violet light (your choice). Any creature in the area when the spell is cast is also outlined in light if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed dim light in a 10-foot radius.
+
+Any attack roll against an affected creature or object has advantage if the attacker can see it, and the affected creature or object can't benefit from being invisible.
+
+\DndSpellHeader
+  {Healing Word}
+  {1st Level Evocation}
+  {1 Bonus Action}
+  {60 feet}
+  {V}
+  {Instantaneous}
+
+A creature of your choice that you can see within range regains hit points equal to \DndDice{1d4} + spell attack bonus {\intcalcAdd{\ProficiencyValue}{\calculateModifier{\CharismaScoreValue}}}. This spell has no effect on undead or constructs.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the Healing increases by \DndDice{1d4} for each slot level above 1st.
+
+\DndSpellHeader
+  {Hellish Rebuke}
+  {1st Level Evocation}
+  {1 Reaction, which you take in response to being damaged by a creature within 60 feet of you that you can see}
+  {60 feet}
+  {V, S}
+  {Instantaneous}
+
+You point your finger, and the creature that damaged you is momentarily surrounded by hellish flames. The creature must make a Dexterity saving throw. It takes \DndDice{2d10} fire damage on a failed save, or half as much damage on a successful one.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by \DndDice{1d10} for each slot level above 1st.
+
+\subsection*{Level 2}
+
+\DndSpellHeader
+  {Shatter}
+  {2nd Level Evocation}
+  {1 Action}
+  {60 feet}
+  {V, S, M (A chip of mica)}
+  {Instantaneous}
+
+A sudden loud ringing noise, painfully intense, erupts from a point of your choice within range. Each creature in a 10-foot-radius sphere centered on that point must make a Constitution saving throw. A creature takes \DndDice{3d8} thunder damage on a failed save, or half as much damage on a successful one. A creature made of inorganic material such as stone, crystal, or metal has disadvantage on this saving throw. A nonmagical object that isn’t being worn or carried also takes the damage if it’s in the spell’s area.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd level or higher, the damage increases by \DndDice{1d8} for each slot level above 2nd.
+
+\DndSpellHeader
+  {Suggestion}
+  {2nd Level Enchantment}
+  {1 Action}
+  {30 feet}
+  {V, M (A snake's tongue and either a bit of honeycomb or a drop of sweet oil)}
+  {Concentration, Up to 8 hours}
+
+You suggest a course of activity (limited to a sentence or two) and magically influence a creature you can see within range that can hear and understand you. Creatures that can’t be charmed are immune to this effect. The suggestion must be worded in such a manner as to make the course of action sound reasonable. Asking the creature to stab itself, throw itself onto a spear, immolate itself, or do some other obviously harmful act ends the spell.\\
+The target must make a Wisdom saving throw. On a failed save, it pursues the course of action you described to the best of its ability. The suggested course of action can continue for the entire duration. If the suggested activity can be completed in a shorter time, the spell ends when the subject finishes what it was asked to do.\\
+You can also specify conditions that will trigger a special activity during the duration. For example, you might suggest that a knight give her warhorse to the first beggar she meets. If the condition isn’t met before the spell expires, the activity isn’t performed.\\
+If you or any of your companions damage the target, the spell ends.
+
+\section*{Miscellaneous}
+\subsubsection*{Weapon Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{Rapier:}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}\\
+\underline{Dagger:}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{Rapier:}\\
+1d8 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}\\
+\underline{Dagger:}\\
+1d4 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}
+
+\end{document}
