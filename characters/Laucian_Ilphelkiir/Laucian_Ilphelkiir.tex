@@ -89,7 +89,7 @@
 	\textbf{60 Arrows} (1 with Oil)\\
 	\textbf{Boomerang Arrow}\\
 	\textbf{50 Fire Arrows}\\
-	\textbf{40 Drow Arrows}\\
+	\textbf{36 Drow Arrows}\\
 	\textbf{4 Ice Arrows}\\
 	\textbf{Arrow of Slaying (Dragon)}\\
 	\textbf{Armor:} Chain Shirt +2, Leather Armor, Magical Shield (?)\\
@@ -585,9 +585,9 @@ You can expend 1 magic point when you use the bonus action to cause the attack d
 \subsubsection*{Longbow}
 \paragraph*{Attack Roll}\hfill\\
 \underline{\textit{Oathbow:}}\\
-1d20 + DEX-Modifier + 2 $\times$ Proficiency Modifier (Expertise) + 2 (Fighting Style: Archer) + 2 (Bracers of Trickshot) + 2 (Quiver of the Storm's Fury) (- 5 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{\intcalcAdd{2}{2}}}}} \\
-\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\intcalcMul{2}{\ProficiencyValue}}{\intcalcAdd{2}{\intcalcAdd{2}{2}}}}}}{5} \\
+1d20 + DEX-Modifier + Proficiency Modifier + 2 (Fighting Style: Archer) + 2 (Bracers of Trickshot) + 2 (Quiver of the Storm's Fury) (- 5 (Sharpshooter)) \\
+\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{\intcalcAdd{2}{\intcalcAdd{2}{2}}}}} \\
+\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{\intcalcAdd{2}{\intcalcAdd{2}{2}}}}}}{5} \\
 \paragraph*{Damage Roll}\hfill\\
 \underline{\textit{Oathbow:}}\\
 1d8 + 2 (Wedge Stone) + DEX-Modifier + 2 (Bracers of Trickshot) + 2 (Quiver of the Storm's Fury) (+ 3d6 (against Sworn Enemy)) (+ 10 (Sharpshooter))\\
