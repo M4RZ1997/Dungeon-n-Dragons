@@ -74,10 +74,10 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
     \DndMonsterDetails[
         %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
         skills = {Perception +5, Stealth +3},
-        damage-vulnerabilities = {fire},
+        damage-vulnerabilities = {Fire},
         %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-        damage-immunities = {exhaustion, frightened, poisoned},
-        senses = {passive Perception 15},
+        damage-immunities = {Exhaustion, Frightened, Poisoned},
+        senses = {Passive Perception 15},
         %condition-immunities = {frightened, poisoned},
         languages = {Sylvan},
         challenge = 3,
@@ -92,7 +92,7 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
     \DndMonsterAction{Spellcasting}
     The Grove Sentinel (Sproutling) is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). The Grove Sentinel has the following druid spells prepared:
     \begin{itemize}
-    	\item Cantrips (at will): Druidcraft, Produce Flames, Shillelagh
+    	\item Cantrips (at Will): Druidcraft, Produce Flames, Shillelagh
     	\item 1st Level (4 Slots): Entangle, Longstrider
     	\item 2nd Level (2 Slots): Barkskin, Pass without Trace
     \end{itemize}
@@ -154,10 +154,10 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
     \DndMonsterDetails[
         %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
         skills = {Perception +5},
-        damage-vulnerabilities = {fire},
-        %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-        damage-immunities = {exhaustion, frightened, poisoned},
-        senses = {darkvision 60ft, passive Perception 15},
+        damage-vulnerabilities = {Fire},
+        damage-resistances = {Bludgeoning, Piercing, and Slashing from Nonmagical Attacks},
+        damage-immunities = {Exhaustion, Frightened, Poisoned},
+        senses = {Darkvision 60ft, Passive Perception 15},
         %condition-immunities = {frightened, poisoned},
         languages = {Sylvan},
         challenge = 7,
@@ -178,7 +178,7 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
 	\DndMonsterSection{Actions}
 	
 	\DndMonsterAction{Multiattack}
-	The Grove Sentinel makes two slam attacks.
+	The Grove Sentinel (Armor) makes two slam attacks.
 	
 	\DndMonsterAttack[
       name=Slam,
@@ -233,10 +233,10 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
     \DndMonsterDetails[
         %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
         skills = {Perception +6},
-        damage-vulnerabilities = {fire},
+        damage-vulnerabilities = {Fire},
         %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-        damage-immunities = {exhaustion, frightened, poisoned},
-        senses = {darkvision 60ft, passive Perception 15},
+        damage-immunities = {Exhaustion, Frightened, Poisoned},
+        senses = {Darkvision 60ft, passive Perception 15},
         %condition-immunities = {frightened, poisoned},
         languages = {Sylvan},
         challenge = 8,
@@ -283,9 +283,15 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
 	The Grove Sentinel (Strength) slams the ground with immense force, causing a shockwave in a 20-foot radius centered on itself. Each creature in that area must make a DC 15 Dexterity saving throw, taking \DndDice{7d6} force damage on a failed save, or half as much damage on a successful one.
       
 \end{DndMonster}
-\vspace*{-1.2cm}\begin{center}\begin{tikzpicture}%
-		\node (picture) at (0,0) {\includegraphics[width=\columnwidth, height=180pt, keepaspectratio]{images/Grove_Sentinel_Strength.png}};%
-	\end{tikzpicture}\end{center}
+
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+	\node (posS) at (current page text area.south) {};%
+	\node[below right=30pt and 4.4cm of posS, anchor=south] (cornerSE) {%
+		\begin{minipage}{\columnwidth}%%
+        	\centering\includegraphics[width=1.3\columnwidth, height=210pt, keepaspectratio]{images/Grove_Sentinel_Strength.png}%
+      	\end{minipage}%
+	};%
+\end{tikzpicture}%
 
 % --------------------------------------------------------------------------------------------------- %
 % ################################################################################################### %
@@ -327,10 +333,10 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
     \DndMonsterDetails[
         %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
         skills = {Perception +8},
-        damage-vulnerabilities = {fire},
-        damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-        damage-immunities = {exhaustion, frightened, poisoned},
-        senses = {darkvision 120ft., passive Perception 18},
+        damage-vulnerabilities = {Fire},
+        damage-resistances = {Bludgeoning, Piercing, and Slashing from Nonmagical Attacks},
+        damage-immunities = {Exhaustion, Frightened, Poisoned},
+        senses = {Darkvision 120ft., Passive Perception 18},
         %condition-immunities = {frightened, poisoned},
         languages = {Common, Sylvan},
         challenge = 16,
@@ -351,7 +357,7 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
 	\DndMonsterSection{Actions}
 	
 	\DndMonsterAction{Multiattack}
-	The Ancient Grove Sentinel makes two slam attacks.
+	The Ancient Grove Sentinel can attack twice each turn.
 	
 	\DndMonsterAttack[
       name=Slam,
