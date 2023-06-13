@@ -51,8 +51,9 @@ Beware the Hemovoric Venomite, for it is a symbol of unyielding hunger and relen
 \vfill\eject % cammand to break to next column
 
 \MonsterVariant%
-	{1em}% offset to top of page for image
+	{-0.5em}% offset to top of page for image
 	{images/Winged_Hemovoric_Venomite.png}% image above Info-Box
+	{-1.75cm} % distance offset from image to Variant Box
 	{Winged Hemovoric Venomite}% Name of the variant
 	{%
 		This black-red mosquito-like creature with tattered wings traded in its strong bony-like features and two mouths for a needle-like beak and red tattered wings with which it can fly.
@@ -86,7 +87,7 @@ Beware the Hemovoric Venomite, for it is a symbol of unyielding hunger and relen
 
     \DndMonsterDetails[
         %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
-        skills = {Perception +2, Stealth +5},
+        skills = {Perception +2, Stealth +7},
         %damage-vulnerabilities = {cold},
         %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
         %damage-immunities = {cold},
@@ -102,12 +103,15 @@ Beware the Hemovoric Venomite, for it is a symbol of unyielding hunger and relen
     \DndMonsterAction{Bone Armor}
     The bony features on its head and legs provide it with natural armor, granting it a +2 bonus to AC.
     
+    \DndMonsterAction{Shadow Cloak}
+    When in dim light or darker areas the Hemovoric Venomite's presence becomes obscured from magical and non-magical senses alike. It gains advantage on saving throws against spells and effects that would reveal its location or presence through divination or scrying.
+    
     \DndMonsterAction{Skewering Mandibles}
     On a successful bite attack, the Hemovoric Venomite can attempt to skewer and impale the target. The target must make a DC 12 Dexterity saving throw or take an additional \DndDice{1d10} piercing damage.
 	
 	\DndMonsterSection{Actions}
 	\DndMonsterAction{Twin Bite}
-	The Hemovoric Venomite can attack with both its mouths, making two separate bite attacks targeting the same creature in a single turn.
+	The Hemovoric Venomite can attack with both its mouths, making two separate bite attacks targeting the same creature.
 	
 	\DndMonsterAttack[
       name=Bite,
@@ -140,7 +144,7 @@ Beware the Hemovoric Venomite, for it is a symbol of unyielding hunger and relen
 	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
 
 % Monster stat block
-\vspace*{-1.3cm}\begin{DndMonster}[width=0.5\textwidth]{Scourge of Necrosis}
+\vspace*{-1.3cm}\begin{DndMonster}[width=0.5\textwidth]{Scourge of Necrosis (Swarm)}
     \DndMonsterType{Small Monstrosity, neutral evil}
 
     % If you want to use commas in the key values, enclose the values in braces.
@@ -161,7 +165,7 @@ Beware the Hemovoric Venomite, for it is a symbol of unyielding hunger and relen
 
     \DndMonsterDetails[
         %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
-        skills = {Perception +3, Stealth +5},
+        skills = {Perception +3},
         %damage-vulnerabilities = {cold},
         damage-resistances = {Bludgeoning, Piercing, and Slashing from Nonmagical Attacks},
         %damage-immunities = {cold},
@@ -175,7 +179,7 @@ Beware the Hemovoric Venomite, for it is a symbol of unyielding hunger and relen
     The swarm can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny insect. The swarm can't regain hit points or gain temporary hit points.
     
     \DndMonsterAction{Swarming Overwhelm}
-    When the swarm hits a creature with its bite attack, the target must succeed on a DC 12 Dexterity saving throw or become grappled (escape DC 12). While grappled, the target takes \DndDice{3d4} piercing damage, or \DndDice{1d4} if the swarm has half of its hit points or lower, at the start of each of the swarm's turns. The swarm can grapple up to two Medium or four Small creatures at a time.
+    When the swarm hits a creature with its bite attack, the target must succeed on a DC 12 Dexterity saving throw or become grappled (escape DC 12). While grappled, the target takes \DndDice{2d4} piercing damage, or \DndDice{1d4} if the swarm has half of its hit points or lower, at the start of each of the swarm's turns. The swarm can grapple up to two Medium or four Small creatures at a time.
 	
 	\DndMonsterSection{Actions}
 	\DndMonsterAttack[
@@ -206,13 +210,17 @@ Individually, a Venomite Hatchling is\\weak, but their collective strength in\\a
 
 \vfill\eject % cammand to break to next column
 
+\vspace*{0.75cm}\hspace*{6.5cm}\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+		\node (picture) at (0,0) {\includegraphics[width=\columnwidth, height=150pt, keepaspectratio]{images/Winged_Hemovoric_Venomite(2).png}};%
+\end{tikzpicture}\vspace*{-2cm}%
+
 \nopagebreaksection{Venomite Lair} % section that does not induce a new page
 
-The Hemovoric Venomite,\\a fearsome and macabre\\creature, dwells in the\\darkest corners of the\\world. This elusive and\\sinister predator possesses\\a unique and gruesome method\\of reproduction. Its lair, a scene straight out of a nightmare, reflects its eerie nature.
+The Hemovoric Venomite,\\a fearsome and macabre\\creature, dwells in the\\darkest corners of the\\world. This elusive and\\sinister predator pos-\\sesses a unique and gruesome\\method of reproduction. Its lair, a scene straight out of a nightmare, reflects its eerie nature.
 
-Entering the lair of the Hemovoric Venomite feels like stepping into a crypt of decay and death. The air is thick with the stench of rotting flesh, causing even the bravest souls to recoil in disgust. The walls, adorned with ancient cobwebs and shadows that dance ominously, seem to whisper tales of the horrors that have unfolded within.
+Entering the lair of the Hemovoric Venomite feels like stepping into a crypt of decay and death. The air is thick with the stench of rotting flesh, causing even the bravest souls to recoil in disgust. Walls, adorned with ancient cobwebs and shadows that dance ominously, that seem to whisper tales of the horrors that have unfolded within.
 
-The centerpiece of the lair is a grotesque mound of bodies and corpses, collected meticulously by the Hemovoric Venomite. This mound serves a disturbing purpose - it is the breeding ground for its offspring. The creature carefully selects the diseased and decaying, knowing that their decaying flesh will nourish its young. The bodies are arranged in a grotesque tapestry, forming a morbid nest of death.
+At the heart of the lair lies a grotesque mound composed of bodies and corpses, meticulously collected by the Hemovoric Venomite. This mound serves a disturbing purpose - it is the breeding ground for its offspring. With great care, the creature selects the diseased and decaying, aware that their rotting flesh will provide sustenance for its young, forming a morbid nest of death.
 
 Within the depths of this ghastly mound, small and vile creatures known as venomites begin to hatch. These repugnant beings, birthed from the tainted flesh of the fallen, possess an insatiable hunger for disease and decay. They feast upon the putrid remains, growing stronger with each morsel they consume.
 
@@ -222,9 +230,5 @@ Every sound echoes through the lair, heightening the sense of dread that permeat
 
 \newcommand{\blocktextlinebreak}{~~~~~~~~~~~~~~~~~~~\vspace*{-1.2\fontdimen6\font}\\}
 Visitors who dare to enter the lair of the Hemovoric Venomite should be prepared for a chilling experience that will haunt their nightmares. The combination of decay, \blocktextlinebreak\hspace*{1.75cm}death, and the incessant feeding of the \blocktextlinebreak\hspace*{2.5cm}venomites creates an atmosphere of pure \blocktextlinebreak\hspace*{4cm} horror, leaving a lasting \blocktextlinebreak\hspace*{4.5cm} impression on all who witness \blocktextlinebreak\hspace*{5cm} its macabre existence. \blocktextlinebreak
-
-\vspace*{-18.75cm}\hspace*{6.5cm}\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
-		\node (picture) at (0,0) {\includegraphics[width=\columnwidth, height=150pt, keepaspectratio]{images/Winged_Hemovoric_Venomite(2).png}};%
-\end{tikzpicture}%
 
 \end{document}

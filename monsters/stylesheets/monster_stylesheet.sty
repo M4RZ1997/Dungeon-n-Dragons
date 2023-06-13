@@ -129,9 +129,9 @@ bottom color=transparent!100]
 	\endgroup%
 }
 
-\newcommand{\MonsterVariant}[4]{%
+\newcommand{\MonsterVariant}[5]{%
 	\vspace*{-2.75cm + #1}\begin{center}\begin{tikzpicture}%
 		\node (picture) at (0,0) {\includegraphics[width=\columnwidth -2em, height=190pt, keepaspectratio]{#2}};%
-	\end{tikzpicture}\end{center}\vspace*{-1cm}%
-	\MonsterVariantInfoBox{#3}{#4}
+	\end{tikzpicture}\end{center}\vspace*{#3}%
+	\MonsterVariantInfoBox{#4}{#5}
 }%
