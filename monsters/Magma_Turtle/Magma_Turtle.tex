@@ -50,7 +50,7 @@ In its water form, the Magma Turtle becomes a majestic ruler of the depths. Its 
 
     % If you want to use commas in the key values, enclose the values in braces.
     \DndMonsterBasics[
-        armor-class = {17 (natural armor)},
+        armor-class = {14 (natural armor)},
         hit-points  = {\DndDice{4d4 + 8}},
         speed       = {20 ft.},
     ]
@@ -65,13 +65,13 @@ In its water form, the Magma Turtle becomes a majestic ruler of the depths. Its 
     ]
 
     \DndMonsterDetails[
-        saving-throws = {Con +6},
+        saving-throws = {Con +4},
         %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
         damage-vulnerabilities = {cold},
-        damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-        damage-immunities = {fire},
+        damage-resistances = {Bludgeoning, Piercing, and Slashing from Nonmagical Attacks},
+        damage-immunities = {Fire},
         senses = {Darkvision 60ft., Passive Perception 11},
-        condition-immunities = {exhaustion, paralyzed, petrified, poisoned},
+        condition-immunities = {Exhaustion, Paralyzed, Petrified, Poisoned},
         languages = {understands Primordial but can't speak},
         challenge = 1/2,
     ]
@@ -80,7 +80,7 @@ In its water form, the Magma Turtle becomes a majestic ruler of the depths. Its 
     For every 5ft. the Magma Turtle (Hatchling) moves through water or for each each gallon of water splashed on it, it takes 1 cold damage.
     
     \DndMonsterAction{Molten Rock Shell}
-    The Magma Turtle Hatchling's shell provides it with resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.
+    The Magma Turtle's (Hatchling) shell provides it with resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.
 	
 	\DndMonsterSection{Actions}
 	
@@ -100,14 +100,25 @@ In its water form, the Magma Turtle becomes a majestic ruler of the depths. Its 
       %or-dmg-when=,
       %extra=,
     ]
+    
+    \DndMonsterSection{Reactions}
+    
+    \DndMonsterAction{Shell Defense}
+    When the Magma Turtle (Hatchling) is hit by a melee attack, it can use its reaction to retract into its shell, gaining a +2 bonus to its AC until the start of its next turn.
       
 \end{DndMonster}
 
-The Magma Turtle (Hatchling) is a mesmerizing creature, embodying the essence of fire and stone. It is a small marvel, with a robust and stone-hard shell resembling the solidified form of molten lava. Adorned with intricate and glowing cracks, the shell emits a vibrant red glow, casting an otherworldly radiance upon the surrounding landscape. Agile and resilient, the hatchling scampers with surprising grace across rocky terrains near underwater volcanoes, absorbing the intense heat of its environment. Its fiery eyes, shimmering with determination, surveil the land, ever watchful for potential threats and sources of warmth.
+\paragraph{Magma Turtle (Hatchling)}
+A mesmerizing creature, embodying the essence of fire and stone. A small marvel, its robust, stone-hard shell resembles solidified lava. Adorned with intricate, glowing cracks, it emits vibrant red light, casting an otherworldly radiance. Agile and resilient, it scampers with grace near underwater volcanoes, absorbing intense heat. Fiery eyes shimmer with determination, vigilant for threats and warmth.
 
-The hatchling's compact frame and formidable shell display the seeds of its future power. With each passing day, it grows stronger and more resilient, harnessing the energy of its volcanic home. It is a creature on the cusp of transformation, destined to become a mighty Magma Turtle. In its presence, one can sense the latent power and untamed potential, foretelling a future where this small and captivating hatchling will emerge as a force to be reckoned \blocktextlinebreak\hspace*{2.4cm} with, navigating the land and water with \blocktextlinebreak\hspace*{3.6cm} unmatched strength and endurance.
+Its compact frame and formidable shell hint at future power. Each day, it grows stronger, harnessing volcanic energy. On the cusp of transformation, the hatchling will become a mighty Magma Turtle. In its presence, one feels latent power and untamed potential. This captivating \blocktextlinebreak\hspace*{1cm}hatchling will emerge, a force to reckon with, \blocktextlinebreak\hspace*{3cm}navigating land and water, unmatched in \blocktextlinebreak\hspace*{5.5cm}strength and endurance.
 
 \newpage
+
+\MonsterFooterGraphic{50pt}% offset for text to bottom
+	{300pt}% max height of the image
+	{images/Magma_Fields.png}% image to be displayed as a banner
+	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
 
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 	\node (posN) at (current page text area.north) {};%
@@ -131,6 +142,7 @@ The hatchling's compact frame and formidable shell display the seeds of its futu
         speed       = {10 ft., 60 ft. swim},
     ]
 
+	\renewcommand{\AbilityScoreSpacer}{~}
     \DndMonsterAbilityScores[
         str = 14,
         dex = 14,
@@ -153,13 +165,13 @@ The hatchling's compact frame and formidable shell display the seeds of its futu
     ]
     
 	\DndMonsterAction{Amphibious}
-	The Magma Turtle can breathe air and water.
+	The Magma Turtle (Waterform) can breathe air and water.
 	
 	\DndMonsterAction{Keen Smell}
-	The Magma Turtle has advantage on Wisdom (Perception) checks that rely on smell.
+	The Magma Turtle (Waterform) has advantage on Wisdom (Perception) checks that rely on smell.
     
-    \DndMonsterAction{Molten Rock Shell}
-    The Magma Turtle Hatchling's shell provides it with resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.
+    \DndMonsterAction{Scorching Rampage}
+    Whenever the Magma Turtle is hit by a fire-based attack, its fiery nature intensifies. On its next successful attack, the Magma Turtle inflicts an additional \DndDice{2d6} fire damage. This increase in damage lasts until the end of its next turn.
 	
 	\DndMonsterSection{Actions}
 	
@@ -184,12 +196,12 @@ The hatchling's compact frame and formidable shell display the seeds of its futu
     ]
     
     \DndMonsterAction{Fiery Streams}
-	The Magma Turtle can unleash hot streams of water as a ranged spell attack (+4 to hit, 20/60 ft. range). All targets in the line of effect must make a DC 15 Dexterity saving throw taking 4d8 fire damage on a failed one, or half damage on a successful save.
+	The Magma Turtle (Waterform) can unleash hot streams of water as a ranged spell attack (+4 to hit, 20/60 ft. range). All targets in the line of effect must make a DC 15 Dexterity saving throw taking \DndDice{4d8} fire damage on a failed one, or half damage on a successful save.
     
     \DndMonsterSection{Reactions}
     
     \DndMonsterAction{Shell Defense}
-    When the Magma Turtle is hit by a melee attack, it can use its reaction to retract into its shell, gaining a +4 bonus to its AC until the start of its next turn.
+    When the Magma Turtle (Waterform) is hit by a melee attack, it can use its reaction to retract into its shell, gaining a +4 bonus to its AC until the start of its next turn.
       
 \end{DndMonster}
 
@@ -201,59 +213,53 @@ The hatchling's compact frame and formidable shell display the seeds of its futu
 
     % If you want to use commas in the key values, enclose the values in braces.
     \DndMonsterBasics[
-        armor-class = {16 (natural armor)},
-        hit-points  = {\DndDice{16d10 + 48}},
+        armor-class = {18 (natural armor)},
+        hit-points  = {\DndDice{16d10 + 80}},
         speed       = {20 ft.},
     ]
 
     \DndMonsterAbilityScores[
         str = 20,
-        dex = 12,
-        con = 16,
-        int = 10,
-        wis = 14,
-        cha = 10,
+        dex = 10,
+        con = 20,
+        int = 6,
+        wis = 12,
+        cha = 8,
     ]
 
     \DndMonsterDetails[
-        %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
-        skills = {Perception +6},
-        damage-vulnerabilities = {Fire},
-        %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-        damage-immunities = {Exhaustion, Frightened, Poisoned},
+        saving-throws = {Con +9},
+        skills = {Athletics +9, Perception +5},
+        damage-vulnerabilities = {Cold},
+        damage-resistances = {Bludgeoning, Piercing, and Slashing from Nonmagical Attacks},
+        damage-immunities = {Fire},
         senses = {Darkvision 60ft, passive Perception 15},
-        %condition-immunities = {frightened, poisoned},
-        languages = {Sylvan},
+        condition-immunities = {Exhaustion, Paralyzed, Petrified, Poisoned},
+        languages = {Primordial},
         challenge = 8,
     ]
     
-    \DndMonsterAction{Photosynthesis}
-    Whenever the Grove Sentinel (Strength) is ending its turn in direct sunlight, it regains \DndDice{2d6} hitpoints.
+    \DndMonsterAction{Fire Vulnerability}
+    For every 5ft. the Magma Turtle (Landform) moves through water or for each each gallon of water splashed on it, it takes 4 cold damage.
     
-	\DndMonsterAction{Mighty Strikes}
-	The Grove Sentinel's melee (Strength) weapon attacks deal an extra \DndDice{2d6} damage.
-    
-    \DndMonsterAction{Crushing Roots}
-    When the Grove Sentinel (Strength) hits a creature with a melee attack, it can use its reaction to summon thick roots from the ground to restrain the target. The restrained creature must succeed on a DC 15 Strength saving throw or be restrained until the start of its next turn. The creature can use its action to make a DC 15 Strength check, freeing itself or another creature within its reach on a success. The effect ends if the roots are destroyed (AC 15, 10 hit points, vulnerability to fire damage).
-     
-     \DndMonsterAction{Enhanced Regeneration}
-     At the start of its turn, the Grove Sentinel (Strength) regains \DndDice{1d12} hit points.
+    \DndMonsterAction{Scorching Rampage}
+    Whenever the Magma Turtle is hit by a fire-based attack, its fiery nature intensifies. On its next successful attack, the Magma Turtle inflicts an additional \DndDice{2d6} fire damage. This increase in damage lasts until the end of its next turn.
 	
 	\DndMonsterSection{Actions}
 	
 	\DndMonsterAction{Multiattack}
-	The Grove Sentinel (Strength) makes two slam attacks.
+	The Magma Turtle (Landform) can make one Bite Attack and one Fiery Tail Club Attack on each of its turns.
 	
 	\DndMonsterAttack[
-      name=Slam,
+      name=Bite,
       distance=melee, % valid options are in the set {both,melee,ranged},
       %type=weapon, %valid options are in the set {weapon,spell}
       mod=+9,
       reach=10,
       %range=20/60,
       targets=one target,
-      dmg=\DndDice{2d6 + 5},
-      dmg-type=bludgeoning,
+      dmg=\DndDice{3d8 + 6},
+      dmg-type=piercing,
       %plus-dmg=,
       %plus-dmg-type=,
       %or-dmg=,
@@ -261,11 +267,27 @@ The hatchling's compact frame and formidable shell display the seeds of its futu
       %extra=,
     ]
     
-    \DndMonsterAction{Rending Smash}
-    The Grove Sentinel (Strength) delivers a devastating pounce empowered by its immense strength. The Sentinel makes a single slam attack against a target. On a hit, the target takes an additional 10 (3d6) bludgeoning damage and must succeed on a DC 15 Strength saving throw or have its movement speed reduced by half until the start of its next turn.
+    \DndMonsterAttack[
+      name=Fiery Tail Club,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+9,
+      reach=20,
+      %range=20/60,
+      targets=one target,
+      dmg=\DndDice{3d10 + 6},
+      dmg-type=bludgeoning,
+      plus-dmg=\DndDice{2d6},
+      plus-dmg-type=fire,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={. If the target hit is a creature it must succeed a DC 16 Strength saving throw or be knocked prone},
+    ]
     
-    \DndMonsterAction{Ground Shatter (Recharge 5-6)}
-	The Grove Sentinel (Strength) slams the ground with immense force, causing a shockwave in a 20-foot radius centered on itself. Each creature in that area must make a DC 15 Dexterity saving throw, taking \DndDice{7d6} force damage on a failed save, or half as much damage on a successful one.
+    \DndMonsterSection{Reactions}
+    
+    \DndMonsterAction{Shell Defense}\hfill\\
+    When the Magma\\Turtle (Landform) is\\hit by a melee attack\\it can use its reaction\\to retract into its shell,\\gaining a +4 bonus to\\its AC until the start of its\\next turn.
       
 \end{DndMonster}
 
@@ -280,9 +302,9 @@ The hatchling's compact frame and formidable shell display the seeds of its futu
 
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 	\node (posS) at (current page text area.south) {};%
-	\node[below right=0pt and 5cm of posS, anchor=south] (cornerSE) {%
+	\node[below right=-90pt and 6.85cm of posS, anchor=south] (cornerSE) {%
 		\begin{minipage}{\columnwidth}%%
-        	\centering\includegraphics[width=1.3\columnwidth, height=210pt, keepaspectratio]{images/Magma_Turtle_Landform.png}%
+        	\centering\includegraphics[width=\columnwidth, height=180pt, keepaspectratio]{images/Magma_Turtle_Landform(2).png}%
       	\end{minipage}%
 	};%
 \end{tikzpicture}%
