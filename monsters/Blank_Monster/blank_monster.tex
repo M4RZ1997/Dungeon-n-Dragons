@@ -26,7 +26,7 @@
 % ################################################################################################### %
 % --------------------------------------------------------------------------------------------------- %
 
-\twocolumn[\section*{\entryfont Blank Monster}]
+\chapter*{Blank Monster}
 
 \entryfont \noindent \DndDropCapLine{T}his document is a LaTeX-template for easily creating a DnD-Monster-Sheet. It provides many different environments and macros to build up many different blocks similar to the ones seen in the DnD books.\\\\
 This document uses the LaTeX dnd\textunderscore template provided in the GitHub repository:\\\\ https://github.com/rpgtex/DND-5e-LaTeX-Template\\\\ and requires of XeLaTeX or LuaTeX as the fontspec package is not part of the normal PDFLaTeX. By altering the \entryfont in the preamble this requirement can be excluded, however, the font has to be reset to the default one. \\\\
@@ -123,7 +123,7 @@ This document uses the LaTeX dnd\textunderscore template provided in the GitHub 
 % --------------------------------------------------------------------------------------------------- %
 
 \MonsterBannerGraphic%
-	{Blank Monster Group}% name of the monster to be displayed as header
+	{\entryfont{Blank Monster Group}}% name of the monster to be displayed as header
 	{200pt}% offset for the section header
 	{200pt}% max height of the image
 	{example-image-a}% image to be displayed as a banner
@@ -329,7 +329,7 @@ This document uses the LaTeX dnd\textunderscore template provided in the GitHub 
 
 \vfill\eject % cammand to break to next column
 
-\nopagebreaksection{Blank Monster} % section that does not induce a new page
+\nopagebreaksection{\entryfont{Blank Monster}} % section that does not induce a new page
 
 \lipsum[1-3]
 

@@ -43,8 +43,12 @@
 	}%
 }%
 
+\newcommand{\nopagebreakchapter}[1]{%
+	{\let\clearpage\relax \chapter*{#1}}%
+}%
+
 \newcommand{\nopagebreaksection}[1]{%
-	{\let\clearpage\relax \section*{\entryfont #1}}%
+	{\let\clearpage\relax \section*{#1}}%
 }%
 
 \tikzfading[name=fade down,
