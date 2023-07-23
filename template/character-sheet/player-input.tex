@@ -2,7 +2,11 @@
 \rput[cc](201.61106163,957){\LARGE \entryfont \CharacterNameValue}
 
 % HEADER INFORMATION
-\rput[l](361.87600658,980){\Large \entryfont{\ClassValue ~\LevelValue}}
+\ifthenelse{\equal{\MultiClassValue}{}}{%
+	\rput[l](361.87600658,980){\Large \entryfont{\ClassValue ~\LevelValue}}
+}{%
+	\rput[l](361.87600658,978){\large \entryfont{\ClassValue ~\MultiClassLevelValue}~/~\entryfont{\MultiClassValue} \FPeval{secondaryLevelValue}{clip(\LevelValue - \MultiClassLevelValue)}\secondaryLevelValue}
+}%
 \rput[l](512.21666949,980){\Large \entryfont \BackgroundValue}
 \rput[l](641.23599959,980){\Large \entryfont \PlayerNameValue}
 \rput[l](361.87600658,945.226667535){\Large \entryfont \RaceValue}
@@ -107,8 +111,15 @@
 \rput[cc](451.42132215,783.32600593){\footnotesize \entryfont \MaxHitPointsValue}
 \rput[cc](407.99998987,752.58358106){\LARGE \entryfont \CurrentHitPointsValue}
 \rput[cc](407.99998987,684.10878302){\LARGE \entryfont \TemporaryHitPointsValue}
-\rput[cc](362.57465764,622.54787662){\footnotesize \entryfont{\LevelValue \HitDiceValue}}
-\rput[cc](350.73265790,600.18398492){\LARGE \entryfont{\intcalcSub{\LevelValue}{\HitDiceSpentValue}\HitDiceValue}}
+
+\ifthenelse{\equal{\MultiClassValue}{}}{%
+	\rput[cc](362.57465764,622.54787662){\footnotesize \entryfont{\LevelValue \HitDiceValue}}
+	\rput[cc](350.73265790,600.18398492){\LARGE \entryfont{\intcalcSub{\LevelValue}{\HitDiceSpentValue}\HitDiceValue}}
+}{
+	\FPeval{secondaryLevelValue}{clip(\LevelValue - \MultiClassLevelValue)}
+	\rput[cc](362.57465764,622.54787662){\footnotesize \entryfont{\MultiClassLevelValue \HitDiceValue}~/~\entryfont{\secondaryLevelValue\MultiClassHitDiceValue}}
+	\rput[cc](350.73265790,600.18398492){\Large \entryfont{\intcalcSub{\MultiClassLevelValue}{\HitDiceSpentValue}\HitDiceValue}~/~\entryfont{\intcalcSub{\secondaryLevelValue}{\MultiClassHitDiceSpentValue}\MultiClassHitDiceValue}}
+}
 
 % PASSIVE PERCEPTION
 \rput[cc]( 57.99946577,256.785460244){\Large \entryfont{%

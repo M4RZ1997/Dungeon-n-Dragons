@@ -19,7 +19,7 @@
 \CharacterName{Alistair Hellstrum}
 
 \Class{Bard}
-\Level{3}
+\Level{2}
 \Background{Courtier}
 \PlayerName{M4RZ}
 \Race{Tiefling}
@@ -47,7 +47,7 @@
 \AnimalHandlingProficiency{}
 \ArcanaProficiency{P}
 \AthleticsProficiency{}
-\DeceptionProficiency{E}
+\DeceptionProficiency{P}%E
 \HistoryProficiency{P}
 \InsightProficiency{P}
 \IntimidationProficiency{P}
@@ -55,8 +55,8 @@
 \MedicineProficiency{}
 \NatureProficiency{}
 \PerceptionProficiency{}
-\PerformanceProficiency{E}
-\PersuasionProficiency{E}
+\PerformanceProficiency{P}%E
+\PersuasionProficiency{E} % Courtier Background
 \ReligionProficiency{}
 \SleightOfHandProficiency{}
 \StealthProficiency{}
@@ -70,7 +70,7 @@
 \ArmorClass{13}
 \InitiativeModifier{0}
 \Speed{30ft}
-\MaxHitPointsRolled{21} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{14} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -141,7 +141,7 @@
 	\item Bardic Inspiration
 	\item Jack-of-All-Trades
 	\item Song of Rest
-	\item Bard College of Lore
+	%\item Bard College of Lore
 \end{itemize}
 }
 
@@ -163,7 +163,7 @@
 		\hspace*{-0.95em}\begin{tabular}{p{75pt}}Alistair Hellstrum stands at an average height with a lean and agile build. His skin has a rich, deep burgundy hue, a testament to his infernal heritage as a Tiefling. His eyes are a striking shade of golden ~~~~~~~~~\end{tabular}
 	\end{tabular}\\\vspace*{-1.6em}\hfill\\
 	amber, shimmering with a mischievous glint and an air of confidence. Alistair's dark, wavy hair cascades down to his shoulders, accentuating his charismatic and somewhat untamed demeanor.
-}
+}{}{}{}
 \AdditionalFeaturesAndTraits{
 	Alistair is not only a skilled musician but also a versatile performer. He excels in various forms of artistic expression, including acting, storytelling, and dancing. His performances are captivating and immersive, captivating audiences with their richness and variety.\\
 	Alistair has a talent for languages and has devoted time to learning and mastering multiple tongues. In addition to Common and Infernal, he may be fluent in Elvish, Dwarvish, or other languages he has encountered during his travels. This linguistic ability allows him to connect with diverse cultures and communicate effectively with a wide range of individuals.\\
@@ -179,13 +179,15 @@
 }
 \Treasure{
 	\textbf{1. Ancient Manuscript:} Alistair possesses a weathered and meticulously preserved manuscript filled with ancient songs, stories, and forgotten lore. The pages are yellowed with age, and delicate illustrations adorn its margins. This precious relic is a treasure trove of inspiration, containing forgotten melodies, tales of legendary heroes, and cryptic clues that hint at hidden places of power.\\
-	\textbf{2. Curious Relic:} Alistair possesses a peculiar relic, a seemingly ordinary object that holds an enigmatic past. It could be an ornate key, a worn-out map, or a small figurine. Though its purpose remains unclear, Alistair believes it to be linked to a greater mystery. He carries it with a sense of anticipation, hoping that one day its true significance will be revealed.\\
-	\textbf{3. Personal Journal:} A weathered and dog-eared journal accompanies Alistair on his journeys. Its pages are filled with sketches, poetic verses, and fragments of ideas.
+	\textbf{2. Curious Relic (The Enchanted Locket of Lysandra):} Alistair possesses a peculiar relic, a seemingly ordinary, unadorned silver locket on a delicate chain. To the casual observer, it looks like an ordinary piece of jewelry with no special significance. However, upon closer inspection, faint, ever-shifting patterns of light dance across its surface, hinting at its magical nature.\\
+	Unbeknownst to Alistair it kindles an insatiable fascination with the Fewild, which becomes stronger the more he interacts with the Feywild and its creatures.
 }
 \AlliesAndOrganizations{
 	The Bard College of Lore is a renowned institution that attracts bards from all walks of life who have a deep appreciation for knowledge and a thirst for learning. It is a prestigious establishment that places a strong emphasis on academic pursuits, intellectual exploration, and the mastery of the bardic arts.
 	
-	The college's philosophy centers around the power of storytelling, rhetoric, and persuasive communication. Students learn to weave captivating narratives, employ their musical talents to convey emotions, and use their words to engage and inspire others. Improvisation and the exploration of various artistic expressions are encouraged, fostering a rich and vibrant environment for learning.
+	The college's philosophy centers around the power of storytelling, rhetoric, and persuasive communication. Students learn to weave captivating narratives, employ their musical talents to convey emotions, and use their words to engage and inspire others. Improvisation and the exploration of\linebreak
+}{
+	various artistic expressions are encouraged, fostering a rich and vibrant environment for learning.
 }
 \OrganizationName{Bard College of Lore}
 \OrganizationSymbol{images/Bard_College_of_Lore.png}
@@ -268,14 +270,14 @@ Starting at 2nd level, you can add half your proficiency bonus, rounded down, to
 Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points at the end of the short rest by spending one or more Hit Dice, each of those creatures regains an extra 1d6 hit points.
 
 The extra Hit Points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.
-\subsection*{Bard College of Lore}
-Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate compositions in royal courts, these bards use their gifts to hold audiences spellbound. When the applause dies down, the audience members might find themselves questioning everything they held to be true, from their faith in the priesthood of the local temple to their loyalty to the king.
-
-The loyalty of these bards lies in the pursuit of beauty and truth, not in fealty to a monarch or following the tenets of a deity. A noble who keeps such a bard as a herald or advisor knows that the bard would rather be honest than politic.
-
-The college's members gather in libraries and sometimes in actual colleges, complete with classrooms and dormitories, to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority.
-\subsubsection*{Cutting Words}
-Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others. When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll. You can choose to use this feature after the creature makes its roll, but before the DM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can't hear you or if it's immune to being charmed.
+%\subsection*{Bard College of Lore}
+%Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate compositions in royal courts, these bards use their gifts to hold audiences spellbound. When the applause dies down, the audience members might find themselves questioning everything they held to be true, from their faith in the priesthood of the local temple to their loyalty to the king.
+%
+%The loyalty of these bards lies in the pursuit of beauty and truth, not in fealty to a monarch or following the tenets of a deity. A noble who keeps such a bard as a herald or advisor knows that the bard would rather be honest than politic.
+%
+%The college's members gather in libraries and sometimes in actual colleges, complete with classrooms and dormitories, to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority.
+%\subsubsection*{Cutting Words}
+%Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others. When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll. You can choose to use this feature after the creature makes its roll, but before the DM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can't hear you or if it's immune to being charmed.
 
 \section*{Spells}
 \subsection*{Cantrip}
@@ -429,5 +431,27 @@ If you or any of your companions damage the target, the spell ends.
 \underline{Dagger:}\\
 1d4 + STR-Modifier\\
 \indent Current Max: \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}
+
+\newpage
+\chapter*{The Enchanted Locket of Lysandra}
+\section*{Appearance}
+The Enchanted Locket of Lysandra appears as a simple and unadorned silver locket on a delicate chain. To the casual observer, it looks like an ordinary piece of jewelry with no special significance. However, upon closer inspection, faint, ever-shifting patterns of light dance across its surface, hinting at its magical nature.
+\section*{History}
+Legend speaks of Lysandra, a powerful and enigmatic fey enchantress who once roamed the realms of Prismeer. Known for her boundless curiosity and mischievous nature, Lysandra was said to possess an item of unimaginable enchantment, capable of granting its bearer unparalleled insight into the secrets of the Feywild. The Enchanted Locket is believed to be a fragment of her lost legacy.
+\section*{Magic}
+The locket has several magical properties, though Alistair might not be aware of all its abilities at the start of the campaign. As he uncover mores about the relic, he will discover its true potential. Some of its known abilities include:
+\begin{itemize}
+	\item \textbf{Fey Sensitivity:} The locket resonates with the energy of the Feywild, allowing its bearer to sense the presence of fey creatures and magical phenomena nearby.
+	\item \textbf{Dreams of the Fey:} When worn during sleep, the locket can grant visions and cryptic dreams, often offering clues or guidance related to the Feywild and its mysteries.
+	\item \textbf{Portal Attunement:} The locket can attune its bearer to specific Feywild locations, potentially serving as a key to unlock hidden pathways between the material world and the Feywild.
+	\item \textbf{Whisper of Lysandra:} In moments of uncertainty or danger, the locket may emit soft whispers of ancient Feywild wisdom, guiding its bearer's decisions.
+\end{itemize}
+Over time, the locket's influence amplifies Alistair's natural magical inclinations, deepening his understanding of arcane secrets and Feywild lore. This newfound magical prowess enhances his abilities as a Bard, granting him unique insights into ancient Feywild rituals, forgotten enchantments, and the intricacies of Feywild creatures.
+\section*{Compulsion}
+The Enchanted Locket has a subtle yet powerful compulsion on its bearer. As your character carries the locket, its magic gradually influences their emotions and desires, kindling an insatiable fascination with the Feywild. The more they interact with the Feywild or embark on quests related to Prismeer, the stronger this compulsion becomes.
+\section*{Torn between Worlds}
+While the locket provides Alistair with extraordinary insights and magical abilities, its influence comes at a cost. The more time he spends away from the Feywild or the locket, the more he feels an ache of longing and a sense of restlessness. Their connection with the locket intertwines his fate with that of the Feywild, making him feel incomplete whenever he is separated from it.
+\section*{Quest of Discovery}
+The Enigmatic Locket of Lysandra possesses an inherent, magical allure that captivates the heart and mind of Alistair, the Bard. When he first encountered the locket, he was drawn to it by an irresistible pull, not fully comprehending why it called to him so strongly. From that moment on, he found himself becoming increasingly obsessed with uncovering the locket's true nature and its connection to the Feywild.
 
 \end{document}

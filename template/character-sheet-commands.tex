@@ -1,7 +1,9 @@
 % BANNER INFO
 \newcommand{\CharacterNameValue}{}
 \newcommand{\ClassValue}{}
+\newcommand{\MultiClassValue}{}
 \newcommand{\LevelValue}{}
+\newcommand{\MultiClassLevelValue}{}
 \newcommand{\BackgroundValue}{}
 \newcommand{\PlayerNameValue}{}
 \newcommand{\RaceValue}{}
@@ -10,7 +12,9 @@
 
 \newcommand{\CharacterName}[1]{\renewcommand{\CharacterNameValue}{#1}}
 \newcommand{\Class}[1]{\renewcommand{\ClassValue}{#1}}
+\newcommand{\MultiClass}[1]{\renewcommand{\MultiClassValue}{#1}}
 \newcommand{\Level}[1]{\renewcommand{\LevelValue}{#1}}
+\newcommand{\MultiClassMainLevel}[1]{\renewcommand{\MultiClassLevelValue}{#1}}
 \newcommand{\Background}[1]{\renewcommand{\BackgroundValue}{#1}}
 \newcommand{\PlayerName}[1]{\renewcommand{\PlayerNameValue}{#1}}
 \newcommand{\Race}[1]{\renewcommand{\RaceValue}{#1}}
@@ -155,7 +159,9 @@
 \newcommand{\CurrentHitPointsValue}{}
 \newcommand{\TemporaryHitPointsValue}{}
 \newcommand{\HitDiceValue}{}
+\newcommand{\MultiClassHitDiceValue}{}
 \newcommand{\HitDiceSpentValue}{}
+\newcommand{\MultiClassHitDiceSpentValue}{}
 
 \newcommand{\ArmorClass}[1]{\renewcommand{\ArmorClassValue}{#1}}
 \newcommand{\InitiativeModifier}[1]{\renewcommand{\InitiativeModifierValue}{#1}}
@@ -164,7 +170,9 @@
 \newcommand{\CurrentHitPoints}[1]{\renewcommand{\CurrentHitPointsValue}{#1}}
 \newcommand{\TemporaryHitPoints}[1]{\renewcommand{\TemporaryHitPointsValue}{#1}}
 \newcommand{\HitDice}[1]{\renewcommand{\HitDiceValue}{#1}}
+\newcommand{\MultiClassHitDice}[1]{\renewcommand{\MultiClassHitDiceValue}{#1}}
 \newcommand{\HitDiceSpent}[1]{\renewcommand{\HitDiceSpentValue}{#1}}
+\newcommand{\MultiClassHitDiceSpent}[1]{\renewcommand{\MultiClassHitDiceSpentValue}{#1}}
 
 \newcommand{\MaxHitPointsValue}{%
 	\ifthenelse{\ConstitutionScoreValue<10}%
@@ -238,18 +246,40 @@
 % background
 \newcommand{\CharacterAppearancePicture}{}
 \newcommand{\CharacterAppearanceValue}{}
+\newcommand{\CharacterAppearancePictureHeight}{140pt}
+\newcommand{\CharacterAppearancePictureWidth}{164pt}
+\newcommand{\CharacterAppearancePictureHorizontal}{0em}
+\newcommand{\CharacterAppearancePictureVertical}{0em}
 \newcommand{\AdditionalFeaturesAndTraitsValue}{}
 \newcommand{\CharacterbackgroundValue}{}
 \newcommand{\TreasureValue}{}
 \newcommand{\AlliesAndOrganizationsValue}{}
+\newcommand{\AlliesAndOrganizationsSecondValue}{}
 \newcommand{\OrganizationNameValue}{}
 \newcommand{\OrganizationSymbolValue}{}
 
-\newcommand{\CharacterAppearance}[2]{\renewcommand{\CharacterAppearancePicture}{#1}\renewcommand{\CharacterAppearanceValue}{#2}}
+\newcommand{\CharacterAppearance}[5]{%
+	\renewcommand{\CharacterAppearancePicture}{#1}%
+	\renewcommand{\CharacterAppearanceValue}{#2}%
+	\ifthenelse{\equal{#3}{}}{}{%
+		\expandafter\def\expandafter\temp\expandafter{#3}%
+		\edef\temp{#3}
+		\expandafter\splitPictureDimensions\temp\relax
+	}
+	\ifthenelse{\equal{#4}{}}{}{\renewcommand{\CharacterAppearancePictureHorizontal}{#4}}
+	\ifthenelse{\equal{#5}{}}{}{\renewcommand{\CharacterAppearancePictureVertical}{#5}}
+}%
+\def\splitPictureDimensions#1/#2\relax{
+	\renewcommand{\CharacterAppearancePictureHeight}{#1}
+	\renewcommand{\CharacterAppearancePictureWidth}{#2}
+}
 \newcommand{\AdditionalFeaturesAndTraits}[1]{\renewcommand{\AdditionalFeaturesAndTraitsValue}{#1}}
 \newcommand{\Characterbackground}[1]{\renewcommand{\CharacterbackgroundValue}{#1}}
 \newcommand{\Treasure}[1]{\renewcommand{\TreasureValue}{#1}}
-\newcommand{\AlliesAndOrganizations}[1]{\renewcommand{\AlliesAndOrganizationsValue}{#1}}
+\newcommand{\AlliesAndOrganizations}[2]{%
+	\renewcommand{\AlliesAndOrganizationsValue}{#1}
+	\renewcommand{\AlliesAndOrganizationsSecondValue}{#2}
+}
 \newcommand{\OrganizationName}[1]{\renewcommand{\OrganizationNameValue}{#1}}
 \newcommand{\OrganizationSymbol}[1]{\renewcommand{\OrganizationSymbolValue}{#1}}
 

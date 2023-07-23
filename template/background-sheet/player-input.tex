@@ -15,12 +15,13 @@
 \ifthenelse{\equal{\CharacterAppearancePicture}{}}{
 	\rput[lt](47,897){\parbox{164pt}{\entryfont \justify \CharacterAppearanceValue}}
 }{
-	\rput[lt](47,897){\parbox{164pt}{\begin{center}\includegraphics[width=164pt, height=140pt, keepaspectratio]{\CharacterAppearancePicture}\end{center}}}
+	\rput[lt](47,897){\hspace*{\CharacterAppearancePictureHorizontal}\parbox{\CharacterAppearancePictureWidth}{\vspace*{\CharacterAppearancePictureVertical}\begin{center}\includegraphics[width=\CharacterAppearancePictureWidth, height=\CharacterAppearancePictureHeight, keepaspectratio]{\CharacterAppearancePicture}\end{center}}}
 	\rput[lt](47,700){\parbox{164pt}{\entryfont \justify \CharacterAppearanceValue}}
 }
 \rput[lt](299,570){\parbox{354pt}{\entryfont \justify \AdditionalFeaturesAndTraitsValue}}
 \rput[lt](47,555){\parbox{164pt}{\entryfont \justify \CharacterbackgroundValue}}
 \rput[lt](299,267){\parbox{354pt}{\entryfont \justify \TreasureValue}}
-\rput[lt](299,897){\parbox{182pt}{\entryfont \justify \AlliesAndOrganizationsValue}}
+\rput[lt](299,895){\parbox{182pt}{\entryfont \justify \AlliesAndOrganizationsValue}}
+\rput[lt](299,654){\parbox{354pt}{\entryfont \justify \AlliesAndOrganizationsSecondValue}}
 \rput[l](568,846){\parbox{132pt}{\entryfont \justify \textbf{\OrganizationNameValue}}}
 \rput[l](565,752){\parbox{137pt}{\begin{center}\includegraphics[width=137pt, height=100pt, keepaspectratio]{\OrganizationSymbolValue}\end{center}}}
