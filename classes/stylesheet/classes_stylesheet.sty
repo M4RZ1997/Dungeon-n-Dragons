@@ -1,0 +1,124 @@
+% ------------------------------------------------------------------------------------------------- %
+%                         classes_stylesheet.sty  Marcel Zauder 27/07/2023         	                %
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ Usepackages ------------------------------------------ %
+\usepackage{xcolor}
+\usepackage{xstring}
+\usepackage{textcase}
+\usepackage{lipsum}
+\usepackage{changepage}
+\usepackage{makecell}
+
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{fontspec}
+\usepackage{anyfontsize}
+
+\usepackage{datatool}
+\usepackage{enumitem}
+\usepackage{hyperref}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------------- New DB --------------------------------------------- %
+\DTLnewdb{imageDB}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ New Colors ------------------------------------------- %
+\definecolor{MarzDarkBlue}{rgb}{0.1, 0, 0.2}
+\definecolor{MarzBlue}{rgb}{0.1, 0.1, 0.5}
+\definecolor{MarzRoyal}{rgb}{0.2, 0.2, 0.8}
+\definecolor{MarzGreen}{rgb}{0, 0.4, 0}
+\definecolor{MarzPurple}{rgb}{0.5, 0, 0.5}
+\definecolor{MarzGold}{rgb}{1.0, 0.84, 0}
+\definecolor{MarzRed}{rgb}{1.0, 0, 0}
+\definecolor{MarzDarkRed}{rgb}{0.4, 0, 0}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- New Commands ------------------------------------------ %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\addImageDBEntry}[5]{%
+	\DTLnewrow{imageDB}%
+	\DTLnewdbentry{imageDB}{Page}{#1}%
+	\DTLnewdbentry{imageDB}{AdditionalInformation}{#2}%
+	\DTLnewdbentry{imageDB}{URL}{#3}%
+	\DTLnewdbentry{imageDB}{ArtName}{#4}%
+	\DTLnewdbentry{imageDB}{Artist}{#5}%
+}%
+% ------------------------------------------------------------------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Auto-Shadowfy  Class Name #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\shadowfyClassName}[1]{%
+	\def\currentWord{}%
+	\StrBefore{#1}{ }[\currentWord]%
+	\ifx\currentWord\empty
+	% Reached the last word (no more spaces)
+		\customtitle{#1}
+	\else
+    	% Process the current word (replace this with your desired action)
+		\customtitle{\currentWord} ~
+	% Remove the processed word from the string
+		\StrBehind{#1}{\currentWord }[\remainingString]%
+	% Call the command recursively to process the next word
+		\shadowfyClassName{\remainingString}%
+	\fi
+}
+% ------------------------------------------------------------------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\classesTitlePage}[7]{%
+	\begin{titlepage}
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[opacity=1,inner sep=0pt,yshift=#3] at (current page.center){\includegraphics[#4, keepaspectratio]{#2}};
+			\addImageDBEntry{Front Cover}{Art}{#5}{#6}{#7}
+			\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyClassName{#1}};
+			
+			\node[yshift=0.45\paperheight] at (current page.center) {\includegraphics[width=0.11\paperwidth, keepaspectratio]{\PATH classes/stylesheet/images/DnD_Ampersand.png}};			
+			\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.375\paperheight)$);
+			\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+			
+			\node[yshift=-0.3\paperheight, xshift=-0.3\paperwidth] at (current page.center){\includegraphics[width=0.4\paperwidth, keepaspectratio]{\PATH classes/stylesheet/images/Homebrew_Banner.png}};
+			
+			\def\stackgap{0.01pt}
+			\node[yshift=-0.4\paperheight] at (current page.center) {\titlefont{ \shadowfy{A homebrew class for DnD 5E}}};
+		\end{tikzpicture}
+	\end{titlepage}
+}%
+% ------------------------------------------------------------------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Last Page #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\classesLastPage}[7]{%
+	\clearpage
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[opacity=1,inner sep=0pt,yshift=#2, xshift=#3] at (current page.center){\includegraphics[#4,  keepaspectratio]{#1}};
+		\addImageDBEntry{Back Cover}{Art}{#5}{#6}{#7}
+		\node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[min width=\paperwidth, height=\paperheight, keepaspectratio]{\PATH classes/stylesheet/images/backcover-black-part.png}};
+		
+		\def\primarycolor{MarzRed}
+		\def\secondarycolor{MarzDarkRed}
+		\node[yshift=0.1\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
+			\adjustbox{valign=c}{%
+				\parbox{0.5\textwidth}{\centering{
+					\parbox{0.4\textwidth}{
+						\centering\customtitle{Big} ~ \customtitle{Thanks} ~ \customtitle{To} ~ \customtitle{These} ~ \customtitle{Artists}
+					}
+					\par\vspace*{3cm}
+					\parbox{0.45\textwidth}{
+						\large{\begin{itemize}[label=\textcolor{white}{\textbullet}]
+							\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{
+								\item \textcolor{white}{\thisPage ~\thisAdditionalInformation :} \textcolor{orange}{\href{\thisURL}{\thisArtName ~by \thisArtist}}
+							}
+						\end{itemize}}
+					}
+				}}
+			}
+		};
+	\end{tikzpicture}
+}%
