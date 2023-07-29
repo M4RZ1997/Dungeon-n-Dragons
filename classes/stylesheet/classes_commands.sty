@@ -10,14 +10,23 @@
 }%
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
+% ---------------------- Command for Auto-Generating "Optional Rule"-Sidebar ---------------------- %
+\newcommand{\sidebarOptionalRule}[2]{%
+	\begin{DndSidebar}[float=!h]{\entryfont Optional Rule: #1}
+		\entryfont #2
+	\end{DndSidebar}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
 % -------------------- Command for Auto-Generating "Optional Rule: Multiclass" -------------------- %
 \newcommand{\sectionMultiClass}[4]{%
-	\subsubsection{Optional Rule: Multiclass}%
-	If your group uses the multiclassing rule from the Player's Handbook, here's what you need to know if you choose \ClassNameValue~as one of your class.%
-	
-	\paragraph*{Ability Score Minimum} As a multiclass character, you must have at least an #1 score of #2#3 to take a level in this class, or to take a level in another class if you are already an \ClassNameValue.%
-	
-	\paragraph*{Proficiencies Gained} If \ClassNameValue~isn't your initial class, here are the proficiencies you gain when you take your first level as an \ClassNameValue: #4.%
+	\sidebarOptionalRule{Multiclass}{%
+		If your group uses the multiclassing rule from the Player's Handbook, here's what you need to know if you choose \ClassNameValue~as one of your classes.%
+		
+		\subparagraph*{Ability Score Minimum} As a multiclass character, you must have at least an #1 score of #2#3 to take a level in this class, or to take a level in another class if you are already an \ClassNameValue.%
+		
+		\subparagraph*{Proficiencies Gained} If \ClassNameValue~isn't your initial class, you gain proficiency with #4 when you take your first level in the \ClassNameValue~class.%
+	}
 }%
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %

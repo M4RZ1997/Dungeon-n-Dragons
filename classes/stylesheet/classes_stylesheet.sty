@@ -75,11 +75,11 @@
 % ------------------------------------------------------------------------------------------------- %
 %                                                                                                   %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\newcommand{\classesTitlePage}[7]{%
+\newcommand{\classesTitlePage}[8]{%
 	\begin{titlepage}
 		\begin{tikzpicture}[remember picture,overlay]
-			\node[opacity=1,inner sep=0pt,yshift=#3] at (current page.center){\includegraphics[#4, keepaspectratio]{#2}};
-			\addImageDBEntry{Front Cover}{Art}{#5}{#6}{#7}
+			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};
+			\addImageDBEntry{Front Cover}{Art}{#6}{#7}{#8}
 			\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyClassName{#1}};
 			
 			\node[yshift=0.45\paperheight] at (current page.center) {\includegraphics[width=0.11\paperwidth, keepaspectratio]{\PATH classes/stylesheet/images/DnD_Ampersand.png}};			
