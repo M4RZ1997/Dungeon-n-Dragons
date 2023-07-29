@@ -60,7 +60,7 @@
         ([xshift=\xoffset]\point) circle[radius=2.5pt];
     }
     %
-    \path[name path=ornament 1, fill=white]
+    \path[name path=ornament 1]
                                  ([yshift=-4pt]north west)
       [rounded corners=0.5pt] -- ++(23pt,0)
       [rounded corners=2pt]   -- ++(3pt,-4pt)
@@ -95,6 +95,26 @@
                               -- ++(4pt,3pt)
                               -- cycle;
     %
+    \path[name path=ornament background, fill=white]
+                                 ([xshift=9pt,yshift=-4pt]north west)
+      [rounded corners=0.5pt] -- ++(13pt,0)
+      [rounded corners=2pt]   -- ++(3pt,-4pt)
+                              -- ([shift={(-26pt,-8pt)}]north east)
+      [rounded corners=0.5pt] -- ++(3pt,4pt)
+      [rounded corners=4pt]   -- ([xshift=-9pt,yshift=-4pt]north east)
+      						  -- ([yshift=-13pt]north east)
+                              -- ([yshift=13pt]south east)
+                              -- ([xshift=-9pt,yshift=4pt]south east)
+      [rounded corners=0.5pt] -- ++(-13pt,0)
+      [rounded corners=2pt]   -- ++(-3pt,4pt)
+                              -- ([shift={(26pt,8pt)}]south west)
+      [rounded corners=0.5pt] -- ++(-3pt,-4pt)
+      [rounded corners=4pt]   -- ([xshift=9pt,yshift=4pt]south west)
+                              -- ([yshift=13pt]south west)
+                              -- ([yshift=-13pt]north west)
+                              -- cycle;
+    %
+    \draw[color=white, line width=1pt, use path=ornament background];
     \draw[ornamented frame outer, use path=ornament 1];
     \draw[ornamented frame outer, use path=ornament 2];
     \draw[ornamented frame inner, use path=ornament 1];

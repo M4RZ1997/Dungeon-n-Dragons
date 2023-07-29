@@ -23,6 +23,9 @@
 \usepackage{datatool}
 \usepackage{enumitem}
 \usepackage{hyperref}
+
+\usepackage{multirow}
+\usepackage{array}
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % -------------------------------------------- New DB --------------------------------------------- %
@@ -93,32 +96,45 @@
 % ------------------------------------------------------------------------------------------------- %
 %                                                                                                   %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Last Page #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\newcommand{\classesLastPage}[7]{%
-	\clearpage
-	\thispagestyle{empty}
-	\begin{tikzpicture}[remember picture,overlay]
-		\node[opacity=1,inner sep=0pt,yshift=#2, xshift=#3] at (current page.center){\includegraphics[#4,  keepaspectratio]{#1}};
-		\addImageDBEntry{Back Cover}{Art}{#5}{#6}{#7}
-		\node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[min width=\paperwidth, height=\paperheight, keepaspectratio]{\PATH classes/stylesheet/images/backcover-black-part.png}};
+\newcommand{\classesLastPage}[8]{%
+	\clearpage%
+	\thispagestyle{empty}%
+	\begin{tikzpicture}[remember picture,overlay]%
+		\node[opacity=1,inner sep=0pt,yshift=#2, xshift=#3] at (current page.center){\includegraphics[#4,  keepaspectratio]{#1}};%
+		\addImageDBEntry{Back Cover}{Art}{#5}{#6}{#7}%
+		\node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[min width=\paperwidth, height=\paperheight, keepaspectratio]{\PATH classes/stylesheet/images/backcover-black-part.png}};%
 		
-		\def\primarycolor{MarzRed}
-		\def\secondarycolor{MarzDarkRed}
+		\def\primarycolor{MarzRed}%
+		\def\secondarycolor{black!80}%
+		%\def\secondarycolor{MarzDarkRed}%
+		\def\stackgap{0.1pt}
 		\node[yshift=0.1\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
 			\adjustbox{valign=c}{%
 				\parbox{0.5\textwidth}{\centering{
-					\parbox{0.4\textwidth}{
-						\centering\customtitle{Big} ~ \customtitle{Thanks} ~ \customtitle{To} ~ \customtitle{These} ~ \customtitle{Artists}
-					}
-					\par\vspace*{3cm}
-					\parbox{0.45\textwidth}{
-						\large{\begin{itemize}[label=\textcolor{white}{\textbullet}]
-							\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{
-								\item \textcolor{white}{\thisPage ~\thisAdditionalInformation :} \textcolor{orange}{\href{\thisURL}{\thisArtName ~by \thisArtist}}
-							}
-						\end{itemize}}
-					}
-				}}
-			}
+					\parbox{0.4\textwidth}{%
+						\centering\customtitle{Big} ~ \customtitle{Thanks} ~ \customtitle{To} ~ \customtitle{These} ~ \customtitle{Artists}%
+					}%
+					\par\vspace*{3cm}%
+					\parbox{0.45\textwidth}{%
+						\large{\begin{itemize}[label=\textcolor{white}{\textbullet}]%
+							\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{%
+								\item \textcolor{white}{\thisPage ~\thisAdditionalInformation :} \textcolor{orange}{\href{\thisURL}{\thisArtName ~by \thisArtist}}%
+							}%
+						\end{itemize}}%
+					}%
+				}}%
+			}%
 		};
-	\end{tikzpicture}
+		
+		\def\stackgap{0.01pt}
+		\ifthenelse{\equal{#8}{}}{}{%
+			\node[yshift=-0.275\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
+				\parbox{0.4\textwidth}{%
+					\centering\titlefont{\large\shadowfy{#8}}%
+				}
+			};%
+		}%
+		
+		\node[yshift=-0.4\paperheight, xshift=-0.25\paperwidth] at (current page.center) {\includegraphics[width=0.25\paperwidth, keepaspectratio]{\PATH classes/stylesheet/images/DnD_Ampersand.png}};
+	\end{tikzpicture}%
 }%
