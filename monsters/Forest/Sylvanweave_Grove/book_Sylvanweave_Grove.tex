@@ -1,0 +1,30 @@
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../}
+
+\usepackage[justified]{\PATH dndtemplate/dnd}
+
+\usepackage{\PATH monsters/stylesheets/monster_stylesheet}
+\usepackage{\PATH monsters/stylesheets/monster_book_commands}
+\usepackage{\PATH monsters/stylesheets/shadowfy}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
+\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
+\newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
+
+\begin{document}
+	% Titlepage	
+	\monstersTitlePage{Sylvanweave Grove}{images/titlepage_Sylvanweave_Grove.jpg}{0cm}{-0.5cm}{height=\paperheight+1cm}{https://scentofagamer.wordpress.com/2020/09/27/zendikar-rising-expeditions-art-review/}{Horizon Canopy}{Alayna Danner}{A collection of homebrew monsters found in the Sylvanweave Grove}
+	
+	\tableofcontents
+	
+	\mainmatter
+	
+	\input{monsters/Grove_Sentinel/Grove_Sentinel_input.tex}
+	
+	% Final Page
+	\monstersLastPage{images/backcover_Sylvanweave_Grove.jpg}{0cm}{0cm}{height=\paperheight}{https://www.artstation.com/artwork/oglNq}{Zendikar Forest}{Jonathan Chua}{}
+\end{document}

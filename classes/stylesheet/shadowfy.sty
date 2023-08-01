@@ -98,6 +98,7 @@
 		\ifnum\pdfstrcmp{y}{#1}=0 Y\fi%
 		\ifnum\pdfstrcmp{z}{#1}=0 Z\fi%
 	}%
+	\ifthenelse{\equal{\ucletter}{}}{\xdef\ucletter{#1}}{}%
 }%
 \newcommand{\isUpperCase}[1]{%
 	\ifthenelse{\equal{A}{#1}}{\xdef\bool{1}}{%

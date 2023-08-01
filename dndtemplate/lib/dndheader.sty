@@ -45,7 +45,7 @@
 
 % Left-even page footer
 \fancyfoot[LE]{%
-    \DndFontFooter \leftmark
+    %\DndFontFooter \leftmark
     \begin{tikzpicture}[remember~picture,overlay]
       \bool_if:NT \l__dnd_show_footer_scroll_bool {
         \node[xscale=-1,inner~sep=0pt,anchor=south,nearly~opaque] at (current~page.south) {\includegraphics[width=\paperwidth,height=.6in]{\PATH dndtemplate/img/footerscroll.pdf}};
@@ -56,7 +56,7 @@
 
 % Right-odd page footer
 \fancyfoot[RO]{%
-    \DndFontFooter \leftmark
+    %\DndFontFooter \leftmark
     \begin{tikzpicture}[remember~picture,overlay]
       \bool_if:NT \l__dnd_show_footer_scroll_bool {
         \node[inner~sep=0pt,anchor=south,nearly~opaque] at (current~page.south) {\includegraphics[width=\paperwidth,height=.6in]{\PATH dndtemplate/img/footerscroll.pdf}};

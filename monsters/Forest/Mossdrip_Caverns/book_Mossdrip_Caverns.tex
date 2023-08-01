@@ -1,0 +1,30 @@
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../}
+
+\usepackage[justified]{\PATH dndtemplate/dnd}
+
+\usepackage{\PATH monsters/stylesheets/monster_stylesheet}
+\usepackage{\PATH monsters/stylesheets/monster_book_commands}
+\usepackage{\PATH monsters/stylesheets/shadowfy}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
+\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
+\newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
+
+\begin{document}
+	% Titlepage	
+	\monstersTitlePage{Mossdrip Caverns}{images/titlepage_Mossdrip_Caverns.jpg}{0.5cm}{0cm}{height=\paperheight}{https://wallpapersden.com/tomb-castle-ladder-wallpaper/}{Ancient Tomb}{WallpapersDen}{A collection of homebrew monsters found in the Mossdrip Caverns}
+	
+	\tableofcontents
+	
+	\mainmatter
+	
+	\input{monsters/Fleshgorger_Ant/Fleshgorger_Ant_input.tex}
+	
+	% Final Page
+	\monstersLastPage{images/backcover_Mossdrip_Caverns.jpg}{0cm}{3cm}{height=\paperheight}{https://www.artstation.com/artwork/XBxBqD}{Overgrown Tomb}{Svetlin Velinov}{}
+\end{document}

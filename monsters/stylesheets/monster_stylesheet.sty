@@ -6,8 +6,8 @@
 \usepackage{shortvrb}
 \usepackage{stfloats}
 
-\usepackage{pstricks}
-\usepackage[pscoord]{eso-pic}% The zero point of the coordinate system is the lower left corner of the page (the default).
+%\usepackage{pstricks}
+%\usepackage[pscoord]{eso-pic}% The zero point of the coordinate system is the lower left corner of the page (the default).
 \usepackage{calc}
 \usepackage[absolute]{textpos}
 \usepackage{graphbox}
@@ -16,6 +16,8 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{fadings} 
 \usepackage{varwidth}
+
+\usepackage{datatool}
 
 \captionsetup[table]{labelformat=empty,font={sf,sc,bf,},skip=0pt}
 
@@ -26,13 +28,21 @@
   language=[LaTeX]{TeX},
   breaklines=true,
 }
-
-% --------------------------------------------------------------------------------------------------- %
-% ################################################################################################### %
-% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# New  Commands #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-% ################################################################################################### %
-% --------------------------------------------------------------------------------------------------- %
-
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% ------------------------------------------- Variables -------------------------------------------- %
+\def\ShortInfoString{shortinfo}
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% ---------------------------------------- Tikz-Fading Path ---------------------------------------- %
+\tikzfading[%
+	name=fade down,%
+	top color=transparent!60,%
+	bottom color=transparent!100%
+]%
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% ------------------------------------------ New Geometry ------------------------------------------ %
 \newcommand{\MonsterSheetGeometry}{%
 	\newgeometry{%
 		hmargin 	= .5in, % Left and right margins
@@ -42,19 +52,61 @@
 		columnsep = .33in, % Space between columns
 	}%
 }%
-
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ New Colors ------------------------------------------- %
+\definecolor{MarzDarkBlue}{rgb}{0.1, 0, 0.2}
+\definecolor{MarzBlue}{rgb}{0.1, 0.1, 0.5}
+\definecolor{MarzRoyal}{rgb}{0.2, 0.2, 0.8}
+\definecolor{MarzGreen}{rgb}{0, 0.4, 0}
+\definecolor{MarzPurple}{rgb}{0.5, 0, 0.5}
+\definecolor{MarzGold}{rgb}{1.0, 0.84, 0}
+\definecolor{MarzRed}{rgb}{1.0, 0, 0}
+\definecolor{MarzDarkRed}{rgb}{0.4, 0, 0}
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  New Commands  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Image Database #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\DTLnewdb{imageDB}
+\newcommand{\addImageDBEntry}[5]{%
+	\DTLnewrow{imageDB}%
+	\DTLnewdbentry{imageDB}{Page}{#1}%
+	\DTLnewdbentry{imageDB}{AdditionalInformation}{#2}%
+	\DTLnewdbentry{imageDB}{URL}{#3}%
+	\DTLnewdbentry{imageDB}{ArtName}{#4}%
+	\DTLnewdbentry{imageDB}{Artist}{#5}%
+}%
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Auto-Shadowfy Class Name  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\shadowfyClassName}[1]{%
+	\def\currentWord{}%
+	\StrBefore{#1}{ }[\currentWord]%
+	\ifx\currentWord\empty
+	% Reached the last word (no more spaces)
+		\customtitle{#1}
+	\else
+    	% Process the current word (replace this with your desired action)
+		\customtitle{\currentWord} ~
+	% Remove the processed word from the string
+		\StrBehind{#1}{\currentWord }[\remainingString]%
+	% Call the command recursively to process the next word
+		\shadowfyClassName{\remainingString}%
+	\fi
+}
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# No-Page-Break Sections #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \newcommand{\nopagebreakchapter}[1]{%
 	{\let\clearpage\relax \chapter*{#1}}%
 }%
-
 \newcommand{\nopagebreaksection}[1]{%
 	{\let\clearpage\relax \section*{#1}}%
 }%
-
-\tikzfading[name=fade down,
-top color=transparent!60,
-bottom color=transparent!100]
-
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Monster-Banner  Page  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \newcommand{\MonsterBannerGraphic}[5]{
 	\newpage
 	\newgeometry{
@@ -76,7 +128,9 @@ bottom color=transparent!100]
 	%{\let\clearpage\relax \section*{\entryfont #1}}
 	\nopagebreaksection{#1}
 }
-
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Footer  Monser-Image  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \newcommand{\MonsterFooterGraphic}[4]{
 	\newpage
 	\newgeometry{
@@ -95,35 +149,53 @@ bottom color=transparent!100]
 		};%
 	\end{tikzpicture}%
 }
-
-\newcommand{\MonsterShortInfoBox}[5]{
-	\node[above right=#1 and #2 of posSW, anchor=south west] (infotext) {%
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Monster Graphic + Short Info  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newtcolorbox{mytextbox}[3][]{
+  enhanced,
+  boxrule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  frame hidden,
+  opacityback=0,
+  width=#2,
+  valign=center,
+  left=2pt, % Set left padding to zero
+  right=2pt, % Set right padding to zero
+  top=2pt, % Set top padding to zero
+  bottom=2pt, % Set bottom padding to zero
+  overlay={
+    \node[opacity=0.8, anchor=north west, inner sep=0pt, outer sep=0pt]
+    at (frame.north west) {\includegraphics[width=#2, height=#3]{\PATH monsters/stylesheets/images/short_info_parchment_background(2).png}};
+  },
+  #1
+}
+\newcommand{\MonsterShortInfoBox}[6]{
+	\node[xshift=#1, yshift=#2, anchor=north west] at (0,0) {%
 		\begin{tikzpicture}%
-			\node [rotate=#3, inner sep=5pt, fill=PhbTan!20, path fading] {%
-				\begin{varwidth}{#4}%
-					\scriptsize{#5}%
-				\end{varwidth}%
+			\scriptsize{
+			\node [rotate=#3, inner sep=0pt] {%
+				\begin{mytextbox}{#4}{\dimexpr 1.2\fontdimen6\font * (#5+1)\relax}%
+					#6%
+				\end{mytextbox}
 			};%
+			}
 		\end{tikzpicture}%
 	};%
 }
-
-\def\PictureOverlay{pictureoverlay}
-\def\InfoBoxOverlay{infoboxoverlay}
-
-\newcommand{\MonsterGraphicAndShortInfo}[9]{%
+\newcommand{\MonsterGraphicAndShortInfo}[8]{%
 	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
-		\node (posSW) at (current page text area.south west) {};%
-		\ifthenelse{\equal{#5}{\PictureOverlay}}{\MonsterShortInfoBox{#1}{#2}{#3}{#4}{#6}}{}%
-		\node[below left=#7 and 1cm of posSW, anchor=south west] (cornerSW) {%
-			\begin{minipage}{1.15\columnwidth}%%
-	        	\centering\includegraphics[width=1.025\columnwidth, height=#8, keepaspectratio]{#9}%
-	      	\end{minipage}%
+		%\ifthenelse{\equal{#1}{\PictureOverlay}}{\MonsterShortInfoBox#2}{}%
+		\node[xshift=#3, yshift=#4#5] at #6 {%
+	        \includegraphics[#7, keepaspectratio]{#8}%
 		};%
-		\ifthenelse{\equal{#5}{\InfoBoxOverlay}}{\MonsterShortInfoBox{#1}{#2}{#3}{#4}{#6}}{}%
+		\ifthenelse{\equal{#1}{\ShortInfoString}}{\MonsterShortInfoBox#2}{}%
 	\end{tikzpicture}%
 }%
-
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Monster Graphic + Info-Box #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \newcommand{\MonsterVariantInfoBox}[2]{
 	\begingroup%
 	\DndSetThemeColor[PhbLightCyan]%
@@ -132,12 +204,9 @@ bottom color=transparent!100]
 	\end{DndSidebar}%
 	\endgroup%
 }
-
 \newcommand{\MonsterVariant}[5]{%
 	\vspace*{-2.75cm + #1}\begin{center}\begin{tikzpicture}%
 		\node (picture) at (0,0) {\includegraphics[width=\columnwidth -2em, height=190pt, keepaspectratio]{#2}};%
 	\end{tikzpicture}\end{center}\vspace*{#3}%
 	\MonsterVariantInfoBox{#4}{#5}
 }%
-
-\newcommand{\blocktextlinebreak}{~~~~~~~~~~~~~~~~~~~\vspace*{-1.2\fontdimen6\font}\\}

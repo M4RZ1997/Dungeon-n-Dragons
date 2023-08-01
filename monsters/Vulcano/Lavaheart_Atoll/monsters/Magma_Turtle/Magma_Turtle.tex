@@ -1,0 +1,19 @@
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../}
+
+\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{\PATH monsters/stylesheets/monster_stylesheet}
+\usepackage{\PATH monsters/stylesheets/shadowfy}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
+\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
+
+\begin{document}
+
+	\input{Magma_Turtle_input.tex}
+
+\end{document}
