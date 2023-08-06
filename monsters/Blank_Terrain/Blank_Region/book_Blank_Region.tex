@@ -1,0 +1,45 @@
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../}
+
+\usepackage[justified]{\PATH dndtemplate/dnd}
+
+\usepackage{\PATH monsters/stylesheets/monster_stylesheet}
+\usepackage{\PATH monsters/stylesheets/monster_book_commands}
+\usepackage{\PATH monsters/stylesheets/shadowfy}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
+\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
+\newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
+
+\begin{document}
+	% Titlepage	
+	\monstersTitlePage{Blank Region}% Name of Region
+		{example-image-c}% Front Cover image
+		{0.5cm}% Horizontal Offset
+		{0cm}% Vertical Offset
+		{height=\paperheight}% dimensions of image
+		{https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/mwe/example-image-c.pdf}% URL of picture
+		{example-image-c}% image name
+		{LaTeX}% Artist
+		{A collection of homebrew monsters found in the Blank Region}% Subtitle on Frontcover
+	
+	\tableofcontents
+	
+	\mainmatter
+	
+	\input{monsters/Blank_Monster/Blank_Monster_input.tex}
+	
+	% Final Page
+	\monstersLastPage{example-image-c}% Front Cover image
+		{0cm}% Horizontal Offset
+		{5.5cm}% Vertical Offset
+		{height=\paperheight}% dimensions of image
+		{https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/mwe/example-image-c.pdf}% URL of picture
+		{example-image-c}% image name
+		{LaTeX}% Artist
+		{This is blank}% Additional Information displayed on last page
+\end{document}
