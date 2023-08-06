@@ -123,17 +123,18 @@
 
 % PASSIVE PERCEPTION
 \rput[cc]( 57.99946577,256.785460244){\Large \entryfont{%
+	\ifthenelse{\equal{\PassivePerceptionModifierValue}{}}{\def\tempModifier{0}}{\def\tempModifier{\PassivePerceptionModifierValue}}%
 	\ifthenelse{\equal{\PerceptionProficiencyValue}{P}}%
 	{%
-		\intcalcAdd{10}{\intcalcAdd{\WisdomModifierValue}{\ProficiencyValue}}%
+		\intcalcAdd{10}{\intcalcAdd{\tempModifier}{\intcalcAdd{\WisdomModifierValue}{\ProficiencyValue}}}%
 	}%
 	{%
 		\ifthenelse{\equal{\PerceptionProficiencyValue}{E}}%
 		{%
-			\intcalcAdd{10}{\intcalcAdd{\WisdomModifierValue}{\intcalcMul{\ProficiencyValue}{2}}}%
+			\intcalcAdd{10}{\intcalcAdd{\tempModifier}{\intcalcAdd{\WisdomModifierValue}{\intcalcMul{\ProficiencyValue}{2}}}}%
 		}%
 		{%
-			\intcalcAdd{10}{\WisdomModifierValue}%
+			\intcalcAdd{10}{\intcalcAdd{\tempModifier}{\WisdomModifierValue}}%
 		}%
 	}%
 }}%
