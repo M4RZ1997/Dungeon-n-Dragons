@@ -5,6 +5,7 @@
 \usepackage{listings}
 \usepackage{shortvrb}
 \usepackage{stfloats}
+\usepackage{changepage}
 
 %\usepackage{pstricks}
 %\usepackage[pscoord]{eso-pic}% The zero point of the coordinate system is the lower left corner of the page (the default).
@@ -69,13 +70,22 @@
 %                                                                                                    %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Image Database #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \DTLnewdb{imageDB}
-\newcommand{\addImageDBEntry}[5]{%
+\newcommand{\addImageDBEntry}[6]{%
 	\DTLnewrow{imageDB}%
-	\DTLnewdbentry{imageDB}{Page}{#1}%
-	\DTLnewdbentry{imageDB}{AdditionalInformation}{#2}%
-	\DTLnewdbentry{imageDB}{URL}{#3}%
-	\DTLnewdbentry{imageDB}{ArtName}{#4}%
-	\DTLnewdbentry{imageDB}{Artist}{#5}%
+	\ifthenelse{\equal{#1}{FrontCover}}{%
+		\DTLnewdbentry{imageDB}{Page}{#2}%
+	}{%
+		\ifthenelse{\equal{#1}{BackCover}}{%
+			\DTLnewdbentry{imageDB}{Page}{#2}%
+		}{%
+			\expandafter\edef\csname savedvalue#1\endcsname{#2}%
+			\DTLnewdbentry{imageDB}{Page}{\csname savedvalue#1\endcsname}%
+		}%
+	}%
+	\DTLnewdbentry{imageDB}{AdditionalInformation}{#3}%
+	\DTLnewdbentry{imageDB}{URL}{#4}%
+	\DTLnewdbentry{imageDB}{ArtName}{#5}%
+	\DTLnewdbentry{imageDB}{Artist}{#6}%
 }%
 % -------------------------------------------------------------------------------------------------- %
 %                                                                                                    %
@@ -172,7 +182,7 @@
   #1
 }
 \newcommand{\MonsterShortInfoBox}[6]{
-	\node[xshift=#1, yshift=#2, anchor=north west] at (0,0) {%
+	\node[xshift=#1, yshift=#2, anchor=north west] at (mainpicture) {%
 		\begin{tikzpicture}%
 			\scriptsize{
 			\node [rotate=#3, inner sep=0pt] {%
@@ -187,7 +197,7 @@
 \newcommand{\MonsterGraphicAndShortInfo}[8]{%
 	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 		%\ifthenelse{\equal{#1}{\PictureOverlay}}{\MonsterShortInfoBox#2}{}%
-		\node[xshift=#3, yshift=#4#5] at #6 {%
+		\node[xshift=#3, yshift=#4#5] (mainpicture) at #6 {%
 	        \includegraphics[#7, keepaspectratio]{#8}%
 		};%
 		\ifthenelse{\equal{#1}{\ShortInfoString}}{\MonsterShortInfoBox#2}{}%
