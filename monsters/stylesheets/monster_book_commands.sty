@@ -43,6 +43,7 @@
 % ------------------------------------------------------------------------------------------------- %
 %                                                                                                   %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Last Page #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\ThanksSpacing}{3cm}
 \newcommand{\monstersLastPage}[8]{%
 	\clearpage%
 	\thispagestyle{empty}%
@@ -61,7 +62,7 @@
 					\parbox{0.4\textwidth}{%
 						\centering\customtitle{Big} ~ \customtitle{Thanks} ~ \customtitle{To} ~ \customtitle{These} ~ \customtitle{Artists}%
 					}%
-					\par\vspace*{3cm}%
+					\par\vspace*{\ThanksSpacing}%
 					\parbox{0.45\textwidth}{%
 						\large{\begin{itemize}[label=\textcolor{white}{\textbullet}]%
 							\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{%
