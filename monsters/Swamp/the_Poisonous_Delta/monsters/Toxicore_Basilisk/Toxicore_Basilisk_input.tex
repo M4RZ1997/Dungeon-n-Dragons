@@ -43,7 +43,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
 
     % If you want to use commas in the key values, enclose the values in braces.
     \DndMonsterBasics[
-        armor-class = {14},
+        armor-class = {14 (natural armor)},
         hit-points  = {\DndDice{3d6 + 6}},
         speed       = {30 ft., climb 25 ft.},
     ]
@@ -168,7 +168,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
         senses = {Darkvision 60ft, passive Perception 15},
         %condition-immunities = {frightened, poisoned},
         languages = {-},
-        challenge = 5,
+        challenge = 6,
     ]
 	
 	\DndMonsterAction{Steelhide}
@@ -183,7 +183,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
 	\DndMonsterSection{Actions}
 	
 	\DndMonsterAction{Multiattack}
-	The Scythera Basilisk makes two scythe attacks or one scythe attack and one bite attack.
+	The Scythera Basilisk makes two scythe attacks or one Scythe attack and one Poisonous Sting attack.
 	
 	\DndMonsterAttack[
       name=Scythe,
@@ -233,7 +233,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
     % If you want to use commas in the key values, enclose the values in braces.
     \DndMonsterBasics[
         armor-class = {16 (natural armor)},
-        hit-points  = {\DndDice{16d12 + 64}},
+        hit-points  = {\DndDice{14d12 + 56}},
         speed       = {40 ft.},
     ]
     
@@ -278,7 +278,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
       name=Claw,
       distance=melee, % valid options are in the set {both,melee,ranged},
       %type=weapon, %valid options are in the set {weapon,spell}
-      mod=+19,
+      mod=+9,
       reach=10,
       %range=20/60,
       targets=one target,
@@ -295,7 +295,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
       name=Bite,
       distance=melee, % valid options are in the set {both,melee,ranged},
       %type=weapon, %valid options are in the set {weapon,spell}
-      mod=+10,
+      mod=+9,
       reach=5,
       %range=20/60,
       targets=one target,
@@ -312,7 +312,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
 	The Bladescale Basilisk whips its tail in a wide arc, sending forth a flurry of razor-sharp scales. Each creature within a 20-foot cone must make a DC 16 Dexterity saving throw, taking \DndDice{8d6} slashing damage on a failed save, or half as much damage on a successful one.
 
 	\DndMonsterAction{Razor Bash (Recharge 5-6)}
-	The Bladescale Basilisk charges forward in a straight line, bashing everything and everyone in its path. Each creature in a 60-foot line must make a DC 16 Dexterity saving throw, taking \DndDice{10d6} bludgeoning damage and being knocked prone on a failed save, or half as much damage on a successful one.
+	The Bladescale Basilisk charges forward in a straight line, bashing everything and everyone in its path. Each creature in a 60-foot line must make a DC 16 Dexterity saving throw, taking \DndDice{8d6} bludgeoning damage and being knocked prone on a failed save, or half as much damage on a successful one.
 \end{DndMonster}
 
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%

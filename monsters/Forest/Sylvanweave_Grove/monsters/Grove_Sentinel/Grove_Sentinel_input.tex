@@ -20,7 +20,7 @@
       	\end{minipage}%
 	};%
 \end{tikzpicture}%
-\addImageDBEntry{Page 1}{Art}{https://openart.ai/discovery/sd-1006992333256011866}{Lush Forest}{openart.ai}%
+\addImageDBEntry{GroveSentinel1}{Page \thepage}{Art}{https://openart.ai/discovery/sd-1006992333256011866}{Lush Forest}{openart.ai}%
 
 \vspace*{-1.8\fontdimen6\font}
 
@@ -67,7 +67,7 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
         senses = {Passive Perception 15},
         %condition-immunities = {frightened, poisoned},
         languages = {Sylvan},
-        challenge = 3,
+        challenge = 2,
     ]
     
 	\DndMonsterAction{Nature's Embrace}
@@ -111,14 +111,14 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
 \vspace*{-20cm}\hspace*{6cm}\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 		\node (picture) at (0,0) {\includegraphics[width=\columnwidth -2em, height=250pt, keepaspectratio]{Grove_Sentinel_Sproutling.png}};%
 \end{tikzpicture}%
-\addImageDBEntry{Page 1}{Art}{https://www.artofmtg.com/art/murasa-sproutling/}{Murasa Sproutling MtG Art from Zendikar Rising}{Svetlin Velinov}%
+\addImageDBEntry{GroveSentinel2}{Page \thepage}{Art}{https://www.artofmtg.com/art/murasa-sproutling/}{Murasa Sproutling MtG Art from Zendikar Rising}{Svetlin Velinov}%
 
 \newpage
 
 \vspace*{-2cm}\begin{center}\begin{tikzpicture}%
 	\node (picture) at (0,0) {\includegraphics[width=0.5\textwidth, height=225pt, keepaspectratio]{Grove_Sentinel_Armor.png}};%
 \end{tikzpicture}\end{center}\vspace*{-2cm}%
-\addImageDBEntry{Page 2}{Art}{https://gathering-art.tumblr.com/post/144103918648/ashaya-the-awoken-world-token-by-raymond-swanland}{Ashaya, The Awoken World Token}{Raymond Swanland}%
+\addImageDBEntry{GroveSentinel3}{Page \thepage}{Art}{https://gathering-art.tumblr.com/post/144103918648/ashaya-the-awoken-world-token-by-raymond-swanland}{Ashaya, The Awoken World Token}{Raymond Swanland}%
 
 % Monster stat block
 \begin{DndMonster}[width=0.5\textwidth]{Grove Sentinel (Armor)}
@@ -205,7 +205,7 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
 
     % If you want to use commas in the key values, enclose the values in braces.
     \DndMonsterBasics[
-        armor-class = {16 (natural armor)},
+        armor-class = {15 (natural armor)},
         hit-points  = {\DndDice{16d10 + 48}},
         speed       = {20 ft.},
     ]
@@ -281,22 +281,23 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
       	\end{minipage}%
 	};%
 \end{tikzpicture}%
-\addImageDBEntry{Page 2}{Art}{https://www.artofmtg.com/art/ancient-greenwarden/}{Ancient Greenwarden MtG Art from Zendikar Rising}{Grzegorz Rutkowski}%
+\addImageDBEntry{GroveSentinel4}{Page \thepage}{Art}{https://www.artofmtg.com/art/ancient-greenwarden/}{Ancient Greenwarden MtG Art from Zendikar Rising}{Grzegorz Rutkowski}%
 
 % --------------------------------------------------------------------------------------------------- %
 % ################################################################################################### %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-# Monster-Sheet with  full Banner-Graphic #-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % ################################################################################################### %
 % --------------------------------------------------------------------------------------------------- %
-
+\def\primarycolor{titlered}%
+\def\secondarycolor{white}%
 \MonsterBannerGraphic%
-	{Sentinel Forest}% name of the monster to be displayed as header
+	{\entryfont{\shadowfy{Sentinel Forest}}}% name of the monster to be displayed as header
 	{160pt}% offset for the section header
 	{300pt}% max height of the image
 	{Sentinel_Forest_2.png}% image to be displayed as a banner
 	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
 \addcontentsline{toc}{section}{Sentinel Forest}
-\addImageDBEntry{Page 3}{Art}{https://www.artstation.com/artwork/Z356x}{Concept Art for Battle for Zendikar}{Aleksi Briclot}%
+\addImageDBEntry{GroveSentinel5}{Page \thepage}{Art}{https://www.artstation.com/artwork/Z356x}{Concept Art for Battle for Zendikar}{Aleksi Briclot}%
 
 \DndDropCapLine{S}entinel Forest is an enchanting\\woodland of towering trees, vibrant\\foliage, and serene tranquility. Crystal-\\clear streams wind through the forest,\\offering sanctuary to diverse wildlife. Guarded by\\mighty Grove Sentinels, fierce protectors of nature's\\balance, this sacred realm radiates beauty and mystery. Enter with reverence to embrace the forest's harmony or risk the wrath of its guardians.
 
@@ -306,7 +307,7 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
 
     % If you want to use commas in the key values, enclose the values in braces.
     \DndMonsterBasics[
-        armor-class = {20},
+        armor-class = {20 (natural armor)},
         hit-points  = {\DndDice{24d12 + 144}},
         speed       = {30 ft.},
     ]
@@ -403,4 +404,4 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
 \vspace*{1.5cm}\begin{center}\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 	\node (picture) at (0,0) {\includegraphics[width=0.5\textwidth, height=180pt, keepaspectratio]{Ancient_Grove_Sentinel.png}};%
 \end{tikzpicture}\end{center}%
-\addImageDBEntry{Page 3}{Art}{https://www.artofmtg.com/art/ashaya-soul-of-the-wild/}{Ashaya, Soul of the Wild MtG Art from Zendikar Rising}{Chase Stone}%
+\addImageDBEntry{GroveSentinel6}{Page \thepage}{Art}{https://www.artofmtg.com/art/ashaya-soul-of-the-wild/}{Ashaya, Soul of the Wild MtG Art from Zendikar Rising}{Chase Stone}%
