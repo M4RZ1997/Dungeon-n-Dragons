@@ -16,27 +16,27 @@
 % -------------------------------------- Base Shadowfy Makro -------------------------------------- %
 \newcommand\shadowfy[1]{\expandafter\shadowfypars#1\par\relax\relax}
 \long\def\shadowfypars#1\par#2\relax{%
-  \ifx#1\relax\else
+  \ifx#1\relax\else%
     \shadowfywords#1 \relax\relax%
   \fi%
   \ifx\relax#2\else\par\shadowfypars#2\relax\fi%
 }
 \def\shadowfywords#1 #2\relax{%
-  \ifx#1\relax\else
+  \ifx#1\relax\else%
     \shadowfyletters#1\relax\relax%
   \fi%
   \ifx\relax#2\else\ \shadowfywords#2\relax\fi%
 }
 \def\shadowfyletters#1#2\relax{%
   \shadow{#1}%
-  \ifx\relax#2\else\shadowfyletters#2\relax\fi}
+  \ifx\relax#2\else\shadowfyletters#2\relax\fi}%
 
-\newlength\shadowHoffset
-\newlength\shadowVoffset
-\setlength\shadowHoffset{1.5pt}
-\setlength\shadowVoffset{1.5pt}
+\newlength\shadowHoffset%
+\newlength\shadowVoffset%
+\setlength\shadowHoffset{1.5pt}%
+\setlength\shadowVoffset{1.5pt}%
 
-\def\stackgap{0.1pt}
+\def\stackgap{0.1pt}%
 
 \def\shadow#1{\setstackgap{L}{\stackgap}\def\stacktype{L}%
 %\def\useanchorwidth{T}% CAN BE COMMENTED FOR MORE INTERLETTER SPACE.
@@ -61,11 +61,11 @@
         \StrChar{#1}{\i}[\currentletter]%
         \mytitleformat{\currentletter}%
     }%
-}
+}%
 \newcommand{\mytitleformat}[1]{%
 	\isUpperCase{#1}\ifnum\bool=1 \xdef\ucletter{#1}\else\toUpperCaseLetter{#1}\fi%
     	\titlefont{\fontsize{\ifnum\bool=1 40\else30\fi}{50}\selectfont\shadowfy{\ucletter}}%
-}	
+}%
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ------------------------------- Macros for UpperCase Manipulation ------------------------------- %

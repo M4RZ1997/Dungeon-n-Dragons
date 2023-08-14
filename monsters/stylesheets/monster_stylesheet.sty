@@ -62,8 +62,10 @@
 \definecolor{MarzGreen}{rgb}{0, 0.4, 0}
 \definecolor{MarzPurple}{rgb}{0.5, 0, 0.5}
 \definecolor{MarzGold}{rgb}{1.0, 0.84, 0}
+\definecolor{MarzLightGold}{rgb}{1.0, 0.73, 0.23}
 \definecolor{MarzRed}{rgb}{1.0, 0, 0}
 \definecolor{MarzDarkRed}{rgb}{0.4, 0, 0}
+\definecolor{MarzOcker}{rgb}{0.79, 0.53, 0.15}
 % -------------------------------------------------------------------------------------------------- %
 % ################################################################################################## %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  New Commands  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
@@ -93,17 +95,17 @@
 \newcommand{\shadowfyClassName}[1]{%
 	\def\currentWord{}%
 	\StrBefore{#1}{ }[\currentWord]%
-	\ifx\currentWord\empty
+	\ifx\currentWord\empty%
 	% Reached the last word (no more spaces)
-		\customtitle{#1}
-	\else
+		\customtitle{#1}%
+	\else%
     	% Process the current word (replace this with your desired action)
-		\customtitle{\currentWord} ~
+		\customtitle{\currentWord}%
 	% Remove the processed word from the string
-		\StrBehind{#1}{\currentWord }[\remainingString]%
+		\StrBehind{#1}{\currentWord}[\remainingString]%
 	% Call the command recursively to process the next word
 		\shadowfyClassName{\remainingString}%
-	\fi
+	\fi%
 }
 % -------------------------------------------------------------------------------------------------- %
 %                                                                                                    %
