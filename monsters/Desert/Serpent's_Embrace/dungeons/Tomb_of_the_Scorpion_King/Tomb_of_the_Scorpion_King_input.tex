@@ -1,0 +1,79 @@
+\graphicspath{{./images},{./monsters/Blank_Monster/images}}
+
+\MonsterSheetGeometry
+
+\dungeonTitlePage{MarzDarkRed/white}%
+	{0cm}%
+	{-0.25cm}%
+	{height=\paperheight}%
+	{Tomb_of_the_Scorpion_King_filter.png}%
+	{%
+		{TomboftheScorpionKing1}{Page \thepage}{Art}{https://www.imagine.art/}{Tomb of the Scorpion King}{ImagineAI}%
+	}%
+	{Tomb of the Scorpion King}%
+	{black/white}%
+	
+\clearpage
+
+\begin{tikzpicture}[remember picture,overlay]
+	\draw[red, thick] (current page.center) -- (current page.north);
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay, every shadow/.style={opacity=.8,fill=black}]
+	\node[yshift=0.25\paperheight] at (current page.center) {\includegraphics[width=\paperwidth - 8pt, height=14cm]{\PATH monsters/stylesheets/images/dungeon_map.png}};
+	
+	\begin{scope}[every path/.style={black!80, thick}]
+		\def\xstart{1.25cm}\def\ystart{-1cm}
+		\foreach \y in {0,...,27}
+			\draw (\xstart, \ystart - 0.3*\y cm) -- ++(15.8cm, 0);
+		\def\xstart{1.5cm}\def\ystart{-0.75cm}
+		\foreach \x in {0,...,51}
+			\draw (\xstart + 0.3*\x cm, \ystart) -- ++(0, -8.6cm);
+	\end{scope}
+	
+	\begin{scope}
+		%\path[draw, rounded corners=0.5cm] ($(current page.center) + (-0.5\paperwidth + 75pt, 0.25\paperheight - 4.5cm)$) rectangle ($(current page.center) + (0.5\paperwidth - 75pt, 0.25\paperheight + 4.5cm)$);
+		\path[clip, rounded corners=0.5cm] ($(current page.center) + (-0.5\paperwidth + 75pt, 0.25\paperheight - 4.5cm)$) rectangle ($(current page.center) + (0.5\paperwidth - 75pt, 0.25\paperheight + 4.5cm)$);
+		
+		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm, yshift=0.25\paperheight] at (current page.center) {{\transparent{0.7}\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH monsters/stylesheets/images/sand_dungeon_texture.jpg}}};
+		
+		\begin{scope} % Map Features
+			% Contour Lines			
+			\path[draw] (7.8cm,-4.8cm) -- (7.8cm,-6.1cm) arc[start angle=-180, end angle=0, radius=0.9cm] -- (9.6cm,-4.8cm);
+			\path[draw] (7.65cm,-4.3cm) -- (7.65cm,-6.1cm) arc[start angle=-180, end angle=0, radius=1.05cm] -- (9.75cm,-4.3cm);
+			\path[draw] (7.5cm,-4.3cm) -- (7.5cm,-6.1cm) arc[start angle=-180, end angle=0, radius=1.2cm] -- (9.9cm,-4.3cm);
+			\path[draw] (7.35cm,-4cm) -- (7.35cm,-6.1cm) arc[start angle=-180, end angle=0, radius=1.35cm] -- (10.05cm,-4cm);
+			\path[draw] (7.2cm,-4cm) -- (7.2cm,-6.1cm) arc[start angle=-180, end angle=0, radius=1.5cm] -- (10.2cm,-4cm);
+			\path[draw] (7.05cm,-4cm) -- (7.05cm,-6.1cm) arc[start angle=-180, end angle=0, radius=1.65cm] -- (10.35cm,-4cm);
+			\path[draw] (6.9cm,-4cm) -- (6.9cm,-6.1cm) arc[start angle=-180, end angle=0, radius=1.8cm] -- (10.5cm,-4cm);
+			
+			% Images
+			\node[inner sep=0pt,outer sep=0pt, rotate=180] at (8.7cm,-5.95cm) {\includegraphics[height=1.5cm]{Scorpion_Golden_Statue.png}};
+		
+			% Traps
+			\trapFields{11.4cm,-4cm}
+			\trapFields{11.7cm,-4cm}
+			\trapFields{11.7cm,-3.7cm}
+			\trapFields{11.4cm,-3.4cm}
+			\trapFields{12cm,-3.1cm}
+			\trapFields{11.7cm,-2.8cm}
+			\trapFields{12cm,-2.8cm}
+			\trapFields{12cm,-2.5cm}
+		\end{scope}
+		
+		\path[clip, drop shadow] (0.5cm,-10cm) -- (5.1cm,-10cm) -- (5.1cm,-8.8cm) -- (5.1cm,-2.2cm) -- (6cm,-2.2cm) -- (6cm,-4cm) -- (6.6cm,-4cm) arc[start angle=90, end angle=16, radius=1.25cm] -- (9.6cm,-4.9cm)  arc[start angle=-196, end angle=-270, radius=1.25cm] -- (11.4cm,-4cm) -- (11.4cm,-1.9cm) -- (12cm,-1.9cm) -- (12cm,-2.2cm) -- (12.3cm,-2.2cm) -- (12.3cm,-1.3cm) -- (13.2cm,-1.3cm) -- (13.2cm,-2.8cm) -- (12.9cm,-2.8cm) -- (12.9cm,-1.6cm) -- (12.6cm,-1.6cm) -- (12.6cm,-2.5cm) -- (12.3cm,-2.5cm) -- (12.3cm,-8.8cm)
+		-- (5.1cm,-8.8cm) -- (5.1cm,-10cm) -- (17.5cm,-10cm) -- (17.5cm,0cm) -- (0.5cm,0cm) -- cycle;
+		
+		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm, yshift=0.25\paperheight] at (current page.center) {{\transparent{0.7}\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH monsters/stylesheets/images/rocky_dungeon_texture.jpg}}};
+		
+		\path[clip, drop shadow] (0.5cm,-10cm) -- (5.1cm,-10cm) -- (5.1cm,-8.8cm) -- (8.4cm,-4.9cm) -- (8.4cm,-4.3cm) -- (7.8cm,-4.3cm) -- (7.8cm,-2.5cm) -- (9.6cm,-2.5cm) -- (9.6cm,-4.3cm) -- (9cm,-4.3cm) -- (9cm,-4.9cm) 
+		-- (12.3cm,-8.8cm) -- (12.3cm,-10cm) -- (17.5cm,-10cm) -- (17.5cm,0cm) -- (0.5cm,0cm) -- cycle;
+		
+		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm, yshift=0.25\paperheight, drop shadow] at (current page.center) {\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH monsters/stylesheets/images/sandstone_dungeon_texture.jpg}};
+	\end{scope}
+	
+	\begin{scope} % Outer Ornaments
+		\node[inner sep=0pt,outer sep=0pt, xshift=-0.5\paperwidth+130pt, yshift=0.25\paperheight] at (current page.center) {\includegraphics[height=6cm]{Scorpion_Golden_Ornament.png}};
+		\node[inner sep=0pt,outer sep=0pt, xshift=0.5\paperwidth-130pt, yshift=0.25\paperheight, rotate=180] at (current page.center) {\includegraphics[height=6cm]{Scorpion_Golden_Ornament.png}};
+	\end{scope}
+\end{tikzpicture}
