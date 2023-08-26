@@ -1,0 +1,32 @@
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../}
+
+\usepackage[justified]{\PATH dndtemplate/dnd}
+
+\usepackage{\PATH regions/stylesheets/monster_book_commands}
+\usepackage{\PATH regions/stylesheets/regions_stylesheet}
+\usepackage{\PATH regions/stylesheets/dungeon_stylesheet}
+\usepackage{\PATH regions/stylesheets/monster_stylesheet}
+\usepackage{\PATH regions/stylesheets/shadowfy}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
+\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
+\newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
+
+\begin{document}
+	% Titlepage	
+	\monstersTitlePage{Frostfall Metropolis}{images/titlepage_Frostfall_Metropolis.png}{0cm}{0cm}{height=\paperheight}{https://br.pinterest.com/pin/298222806549427774/}{Argunheim}{Conner MacKenzie}{A collection of homebrew monsters found in the Frostfall Metropolis Region}
+	
+	\tableofcontents
+	
+	\mainmatter
+	
+	\input{monsters/The_Djenu/the_Djenu_input.tex}
+	
+	% Final Page
+	\monstersLastPage{images/backcover_Frostfall_Metropolis.jpg}{0cm}{6cm}{height=\paperheight}{https://fantasyartwatch.tumblr.com/post/127189623546/winter-castle-by-silentfield}{Winter Castle}{Silentfield}{}
+\end{document}

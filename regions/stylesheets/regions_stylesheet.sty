@@ -1,0 +1,72 @@
+% ------------------------------------------------------------------------------------------------- %
+%                	        regions_stylesheet.sty  Marcel Zauder 09/08/2023       	                %
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+\usepackage{xcolor}
+\usepackage{datatool}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ New Geometry ----------------------------------------- %
+\newcommand{\MonsterSheetGeometry}{%
+	\newgeometry{%
+		hmargin 	= .5in, % Left and right margins
+		top 		= .46in, % Top of text area to top of page
+		bottom		= .4in, % Bottom of text area to bottom of page
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}%
+}%
+\newcommand{\DungeonSheetGeometry}{%
+	\newgeometry{%
+		hmargin 	= .5in, % Left and right margins
+		top 		= .46in, % Top of text area to top of page
+		bottom		= .4in, % Bottom of text area to bottom of page
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}%
+}%
+% ------------------------------------------------------------------------------------------------ %
+% ################################################################################################ %
+% ------------------------------------------ New Colors ------------------------------------------ %
+\definecolor{MarzDarkBlue}{rgb}{0.1, 0, 0.2}
+\definecolor{MarzBlue}{rgb}{0.1, 0.1, 0.5}
+\definecolor{MarzRoyal}{rgb}{0.2, 0.2, 0.8}
+\definecolor{MarzGreen}{rgb}{0, 0.4, 0}
+\definecolor{MarzPurple}{rgb}{0.5, 0, 0.5}
+\definecolor{MarzGold}{rgb}{1.0, 0.84, 0}
+\definecolor{MarzLightGold}{rgb}{1.0, 0.73, 0.23}
+\definecolor{MarzRed}{rgb}{1.0, 0, 0}
+\definecolor{MarzDarkRed}{rgb}{0.4, 0, 0}
+\definecolor{MarzOcker}{rgb}{0.79, 0.53, 0.15}
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  New Commands  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Image Database #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\DTLnewdb{imageDB}
+\newcommand{\addImageDBEntry}[6]{%
+	\DTLnewrow{imageDB}%
+	\ifthenelse{\equal{#1}{FrontCover}}{%
+		\DTLnewdbentry{imageDB}{Page}{#2}%
+	}{%
+		\ifthenelse{\equal{#1}{BackCover}}{%
+			\DTLnewdbentry{imageDB}{Page}{#2}%
+		}{%
+			\expandafter\edef\csname savedvalue#1\endcsname{#2}%
+			\DTLnewdbentry{imageDB}{Page}{\csname savedvalue#1\endcsname}%
+		}%
+	}%
+	\DTLnewdbentry{imageDB}{AdditionalInformation}{#3}%
+	\DTLnewdbentry{imageDB}{URL}{#4}%
+	\DTLnewdbentry{imageDB}{ArtName}{#5}%
+	\DTLnewdbentry{imageDB}{Artist}{#6}%
+}%
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# No-Page-Break Sections #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\nopagebreakchapter}[1]{%
+	{\let\clearpage\relax \chapter*{#1}}%
+}%
+\newcommand{\nopagebreaksection}[1]{%
+	{\let\clearpage\relax \section*{#1}}%
+}%

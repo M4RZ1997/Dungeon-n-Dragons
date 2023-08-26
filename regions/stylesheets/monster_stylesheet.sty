@@ -1,0 +1,153 @@
+% ------------------------------------------------------------------------------------------------- %
+%                	        monster_stylesheet.sty  Marcel Zauder 02/04/2023       	                %
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+\usepackage{fontspec}
+
+\usepackage[singlelinecheck=false]{caption}
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{shortvrb}
+\usepackage{stfloats}
+\usepackage{changepage}
+
+%\usepackage{pstricks}
+%\usepackage[pscoord]{eso-pic}% The zero point of the coordinate system is the lower left corner of the page (the default).
+\usepackage{calc}
+\usepackage[absolute]{textpos}
+\usepackage{graphbox}
+
+\usepackage{tikzpagenodes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fadings} 
+\usepackage{varwidth}
+
+\captionsetup[table]{labelformat=empty,font={sf,sc,bf,},skip=0pt}
+
+\MakeShortVerb{|}
+
+\lstset{%
+  basicstyle=\ttfamily,
+  language=[LaTeX]{TeX},
+  breaklines=true,
+}
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% ------------------------------------------- Variables -------------------------------------------- %
+\def\ShortInfoString{shortinfo}
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% ---------------------------------------- Tikz-Fading Path ---------------------------------------- %
+\tikzfading[%
+	name=fade down,%
+	top color=transparent!60,%
+	bottom color=transparent!100%
+]%
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  New Commands  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Monster-Banner  Page  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\MonsterBannerGraphic}[5]{
+	\newpage
+	\newgeometry{
+		hmargin   = .5in,
+		top       = #2, % Top of text area to top of page
+		bottom    = .5in,
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}
+	
+	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+		\node (posSW) at (current page text area.north west) {};%
+		\node[above left=#2 and 1.25cm of posSW, anchor=north west] (cornerSW) {%
+			\begin{minipage}{\paperwidth}%%
+	        	\centering\includegraphics[width=\paperwidth, height=#3#5]{#4}%
+	      	\end{minipage}%
+		};%
+	\end{tikzpicture}%
+	%{\let\clearpage\relax \section*{\entryfont #1}}
+	\nopagebreaksection{#1}
+}
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Footer  Monser-Image  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\MonsterFooterGraphic}[4]{
+	\newpage
+	\newgeometry{
+		hmargin   = .5in,
+		top       = .46in, % Top of text area to top of page
+		bottom    = #1,
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}
+	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+		\node (posSW) at (current page text area.south west) {};%
+		\node[below left=#1 and 1.25cm of posSW, anchor=south west] (cornerSW) {%
+			\begin{minipage}{\paperwidth}%%
+	        	\centering\includegraphics[width=\paperwidth, height=#2#4]{#3}%
+	      	\end{minipage}%
+		};%
+	\end{tikzpicture}%
+}
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Monster Graphic + Short Info  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newtcolorbox{mytextbox}[3][]{
+  enhanced,
+  boxrule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  frame hidden,
+  opacityback=0,
+  width=#2,
+  valign=center,
+  left=2pt, % Set left padding to zero
+  right=2pt, % Set right padding to zero
+  top=2pt, % Set top padding to zero
+  bottom=2pt, % Set bottom padding to zero
+  overlay={
+    \node[opacity=0.8, anchor=north west, inner sep=0pt, outer sep=0pt]
+    at (frame.north west) {\includegraphics[width=#2, height=#3]{\PATH regions/stylesheets/images/backgrounds/Shortinfo/short_info_parchment_background(2).png}};
+  },
+  #1
+}
+\newcommand{\MonsterShortInfoBox}[6]{
+	\node[xshift=#1, yshift=#2, anchor=north west] at (mainpicture) {%
+		\begin{tikzpicture}%
+			\scriptsize{
+			\node [rotate=#3, inner sep=0pt] {%
+				\begin{mytextbox}{#4}{\dimexpr 1.2\fontdimen6\font * (#5+1)\relax}%
+					#6%
+				\end{mytextbox}
+			};%
+			}
+		\end{tikzpicture}%
+	};%
+}
+\newcommand{\MonsterGraphicAndShortInfo}[8]{%
+	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+		%\ifthenelse{\equal{#1}{\PictureOverlay}}{\MonsterShortInfoBox#2}{}%
+		\node[xshift=#3, yshift=#4#5] (mainpicture) at #6 {%
+	        \includegraphics[#7, keepaspectratio]{#8}%
+		};%
+		\ifthenelse{\equal{#1}{\ShortInfoString}}{\MonsterShortInfoBox#2}{}%
+	\end{tikzpicture}%
+}%
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Monster Graphic + Info-Box #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\MonsterVariantInfoBox}[2]{
+	\begingroup%
+	\DndSetThemeColor[PhbLightCyan]%
+	\begin{DndSidebar}{\large \entryfont Variant: #1}%
+		\noindent\small\entryfont #2%
+	\end{DndSidebar}%
+	\endgroup%
+}
+\newcommand{\MonsterVariant}[5]{%
+	\vspace*{-2.75cm + #1}\begin{center}\begin{tikzpicture}%
+		\node (picture) at (0,0) {\includegraphics[width=\columnwidth -2em, height=190pt, keepaspectratio]{#2}};%
+	\end{tikzpicture}\end{center}\vspace*{#3}%
+	\MonsterVariantInfoBox{#4}{#5}
+}%

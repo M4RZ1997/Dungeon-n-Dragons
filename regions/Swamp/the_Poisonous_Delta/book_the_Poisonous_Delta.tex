@@ -1,0 +1,35 @@
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../}
+
+\usepackage[justified]{\PATH dndtemplate/dnd}
+
+\usepackage{\PATH regions/stylesheets/monster_book_commands}
+\usepackage{\PATH regions/stylesheets/regions_stylesheet}
+\usepackage{\PATH regions/stylesheets/dungeon_stylesheet}
+\usepackage{\PATH regions/stylesheets/monster_stylesheet}
+\usepackage{\PATH regions/stylesheets/shadowfy}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
+\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
+\newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
+
+\begin{document}
+	% Titlepage	
+	\monstersTitlePage{The Poisonous Delta}{images/titlepage_the_Poisonous_Delta.jpg}{0.5cm}{0cm}{height=\paperheight}{https://www.artofmtg.com/art/swamp-46/}{Swamp MtG Art from Phyrexia: All Will Be One}{Julian Kok Joon Wen}{A collection of homebrew monsters found in the Poisonous Delta}
+	
+	\tableofcontents
+	
+	\mainmatter
+	
+	\input{monsters/Hemovoric_Venomite/Hemovoric_Venomite_input.tex}
+	\input{monsters/Plaguetooth_Spinox/Plaguetooth_Spinox_input.tex}
+	\input{monsters/Toxicore_Basilisk/Toxicore_Basilisk_input.tex}
+	
+	% Final Page
+	\renewcommand{\ThanksSpacing}{1cm}
+	\monstersLastPage{images/backcover_the_Poisonous_Delta.jpg}{0cm}{-8.5cm}{height=\paperheight}{https://www.artstation.com/artwork/4bVke1}{The Swamp}{Nikola Sinitsa}{}
+\end{document}

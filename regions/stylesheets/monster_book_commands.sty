@@ -1,0 +1,88 @@
+% ------------------------------------------------------------------------------------------------- %
+%                        monster_book_commands.sty  Marcel Zauder 27/07/2023       	                %
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+%\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{hyperref}
+
+\usepackage{titletoc}
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% --------------------------------------- ToC  Indentations ---------------------------------------- %
+\titlecontents{chapter}[0em]{\addvspace{1em}\bfseries}{\thecontentslabel\enspace}{}{\hfill\contentspage}
+\titlecontents{section}[2.5em]{}{\thecontentslabel\enspace}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsection}[6em]{}{\thecontentslabel\enspace}{}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsubsection}[10.5em]{}{\thecontentslabel\enspace}{}{\titlerule*[0.5pc]{.}\contentspage}
+% ################################################################################################# %
+% ----------------------------------------- New  Commands ----------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\monstersTitlePage}[9]{%
+	\begin{titlepage}
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};
+			\addImageDBEntry{FrontCover}{Front Cover}{Art}{#6}{#7}{#8}
+			\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyClassName{#1}};
+			
+			\node[yshift=0.45\paperheight] at (current page.center) {\includegraphics[width=0.11\paperwidth, keepaspectratio]{\PATH regions/stylesheets/images/book/DnD_Ampersand.png}};			
+			\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.375\paperheight)$);
+			\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+			
+			\node[yshift=-0.3\paperheight, xshift=-0.3\paperwidth] at (current page.center){\includegraphics[width=0.4\paperwidth, keepaspectratio]{\PATH regions/stylesheets/images/book/Homebrew_Banner.png}};
+			
+			\def\stackgap{0.01pt}
+			\node[yshift=-0.4\paperheight] at (current page.center) {\titlefont{ \shadowfy{#9}}};
+		\end{tikzpicture}
+	\end{titlepage}
+}%
+% ------------------------------------------------------------------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Last Page #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\ThanksSpacing}{3cm}
+\newcommand{\monstersLastPage}[8]{%
+	\clearpage%
+	\thispagestyle{empty}%
+	\begin{tikzpicture}[remember picture,overlay]%
+		\node[opacity=1,inner sep=0pt,yshift=#2, xshift=#3] at (current page.center){\includegraphics[#4,  keepaspectratio]{#1}};%
+		\addImageDBEntry{BackCover}{Back Cover}{Art}{#5}{#6}{#7}%
+		\node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[min width=\paperwidth, height=\paperheight, keepaspectratio]{\PATH regions/stylesheets/images/book/backcover-black-part.png}};%
+		
+		\def\primarycolor{MarzRed}%
+		\def\secondarycolor{black!80}%
+		%\def\secondarycolor{MarzDarkRed}%
+		\def\stackgap{0.1pt}
+		\node[yshift=0.1\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
+			\adjustbox{valign=c}{%
+				\parbox{0.5\textwidth}{\centering{
+					\parbox{0.4\textwidth}{%
+						\centering\customtitle{Big} ~ \customtitle{Thanks} ~ \customtitle{To} ~ \customtitle{These} ~ \customtitle{Artists}%
+					}%
+					\par\vspace*{\ThanksSpacing}%
+					\parbox{0.45\textwidth}{%
+						\large{\begin{itemize}[label=\textcolor{white}{\textbullet}]%
+							\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{%
+								\item \textcolor{white}{\thisPage ~\thisAdditionalInformation :} \textcolor{orange}{\href{\thisURL}{\thisArtName ~by \thisArtist}}%
+							}%
+						\end{itemize}}%
+					}%
+				}}%
+			}%
+		};
+		
+		\def\stackgap{0.01pt}
+		\ifthenelse{\equal{#8}{}}{}{%
+			\node[yshift=-0.275\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
+				\parbox{0.4\textwidth}{%
+					\centering\titlefont{\large\shadowfy{#8}}%
+				}
+			};%
+		}%
+		
+		\node[yshift=-0.4\paperheight, xshift=-0.25\paperwidth] at (current page.center) {\includegraphics[width=0.25\paperwidth, keepaspectratio]{\PATH regions/stylesheets/images/book/DnD_Ampersand.png}};
+	\end{tikzpicture}%
+}%
