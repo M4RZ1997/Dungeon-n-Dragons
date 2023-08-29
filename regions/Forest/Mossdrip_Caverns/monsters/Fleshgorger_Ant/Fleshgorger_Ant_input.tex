@@ -227,16 +227,18 @@ The Giant Ant Queen usually resides within the mound and is taken care by the co
 \def\secondarycolor{white}%
 \MonsterBannerGraphic%
 	{\entryfont{\shadowfy{Giant Ant Queen}}}% name of the monster to be displayed as header
+	{section}% either section or chapter
 	{247pt}% offset for the section header
 	{325pt}% max height of the image
 	{Queen_Ant.png}% image to be displayed as a banner
 	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
 \addcontentsline{toc}{section}{Giant Ant Queen}
 \addImageDBEntry{FleshgorgerAnt3}{Page \thepage}{Art}{https://www.artstation.com/artwork/EoGae}{Queen Ant}{Kim Sung Hwan}%
-	
-\noindent The Giant Ant Queen is, at least\\
-from the perspective of an ant,\\
-considered a divine being, which the colony obeys without question. The colony provides her protection and nurishment while the queen itself is laying thousands of eggs, giving birth to the next generation of the colony.\\
+\vspace{13pt}
+\entryfont \noindent \DndDropCapLine{T}he Giant Ant Queen is,\\
+at least from the pers-\\
+pective of an ant, con-\\
+sidered a divine being, which the colony obeys without question. The colony provides her protection and nurishment while the queen itself is laying thousands of eggs, giving birth to the next generation of the colony.\\
 A queen outside of her mound is a very rare sight and usually happens when the colony is on the move to a new territory.
 
 
@@ -334,19 +336,14 @@ A queen outside of her mound is a very rare sight and usually happens when the c
     
     \DndMonsterSection{Legendary Actions}
     The Giant Ant Queen can take 3 Legendary Actions, choosing from the options below. Only one Legendary Action can be used at a time and only at the end of a creature's turn. The Giant Ant Queen regains spent Legendary Actions at the start of its turn.
-    
-    \DndMonsterAction{Vitality Command}
-    The Giant Ant Queen can end one of the following effects on an ant it can see within 60 ft.: blinded, deafened, poisoned, stunned, paralyzed, or unconscious.
-    
-    \DndMonsterAction{Battle Command}
-    The Giant Ant Queen can command one ant it can see within 60ft. to move up to its movement speed and make a Bite attack againsta creature of the queen's choice.
-    
-    \DndMonsterAction{Burrow Shift}
-    The Giant Ant Queen can travel burrow up to its full movement speed to a spot it can see. This movement does not provoke opportunity attacks.
-      
+    \begin{DndMonsterLegendaryActions}
+  		\DndMonsterLegendaryAction{Vitality Command}{The Giant Ant Queen can end one of the following effects on an ant it can see within 60 ft.: blinded, deafened, poisoned, stunned, paralyzed, or unconscious.}
+  		\DndMonsterLegendaryAction{Battle Command}{The Giant Ant Queen can command one ant it can see within 60ft. to move up to its movement speed and make a Bite attack againsta creature of the queen's choice.}
+  		\DndMonsterLegendaryAction{Burrow Shift (Costs 2 Actions)}{The Giant Ant Queen can travel burrow up to its full movement speed to a spot it can see. This movement does not provoke opportunity attacks.}
+	\end{DndMonsterLegendaryActions}
 \end{multicols}\end{DndMonster}
 
-\vfill\eject\vspace*{5pt}
+\vfill\eject\vspace*{8pt}
 
 \subsection*{Soul of the Hive}
 The very temperament and personality of the hive often reflects the nature of the queen. Some queens tend to be extremely aggressive resulting in deadly raids from ants. Others tend to be more passive and even tolerate the presence of other creatures like humanoids. Whenever a hive becomes dangerous or out of control, dealing with the queen is typically the most straight-forward solution.

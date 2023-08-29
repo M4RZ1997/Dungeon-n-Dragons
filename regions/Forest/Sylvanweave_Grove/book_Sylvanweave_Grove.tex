@@ -17,6 +17,8 @@
 \newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
 \newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
 
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
+
 \begin{document}
 	% Titlepage	
 	\monstersTitlePage{Sylvanweave Grove}{images/titlepage_Sylvanweave_Grove.jpg}{0cm}{-0.5cm}{height=\paperheight+1cm}{https://scentofagamer.wordpress.com/2020/09/27/zendikar-rising-expeditions-art-review/}{Horizon Canopy}{Alayna Danner}{A collection of homebrew monsters found in the Sylvanweave Grove}

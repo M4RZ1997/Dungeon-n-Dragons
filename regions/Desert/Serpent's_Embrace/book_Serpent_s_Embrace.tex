@@ -17,6 +17,8 @@
 \newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
 \newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
 
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
+
 \begin{document}
 	% Titlepage	
 	\monstersTitlePage{Serpent's Embrace}{images/titlepage_Serpent's_Embrace.jpg}{0.5cm}{0cm}{height=\paperheight}{https://www.artstation.com/artwork/QrEPaE}{Desert Serpent}{Jannis Mayr}{A collection of homebrew monsters found in the Serpent's Embrace Desert}
@@ -25,7 +27,8 @@
 	
 	\mainmatter
 	
-	\input{monsters/The_Sandweaver/the_Sandweaver_input.tex}
+	\input{monsters/Giant_Sandweaver/Giant_Sandweaver_input.tex}
+	\input{monsters/Scorpion-Gaze_Manticore/Scorpion-Gaze_Manticore_input.tex}
 	
 	% Final Page
 	\monstersLastPage{images/backcover_Serpent's_Embrace.jpg}{0cm}{3cm}{height=\paperheight}{https://www.artstation.com/artwork/GaQPGB}{Sun Gate}{Patrik Rosander}{}

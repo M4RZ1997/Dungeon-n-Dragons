@@ -19,7 +19,8 @@
 
 \usepackage{tikzpagenodes}
 \usetikzlibrary{positioning}
-\usetikzlibrary{fadings} 
+\usetikzlibrary{fadings}
+\usetikzlibrary{backgrounds}
 \usepackage{varwidth}
 
 \captionsetup[table]{labelformat=empty,font={sf,sc,bf,},skip=0pt}
@@ -48,27 +49,31 @@
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  New Commands  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 %                                                                                                    %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Monster-Banner  Page  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\newcommand{\MonsterBannerGraphic}[5]{
-	\newpage
-	\newgeometry{
-		hmargin   = .5in,
-		top       = #2, % Top of text area to top of page
-		bottom    = .5in,
+\newcommand{\MonsterBannerGraphic}[6]{%
+	\clearpage%
+	\newgeometry{%
+		hmargin   = .5in, %
+		top       = #3, % Top of text area to top of page
+		bottom    = .5in, %
 		footskip  = .32in, % Bottom of text area to bottom of footer text
 		columnsep = .33in, % Space between columns
-	}
-	
+	}%	
 	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 		\node (posSW) at (current page text area.north west) {};%
-		\node[above left=#2 and 1.25cm of posSW, anchor=north west] (cornerSW) {%
-			\begin{minipage}{\paperwidth}%%
-	        	\centering\includegraphics[width=\paperwidth, height=#3#5]{#4}%
+		\node[above left=#3 and 1.25cm of posSW, anchor=north west] {%
+			\begin{minipage}{\paperwidth}%
+	        	\centering\includegraphics[width=\paperwidth, height=#4#6]{#5}%
 	      	\end{minipage}%
 		};%
+		\node[inner sep=0pt, outer sep=0pt, anchor=north west, xshift=-0.3em, yshift=2.8ex] at (current page text area.north west){%
+			\ifthenelse{\equal{#2}{chapter}}{%
+				{\linespread{.9} \color{titlered} \Huge \scshape \DndContour{#1}}%
+			}{%
+				{\linespread{.9} \color{titlered} \huge \scshape \RaggedRight \DndContour{#1}}%
+			}%
+		};%
 	\end{tikzpicture}%
-	%{\let\clearpage\relax \section*{\entryfont #1}}
-	\nopagebreaksection{#1}
-}
+}%
 % -------------------------------------------------------------------------------------------------- %
 %                                                                                                    %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Footer  Monser-Image  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %

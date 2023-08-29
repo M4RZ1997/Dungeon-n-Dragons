@@ -292,14 +292,15 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
 \def\secondarycolor{white}%
 \MonsterBannerGraphic%
 	{\entryfont{\shadowfy{Sentinel Forest}}}% name of the monster to be displayed as header
-	{160pt}% offset for the section header
+	{section}% either section or chapter
+	{190pt}% offset for the section header
 	{300pt}% max height of the image
 	{Sentinel_Forest_2.png}% image to be displayed as a banner
 	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
 \addcontentsline{toc}{section}{Sentinel Forest}
 \addImageDBEntry{GroveSentinel5}{Page \thepage}{Art}{https://www.artstation.com/artwork/Z356x}{Concept Art for Battle for Zendikar}{Aleksi Briclot}%
-
-\DndDropCapLine{S}entinel Forest is an enchanting\\woodland of towering trees, vibrant\\foliage, and serene tranquility. Crystal-\\clear streams wind through the forest,\\offering sanctuary to diverse wildlife. Guarded by\\mighty Grove Sentinels, fierce protectors of nature's\\balance, this sacred realm radiates beauty and mystery. Enter with reverence to embrace the forest's harmony or risk the wrath of its guardians.
+\vspace*{10pt}
+\entryfont \noindent \DndDropCapLine{S}entinel Forest is an enchanting\\woodland of towering trees, vibrant\\foliage, and serene tranquility. Crystal-\\clear streams wind through the forest,\\offering sanctuary to diverse wildlife. Guarded by\\mighty Grove Sentinels, fierce protectors of nature's\\balance, this sacred realm radiates beauty and mystery. Enter with reverence to embrace the forest's harmony or risk the wrath of its guardians.
 
 % Monster stat block
 \vspace*{-4.75cm}\begin{DndMonster}[float*=b,width=\textwidth +8pt]{Ancient Grove Sentinel}
@@ -388,14 +389,12 @@ Legends speak of the Grove Sentinel's indomitable spirit, its unyielding dedicat
 	
 	\DndMonsterSection{Legendary Actions}
     The Ancient Grove Sentinel can take 3 Legendary Actions, choosing from the options below. Only one Legendary Action option can be used at a time and only at the end of another creature's turn. The Ancient Grove Sentinel regains spent Legendary Actions at the start of its turn.
-    \DndMonsterAction{Thorny Vines}
-    The Ancient Grove Sentinel conjures an area of thorny vines within a 20-foot radius centered on a point it can see within 60 feet of it. Each creature in that area must make a DC 18 Dexterity saving throw, taking \DndDice{3d10} piercing damage and becoming restrained on a failed save, or half as much damage on a successful one.
-    \DndMonsterAction{Rooted Stomp}
-    The Ancient Grove Sentinel makes one slam attack. If the attack hits, the target must succeed on a DC 18 Strength saving throw or be restrained by entangling roots until the end of its next turn.
-    \DndMonsterAction{Unyielding Bulwark (3/Day)}
-	The Ancient Grove Sentinel assumes a defensive stance, gaining temporary immunity to critical hits and advantage on saving throws against spells. This effect lasts for 1 minute or until the overgrown bullwark is destroyed (AC 15; 50HP; vulnerability to fire damage; immunity to bludgeoning, piercing, poison, and psychic damage).
-    \DndMonsterAction{Regenerative Vitality (Costs 2 Actions)}
-    The Ancient Grove Sentinel regains hit points equal to \DndDice{3d10 + 5}. When the Ancient Grove Sentinel is in direct sunlight it regains \DndDice{5d10 + 10} hitpoints instead.
+    \begin{DndMonsterLegendaryActions}
+	    \DndMonsterLegendaryAction{Thorny Vines}{The Ancient Grove Sentinel conjures an area of thorny vines within a 20-foot radius centered on a point it can see within 60 feet of it. Each creature in that area must make a DC 18 Dexterity saving throw, taking \DndDice{3d10} piercing damage and becoming restrained on a failed save, or half as much damage on a successful one.}
+	    \DndMonsterLegendaryAction{Rooted Stomp}{The Ancient Grove Sentinel makes one slam attack. If the attack hits, the target must succeed on a DC 18 Strength saving throw or be restrained by entangling roots until the end of its next turn.}
+	    \DndMonsterLegendaryAction{Unyielding Bulwark (3/Day)}{The Ancient Grove Sentinel assumes a defensive stance, gaining temporary immunity to critical hits and advantage on saving throws against spells. This effect lasts for 1 minute or until the overgrown bullwark is destroyed (AC 15; 50HP; vulnerability to fire damage; immunity to bludgeoning, piercing, poison, and psychic damage).}
+	    \DndMonsterLegendaryAction{Regenerative Vitality (Costs 2 Actions)}{The Ancient Grove Sentinel regains hit points equal to \DndDice{3d10 + 5}. When the Ancient Grove Sentinel is in direct sunlight it regains \DndDice{5d10 + 10} hitpoints instead.}
+	\end{DndMonsterLegendaryActions}
       
 \end{multicols}\end{DndMonster}
 

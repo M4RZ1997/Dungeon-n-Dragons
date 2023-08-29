@@ -48,6 +48,7 @@
 % ################################################################################################## %
 % --------------------------------------- Dungeon Main Page ---------------------------------------- %
 \newcommand{\dungeonTitlePage}[8]{%
+	\thispagestyle{empty}
 	\begin{tikzpicture}[remember picture,overlay]
 		\expandafter\def\expandafter\temp\expandafter{#1}%
 		\edef\temp{#1}
@@ -69,16 +70,161 @@
 }%
 % -------------------------------------------------------------------------------------------------- %
 % ################################################################################################## %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  New Commands  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Dungeon-Banner  Page  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\DungeonBannerGraphic}[5]{
+	\clearpage
+	\newgeometry{
+		hmargin   = .5in,
+		top       = #2, % Top of text area to top of page
+		bottom    = .5in,
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}
+	
+	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+		\node (posSW) at (current page text area.north west) {};%
+		\node[above left=#2 and 1.25cm of posSW, anchor=north west] (cornerSW) {%
+			\begin{minipage}{\paperwidth}%%
+	        	\centering\includegraphics[width=\paperwidth, height=#3#5]{#4}%
+	      	\end{minipage}%
+		};%
+	\end{tikzpicture}%
+	\nopagebreaksection{#1}
+}
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
 % -------------------------------------- Dungeon Trap Fields --------------------------------------- %
 \newcommand{\trapField}[1]{%
 	\node[rectangle, thick, draw=red, dotted, minimum width=0.3cm, minimum height=0.3cm, inner sep=0, outer sep=0pt, anchor=south west] at (#1) {\textcolor{red}{T}};%
 }%
 % -------------------------------------------------------------------------------------------------- %
 % ################################################################################################## %
-% -------------------------------------- Dungeon Trap Fields --------------------------------------- %
+% ------------------------------------- Dungeon Stair Fields --------------------------------------- %
 \newcommand{\stairsField}[5]{%
 	\ifthenelse{\equal{sand}{#1}}{\xdef\image{regions/stylesheets/images/assets/Stairs/sandstone_stairs.png}}{}%
 	\ifthenelse{\equal{sandspiral}{#1}}{\xdef\image{regions/stylesheets/images/assets/Stairs/sandstone_spiral_staircase.png}}{}%
 	
 	\node[inner sep=0pt, outer sep=0pt, #3] at (#2) {\includegraphics[width=#4, height=#5]{\PATH\image}};%
 }%
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% -------------------------------------- Dungeon Door Assets --------------------------------------- %
+\newcommand{\doorField}[6]{%
+	\xdef\image{}%
+	\ifthenelse{\equal{wood}{#1}}{\xdef\image{regions/stylesheets/images/assets/Doors/wood_door_texture.png}}{}%
+	\ifthenelse{\equal{doublewood}{#1}}{\xdef\image{regions/stylesheets/images/assets/Doors/wood_double_door_texture.png}}{}%
+	
+	\ifthenelse{\equal{\image}{}}{%
+		\node[rectangle, thin, draw=black, minimum width=#5, minimum height=#6, inner sep=0, outer sep=0pt, fill=black!50, anchor=#3] at #2 {\tiny{S}};%
+	}{%
+		\node[inner sep=0pt, outer sep=0pt, anchor=#3, rotate=#4] at #2 {\includegraphics[width=#5, height=#6]{\PATH\image}};
+	}%
+}%
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% -------------------------------------- Dungeon Chest Assets -------------------------------------- %
+\newcommand{\chestField}[6]{%
+	\xdef\image{}%
+	\ifthenelse{\equal{blue}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/blue_chest_open.png}%
+		}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/blue_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{normal}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/chest_open.png}%
+		}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{crate}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/crate_open.png}%
+		}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{gold}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/gold_chest_open.png}%
+		}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/gold_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{green}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/green_chest_open.png}%
+		}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/green_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{iron}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/iron_chest_open.png}%
+		}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/iron_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{red}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/red_chest_open.png}%
+		}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/red_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{strongbox}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/strongbox_open.png}%
+		}{%
+			\xdef\image{regions/stylesheets/images/assets/Chests/strongbox.png}%
+		}%
+	}{}%
+	
+	\node[inner sep=0pt, outer sep=0pt, #4] at (#3) {\includegraphics[width=#5, height=#6]{\PATH\image}};%
+}%
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% ------------------------------------- Dungeon Number Assets -------------------------------------- %
+\newcounter{indicatorNumber}
+\stepcounter{indicatorNumber}
+\newcommand{\indicatorNumberField}[1]{%
+	\node[circle, fill=white, radius=0.2cm, draw, outer sep=0pt] at #1 {\scriptsize{\theindicatorNumber}};
+	\stepcounter{indicatorNumber}
+}%
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% ------------------------------------ Letter Note Environment ------------------------------------- %
+\newtcolorbox{notetextbox}[4][]{
+  enhanced,
+  boxrule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  frame hidden,
+  opacityback=0,
+  width=#2,
+  valign=center,
+  left=20pt, % Set left padding to zero
+  right=20pt, % Set right padding to zero
+  top=20pt, % Set top padding to zero
+  bottom=20pt, % Set bottom padding to zero
+  overlay={
+    \node[opacity=1, anchor=north west, inner sep=0pt, outer sep=0pt]
+    at (frame.north west) {\includegraphics[width=#2, height=#3]{\PATH regions/stylesheets/images/backgrounds/Shortinfo/#4}};
+  },
+  #1
+}
+\newcommand{\NoteMessage}[4]{
+	\node[inner sep=0pt, outer sep=0pt] {%
+		\begin{tikzpicture}%
+			\node [inner sep=0pt] {%
+				\begin{notetextbox}{#1}{\dimexpr 1.5\fontdimen6\font * (#2) + 40pt\relax}{#3}%
+					{\fontsize{20}{7}{\notefont #4}}%
+				\end{notetextbox}
+			};%
+		\end{tikzpicture}%
+	};%
+}

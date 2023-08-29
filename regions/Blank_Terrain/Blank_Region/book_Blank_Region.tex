@@ -17,6 +17,8 @@
 \newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
 \newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
 
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
+
 \begin{document}
 	% Titlepage	
 	\monstersTitlePage{Blank Region}% Name of Region
