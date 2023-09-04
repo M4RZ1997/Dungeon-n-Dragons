@@ -78,7 +78,7 @@
 \CP{}
 \SP{}
 \EP{}
-\GP{130}
+\GP{255}
 \PP{}
 
 % Weapon Arsenal
@@ -102,7 +102,7 @@
 
 \Equipment{
 	a backpack, a bedroll, 2 costumes, 5 candles, 5 days of ration, a waterkin, a disguise kit\\
-	\textbf{Violin}
+	\textbf{Violin}, \textbf{Eliwick's blank sheet of paper}
 }
 
 \PersonalityTraits{
@@ -458,7 +458,6 @@ If you or any of your companions damage the target, the spell ends.
 1d4 + STR-Modifier\\
 \indent Current Max: \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}
 
-\newpage
 \chapter*{The Enchanted Locket of Lysandra}
 \begin{tikzpicture}[remember picture, overlay]
 	\node[xshift=3cm, yshift=0.8cm] {\textit{Locket, rare (requires attunement)}};
@@ -503,13 +502,98 @@ Once the character is attuned to this locket, he can not willingly unattune off 
 Whenever a decision must be made or information is sought, the locket's magic compels the bearer to heed its suggestions. The Dungeon Master decides what the locket suggests in each situation. The bearer must succeed a Charisma Saving Throw for any decision the locket suggests or a Wisdom Saving Throw for any information the locket reveals. If the saving throw fails, the bearer is fully convinced by the locket's suggestion and feels compelled to act on it. If the saving throw is successful, the bearer can resist the locket's influence and make their own decision. The DC is increasing by the following means:
 \begin{itemize}
 	\item The Save DC starts at a value of 10
-	\item With every successful Saving Throw regarding this effect the bearer makes the Save DC increases by 0.5
-	\item With every failed Saving Throw regarding this effect the bearer makes the Save DC increases by 0.25
+	\item With every successful Saving Throw regarding this effect the bearer makes the Save DC increases by \xdef\successIncrease{0.5}\successIncrease
+	\item With every failed Saving Throw regarding this effect the bearer makes the Save DC increases by \xdef\failIncrease{0.25}\failIncrease
 \end{itemize}
-\textbf{Current Save DC: 11.25}
+\textbf{Failed Saves:} \xdef\failedSaves{3}\failedSaves\\
+\textbf{Successful Saves:} \xdef\successSaves{2}\successSaves\\
+\textbf{Current Save DC: \FPeval{saveDC}{clip(10+\failedSaves*failIncrease+\successSaves*\successIncrease)}\saveDC}
 \section*{Torn between Worlds}
 While the locket provides Alistair with extraordinary insights and magical abilities, its influence comes at a cost. The more time he spends away from the Feywild or the locket, the more he feels an ache of longing and a sense of restlessness. Their connection with the locket intertwines his fate with that of the Feywild, making him feel incomplete whenever he is separated from it.
 \section*{Quest of Discovery}
 The Enigmatic Locket of Lysandra possesses an inherent, magical allure that captivates the heart and mind of Alistair, the Bard. When he first encountered the locket, he was drawn to it by an irresistible pull, not fully comprehending why it called to him so strongly. From that moment on, he found himself becoming increasingly obsessed with uncovering the locket's true nature and its connection to the Feywild.
+
+\clearpage
+\twocolumn[
+	\section*{The Epic Adventures of the 7 Musceteers}\hfill\\\\\\
+]
+\newcommand{\chord}[1]{\colorbox{gray!60}{\footnotesize{#1}}}
+\subsubsection*{Intro}
+\chord{Am} \chord{F} \chord {Am} \chord{G}
+
+\subsubsection*{Verse 1}
+{\entryfont In Faerun's realm where legends gleam,}\\
+A band of heroes, like in a dream,\\
+Seven Musceteers, though five we stand,\\
+Burro and Bob, wings of the land.\\
+\\
+Floppers the bunny, with dark arts crowned,\\
+Raising the fallen, in necromancer's gown,\\
+Kyuss, the spark of explosive might,\\
+Burning through darkness, in the starry night.
+
+\subsubsection*{Chorus}
+\hspace*{1.5cm}\chord{Am}\hspace*{0.9cm}\chord{C}\hspace*{1cm}\chord{G}\hspace*{1.8cm}\chord{Dm}\\
+{\entryfont These are days and nights of friendship and blood,}\\
+\chord{Am}\hspace*{1.1cm}\chord{C}\hspace*{1.3cm}\chord{G}\hspace*{1.3cm}\chord{Em}\\
+{\entryfont Heroes will rise as the \textbf{Storm} does fall,}\\
+\chord{F}\hspace*{0.85cm}\chord{Am}\hspace*{0.4cm}\chord{G}\hspace*{1.3cm}\chord{Dm}\\
+{\entryfont Side by side, a triumphant roar}\\
+\hspace*{1.1cm}\chord{F}\hspace*{0.4cm}\chord{Em}\hspace*{1.9cm}\chord{Am}\\
+{\entryfont In the heart of adventure, we ride.}
+
+\subsubsection*{Interlude}
+\chord{Am} \chord{F} \chord {Am} \chord{G} {\footnotesize x2}
+
+\subsubsection*{Verse 2}
+{\entryfont Stor the rogue, shadows his guide,}\\
+Silent and quick, through danger we glide,\\
+Jun Wu, the monk, fists pure and fast,\\
+In pursuit of truth, our futures cast.\\
+\\
+Laucian the ranger, nature's embrace,\\
+Guiding our steps through each sacred place,\\
+Seven Musceteers, united we roam,\\
+Heroes of honor, making Earth our home.
+
+\subsubsection*{Chorus}
+\hspace*{1.5cm}\chord{Am}\hspace*{0.9cm}\chord{C}\hspace*{1cm}\chord{G}\hspace*{1.8cm}\chord{Dm}\\
+{\entryfont These are days and nights of friendship and blood,}\\
+\chord{Am}\hspace*{1.1cm}\chord{C}\hspace*{1.3cm}\chord{G}\hspace*{1.3cm}\chord{Em}\\
+{\entryfont Heroes will rise as the \textbf{Storm} does fall,}\\
+\chord{F}\hspace*{0.85cm}\chord{Am}\hspace*{0.4cm}\chord{G}\hspace*{1.3cm}\chord{Dm}\\
+{\entryfont Side by side, a triumphant roar}\\
+\hspace*{1.1cm}\chord{F}\hspace*{0.4cm}\chord{Em}\hspace*{1.9cm}\chord{Am}\\
+{\entryfont In the heart of adventure, we ride.}
+\vfill\eject
+
+\subsubsection*{Chorus}
+{\entryfont Seven Musceteers, banners high,}\\
+Facing down dragons in the endless sky,\\
+Savage Frontier knows peace's embrace,\\
+In our quest for justice, we find our grace.
+
+\subsubsection*{Verse 3}
+\entryfont Iymrith's end, a triumphant roar,\\
+Defeating the Doom that plagued us before,\\
+G\&G's Trading Post, flames in the night,\\
+Justice pursued, but evading their sight.\\\\
+Fire Giants' kinship, a bond that's been sealed,\\
+Honorary titles in a powerful guild,\\
+Seven Musceteers, forever they stand,\\
+In the annals of time, their tale becomes grand.
+
+\subsubsection*{Chorus}
+\entryfont Seven Musceteers, journey complete,\\
+A chorus of triumphs and battles' beat,\\
+In taverns and halls, their stories are told,\\
+Of heroes so valiant, and friendships so bold.
+
+\subsubsection*{Endverse}
+So lift your voices, let tales resound,\\
+Of Musceteers bold, in quests unbound,\\
+In songs and cheers, their legends ignite,\\
+The Seven Musceteers, a shining light.
+\vfill
 
 \end{document}
