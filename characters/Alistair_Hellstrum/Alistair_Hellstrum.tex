@@ -19,7 +19,7 @@
 \CharacterName{Alistair Hellstrum}
 
 \Class{Bard}
-\Level{2}
+\Level{3}
 \Background{Courtier}
 \PlayerName{M4RZ}
 \Race{Tiefling}
@@ -33,7 +33,7 @@
 \ConstitutionScore{12}
 \IntelligenceScore{12}
 \WisdomScore{12}
-\CharismaScore{16}
+\CharismaScore{17}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -47,7 +47,7 @@
 \AnimalHandlingProficiency{}
 \ArcanaProficiency{P}
 \AthleticsProficiency{}
-\DeceptionProficiency{P}%E
+\DeceptionProficiency{E}
 \HistoryProficiency{P}
 \InsightProficiency{P}
 \IntimidationProficiency{P}
@@ -55,7 +55,7 @@
 \MedicineProficiency{}
 \NatureProficiency{}
 \PerceptionProficiency{}
-\PerformanceProficiency{P}%E
+\PerformanceProficiency{E}
 \PersuasionProficiency{E} % Courtier Background
 \ReligionProficiency{}
 \SleightOfHandProficiency{}
@@ -69,7 +69,7 @@
 \ArmorClass{13}
 \InitiativeModifier{0}
 \Speed{30ft}
-\MaxHitPointsRolled{14} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{20} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -140,8 +140,13 @@
 	\item Bardic Inspiration
 	\item Jack-of-All-Trades
 	\item Song of Rest
-	%\item Bard College of Lore
+	\item Bard College of Whispers
+	\begin{itemize}
+		\item Psychic Blades
+		\item Words of Terror
+	\end{itemize}
 \end{itemize}
+\textbf{Charm of the Monarch}
 }
 
 % Appearance
@@ -182,13 +187,13 @@
 	Unbeknownst to Alistair it kindles an insatiable fascination with the Fewild, which becomes stronger the more he interacts with the Feywild and its creatures.
 }
 \AlliesAndOrganizations{
-	The Bard College of Lore is a renowned institution that attracts bards from all walks of life who have a deep appreciation for knowledge and a thirst for learning. It is a prestigious establishment that places a strong emphasis on academic pursuits, intellectual exploration, and the mastery of the bardic arts.
-	
-	The college's philosophy centers around the power of storytelling, rhetoric, and persuasive communication. Students learn to weave captivating narratives, employ their musical talents to convey emotions, and use their words to engage and inspire others. Improvisation and the exploration of\linebreak
+	Most folk are happy to welcome a bard into their midst. Bards of the College of Whispers use this to their advantage. They appear to be like any other bard, sharing news, singing songs, and telling tales to the audiences they gather. In truth, the College of Whispers teaches its students that they are wolves among sheep. These bards use their knowledge and magic to uncover secrets and turn them against others through extortion and threats.
+
+	Many other bards hate the College of Whispers, viewing it as a parasite that uses the bards' reputation to acquire wealth and power. For this reason, these bards rarely\linebreak
 }{
-	various artistic expressions are encouraged, fostering a rich and vibrant environment for learning.
+	reveal their true nature unless they must. They typically claim to follow some other college, or keep their true nature secret in order to better infiltrate and exploit royal courts and other settings of power.
 }
-\OrganizationName{Bard College of Lore}
+\OrganizationName{Bard College of Whispers}
 \OrganizationSymbol{images/Bard_College_of_Lore.png}
 
 % Magic
@@ -296,14 +301,25 @@ Starting at 2nd level, you can add half your proficiency bonus, rounded down, to
 Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points at the end of the short rest by spending one or more Hit Dice, each of those creatures regains an extra 1d6 hit points.
 
 The extra Hit Points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.
-%\subsection*{Bard College of Lore}
-%Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate compositions in royal courts, these bards use their gifts to hold audiences spellbound. When the applause dies down, the audience members might find themselves questioning everything they held to be true, from their faith in the priesthood of the local temple to their loyalty to the king.
-%
-%The loyalty of these bards lies in the pursuit of beauty and truth, not in fealty to a monarch or following the tenets of a deity. A noble who keeps such a bard as a herald or advisor knows that the bard would rather be honest than politic.
-%
-%The college's members gather in libraries and sometimes in actual colleges, complete with classrooms and dormitories, to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority.
-%\subsubsection*{Cutting Words}
-%Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others. When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll. You can choose to use this feature after the creature makes its roll, but before the DM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can't hear you or if it's immune to being charmed.
+\subsection*{Bard College of Whispers}
+\subsubsection*{Psychic Blades}
+When you join the College of Whispers at 3rd level, you gain the ability to make your weapon attacks magically toxic to a creature's mind.
+
+When you hit a creature with a weapon attack, you can expend one use of your Bardic Inspiration to deal an additional 2d6 psychic damage to that target. You can do so only once per round on your turn.
+
+The psychic damage increases when you reach certain levels in this class, increasing to 3d6 at 5th level, 5d6 at 10th level, and 8d6 at 15th level.
+
+\subsubsection*{Words of Terror}
+At 3rd level, you learn to infuse innocent-seeming words with an insidious magic that can inspire terror.
+
+If you speak to a humanoid alone for at least 1 minute, you can attempt to seed paranoia and fear into its mind. At the end of the conversation, the target must succeed on a Wisdom saving throw against your spell save DC or be frightened of you or another creature of your choice. The target is frightened in this way for 1 hour, until it is attacked or damaged, or until it witnesses its allies being attacked or damaged.
+
+If the target succeeds on its saving throw, the target has no hint that you tried to frighten it.
+
+Once you use this feature, you can't use it again until you finish a short rest or long rest.
+\subsection*{Charm of the Monarch}
+You can sprout a pair of beautiful butterfly wings, you gain flying speed equal to your walking speed, and you gain a +5 bonus on all Charisma-based ability checks. These effects last for 1 hour. After you use this charm two times, it vanishes from you.\\
+\textbf{(Usages: 2)}
 
 \section*{Spells}
 \subsection*{Cantrip}
@@ -398,7 +414,7 @@ Any attack roll against an affected creature or object has advantage if the atta
   {V}
   {Instantaneous}
 
-A creature of your choice that you can see within range regains hit points equal to \DndDice{1d4} + spell attack bonus {\intcalcAdd{\ProficiencyValue}{\calculateModifier{\CharismaScoreValue}}}. This spell has no effect on undead or constructs.
+A creature of your choice that you can see within range regains hit points equal to \DndDice{1d4} + spell attack bonus \textbf{(+\intcalcAdd{\ProficiencyValue}{\calculateModifier{\CharismaScoreValue}})}. This spell has no effect on undead or constructs.
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the Healing increases by \DndDice{1d4} for each slot level above 1st.
 
@@ -441,6 +457,8 @@ The target must make a Wisdom saving throw. On a failed save, it pursues the cou
 You can also specify conditions that will trigger a special activity during the duration. For example, you might suggest that a knight give her warhorse to the first beggar she meets. If the condition isn’t met before the spell expires, the activity isn’t performed.\\
 If you or any of your companions damage the target, the spell ends.
 
+\vfill\eject
+
 \section*{Miscellaneous}
 \subsubsection*{Weapon Attacks}
 \paragraph*{Attack Roll}\hfill\\
@@ -452,11 +470,13 @@ If you or any of your companions damage the target, the spell ends.
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
 \underline{Rapier:}\\
-1d8 + STR-Modifier\\
-\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}\\
+1d8 + STR-Modifier (+2d6 Psychic Damage (Psychic Blades))\\
+\indent Current Max (Normal): \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}\\
+\indent Current Max (Psychic Blades): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{12}}\\
 \underline{Dagger:}\\
-1d4 + STR-Modifier\\
-\indent Current Max: \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}
+1d4 + STR-Modifier (+2d6 Psychic Damage (Psychic Blades))\\
+\indent Current Max (Normal): \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}\\
+\indent Current Max (Psychic Blades): \intcalcAdd{4}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{12}}\\
 
 \chapter*{The Enchanted Locket of Lysandra}
 \begin{tikzpicture}[remember picture, overlay]
@@ -500,6 +520,7 @@ Once the character is attuned to this locket, he can not willingly unattune off 
 
 \paragraph{Compelled Decision}
 Whenever a decision must be made or information is sought, the locket's magic compels the bearer to heed its suggestions. The Dungeon Master decides what the locket suggests in each situation. The bearer must succeed a Charisma Saving Throw for any decision the locket suggests or a Wisdom Saving Throw for any information the locket reveals. If the saving throw fails, the bearer is fully convinced by the locket's suggestion and feels compelled to act on it. If the saving throw is successful, the bearer can resist the locket's influence and make their own decision. The DC is increasing by the following means:
+\eject
 \begin{itemize}
 	\item The Save DC starts at a value of 10
 	\item With every successful Saving Throw regarding this effect the bearer makes the Save DC increases by \xdef\successIncrease{0.5}\successIncrease
