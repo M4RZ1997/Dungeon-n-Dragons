@@ -19,7 +19,7 @@
 \CharacterName{Alistair Hellstrum}
 
 \Class{Bard}
-\Level{3}
+\Level{4}
 \Background{Courtier}
 \PlayerName{M4RZ}
 \Race{Tiefling}
@@ -29,11 +29,11 @@
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthScore{10}
-\DexterityScore{15}
+\DexterityScore{16}
 \ConstitutionScore{12}
 \IntelligenceScore{12}
 \WisdomScore{12}
-\CharismaScore{17}
+\CharismaScore{18}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -66,10 +66,10 @@
 \Proficiency{+2}
 
 % Armor Class is not automatically calculated
-\ArmorClass{13}
+\ArmorClass{\intcalcAdd{11}{\calculateModifier{\DexterityScoreValue}}}
 \InitiativeModifier{0}
 \Speed{30ft}
-\MaxHitPointsRolled{20} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{27} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -101,8 +101,9 @@
 }
 
 \Equipment{
-	a backpack, a bedroll, 2 costumes, 5 candles, 5 days of ration, a waterkin, a disguise kit\\
-	\textbf{Violin}, \textbf{Eliwick's blank sheet of paper}
+	a backpack, a bedroll, 2 costumes, 5 candles, 5 days of ration, a waterskin, a disguise kit\\
+	\textbf{Violin}, \textbf{Eliwick's blank sheet of paper}\\
+	1 ruby (medium), 1 sapphire (medium)
 }
 
 \PersonalityTraits{
@@ -146,7 +147,11 @@
 		\item Words of Terror
 	\end{itemize}
 \end{itemize}
-\textbf{Charm of the Monarch}
+\textbf{Charm of the Monarch}\\
+\textbf{Compulsion (Locket)}
+\begin{itemize}
+	\item CHA-Checks +1
+\end{itemize}
 }
 
 % Appearance
@@ -202,9 +207,10 @@
 \SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 
-\CantripSlotA{Prestidigitation (V, S)}
-\CantripSlotB{Vicious Mockery (V)}
-\CantripSlotC{Thaumaturgy (once per day) (V)}
+\CantripSlotA{Mage Hand (V, S)}
+\CantripSlotB{Prestidigitation (V, S)}
+\CantripSlotC{Vicious Mockery (V)}
+\CantripSlotD{Thaumaturgy (once per day) (V)}
 
 \FirstLevelSpellSlotsTotal{4}
 \FirstLevelSpellSlotA{Charm Person (V, S)}
@@ -213,9 +219,10 @@
 \FirstLevelSpellSlotD{Healing Word (V)}
 \FirstLevelSpellSlotE{Hellish Rebuke (once per day) (V, S)}
 
-\SecondLevelSpellSlotsTotal{2}
-\SecondLevelSpellSlotA{Shatter (V, S, M)}
-\SecondLevelSpellSlotB{Suggestion (V, M)}
+\SecondLevelSpellSlotsTotal{3}
+\SecondLevelSpellSlotA{Invisibility (V, S, M)}
+\SecondLevelSpellSlotB{Shatter (V, S, M)}
+\SecondLevelSpellSlotC{Suggestion (V, M)}
 
 \begin{document}
 
@@ -319,10 +326,22 @@ If the target succeeds on its saving throw, the target has no hint that you trie
 Once you use this feature, you can't use it again until you finish a short rest or long rest.
 \subsection*{Charm of the Monarch}
 You can sprout a pair of beautiful butterfly wings, you gain flying speed equal to your walking speed, and you gain a +5 bonus on all Charisma-based ability checks. These effects last for 1 hour. After you use this charm two times, it vanishes from you.\\
-\textbf{(Usages: 2)}
+\textbf{(Usages: 1)}
 
 \section*{Spells}
 \subsection*{Cantrip}
+
+\DndSpellHeader
+  {Mage Hand}
+  {Cantrip Conjuration}
+  {1 Action}
+  {30 feet}
+  {V, S}
+  {1 Minute}
+  
+A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.\\
+You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it.\\
+The hand can’t attack, activate magic items, or carry more than 10 pounds.
 
 \DndSpellHeader
   {Prestidigitation}
@@ -433,6 +452,18 @@ You point your finger, and the creature that damaged you is momentarily surround
 \subsection*{Level 2}
 
 \DndSpellHeader
+  {Invisibility}
+  {2nd Level Illusion}
+  {1 Action}
+  {Touch}
+  {V, S, M (An eyelash encased in gum arabic)}
+  {Concentration, Up to 1 Hour}
+  
+A creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target’s person. The spell ends for a target that attacks or casts a spell.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.
+
+\DndSpellHeader
   {Shatter}
   {2nd Level Evocation}
   {1 Action}
@@ -457,8 +488,6 @@ The target must make a Wisdom saving throw. On a failed save, it pursues the cou
 You can also specify conditions that will trigger a special activity during the duration. For example, you might suggest that a knight give her warhorse to the first beggar she meets. If the condition isn’t met before the spell expires, the activity isn’t performed.\\
 If you or any of your companions damage the target, the spell ends.
 
-\vfill\eject
-
 \section*{Miscellaneous}
 \subsubsection*{Weapon Attacks}
 \paragraph*{Attack Roll}\hfill\\
@@ -467,16 +496,16 @@ If you or any of your companions damage the target, the spell ends.
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}\\
 \underline{Dagger:}\\
 1d20 + DEX-Modifier + Proficiency Modifier\\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}\\
 \paragraph*{Damage Roll}\hfill\\
 \underline{Rapier:}\\
-1d8 + STR-Modifier (+2d6 Psychic Damage (Psychic Blades))\\
+1d8 + DEX-Modifier (+2d6 Psychic Damage (Psychic Blades))\\
 \indent Current Max (Normal): \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}\\
-\indent Current Max (Psychic Blades): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{12}}\\
+\indent Current Max (Psychic Blades): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcMul{2}{6}}}\\
 \underline{Dagger:}\\
-1d4 + STR-Modifier (+2d6 Psychic Damage (Psychic Blades))\\
+1d4 + DEX-Modifier (+2d6 Psychic Damage (Psychic Blades))\\
 \indent Current Max (Normal): \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}\\
-\indent Current Max (Psychic Blades): \intcalcAdd{4}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{12}}\\
+\indent Current Max (Psychic Blades): \intcalcAdd{4}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcMul{2}{6}}}\\
 
 \chapter*{The Enchanted Locket of Lysandra}
 \begin{tikzpicture}[remember picture, overlay]
@@ -507,7 +536,7 @@ The Enchanted Locket has a subtle yet powerful compulsion on its bearer. As your
 
 The locket's influence amplifies its bearer's natural magical inclinations, deepening his understanding of arcane secrets and Feywild lore. This newfound magical prowess enhances the Charismatic abilities of its bearer:
 \begin{itemize}
-	\item \textbf{Level 4-6:} You gain a +1 bonus to Charisma ability checks while being attuned to the locket.
+	\item[$\ast$] \textbf{Level 4-6:} You gain a +1 bonus to Charisma ability checks while being attuned to the locket.
 	\item \textbf{Level 7-11:} You gain a +2 bonus to Charisma ability checks and a -1 malus to Wisdom ability checks while being attuned to the locket.
 	\item \textbf{Level 11-16:} You gain a +3 bonus to Charisma ability checks and a -1 malus to Wisdom ability checks while being attuned to the locket.
 	\item \textbf{Level 17+:} You gain a +4 bonus to Charisma ability checks and a -2 malus to Wisdom ability checks while being attuned to the locket.
@@ -526,8 +555,8 @@ Whenever a decision must be made or information is sought, the locket's magic co
 	\item With every successful Saving Throw regarding this effect the bearer makes the Save DC increases by \xdef\successIncrease{0.5}\successIncrease
 	\item With every failed Saving Throw regarding this effect the bearer makes the Save DC increases by \xdef\failIncrease{0.25}\failIncrease
 \end{itemize}
-\textbf{Failed Saves:} \xdef\failedSaves{4}\failedSaves\\
-\textbf{Successful Saves:} \xdef\successSaves{2}\successSaves\\
+\textbf{Failed Saves:} \xdef\failedSaves{5}\failedSaves\\
+\textbf{Successful Saves:} \xdef\successSaves{4}\successSaves\\
 \textbf{Current Save DC: \FPeval{saveDC}{clip(10+\failedSaves*failIncrease+\successSaves*\successIncrease)}\saveDC}
 \section*{Torn between Worlds}
 While the locket provides Alistair with extraordinary insights and magical abilities, its influence comes at a cost. The more time he spends away from the Feywild or the locket, the more he feels an ache of longing and a sense of restlessness. Their connection with the locket intertwines his fate with that of the Feywild, making him feel incomplete whenever he is separated from it.
