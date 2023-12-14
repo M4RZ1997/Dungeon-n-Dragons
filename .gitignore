@@ -17,6 +17,11 @@ _minted*
 *.ps
 
 ###################################################################
+Gimp Files
+###################################################################
+*.xcf
+
+###################################################################
 Miscellaneous
 ###################################################################
 Nari_Ennea/
@@ -24,3 +29,6 @@ Raw-Images/
 Gimp-Projects/
 AI\ Generated/
 FA_Mapmaking_Pack/
+one_shots/stylesheets/images/assets/
+one_shots/stylesheets/images/maps/
+one_shots/stylesheets/images/textures/

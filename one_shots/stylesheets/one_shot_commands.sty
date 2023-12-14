@@ -1,0 +1,408 @@
+% ------------------------------------------------------------------------------------------------- %
+%                        one_shot_commands.sty  	Marcel Zauder 11/10/2023       	                %
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+
+% -------------------------------------------------------------------------------------------------- %
+% ################################################################################################## %
+% --------------------------------------- One-Shot Main Page --------------------------------------- %
+\newcommand{\oneShotTitlePage}[9]{%
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture,overlay]
+		\expandafter\def\expandafter\temp\expandafter{#1}%
+		\edef\temp{#1}
+		\expandafter\splitShadowfyColors\temp\relax%
+		
+		\node[opacity=1,inner sep=0pt,xshift=#2,yshift=#3] at (current page.center){\includegraphics[#4, keepaspectratio]{#5}};
+		\addImageDBEntry#6
+		\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyClassName{#7}};
+		\node[yshift=0.35\paperheight] at (current page.center) {\shadowfySubClassName{#8}};
+				
+		\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.375\paperheight)$);
+		\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+		
+		\expandafter\def\expandafter\temp\expandafter{#9}%
+		\edef\temp{#9}
+		\expandafter\splitShadowfyColors\temp\relax%
+		\def\stackgap{0.01pt}
+		\node[yshift=-0.4\paperheight] at (current page.center) {\titlefont{ \shadowfy{The One-Shot Adventure "#8"}}};
+	\end{tikzpicture}
+}%
+% ------------------------------------------------------------------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Last Page #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\ThanksSpacing}{3cm}
+\newcommand{\oneShotLastPage}[8]{%
+	\clearpage%
+	\thispagestyle{empty}%
+	\begin{tikzpicture}[remember picture,overlay]%
+		\node[opacity=1,inner sep=0pt,yshift=#2, xshift=#3] at (current page.center){\includegraphics[#4,  keepaspectratio]{#1}};%
+		\addImageDBEntry{BackCover}{Back Cover}{Art}{#5}{#6}{#7}%
+		\node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[min width=\paperwidth, height=\paperheight, keepaspectratio]{\PATH regions/stylesheets/images/book/backcover-black-part.png}};%
+		
+		\def\primarycolor{MarzRed}%
+		\def\secondarycolor{black!80}%
+		%\def\secondarycolor{MarzDarkRed}%
+		\def\stackgap{0.1pt}
+		\node[yshift=0.1\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
+			\adjustbox{valign=c}{%
+				\parbox{0.5\textwidth}{\centering{
+					\parbox{0.4\textwidth}{%
+						\centering\customtitle{Big} ~ \customtitle{Thanks} ~ \customtitle{To} ~ \customtitle{These} ~ \customtitle{Artists}%
+					}%
+					\par\vspace*{\ThanksSpacing}%
+					\parbox{0.45\textwidth}{%
+						\large{\begin{itemize}[label=\textcolor{white}{\textbullet}]%
+							\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{%
+								\item \textcolor{white}{\thisPage ~\thisAdditionalInformation :} \textcolor{orange}{\href{\thisURL}{\thisArtName ~by \thisArtist}}%
+							}%
+						\end{itemize}}%
+					}%
+				}}%
+			}%
+		};
+		
+		\def\stackgap{0.01pt}
+		\ifthenelse{\equal{#8}{}}{}{%
+			\node[yshift=-0.275\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
+				\parbox{0.4\textwidth}{%
+					\centering\titlefont{\large\shadowfy{#8}}%
+				}
+			};%
+		}%
+		
+		\node[yshift=-0.4\paperheight, xshift=-0.25\paperwidth] at (current page.center) {\includegraphics[width=0.25\paperwidth, keepaspectratio]{\PATH regions/stylesheets/images/book/DnD_Ampersand.png}};
+	\end{tikzpicture}%
+}%
+% ------------------------------------------------------------------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Resetting Character  Sheet Inputs #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\ResetCharacterSheetInput}{
+	% Saving Throws - Reset Colors
+	\newrgbcolor{strengthproficiency}{1 1 1}
+	\newrgbcolor{strengthexpertise}{1 1 1}
+	\newrgbcolor{dexterityproficiency}{1 1 1}
+	\newrgbcolor{dexterityexpertise}{1 1 1}
+	\newrgbcolor{constitutionproficiency}{1 1 1}
+	\newrgbcolor{constitutionexpertise}{1 1 1}
+	\newrgbcolor{intelligenceproficiency}{1 1 1}
+	\newrgbcolor{intelligenceexpertise}{1 1 1}
+	\newrgbcolor{wisdomproficiency}{1 1 1}
+	\newrgbcolor{wisdomexpertise}{1 1 1}
+	\newrgbcolor{charismaproficiency}{1 1 1}
+	\newrgbcolor{charismaexpertise}{1 1 1}
+	
+	% Skills - Reset Colors
+	\newrgbcolor{acrobaticsproficiency}{1 1 1}
+	\newrgbcolor{acrobaticsexpertise}{1 1 1}
+	\newrgbcolor{animalhandlingproficiency}{1 1 1}
+	\newrgbcolor{animalhandlingexpertise}{1 1 1}
+	\newrgbcolor{arcanaproficiency}{1 1 1}
+	\newrgbcolor{arcanaexpertise}{1 1 1}
+	\newrgbcolor{athleticsproficiency}{1 1 1}
+	\newrgbcolor{athleticsexpertise}{1 1 1}
+	\newrgbcolor{deceptionproficiency}{1 1 1}
+	\newrgbcolor{deceptionexpertise}{1 1 1}
+	\newrgbcolor{historyproficiency}{1 1 1}
+	\newrgbcolor{historyexpertise}{1 1 1}
+	\newrgbcolor{insightproficiency}{1 1 1}
+	\newrgbcolor{insightexpertise}{1 1 1}
+	\newrgbcolor{intimidationproficiency}{1 1 1}
+	\newrgbcolor{intimidationexpertise}{1 1 1}
+	\newrgbcolor{investigationproficiency}{1 1 1}
+	\newrgbcolor{investigationexpertise}{1 1 1}
+	\newrgbcolor{medicineproficiency}{1 1 1}
+	\newrgbcolor{medicineexpertise}{1 1 1}
+	\newrgbcolor{natureproficiency}{1 1 1}
+	\newrgbcolor{natureexpertise}{1 1 1}
+	\newrgbcolor{perceptionproficiency}{1 1 1}
+	\newrgbcolor{perceptionexpertise}{1 1 1}
+	\newrgbcolor{performanceproficiency}{1 1 1}
+	\newrgbcolor{performanceexpertise}{1 1 1}
+	\newrgbcolor{persuasionproficiency}{1 1 1}
+	\newrgbcolor{persuasionexpertise}{1 1 1}
+	\newrgbcolor{religionproficiency}{1 1 1}
+	\newrgbcolor{religionexpertise}{1 1 1}
+	\newrgbcolor{sleightofhandproficiency}{1 1 1}
+	\newrgbcolor{sleightofhandexpertise}{1 1 1}
+	\newrgbcolor{stealthproficiency}{1 1 1}
+	\newrgbcolor{stealthexpertise}{1 1 1}
+	\newrgbcolor{survivalproficiency}{1 1 1}
+	\newrgbcolor{survivalexpertise}{1 1 1}
+	
+	% Spell Slots
+	\renewcommand{\FirstLevelSpellSlotsTotalValue}{}
+	\renewcommand{\SecondLevelSpellSlotsTotalValue}{}
+	\renewcommand{\ThirdLevelSpellSlotsTotalValue}{}
+	\renewcommand{\FourthLevelSpellSlotsTotalValue}{}
+	\renewcommand{\FifthLevelSpellSlotsTotalValue}{}
+	\renewcommand{\SixthLevelSpellSlotsTotalValue}{}
+	\renewcommand{\SeventhLevelSpellSlotsTotalValue}{}
+	\renewcommand{\EighthLevelSpellSlotsTotalValue}{}
+	\renewcommand{\NinthLevelSpellSlotsTotalValue}{}
+	
+	% CANTRIPS
+	\renewcommand{\CantripSlotAValue}{}
+	\renewcommand{\CantripSlotBValue}{}
+	\renewcommand{\CantripSlotCValue}{}
+	\renewcommand{\CantripSlotDValue}{}
+	\renewcommand{\CantripSlotEValue}{}
+	\renewcommand{\CantripSlotFValue}{}
+	\renewcommand{\CantripSlotGValue}{}
+	\renewcommand{\CantripSlotHValue}{}
+	
+	% LEVEL 1 SPELLS
+	\renewcommand{\FirstLevelSpellSlotAValue}{}
+	\renewcommand{\FirstLevelSpellSlotBValue}{}
+	\renewcommand{\FirstLevelSpellSlotCValue}{}
+	\renewcommand{\FirstLevelSpellSlotDValue}{}
+	\renewcommand{\FirstLevelSpellSlotEValue}{}
+	\renewcommand{\FirstLevelSpellSlotFValue}{}
+	\renewcommand{\FirstLevelSpellSlotGValue}{}
+	\renewcommand{\FirstLevelSpellSlotHValue}{}
+	\renewcommand{\FirstLevelSpellSlotIValue}{}
+	\renewcommand{\FirstLevelSpellSlotJValue}{}
+	\renewcommand{\FirstLevelSpellSlotKValue}{}
+	\renewcommand{\FirstLevelSpellSlotLValue}{}
+	\renewcommand{\FirstLevelSpellSlotMValue}{}
+	
+	% LEVEL 2 SPELLS
+	\renewcommand{\SecondLevelSpellSlotAValue}{}
+	\renewcommand{\SecondLevelSpellSlotBValue}{}
+	\renewcommand{\SecondLevelSpellSlotCValue}{}
+	\renewcommand{\SecondLevelSpellSlotDValue}{}
+	\renewcommand{\SecondLevelSpellSlotEValue}{}
+	\renewcommand{\SecondLevelSpellSlotFValue}{}
+	\renewcommand{\SecondLevelSpellSlotGValue}{}
+	\renewcommand{\SecondLevelSpellSlotHValue}{}
+	\renewcommand{\SecondLevelSpellSlotIValue}{}
+	\renewcommand{\SecondLevelSpellSlotJValue}{}
+	\renewcommand{\SecondLevelSpellSlotKValue}{}
+	\renewcommand{\SecondLevelSpellSlotLValue}{}
+	\renewcommand{\SecondLevelSpellSlotMValue}{}
+	
+	% LEVEL 3 SPELLS
+	\renewcommand{\ThirdLevelSpellSlotAValue}{}
+	\renewcommand{\ThirdLevelSpellSlotBValue}{}
+	\renewcommand{\ThirdLevelSpellSlotCValue}{}
+	\renewcommand{\ThirdLevelSpellSlotDValue}{}
+	\renewcommand{\ThirdLevelSpellSlotEValue}{}
+	\renewcommand{\ThirdLevelSpellSlotFValue}{}
+	\renewcommand{\ThirdLevelSpellSlotGValue}{}
+	\renewcommand{\ThirdLevelSpellSlotHValue}{}
+	\renewcommand{\ThirdLevelSpellSlotIValue}{}
+	\renewcommand{\ThirdLevelSpellSlotJValue}{}
+	\renewcommand{\ThirdLevelSpellSlotKValue}{}
+	\renewcommand{\ThirdLevelSpellSlotLValue}{}
+	\renewcommand{\ThirdLevelSpellSlotMValue}{}
+	
+	% LEVEL 4 SPELLS
+	\renewcommand{\FourthLevelSpellSlotAValue}{}
+	\renewcommand{\FourthLevelSpellSlotBValue}{}
+	\renewcommand{\FourthLevelSpellSlotCValue}{}
+	\renewcommand{\FourthLevelSpellSlotDValue}{}
+	\renewcommand{\FourthLevelSpellSlotEValue}{}
+	\renewcommand{\FourthLevelSpellSlotFValue}{}
+	\renewcommand{\FourthLevelSpellSlotGValue}{}
+	\renewcommand{\FourthLevelSpellSlotHValue}{}
+	\renewcommand{\FourthLevelSpellSlotIValue}{}
+	\renewcommand{\FourthLevelSpellSlotJValue}{}
+	\renewcommand{\FourthLevelSpellSlotKValue}{}
+	\renewcommand{\FourthLevelSpellSlotLValue}{}
+	\renewcommand{\FourthLevelSpellSlotMValue}{}
+	
+	% LEVEL 5 SPELLS
+	\renewcommand{\FifthLevelSpellSlotAValue}{}
+	\renewcommand{\FifthLevelSpellSlotBValue}{}
+	\renewcommand{\FifthLevelSpellSlotCValue}{}
+	\renewcommand{\FifthLevelSpellSlotDValue}{}
+	\renewcommand{\FifthLevelSpellSlotEValue}{}
+	\renewcommand{\FifthLevelSpellSlotFValue}{}
+	\renewcommand{\FifthLevelSpellSlotGValue}{}
+	\renewcommand{\FifthLevelSpellSlotHValue}{}
+	\renewcommand{\FifthLevelSpellSlotIValue}{}
+	
+	% LEVEL 6 SPELLS
+	\renewcommand{\SixthLevelSpellSlotAValue}{}
+	\renewcommand{\SixthLevelSpellSlotBValue}{}
+	\renewcommand{\SixthLevelSpellSlotCValue}{}
+	\renewcommand{\SixthLevelSpellSlotDValue}{}
+	\renewcommand{\SixthLevelSpellSlotEValue}{}
+	\renewcommand{\SixthLevelSpellSlotFValue}{}
+	\renewcommand{\SixthLevelSpellSlotGValue}{}
+	\renewcommand{\SixthLevelSpellSlotHValue}{}
+	\renewcommand{\SixthLevelSpellSlotIValue}{}
+	
+	% LEVEL 7 SPELLS
+	\renewcommand{\SeventhLevelSpellSlotAValue}{}
+	\renewcommand{\SeventhLevelSpellSlotBValue}{}
+	\renewcommand{\SeventhLevelSpellSlotCValue}{}
+	\renewcommand{\SeventhLevelSpellSlotDValue}{}
+	\renewcommand{\SeventhLevelSpellSlotEValue}{}
+	\renewcommand{\SeventhLevelSpellSlotFValue}{}
+	\renewcommand{\SeventhLevelSpellSlotGValue}{}
+	\renewcommand{\SeventhLevelSpellSlotHValue}{}
+	\renewcommand{\SeventhLevelSpellSlotIValue}{}
+	
+	% LEVEL 8 SPELLS
+	\renewcommand{\EighthLevelSpellSlotAValue}{}
+	\renewcommand{\EighthLevelSpellSlotBValue}{}
+	\renewcommand{\EighthLevelSpellSlotCValue}{}
+	\renewcommand{\EighthLevelSpellSlotDValue}{}
+	\renewcommand{\EighthLevelSpellSlotEValue}{}
+	\renewcommand{\EighthLevelSpellSlotFValue}{}
+	\renewcommand{\EighthLevelSpellSlotGValue}{}
+	
+	% LEVEL 9 SPELLS
+	\renewcommand{\NinthLevelSpellSlotAValue}{}
+	\renewcommand{\NinthLevelSpellSlotBValue}{}
+	\renewcommand{\NinthLevelSpellSlotCValue}{}
+	\renewcommand{\NinthLevelSpellSlotDValue}{}
+	\renewcommand{\NinthLevelSpellSlotEValue}{}
+	\renewcommand{\NinthLevelSpellSlotFValue}{}
+	\renewcommand{\NinthLevelSpellSlotGValue}{}
+	
+	% SPELL PREPARED COLOR CHANGES
+	
+	% LEVEL 1
+	\newrgbcolor{level1prepared1}{1 1 1}
+	\newrgbcolor{level1prepared2}{1 1 1}
+	\newrgbcolor{level1prepared3}{1 1 1}
+	\newrgbcolor{level1prepared4}{1 1 1}
+	\newrgbcolor{level1prepared5}{1 1 1}
+	\newrgbcolor{level1prepared6}{1 1 1}
+	\newrgbcolor{level1prepared7}{1 1 1}
+	\newrgbcolor{level1prepared8}{1 1 1}
+	\newrgbcolor{level1prepared9}{1 1 1}
+	\newrgbcolor{level1prepared10}{1 1 1}
+	\newrgbcolor{level1prepared11}{1 1 1}
+	\newrgbcolor{level1prepared12}{1 1 1}
+	\newrgbcolor{level1prepared13}{1 1 1}
+	
+	% LEVEL 2
+	\newrgbcolor{level2prepared1}{1 1 1}
+	\newrgbcolor{level2prepared2}{1 1 1}
+	\newrgbcolor{level2prepared3}{1 1 1}
+	\newrgbcolor{level2prepared4}{1 1 1}
+	\newrgbcolor{level2prepared5}{1 1 1}
+	\newrgbcolor{level2prepared6}{1 1 1}
+	\newrgbcolor{level2prepared7}{1 1 1}
+	\newrgbcolor{level2prepared8}{1 1 1}
+	\newrgbcolor{level2prepared9}{1 1 1}
+	\newrgbcolor{level2prepared10}{1 1 1}
+	\newrgbcolor{level2prepared11}{1 1 1}
+	\newrgbcolor{level2prepared12}{1 1 1}
+	\newrgbcolor{level2prepared13}{1 1 1}
+	
+	% LEVEL 3
+	\newrgbcolor{level3prepared1}{1 1 1}
+	\newrgbcolor{level3prepared2}{1 1 1}
+	\newrgbcolor{level3prepared3}{1 1 1}
+	\newrgbcolor{level3prepared4}{1 1 1}
+	\newrgbcolor{level3prepared5}{1 1 1}
+	\newrgbcolor{level3prepared6}{1 1 1}
+	\newrgbcolor{level3prepared7}{1 1 1}
+	\newrgbcolor{level3prepared8}{1 1 1}
+	\newrgbcolor{level3prepared9}{1 1 1}
+	\newrgbcolor{level3prepared10}{1 1 1}
+	\newrgbcolor{level3prepared11}{1 1 1}
+	\newrgbcolor{level3prepared12}{1 1 1}
+	\newrgbcolor{level3prepared13}{1 1 1}
+	
+	% LEVEL 4
+	\newrgbcolor{level4prepared1}{1 1 1}
+	\newrgbcolor{level4prepared2}{1 1 1}
+	\newrgbcolor{level4prepared3}{1 1 1}
+	\newrgbcolor{level4prepared4}{1 1 1}
+	\newrgbcolor{level4prepared5}{1 1 1}
+	\newrgbcolor{level4prepared6}{1 1 1}
+	\newrgbcolor{level4prepared7}{1 1 1}
+	\newrgbcolor{level4prepared8}{1 1 1}
+	\newrgbcolor{level4prepared9}{1 1 1}
+	\newrgbcolor{level4prepared10}{1 1 1}
+	\newrgbcolor{level4prepared11}{1 1 1}
+	\newrgbcolor{level4prepared12}{1 1 1}
+	\newrgbcolor{level4prepared13}{1 1 1}
+	
+	% LEVEL 5
+	\newrgbcolor{level5prepared1}{1 1 1}
+	\newrgbcolor{level5prepared2}{1 1 1}
+	\newrgbcolor{level5prepared3}{1 1 1}
+	\newrgbcolor{level5prepared4}{1 1 1}
+	\newrgbcolor{level5prepared5}{1 1 1}
+	\newrgbcolor{level5prepared6}{1 1 1}
+	\newrgbcolor{level5prepared7}{1 1 1}
+	\newrgbcolor{level5prepared8}{1 1 1}
+	\newrgbcolor{level5prepared9}{1 1 1}
+	
+	% LEVEL 6
+	\newrgbcolor{level6prepared1}{1 1 1}
+	\newrgbcolor{level6prepared2}{1 1 1}
+	\newrgbcolor{level6prepared3}{1 1 1}
+	\newrgbcolor{level6prepared4}{1 1 1}
+	\newrgbcolor{level6prepared5}{1 1 1}
+	\newrgbcolor{level6prepared6}{1 1 1}
+	\newrgbcolor{level6prepared7}{1 1 1}
+	\newrgbcolor{level6prepared8}{1 1 1}
+	\newrgbcolor{level6prepared9}{1 1 1}
+	
+	% LEVEL 7
+	\newrgbcolor{level7prepared1}{1 1 1}
+	\newrgbcolor{level7prepared2}{1 1 1}
+	\newrgbcolor{level7prepared3}{1 1 1}
+	\newrgbcolor{level7prepared4}{1 1 1}
+	\newrgbcolor{level7prepared5}{1 1 1}
+	\newrgbcolor{level7prepared6}{1 1 1}
+	\newrgbcolor{level7prepared7}{1 1 1}
+	\newrgbcolor{level7prepared8}{1 1 1}
+	\newrgbcolor{level7prepared9}{1 1 1}
+	
+	% LEVEL 8
+	\newrgbcolor{level8prepared1}{1 1 1}
+	\newrgbcolor{level8prepared2}{1 1 1}
+	\newrgbcolor{level8prepared3}{1 1 1}
+	\newrgbcolor{level8prepared4}{1 1 1}
+	\newrgbcolor{level8prepared5}{1 1 1}
+	\newrgbcolor{level8prepared6}{1 1 1}
+	\newrgbcolor{level8prepared7}{1 1 1}
+	
+	% LEVEL 9
+	\newrgbcolor{level9prepared1}{1 1 1}
+	\newrgbcolor{level9prepared2}{1 1 1}
+	\newrgbcolor{level9prepared3}{1 1 1}
+	\newrgbcolor{level9prepared4}{1 1 1}
+	\newrgbcolor{level9prepared5}{1 1 1}
+	\newrgbcolor{level9prepared6}{1 1 1}
+	\newrgbcolor{level9prepared7}{1 1 1}
+}
+% ------------------------------------------------------------------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Resetting Character  Sheet Inputs #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\ExplSyntaxOn
+\bool_new:N \l_spellcasting_bool
+\keys_define:nn { character-sheet-input }
+{
+  spellcasting .bool_set:N = \l_spellcasting_bool,
+  spellcasting .default:n = false,
+}
+\NewDocumentCommand{\CharacterSheetInput}{O{} m}{
+  	\keys_set:nn { character-sheet-input } { #1 }
+	\ResetCharacterSheetInput
+
+	\input{characters/#2/#2_input.tex}
+	\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+	\onecolumn
+	% CHARACTER PAGE
+	\rendercharactersheet
+	% SPELLCASTING PAGE
+	\bool_if:NTF \l_spellcasting_bool
+  	{
+		\renderspellsheet
+	}
+	{}
+	\restoregeometry
+	\twocolumn
+	{\entryfont \FeaturesAndSpells}
+	\keys_set:nn { character-sheet-input } { spellcasting = false }
+}
+\ExplSyntaxOff

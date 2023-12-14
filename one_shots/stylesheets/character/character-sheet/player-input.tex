@@ -1,0 +1,158 @@
+% CHARACTER NAME
+\rput[cc](201.61106163,957){\LARGE \entryfont \CharacterNameValue}
+
+% HEADER INFORMATION
+\ifthenelse{\equal{\MultiClassValue}{}}{%
+	\rput[l](361.87600658,980){\Large \entryfont{\ClassValue ~\LevelValue}}
+}{%
+	\rput[l](361.87600658,978){\large \entryfont{\ClassValue ~\MultiClassLevelValue}~/~\entryfont{\MultiClassValue} \FPeval{secondaryLevelValue}{clip(\LevelValue - \MultiClassLevelValue)}\secondaryLevelValue}
+}%
+\rput[l](512.21666949,980){\Large \entryfont \BackgroundValue}
+\rput[l](641.23599959,980){\Large \entryfont \PlayerNameValue}
+\rput[l](361.87600658,945.226667535){\Large \entryfont \RaceValue}
+\rput[l](512.21666949,945.226667535){\Large \entryfont \AlignmentValue}
+\rput[l](641.23599959,945.226667535){\Large \entryfont \XPValue}
+
+% PROFICIENCY ETC
+\rput[cc](143.42533022,869.816111585){\Large \entryfont \InspirationValue}
+\rput[cc](143.42533022,819.541712845){\Large \entryfont \ProficiencyValue}
+
+% ABILITY SCORES
+\rput[cc](76.251064759,830.67824602){\LARGE \entryfont \StrengthScoreValue}
+\rput[cc](76.251064759,735.51598173){\LARGE \entryfont \DexterityScoreValue}
+\rput[cc](76.251064759,640.06185079){\LARGE \entryfont \ConstitutionScoreValue}
+\rput[cc](76.251064759,544.60758651){\LARGE \entryfont \IntelligenceScoreValue}
+\rput[cc](76.251064759,449.15352223){\LARGE \entryfont \WisdomScoreValue}
+\rput[cc](76.251064759,353.48399129){\LARGE \entryfont \CharismaScoreValue}
+
+% MODIFIERS
+\StrengthModifier{\calculateModifier{\StrengthScoreValue}}
+\rput[cc](76.251064759,798.57131337){\footnotesize \entryfont \StrengthModifierValue}
+\DexterityModifier{\calculateModifier{\DexterityScoreValue}}
+\rput[cc](76.251064759,702.79878243){\footnotesize \entryfont \DexterityModifierValue}
+\ConstitutionModifier{\calculateModifier{\ConstitutionScoreValue}}
+\rput[cc](76.251064759,607.67145147){\footnotesize \entryfont \ConstitutionModifierValue}
+\IntelligenceModifier{\calculateModifier{\IntelligenceScoreValue}}
+\rput[cc](76.251064759,511.89225387){\footnotesize \entryfont \IntelligenceModifierValue}
+\WisdomModifier{\calculateModifier{\WisdomScoreValue}}
+\rput[cc](76.251064759,416.43612292){\footnotesize \entryfont \WisdomModifierValue}
+\CharismaModifier{\calculateModifier{\CharismaScoreValue}}
+\rput[cc](76.251064759,321.29452530){\footnotesize \entryfont \CharismaModifierValue}
+
+% SAVING THROWS
+\StrengthSavingThrowModifier{\calculateSavingThrow{\StrengthModifierValue}{\StrengthProficiencyValue}}
+\rput[cc](160.14932933,774.25558064){\footnotesize \entryfont \StrengthSavingThrowModifierValue}
+\DexteritySavingThrowModifier{\calculateSavingThrow{\DexterityModifierValue}{\DexterityProficiencyValue}}
+\rput[cc](160.14932933,756.25558109){\footnotesize \entryfont \DexteritySavingThrowModifierValue}
+\ConstitutionSavingThrowModifier{\calculateSavingThrow{\ConstitutionModifierValue}{\ConstitutionProficiencyValue}}
+\rput[cc](160.14932933,738.25558154){\footnotesize \entryfont \ConstitutionSavingThrowModifierValue}
+\IntelligenceSavingThrowModifier{\calculateSavingThrow{\IntelligenceModifierValue}{\IntelligenceProficiencyValue}}
+\rput[cc](160.14932933,720.25558199){\footnotesize \entryfont \IntelligenceSavingThrowModifierValue}
+\WisdomSavingThrowModifier{\calculateSavingThrow{\WisdomModifierValue}{\WisdomProficiencyValue}}
+\rput[cc](160.14932933,702.25558244){\footnotesize \entryfont \WisdomSavingThrowModifierValue}
+\CharismaSavingThrowModifier{\calculateSavingThrow{\CharismaModifierValue}{\CharismaProficiencyValue}}
+\rput[cc](160.14932933,684.25558289){\footnotesize \entryfont \CharismaSavingThrowModifierValue}
+
+% Jack of all Trades Check
+\ifthenelse{\equal{\ClassValue}{Bard}}%
+{%
+	\ifnum \intcalcAdd{\LevelValue}{0} >1%
+		\renewcommand{\JackOfAllTradesValue}{1}%
+	\fi%
+}{}%
+
+% SKILLS
+\AcrobaticsSkillModifier{\calculateSavingThrow{\DexterityModifierValue}{\AcrobaticsProficiencyValue}}
+\rput[cc](158.81599603,620.5765178){\footnotesize \entryfont \AcrobaticsSkillModifierValue}
+\AnimalHandlingSkillModifier{\calculateSavingThrow{\WisdomModifierValue}{\AnimalHandlingProficiencyValue}}
+\rput[cc](158.81599603,602.5765182){\footnotesize \entryfont \AnimalHandlingSkillModifierValue}
+\ArcanaSkillModifier{\calculateSavingThrow{\IntelligenceModifierValue}{\ArcanaProficiencyValue}}
+\rput[cc](158.81599603,584.5765187){\footnotesize \entryfont \ArcanaSkillModifierValue}
+\AthleticsSkillModifier{\calculateSavingThrow{\StrengthModifierValue}{\AthleticsProficiencyValue}}
+\rput[cc](158.81599603,566.5765191){\footnotesize \entryfont \AthleticsSkillModifierValue}
+\DeceptionSkillModifier{\calculateSavingThrow{\CharismaModifierValue}{\DeceptionProficiencyValue}}
+\rput[cc](158.81599603,548.5765196){\footnotesize \entryfont \DeceptionSkillModifierValue}
+\HistorySkillModifier{\calculateSavingThrow{\IntelligenceModifierValue}{\HistoryProficiencyValue}}
+\rput[cc](158.81599603,530.5765200){\footnotesize \entryfont \HistorySkillModifierValue}
+\InsightSkillModifier{\calculateSavingThrow{\WisdomModifierValue}{\InsightProficiencyValue}}
+\rput[cc](158.81599603,512.5765205){\footnotesize \entryfont \InsightSkillModifierValue}
+\IntimidationSkillModifier{\calculateSavingThrow{\CharismaModifierValue}{\IntimidationProficiencyValue}}
+\rput[cc](158.81599603,494.5765209){\footnotesize \entryfont \IntimidationSkillModifierValue}
+\InvestigationSkillModifier{\calculateSavingThrow{\IntelligenceModifierValue}{\InvestigationProficiencyValue}}
+\rput[cc](158.81599603,476.5765214){\footnotesize \entryfont \InvestigationSkillModifierValue}
+\MedicineSkillModifier{\calculateSavingThrow{\WisdomModifierValue}{\MedicineProficiencyValue}}
+\rput[cc](158.81599603,458.5765218){\footnotesize \entryfont \MedicineSkillModifierValue}
+\NatureSkillModifier{\calculateSavingThrow{\IntelligenceModifierValue}{\NatureProficiencyValue}}
+\rput[cc](158.81599603,440.5765223){\footnotesize \entryfont \NatureSkillModifierValue}
+\PerceptionSkillModifier{\calculateSavingThrow{\WisdomModifierValue}{\PerceptionProficiencyValue}}
+\rput[cc](158.81599603,422.5765227){\footnotesize \entryfont \PerceptionSkillModifierValue}
+\PerformanceSkillModifier{\calculateSavingThrow{\CharismaModifierValue}{\PerformanceProficiencyValue}}
+\rput[cc](158.81599603,404.5765232){\footnotesize \entryfont \PerformanceSkillModifierValue}
+\PersuasionSkillModifier{\calculateSavingThrow{\CharismaModifierValue}{\PersuasionProficiencyValue}}
+\rput[cc](158.81599603,386.5765236){\footnotesize \entryfont \PersuasionSkillModifierValue}
+\ReligionSkillModifier{\calculateSavingThrow{\IntelligenceModifierValue}{\ReligionProficiencyValue}}
+\rput[cc](158.81599603,368.5765241){\footnotesize \entryfont \ReligionSkillModifierValue}
+\SleightOfHandSkillModifier{\calculateSavingThrow{\DexterityModifierValue}{\SleightOfHandProficiencyValue}}
+\rput[cc](158.81599603,350.5765245){\footnotesize \entryfont \SleightOfHandSkillModifierValue}
+\StealthSkillModifier{\calculateSavingThrow{\DexterityModifierValue}{\StealthProficiencyValue}}
+\rput[cc](158.81599603,332.5765250){\footnotesize \entryfont \StealthSkillModifierValue}
+\SurvivalSkillModifier{\calculateSavingThrow{\WisdomModifierValue}{\SurvivalProficiencyValue}}
+\rput[cc](158.81599603,314.5765254){\footnotesize \entryfont \SurvivalSkillModifierValue}
+
+% BATTLE STATS
+\rput[cc](330.04105841,852.46451227){\LARGE \entryfont \ArmorClassValue}
+\rput[cc](405.17452320,847.59717893){\LARGE \entryfont{%
+	\ifnum \intcalcAdd{\DexterityModifierValue}{\InitiativeModifierValue}>0%
+		+%
+	\fi%
+	\intcalcAdd{\DexterityModifierValue}{\InitiativeModifierValue}%
+}}
+\rput[cc](483.04118792,847.59717893){\LARGE \entryfont \SpeedValue}
+\rput[cc](451.42132215,783.32600593){\footnotesize \entryfont \MaxHitPointsValue}
+\rput[cc](407.99998987,752.58358106){\LARGE \entryfont \CurrentHitPointsValue}
+\rput[cc](407.99998987,684.10878302){\LARGE \entryfont \TemporaryHitPointsValue}
+
+\ifthenelse{\equal{\MultiClassHitDiceValue}{}}{%
+	\rput[cc](362.57465764,622.54787662){\footnotesize \entryfont{\LevelValue \HitDiceValue}}
+	\rput[cc](350.73265790,600.18398492){\LARGE \entryfont{\intcalcSub{\LevelValue}{\HitDiceSpentValue}\HitDiceValue}}
+}{
+	\FPeval{secondaryLevelValue}{clip(\LevelValue - \MultiClassLevelValue)}
+	\rput[cc](362.57465764,622.54787662){\footnotesize \entryfont{\MultiClassLevelValue \HitDiceValue}~/~\entryfont{\secondaryLevelValue\MultiClassHitDiceValue}}
+	\rput[cc](350.73265790,600.18398492){\Large \entryfont{\intcalcSub{\MultiClassLevelValue}{\HitDiceSpentValue}\HitDiceValue}~/~\entryfont{\intcalcSub{\secondaryLevelValue}{\MultiClassHitDiceSpentValue}\MultiClassHitDiceValue}}
+}
+
+% PASSIVE PERCEPTION
+\rput[cc]( 57.99946577,256.785460244){\Large \entryfont{%
+	\ifthenelse{\equal{\PassivePerceptionModifierValue}{}}{\def\tempModifier{0}}{\def\tempModifier{\PassivePerceptionModifierValue}}%
+	\ifthenelse{\equal{\PerceptionProficiencyValue}{P}}%
+	{%
+		\intcalcAdd{10}{\intcalcAdd{\tempModifier}{\intcalcAdd{\WisdomModifierValue}{\ProficiencyValue}}}%
+	}%
+	{%
+		\ifthenelse{\equal{\PerceptionProficiencyValue}{E}}%
+		{%
+			\intcalcAdd{10}{\intcalcAdd{\tempModifier}{\intcalcAdd{\WisdomModifierValue}{\intcalcMul{\ProficiencyValue}{2}}}}%
+		}%
+		{%
+			\intcalcAdd{10}{\intcalcAdd{\tempModifier}{\WisdomModifierValue}}%
+		}%
+	}%
+}}%
+
+% FREEFORM ENTRY
+\rput[lt](44,220){\parbox{167pt}{\entryfont \OtherProficienciesLanguagesValue}}
+\rput[lt](548,556){\parbox{167pt}{\entryfont \justify \FeaturesTraitsValue}}
+
+% PERSONALITY
+\rput[lt](558,883){\parbox{152pt}{\entryfont \justify \footnotesize \PersonalityTraitsValue}}
+\rput[lt](558,790){\parbox{152pt}{\entryfont \justify \footnotesize \IdealsValue}}
+\rput[lt](558,716){\parbox{152pt}{\entryfont \justify \footnotesize \BondsValue}}
+\rput[lt](558,643){\parbox{152pt}{\entryfont \justify \footnotesize \FlawsValue}}
+
+% Character Appearance Picture
+\rput[lt](296,550){\parbox[b][390pt][c]{167pt}{%
+	\begin{minipage}[b][\height][c]{\linewidth}
+    \centering
+	\includegraphics[height=390pt, width=167pt, keepaspectratio]{\CharacterAppearancePictureValue}
+	\end{minipage}
+}}
