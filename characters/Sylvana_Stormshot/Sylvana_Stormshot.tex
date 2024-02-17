@@ -62,9 +62,17 @@
 \StealthProficiency{P}
 \SurvivalProficiency{P}
 
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
 
 \Inspiration{}
-\Proficiency{2}
+\Proficiency{+2}
+\PassivePerceptionModifier{0}
 
 % Armor Class is not automatically calculated
 \ArmorClass{14}
@@ -168,12 +176,12 @@
 % background
 
 \CharacterAppearance{}{
-	\hspace*{-1.65em}\begin{tabular}{p{120pt}p{50pt}}
-		\begin{tabular}{p{90pt}}\vspace*{-1.25em}\includegraphics[width=120pt, height=140pt, keepaspectratio]{images/Sylvana_Stormshot.png}\end{tabular}
+	\hspace*{-1.65em}\begin{tabular}{p{100pt}p{70pt}}
+		\begin{tabular}{p{80pt}}\vspace*{-1.25em}\includegraphics[width=120pt, height=140pt, keepaspectratio]{images/Sylvana_Stormshot(2).png}\end{tabular}
 		&
-		\hspace*{-1.6em}\begin{tabular}{>{\raggedleft}p{53pt}}Sylvana Stormshot is a graceful Owlin with beige feathers that provide excellent forest camouflage.\linebreak \end{tabular}
+		\hspace*{-1.6em}\begin{tabular}{>{\raggedleft}p{72pt}}Sylvana Stormshot is a graceful Owlin with beige feathers that provide excellent forest camouflage. Her forest-green eyes reflect keen perception, and\linebreak \end{tabular}
 	\end{tabular}\\\vspace*{-1.6em}\hfill\\
-	Her forest-green eyes reflect keen perception, and she's often seen in a flowing blue kimono adorned with nature-inspired patterns. She carries an air of quiet confidence, embodying the harmony of natural beauty and arcane power.
+	she's often seen in a flowing blue kimono adorned with nature-inspired patterns. She carries an air of quiet confidence, embodying the harmony of natural beauty and arcane power.
 }{}{}{}
 \AdditionalFeaturesAndTraits{
 	Sylvana's presence seems to harmonize with the natural world around her. When she walks through the forest, the birds sing more melodiously, and the leaves rustle in harmony. Her affinity with nature often leaves those she encounters with a sense of tranquility and wonder.\\
@@ -208,6 +216,7 @@
 %\SpellcastingClass{}
 %\SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
 %\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+%\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 %
 %\CantripSlotA{Cantrip A}
 %

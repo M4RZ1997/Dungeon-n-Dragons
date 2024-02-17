@@ -43,6 +43,21 @@
 \newcommand{\WisdomScore}[1]{\renewcommand{\WisdomScoreValue}{#1}}
 \newcommand{\CharismaScore}[1]{\renewcommand{\CharismaScoreValue}{#1}}
 
+% ABILITY MODIFIERS BONUS
+\newcommand{\StrengthModifierBonusValue}{}
+\newcommand{\DexterityModifierBonusValue}{}
+\newcommand{\ConstitutionModifierBonusValue}{}
+\newcommand{\IntelligenceModifierBonusValue}{}
+\newcommand{\WisdomModifierBonusValue}{}
+\newcommand{\CharismaModifierBonusValue}{}
+
+\newcommand{\StrengthModifierBonus}[1]{\renewcommand{\StrengthModifierBonusValue}{#1}}
+\newcommand{\DexterityModifierBonus}[1]{\renewcommand{\DexterityModifierBonusValue}{#1}}
+\newcommand{\ConstitutionModifierBonus}[1]{\renewcommand{\ConstitutionModifierBonusValue}{#1}}
+\newcommand{\IntelligenceModifierBonus}[1]{\renewcommand{\IntelligenceModifierBonusValue}{#1}}
+\newcommand{\WisdomModifierBonus}[1]{\renewcommand{\WisdomModifierBonusValue}{#1}}
+\newcommand{\CharismaModifierBonus}[1]{\renewcommand{\CharismaModifierBonusValue}{#1}}
+
 % ABILITY MODIFIERS
 \newcommand{\StrengthModifierValue}{}
 \newcommand{\DexterityModifierValue}{}
@@ -83,31 +98,36 @@
 
 \newcommand{\JackOfAllTradesValue}{0}
 
-\newcommand{\calculateSavingThrow}[2]{%
-	\ifthenelse{\equal{#2}{P}}%
+\newcommand{\calculateSavingThrow}[3]{%
+	\ifthenelse{\equal{#3}{P}}%
 	{%
-		\ifnum \intcalcAdd{#1}{\ProficiencyValue}>0%
+		\ifnum \intcalcAdd{#1}{\intcalcAdd{#2}{\ProficiencyValue}}>0%
 			+%
 		\fi%
-		\intcalcAdd{#1}{\ProficiencyValue}%
+		\intcalcAdd{#1}{\intcalcAdd{#2}{\ProficiencyValue}}%
 	}%
 	{%
-		\ifthenelse{\equal{#2}{E}}%
+		\ifthenelse{\equal{#3}{E}}%
 		{%
-			\ifnum \intcalcAdd{#1}{\intcalcMul{\ProficiencyValue}{2}}>0%
+			\ifnum \intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcMul{\ProficiencyValue}{2}}}>0%
 				+%
 			\fi%
-			\intcalcAdd{#1}{\intcalcMul{\ProficiencyValue}{2}}%
+			\intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcMul{\ProficiencyValue}{2}}}%
 		}%
 		{%
 			\ifthenelse{\equal{\JackOfAllTradesValue}{1}}%
 			{%
-				\ifnum \intcalcAdd{#1}{\intcalcShr{\ProficiencyValue}}>0%
+				\ifnum\intcalcAdd{#1}{ \intcalcAdd{#2}{\intcalcShr{\ProficiencyValue}}}>0%
 					+%
 				\fi%
-				\intcalcAdd{#1}{\intcalcShr{\ProficiencyValue}}%
+				\intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcShr{\ProficiencyValue}}}%
 			}%
-			{#1}%
+			{%
+				\ifnum \intcalcAdd{#1}{#2}>0%
+					+%
+				\fi%
+				\intcalcAdd{#1}{#2}
+			}%
 		}%
 	}%
 }%
@@ -289,18 +309,20 @@
 \newcommand{\SpellcastingClassValue}{}
 \newcommand{\SpellcastingAbilityValue}{}
 \newcommand{\SpellSaveDCModifyValue}{}
+\newcommand{\SpellAttackModifyValue}{}
 
 \newcommand{\SpellcastingClass}[1]{\renewcommand{\SpellcastingClassValue}{#1}}
 \newcommand{\SpellcastingAbility}[1]{\renewcommand{\SpellcastingAbilityValue}{#1}}
 \newcommand{\SpellSaveDCModifier}[1]{\renewcommand{\SpellSaveDCModifyValue}{#1}}
+\newcommand{\SpellAttackModifier}[1]{\renewcommand{\SpellAttackModifyValue}{#1}}
 
 \newcommand{\calculateSpellSaveDC}[1]{%
 	\intcalcAdd{8}{\intcalcAdd{#1}{\intcalcAdd{\ProficiencyValue}{\SpellSaveDCModifyValue}}}%
 }
 
 \newcommand{\calculateSpellAttack}[1]{%
-	\ifnum \intcalcAdd{#1}{\ProficiencyValue}>0 +\fi%
-	\intcalcAdd{#1}{\ProficiencyValue}%
+	\ifnum \intcalcAdd{#1}{\intcalcAdd{\SpellAttackModifyValue}{\ProficiencyValue}}>0 +\fi%
+	\intcalcAdd{#1}{\intcalcAdd{\SpellAttackModifyValue}{\ProficiencyValue}}%
 }
 
 

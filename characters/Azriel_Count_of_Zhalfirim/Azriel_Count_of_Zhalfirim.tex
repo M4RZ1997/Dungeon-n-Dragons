@@ -62,9 +62,17 @@
 \StealthProficiency{}
 \SurvivalProficiency{}
 
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{1}
 
 \Inspiration{}
 \Proficiency{+2}
+\PassivePerceptionModifier{0}
 
 % Armor Class is not automatically calculated
 \ArmorClass{15}
@@ -218,6 +226,7 @@
 \SpellcastingClass{Ranger}
 \SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 \CantripSlotA{Faerie Fire (once per day)}
 \CantripSlotB{Mage Hand (once per day)}

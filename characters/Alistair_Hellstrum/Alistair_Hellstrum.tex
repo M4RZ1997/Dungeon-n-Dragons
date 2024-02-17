@@ -62,8 +62,17 @@
 \StealthProficiency{}
 \SurvivalProficiency{}
 
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{1}
+
 \Inspiration{}
 \Proficiency{+2}
+\PassivePerceptionModifier{1}
 
 % Armor Class is not automatically calculated
 \ArmorClass{\intcalcAdd{11}{\calculateModifier{\DexterityScoreValue}}}
@@ -102,8 +111,8 @@
 
 \Equipment{
 	a backpack, a bedroll, 2 costumes, 5 candles, 5 days of ration, a waterskin, a disguise kit\\
-	\textbf{Violin}, \textbf{Eliwick's blank sheet of paper}\\
-	1 ruby (medium), 1 sapphire (medium)
+	1 ruby (medium), 1 sapphire (medium)\\
+	\textbf{Fochlucan Bandore}, \textbf{Violin}, \textbf{Eliwick's blank sheet of paper}
 }
 
 \PersonalityTraits{
@@ -205,24 +214,41 @@
 
 \SpellcastingClass{Bard}
 \SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
-\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellSaveDCModifier{\CharismaModifierBonusValue} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{\CharismaModifierBonusValue} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 \CantripSlotA{Mage Hand (V, S)}
 \CantripSlotB{Prestidigitation (V, S)}
 \CantripSlotC{Vicious Mockery (V)}
-\CantripSlotD{Thaumaturgy (once per day) (V)}
+
+\CantripSlotF{Once per Day:}
+\CantripSlotG{Shillelagh (V, S, M)}
+\CantripSlotH{Thaumaturgy (V)}
 
 \FirstLevelSpellSlotsTotal{4}
 \FirstLevelSpellSlotA{Charm Person (V, S)}
 \FirstLevelSpellSlotB{Dissonant Whispers (V)}
 \FirstLevelSpellSlotC{Faerie Fire (V)}
 \FirstLevelSpellSlotD{Healing Word (V)}
-\FirstLevelSpellSlotE{Hellish Rebuke (once per day) (V, S)}
+
+\FirstLevelSpellSlotH{Once per Day:}
+\FirstLevelSpellSlotI{Entangle (V, S)}
+\FirstLevelSpellSlotJ{Faerie Fire (V)}
+\FirstLevelSpellSlotK{Hellish Rebuke (V, S)}
+\FirstLevelSpellSlotL{Protection from Evil and Good (V, S)}
+\FirstLevelSpellSlotM{Speak With Animals (V, S)}
 
 \SecondLevelSpellSlotsTotal{3}
 \SecondLevelSpellSlotA{Invisibility (V, S, M)}
 \SecondLevelSpellSlotB{Shatter (V, S, M)}
 \SecondLevelSpellSlotC{Suggestion (V, M)}
+
+\SecondLevelSpellSlotK{Once per Day:}
+\SecondLevelSpellSlotL{Invisibility (V, S, M)}
+\SecondLevelSpellSlotM{Levitate (V, S, M)}
+
+\ThirdLevelSpellSlotL{Once per Day:}
+\ThirdLevelSpellSlotM{Fly (V, S, M)}
 
 \begin{document}
 
@@ -361,14 +387,14 @@ You create a nonmagical trinket or an illusory image that can fit in your hand a
 If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action.
 
 \DndSpellHeader
-  {Vicious Mockery}
-  {Cantrip Enchantment}
-  {1 Action}
-  {A creature you can see and that can hear you within range}
-  {V}
-  {Instantaneous}
-
-You unleash a string of insults laced with subtle enchantments at a creature you can see within range. If the target can hear you (though it need not understand you), it must succeed on a Wisdom saving throw or take \DndDice{1d4} psychic damage and have disadvantage on the next attack roll it makes before the end of its next turn.
+  {Shillelagh}
+  {Cantrip Transmutation}
+  {1 Bonus Action}
+  {Touch}
+  {V, S, M (Mistletoe, a shamrock leaf, and a club or quarterstaff)}
+  {1 Minute}
+  
+The wood of a club or quarterstaff you are holding is imbued with nature’s power. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon’s damage die becomes a d8. The weapon also becomes magical, if it isn’t already. The spell ends if you cast it again or if you let go of the weapon.
 
 \DndSpellHeader
   {Thaumaturgy}
@@ -386,6 +412,16 @@ You create an instantaneous sound that originates from a point of your choice wi
 You instantaneously cause an unlocked door or window to fly open or slam shut.\\
 You alter the appearance of your eyes for 1 minute.\\
 If you cast this spell multiple times, you can have up to three of its effects active at a time, and you can dismiss such an effect as an action.\\
+
+\DndSpellHeader
+  {Vicious Mockery}
+  {Cantrip Enchantment}
+  {1 Action}
+  {A creature you can see and that can hear you within range}
+  {V}
+  {Instantaneous}
+
+You unleash a string of insults laced with subtle enchantments at a creature you can see within range. If the target can hear you (though it need not understand you), it must succeed on a Wisdom saving throw or take \DndDice{1d4} psychic damage and have disadvantage on the next attack roll it makes before the end of its next turn.
 
 \subsection*{Level 1}
 
@@ -412,6 +448,18 @@ You attempt to charm a humanoid you can see within range. It must make a Wisdom 
 You whisper a discordant melody that only one creature of your choice within range can hear, wracking it with terrible pain. The target must make a Wisdom saving throw. On a failed save, it takes \DndDice{3d6} psychic damage and must immediately use its reaction, if available, to move as far as its speed allows away from you. The creature doesn’t move into obviously dangerous ground, such as a fire or a pit. On a successful save, the target takes half as much damage and doesn’t have to move away. A deafened creature automatically succeeds on the save.
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by \DndDice{1d6} for each slot level above 1st.
+
+\DndSpellHeader
+  {Entangle}
+  {1st Level Conjuration}
+  {1 Action}
+  {90 feet}
+  {V, S}
+  {Concentration, Up to 1 Minute}
+  
+Grasping weeds and vines sprout from the ground in a 20-foot square starting from a point within range. For the duration, these plants turn the ground in the area into difficult terrain.\\
+A creature in the area when you cast the spell must succeed on a Strength saving throw or be restrained by the entangling plants until the spell ends. A creature restrained by the plants can use its action to make a Strength check against your spell save DC. On a success, it frees itself.\\
+When the spell ends, the conjured plants wilt away.
 
 \DndSpellHeader
   {Faerie Fire}
@@ -449,6 +497,27 @@ You point your finger, and the creature that damaged you is momentarily surround
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by \DndDice{1d10} for each slot level above 1st.
 
+\DndSpellHeader
+  {Protection from Evil and Good}
+  {1st Level Abjuration}
+  {1 Action}
+  {Touch}
+  {V, S, M (Holy water or powdered silver and iron, which the spell consumes)}
+  {Concentration, Up to 10 Minutes}
+  
+Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.\\
+The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can’t be charmed, frightened, or possessed by them. If the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect.
+
+\DndSpellHeader
+  {Speak with Animals}
+  {1st Level Divination (Ritual)}
+  {1 Action}
+  {Self}
+  {V, S}
+  {10 Minutes}
+  
+You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the GM’s discretion.
+
 \subsection*{Level 2}
 
 \DndSpellHeader
@@ -462,6 +531,18 @@ You point your finger, and the creature that damaged you is momentarily surround
 A creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target’s person. The spell ends for a target that attacks or casts a spell.
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.
+
+\DndSpellHeader
+  {Levitate}
+  {2nd Level Transmutation}
+  {1 Action}
+  {60 feet}
+  {V, S, M (Either a small leather loop or a piece of golden wire bent into a cup shape with a long shank on one end)}
+  {Concentration, Up to 10 Minutes}
+  
+One creature or object of your choice that you can see within range rises vertically, up to 20 feet, and remains suspended there for the duration. The spell can levitate a target that weighs up to 500 pounds. An unwilling creature that succeeds on a Constitution saving throw is unaffected.\\
+The target can move only by pushing or pulling against a fixed object or surface within reach (such as a wall or a ceiling), which allows it to move as if it were climbing. You can change the target’s altitude by up to 20 feet in either direction on your turn. If you are the target, you can move up or down as part of your move. Otherwise, you can use your action to move the target, which must remain within the spell’s range.\\
+When the spell ends, the target floats gently to the ground if it is still aloft.
 
 \DndSpellHeader
   {Shatter}
@@ -481,12 +562,26 @@ A sudden loud ringing noise, painfully intense, erupts from a point of your choi
   {1 Action}
   {30 feet}
   {V, M (A snake's tongue and either a bit of honeycomb or a drop of sweet oil)}
-  {Concentration, Up to 8 hours}
+  {Concentration, Up to 8 Hours}
 
 You suggest a course of activity (limited to a sentence or two) and magically influence a creature you can see within range that can hear and understand you. Creatures that can’t be charmed are immune to this effect. The suggestion must be worded in such a manner as to make the course of action sound reasonable. Asking the creature to stab itself, throw itself onto a spear, immolate itself, or do some other obviously harmful act ends the spell.\\
 The target must make a Wisdom saving throw. On a failed save, it pursues the course of action you described to the best of its ability. The suggested course of action can continue for the entire duration. If the suggested activity can be completed in a shorter time, the spell ends when the subject finishes what it was asked to do.\\
 You can also specify conditions that will trigger a special activity during the duration. For example, you might suggest that a knight give her warhorse to the first beggar she meets. If the condition isn’t met before the spell expires, the activity isn’t performed.\\
 If you or any of your companions damage the target, the spell ends.
+
+\subsection*{Level 3}
+
+\DndSpellHeader
+  {Fly}
+  {3rd Level Transmutation}
+  {1 Action}
+  {Touch}
+  {V, S, M (A wing feather from any bird)}
+  {Concentration, Up to 10 Minutes}
+  
+You touch a willing creature. The target gains a flying speed of 60 feet for the duration. When the spell ends, the target falls if it is still aloft, unless it can stop the fall.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd.
 
 \section*{Miscellaneous}
 \subsubsection*{Weapon Attacks}
@@ -506,6 +601,31 @@ If you or any of your companions damage the target, the spell ends.
 1d4 + DEX-Modifier (+2d6 Psychic Damage (Psychic Blades))\\
 \indent Current Max (Normal): \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}\\
 \indent Current Max (Psychic Blades): \intcalcAdd{4}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcMul{2}{6}}}\\
+
+\chapter*{Fochlucan Bandore}
+\begin{tikzpicture}[remember picture, overlay]
+	\node[xshift=6cm, yshift=0.8cm] {\textit{Wondrous item, instrument, uncommon (requires attunement by a bard)}};
+	\node[xshift=3.5cm, yshift=-5cm] {\includegraphics[width=1.3\columnwidth]{images/Fochlucan_Bandore(2).png}};
+\end{tikzpicture}
+\vspace*{10.5cm}\\
+An instrument of the bards is an exquisite example of its kind, superior to an ordinary instrument in every way. Seven types of these instruments exist, each named after a legendary bard college.
+
+\section*{Appearance}
+The "Fochlucan Bandore" is a mesmerizing musical instrument that beautifully merges the traditional forms of a bandore and a lute. It features an elegantly curved body, reminiscent of a bandore, but extends into a longer, slender neck characteristic of a lute, culminating in a distinctively crafted headstock. The instrument's surface is a canvas of intricate carvings and inlays, depicting mystical symbols and ancient runes, hinting at its magical origins. Its rich, warm wood tones are accentuated by a deep varnish, giving it an antique yet well-maintained appearance. Perhaps its most striking feature is its shimmering, light-like strings, adding a magical quality to its already ethereal aesthetic. This blend of artistic beauty, arcane significance, and ancient tradition renders the Fochlucan Bandore not just a musical instrument, but a remarkable piece of art and a mystical artifact, resonating with an aura of age-old lore and enchantment.
+
+\section*{Arcane Challenge}
+A creature that attempts to play the instrument without being attuned to it must succeed on a DC 15 Wisdom saving throw or take 2d4 psychic damage.
+
+\section*{Charming Harmony}
+You can play the instrument while casting a spell that causes any of its targets to be charmed on a failed saving throw, thereby imposing disadvantage on the save. This effect applies only if the spell has a somatic or a material component.
+
+\section*{Spellcasting Ability}
+You can use an action to play the instrument and cast one of its spells. Once the instrument has been used to cast a spell, it can't be used to cast that spell again until the next dawn. The spells use your spellcasting ability and spell save DC.
+\subsection*{Standard Spells for Bard Instruments}
+All instruments of the bards can be used to cast the following spells: Fly, Invisibility, Levitate, and Protection from Evil and Good.
+\subsection*{Unique Spells of the Fochlucan Bandore}
+In addition, the Fochlucan Bandore can be used to cast Entangle, Faerie Fire, Shillelagh, and Speak with Animals.
+
 
 \chapter*{The Enchanted Locket of Lysandra}
 \begin{tikzpicture}[remember picture, overlay]

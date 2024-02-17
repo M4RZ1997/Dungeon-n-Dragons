@@ -62,9 +62,17 @@
 \StealthProficiency{}
 \SurvivalProficiency{P}
 
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
 
 \Inspiration{}
 \Proficiency{+2}
+\PassivePerceptionModifier{0}
 
 % Armor Class is not automatically calculated
 \ArmorClass{16}
@@ -225,6 +233,7 @@
 \SpellcastingClass{Paladin}
 \SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 \FirstLevelSpellSlotsTotal{3}
 \FirstLevelSpellSlotA{Cure Wounds (V, S) (1x free per long rest)}

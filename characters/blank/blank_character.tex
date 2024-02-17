@@ -62,9 +62,17 @@
 \StealthProficiency{}
 \SurvivalProficiency{}
 
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
 
 \Inspiration{}
-\Proficiency{}
+\Proficiency{0}
+\PassivePerceptionModifier{0}
 
 % Armor Class is not automatically calculated
 \ArmorClass{}
@@ -167,6 +175,7 @@
 \SpellcastingClass{}
 \SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 \CantripSlotA{Cantrip A}
 

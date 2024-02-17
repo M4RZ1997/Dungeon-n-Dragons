@@ -62,9 +62,17 @@
 \StealthProficiency{}
 \SurvivalProficiency{P}
 
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
 
 \Inspiration{}
 \Proficiency{+2}
+\PassivePerceptionModifier{0}
 
 % Armor Class is not automatically calculated
 \ArmorClass{14}
@@ -166,7 +174,7 @@
 
 \CharacterAppearance{}{
 	\hspace*{-1.65em}\begin{tabular}{p{90pt}p{80pt}}
-		\begin{tabular}{p{90pt}}\vspace*{-1.2em}\includegraphics[width=90pt, height=140pt, keepaspectratio]{images/Grimmash_appearance.png}\end{tabular}
+		\begin{tabular}{p{90pt}}\vspace*{-1.75em}\includegraphics[width=90pt, height=140pt, keepaspectratio]{images/Grimmash_appearance.png}\end{tabular}
 		&
 		\hspace*{-1.6em}\begin{tabular}{p{83pt}}Grimmash is a formidable frost orc with a towering presence. His pale blue skin reflects his icy origins, and his wild blue hair cascades down past his broad shoulders. Tribal tattoos adorn ~~~~~~~~~~~~~~\end{tabular}
 	\end{tabular}\\\vspace*{-1.6em}\hfill\\
@@ -201,6 +209,7 @@
 \SpellcastingClass{}
 \SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 %\CantripSlotA{Cantrip A}
 
