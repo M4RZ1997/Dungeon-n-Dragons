@@ -1,0 +1,29 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+
+\usepackage{fontspec}
+\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{ifthen}
+\usepackage{pstricks}
+
+\usepackage{intcalc}
+
+\usepackage[UKenglish]{babel}
+\usepackage{\PATH dndtemplate}
+
+\usepackage{\PATH magic_items/stylesheets/magic_items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+\begin{document}
+\chapter*{Magic Item}
+\itemDescriptionAndImage{Wondrous item, rare (requires attunement)}{example-image-a}{10.25cm}\\
+
+\section*{Appearance}
+
+\section*{History}
+
+\section*{Magic}
+\end{document}
