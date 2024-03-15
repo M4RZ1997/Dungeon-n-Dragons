@@ -2,7 +2,7 @@
 \CharacterName{Maurice}
 
 \Class{Druid}
-\Level{7}
+\Level{3}
 \Background{Hermit}
 \PlayerName{}
 \Race{Lemur o. M.}
@@ -11,12 +11,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{8}
-\DexterityScore{14}
-\ConstitutionScore{12}
-\IntelligenceScore{14}
-\WisdomScore{16}
-\CharismaScore{11}
+\StrengthRolledScore{8}
+\DexterityRolledScore{13}
+\ConstitutionRolledScore{12}
+\IntelligenceRolledScore{14}
+\WisdomRolledScore{16}
+\CharismaRolledScore{10}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{1} % Lemur-Race +1
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{1} % Lemur-Race +1
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -45,19 +54,33 @@
 \StealthProficiency{}
 \SurvivalProficiency{}
 
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+
 \Inspiration{}
-\Proficiency{+3}
+\Proficiency{+2}
 
 % Armor Class is not automatically calculated
-\ArmorClass{13}
+\ArmorClass{14}
 \InitiativeModifier{0}
 \Speed{30}
-\MaxHitPointsRolled{40} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{19} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{}
 \TemporaryHitPoints{}
 \HitDice{d8}
 \HitDiceSpent{0}
 
+\addWeaponStatistic{Quarterstaff}{Maurice}{STR}{P}{0}{1d6 b}
+\addWeaponStatistic{Quarterstaff}{MauriceV}{STR}{P}{0}{1d8 b (v)}
+
+\AttacksAdditional{
+	\textbf{Quarterstaff}\\
+	\textbf{Hide Armor}
+}
 
 \OtherProficienciesLanguages{
 \textbf{Languages:}\\ Common, Druidic, Elvish \\
@@ -101,32 +124,31 @@
 	\end{itemize}
 }
 
-\CharacterAppearancePicture{\PATH one_shots/Penguins_of_Madagascar/characters/Maurice/images/Maurice.png}
+\CharacterAppearancePicture{\PATH one_shots/Penguins_of_Madagascar/characters/images/Maurice.png}
 
 % Magic
 
 \SpellcastingClass{Druid}
 \SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 \CantripSlotA{Chill Touch (V, S)}
 \CantripSlotB{Guidance (V, S)}
 \CantripSlotC{Shape Water (S)}
-\CantripSlotD{Thunderclap (S)}
 
 \FirstLevelSpellSlotsTotal{4}
 \FirstLevelSpellSlotA{Absorb Elements (S)}
 \FirstLevelSpellSlotB{Detect Magic (V, S)}
 \FirstLevelSpellSlotC{Entangle (V, S)}
 \FirstLevelSpellSlotD{Faerie Fire (V)}
-\FirstLevelSpellSlotE{Goodberry (V, S, M)}
-\FirstLevelSpellSlotF{Healing Word (V)}
+\FirstLevelSpellSlotE{Healing Word (V)}
 
 \FirstLevelSpellSlotBPrepared{True}
 \FirstLevelSpellSlotCPrepared{True}
-\FirstLevelSpellSlotFPrepared{True}
+\FirstLevelSpellSlotEPrepared{True}
 
-\SecondLevelSpellSlotsTotal{3}
+\SecondLevelSpellSlotsTotal{2}
 \SecondLevelSpellSlotA{Blindness/Deafness (V)}
 \SecondLevelSpellSlotB{Gentle Repose (V, S, M)}
 \SecondLevelSpellSlotC{Augury (V, S, M)}
@@ -141,36 +163,8 @@
 \SecondLevelSpellSlotAPrepared{True}
 \SecondLevelSpellSlotBPrepared{True}
 \SecondLevelSpellSlotCPrepared{True}
+\SecondLevelSpellSlotEPrepared{True}
 \SecondLevelSpellSlotGPrepared{True}
-\SecondLevelSpellSlotJPrepared{True}
-
-\ThirdLevelSpellSlotsTotal{3}
-\ThirdLevelSpellSlotA{Animate Dead (V, S, M)}
-\ThirdLevelSpellSlotB{Gaseous Form (V, S, M)}
-\ThirdLevelSpellSlotC{Conjure Animals (V, S)}
-\ThirdLevelSpellSlotD{Dispel Magic (V, S)}
-\ThirdLevelSpellSlotE{Elemental Weapon (V, S)}
-\ThirdLevelSpellSlotF{Revivify (V, S, M)}
-
-\ThirdLevelSpellSlotAPrepared{True}
-\ThirdLevelSpellSlotBPrepared{True}
-\ThirdLevelSpellSlotDPrepared{True}
-\ThirdLevelSpellSlotFPrepared{True}
-
-\FourthLevelSpellSlotsTotal{1}
-\FourthLevelSpellSlotA{Blight (V, S)}
-\FourthLevelSpellSlotB{Confusion (V, S, M)}
-\FourthLevelSpellSlotC{Dominate Beast (V, S)}
-\FourthLevelSpellSlotD{Fire Shield (V, S, M)}
-\FourthLevelSpellSlotE{Giant Insect (V, S)}
-\FourthLevelSpellSlotF{Polymorph (V, S, M)}
-\FourthLevelSpellSlotG{Stone Shape (V, S, M)}
-\FourthLevelSpellSlotH{Wall of Fire (V, S, M)}
-
-\FourthLevelSpellSlotAPrepared{True}
-\FourthLevelSpellSlotBPrepared{True}
-\FourthLevelSpellSlotDPrepared{True}
-\FourthLevelSpellSlotHPrepared{True}
 
 \renewcommand{\FeaturesAndSpells}{
 \chapter*{Features, Magic Items and Spells}
@@ -182,17 +176,6 @@ You gain proficiency in the Performance and Acrobatics skills. If you already ha
 When well-rested, you are able to sense that someone or something is in stealth but you are unable to pinpoint its' location if you are within 50 feet of it.
 \subsection*{Arboreal Movement}
 You have a climbing speed of 35 feet and roll with advantage on climbing/jumping tasks.
-
-\section*{Metamagic Adept}
-You've learned how to exert your will on your spells to alter how they function:
-\begin{itemize}
-	\item You learn two Metamagic options of your choice from the sorcerer class. You can use only one Metamagic option on a spell when you cast it, unless the option says otherwise. Whenever you reach a level that grants the Ability Score Improvement feature, you can replace one of these Metamagic options with another one from the sorcerer class.
-	\item You gain 2 sorcery points to spend on Metamagic (these points are added to any sorcery points you have from another source but can be used only on Metamagic). You regain all spent sorcery points when you finish a long rest.
-\end{itemize}
-\subsection*{Quickened Spell}
-When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting.
-\subsection*{Subtle Spell}
-When you cast a spell, you can spend 1 sorcery point to cast it without any somatic or verbal components.
 
 \section*{Druid Traits}
 Whether calling on the elemental forces of nature or emulating the creatures of the animal world, druids are an embodiment of nature's resilience, cunning, and fury. They claim no mastery over nature, but see themselves as extensions of nature's indomitable will.
@@ -230,8 +213,8 @@ At 3rd, 5th, 7th, and 9th level you gain access to the spells listed for that le
 			& \textbf{Druid Level}  	&\textbf{Circle Spells}				\\
 $\bullet$	& 2nd						&Chill Touch						\\
 $\bullet$	& 3rd						&Blindness/Deafness, Gentle Repose	\\
-$\bullet$	& 5th						&Animate Dead, Gaseous Form			\\
-$\bullet$	& 7th						&Blight, Confusion					\\
+			& 5th						&Animate Dead, Gaseous Form			\\
+			& 7th						&Blight, Confusion					\\
 			& 9th						&Cloudkill, Contagion				\\
 \end{DndTable}
 \subsubsection*{Halo of Spores}
@@ -243,12 +226,6 @@ Also at 2nd level, you gain the ability to channel magic into your spores. As an
 	\item Your melee weapon attacks deal an extra 1d6 necrotic damage to any target they hit.
 \end{itemize}
 These benefits last for 10 minutes, until you lose all these temporary hit points or until you use your Wild Shape again.
-\subsubsection*{Fungal Infestation}
-At 6th level, your spores gain the ability to infest a corpse and animate it. If a beast or a humanoid that is Small or Medium dies within 10 feet of you, you can use your reaction to animate it, causing it to stand up immediately with 1 hit point. The creature uses the Zombie stat block in the Monster Manual. It remains animate for 1 hour, after which time it collapses and dies.
-
-In combat, the zombie's turn comes immediately after yours. It obeys your mental commands, and the only action it can take is the Attack action, making one melee attack.
-
-You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses of it when you finish a long rest.
 
 \section*{Spells}
 \subsection*{Cantrip}
@@ -292,18 +269,6 @@ You choose an area of water that you can see within range and that fits within a
 	\item You freeze the water, provided that there are no creatures in it. The water unfreezes in 1 hour.
 \end{itemize}
 If you cast this spell multiple times, you can have no more than two of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action.
-
-\DndSpellHeader
-  {Thunderclap}
-  {Evocation Cantrip}
-  {1 Action}
-  {Self (5-foot Radius)}
-  {S}
-  {Instantaneous}
-
-You create a burst of thunderous sound, which can be heard 100 feet away. Each creature other than you within 5 feet of you must make a Constitution saving throw. On a failed save, the creature takes 1d6 thunder damage.
-
-\subparagraph*{At Higher Levels} The spell’s damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).
 
 \subsection*{Level 1}
 
@@ -358,18 +323,6 @@ Each object in a 20-foot cube within range is outlined in blue, green, or violet
 Any creature in the area when the spell is cast is also outlined in light if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed dim light in a 10-foot radius.
 
 Any attack roll against an affected creature or object has advantage if the attacker can see it, and the affected creature or object can’t benefit from being invisible.
-
-\DndSpellHeader
-  {Goodberry}
-  {1st-Level Transmutation}
-  {1 Action}
-  {Touch}
-  {V, S, M (a sprig of mistletoe)}
-  {Instantaneous}
-
-Up to ten berries appear in your hand and are infused with magic for the duration. A creature can use its action to eat one berry. Eating a berry restores 1 hit point, and the berry provides enough nourishment to sustain a creature for one day.
-
-The berries lose their potency if they have not been consumed within 24 hours of the casting of this spell.
 
 \DndSpellHeader
   {Healing Word}
@@ -575,222 +528,14 @@ The creature is an ally to you and your companions. In combat, the creature shar
     ]
 \end{DndMonster}
 
-\subsection*{Level 3}
-
-\DndSpellHeader
-  {Animate Dead}
-  {3rd-Level Necromancy}
-  {1 Minute}
-  {10 feet}
-  {V, S, M (a drop of blood, a piece of flesh, and a pinch of bone dust)}
-  {Instantaneous}
-
-This spell creates an undead servant. Choose a pile of bones or a corpse of a Medium or Small humanoid within range. Your spell imbues the target with a foul mimicry of life, raising it as an undead creature. The target becomes a skeleton if you chose bones or a zombie if you chose a corpse (the DM has the creature’s game statistics).
-
-On each of your turns, you can use a bonus action to mentally command any creature you made with this spell if the creature is within 60 feet of you (if you control multiple creatures, you can command any or all of them at the same time, issuing the same command to each one). You decide what action the creature will take and where it will move during its next turn, or you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.
-
-The creature is under your control for 24 hours, after which it stops obeying any command you’ve given it. To maintain the control of the creature for another 24 hours, you must cast this spell on the creature again before the current 24-hour period ends. This use of the spell reasserts your control over up to four creatures you have animated with this spell, rather than animating a new one.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 4th level or higher, you animate or reassert control over two additional undead creatures for each slot level above 3rd. Each of the creatures must come from a different corpse or pile of bones.
-
-\DndSpellHeader
-  {Gaseous Form}
-  {3rd-Level Transmutation}
-  {1 Action}
-  {Touch}
-  {V, S, M (a bit of gauze and a wisp of smoke)}
-  {Concentration, up to 1 Hour}
-
-You transform a willing creature you touch, along with everything it’s wearing and carrying, into a misty cloud for the duration. The spell ends if the creature drops to 0 hit points. An incorporeal creature isn’t affected.
-
-While in this form, the target’s only method of movement is a flying speed of 10 feet. The target can enter and occupy the space of another creature. The target has resistance to nonmagical damage, and it has advantage on Strength, Dexterity, and Constitution saving throws. The target can pass through small holes, narrow openings, and even mere cracks, though it treats liquids as though they were solid surfaces. The target can’t fall and remains hovering in the air even when stunned or otherwise incapacitated.
-
-While in the form of a misty cloud, the target can’t talk or manipulate objects, and any objects it was carrying or holding can’t be dropped, used, or otherwise interacted with. The target can’t attack or cast spells.
-
-\DndSpellHeader
-  {Conjure Animals}
-  {3rd-Level Conjuration}
-  {1 Action}
-  {60 feet}
-  {V, S}
-  {Concentration, up to 1 Hour}
-
-You summon fey spirits that take the form of beasts and appear in unoccupied spaces that you can see within range.
-
-Choose one of the following options for what appears:
-\begin{itemize}
-	\item One beast of challenge rating 2 or lower
-	\item Two beasts of challenge rating 1 or lower
-	\item Four beasts of challenge rating 1/2 or lower
-	\item Eight beasts of challenge rating 1/4 or lower
-\end{itemize}
-Each beast is also considered fey, and it disappears when it drops to 0 hit points or when the spell ends.
-
-The summoned creatures are friendly to you and your companions. Roll initiative for the summoned creatures as a group, which has its own turns. They obey any verbal commands that you issue to them (no action required by you). If you don’t issue any commands to them, they defend themselves from hostile creatures, but otherwise take no actions. The DM has the creatures’ statistics.
-
-\subparagraph*{At Higher Levels} When you cast this spell using certain higher-level spell slots, you choose one of the summoning options above, and more creatures appear: twice as many with a 5th-level slot, three times as many with a 7th-level slot, and four times as many with a 9th-level slot.
-
-\DndSpellHeader
-  {Dispel Magic}
-  {3rd-Level Abjuration}
-  {1 Action}
-  {120 feet}
-  {V, S}
-  {Instantaneous}
-
-Choose any creature, object, or magical effect within range. Any spell of 3rd level or lower on the target ends. For each spell of 4th level or higher on the target, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a successful check, the spell ends.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 4th level or higher, you automatically end the effects of a spell on the target if the spell's level is equal to or less than the level of the spell slot you used.
-
-\DndSpellHeader
-  {Elemental Weapon}
-  {3rd-Level Transmutation}
-  {1 Action}
-  {Touch}
-  {V, S}
-  {Concentration, up to 1 Hour}
-
-A nonmagical weapon you touch becomes a magic weapon. Choose one of the following damage types: acid, cold, fire, lightning, or thunder. For the duration, the weapon has a +1 bonus to attack rolls and deals an extra 1d4 damage of the chosen type when it hits.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 5th or 6th level, the bonus to attack rolls increases to +2 and the extra damage increases to 2d4. When you use a spell slot of 7th level or higher, the bonus increases to +3 and the extra damage increases to 3d4.
-
-\DndSpellHeader
-  {Revivify}
-  {3rd-Level Necromancy}
-  {1 Action}
-  {Touch}
-  {V, S, M (diamonds worth 300 gp, which the spell consumes)}
-  {Instantaneous}
-
-You touch a creature that has died within the last minute. That creature returns to life with 1 hit point. This spell can’t return to life a creature that has died of old age, nor can it restore any missing body parts.
-
-\subsection*{Level 4}
-
-\DndSpellHeader
-  {Blight}
-  {4th-Level Necromancy}
-  {1 Action}
-  {30 feet}
-  {V, S}
-  {Instaneous}
-
-Necromantic energy washes over a creature of your choice that you can see within range, draining moisture and vitality from it. The target must make a Constitution saving throw. The target takes 8d8 necrotic damage on a failed save, or half as much damage on a successful one. This spell has no effect on undead or constructs.
-
-If you target a plant creature or a magical plant, it makes the saving throw with disadvantage, and the spell deals maximum damage to it. If you target a nonmagical plant that isn’t a creature, such as a tree or shrub, it doesn’t make a saving throw; it simply withers and dies.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d8 for each slot level above 4th.
-
-\DndSpellHeader
-  {Confusion}
-  {4th-Level Enchantment}
-  {1 Action}
-  {90 feet}
-  {V, S, M (three nut shells)}
-  {Concentration, up to 1 Minute}
-
-This spell assaults and twists creatures’ minds, spawning delusions and provoking uncontrolled actions. Each creature in a 10-foot-radius sphere centered on a point you choose within range must succeed on a Wisdom saving throw when you cast this spell or be affected by it.
-
-An affected target can’t take reactions and must roll a d10 at the start of each of its turns to determine its behavior for that turn.
-\begin{DndTable}[]{lX}
-\textbf{d10}  	&\textbf{Behavior}\\
-1				&The creature uses all its movement to move in a random direction. To determine the direction, roll a d8 and assign a direction to each die face. The creature doesn’t take an action this turn.\\
-2-6				&The creature doesn’t move or take actions this turn.\\
-7-8				&The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn.\\
-9-10			&The creature can act and move normally.\\
-\end{DndTable}
-At the end of its turns, an affected target can make a Wisdom saving throw. If it succeeds, this effect ends for that target.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 5th level or higher, the radius of the sphere increases by 5 feet for each slot level above 4th.
-
-\DndSpellHeader
-  {Dominate Beast}
-  {4th-Level Enchantment}
-  {1 Action}
-  {60 feet}
-  {V, S}
-  {Concentration, up to 1 Minute}
-
-You attempt to beguile a beast that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. If you or creatures that are friendly to you are fighting it, it has advantage on the saving throw.
-
-While the beast is charmed, you have a telepathic link with it as long as the two of you are on the same plane of existence. You can use this telepathic link to issue commands to the creature while you are conscious (no action required), which it does its best to obey. You can specify a simple and general course of action, such as “Attack that creature,” “Run over there,” or “Fetch that object.” If the creature completes the order and doesn’t receive further direction from you, it defends and preserves itself to the best of its ability.
-
-You can use your action to take total and precise control of the target. Until the end of your next turn, the creature takes only the actions you choose, and doesn’t do anything that you don’t allow it to do. During this time, you can also cause the creature to use a reaction, but this requires you to use your own reaction as well.
-
-Each time the target takes damage, it makes a new Wisdom saving throw against the spell. If the saving throw succeeds, the spell ends.
-
-\subparagraph*{At Higher Levels} When you cast this spell with a 5th-level spell slot, the duration is concentration, up to 10 minutes. When you use a 6th-level spell slot, the duration is concentration, up to 1 hour. When you use a spell slot of 7th level or higher, the duration is concentration, up to 8 hours.
-
-\DndSpellHeader
-  {Fire Shield}
-  {4th-Level Evocation}
-  {1 Action}
-  {Self}
-  {V, S, M (a bit of phosphorus or a firefly)}
-  {10 Minutes}
-
-Thin and wispy flames wreathe your body for the duration, shedding bright light in a 10-foot radius and dim light for an additional 10 feet. You can end the spell early by using an action to dismiss it.
-
-The flames provide you with a warm shield or a chill shield, as you choose. The warm shield grants you resistance to cold damage, and the chill shield grants you resistance to fire damage.
-
-In addition, whenever a creature within 5 feet of you hits you with a melee attack, the shield erupts with flame. The attacker takes 2d8 fire damage from a warm shield, or 2d8 cold damage from a cold shield.
-
-\DndSpellHeader
-  {Giant Insect}
-  {4th-Level Transmutation}
-  {1 Action}
-  {30 feet}
-  {V, S}
-  {Concentration, up to 10 Minutes}
-
-You transform up to ten centipedes, three spiders, five wasps, or one scorpion within range into giant versions of their natural forms for the duration. A centipede becomes a giant centipede, a spider becaomes a giant spider, a wasp becomes a giant wasp, and a scorpion becomes a giant scorpion.
-
-Each creature obeys your verbal commands, and in combat, they act on your turn each round. The DM has the statistics for these creatures and resolves their actions and movement.
-
-A creature remains in its giant size for the duration, until it drops to 0 hit points, or until you use an action to dismiss the effect on it.
-
-The DM might allow you to choose different targets. For example, if you transform a bee, its giant version might have the same statistics as a giant wasp.
-
-\DndSpellHeader
-  {Polymorph}
-  {4th-Level Transmutation}
-  {1 Action}
-  {60 feet}
-  {V, S, M (a caterpillar cocoon)}
-  {Concentration, up to 1 Hour}
-
-This spell transforms a creature that you can see within range into a new form. An unwilling creature must make a Wisdom saving throw to avoid the effect. A shapechanger automatically succeeds on this saving throw.
-
-The transformation lasts for the duration, or until the target drops to 0 hit points or dies. The new form can be any beast whose challenge rating is equal to or less than the target’s (or the target’s level, if it doesn’t have a challenge rating). The target’s game statistics, including mental ability scores, are replaced by the statistics of the chosen beast. It retains its alignment and personality.
-
-The target assumes the hit points of its new form. When it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form. As long as the excess damage doesn’t reduce the creature’s normal form to 0 hit points, it isn’t knocked unconscious.
-
-The creature is limited in the actions it can perform by the nature of its new form, and it can’t speak, cast spells, or take any other action that requires hands or speech.
-
-The target’s gear melds into the new form. The creature can’t activate, use, wield, or otherwise benefit from any of its equipment. This spell can’t affect a target that has 0 hit points.
-
-\DndSpellHeader
-  {Stone Shape}
-  {4th-Level Transmutation}
-  {1 Action}
-  {Touch}
-  {V, S, M (soft clay, which must be worked into roughly the desired shape of the stone object)}
-  {Instantaneous}
-
-You touch a stone object of Medium size or smaller or a section of stone no more than 5 feet in any dimension and form it into any shape that suits your purpose. So, for example, you could shape a large rock into a weapon, idol, or coffer, or make a small passage through a wall, as long as the wall is less than 5 feet thick. You could also shape a stone door or its frame to seal the door shut. The object you create can have up to two hinges and a latch, but finer mechanical detail isn’t possible.
-
-\DndSpellHeader
-  {Wall of Fire}
-  {4th-Level Evocation}
-  {1 Action}
-  {120 feet}
-  {V, S, M (a small piece of phosphorus)}
-  {Concentration, up to 1 Minute}
-
-You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.
-
-When the wall appears, each creature within its area must make a Dexterity saving throw. On a failed save, a creature takes 5d8 fire damage, or half as much damage on a successful save.
-
-One side of the wall, selected by you when you cast this spell, deals 5d8 fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d8 for each slot level above 4th.
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Quarterstaff}
+\paragraph*{Attack Roll}\hfill\\
+1d20 + STR-Modifier + Proficiency Modifier \\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+1d6 (1d8 two-handed) + STR-Modifier\\
+\indent Current Max (one-handed): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
 }

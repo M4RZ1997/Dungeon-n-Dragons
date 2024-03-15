@@ -385,11 +385,11 @@
   spellcasting .bool_set:N = \l_spellcasting_bool,
   spellcasting .default:n = false,
 }
-\NewDocumentCommand{\CharacterSheetInput}{O{} m}{
+\NewDocumentCommand{\CharacterSheetInput}{O{} m m}{
   	\keys_set:nn { character-sheet-input } { #1 }
 	\ResetCharacterSheetInput
 
-	\input{characters/#2/#2_input.tex}
+	\input{\PATH one_shots/Penguins_of_Madagascar/characters/#2/#3/#3_input.tex}
 	\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
 	\onecolumn
 	% CHARACTER PAGE

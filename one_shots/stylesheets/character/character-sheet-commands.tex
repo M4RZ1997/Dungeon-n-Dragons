@@ -29,6 +29,20 @@
 \newcommand{\Proficiency}[1]{\renewcommand{\ProficiencyValue}{#1}}
 
 % ABILITY SCORES
+\newcommand{\StrengthRolledScoreValue}{}
+\newcommand{\DexterityRolledScoreValue}{}
+\newcommand{\ConstitutionRolledScoreValue}{}
+\newcommand{\IntelligenceRolledScoreValue}{}
+\newcommand{\WisdomRolledScoreValue}{}
+\newcommand{\CharismaRolledScoreValue}{}
+
+\newcommand{\StrengthScoreBonusValue}{}
+\newcommand{\DexterityScoreBonusValue}{}
+\newcommand{\ConstitutionScoreBonusValue}{}
+\newcommand{\IntelligenceScoreBonusValue}{}
+\newcommand{\WisdomScoreBonusValue}{}
+\newcommand{\CharismaScoreBonusValue}{}
+
 \newcommand{\StrengthScoreValue}{}
 \newcommand{\DexterityScoreValue}{}
 \newcommand{\ConstitutionScoreValue}{}
@@ -36,12 +50,50 @@
 \newcommand{\WisdomScoreValue}{}
 \newcommand{\CharismaScoreValue}{}
 
+\newcommand{\StrengthRolledScore}[1]{\renewcommand{\StrengthRolledScoreValue}{#1}}
+\newcommand{\DexterityRolledScore}[1]{\renewcommand{\DexterityRolledScoreValue}{#1}}
+\newcommand{\ConstitutionRolledScore}[1]{\renewcommand{\ConstitutionRolledScoreValue}{#1}}
+\newcommand{\IntelligenceRolledScore}[1]{\renewcommand{\IntelligenceRolledScoreValue}{#1}}
+\newcommand{\WisdomRolledScore}[1]{\renewcommand{\WisdomRolledScoreValue}{#1}}
+\newcommand{\CharismaRolledScore}[1]{\renewcommand{\CharismaRolledScoreValue}{#1}}
+
+\newcommand{\StrengthScoreBonus}[1]{\renewcommand{\StrengthScoreBonusValue}{#1}}
+\newcommand{\DexterityScoreBonus}[1]{\renewcommand{\DexterityScoreBonusValue}{#1}}
+\newcommand{\ConstitutionScoreBonus}[1]{\renewcommand{\ConstitutionScoreBonusValue}{#1}}
+\newcommand{\IntelligenceScoreBonus}[1]{\renewcommand{\IntelligenceScoreBonusValue}{#1}}
+\newcommand{\WisdomScoreBonus}[1]{\renewcommand{\WisdomScoreBonusValue}{#1}}
+\newcommand{\CharismaScoreBonus}[1]{\renewcommand{\CharismaScoreBonusValue}{#1}}
+
 \newcommand{\StrengthScore}[1]{\renewcommand{\StrengthScoreValue}{#1}}
 \newcommand{\DexterityScore}[1]{\renewcommand{\DexterityScoreValue}{#1}}
 \newcommand{\ConstitutionScore}[1]{\renewcommand{\ConstitutionScoreValue}{#1}}
 \newcommand{\IntelligenceScore}[1]{\renewcommand{\IntelligenceScoreValue}{#1}}
 \newcommand{\WisdomScore}[1]{\renewcommand{\WisdomScoreValue}{#1}}
 \newcommand{\CharismaScore}[1]{\renewcommand{\CharismaScoreValue}{#1}}
+
+\newcommand{\calculateAbilityScores}{%
+	\StrengthScore{\intcalcAdd{\StrengthRolledScoreValue}{\StrengthScoreBonusValue}}
+	\DexterityScore{\intcalcAdd{\DexterityRolledScoreValue}{\DexterityScoreBonusValue}}
+	\ConstitutionScore{\intcalcAdd{\ConstitutionRolledScoreValue}{\ConstitutionScoreBonusValue}}
+	\IntelligenceScore{\intcalcAdd{\IntelligenceRolledScoreValue}{\IntelligenceScoreBonusValue}}
+	\WisdomScore{\intcalcAdd{\WisdomRolledScoreValue}{\WisdomScoreBonusValue}}
+	\CharismaScore{\intcalcAdd{\CharismaRolledScoreValue}{\CharismaScoreBonusValue}}
+}%
+
+% ABILITY MODIFIERS BONUS
+\newcommand{\StrengthModifierBonusValue}{}
+\newcommand{\DexterityModifierBonusValue}{}
+\newcommand{\ConstitutionModifierBonusValue}{}
+\newcommand{\IntelligenceModifierBonusValue}{}
+\newcommand{\WisdomModifierBonusValue}{}
+\newcommand{\CharismaModifierBonusValue}{}
+
+\newcommand{\StrengthModifierBonus}[1]{\renewcommand{\StrengthModifierBonusValue}{#1}}
+\newcommand{\DexterityModifierBonus}[1]{\renewcommand{\DexterityModifierBonusValue}{#1}}
+\newcommand{\ConstitutionModifierBonus}[1]{\renewcommand{\ConstitutionModifierBonusValue}{#1}}
+\newcommand{\IntelligenceModifierBonus}[1]{\renewcommand{\IntelligenceModifierBonusValue}{#1}}
+\newcommand{\WisdomModifierBonus}[1]{\renewcommand{\WisdomModifierBonusValue}{#1}}
+\newcommand{\CharismaModifierBonus}[1]{\renewcommand{\CharismaModifierBonusValue}{#1}}
 
 % ABILITY MODIFIERS
 \newcommand{\StrengthModifierValue}{}
@@ -58,13 +110,13 @@
 \newcommand{\WisdomModifier}[1]{\renewcommand{\WisdomModifierValue}{#1}}
 \newcommand{\CharismaModifier}[1]{\renewcommand{\CharismaModifierValue}{#1}}
 
-\newcommand{\calculateModifier}[1]{
-	\ifnum #1<10
-		-\intcalcShr{\intcalcSub{11}{#1}}
-	\else
-		+\intcalcShr{\intcalcSub{#1}{10}}
-	\fi
-}
+\newcommand{\calculateModifier}[1]{%
+	\ifnum #1<10%
+		-\intcalcShr{\intcalcSub{11}{#1}}%
+	\else%
+		+\intcalcShr{\intcalcSub{#1}{10}}%
+	\fi%
+}%
 
 % SAVING THROWS
 \newcommand{\StrengthSavingThrowModifierValue}{}
@@ -83,31 +135,36 @@
 
 \newcommand{\JackOfAllTradesValue}{0}
 
-\newcommand{\calculateSavingThrow}[2]{%
-	\ifthenelse{\equal{#2}{P}}%
+\newcommand{\calculateSavingThrow}[3]{%
+	\ifthenelse{\equal{#3}{P}}%
 	{%
-		\ifnum \intcalcAdd{#1}{\ProficiencyValue}>0%
+		\ifnum \intcalcAdd{#1}{\intcalcAdd{#2}{\ProficiencyValue}}>0%
 			+%
 		\fi%
-		\intcalcAdd{#1}{\ProficiencyValue}%
+		\intcalcAdd{#1}{\intcalcAdd{#2}{\ProficiencyValue}}%
 	}%
 	{%
-		\ifthenelse{\equal{#2}{E}}%
+		\ifthenelse{\equal{#3}{E}}%
 		{%
-			\ifnum \intcalcAdd{#1}{\intcalcMul{\ProficiencyValue}{2}}>0%
+			\ifnum \intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcMul{\ProficiencyValue}{2}}}>0%
 				+%
 			\fi%
-			\intcalcAdd{#1}{\intcalcMul{\ProficiencyValue}{2}}%
+			\intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcMul{\ProficiencyValue}{2}}}%
 		}%
 		{%
 			\ifthenelse{\equal{\JackOfAllTradesValue}{1}}%
 			{%
-				\ifnum \intcalcAdd{#1}{\intcalcShr{\ProficiencyValue}}>0%
+				\ifnum\intcalcAdd{#1}{ \intcalcAdd{#2}{\intcalcShr{\ProficiencyValue}}}>0%
 					+%
 				\fi%
-				\intcalcAdd{#1}{\intcalcShr{\ProficiencyValue}}%
+				\intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcShr{\ProficiencyValue}}}%
 			}%
-			{#1}%
+			{%
+				\ifnum \intcalcAdd{#1}{#2}>0%
+					+%
+				\fi%
+				\intcalcAdd{#1}{#2}
+			}%
 		}%
 	}%
 }%
@@ -186,12 +243,82 @@
 	}%
 }
 
-% ADDITIONAL INFORMATION
+% MONEY
+\newcommand{\CPValue}{}
+\newcommand{\SPValue}{}
+\newcommand{\GPValue}{}
+\newcommand{\EPValue}{}
+\newcommand{\PPValue}{}
+
+\newcommand{\CP}[1]{\renewcommand{\CPValue}{#1}}
+\newcommand{\SP}[1]{\renewcommand{\SPValue}{#1}}
+\newcommand{\GP}[1]{\renewcommand{\GPValue}{#1}}
+\newcommand{\EP}[1]{\renewcommand{\EPValue}{#1}}
+\newcommand{\PP}[1]{\renewcommand{\PPValue}{#1}}
+
 \newcommand{\OtherProficienciesLanguagesValue}{}
+\newcommand{\AttacksAdditionalValue}{}
+\newcommand{\EquipmentValue}{}
 \newcommand{\FeaturesTraitsValue}{}
 
+% ADDITIONAL INFORMATION
 \newcommand{\OtherProficienciesLanguages}[1]{\renewcommand{\OtherProficienciesLanguagesValue}{\raggedright#1}}
+\newcommand{\AttacksAdditional}[1]{\renewcommand{\AttacksAdditionalValue}{#1}}
+\newcommand{\Equipment}[1]{\renewcommand{\EquipmentValue}{#1}}
 \newcommand{\FeaturesTraits}[1]{\renewcommand{\FeaturesTraitsValue}{#1}}
+
+% WEAPONS GENERATOR COMMAND
+\newcommand\WeaponsHeld{}
+\newcommand{\tempAbilityScoreValue}{}
+\newcommand{\tempAttackProficiencyModifier}{}
+\newcommand{\tempAttackBonusModifiers}{}
+
+\makeatletter
+\newcommand\AddWeapon[3]{%
+  \g@addto@macro\WeaponsHeld{\\ \entryfont #1 & \entryfont \ifthenelse{\lengthtest{#2 pt > 0pt}}{+}{}#2 & \entryfont #3}
+}
+\makeatother
+
+\newcommand{\setAttackBonusValues}[3]{%
+	\ifthenelse{\equal{#1}{STR}}{%
+		\renewcommand{\tempAbilityScoreValue}{\StrengthScoreValue}
+	}{%
+		\ifthenelse{\equal{#1}{DEX}}{%
+			\renewcommand{\tempAbilityScoreValue}{\DexterityScoreValue}
+		}{%
+		}%
+	}%
+	
+	\ifthenelse{\equal{#2}{P}}{%
+		\renewcommand{\tempAttackProficiencyModifier}{\ProficiencyValue}%
+	}{%
+		\ifthenelse{\equal{#2}{E}}{%
+			\renewcommand{\tempAttackProficiencyModifier}{\intcalcMul{2}{\ProficiencyValue}}%
+		}{%
+			0%
+		}%
+	}%
+	
+	\renewcommand{\tempAttackBonusModifiers}{#3}%
+}%
+\newcommand{\calculateAttackBonus}[1]{%
+	\expandafter\edef\csname attackBonus#1\endcsname{%
+		\intcalcAdd{%
+			\calculateModifier{\tempAbilityScoreValue}%
+		}{%
+			\intcalcAdd{%
+				\tempAttackProficiencyModifier%
+			}{%
+				\tempAttackBonusModifiers%
+			}%
+		}%
+	}
+}%
+\newcommand{\addWeaponStatistic}[6]{%
+	\setAttackBonusValues{#3}{#4}{#5}%
+	\calculateAttackBonus{#2#1}%
+	\AddWeapon{#1}{\csname attackBonus#2#1\endcsname}{#6}%
+}%
 
 % PERSONALITY
 \newcommand{\PersonalityTraitsValue}{}
@@ -208,18 +335,20 @@
 \newcommand{\SpellcastingClassValue}{}
 \newcommand{\SpellcastingAbilityValue}{}
 \newcommand{\SpellSaveDCModifyValue}{}
+\newcommand{\SpellAttackModifyValue}{}
 
 \newcommand{\SpellcastingClass}[1]{\renewcommand{\SpellcastingClassValue}{#1}}
 \newcommand{\SpellcastingAbility}[1]{\renewcommand{\SpellcastingAbilityValue}{#1}}
 \newcommand{\SpellSaveDCModifier}[1]{\renewcommand{\SpellSaveDCModifyValue}{#1}}
+\newcommand{\SpellAttackModifier}[1]{\renewcommand{\SpellAttackModifyValue}{#1}}
 
 \newcommand{\calculateSpellSaveDC}[1]{%
 	\intcalcAdd{8}{\intcalcAdd{#1}{\intcalcAdd{\ProficiencyValue}{\SpellSaveDCModifyValue}}}%
 }
 
 \newcommand{\calculateSpellAttack}[1]{%
-	\ifnum \intcalcAdd{#1}{\ProficiencyValue}>0 +\fi%
-	\intcalcAdd{#1}{\ProficiencyValue}%
+	\ifnum \intcalcAdd{#1}{\intcalcAdd{\SpellAttackModifyValue}{\ProficiencyValue}}>0 +\fi%
+	\intcalcAdd{#1}{\intcalcAdd{\SpellAttackModifyValue}{\ProficiencyValue}}%
 }
 
 
@@ -596,11 +725,9 @@
 \newcommand{\StealthProficiency}[1]{\renewcommand{\StealthProficiencyValue}{#1}\calculateProficiencyColor{#1}{stealth}}
 \newcommand{\SurvivalProficiency}[1]{\renewcommand{\SurvivalProficiencyValue}{#1}\calculateProficiencyColor{#1}{survival}}
 
-% Character Appearance Picture
-
+% CHARACTER APPEARANCE PICTURE
 \newcommand{\CharacterAppearancePictureValue}{}
 \newcommand{\CharacterAppearancePicture}[1]{\renewcommand{\CharacterAppearancePictureValue}{#1}}
-
 
 % SPELL PREPARED COLOR CHANGES
 

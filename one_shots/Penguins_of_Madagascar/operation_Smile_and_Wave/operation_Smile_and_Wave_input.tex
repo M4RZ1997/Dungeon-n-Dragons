@@ -1,21 +1,4 @@
-\graphicspath{{./images},{./one_shots/Penguins_of_Madagascar/images}}
-
-\DungeonSheetGeometry
-
-\oneShotTitlePage{white/MarzDarkRed}%
-	{0cm}%
-	{1cm}%
-	{width=\paperwidth}%
-	{Operation_Smile_and_Wave.png}%
-	{%
-		{PenguinsOfMadagascar1}{Page \thepage}{Art}{https://www.imagine.art/}{Operation: Smile and Wave}{ChatGPT}%
-	}%
-	{Penguins of Madagascar}%
-	{Operation: Smile and Wave}%
-	{black/white}%
-	
-\clearpage
-\section*{Setting}
+\chapter{Setting}
 \begin{itemize}
 	\item normal morning
 	\item zoo is open
@@ -27,85 +10,468 @@
 	\end{itemize}
 \end{itemize}
 
-\subsection*{Operation: Search for FOOD}
+\section*{Search for Food}\phantomsection\addcontentsline{toc}{section}{Search for Food}
 \begin{itemize}
 	\item Start: Penguin or Lemur Habitat
-	\item Goal: Find Food in storage behind souvenir shop
-	\item Random Encounters:
+	\item Goal: Find Food in storage behind souvenir shop (or around the zoo)
+\end{itemize}
+%\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 1} Penguin Habitat (Main Base)}
+%\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 2} Lemur Habitat}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 3} Monkey Habitat}
+\begin{itemize}
+	\item possibility to decipher written stuff (like newspaper) (DC 20 Persuasion Check or give the monkeys the hot coffee)
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 4} Flamingo Habitat}
+\begin{itemize}
+	\item nothing
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 5} Otter Habitat}
+\begin{itemize}
+	\item nothing
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 6} Main Gate}
+\begin{itemize}
+	\item if searched one can find a sandwich (\textbf{2 rations}) and a hippo plushy (DC 10 Investigation Check)
+	\item if searched further one can find a "Shot against Brown Spots" (DC 15 Investigation Check)
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 7} Polar Bear Habitat}
+\begin{itemize}
+	\item it is very cold -> Lemurs have to succeed DC 10 Constitution Check every minute or take 1d4 cold damage
+	\item in the habitat there are spots of powdered snow
+	\item The Polar Bear is not inherently hostile but can be easily agitated
+	\item He will help characters that are stuck in the powdered snow, but only in exchange for food
+	\item The food is not instantly required, however failing to deliver might have some unforeseen consequences
+	\item a DC 15 Investigation Check in the habitat reveils 5 Arrows of Frost
+\end{itemize}
+% Monster stat block
+\begin{DndMonster}[width=0.5\textwidth]{Ted (Polar Bear)}
+	\DndMonsterType{Large Beast, unaligned}
+
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {14 (Natural Armor)},
+		hit-points  = {\DndDice{8d10 + 24}},
+		speed       = {40 ft., swim 30 ft.},
+	]
+
+	\renewcommand{\AbilityScoreSpacer}{~}
+
+	\DndMonsterAbilityScores[
+		str = 20,
+		dex = 10,
+		con = 16,
+		int = 2,
+		wis = 13,
+		cha = 7,
+	]
+
+	\DndMonsterDetails[
+		%saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+		skills = {Perception +3},
+		%damage-vulnerabilities = {cold},
+		damage-resistances = {cold},
+		%damage-immunities = {cold},
+		senses = {passive Perception 13},
+		%condition-immunities = {frightened, poisoned, prone},
+		languages = {Common},
+		challenge = 5,
+	]
+
+	\DndMonsterAction{Keen Smell}
+	The bear has advantage on Wisdom (Perception) checks that rely on smell.
+
+	\DndMonsterAction{Snow Hide}
+	While the polar bear is in a snowy environment it gets a +2 to AC.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The bear makes two attacks: one with its bite and one with its claw.   
+
+	\DndMonsterAttack[
+		name=Bite,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+7,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg={\DndDice{1d8 + 5}},
+		dmg-type=piercing,
+		%plus-dmg=,
+		%plus-dmg-type=,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+	
+	\DndMonsterAttack[
+		name=Claws,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+7,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg={\DndDice{2d6 + 5}},
+		dmg-type=slashing,
+		%plus-dmg=,
+		%plus-dmg-type=,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra=,
+	] 
+\end{DndMonster}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 8} Souvenir Shop and Restaurant}
+\begin{itemize}
+	\item successful DC 5 Investigation Check in seating area in front of Cafe \& souvenir shop will lead to finding a newspaper (content tbd) and a hot coffee (DC 10 Investigation Check) (\textbf{2 rations})
+	\item lollipop (\textbf{1 ration}) can be found within the Cafe \& Souvenir Shop (DC 15 Investigation Check), if eaten by any character DC 15 Constitution Saving Throw or the character is poisoned for 1 hour (not possible to give other animals for ration)
+	\item Storage is locked and can be either opened with the key or \textbf{one try} critical success Sleight of Hand lock picking
+	\item storage is plenty of food rations
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 9} Lion Habitat}
+\begin{itemize}
+	\item Alex thinks everything is a Steak and only calm down after he gets one -> Will atack anyone on sight (Can be reasoned with if you have fish or steak)
+\end{itemize}
+% Monster stat block
+\begin{DndMonster}[width=0.5\textwidth]{Alex (Lion)}
+	\DndMonsterType{Large Beast, unaligned}
+
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15 (Natural Armor)},
+		hit-points  = {\DndDice{8d10 + 8}},
+		speed       = {50 ft.},
+	]
+
+	\renewcommand{\AbilityScoreSpacer}{~}
+
+	\DndMonsterAbilityScores[
+		str = 17,
+		dex = 15,
+		con = 13,
+		int = 3,
+		wis = 12,
+		cha = 8,
+	]
+
+	\DndMonsterDetails[
+		%saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+		skills = {Perception +3, Stealth +6},
+		%damage-vulnerabilities = {cold},
+		%damage-resistances = {cold},
+		%damage-immunities = {cold},
+		senses = {passive Perception 13},
+		%condition-immunities = {frightened, poisoned, prone},
+		languages = {Common},
+		challenge = 3,
+	]
+
+	\DndMonsterAction{Keen Smell}
+	The lion has advantage on Wisdom (Perception) checks that rely on smell.
+	
+	\DndMonsterAction{Pounce}
+	If the lion moves at least 20 ft. straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the lion can make one bite attack against it as a bonus action.
+	
+	\DndMonsterAction{Running Leap}
+	With a 10-foot running start, the lion can long jump up to 25 ft..
+	
+	\DndMonsterSection{Actions}   
+
+	\DndMonsterAttack[
+		name=Bite,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+5,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg={\DndDice{1d8 + 3}},
+		dmg-type=piercing,
+		%plus-dmg=,
+		%plus-dmg-type=,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+	
+	\DndMonsterAttack[
+		name=Claw,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+8,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg={\DndDice{1d6 + 3}},
+		dmg-type=slashing,
+		%plus-dmg=,
+		%plus-dmg-type=,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+\end{DndMonster}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 10} Giraffe Habitat}
+\begin{itemize}
+	\item will give characters 2 Potions of Healing for the hippo plushy
+	\item will give the characters 3 Potions of Greater Healing in exchange for a "Shot against Brown Spots"
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 11} Hippopotamus Habitat}
+\begin{itemize}
+	\item nothing
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 12} Zebra Habitat}
+\begin{itemize}
+	\item with Marty after both Marty and the characters had food, one can train to run faster increasing their speed by 5ft (10ft critical success) on a successful DC 10 Constitution Check
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 13} Crocodile Habitat}
+\begin{itemize}
+	\item only entrance to the reptile house
+	\item Corcodile (Mario) only let's characters through if he gets something to eat
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 14} Reptile House}
+\begin{itemize}
+	\item Poison Dart Frog will give characters 6 Poison Vials in exchange for food
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 15} Rhinoceros Habitat}
+\begin{itemize}
+	\item Within the rhinoceros habitat the characters can find a useful item for a later point in time (DC 5 Investigation Check)
+	\item characters need to be stealthy or the rhinoceros (Roy) will attack on sight
+	\item When defeating the rhinoceros the characters get the key to the storage room
+\end{itemize}
+% Monster stat block
+\begin{DndMonster}[width=0.5\textwidth]{Roy (Rhinoceros)}
+	\DndMonsterType{Large Beast, unaligned}
+
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {17 (Natural Armor)},
+		hit-points  = {\DndDice{20d10 + 40}},
+		speed       = {40 ft.},
+	]
+
+	\renewcommand{\AbilityScoreSpacer}{~}
+
+	\DndMonsterAbilityScores[
+		str = 21,
+		dex = 8,
+		con = 15,
+		int = 2,
+		wis = 12,
+		cha = 6,
+	]
+
+	\DndMonsterDetails[
+		%saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+		skills = {Perception +1},
+		%damage-vulnerabilities = {cold},
+		%damage-resistances = {cold},
+		%damage-immunities = {cold},
+		senses = {passive Perception 11},
+		%condition-immunities = {frightened, poisoned, prone},
+		languages = {Common},
+		challenge = 6,
+	]
+
+	\DndMonsterAction{Charge}
+	If the rhinoceros moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 9 (2d8) bludgeoning damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone.
+	
+	\DndMonsterAction{Rampage (Recharge 5-6)} The rhinoceros charges forward in a straight line, bashing everything and everyone in its path. Each creature in a 60-foot line must make a DC 15 Dexterity Saving Throw, taking \DndDice{3d8 + 5} bludgeoning damage and being knocked prone on a failed save. On a successful save the creature takes half damage and is not knocked prone.
+	
+	\DndMonsterSection{Actions}   
+	\DndMonsterAction{Multiattack}
+	The rhinoceros can make two Gore attacks each round.
+	
+	\DndMonsterAttack[
+		name=Gore,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+7,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg={\DndDice{2d8 + 5}},
+		dmg-type=piercing,
+		%plus-dmg=,
+		%plus-dmg-type=,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+\end{DndMonster}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 16} Camel Habitat}
+\begin{itemize}
+	\item nothing
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 17} Ostrich Habitat}
+\begin{itemize}
+	\item is infatuated with Rico
+	\item wants the others to perform for a nice date with Rico
 	\begin{itemize}
-		\item Different animals asking where their food is
-		\item Possibility to search in other habitats for food
-		\begin{itemize}
-			\item Investigating Entrance Gate Area
-			\begin{itemize}
-				\item if searched one can find a sandwich and some gold at ticket counter (DC 10 Investigation Check)
-				\item if searched further one can find a "Shot against Brown Spots" (DC 15 Investigation Check)
-			\end{itemize}
-			\item Investigatin Elephant habitat
-			\begin{itemize}
-				\item DC 15 Intimidation or Persuasion Check gets enough peanuts for 6 characters (advantage if Mort is in "Buffed-Up" State at that moment)
-				\item Elephant can be attacked leading to peanut rations for 8 characters (normal elephant stat block - CR 4)
-			\end{itemize}
-			\item if investigating the rhinoceros habitat either the characters have to be stealthy or the rhinoceros will attack on sight (very hard - CR 5-6)
-			\begin{itemize}
-				\item when stealthy the characters can find an item for a later point on time
-				\item When defeating the rhinoceros the characters get the key to the storage room
-			\end{itemize}
-			\item investigating arsenal-area
-			\begin{itemize}
-				\item if the characters get inside there are some nice weapons for each of them (tbd)
-				\item door is closed by portcullis
-				\item there is a hidden entrance in the ostrich habitat
-				\item is only accessible after the ostrich rammed her head into the ground opening an entrance to the hidden corridor to the arsenal
-				\item ostrich will only put her head into the ground if a performance check of the group is failed
-				\item camel habitat nothing but camel says "no food here"
-			\end{itemize}
-			\item investigating monkey habitat
-			\begin{itemize}
-				\item possibility to decipher written stuff (like newspaper) (DC 12 Persuasion Check or hot coffee)
-				\item only possible after the monkeys were given food
-			\end{itemize}
-			\item investigating flamingoes habitat
-			\begin{itemize}
-				\item nothing
-			\end{itemize}
-			\item investigating reptile house + crocodile (reptile house only accesible via crocodile habitat)
-			\begin{itemize}
-				\item crocodile only lets the characters into the reptile house if it gets something to eat
-				\item poison dart frog will give characters poison vials in exchange for food
-			\end{itemize}
-			\item investigating north-west part
-			\begin{itemize}
-				\item Melman sells healing potions
-				\item will give the characters an amount of healing potions and 3 bottlea of Lesser Restoration in exchange for a "Shot against Brown Spots"
-				\item Alex thinks everything is Steak and only calm down after he gets one -> Will attack anyone on sight (can be reasoned with if you have a steak)
-				\item with Marty, after both Marty and the characters had food, one can train to run faster increasing their speed by 5ft (10 ft critical success) on a successful DC 10 Constitution Check
-				\item Gloria - nothing
-			\end{itemize}
-			\item investigating polar bear habitat
-			\begin{itemize}
-				\item it is very cold -> Lemurs have to succeed DC 10 Constitution Check every minute or take 1d4 cold damage
-				\item tbd
-			\end{itemize}
-			\item souvenir shop \& cafe and storage
-			\begin{itemize}
-				\item successful DC 5 Investigation Check in seating area in front of Cafe \& souvenir shop will lead to finding a newspaper (content tbd) and a hot coffee (DC 10 Investigation Check) (food for one character)
-				\item DC 10 Investigation Check leads to finding money
-				\item DC 15 Investigation Check leads to finding an item (tbd)
-				\item Item lollipop can be found, if eaten by any character DC 15 Constitution Check or the character is poisoned for 1 hour (not possible to give other animals for ration)
-				\item Storage is locked and can be either opened with key or one try critical success Sleight of Hand lock picking
-				\item storage is plentiful of food rations
-			\end{itemize}
-		\end{itemize}
+		\item DC 15 Performance Check
+		\item everyone that takes part in the performance need to roll
+		\item if more than half of all participants are successful the whole performance is successful
+		\item otherwise it is failed
+	\end{itemize}
+	\item There is a hidden entrance to the arsenal
+	\item Is only accessible after the ostrich rammed her head into the ground opening an entrance to the hidden corridor to the arsenal
+	\item ostrich will only put her head into the ground if a performance check of the group is failed
+	\item if the performance is well received, the ostrich eats with Rico (Rico is saturated)
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 18} Arsenal}
+\begin{itemize}
+	\item main entrance is closed by a portcullis (cannot be opened)
+	\item only accessible by hidden corridor from within the ostrich habitat
+	\item once inside the characters can find a key to the food storage and some weapons for the group (tbd)
+\end{itemize}
+\subsection*{\inTextCircled[10]{\fontsize{10}{10}\selectfont 19} Elephant Habitat}
+\begin{itemize}
+	\item DC 15 Intimidation or Persuasion Check gets enough peanuts for 6 characters (advantage if Mort is in "Buffed-Up" State at that moment) (\textbf{6 rations})
+	\item Elephant can be attacked. When defeated peanut rations for 8 characters can be found (\textbf{8 rations})
+\end{itemize}
+% Monster stat block
+\begin{DndMonster}[width=0.5\textwidth]{Burt (Elephant)}
+	\DndMonsterType{Huge Beast, unaligned}
+
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15 (Natural Armor)},
+		hit-points  = {\DndDice{10d12 + 30}},
+		speed       = {40 ft.},
+	]
+
+	\renewcommand{\AbilityScoreSpacer}{~}
+
+	\DndMonsterAbilityScores[
+		str = 22,
+		dex = 9,
+		con = 17,
+		int = 3,
+		wis = 11,
+		cha = 6,
+	]
+
+	\DndMonsterDetails[
+		%saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+		%skills = {Perception +1},
+		%damage-vulnerabilities = {cold},
+		%damage-resistances = {cold},
+		%damage-immunities = {cold},
+		senses = {passive Perception 10},
+		%condition-immunities = {frightened, poisoned, prone},
+		languages = {Common},
+		challenge = 5,
+	]
+
+	\DndMonsterAction{Trampling Charge}
+	If the elephant moves at least 20 ft. straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the elephant can make one stomp attack against it as a bonus action.
+	
+	\DndMonsterSection{Actions}   
+
+	\DndMonsterAttack[
+		name=Gore,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+8,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg={\DndDice{3d8 + 6}},
+		dmg-type=piercing,
+		%plus-dmg=,
+		%plus-dmg-type=,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+	
+	\DndMonsterAttack[
+		name=Stomp,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+8,
+		reach=5,
+		%range=20/60,
+		targets=one prone target,
+		dmg={\DndDice{3d10 + 6}},
+		dmg-type=bludgeoning,
+		%plus-dmg=,
+		%plus-dmg-type=,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+\end{DndMonster}
+
+\section*{Dark Cyclone}\phantomsection\addcontentsline{toc}{section}{Dark Cyclone}
+\textbf{After 30-40 Minutes RL-Time:}
+
+\chapter{Magical Items}
+\subsection*{Arrow of Frost}
+This enchanted arrow features a jagged arrowhead crafted from a semitransparent pale blue material, evocative of ice. When drawn and activated, it emanates a faint, icy glow, signifying its potent magical properties.
+
+As a bonus action, the wielder can focus on the arrow, infusing it with chilling evocation magic. Once charged, the next ranged weapon attack made with this arrow before the start of the wielder's next turn deals magical cold damage instead of its usual type.
+
+Upon striking a creature, the target must succeed on a DC 13 Constitution saving throw or become encased in frost, effectively petrified, until the end of its next turn. However, creatures with resistance or immunity to cold damage automatically succeed on this saving throw. Additionally, should the frozen target suffer any fire damage while petrified, the icy imprisonment immediately dissipates.
+
+Once the Arrow of Frost strikes its target, its magical properties are expended, reverting it to a mundane arrow.
+
+
+\chapter{Hazards}
+\subsection*{Powdered Snow}
+Powdered Snow is an amalgamation of ice crystals and fine, granular snow particles. It forms when the temperature drops to frigid levels, causing the snow to become powdery and light, almost like sand. This snowy terrain is particularly hazardous as it conceals the icy permafrost beneath its surface.
+
+Unlike wet snow or slush, Powdered Snow lacks the cohesion to support weight evenly. When a creature steps onto the surface, the loose grains of snow and ice quickly give way, causing the unwary traveller to sink into the icy depths below.
+
+In essence, falling into Powdered Snow is akin to stumbling into a hidden trap of freezing cold rather than merely sinking into fluffy snow. Seasoned adventurers learn to recognize the subtle signs of this lurking danger in their travels across icy landscapes.
+
+Characters moving at their normal speed can notice Powdered Snow with a successful DC 10 Wisdom (Survival) check or with a passive Wisdom (Perception) of 10 or higher. However, those travelling faster than their normal speed might barrel right into the Powdered Snow, sinking into its chilling embrace.
+
+When a creature steps on a Powdered Snow area it sinks 2 feet into the freezing depths and suffers \DndDice{1d4} cold damage, as the bitter cold seeps into their flesh. At the beginning of each turn after sinking into the Powdered Snow the creatures takes \DndDice{1d4} cold damage. Provided the creature is not completely submerged, they can attempted to extricate themselves from the Powdered Snow with a successful DC 12 Strength check. If another creature is assisting the sinking creature, the base DC for the Strength check is reduced to 7.
+
+\chapter{Characters}
+\section*{Kowalski}\clearpage\phantomsection\addcontentsline{toc}{section}{Kowalski}
+\CharacterSheetInput[spellcasting=true]{level_3}{Kowalski}
+\clearpage
+\section*{Private}\phantomsection\addcontentsline{toc}{section}{Private}
+\CharacterSheetInput[spellcasting=true]{level_3}{Private}
+\clearpage
+\section*{Optional: Private Mystery}\phantomsection\addcontentsline{toc}{section}{Optional: Private Mystery}
+\subsection*{Private's Character Development (Ideas)}
+\begin{itemize}
+	\item \textbf{Hexblade Curse}\\
+	When Private misses an attack on a creature within 30ft of him, he will curse at the target that he missed, using some even for him unknown language. When the creature dies he will feel invigorated as he gains HP (level + Charisma Modifier - minimum of 1). Therefore, Private realizes that he can curse his target.
+	\item \textbf{Hex Warrior}\\
+	When Private uses a martial or simple weapon that does not have the two-handed property and does damage to any creature, he realizes that it does much more damage than it usually would.
+	\item \textbf{Investment of the Chain Master}
+	\item \textbf{Pact of the Chain}
+	\item \textbf{Spell Sniper}
+	\item \textbf{Spells}
+	As a Warlock Private can cast different spells. However, as he is not aware of those he will realize, most often just by chance, that he can use those, either by certain circumstances or by different opportunities in the game world.
+	\begin{itemize}
+		\item \textcolor{titlered}{\textbf{Mage Hand}}\\
+		\item \textcolor{titlered}{\textbf{Armor of Agathys (Glacial Wall)}}\\
+		When Private is stuck in the powdered snow in the polar bear habitat for more than one turn, and successfully frees himself from this predicament he realizes that some snow particles are floating around him, forming a kind of shield or aura. This effect gives Private 5 Temporary HP and each creature that attacks him with a melee attack takes 5 cold damage. After this situation Private gains the ability to cast "Glacial Wall", which is indifferent from the effect of "Armor of Agathys".
+		\item \textcolor{titlered}{\textbf{Hex (Weakening)}}\\
+		When one creature is successful on three ability saving throw checks within one round of combat, Private lashes out with unknown incantations, cursing the target. With this he successfully casts Hex with the targeted ability to be the last ability save that the creature was able to resolve.\\
+		A creature under the influence of this spell also takes additional 1d6 necrotic damage whenever it is hit by an attack made by Private.\\
+		When the target dies the curse can be switched to another creature within range as a Bonus Action.
+		\item \textcolor{titlered}{\textbf{Find Familiar}}\\
+		After the random encounter "Find the Ducklings" was successfully solved, Private will befriend with one of the ducklings realizing that he can cast the "Find Familiar" spell. The duckling will become his familiar immediately after the side quest.
+		\item \textcolor{titlered}{\textbf{Darkness}}\\
+		\item \textcolor{titlered}{\textbf{Invisibility}}\\
 	\end{itemize}
 \end{itemize}
-\subsection*{After 20-30 Minutes RL-Time}
-
+\CharacterSheetInput[spellcasting=true]{level_3}{blank_Private}
 \clearpage
-\section*{Characters}
-%\CharacterSheetInput[spellcasting=true]{Kowalski}
-%\CharacterSheetInput[spellcasting=true]{Private}
-%\CharacterSheetInput{Rico}
-%\CharacterSheetInput{Skipper}
-%\CharacterSheetInput[spellcasting=true]{King_Julien}
-%\CharacterSheetInput[spellcasting=true]{Maurice}
+\section*{Rico}\phantomsection\addcontentsline{toc}{section}{Rico}
+\CharacterSheetInput{level_3}{Rico}
+\clearpage
+\section*{Skipper}\phantomsection\addcontentsline{toc}{section}{Skipper}
+\CharacterSheetInput{level_3}{Skipper}
+\clearpage
+\section*{King Julien}\phantomsection\addcontentsline{toc}{section}{King Julien}
+\CharacterSheetInput[spellcasting=true]{level_3}{King_Julien}
+\clearpage
+\section*{Maurice}\phantomsection\addcontentsline{toc}{section}{Maurice}
+\CharacterSheetInput[spellcasting=true]{level_3}{Maurice}

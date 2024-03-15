@@ -2,7 +2,7 @@
 \CharacterName{Private}
 
 \Class{Warlock}
-\Level{7}
+\Level{3}
 \Background{Courtier}
 \PlayerName{}
 \Race{SpecOp Penguin}
@@ -11,12 +11,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{8}
-\DexterityScore{14}
-\ConstitutionScore{11}
-\IntelligenceScore{7}
-\WisdomScore{7}
-\CharismaScore{18}
+\StrengthRolledScore{8}
+\DexterityRolledScore{14}
+\ConstitutionRolledScore{12}
+\IntelligenceRolledScore{7}
+\WisdomRolledScore{7}
+\CharismaRolledScore{16}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{1} % SpecOp Penguin-Race +1
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{1} % SpecOp Penguin-Race Wild Card +1
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -45,24 +54,37 @@
 \StealthProficiency{P}
 \SurvivalProficiency{}
 
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+
 \Inspiration{}
-\Proficiency{+3}
+\Proficiency{+2}
 
 % Armor Class is not automatically calculated
 \ArmorClass{13}
 \InitiativeModifier{0}
 \Speed{20}
-\MaxHitPointsRolled{28} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{20} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{}
 \TemporaryHitPoints{}
 \HitDice{d8}
 \HitDiceSpent{0}
 
+\addWeaponStatistic{Light Crossbow}{Private}{DEX}{P}{0}{1d8 p (80/320)}
+
+\AttacksAdditional{
+	\textbf{Light Crossbow}\\
+	\textbf{Leather Armor}
+}
 
 \OtherProficienciesLanguages{
 \textbf{Languages:}\\ Common, Sylvan, Draconic \\
-\textbf{Armor:}\\ Light Armor \\
-\textbf{Weapons:}\\ Simple Weapons \\
+\textbf{Armor:}\\ Light Armor, Medium Armor \\
+\textbf{Weapons:}\\ Simple Weapons, Martial Weapons \\
 \textbf{Tools:}\\ None
 }
 \PersonalityTraits{
@@ -93,7 +115,6 @@
 	\begin{itemize}
 		\item Court Functionary
 	\end{itemize}
-	\textbf{Crossbow Expert}\\
 	\textbf{Spell Sniper}\\
 	\textbf{Warlock Traits}
 	\begin{itemize}
@@ -101,43 +122,33 @@
 		\item Eldritch Invocations
 		\begin{itemize}
 			\item Agonizing Blast
-			\item Eldritch Mind
-			\item Ghostly Gaze
 			\item Investment of the Chain Master
 		\end{itemize}
 		\item Pact Boon
 	\end{itemize}
 }
 
-\CharacterAppearancePicture{\PATH one_shots/Penguins_of_Madagascar/characters/Private/images/Private.png}
+\CharacterAppearancePicture{\PATH one_shots/Penguins_of_Madagascar/characters/images/Private.png}
 
 % Magic
 
 \SpellcastingClass{Warlock}
 \SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 \CantripSlotA{Eldritch Blast (V, S)}
 \CantripSlotB{Mage Hand (V, S)}
-\CantripSlotC{Mind Sliver (V, S)}
-\CantripSlotD{Prestidigation (V, S)}
+\CantripSlotC{Ray of Frost (V, S)}
 
 \FirstLevelSpellSlotsTotal{0}
 \FirstLevelSpellSlotA{Armor of Agathys (V, S, M)}
 \FirstLevelSpellSlotB{Hex (V, S, M)}
 \FirstLevelSpellSlotC{Find Familiar (Ritual) (V, S, M)}
 
-\SecondLevelSpellSlotsTotal{0}
-\SecondLevelSpellSlotA{Invisibility (V, S, M)}
-
-\ThirdLevelSpellSlotsTotal{0}
-\ThirdLevelSpellSlotA{Counterspell (S)}
-\ThirdLevelSpellSlotB{Dispel Magic (V, S)}
-\ThirdLevelSpellSlotC{Fly (V, S, M)}
-
-\FourthLevelSpellSlotsTotal{2}
-\FourthLevelSpellSlotA{Shadow of Moil (V, S, M)}
-\FourthLevelSpellSlotB{Sickening Radiance (V, S)}
+\SecondLevelSpellSlotsTotal{2}
+\SecondLevelSpellSlotA{Darkness (V, M)}
+\SecondLevelSpellSlotB{Invisibility (V, S, M)}
 
 \renewcommand{\FeaturesAndSpells}{
 \chapter*{Features, Magic Items and Spells}
@@ -160,14 +171,6 @@ You might have been one of the many functionaries, attendants, and other hangers
 Even if you are no longer a full-fledged member of the group that gave you your start in life, your relationships with your former fellows can be an advantage for you and your adventuring comrades. You might undertake missions with your new companions that further the interest of the organization that gave you your start in life. In any event, the abilities that you honed while serving as a courtier will stand you in good stead as an adventurer.
 \subsection*{Court Functionary}
 Your knowledge of how bureaucracies function lets you gain access to the records and inner workings of any noble court or government you encounter. You know who the movers and shakers are, whom to go to for the favors you seek, and what the current intrigues of interest in the group are.
-
-\section*{Crossbow Expert}
-Thanks to extensive practice with the crossbow, you gain the following benefits:
-\begin{itemize}
-	\item You ignore the loading quality of crossbows with which you are proficient.
-	\item Being within 5 feet of a hostile creature doesn’t impose disadvantage on your ranged attack rolls.
-	\item When you use the Attack action and attack with a one handed weapon, you can use a bonus action to attack with a hand crossbow you are holding.
-\end{itemize}
 
 \section*{Spell Sniper}
 You have learned techniques to enhance your attacks with certain kinds of spells, gaining the following benefits:
@@ -201,12 +204,7 @@ You can't use this feature again until you finish a short or long rest.
 At 1st level, you acquire the training necessary to effectively arm yourself for battle. You gain proficiency with medium armor, shields, and martial weapons.
 
 The influence of your patron also allows you to mystically channel your will through a particular weapon. Whenever you finish a long rest, you can touch one weapon that you are proficient with and that lacks the two-handed property. When you attack with that weapon, you can use your Charisma modifier, instead of Strength or Dexterity, for the attack and damage rolls. This benefit lasts until you finish a long rest. If you later gain the Pact of the Blade feature, this benefit extends to every pact weapon you conjure with that feature, no matter the weapon's type.
-\subsubsection*{Accursed Specter}
-Starting at 6th level, you can curse the soul of a person you slay, temporarily binding it in your service. When you slay a humanoid, you can cause its spirit to rise from its corpse as a specter. When the specter appears, it gains temporary hit points equal to half your warlock level. Roll initiative for the specter, which has its own turns. It obeys your verbal commands, and it gains a special bonus to its attack rolls equal to your Charisma modifier (minimum of +0).
 
-The specter remains in your service until the end of your next long rest, at which point it vanishes to the afterlife.
-
-Once you bind a specter with this feature, you can't use the feature again until you finish a long rest.
 \subsection*{Eldritch Invocations}
 In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.
 
@@ -216,12 +214,6 @@ Additionally, when you gain a level in this class, you can choose one of the inv
 \subsubsection*{Known Invocations}
 \paragraph*{Agonizing Blast}\hfill\\
 When you cast eldritch blast, add your Charisma modifier to the damage it deals on a hit.\\
-\paragraph*{Eldritch Mind}\hfill\\
-You have advantage on Constitution saving throws that you make to maintain your concentration on a spell.\\
-\paragraph*{Ghostly Gaze}\hfill\\
-As an action, you gain the ability to see through solid objects to a range of 30 feet. Within that range, you have darkvision if you don't already have it. This special sight lasts for 1 minute or until your concentration ends (as if you were concentrating on a spell). During that time, you perceive objects as ghostly, transparent images.
-
-Once you use this invocation, you can't use it again until you finish a short or long rest.\\
 \paragraph*{Investment of the Chain Master}\hfill\\
 When you cast find familiar, you infuse the summoned familiar with a measure of your eldritch power, granting the creature the following benefits:
 \begin{itemize}
@@ -243,7 +235,7 @@ When you cast find familiar, you infuse the summoned familiar with a measure of 
 
 \DndSpellHeader
 	{Eldritch Blast}
-	{Evocation cantrip}
+	{Evocation Cantrip}
 	{1 Action}
 	{120 feet}
 	{V, S}
@@ -255,7 +247,7 @@ A beam of crackling energy streaks toward a creature within range. Make a ranged
 
 \DndSpellHeader
 	{Mage Hand}
-	{Conjuration cantrip}
+	{Conjuration Cantrip}
 	{1 Action}
 	{30 feet}
 	{V, S}
@@ -268,41 +260,21 @@ You can use your action to control the hand. You can use the hand to manipulate 
 The hand can’t attack, activate magical items, or carry more than 10 pounds.
 
 \DndSpellHeader
-	{Mind Sliver}
-	{Enchantment cantrip}
+	{Ray of Frost}
+	{Evocation Cantrip}
 	{1 Action}
 	{60 feet}
-	{V}
-	{1 Round}
-
-You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.
-
-\subparagraph*{At Higher Levels} This spell’s damage increases by 1d6 when you reach certain levels: 5th level (2d6), 11th level (3d6), and 17th level (4d6).
-
-\DndSpellHeader
-	{Prestidigation}
-	{Transmutation cantrip}
-	{1 Action}
-	{10 feet}
 	{V, S}
-	{Up to 1 hour}
+	{Instantaneous}
 
-This spell is a minor magical trick that novice spellcasters use for practice. You create one of the following magical effects within range:
+A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn.
 
-\begin{itemize}
-	\item You create an instantaneous, harmless sensory effect, such as a shower of sparks, a puff of wind, faint musical notes, or an odd odor.
-	\item You instantaneously light or snuff out a candle, a torch, or a small campfire.
-	\item You instantaneously clean or soil an object no larger than 1 cubic foot.
-	\item You chill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour.
-	\item You make a color, a small mark, or a symbol appear on an object or a surface for 1 hour.
-	\item You create a nonmagical trinket or an illusory image that can fit in your hand and that lasts until the end of your next turn.
-\end{itemize}
-If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action.
+\subparagraph*{At Higher Levels} The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).
 
 \subsection*{Level 1}
 
 \DndSpellHeader
-	{Armor of Agathy}
+	{Armor of Agathys}
 	{1st-Level Abjuration}
 	{1 Action}
 	{Self}
@@ -332,6 +304,20 @@ A Remove Curse cast on the target ends this spell early.
 \subsection*{Level 2}
 
 \DndSpellHeader
+	{Darkness}
+	{2nd-Level Evocation}
+	{1 Action}
+	{60 feet}
+	{V, M (Bat fur and a drop of pitch or piece of coal)}
+	{Concentration, up to 10 Minutes}
+	
+Magical darkness spreads from a point you choose within range to fill a 15-foot-radius sphere for the duration. The darkness spreads around corners. A creature with darkvision can't see through this darkness, and nonmagical light can't illuminate it.
+
+If the point you choose is on an object you are holding or one that isn't being worn or carried, the darkness emanates from the object and moves with it. Completely covering the source of the darkness with an opaque object, such as a bowl or a helm, blocks the darkness.
+
+If any of this spell's area overlaps with an area of light created by a spell of 2nd level or lower, the spell that created the light is dispelled.
+	
+\DndSpellHeader
 	{Invisibility}
 	{2nd-Level Illusion}
 	{1 Action}
@@ -343,68 +329,19 @@ A creature you touch becomes invisible until the spell ends. Anything the target
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.
 
-\subsection*{Level 3}
-
-\DndSpellHeader
-	{Counterspell}
-	{3rd-Level Abjuration}
-	{1 Reaction, which you take when you see a creature within 60 feet of you casting a spell}
-	{60 feet}
-	{S}
-	{Instantaneous}
-
-You attempt to interrupt a creature in the process of casting a spell. If the creature is casting a spell of 3rd level or lower, its spell fails and has no effect. If it is casting a spell of 4th level or higher, make an ability check using your spellcasting ability. The DC equals 10 + the spell’s level. On a success, the creature’s spell fails and has no effect.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 4th level or higher, the interrupted spell has no effect if its level is less than or equal to the level of the spell slot you used.
-
-\DndSpellHeader
-	{Dispel Magic}
-	{3rd-Level Abjuration}
-	{1 Action}
-	{120 feet}
-	{V, S}
-	{Instantaneous}
-
-Choose any creature, object, or magical effect within range. Any spell of 3rd level or lower on the target ends. For each spell of 4th level or higher on the target, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a successful check, the spell ends.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 4th level or higher, you automatically end the effects of a spell on the target if the spell's level is equal to or less than the level of the spell slot you used.
-
-\DndSpellHeader
-	{Fly}
-	{3rd-Level Transmutation}
-	{1 Action}
-	{Touch}
-	{V, S, M (a wing feather from any bird)}
-	{Concentration, up to 10 minutes}
-
-You touch a willing creature. The target gains a flying speed of 60 feet for the duration. When the spell ends, the target falls if it is still aloft, unless it can stop the fall.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd.
-
-\subsection*{Level 4}
-
-\DndSpellHeader
-	{Shadow of Moil}
-	{4th-Level Necromancy}
-	{1 Action}
-	{Self}
-	{V, S, M (an undead eyeball encased in a gem worth at least 150gp)}
-	{Concentration, up to 1 minute}
-
-Flame-like shadows wreathe your body until the spell ends, causing you to become heavily obscured to others. The shadows turn dim light within 10 feet of you into darkness, and bright light in the same area to dim light.
-
-Until the spell ends, you have resistance to radiant damage. In addition, whenever a creature within 10 feet of you hits you with an attack, the shadows lash out at that creature, dealing it 2d8 necrotic damage.
-
-\DndSpellHeader
-	{Sickening Radiance}
-	{4th-Level Evocation}
-	{1 Action}
-	{120 feet}
-	{V, S}
-	{Concentration, up to 10 minutes}
-
-Dim, greenish light spreads within a 30-foot-radius sphere centered on a point you choose within range. The light spreads around corners, and it lasts until the spell ends.
-
-When a creature moves into the spell’s area for the first time on a turn or starts its turn there, that creature must succeed on a Constitution saving throw or take 4d10 radiant damage, and it suffers one level of exhaustion and emits a dim, greenish light in a 5-foot radius. This light makes it impossible for the creature to benefit from being invisible. The light and any levels of exhaustion caused by this spell go away when the spell ends.
-
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Light Crossbow}
+\paragraph*{Attack Roll}\hfill\\
+1d20 + DEX-Modifier + Proficiency Modifier \\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+1d8 + DEX-Modifier\\
+\indent Current Max (Normal): \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Any Hex Warrior Weapon}
+\paragraph*{Attack Roll}\hfill\\
+1d20 + CHA-Modifier + Proficiency Modifier \\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\CharismaScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+Weapon Damage + CHA-Modifier
 }
