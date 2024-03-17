@@ -3,14 +3,9 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH template_magic-item/magic-items-commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -28,12 +23,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{15}
-\DexterityScore{12}
-\ConstitutionScore{17}
-\IntelligenceScore{14}
-\WisdomScore{16}
-\CharismaScore{17}
+\StrengthRolledScore{9}
+\DexterityRolledScore{13}
+\ConstitutionRolledScore{13}
+\IntelligenceRolledScore{11}
+\WisdomRolledScore{12}
+\CharismaRolledScore{15}
+
+\StrengthScoreBonus{1} % Vampire-Race +1
+\DexterityScoreBonus{1} % Vampire-Race +1
+\ConstitutionScoreBonus{1} % Vampire-Race +1
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{1} % Vampire-Race +1
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{P}
@@ -68,7 +72,7 @@
 \ConstitutionModifierBonus{0}
 \IntelligenceModifierBonus{0}
 \WisdomModifierBonus{0}
-\CharismaModifierBonus{1}
+\CharismaModifierBonus{0}
 
 \Inspiration{}
 \Proficiency{+2}
@@ -91,20 +95,15 @@
 \PP{}
 
 % Weapon Arsenal
-\AddWeapon{Rapier}{0}{1d8 p}
-\AddWeapon{Crossbow}{0}{1d8 p}
-\AddWeapon{Claws}{0}{1d6 s}
+\addWeaponStatistic{Rapier}{AzrielCountofZhalfirim}{DEX}{P}{0}{1d6 p}
+\addWeaponStatistic{Crossbow}{AzrielCountofZhalfirim}{DEX}{P}{0}{1d8 p}
+\addWeaponStatistic{Claws}{AzrielCountofZhalfirim}{DEX}{P}{0}{1d6 s}
 
 \AttacksAdditional{
 	\textbf{Bite}\\
-	\indent 1d6 + \intcalcAdd{\calculateModifier{\StrengthScoreValue}}{0} piercing damage\\\indent\indent + \intcalcAdd{\calculateModifier{\ConstitutionScoreValue}}{0} necrotic damage\\
+	\indent 1d6 + \intcalcAdd{\calculateModifier{\ConstitutionScoreValue}}{0} necrotic damage\\
 	\textbf{Rapier of Life Stealing}\\
-	\textbf{Crossbow}\\
-	\textbf{20 Crossbow Bolts}\\
-	\textbf{Armor:} 
-	\begin{itemize}
-		\item Scale Mail (Stealth Disadvantages)
-	\end{itemize}
+	Crossbow (80/320), 20 Crossbow Bolts
 }
 
 \OtherProficienciesLanguages{
@@ -115,8 +114,11 @@
 }
 
 \Equipment{
-	a Backpack, a Bedrool, a Mess Kit, a Tinderbox, 10 Torches, 12 Days of Rations, a Waterskin, 50 ft Hempen Rope, a set of fine clothes, a scroll of pedigree \\
-	\textbf{Cloak of the Underdark, Crypt Ring}
+	\textbf{Cloak of the Underdark, Crypt Ring}\\
+	Scale Mail
+}
+\Clutter{
+	a Backpack, a Bedrool, a Mess Kit, a Tinderbox, 10 Torches, 12 Days of Rations, a Waterskin, 50 ft Hempen Rope, a set of fine clothes, a scroll of pedigree
 }
 
 \PersonalityTraits{
@@ -228,13 +230,13 @@
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
-\CantripSlotA{Faerie Fire (once per day)}
-\CantripSlotB{Mage Hand (once per day)}
-\CantripSlotC{Speak with Animals (once per day)}
+\CantripSlotA{Faerie Fire (V)}
+\CantripSlotB{Mage Hand (V, S)}
 
 \FirstLevelSpellSlotsTotal{2}
-\FirstLevelSpellSlotA{Detect Poison and Disease}
-\FirstLevelSpellSlotB{Fog Cloud}
+\FirstLevelSpellSlotA{Detect Poison and Disease (V, S)}
+\FirstLevelSpellSlotB{Fog Cloud (V, S)}
+\FirstLevelSpellSlotC{Speak with Animals (V, S)}
 
 \begin{document}
 
@@ -371,18 +373,6 @@ Once you transform this way you cannot do so again until you complete a short or
 \subsection*{Position of Privilege}
 Thanks to your noble birth, people are inclined to think the best of you. You are welcome in high society, and people assume you have the right to be wherever you are. The common folk make every effort to accommodate you and avoid your displeasure, and other people of high birth treat you as a member of the same social sphere. You can secure an audience with a local noble if you need to.
 
-\section*{Magical Items}
-\subsection*{Rapier of Life Stealing}
-When you attack a creature with this magic weapon and roll a 20 on the attack roll, that target takes an extra 10 necrotic damage if it isn't a construct or an undead. You also gain 10 temporary hit points.
-\subsection*{Cloak of the Underdark}
-\textit{Wondrous item, uncommon (requires attunement)}
-
-This exotic garment of drow design is made of black silk interwoven with faint silver threads. While wearing this cloak, you can pull its hood over your head to cause yourself to become immune to the effects of sunlight. The cloak allows for no sunlight to pass through.
-\subsection*{Crypt Ring}
-\textit{Ring, very rare (requires attunement)}
-
-This ring can only be attuned by a true vampire. It holds a small compartment in its silver head, containing a small part of your coffinlike structure such as a piece of stonework, a chunk of wood, or compressed dirt. While worn with a part of your coffinlike structure is placed here, any coffinlike structure has the same effect as your coffinlike structure.
-
 \section*{Spells}
 \subsection*{Cantrip}
 
@@ -412,16 +402,6 @@ You can use your action to control the hand. You can use the hand to manipulate 
 
 The hand can't attack, activate magic items, or carry more than 10 pounds.
 
-\DndSpellHeader
-  {Speak with Animals}
-  {1st-Level Divination (Ritual)}
-  {1 Action}
-  {Self}
-  {V, S}
-  {10 minutes}
-
-You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the DM's discretion.
-
 \subsection*{Level 1}
 
 \DndSpellHeader
@@ -436,8 +416,6 @@ For the duration, you can sense the presence and location of poisons, poisonous 
 
 The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.
 
-\hfill\\
-
 \DndSpellHeader
   {Fog Cloud}
   {1st-Level Conjuration}
@@ -446,45 +424,59 @@ The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 i
   {V, S}
   {Concentration, up to 1 hour}
 
-You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners, and its area is heavily obscured. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it
+You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners, and its area is heavily obscured. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it.
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the radius of the fog increases by 20 feet for each slot level above 1st.
 
+\DndSpellHeader
+  {Speak with Animals}
+  {1st-Level Divination (Ritual)}
+  {1 Action}
+  {Self}
+  {V, S}
+  {10 minutes}
+
+You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the DM's discretion.
+\vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Martial Weapon}
+\subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-\underline{Rapier of Life Stealing:}\\
+\underline{\textit{Rapier of Life Stealing:}}\\
 1d20 + DEX-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-\underline{Rapier of Life Stealing:}\\
-1d8 + DEX-Modifier + 2 (Fighting Style: Dueling) (+ 10 Life Steal if Hit-Dice 20)\\
-\indent Current Max (Normal): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}\\
-\indent Current Max (Life Steal): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{2}{10}}}
-\subsubsection*{Ranged Weapon}
+\underline{\textit{Rapier of Life Stealing:}}\\
+1d8 + DEX-Modifier + 2 (Fighting Style: Dueling)\\
+\indent Current Max: \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}
+\subsubsection*{Ranged Weapons}
 \paragraph*{Attack Roll}\hfill\\
-\underline{Crossbow:}\\
+\underline{\textit{Crossbow:}}\\
 1d20 + DEX-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-\underline{Crossbow:}\\
+\underline{\textit{Crossbow:}}\\
 1d8 + DEX-Modifier\\
-\indent Current Max (Normal): \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
-\subsubsection*{Vampiric Attacks}
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
 \paragraph*{Attack Roll}\hfill\\
-\underline{Bite:}\\
+\underline{\textit{Bite:}}\\
 1d20 + STR-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
-\underline{Claw:}\\
-1d20 + STR-Modifier + Proficiency Modifier\\
+\underline{\textit{Claw:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-\underline{Bite:}\\
+\underline{\textit{Bite:}}\\
 1d6 + STR-Modifier + CON-Modifier\\
 \indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}} piercing + \intcalcAdd{\calculateModifier{\ConstitutionScoreValue}}{0} necrotic damage\\
-\underline{Claw:}\\
-1d6 + STR-Modifier\\
+\underline{\textit{Claw:}}\\
+1d6 + DEX-Modifier\\
 \indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+
+% Magical Items
+\input{\PATH magic_items/Clothing/Cloaks/Cloak_of_the_Underdark/Cloak_of_the_Underdark_input}
+\input{\PATH magic_items/Jewellery/Rings/Crypt_Ring/Crypt_Ring_input}
+\input{\PATH magic_items/Weapons/Rapiers/Rapier_of_Life_Stealing/Rapier_of_Life_Stealing_input}
 
 \end{document}

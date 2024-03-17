@@ -3,14 +3,9 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH template_magic-item/magic-items-commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -28,12 +23,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{10}
-\DexterityScore{16}
-\ConstitutionScore{12}
-\IntelligenceScore{12}
-\WisdomScore{12}
-\CharismaScore{18}
+\StrengthRolledScore{10}
+\DexterityRolledScore{13}
+\ConstitutionRolledScore{10}
+\IntelligenceRolledScore{13}
+\WisdomRolledScore{12}
+\CharismaRolledScore{15}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{1} % ASI +1
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{1} % Tiefling-Race +1
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{3} % Tiefling-Race +2, ASI +1
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -91,15 +95,17 @@
 \PP{}
 
 % Weapon Arsenal
-\AddWeapon{Rapier}{0}{1d8 p}
-\AddWeapon{Dagger}{0}{1d4 p}
+\addWeaponStatistic{Rapier}{AlistairHellstrum}{DEX}{P}{0}{1d8 p}
+\addWeaponStatistic{Dagger}{AlistairHellstrum}{DEX}{P}{0}{1d4 p}
+\addWeaponStatistic{Unarmed Strike}{AlistairHellstrum}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
-	\textbf{Rapier}, \textbf{Dagger}\\
-	\textbf{Armor:}
+	\textbf{Weapons:}
 	\begin{itemize}
-		\item Leather Armor
+		\item Rapier
+		\item Dagger
 	\end{itemize}
+	\textbf{Psychic Blades}
 }
 
 \OtherProficienciesLanguages{
@@ -110,10 +116,12 @@
 }
 
 \Equipment{
-	a backpack, a bedroll, 2 costumes, 5 candles, 5 days of ration, a waterskin, a disguise kit\\
-	1 ruby (medium), 1 sapphire (medium)\\
-	\textbf{Fochlucan Bandore}, \textbf{Violin}, \textbf{Eliwick's blank sheet of paper} \textbf{Ring of the Feywild Dryads)} \\
-	\textbf{2 silvered pine cones}
+	\textbf{Fochlucan Bandore}, \textbf{Eliwick's blank sheet of paper}, \textbf{Ring of the Feywild Dryads}, \textbf{Enchanted Locket of Lysandra} \\
+	Leather Armor\\
+	1 ruby (medium), 1 sapphire (medium), 2 silvered pine cones, Beetle in a Sweet, Cat Eye, Candy
+}
+\Clutter{
+	 a backpack, a bedroll, 2 costumes, 5 candles, 5 days of ration, a waterskin, a disguise kit
 }
 
 \PersonalityTraits{
@@ -607,132 +615,48 @@ You step into a tree object or surface large enough to fully contain your body, 
 While merged with the tree, you can't see what occurs outside it, and any Wisdom (Perception) checks you make to hear sounds outside it are made with disadvantage. You remain aware of the passage of time and can cast spells on yourself while merged in the tree. You can use your movement to leave the tree where you entered it, which ends the spell. You otherwise can't move.
 Minor physical damage to the tree doesn't harm you, but its partial destruction or a change in its shape (to the extent that you no longer fit within it) expels you and deals 6d6 bludgeoning damage to you. The tree's complete destruction (or transmutation into a different substance) expels you and deals 50 bludgeoning damage to you. If expelled, you fall prone in an unoccupied space closest to where you first entered.
 
+\vfill\eject
 
 \section*{Miscellaneous}
-\subsubsection*{Weapon Attacks}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-\underline{Rapier:}\\
+\underline{\textit{Dagger (Finesse):}}\\
 1d20 + DEX-Modifier + Proficiency Modifier\\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}\\
-\underline{Dagger:}\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Rapier (Finesse):}}\\
 1d20 + DEX-Modifier + Proficiency Modifier\\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-\underline{Rapier:}\\
-1d8 + DEX-Modifier (+2d6 Psychic Damage (Psychic Blades))\\
-\indent Current Max (Normal): \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}\\
-\indent Current Max (Psychic Blades): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcMul{2}{6}}}\\
-\underline{Dagger:}\\
-1d4 + DEX-Modifier (+2d6 Psychic Damage (Psychic Blades))\\
-\indent Current Max (Normal): \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}\\
-\indent Current Max (Psychic Blades): \intcalcAdd{4}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcMul{2}{6}}}\\
+\underline{\textit{Dagger (Finesse):}}\\
+1d4 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}
+\\
+\underline{\textit{Rapier (Finesse):}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 
-\chapter*{Fochlucan Bandore}
-\begin{tikzpicture}[remember picture, overlay]
-	\node[xshift=6cm, yshift=0.8cm] {\textit{Wondrous item, instrument, uncommon (requires attunement by a bard)}};
-	\node[xshift=3.5cm, yshift=-5cm] {\includegraphics[width=1.3\columnwidth]{images/Fochlucan_Bandore(2).png}};
-\end{tikzpicture}
-\vspace*{10.5cm}\\
-An instrument of the bards is an exquisite example of its kind, superior to an ordinary instrument in every way. Seven types of these instruments exist, each named after a legendary bard college.
+% Magic Items
+\input{\PATH magic_items/Instruments/Fochlucan_Bandore/Fochlucan_Bandore_input}
+\input{\PATH magic_items/Jewellery/Rings/Ring_of_the_Feywild_Dryads/Ring_of_the_Feywild_Dryads_input}
+\input{\PATH magic_items/Jewellery/Talisman/Enchanted_Locket_of_Lysandra/Enchanted_Locket_of_Lysandra_input}
 
-\section*{Appearance}
-The "Fochlucan Bandore" is a mesmerizing musical instrument that beautifully merges the traditional forms of a bandore and a lute. It features an elegantly curved body, reminiscent of a bandore, but extends into a longer, slender neck characteristic of a lute, culminating in a distinctively crafted headstock. The instrument's surface is a canvas of intricate carvings and inlays, depicting mystical symbols and ancient runes, hinting at its magical origins. Its rich, warm wood tones are accentuated by a deep varnish, giving it an antique yet well-maintained appearance. Perhaps its most striking feature is its shimmering, light-like strings, adding a magical quality to its already ethereal aesthetic. This blend of artistic beauty, arcane significance, and ancient tradition renders the Fochlucan Bandore not just a musical instrument, but a remarkable piece of art and a mystical artifact, resonating with an aura of age-old lore and enchantment.
-
-\section*{Arcane Challenge}
-A creature that attempts to play the instrument without being attuned to it must succeed on a DC 15 Wisdom saving throw or take 2d4 psychic damage.
-
-\section*{Charming Harmony}
-You can play the instrument while casting a spell that causes any of its targets to be charmed on a failed saving throw, thereby imposing disadvantage on the save. This effect applies only if the spell has a somatic or a material component.
-
-\section*{Spellcasting Ability}
-You can use an action to play the instrument and cast one of its spells. Once the instrument has been used to cast a spell, it can't be used to cast that spell again until the next dawn. The spells use your spellcasting ability and spell save DC.
-\subsection*{Standard Spells for Bard Instruments}
-All instruments of the bards can be used to cast the following spells: Fly, Invisibility, Levitate, and Protection from Evil and Good.
-\subsection*{Unique Spells of the Fochlucan Bandore}
-In addition, the Fochlucan Bandore can be used to cast Entangle, Faerie Fire, Shillelagh, and Speak with Animals.
-
-\chapter*{Ring of the Feywild Dryads}
-\begin{tikzpicture}[remember picture, overlay]
-	\node[xshift=3.25cm, yshift=0.8cm] {\textit{Ring, uncommon (requires attunement)}};
-	\node[xshift=3.5cm, yshift=-6cm] {\includegraphics[width=1.3\columnwidth]{images/Ring_of_Meld_into_Trees.png}};
-\end{tikzpicture}
-\vspace*{12.5cm}
-\section*{Appearance}
-The "Ring of the Feywild Dryads" appears as a masterfully crafted piece of ancient magic and natural wonder. The band, formed from what seems to be twisted silver, mimics the intricate intertwining of tree branches, encircling the finger with a grace that speaks of the forest's deep and mystic ties. This silver has been textured to resemble bark, enhancing its bond with the trees it represents. At the heart of the ring, a large, captivating emerald sits prominently, its deep green hue glowing softly as if lit from within, symbolizing the life force of the forest and the essence of tree magic. Delicate Elvish runes, suggestive of enchantment and age-old secrets, are engraved along the band, hinting at the ring's ancient origins and its potent ability to connect the wearer with the natural world. This ring is not merely an accessory but a powerful artifact that embodies the spirit of the forest and the magic of melding with trees.
-\section*{History}
-The "Ring of the Feywild Dryads" is not merely a magical item; it is a relic of deep history and symbiotic power, born from the ancient alliance between the mortal realms and the feywilds. Crafted in an age long forgotten, under the boughs of the Eternal Forest in the heart of the feywilds, this ring was a gift from the dryads to the first of the Elven druids who walked the path between worlds.
-
-The dryads, spirits of the trees, and guardians of the forest's deepest magics, sought to imbue this ring with the essence of their being and the forests they protect. Using silver that was mined from the sacred mountains surrounding the Eternal Forest and blessed by the light of the full moon, the ring was forged in the shape of intertwining branches, a symbol of life's complexity and interconnection. The centerpiece, a radiant emerald, was chosen for its resemblance to the heart of the forest - a gem that had captured the very essence of the feywild's verdant splendor.
-
-Upon its creation, the Ring of the Feywild Dryads was bestowed upon an elf, chosen for their unwavering dedication to protecting the natural world. This elf, a druid of unparalleled connection to the earth's rhythms and cycles, became the first of many guardians who would wield the ring's power to merge with the trees, learning their secrets, and protecting the forests from those who would do them harm.
-
-Over the centuries, the ring passed from one guardian to another, always finding its way to those who had proven themselves protectors of nature's sanctity. Each bearer left their mark on the ring, contributing to its legacy and the stories it holds within. Legends say that the ring still carries the whispers of the dryads and the echoes of the Eternal Forest, guiding its wearer not only to meld into trees but to understand the very language of the forest.
-
-Today, the "Ring of the Feywild Dryads" remains a bridge between the mortal realms and the enchantments of the feywilds, a testament to the enduring alliance between the elves and the dryads. It is a reminder of the deep bonds that can form when different beings unite in a common cause, protecting the natural world and preserving its wonders for generations to come.
-\section*{Magic}
-While attuned to the ring, its wearer can cast the "Meld into Trees" spell once per long rest.
-
-\chapter*{The Enchanted Locket of Lysandra}
-\begin{tikzpicture}[remember picture, overlay]
-	\node[xshift=3cm, yshift=0.8cm] {\textit{Locket, rare (requires attunement)}};
-	\node[xshift=3.5cm, yshift=-5cm] {\includegraphics[width=1.3\columnwidth]{images/Locket_of_Lysandra.png}};
-\end{tikzpicture}
-\vspace*{10cm}
-\section*{Appearance}
-The Enchanted Locket of Lysandra appears as a simple and unadorned silver locket on a delicate chain. To the casual observer, it looks like an ordinary piece of jewelry with no special significance. However, upon closer inspection, however, the true magic of the locket becomes apparent. Faint, ever-shifting patterns of light dance across its surface like playful fireflies on a warm summer night. These ethereal luminescent swirls seem to weave intricate stories, their fleeting forms conjuring images of blooming wildflowers, starlit skies, and the elusive spirits of the Feywild. Each flicker of light holds a hint of forgotten tales, a connection to a realm of dreams that exists just beyond the veil of perception.
-
-Adding to the intrigue, the locket possesses a set of minuscule, intricately wrought hinges that are barely discernible to the naked eye. These hinges, delicate as the gossamer wings of a butterfly, are an enigma in themselves, for they hint at the locket's potential to open and reveal its secrets. Yet, despite their apparent purpose, there is no physical means or any clue to unlocking the locket's hidden interior. It remains a tantalizing riddle, waiting for the touch of someone who holds both the key and the knowledge to unlock its mysteries.
-\eject
-\section*{History}
-Legends speak of Lysandra, a powerful and enigmatic fey enchantress who once roamed the realms of Prismeer. Known for her boundless curiosity and mischievous nature, Lysandra was said to possess an item of unimaginable enchantment, capable of granting its bearer unparalleled insight into the secrets of the Feywild. The Enchanted Locket is believed to be a fragment of her lost legacy.
-\vspace*{-1.2\fontdimen6\font}
-\section*{Magic}
-The locket has several magical properties, though Alistair might not be aware of all its abilities at the start of the campaign. As he uncover mores about the relic, he will discover its true potential. Some of its known abilities include:
-\begin{itemize}
-	\item \textbf{Fey Sensitivity:} The locket resonates with the energy of the Feywild, allowing its bearer to sense the presence of fey creatures and magical phenomena nearby. However, at times the holder becomes increasingly fixated on uncovering its secrets, neglecting other aspects of their life and their original quest. They might struggle to focus on anything else, including the well-being of their companions.
-	\item \textbf{Dreams of the Fey:} When worn during sleep, the locket can grant visions and cryptic dreams about the Feywild, which become more unsettling as the influence of the locket grows.
-	\item \textbf{Portal Attunement:} The locket can attune its bearer to specific Feywild locations, potentially serving as a key to unlock hidden pathways between the material world and the Feywild. But this bond could attract the attention of malevolent fey entities. These entities might attempt to manipulate or coerce your character into serving their own mysterious agendas.
-	\item \textbf{Whisper of Lysandra:} In moments of uncertainty or danger, the locket may emit soft whispers of ancient Feywild wisdom, guiding its bearer's decisions - either helpful or malicious.
-	\item \textbf{Mistrust of Mortals:} The locket's connection to the Feywild might foster a growing sense of alienation from the mortal world. The holder becomes more distant from non-fey creatures, finding it difficult to trust them.
-	\item \textbf{Fading Identity:} As your character delves deeper into the locket's mysteries, they might find aspects of their identity beginning to blur. Memories of their life before the locket's influence become hazy, leading to a sense of disconnection from their past.
-\end{itemize}
-\section*{Compulsion}
-The Enchanted Locket has a subtle yet powerful compulsion on its bearer. As your character carries the locket, its magic gradually influences their emotions and desires, kindling an insatiable fascination with the Feywild. The more they interact with the Feywild or embark on quests related to Prismeer, the stronger this compulsion becomes.
-
-The locket's influence amplifies its bearer's natural magical inclinations, deepening his understanding of arcane secrets and Feywild lore. This newfound magical prowess enhances the Charismatic abilities of its bearer:
-\begin{itemize}
-	\item[$\ast$] \textbf{Level 4-6:} You gain a +1 bonus to Charisma ability checks while being attuned to the locket.
-	\item \textbf{Level 7-11:} You gain a +2 bonus to Charisma ability checks and a -1 malus to Wisdom ability checks while being attuned to the locket.
-	\item \textbf{Level 11-16:} You gain a +3 bonus to Charisma ability checks and a -1 malus to Wisdom ability checks while being attuned to the locket.
-	\item \textbf{Level 17+:} You gain a +4 bonus to Charisma ability checks and a -2 malus to Wisdom ability checks while being attuned to the locket.
-\end{itemize}
-\section*{Curse of Whispered Entanglement}
-The Enchanted Locket of Lysandra, despite its allure, carries a hidden curse that intertwines the bearer's fate with the whims of the Feywild. While the locket's charisma-enhancing effects are a boon, the Curse of Whispered Entanglement gradually begins to exert its influence, whispering subtle manipulations into the bearer's mind.
-
-\paragraph*{Curse}
-Once the character is attuned to this locket, he can not willingly unattune off it unless he is targeted by the remove curse spell or similar magic.
-
-\paragraph{Compelled Decision}
-Whenever a decision must be made or information is sought, the locket's magic compels the bearer to heed its suggestions. The Dungeon Master decides what the locket suggests in each situation. The bearer must succeed a Charisma Saving Throw for any decision the locket suggests or a Wisdom Saving Throw for any information the locket reveals. If the saving throw fails, the bearer is fully convinced by the locket's suggestion and feels compelled to act on it. If the saving throw is successful, the bearer can resist the locket's influence and make their own decision. The DC is increasing by the following means:
-\eject
-\begin{itemize}
-	\item The Save DC starts at a value of 10
-	\item With every successful Saving Throw regarding this effect the bearer makes the Save DC increases by \xdef\successIncrease{0.5}\successIncrease
-	\item With every failed Saving Throw regarding this effect the bearer makes the Save DC increases by \xdef\failIncrease{0.25}\failIncrease
-\end{itemize}
-\textbf{Failed Saves:} \xdef\failedSaves{5}\failedSaves\\
-\textbf{Successful Saves:} \xdef\successSaves{4}\successSaves\\
-\textbf{Current Save DC: \FPeval{saveDC}{clip(10+\failedSaves*failIncrease+\successSaves*\successIncrease)}\saveDC}
-\section*{Torn between Worlds}
-While the locket provides Alistair with extraordinary insights and magical abilities, its influence comes at a cost. The more time he spends away from the Feywild or the locket, the more he feels an ache of longing and a sense of restlessness. Their connection with the locket intertwines his fate with that of the Feywild, making him feel incomplete whenever he is separated from it.
-\section*{Quest of Discovery}
-The Enigmatic Locket of Lysandra possesses an inherent, magical allure that captivates the heart and mind of Alistair, the Bard. When he first encountered the locket, he was drawn to it by an irresistible pull, not fully comprehending why it called to him so strongly. From that moment on, he found himself becoming increasingly obsessed with uncovering the locket's true nature and its connection to the Feywild.
-
+% Musical Ballades
+\newcommand{\chord}[1]{\colorbox{gray!60}{\footnotesize{#1}}}
 \clearpage
 \twocolumn[
 	\section*{The Epic Adventures of the 7 Musceteers}\hfill\\\\\\
 ]
-\newcommand{\chord}[1]{\colorbox{gray!60}{\footnotesize{#1}}}
 \subsubsection*{Intro}
 \chord{Am} \chord{F} \chord {Am} \chord{G}
 

@@ -3,14 +3,9 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH template_magic-item/magic-items-commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -28,12 +23,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{1}
-\DexterityScore{1}
-\ConstitutionScore{1}
-\IntelligenceScore{1}
-\WisdomScore{1}
-\CharismaScore{1}
+\StrengthRolledScore{1}
+\DexterityRolledScore{1}
+\ConstitutionRolledScore{1}
+\IntelligenceRolledScore{1}
+\WisdomRolledScore{1}
+\CharismaRolledScore{1}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -91,8 +95,9 @@
 \PP{}
 
 % Weapon Arsenal
-\AddWeapon{Weapon1}{0}{1d6 p}
-\AddWeapon{Weapon2}{0}{1d10 b}
+\addWeaponStatistic{Weapon1}{BlankCharacter}{DEX}{P}{0}{1d6 p}
+\addWeaponStatistic{Weapon2}{BlankCharacter}{STR}{P}{0}{1d10 b}
+\addWeaponStatistic{Unarmed Strike}{BlankCharacter}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
 	Additional Information
@@ -108,6 +113,9 @@
 \Equipment{
 	Tools,
 	Health Potion
+}
+\Clutter{
+	a backpack
 }
 
 \PersonalityTraits{
@@ -231,5 +239,65 @@ Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fame
 Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue.
 
 \subparagraph*{At Higher Levels} Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique.
+
+\vfill\eject
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Mace:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Rapier (Finesse):}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Quarterstaff (Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Mace:}}\\
+1d6 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Rapier (Finesse):}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d6 + STR-Modifier\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Quarterstaff (Versatile):}}\\
+1d6 + STR-Modifier\\
+\indent Current Max (one-handed): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
+1d6 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
+
+\input{\PATH magic_items/Blank/Blank_Item/Blank_Item_input}
 
 \end{document}

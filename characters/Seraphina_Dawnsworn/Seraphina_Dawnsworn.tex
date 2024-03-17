@@ -3,14 +3,9 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH template_magic-item/magic-items-commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -28,12 +23,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{9}
-\DexterityScore{7}
-\ConstitutionScore{11}
-\IntelligenceScore{15}
-\WisdomScore{14}
-\CharismaScore{12}
+\StrengthRolledScore{9}
+\DexterityRolledScore{10}
+\ConstitutionRolledScore{12}
+\IntelligenceRolledScore{15}
+\WisdomRolledScore{14}
+\CharismaRolledScore{12}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{1} % Aasimar-Race +1
+\WisdomScoreBonus{2} % Aasimar-Race +2
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -91,17 +95,13 @@
 \PP{}
 
 % Weapon Arsenal
-\AddWeapon{Mace}{0}{1d6 b}
-\AddWeapon{Crossbow}{0}{1d8 p}
+\addWeaponStatistic{Mace}{SeraphinaDawnsworn}{STR}{P}{0}{1d6 b}
+\addWeaponStatistic{Crossbow}{SeraphinaDawnsworn}{DEX}{P}{0}{1d8 p}
+\addWeaponStatistic{Unarmed Strike}{SeraphinaDawnsworn}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
 	\textbf{Radiant Justice Mace}\\
-	\textbf{Crossbow}, 30 Bolts\\
-	\textbf{Armor:}
-	\begin{itemize}
-		\item Scale Mail
-		\item \textbf{Radiant Defender Shield}
-	\end{itemize}
+	Crossbow, 30 Bolts
 }
 
 \OtherProficienciesLanguages{
@@ -112,6 +112,9 @@
 }
 
 \Equipment{
+	Scale Mail, \textbf{Radiant Defender Shield}
+}
+\Clutter{
 	Backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, a waterskin, holy water, calligrapher's supplies
 }
 
@@ -410,5 +413,38 @@ You speak a one-word command to a creature you can see within range. The target 
   
 Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.\\
 The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can’t be charmed, frightened, or possessed by them. If the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect.
+
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Radiant Justice Mace:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Radiant Justice Mace:}}\\
+1d6 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Crossbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Crossbow:}}\\
+1d6 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
+
+\input{\PATH magic_items/Weapons/Maces/Radiant_Justice_Mace/Radiant_Justice_Mace_input}
+\input{\PATH magic_items/Armor/Shields/Radiant_Defender_Shield/Radiant_Defender_Shield_input}
 
 \end{document}

@@ -3,14 +3,8 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -28,6 +22,22 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{12}
+\DexterityRolledScore{15}
+\ConstitutionRolledScore{12}
+\IntelligenceRolledScore{13}
+\WisdomRolledScore{12}
+\CharismaRolledScore{10}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{2} % Owlin-Race +2
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{1} % Owlin-Race +1
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
 \StrengthScore{12}
 \DexterityScore{17}
 \ConstitutionScore{14}
@@ -91,9 +101,10 @@
 \PP{}
 
 % Weapon Arsenal
-\AddWeapon{Longbow}{0}{1d8 p}
-\AddWeapon{Rapier}{0}{1d8 s}
-\AddWeapon{Handaxe}{0}{1d6 s}
+\addWeaponStatistic{Longbow}{SylvanaStormshot}{DEX}{P}{2}{1d8 p}
+\addWeaponStatistic{Rapier}{SylvanaStormshot}{DEX}{P}{0}{1d8 s}
+\addWeaponStatistic{Handaxe}{SylvanaStormshot}{STR}{P}{0}{1d6 s}
+\addWeaponStatistic{Unarmed Strike}{SylvanaStormshot}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
 	\textbf{Longbow} (150/600), 20 Arrows\\
@@ -102,7 +113,7 @@
 		\item Banishing Arrow
 		\item Shadow Arrow
 	\end{itemize}
-	\textbf{Rapier} (finesse)\\
+	\textbf{Rapier}\\
 	\textbf{2 Handaxes} (20/60)
 }
 
@@ -114,12 +125,10 @@
 }
 
 \Equipment{
-	backpack, crowbar, hammer, 10 pitons, 10 torches, 10 days of rations, a waterskin, 2x 50 feet of hempen rope, belaying pin (club), set of traveler's clothes, grappling hook\\
-	\textbf{Armor}
-	\begin{itemize}
-		\item Shield
-		\item Leather Armor
-	\end{itemize}
+	Shield, Leather Armor
+}
+\Clutter{
+	backpack, crowbar, hammer, 10 pitons, 10 torches, 10 days of rations, a waterskin, 2x 50 feet of hempen rope, belaying pin (club), set of traveler's clothes, grappling hook
 }
 
 \PersonalityTraits{
@@ -363,32 +372,42 @@ The psychic damage increases to 4d6 when you reach 18th level in this class.
 
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Longbow}
+\subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-\underline{\textit{Longbow:}}\\
-1d20 + DEX-Modifier + Proficiency Modifier + 2 (Fighting Style: Archer) (- 5 (Sharpshooter)) \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{2}}} \\
-\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{2}}}}{5}\\
+\underline{\textit{Rapier (Finesse):}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-\underline{\textit{Longbow:}}\\
-1d8 + DEX-Modifier (+ 10 (Sharpshooter)) (+ 2d6 (Shadow Arrow (Psychic Damage)))\\
-\indent Current Max (Normal): \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}} \\
-\indent Current Max (Shadow Arrow):\\\indent\indent\intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}} + \intcalcMul{2}{6} Psychic Damage \\
-\indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{10}} \\
-\indent Current Max (Sharpshooter, Shadow Arrow):\\\indent\indent\intcalcAdd{8}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{10}} + \intcalcMul{2}{6} Psychic Damage
-\subsubsection*{Finesse Weapons (Rapier)}
-\paragraph*{Attack Roll}\hfill\\
-1d20 + DEX-Modifier + Proficiency Modifier \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
-\paragraph*{Damage Roll}\hfill\\
-1d8 + DEX-Modifier \\
+\underline{\textit{Rapier (Finesse):}}\\
+1d8 + DEX-Modifier\\
 \indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
-\subsubsection*{Simple Melee Weapon (Handaxe)}
+\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d6 + STR-Modifier\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
 \paragraph*{Attack Roll}\hfill\\
-1d20 + STR-Modifier + Proficiency Modifier \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\underline{\textit{Longbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-1d6 + STR-Modifier \\
-\indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\underline{\textit{Longbow:}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 
 \end{document}

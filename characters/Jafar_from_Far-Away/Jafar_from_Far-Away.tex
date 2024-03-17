@@ -3,14 +3,8 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -29,12 +23,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{8}
-\DexterityScore{10}
-\ConstitutionScore{12}
-\IntelligenceScore{16}
-\WisdomScore{13}
-\CharismaScore{14}
+\StrengthRolledScore{8}
+\DexterityRolledScore{10}
+\ConstitutionRolledScore{11}
+\IntelligenceRolledScore{15}
+\WisdomRolledScore{12}
+\CharismaRolledScore{15}
+
+\StrengthScoreBonus{1}
+\DexterityScoreBonus{1} % ASI +1
+\ConstitutionScoreBonus{1}
+\IntelligenceScoreBonus{1} % Tiefling-Race +1
+\WisdomScoreBonus{1}
+\CharismaScoreBonus{1} % Tiefling-Race +2, ASI +1
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -92,8 +95,8 @@
 \PP{}
 
 % Weapon Arsenal
-\AddWeapon{Weapon1}{0}{1d6 p}
-\AddWeapon{Weapon2}{0}{1d10 b}
+\addWeaponStatistic{Weapon1}{JafarfromFarAway}{DEX}{P}{0}{1d6 p}
+\addWeaponStatistic{Weapon1}{JafarfromFarAway}{DEX}{P}{0}{1d10 b}
 
 \AttacksAdditional{
 	Additional Information

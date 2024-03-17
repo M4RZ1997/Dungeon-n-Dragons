@@ -3,14 +3,9 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH template_magic-item/magic-items-commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -28,12 +23,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{18}
-\DexterityScore{11}
-\ConstitutionScore{15}
-\IntelligenceScore{14}
-\WisdomScore{13}
-\CharismaScore{18}
+\StrengthRolledScore{15}
+\DexterityRolledScore{10}
+\ConstitutionRolledScore{13}
+\IntelligenceRolledScore{12}
+\WisdomRolledScore{10}
+\CharismaRolledScore{13}
+
+\StrengthScoreBonus{2} % Gem Dragonborn-Race +1
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{1} % Gem Dragonborn-Race +1
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{}
@@ -91,8 +95,10 @@
 \PP{}
 
 % Weapon Arsenal
-\AddWeapon{Greatsword}{0}{2d6 s}
-\AddWeapon{\footnotesize{Spear of the Green}}{0}{1d6/1d8 p}
+\addWeaponStatistic{Greatsword}{MehenNorixius}{STR}{P}{0}{2d6 s}
+\addWeaponStatistic{Spear}{MehenNorixius}{STR}{P}{0}{1d6 p}
+\addWeaponStatistic{Spear}{MehenNorixiusV}{STR}{P}{0}{1d8 p (v)}
+\addWeaponStatistic{Unarmed Strike}{MehenNorixius}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \def\BreathWeaponDamage{\ifthenelse{\LevelValue < 5}%
 	{1d10}%
@@ -106,16 +112,10 @@
 }
 
 \AttacksAdditional{
-	\textbf{Greatsword}\\
-	\textbf{Spear of the Green} (\textit{Throw, 1/2-Handed})\\
-	\textbf{Armor:}
-	\begin{itemize}
-		\item Chain Mail (Stealth Disadvantage)
-		\item \textbf{Celestial Aegis}
-	\end{itemize}
+	Greatsword\\
+	\textbf{Spear of the Green} (20/60)\\
 	\textbf{Divine Sense} (\intcalcAdd{1}{\calculateModifier{\CharismaScoreValue}} uses) \\
 	\textbf{Lay on Hands} (Health Pool: \intcalcMul{\LevelValue}{5}) \\
-	\textbf{Divine Smite} \\
 	\textbf{Breath Weapon} (Damage: \BreathWeaponDamage) \\
 	\textbf{Protective Wings} (\intcalcAdd{0}{\ProficiencyValue}~uses)
 }
@@ -128,19 +128,11 @@
 }
 
 \Equipment{
-	A staff,
-	a hunting trap,
-	a bear claw,
-	a set of traveler's clothes,
-	backpack,
-	a bedroll,
-	a mess kit,
-	tinderbox,
-	10 torches,
-	10 days of rations,
-	a waterskin,
-	50 ft of hempen rope\\
+	Chain Mail, Celestial Aegis\\
 	\textbf{Amulet of Sardior's Scale}
+}
+\Clutter{
+	A staff, a hunting trap, a bear claw, a set of traveler's clothes, backpack, a bedroll, a mess kit, tinderbox, 10 torches, 10 days of rations, a waterskin, 50 ft of hempen rope
 }
 
 \PersonalityTraits{
@@ -352,13 +344,6 @@ You can manifest protective wings that can shield you or others. When you or ano
 (\textbf{Usages: \intcalcAdd{0}{\ProficiencyValue}})
 
 \section*{Magical Items}
-\subsection*{Spear of the Green}
-Weapon \textit{(spear)}, \textit{legendary (requires attunement by a paladin)}\\
-You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you cast a paladin spell with a target of Self, you can't lose concentration on the spell from taking damage.\\
-While you hold the drawn spear, it creates an aura in a 10-foot radius around you. Creatures of your choice in that aura gain resistance to poison damage and have advantage on saving throws against the poisoned condition. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet.
-\subsection*{Celestial Aegis}
-Armor \textit{(shield)}, \textit{uncommon}\\
-While holding this shield, you have advantage on Initiative rolls and Wisdom (Perception) checks. Crafted from a rare and resilient metal, it exudes an ethereal glow, emanating a protective aura that repels malevolent forces.
 \subsection*{Amulet of Sardior's Scale}
 Is the holy symbol of this character and can be used as a \textit{Spellcasting Focus}. A Spellcasting Focus eliminates the need of most components of a spell, except major components with a GP value.
 
@@ -433,25 +418,41 @@ While restrained by this spell, the target takes 1d6 piercing damage at the star
 
 You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the GM's discretion.
 
+\vfill\eject
+
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Battleaxe}
-\paragraph*{Attack Roll} \hfill\\
-1d20 + STR-Modifier + Proficiency Modifier
-Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
-\paragraph*{Damage Roll} \hfill\\
-2d6 + STR-Modifier \\
-Current Max: \intcalcAdd{\intcalcMul{2}{6}}{\calculateModifier{\StrengthScoreValue}}
-\subsubsection*{Spear}
-\paragraph*{Attack Roll} \hfill\\
-1d20 + STR-Modifier + Proficiency Modifier \\
-Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
-\paragraph*{Damage Roll} \hfill\\
-\textit{One-Handed or Thrown} \\
-1d6 + STR-Modifier \\
-Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
-\textit{Two-Handed} \\
-1d8 + STR-Modifier \\
-Current Max: \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Battleaxe:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Spear (Versatile, Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Battleaxe:}}\\
+1d6 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Spear (Versatile, Throwable):}}\\
+1d6 (1d8) + STR-Modifier\\
+\indent Current Max (one-handed): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
+
+% Magical Items
+\input{\PATH magic_items/Weapons/Spears/Spear_of_the_Green/Spear_of_the_Green_input}
+\input{\PATH magic_items/Armor/Shields/Celestial_Aegis/Celestial_Aegis_input}
 
 \end{document}

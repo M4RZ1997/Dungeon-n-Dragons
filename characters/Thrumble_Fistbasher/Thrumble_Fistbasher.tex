@@ -3,14 +3,8 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -28,12 +22,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{16}
-\DexterityScore{14}
-\ConstitutionScore{16}
-\IntelligenceScore{6}
-\WisdomScore{10}
-\CharismaScore{14}
+\StrengthRolledScore{15}
+\DexterityRolledScore{12}
+\ConstitutionRolledScore{15}
+\IntelligenceRolledScore{6}
+\WisdomRolledScore{10}
+\CharismaRolledScore{12}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{2} % Halfling-Race +2
+\ConstitutionScoreBonus{1} % Stout Halfling +1
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{P}
@@ -91,15 +94,17 @@
 \PP{}
 
 % Weapon Arsenal
-\AddWeapon{Greataxe}{0}{1d12 s}
-\AddWeapon{Atlatl}{0}{1d8 p}
-\AddWeapon{Flint Knives}{0}{1d3 s}
+\addWeaponStatistic{Atlatl}{ThrumbleFistbasher}{STR}{P}{0}{1d4 p}
+\addWeaponStatistic{Flint Knives}{ThrumbleFistbasher}{STR}{P}{0}{1d4 p}
+\addWeaponStatistic{Greataxe}{ThrumbleFistbasher}{STR}{P}{0}{1d12 s}
+\addWeaponStatistic{Spear}{ThrumbleFistbasher}{STR}{P}{0}{1d6 p}
+\addWeaponStatistic{Unarmed Strike}{ThrumbleFistbasher}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
 	\textbf{Greataxe}\\
 	\textbf{Atlatl (Javelin)}\\
 	\textbf{2 Flint Knives}\\
-	\textbf{15 flint-tipped Javelins}
+	\textbf{15 flint-tipped Spears}
 }
 
 \OtherProficienciesLanguages{
@@ -110,6 +115,9 @@
 }
 
 \Equipment{
+	 ~
+}
+\Clutter{
 	a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days or rations, waterskin, 50ft. hempen rope, Knapping Tools
 }
 
@@ -334,29 +342,64 @@ The atlatl is a tool that uses leverage to achieve greater velocity in projectil
 The atlatl will use either darts, javelins, or spears as ammunition. The atlatl will be designed to work with only one of these, and cannot be used with the other types of ammunition.
 
 The effect of using an atlatl is that the short range is tripled, the long range is doubled, and damage is increased. Also, different to other ranged weapon, the user will use the Strength modifier for to-hit rolls and damage rolls.
+
+\section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Weapon Attacks}
+\subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-\underline{Greataxe:}\\
+\underline{\textit{Greataxe:}}\\
 1d20 + STR-Modifier + Proficiency Modifier\\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
-\underline{Atlatl:}\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Atlatl (Throwable):}}\\
 1d20 + STR-Modifier + Proficiency Modifier\\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
-\underline{Flint Knives:}\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Flint Knives (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Spears (Versatile, Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Greataxe:}}\\
+1d12 + STR-Modifier (+ 2 (Rage))\\
+\indent Current Max (melee): \intcalcAdd{12}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (Rage): \intcalcAdd{12}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\RageModifier}}\\
+\indent Current Max (rage): \intcalcAdd{12}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Atlatl (Throwable):}}\\
+1d8 + STR-Modifier (+ 2 (Rage))\\
+\indent Current Max (melee): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (Rage): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\RageModifier}}\\
+\indent Current Max (thrown): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Flint Knives (Throwable):}}\\
+1d4 + STR-Modifier (+ 2 (Rage))\\
+\indent Current Max (melee): \intcalcAdd{4}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (Rage): \intcalcAdd{4}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\RageModifier}}\\
+\indent Current Max (thrown): \intcalcAdd{4}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Spears (Versatile, Throwable):}}\\
+1d6 (1d8) + STR-Modifier (+ 2 (Rage))\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (versatile): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (Rage): \intcalcAdd{6}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\RageModifier}}\\
+\indent Current Max (versatile, Rage): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\RageModifier}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
 1d20 + STR-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-\underline{Greataxe:}\\
-1d12 + STR-Modifier (+ 2 (Rage))\\
-\indent Current Max (Normal): \intcalcAdd{12}{\calculateModifier{\DexterityScoreValue}}\\
-\indent Current Max (Rage): \intcalcAdd{12}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\RageModifier}}\\
-\underline{Atlatl:}\\
-1d8 + STR-Modifier\\
-\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}\\
-\underline{Knives:}\\
-1d3 + STR-Modifier (+ 2 (Rage))\\
-\indent Current Max (Normal): \intcalcAdd{3}{\calculateModifier{\DexterityScoreValue}}\\
-\indent Current Max (Rage): \intcalcAdd{3}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\RageModifier}}\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier (+ 2 (Rage))\\
+\indent Current Max (melee): \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (Rage): \intcalcAdd{1}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\RageModifier}}
 
 \end{document}

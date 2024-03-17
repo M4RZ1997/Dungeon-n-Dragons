@@ -3,14 +3,8 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -27,12 +21,21 @@
 \XP{}
 
 % Ability scores
-\StrengthScore{16}
-\DexterityScore{20}
-\ConstitutionScore{14}
-\IntelligenceScore{16}
-\WisdomScore{14}
-\CharismaScore{14}
+\StrengthRolledScore{13}
+\DexterityRolledScore{15}
+\ConstitutionRolledScore{12}
+\IntelligenceRolledScore{10}
+\WisdomRolledScore{13}
+\CharismaRolledScore{10}
+
+\StrengthScoreBonus{2} % ASI + 1
+\DexterityScoreBonus{5} % Elf-Race +2, ASI +2
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{1} % ASI + 1
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{P}
@@ -87,21 +90,19 @@
 \GP{7883}
 \PP{}
 
-
-\AddWeapon{2 Shortswords}{0}{1d6 p}
-\AddWeapon{Oathbow}{0}{1d8 p}
+\addWeaponStatistic{Shortsword}{LaucianIlphelkiir}{STR}{P}{0}{1d6 p}
+\addWeaponStatistic{Oathbow}{LaucianIlphelkiir}{DEX}{P}{6}{1d8 p}
+\addWeaponStatistic{Unarmed Strike}{LaucianIlphelkiir}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
-	\textbf{Oathbow}\\
-	\textbf{Bracers of Trickshot}\\
-	\textbf{60 Arrows} (1 with Oil)\\
+	\textbf{Oathbow (150/600)}\\
+	2 Shortswords\\
+	60 Arrows (1 with Oil)\\
 	\textbf{Boomerang Arrow}\\
 	\textbf{50 Fire Arrows}\\
 	\textbf{36 Drow Arrows}\\
 	\textbf{4 Ice Arrows}\\
 	\textbf{Arrow of Slaying (Dragon)}\\
-	\textbf{Wedge Stone} (Arrows +1/+2 Damage),\\
-	\textbf{Armor:} Chain Shirt +2, Leather Armor, Magical Shield (?)\\
 }
 
 \OtherProficienciesLanguages{
@@ -112,29 +113,12 @@
 }
 
 \Equipment{
-	\small{Woodcarver's Tools,
-	a Shovel,
-	an Iron Pot,
-	Set of Common Clothes,
-	a Backpack,
-	a Bedrool,
-	a Mess Kit,
-	a Tinderbox,
-	10 Torches,
-	12 Days of Rations,
-	a Waterskin,
-	50 ft Hempen Rope,
-	Firewine,
-	a Tranquilizer Vial,
-	3 Potion of Greater Healing,
-	Potion of Supreme Healing,
-	Ruby (500 gold),
-	Potion of Giant Size \\
-	\textbf{
-	Quiver of Ehlonna,
-	Quiver of the Storm's Fury,
-	Wand of Secrets, Ring of Free Action}
-	}
+	Chain Shirt +2, Leather Armor, Magical Shield (?)\\
+	\textbf{Quiver of Ehlonna, Quiver of the Storm's Fury, Wand of Secrets, Ring of Free Action}\\
+	a Tranquilizer Vial, 3 Potion of Greater Healing, Potion of Supreme Healing, Ruby (500 gold), Potion of Giant Size
+}
+\Clutter{
+	Woodcarver's Tools, a Shovel, an Iron Pot, Set of Common Clothes, a Backpack, a Bedrool, a Mess Kit, a Tinderbox, 10 Torches, 12 Days of Rations, a Waterskin, 50 ft Hempen Rope, Firewine, Wedgestone
 }
 
 \PersonalityTraits{
@@ -199,7 +183,7 @@
 % background
 
 \CharacterAppearance{images/Laucian_Ilphelkiir.png}{
-	\noindent Laucian’s silver eyes glisten like his bow. He has short, brown hair. He has long, pointed ears that prick up when Laucian is on the hunt or guard.
+	\noindent Laucian’s silver-green eyes glisten like his bow. He has short, brown hair. He has long, pointed ears that prick up when Laucian is on the hunt or guard.
 }{}{}{}
 \AdditionalFeaturesAndTraits{
 	Laucian's years spent as a ranger have honed his archery skills to exceptional levels. He is known for his precise and accurate shots, often hitting targets with remarkable speed and efficiency.\\
@@ -213,7 +197,7 @@ Laucian was born an elf of the wood - a very reclusive race that dwells in the f
 The most striking event was when Laucian was just 40 years old. On that particular day, the city of "New Forestia" was attacked by a huge dragon that burned down everything that stood in its way. Laucian was the only survivor on that faithful day and he became obsessed with the search for that dragon. Also, he became afraid of the nature of fire as he observed the obstruction it was capable of.
 }
 \Treasure{
-	\textbf{1. Cloak of the Forest Guardian:} A finely woven cloak made from enchanted moss and leaves. When worn, it grants Laucian the ability to blend seamlessly with his surroundings, rendering him nearly invisible in natural environments. It also provides him with enhanced stealth and evasion abilities.\\
+	\textbf{1. Cloak of the Forest Guardian:} A finely woven cloak made from enchanted moss and leaves. When worn, it grants Laucian the ability to blend seamlessly with his surroundings, rendering him nearly invisible in natural environments.\\
 	\textbf{2. Memory Stones:} A collection of small, smooth stones that Laucian carries with him. Each stone is engraved with the name of a fallen member of his tribe, serving as a memorial to the lost souls and a way for Laucian to honor their memory.\\
 	\textbf{3. Coin and Talisman:} A small pouch with a single silver piece with the old stamping of "New Forestia" and a talisman with the symbol of the tribe. The emblem of "New Forestia" features a beautifully detailed image of a majestic tree, reminiscent of Yggdrasil. The tribe believed the great tree represented unity and protection. It serves as a symbol of honor and heritage for Laucian, a constant reminder of his connection to his lost tribe and the enduring spirit of New Forestia.
 }
@@ -224,7 +208,7 @@ On a faithful day, nearly 200 years ago the tribe and the whole forest of "Easte
 	history of this once prospering tribe is never forgotten.
 }
 \OrganizationName{New Forestia (Elf Tribe)}
-\OrganizationSymbol{images/Tree_of_Forestia.jpg}
+\OrganizationSymbol{images/Tree_of_Forestia.png}
 
 % Magic
 
@@ -418,6 +402,11 @@ While you wear this ring, difficult terrain doesn't cost you extra movement. In 
 
 The wand has 3 Charges. While holding it. you can use an Action to expend 1 of its Charges, and if a Secret door or trap is within 30 feet of you, the wand pulses and points at the one nearest to you. The wand regains 1d3 expended Charges daily at dawn.
 
+\subsection*{Wedge Stone}
+\textit{common}
+
+The wedge stone can be used to sharpen your arrows. The damage made by them is increased by 2.
+
 \section*{Spells}
 
 \subsection*{Bonus Spells}
@@ -599,14 +588,23 @@ This arrow can be lit before using it either by spending an action from a Tinder
 This magic arrow has a jagged arrowhead formed with a semitransparent pale blue material, reminiscent of ice. Once this arrow is drawn, you can use your bonus action to focus on the arrow, causing it to glow with icy evocation magic. If you make a ranged weapon attack with this glowing arrow before the start of your next turn, the attack deals magical cold damage instead of its normal damage type. If the hit target is a creature, it must succeed on a DC 13 Constitution saving throw or be frozen solid, effectively petrified, until the end of its next turn. If the target has resistance or immunity to cold damage, it automatically succeeds on this saving throw. If the target takes any fire damage while petrified in this manner, the conditions ends.
 
 You can expend 1 magic point when you use the bonus action to cause the attack deal an extra 1d6 cold damage. If you have the Spellcasting feature when you do this, the DC becomes equal to your spell save DC if it would otherwise be lower.
-
+\vfill\eject
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Longbow}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Shortsword (Finesse):}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Shortsword (Finesse):}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Ranged Weapons}
 \paragraph*{Attack Roll}\hfill\\
 \underline{\textit{Oathbow:}}\\
 1d20 + DEX-Modifier + Proficiency Modifier + 2 (Fighting Style: Archer) + 2 (Bracers of Trickshot) + 2 (Quiver of the Storm's Fury) (- 5 (Sharpshooter)) \\
 \indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{\intcalcAdd{2}{\intcalcAdd{2}{2}}}}} \\
-\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{\intcalcAdd{2}{\intcalcAdd{2}{2}}}}}}{5} \\
+\indent Current Max (Sharpshooter): \intcalcSub{\intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{\intcalcAdd{2}{\intcalcAdd{2}{2}}}}}}{5}
 \paragraph*{Damage Roll}\hfill\\
 \underline{\textit{Oathbow:}}\\
 1d8 + 2 (Wedge Stone) + DEX-Modifier + 2 (Bracers of Trickshot) + 2 (Quiver of the Storm's Fury) (+ 3d6 (against Sworn Enemy)) (+ 10 (Sharpshooter))\\
@@ -614,13 +612,15 @@ You can expend 1 magic point when you use the bonus action to cause the attack d
 \indent Current Max (Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{2}{2}}}{\intcalcMul{3}{6}}}} \\
 \indent Current Max (Sharpshooter): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{2}{2}}}{10}}} \\
 \indent Current Max (Sharpshooter, Sworn Enemy): \intcalcAdd{8}{\intcalcAdd{2}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{2}{2}}}{\intcalcAdd{\intcalcMul{3}{6}}{10}}}}
-\subsubsection*{Finesse Weapons (Shortsword, etc.)}
+\subsubsection*{Special Attacks}
 \paragraph*{Attack Roll}\hfill\\
-1d20 + DEX-Modifier + Proficiency Modifier \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-1d6 + DEX-Modifier \\
-\indent Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 
 \chapter*{Aftermath Story}
 

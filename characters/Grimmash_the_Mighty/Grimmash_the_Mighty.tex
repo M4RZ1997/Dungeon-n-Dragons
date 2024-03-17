@@ -3,14 +3,9 @@
 \newcommand{\PATH}{../../}
 
 \usepackage{fontspec}
-\usepackage[justified]{\PATH dndtemplate/dnd}
-\usepackage{ifthen}
-\usepackage{pstricks}
-
-\usepackage{intcalc}
-
-\usepackage[UKenglish]{babel}
-\usepackage{\PATH dndtemplate}
+\usepackage[justified]{\PATH template_dnd/dnd}
+\usepackage{\PATH template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH template_magic-item/magic-items-commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -28,12 +23,21 @@
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthScore{19}
-\DexterityScore{12}
-\ConstitutionScore{17}
-\IntelligenceScore{4}
-\WisdomScore{9}
-\CharismaScore{13}
+\StrengthRolledScore{15}
+\DexterityRolledScore{12}
+\ConstitutionRolledScore{15}
+\IntelligenceRolledScore{4}
+\WisdomRolledScore{9}
+\CharismaRolledScore{13}
+
+\StrengthScoreBonus{2} % Orc Race +2
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{1} % Orc Race + 1
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
 
 % Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
 \StrengthProficiency{P}
@@ -91,16 +95,16 @@
 \PP{}
 
 % Weapon Arsenal
-\AddWeapon{Arcane Sunder}{0}{1d12 s}
-\AddWeapon{Handaxe}{0}{1d6 s}
-\AddWeapon{Javelin}{0}{1d6 p}
-\AddWeapon{Stones}{0}{1d4 b}
+\addWeaponStatistic{Arcane Sunder}{GrimmashtheMighty}{STR}{P}{0}{1d12 s}
+\addWeaponStatistic{Handaxe}{GrimmashtheMighty}{STR}{P}{0}{1d6 s}
+\addWeaponStatistic{Javelin}{GrimmashtheMighty}{STR}{P}{0}{1d6 p}
+\addWeaponStatistic{Stones}{GrimmashtheMighty}{STR}{P}{0}{1d4 b}
+\addWeaponStatistic{Unarmed Strike}{GrimmashtheMighty}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
 	\textbf{Arcane Sunder},\\
-	\textbf{2 Handaxes},\\
-	\textbf{4 Javelins},\\
-	\textbf{Shield of Reflecting Spells}\\
+	2 Handaxes, (20/60)\\
+	4 Javelins, (30/120)\\
 }
 
 \OtherProficienciesLanguages{
@@ -111,9 +115,11 @@
 }
 
 \Equipment{
-	Hunting Trap, an antler shed, a set of traveler's clothes, a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, waterskin, 50ft hempen rope, a pouch with \textbf{"Magic Stones"},\\
-	\textbf{The Mighty Discord (Lute),}
-	\textbf{Cursed Bracelet of Wild Magic}
+	\textbf{Shield of Reflecting Spells}\\
+	a pouch with \textbf{"Magic Stones"}, \textbf{The Mighty Discord (Lute),} \textbf{Cursed Bracelet of Wild Magic}
+}
+\Clutter{
+	Hunting Trap, an antler shed, a set of traveler's clothes, a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, waterskin, 50ft hempen rope
 }
 
 \PersonalityTraits{
@@ -337,11 +343,6 @@ The staff's core is a solid piece of wood, intricately carved and adorned with a
 \textit{"wondrous item", common}\\
 Grimmash possesses a sturdy shield that he firmly believes can reflect magical spells. While it doesn't possess any actual enchantments, he insists that it provides him with extra protection against spellcasting foes, bolstering his confidence in battle.
 
-\subsection*{Cursed Bracelet of Wild Magic}
-\textit{rare, requires attunement}\\
-Grimmash found a mysterious bracelet with intricate elemental engravings. Believing it to grant him control over the elements, he wears it proudly. Unbeknownst to him, the ring is cursed, causing a Wild Magic Surge to trigger whenever he kills 3 medium-sized or larger creatures during the same rage.\\
-Once attuned to the Cursed Bracelet of Wild Magic you cannot unattune to it out of free will. Furthermore, Grimmash had put on the bracelet in such a way that it is physical not possible for anyone to take the bracelet off his arm.
-
 \subsection*{The Mighty Discord (Lute)}
 The "Mighty Discord" is a comically oversized lute, standing tall and adorned with vibrant colors and playful designs. Its polished wooden body features intricate carvings of mythical creatures and arcane symbols. The thick and elongated strings stretch across the wide soundboard, creating a visually captivating instrument. Despite its exaggerated size, the instrument produces a cacophony of dissonant notes when played with unwavering enthusiasm. The jarring melodies that emanate from the "Mighty Discord" add an element of hilarity and light-heartedness to its unconventional charm.
 
@@ -358,22 +359,43 @@ Due to his delusional belief in being a wizard, Grimmash has developed his own u
 Whenever Grimmash wants to trigger a rage, he thinks that he summons elementals and absorbs their power hence always announcing "Elemental Convergence!" to trigger that state.
 
 \subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-\underline{Arcane Sunder:}\\
+\underline{\textit{Arcane Sunder:}}\\
 1d20 + STR-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
-\underline{Handaxe:}\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\underline{\textit{Javelin (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Arcane Sunder:}}\\
+1d12 + STR-Modifier (+ 2 (Rage))\\
+\indent Current Max (melee): \intcalcAdd{12}{\calculateModifier{\DexterityScoreValue}}\\
+\indent Current Max (Rage): \intcalcAdd{12}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\RageModifier}}\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d6 + STR-Modifier (+ 2 (Rage))\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}\\
+\indent Current Max (Rage): \intcalcAdd{6}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\RageModifier}}\\
+\underline{\textit{Javelin (Throwable):}}\\
+1d6 + STR-Modifier (+ 2 (Rage))\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}\\
+\indent Current Max (Rage): \intcalcAdd{6}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\RageModifier}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
 1d20 + STR-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-\underline{Arcane Sunder:}\\
-1d12 + STR-Modifier (+ 2 (Rage))\\
-\indent Current Max (Normal): \intcalcAdd{12}{\calculateModifier{\DexterityScoreValue}}\\
-\indent Current Max (Rage): \intcalcAdd{12}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\RageModifier}}\\
-\underline{Handaxe:}\\
-1d6 + STR-Modifier (+ 2 (Rage))\\
-\indent Current Max (Normal): \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}\\
-\indent Current Max (Rage): \intcalcAdd{6}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\RageModifier}}\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 
 \subsection*{"Spells"}
 \subsubsection*{Charm Person ("Friendly Enchantment")}
@@ -408,5 +430,7 @@ Grimmash believes that casting the "Sleep" spell involves singing a soothing lul
 When Grimmash wants to protect himself from attacks, he instinctively grabs a nearby shield, believing it to be an actual "Shield" spell. He parades around with the shield, convinced that it deflects spells and projectiles, even if it's just a regular shield without any magical properties.
 \subsubsection*{Summon Familiar ("Summonruckus!")}
 Grimmash throws one of his magic stones in order to summon any creature. This misconception can be traced back to several events in the past when he threw stones into a bush or scrub and a small creature like a fox appeared due to being frightened by the small projectile.
+
+\input{\PATH magic_items/Jewellery/Bracelets/Cursed_Bracelet_of_Wild_Magic/Cursed_Bracelet_of_Wild_Magic_input}
 
 \end{document}

@@ -1,0 +1,31 @@
+% ------------------------------------------------------------------------------------------------- %
+%						magic_items_commands.sty 	 Marcel Zauder 23/03/2021						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\newcommand{\ItemCategoryValue}{}
+\newcommand{\ItemSubCategoryValue}{}
+\newcommand{\ItemFolderValue}{}
+
+\newcommand{\ItemCategory}[1]{\renewcommand{\ItemCategoryValue}{#1}}
+\newcommand{\ItemSubCategory}[1]{\renewcommand{\ItemSubCategoryValue}{/#1}}
+\newcommand{\ItemFolder}[1]{\renewcommand{\ItemFolderValue}{#1}}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------- Item Description  and Image ---------------------------------- %
+\newcommand{\itemDescriptionAndImage}[3]{%
+	\begin{tikzpicture}[remember picture, overlay]%
+		\node[yshift=0.8cm, anchor=west] {\textit{#1}};%
+		\ifthenelse{\equal{#2}{example}}{%
+			\node[xshift=-2.25cm, yshift=0.5cm, anchor=north west] {\includegraphics[width=1.3\columnwidth]{%
+				example-image-b%
+			}};%
+		}{%
+			\node[xshift=-2.25cm, yshift=0.5cm, anchor=north west] {\includegraphics[width=1.3\columnwidth]{%
+				\PATH magic_items/\ItemCategoryValue\ItemSubCategoryValue/\ItemFolderValue/images/#2%
+			}};%
+		}%
+	\end{tikzpicture}%
+	\vspace*{#3}%
+}%
