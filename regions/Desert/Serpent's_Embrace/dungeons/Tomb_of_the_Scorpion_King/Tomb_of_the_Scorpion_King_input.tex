@@ -1,17 +1,17 @@
 \graphicspath{{./images},{./monsters/Blank_Monster/images}}
 
-\DungeonSheetGeometry
-
-\dungeonTitlePage{MarzDarkRed/white}%
-	{0cm}%
-	{-0.25cm}%
-	{height=\paperheight}%
-	{Tomb_of_the_Scorpion_King_filter.png}%
-	{%
-		{TomboftheScorpionKing1}{Page \thepage}{Art}{https://www.imagine.art/}{Tomb of the Scorpion King}{ImagineAI}%
-	}%
-	{Tomb of the Scorpion King}%
-	{black/white}%
+%\DungeonSheetGeometry
+%
+%\dungeonTitlePage{MarzDarkRed/white}%
+%	{0cm}%
+%	{-0.25cm}%
+%	{height=\paperheight}%
+%	{Tomb_of_the_Scorpion_King_filter.png}%
+%	{%
+%		{TomboftheScorpionKing1}{Page \thepage}{Art}{https://www.imagine.art/}{Tomb of the Scorpion King}{ImagineAI}%
+%	}%
+%	{Tomb of the Scorpion King}%
+%	{black/white}%
 	
 \clearpage
 \section*{History}
@@ -21,7 +21,7 @@
 \twocolumn[\section*{Entrance Area (Outside)}
 \centerline{\begin{minipage}{\paperwidth}
 \begin{tikzpicture}[outer sep=0pt, inner sep=0pt, every shadow/.style={opacity=.8,fill=black}]
-	\node {\includegraphics[width=\paperwidth - 8pt, height=14cm]{\PATH regions/stylesheets/images/backgrounds/Dungeons/dungeon_map.png}};
+	\node {\includegraphics[width=\paperwidth - 8pt, height=14cm]{\PATH templates/template_dungeon/backgrounds/dungeon_map.png}};
 	
 	% Guidelines
 	\begin{scope}[scale=0.3, every path/.style={black!80, thick}]
@@ -34,7 +34,7 @@
 	\begin{scope}[scale=0.3]
 		\path[clip, rounded corners=0.5cm] (-1.67\paperwidth + 250pt, -15) rectangle (1.67\paperwidth - 250pt, 15);
 		
-		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] {{\transparent{0.7}\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH regions/stylesheets/images/backgrounds/Dungeons/sand_dungeon_texture.jpg}}};
+		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] {{\transparent{0.7}\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH templates/template_dungeon/backgrounds/sand_dungeon_texture.jpg}}};
 		
 		% Assets below Shadows
 		\begin{scope}
@@ -75,13 +75,13 @@
 		-- ++(15,0) -- ++(0,25) arc[start angle=180, end angle=90, radius=1] -- ++(2,0) -- ++(0,-6) arc[start angle=-180, end angle=0, radius=1] arc[start angle=90, end angle=15, radius=4] -- ++(6.275,0) arc[start angle=-195, end angle=-270, radius=4] -- ++(2,0) -- ++(0,7) -- ++(2,0) -- ++(0,-1) -- ++(1,0) -- ++(0,3) -- ++(3,0) -- ++(0,-5) -- ++(-1,0) -- ++(0,4) -- ++(-1,0) -- ++(0,-3) -- ++(-1,0) -- ++(0,-21) -- ++(-24,0) -- ++(0,-5)
 		-- (28,-16) -- (28,16) -- (-28,16) -- cycle;
 		
-		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] at (0,0) {{\transparent{0.7}\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH regions/stylesheets/images/backgrounds/Dungeons/rocky_dungeon_texture.jpg}}};
+		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] at (0,0) {{\transparent{0.7}\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH templates/template_dungeon/backgrounds/rocky_dungeon_texture.jpg}}};
 		
 		\path[clip, drop shadow] (-28,-16)
 		-- ++(15,0) -- ++(0,5) -- ++(11,12) -- ++(0,2) -- ++(-2,0) -- ++(0,6) -- ++(6,0) -- ++(0,-6) -- ++(-2,0) -- ++(0,-2) -- ++(11,-12) -- ++(0,-5) 
 		-- (28,-16) -- (28,16) -- (-28,16) -- cycle;
 		
-		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] at (0,0) {\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH regions/stylesheets/images/backgrounds/Dungeons/sandstone_dungeon_texture.jpg}};		
+		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] at (0,0) {\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH templates/template_dungeon/backgrounds/sandstone_dungeon_texture.jpg}};		
 	\end{scope}
 	
 	% Assets above Shadows
@@ -191,7 +191,7 @@
 	\textbf{Trapped Treasure}
 	The other chest is a transformed mimic that will attack the character that interacts or investigates it. When the mimic is killed the following note can be found within it:\\\\
 	\begin{tikzpicture}
-		\NoteMessage{\linewidth}{18}{note_parchment_background_vertical.png}{%
+		\handwrittenNote{\linewidth}{18}{note_parchment_background_vertical.png}{%
 			2E 214 17th of Alturiak\\
 			I recall the words:
 			\begin{center}

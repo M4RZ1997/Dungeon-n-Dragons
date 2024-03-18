@@ -4,20 +4,30 @@
 
 \newcommand{\PATH}{../../../../../}
 
-\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
 
-\usepackage{\PATH regions/stylesheets/regions_stylesheet}
-\usepackage{\PATH regions/stylesheets/dungeon_stylesheet}
-\usepackage{\PATH regions/stylesheets/shadowfy}
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-
-%\newcommand{\entryfont}{\DndFontStatBlockBody}
-\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold]
-\newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
-\newfontfamily\notefont{Copenhagen}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Copenhagen, BoldFont=Copenhagen] % requires XeLaTeX or LuaTeX
+\usepackage{\PATH templates/template_book/book_commands}
+\usepackage{\PATH templates/template_dungeon/dungeon_usepackages}
+\usepackage{\PATH templates/template_dungeon/dungeon_commands}
 
 \begin{document}
+	\DungeonSheetGeometry
+
+	\dungeonTitlePage{MarzDarkRed/white}%
+		{0cm}%
+		{-0.25cm}%
+		{height=\paperheight}%
+		{images/Tomb_of_the_Scorpion_King_filter.png}%
+		{%
+			{TomboftheScorpionKing1}{Page \thepage}{Art}{https://www.imagine.art/}{Tomb of the Scorpion King}{ImagineAI}%
+		}%
+		{Tomb of the Scorpion King}%
+		{black/white}%
 	\input{Tomb_of_the_Scorpion_King_input.tex}
 \end{document}

@@ -1,0 +1,70 @@
+% ------------------------------------------------------------------------------------------------- %
+%								book_commands.sty  	Marcel Zauder 02/04/2023						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Titlepage ------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Dungeon Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\dungeonTitlePage}[8]{%
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture,overlay]
+		\expandafter\def\expandafter\temp\expandafter{#1}%
+		\edef\temp{#1}
+		\expandafter\splitShadowfyColors\temp\relax%
+		
+		\node[opacity=1,inner sep=0pt,xshift=#2,yshift=#3] at (current page.center){\includegraphics[#4, keepaspectratio]{#5}};
+		\addImageDBEntry#6
+		\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyBookTitleName{#7}};
+				
+		\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.375\paperheight)$);
+		\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+		
+		\expandafter\def\expandafter\temp\expandafter{#8}%
+		\edef\temp{#8}
+		\expandafter\splitShadowfyColors\temp\relax%
+		\def\stackgap{0.01pt}
+		\node[yshift=-0.4\paperheight] at (current page.center) {\titlefont{ \shadowfy{The homebrew Dungeon "#7"}}};
+	\end{tikzpicture}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------- Letter, Notes  and Messages ---------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Handwritten Notes #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% Weathered Note Background
+\newtcolorbox{weatheredNote}[4][]{
+	enhanced,
+	boxrule=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	frame hidden,
+	opacityback=0,
+	width=#2,
+	valign=center,
+	left=20pt, % Set left padding to zero
+	right=20pt, % Set right padding to zero
+	top=20pt, % Set top padding to zero
+	bottom=20pt, % Set bottom padding to zero
+	overlay={
+		\node[opacity=1, anchor=north west, inner sep=0pt, outer sep=0pt] at (frame.north west) {%
+			\includegraphics[width=#2, height=#3]{\PATH templates/template_book/images/letters-and-notes/#4}%
+		};%
+	},%
+	#1
+}
+\newcommand{\handwrittenNote}[4]{
+	\node[inner sep=0pt, outer sep=0pt] {%
+		\begin{tikzpicture}%
+			\node [inner sep=0pt] {%
+				\begin{weatheredNote}{#1}{\dimexpr 1.5\fontdimen6\font * (#2) + 40pt\relax}{#3}%
+					{\fontsize{20}{7}{\notefont #4}}%
+				\end{weatheredNote}
+			};%
+		\end{tikzpicture}%
+	};%
+}
