@@ -2,8 +2,12 @@
 
 \newcommand{\PATH}{../../}
 
-\usepackage{fontspec}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
+
 \usepackage{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items-commands}
 
@@ -336,12 +340,34 @@ Starting when you choose this path at 3rd level, you can go into a frenzy when y
 \section*{"Magical" Items}
 \subsection*{Arcane Sunder}
 \textit{"wondrous item", common}\\
-A staff-like weapon that combines the appearance of a magical staff with the functionality of a melee weapon. This unique weapon has the appearance of a staff that has been modified to have a bladed end, transforming it into a deadly polearm.\\
-The staff's core is a solid piece of wood, intricately carved and adorned with arcane symbols and runes to give it the appearance of a magical artifact. The upper portion of the staff has a bladed tip, similar to a greataxe, allowing Grimmash to deliver powerful strikes in combat. The staff's length and reach provides him with versatility, allowing him to keep enemies at bay or deliver devastating blows up close.
+A staff-like weapon that combines\\
+the appearance of a magical staff\\
+with the functionality of a melee\\
+weapon. This unique weapon has the\\
+appearance of a staff that has been\\
+modified to have a bladed end, trans-\\
+forming it into a deadly polearm.\\
+The staff's core is a solid piece of\\
+wood, intricately carved and adorned\\
+with arcane symbols and runes to give it the appearance of a magical artifact. The upper portion of the staff has a bladed tip, similar to a greataxe, allowing Grimmash to deliver powerful strikes in combat. The staff's length and reach provides him with versatility, allowing him to keep enemies at bay or deliver devastating blows up close.
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt]%
+		\node[xshift=-40pt,yshift=-20pt] (picture) at (current page.center) {\includegraphics[width=0.4\columnwidth, height=375pt, keepaspectratio]{images/Arcane_Sunder.png}};%
+\end{tikzpicture}%
 
 \subsection*{Shield of Reflecting Spells}
 \textit{"wondrous item", common}\\
-Grimmash possesses a sturdy shield that he firmly believes can reflect magical spells. While it doesn't possess any actual enchantments, he insists that it provides him with extra protection against spellcasting foes, bolstering his confidence in battle.
+Grimmash possesses a sturdy\\
+shield that he firmly believes\\
+can reflect magical spells.\\
+While it doesn't possess any\\
+actual enchantments, he\\
+insists that it provides him with\\
+extra protection against spell-\\
+casting foes, bolstering his\\
+confidence in battle.
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt]%
+		\node[xshift=-50pt,yshift=-280pt] (picture) at (current page.center) {\includegraphics[width=0.5\columnwidth, height=280pt, keepaspectratio]{images/Shield_of_Reflecting_Spells.png}};%
+\end{tikzpicture}%
 
 \subsection*{The Mighty Discord (Lute)}
 The "Mighty Discord" is a comically oversized lute, standing tall and adorned with vibrant colors and playful designs. Its polished wooden body features intricate carvings of mythical creatures and arcane symbols. The thick and elongated strings stretch across the wide soundboard, creating a visually captivating instrument. Despite its exaggerated size, the instrument produces a cacophony of dissonant notes when played with unwavering enthusiasm. The jarring melodies that emanate from the "Mighty Discord" add an element of hilarity and light-heartedness to its unconventional charm.
