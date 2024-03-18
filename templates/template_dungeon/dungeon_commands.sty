@@ -1,0 +1,153 @@
+% ------------------------------------------------------------------------------------------------- %
+%								dungeon_commands.sty  Marcel Zauder 02/04/2023						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\newcommand{\pathSimpleAssets}{\PATH templates/template_dungeon/map_assets/}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ New Geometry ----------------------------------------- %
+\newcommand{\DungeonSheetGeometry}{%
+	\newgeometry{%
+		hmargin 	= .5in, % Left and right margins
+		top 		= .46in, % Top of text area to top of page
+		bottom		= .46in, % Bottom of text area to bottom of page
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------- Dungeon Graphic Pages ------------------------------------- %
+\newcommand{\DungeonBannerGraphic}[5]{
+	\clearpage
+	\newgeometry{
+		hmargin   = .5in,
+		top       = #2, % Top of text area to top of page
+		bottom    = .5in,
+		footskip  = .32in, % Bottom of text area to bottom of footer text
+		columnsep = .33in, % Space between columns
+	}
+	
+	\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+		\node (posSW) at (current page text area.north west) {};%
+		\node[above left=#2 and 1.25cm of posSW, anchor=north west] (cornerSW) {%
+			\begin{minipage}{\paperwidth}%%
+	        	\centering\includegraphics[width=\paperwidth, height=#3#5]{#4}%
+	      	\end{minipage}%
+		};%
+	\end{tikzpicture}%
+	\nopagebreaksection{#1}
+}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------ Dungeon Map  Generation ------------------------------------ %
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Trap Fields  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\trapField}[1]{%
+	\node[rectangle, thick, draw=red, dotted, minimum width=0.3cm, minimum height=0.3cm, inner sep=0, outer sep=0pt, anchor=south west] at (#1) {\textcolor{red}{T}};%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Stair  Fields #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\stairsField}[5]{%
+	\ifthenelse{\equal{sand}{#1}}{\xdef\image{Stairs/sandstone_stairs.png}}{}%
+	\ifthenelse{\equal{sandspiral}{#1}}{\xdef\image{Stairs/sandstone_spiral_staircase.png}}{}%
+	
+	\node[inner sep=0pt, outer sep=0pt, #3] at (#2) {%
+		\includegraphics[width=#4, height=#5]{\pathSimpleAssets\image}%
+	};%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Door Assets  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\doorField}[6]{%
+	\xdef\image{}%
+	\ifthenelse{\equal{wood}{#1}}{\xdef\image{Doors/wood_door_texture.png}}{}%
+	\ifthenelse{\equal{doublewood}{#1}}{\xdef\image{Doors/wood_double_door_texture.png}}{}%
+	
+	\ifthenelse{\equal{\image}{}}{%
+		\node[rectangle, thin, draw=black, minimum width=#5, minimum height=#6, inner sep=0, outer sep=0pt, fill=black!50, anchor=#3] at #2 {\tiny{S}};%
+	}{%
+		\node[inner sep=0pt, outer sep=0pt, anchor=#3, rotate=#4] at #2 {%
+			\includegraphics[width=#5, height=#6]{\pathSimpleAssets\image}%
+		};%
+	}%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Chest  Assets #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\chestField}[6]{%
+	\xdef\image{}%
+	\ifthenelse{\equal{blue}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{Chests/blue_chest_open.png}%
+		}{%
+			\xdef\image{Chests/blue_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{normal}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{Chests/chest_open.png}%
+		}{%
+			\xdef\image{Chests/chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{crate}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{Chests/crate_open.png}%
+		}{%
+			\xdef\image{Chests/chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{gold}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{Chests/gold_chest_open.png}%
+		}{%
+			\xdef\image{Chests/gold_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{green}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{Chests/green_chest_open.png}%
+		}{%
+			\xdef\image{Chests/green_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{iron}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{Chests/iron_chest_open.png}%
+		}{%
+			\xdef\image{Chests/iron_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{red}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{Chests/red_chest_open.png}%
+		}{%
+			\xdef\image{Chests/red_chest.png}%
+		}%
+	}{}%
+	\ifthenelse{\equal{strongbox}{#1}}{%
+		\ifthenelse{\equal{open}{#2}}{%
+			\xdef\image{Chests/strongbox_open.png}%
+		}{%
+			\xdef\image{Chests/strongbox.png}%
+		}%
+	}{}%
+	
+	\node[inner sep=0pt, outer sep=0pt, #4] at (#3) {%
+		\includegraphics[width=#5, height=#6]{\pathSimpleAssets\image}%
+	};%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Indicator Numbers #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{indicatorNumber}
+\stepcounter{indicatorNumber}
+\newcommand{\indicatorNumberField}[1]{%
+	\node[circle, fill=white, radius=0.2cm, draw, outer sep=0pt] at #1 {\scriptsize{\theindicatorNumber}};
+	\stepcounter{indicatorNumber}
+}%

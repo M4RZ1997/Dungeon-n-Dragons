@@ -116,6 +116,19 @@
 	\ifthenelse{\equal{Z}{#1}}{\xdef\bool{1}}{\xdef\bool{0}}%
 	}}}}}}}}}}}}}}}}}}}}}}}}}%
 }%
+\newcommand{\isNumber}[1]{%
+	\ifthenelse{\equal{0}{#1}}{\xdef\numbool{1}}{%
+	\ifthenelse{\equal{1}{#1}}{\xdef\numbool{1}}{%
+	\ifthenelse{\equal{2}{#1}}{\xdef\numbool{1}}{%
+	\ifthenelse{\equal{3}{#1}}{\xdef\numbool{1}}{%
+	\ifthenelse{\equal{4}{#1}}{\xdef\numbool{1}}{%
+	\ifthenelse{\equal{5}{#1}}{\xdef\numbool{1}}{%
+	\ifthenelse{\equal{6}{#1}}{\xdef\numbool{1}}{%
+	\ifthenelse{\equal{7}{#1}}{\xdef\numbool{1}}{%
+	\ifthenelse{\equal{8}{#1}}{\xdef\numbool{1}}{%
+	\ifthenelse{\equal{9}{#1}}{\xdef\numbool{1}}{\xdef\numbool{0}}%
+	}}}}}}}}}%
+}%
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ---------------------------------- Macro for  Splitting Colors ---------------------------------- %
@@ -130,8 +143,12 @@
 % ------------------------------------------ SC Shadowfy ------------------------------------------ %
 % Define the custom macro that takes a word as a parameter
 \newcommand{\formatShadowfySC}[1]{%
-	\isUpperCase{#1}\ifnum\bool=1 \xdef\ucletter{#1}\else\toUpperCaseLetter{#1}\fi%
-    	\titlefont{\fontsize{\ifnum\bool=1 \uppercasefontsize\else\lowercasefontsize\fi}{1.2\uppercasefontsize}\selectfont\shadowfy{\ucletter}}%
+	\isNumber{#1}\ifnum\numbool=0 %
+		\isUpperCase{#1}\ifnum\bool=1 \xdef\ucletter{#1}\else\toUpperCaseLetter{#1}\fi%
+    		\titlefont{\fontsize{\ifnum\bool=1 \uppercasefontsize\else\lowercasefontsize\fi}{1.2\uppercasefontsize}\selectfont\shadowfy{\ucletter}}%
+    \else%
+    	\titlefont{\fontsize{\uppercasefontsize}{1.2\uppercasefontsize}\selectfont\shadowfy{#1}}%
+    \fi%
 }%
 \newcommand{\shadowfiedSCTitle}[1]{%
     \StrLen{#1}[\wordlen]%
