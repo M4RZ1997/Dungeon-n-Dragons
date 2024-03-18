@@ -14,7 +14,7 @@ During combat the Giant Sandweaver tries to catch or incapacitate its opponents 
 \textbf{Monstrous Mounts.} Over the centuries, Yuan-Ti were able to tame some Giant Seandweavers just enough to serve as mounts in combat. However, Giant Sandweaver are notoriously treacherous creatures and their alliance usually lies with whoever feeds them.\\
 - M4RZ.\\
 
-\MonsterGraphicAndShortInfo{shortinfo}% shortinfo or none for no Short-Info Box
+\MonsterGraphicAndShortInfo[shortinfobox=true]% shortinfo or none for no Short-Info Box
 {%
 	{1.15cm}% Shift Horizontal Short Info Box
 	{5.65cm}% Shift Vertical Short Info Box
@@ -154,12 +154,14 @@ During combat the Giant Sandweaver tries to catch or incapacitate its opponents 
 \def\primarycolor{titlered}%
 \def\secondarycolor{white}%
 \MonsterBannerGraphic%
-	{\entryfont{\shadowfy{Ancient Sandweaver Lair}}}% name of the monster to be displayed as header
-	{section}% either section or chapter
-	{160pt}% offset for the section header
-	{250pt}% max height of the image
-	{Desert_Lair.png}% image to be displayed as a banner
-	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
+	{Ancient Sandweaver Lair} % name of the monster to be displayed as header
+	{section} % either section or chapter
+	{160pt} % offset for the section/chapter header
+	{-27pt} % Move Header horizontally
+	{20pt} % Move Header vertically
+	{250pt} % max height of the image
+	{Desert_Lair.png} % image to be displayed as a banner
+	{} % used for keepaspectratio for image ({} or {, keepaspectratio})
 \addcontentsline{toc}{section}{Ancient Sandweaver Lair}
 \addImageDBEntry{Sandweaver3}{Page \thepage}{Art}{https://openart.ai/discovery/sd-1006241455683158116}{Snake Desert Temple}{openart.ai}%
 
@@ -273,8 +275,8 @@ The desert is filled with stone pinnacles and broken obelisks and monument ruins
       
 \end{multicols}\end{DndMonster}
 \vfill\eject
-\subsection*{Lair Actions}\vspace*{-0.4\fontdimen6\font}
-\DndMonsterAction{Passive Effect: Legendary Malevolence}
+\subsection*{Lair Actions}\vspace*{-0.5\fontdimen6\font}
+\textcolor{bgtan}{\DndMonsterAction{Passive Effect: Legendary Malevolence}}\\
 In a radius of 10.000ft. around the lair no creature is benefitting from a long rest.\\
 On initiative count 20, the Ancient Sandweaver takes a lair action to cause one of the following effect. It can't use the same effect two rounds in a row:
 \begin{itemize}

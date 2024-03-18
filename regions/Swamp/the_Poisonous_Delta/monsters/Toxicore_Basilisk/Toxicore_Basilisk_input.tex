@@ -130,8 +130,8 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
       
 \end{DndMonster}
 
-\vspace*{-17cm}\hspace*{5.75cm}\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
-		\node (picture) at (0,0) {\includegraphics[width=1.2\columnwidth, height=280pt, keepaspectratio]{Toxicoreling.png}};%
+\vspace*{-17cm}\hspace*{5.75cm}\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt]%
+		\node[xshift=-15pt] (picture) at (0,0) {\includegraphics[width=1.2\columnwidth, height=280pt, keepaspectratio]{Toxicoreling.png}};%
 \end{tikzpicture}%
 \addImageDBEntry{ToxicoreBasilisk2}{Page \thepage}{MonsterArt}{https://mtg.cardsrealm.com/en-us/card/ichorspit-basilisk}{Ichorspit Basilisk MtG Art from Phyrexia: All Will Be One}{Joe Slucher}%
 
@@ -141,7 +141,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
 
 % Monster stat block
 \begin{DndMonster}[width=0.5\textwidth]{Scythera~~~~~~~Basilisk}
-    \DndMonsterType{Large Abomination,~~~~~~~~~~~chaotic evil}
+    \DndMonsterType{Large Abomination,~~~~~~~~~~~~~~~~~chaotic evil}
 
     % If you want to use commas in the key values, enclose the values in braces.
     \DndMonsterBasics[
@@ -317,7 +317,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
 
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 	\node (posN) at (current page text area.north) {};%
-	\node[above left=30pt and 5.2cm of posN, anchor=north] (cornerNW) {%
+	\node[above left=30pt and 4.7cm of posN, anchor=north] (cornerNW) {%
 		\begin{minipage}{\columnwidth}%%
         	\centering\includegraphics[width=1.3\columnwidth, height=280pt, keepaspectratio]{Scythera_Basilisk.png}%
       	\end{minipage}%
@@ -348,7 +348,7 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
 \addImageDBEntry{ToxicoreBasilisk5}{Page \thepage}{Background Art}{https://www.artofmtg.com/art/the-hunter-maze/}{The Hunter Maze MtG Art from Phyrexia: All Will Be One}{Alayna Danner}%
 
 % Monster stat block
-\vspace*{-1.3cm}\begin{DndMonster}[width=0.5\textwidth]{Vishgraz, the Toxicore Basilisk}
+\vspace*{-1.3cm}\begin{DndMonster}[width=0.5\textwidth]{\Large{Vishgraz, the Toxicore Basilisk}}
     \DndMonsterType{Huge Abomination, chaotic evil}
 
     % If you want to use commas in the key values, enclose the values in braces.
@@ -438,8 +438,18 @@ Even in its infant stage, the Toxicore Basilisk commands attention. Known as the
 
 \vfill\eject % cammand to break to next column
 
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+	\node (posN) at (current page text area.north) {};%
+	\node[above right=35pt and 10cm of posN, anchor=north east] (cornerNE) {%
+		\begin{minipage}{\columnwidth}%%
+        	\centering\includegraphics[width=1.1\columnwidth, height=280pt, keepaspectratio]{Vishgraz_Toxicore_Basilisk.png}%
+      	\end{minipage}%
+	};%
+\end{tikzpicture}%
+\addImageDBEntry{ToxicoreBasilisk6}{Page \thepage}{Monster Art}{https://scg-static.starcitygames.com/articles/2023/02/4da5b00e-vishgraz-the-doomhive-700x547.jpg}{Vishgraz, the Doomhive MtG Art from Phyrexia: All Will Be One}{Andrew Mar}%
+
 %\nopagebreaksection{Blank Monster} % section that does not induce a new page
-\hfil\\\vspace*{5cm}
+\hfil\\\vspace*{4cm}
 \subsection*{Legendary Actions}
 Vishgraz can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time, and only at the end of another creature's turn. Vishgraz regains spent legendary actions at the start of its turn.
 \begin{DndMonsterLegendaryActions}
@@ -455,13 +465,3 @@ On initiative count 20 (losing initiative ties), Vishgraz takes a lair action to
 	\item Poisonous vines erupt from the ground, creating difficult terrain. Each creature that is not a Toxicore Basilisk must make a DC16 Constitution Saving Throw or is poisoned for 1 minute.
 	\item  The ambient temperature rises dramatically, causing all creatures in the area to make a DC 15 Constitution saving throw or take \DndDice{4d6} fire damage.
 \end{itemize}
-
-\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
-	\node (posN) at (current page text area.north) {};%
-	\node[above right=35pt and 10cm of posN, anchor=north east] (cornerNE) {%
-		\begin{minipage}{\columnwidth}%%
-        	\centering\includegraphics[width=1.1\columnwidth, height=280pt, keepaspectratio]{Vishgraz_Toxicore_Basilisk.png}%
-      	\end{minipage}%
-	};%
-\end{tikzpicture}%
-\addImageDBEntry{ToxicoreBasilisk6}{Page \thepage}{Monster Art}{https://scg-static.starcitygames.com/articles/2023/02/4da5b00e-vishgraz-the-doomhive-700x547.jpg}{Vishgraz, the Doomhive MtG Art from Phyrexia: All Will Be One}{Andrew Mar}%

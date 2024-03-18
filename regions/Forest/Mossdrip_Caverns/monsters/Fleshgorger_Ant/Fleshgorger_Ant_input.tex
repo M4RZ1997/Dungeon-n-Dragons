@@ -16,7 +16,7 @@
 \entryfont \noindent \DndDropCapLine{P}robably the most common swarm-dwelling vermin, ant colonies reside in massive mounds creating a giant network of tunnels and caves. The Giant Fleshgorger Ant is a very vicious and aggressive type which change the whole area wherever they settle down. Fitting to their name they feed on other species,  most often carrions but they are also fitted for hunting. There exist not a lot of species that can withstand an onslaught of hungry a Fleshgorger Ant colony.
 \vspace*{6cm}
 	
-\MonsterGraphicAndShortInfo{shortinfo}% shortinfo or none for no Short-Info Box
+\MonsterGraphicAndShortInfo[shortinfobox=true]% shortinfo or none for no Short-Info Box
 {%
 	{1.5cm}% Shift Horizontal Short Info Box
 	{3.5cm}% Shift Vertical Short Info Box
@@ -226,12 +226,14 @@ The Giant Ant Queen usually resides within the mound and is taken care by the co
 \def\primarycolor{titlered}%
 \def\secondarycolor{white}%
 \MonsterBannerGraphic%
-	{\entryfont{\shadowfy{Giant Ant Queen}}}% name of the monster to be displayed as header
-	{section}% either section or chapter
-	{247pt}% offset for the section header
-	{325pt}% max height of the image
-	{Queen_Ant.png}% image to be displayed as a banner
-	{}% used for keepaspectratio for image ({} or {, keepaspectratio})
+	{Giant Ant Queen} % name of the monster to be displayed as header
+	{section} % either section or chapter
+	{247pt} % offset for the section header
+	{10pt} % Move Header horizontally
+	{15pt} % Move Header vertically
+	{325pt} % max height of the image
+	{Queen_Ant.png} % image to be displayed as a banner
+	{} % used for keepaspectratio for image ({} or {, keepaspectratio})
 \addcontentsline{toc}{section}{Giant Ant Queen}
 \addImageDBEntry{FleshgorgerAnt3}{Page \thepage}{Art}{https://www.artstation.com/artwork/EoGae}{Queen Ant}{Kim Sung Hwan}%
 \vspace{13pt}

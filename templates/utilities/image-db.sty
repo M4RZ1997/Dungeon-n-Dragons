@@ -1,0 +1,29 @@
+% ------------------------------------------------------------------------------------------------- %
+%								image_db.sty  	Marcel Zauder 02/04/2023							%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+\usepackage{datatool}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\DTLnewdb{imageDB}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------- Add  Database Entry -------------------------------------- %
+\newcommand{\addImageDBEntry}[6]{%
+	\DTLnewrow{imageDB}%
+	\ifthenelse{\equal{#1}{FrontCover}}{%
+		\DTLnewdbentry{imageDB}{Page}{#2}%
+	}{%
+		\ifthenelse{\equal{#1}{BackCover}}{%
+			\DTLnewdbentry{imageDB}{Page}{#2}%
+		}{%
+			\expandafter\edef\csname savedvalue#1\endcsname{#2}%
+			\DTLnewdbentry{imageDB}{Page}{\csname savedvalue#1\endcsname}%
+		}%
+	}%
+	\DTLnewdbentry{imageDB}{AdditionalInformation}{#3}%
+	\DTLnewdbentry{imageDB}{URL}{#4}%
+	\DTLnewdbentry{imageDB}{ArtName}{#5}%
+	\DTLnewdbentry{imageDB}{Artist}{#6}%
+}%

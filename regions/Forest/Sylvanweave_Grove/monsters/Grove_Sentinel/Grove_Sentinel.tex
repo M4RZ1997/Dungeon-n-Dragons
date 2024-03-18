@@ -3,17 +3,16 @@
 
 \newcommand{\PATH}{../../../../../}
 
-\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
 
-\usepackage{\PATH regions/stylesheets/regions_stylesheet}
-\usepackage{\PATH regions/stylesheets/monster_stylesheet}
-\usepackage{\PATH regions/stylesheets/shadowfy}
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-
-%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
-\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
+\usepackage{\PATH templates/template_monster/monster_usepackages}
+\usepackage{\PATH templates/template_monster/monster_commands}
 
 \begin{document}
 
