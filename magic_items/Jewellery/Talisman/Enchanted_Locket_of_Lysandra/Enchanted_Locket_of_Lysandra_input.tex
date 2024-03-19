@@ -44,12 +44,9 @@ Whenever a decision must be made or information is sought, the locket's magic co
 \eject
 \begin{itemize}
 	\item The Save DC starts at a value of 10
-	\item With every successful Saving Throw regarding this effect the bearer makes the Save DC increases by \xdef\successIncrease{0.5}\successIncrease
-	\item With every failed Saving Throw regarding this effect the bearer makes the Save DC increases by \xdef\failIncrease{0.25}\failIncrease
+	\item With every successful Saving Throw regarding this effect the bearer makes the Save DC increases by 0.5
+	\item With every failed Saving Throw regarding this effect the bearer makes the Save DC increases by 0.2
 \end{itemize}
-\textbf{Failed Saves:} \xdef\failedSaves{5}\failedSaves\\
-\textbf{Successful Saves:} \xdef\successSaves{4}\successSaves\\
-\textbf{Current Save DC: \FPeval{saveDC}{clip(10+\failedSaves*failIncrease+\successSaves*\successIncrease)}\saveDC}
 \section*{Torn between Worlds}
 While the locket provides Alistair with extraordinary insights and magical abilities, its influence comes at a cost. The more time he spends away from the Feywild or the locket, the more he feels an ache of longing and a sense of restlessness. Their connection with the locket intertwines his fate with that of the Feywild, making him feel incomplete whenever he is separated from it.
 \section*{Quest of Discovery}

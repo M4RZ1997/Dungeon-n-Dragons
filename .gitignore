@@ -9,6 +9,7 @@ LaTeX Files
 *.bcf
 *.blg
 *.synctex.gz
+*.synctex(busy)
 *.toc
 *.xml
 _minted*
