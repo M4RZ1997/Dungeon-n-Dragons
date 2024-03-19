@@ -349,7 +349,7 @@
 \newcommand{\Hair}[1]{\renewcommand{\HairValue}{#1}}
 
 % background
-\newcommand{\CharacterAppearancePicture}{}
+\newcommand{\CharacterAppearancePictureValue}{}
 \newcommand{\CharacterAppearanceValue}{}
 \newcommand{\CharacterAppearancePictureHeight}{140pt}
 \newcommand{\CharacterAppearancePictureWidth}{164pt}
@@ -363,8 +363,10 @@
 \newcommand{\OrganizationNameValue}{}
 \newcommand{\OrganizationSymbolValue}{}
 
+\newcommand{\CharacterAppearancePicture}[1]{\renewcommand{\CharacterAppearancePictureValue}{#1}}
+
 \newcommand{\CharacterAppearance}[5]{%
-	\renewcommand{\CharacterAppearancePicture}{#1}%
+	\CharacterAppearancePicture{#1}%
 	\renewcommand{\CharacterAppearanceValue}{#2}%
 	\ifthenelse{\equal{#3}{}}{}{%
 		\expandafter\def\expandafter\temp\expandafter{#3}%
@@ -781,7 +783,6 @@
 \newcommand{\SleightOfHandProficiency}[1]{\renewcommand{\SleightOfHandProficiencyValue}{#1}\calculateProficiencyColor{#1}{sleightofhand}}
 \newcommand{\StealthProficiency}[1]{\renewcommand{\StealthProficiencyValue}{#1}\calculateProficiencyColor{#1}{stealth}}
 \newcommand{\SurvivalProficiency}[1]{\renewcommand{\SurvivalProficiencyValue}{#1}\calculateProficiencyColor{#1}{survival}}
-
 
 % SPELL PREPARED COLOR CHANGES
 

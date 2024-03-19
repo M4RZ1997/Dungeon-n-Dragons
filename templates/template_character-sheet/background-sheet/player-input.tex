@@ -12,10 +12,10 @@
 
 
 % background
-\ifthenelse{\equal{\CharacterAppearancePicture}{}}{
+\ifthenelse{\equal{\CharacterAppearancePictureValue}{}}{
 	\rput[lt](47,897){\parbox{164pt}{\entryfont \justify \CharacterAppearanceValue}}
 }{
-	\rput[lt](47,897){\hspace*{\CharacterAppearancePictureHorizontal}\parbox{\CharacterAppearancePictureWidth}{\vspace*{\CharacterAppearancePictureVertical}\begin{center}\includegraphics[width=\CharacterAppearancePictureWidth, height=\CharacterAppearancePictureHeight, keepaspectratio]{\CharacterAppearancePicture}\end{center}}}
+	\rput[lt](47,897){\hspace*{\CharacterAppearancePictureHorizontal}\parbox{\CharacterAppearancePictureWidth}{\vspace*{\CharacterAppearancePictureVertical}\begin{center}\includegraphics[width=\CharacterAppearancePictureWidth, height=\CharacterAppearancePictureHeight, keepaspectratio]{\CharacterAppearancePictureValue}\end{center}}}
 	\rput[lt](47,700){\parbox{164pt}{\entryfont \justify \CharacterAppearanceValue}}
 }
 \rput[lt](299,570){\parbox{354pt}{\entryfont \justify \AdditionalFeaturesAndTraitsValue}}

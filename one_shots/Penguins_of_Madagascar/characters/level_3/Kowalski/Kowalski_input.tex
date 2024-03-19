@@ -76,11 +76,12 @@
 
 \addWeaponStatistic{Screwdriver}{Kowalski}{STR}{P}{0}{1d6 p}
 \addWeaponStatistic{Screwdriver}{KowalskiV}{STR}{P}{0}{1d8 p (v)}
+\addWeaponStatistic{Unarmed Strike}{BlankCharacter}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
-	\textbf{Screwdriver}\\
-	\textbf{Hide Armor}\\
-	\textbf{Shield (Clipboard)}
+	Screwdriver\\
+	Hide Armor\\
+	Shield (Clipboard)
 }
 
 \OtherProficienciesLanguages{
@@ -445,12 +446,23 @@ If you instead touch a creature throughout the casting, you learn what spells, i
 
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Screwdriver}
+\subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-1d20 + STR-Modifier + Proficiency Modifier \\
+\underline{\textit{Screwdriver (Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-1d6 (1d8 two-handed) + STR-Modifier\\
+\underline{\textit{Screwdriver (Versatile):}}\\
+1d6 (1d8) + STR-Modifier\\
 \indent Current Max (one-handed): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
-\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 }

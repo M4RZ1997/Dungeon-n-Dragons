@@ -147,12 +147,24 @@
 }}%
 
 
-% MONEY
-\rput[cc](325.27479187,245.72826052){\Large \entryfont \CPValue}
-\rput[cc](325.27479187,211.12092805){\Large \entryfont \SPValue}
-\rput[cc](325.27479187,176.51346225){\Large \entryfont \EPValue}
-\rput[cc](325.27479187,141.90639645){\Large \entryfont \GPValue}
-\rput[cc](325.27479187,107.29839731){\Large \entryfont \PPValue}
+% MONEY & EQUIPMENT
+\ifthenelse{\equal{\boolCharacterSheetImage}{false}}{
+	\rput[cc](325.27479187,245.72826052){\Large \entryfont \CPValue}
+	\rput[cc](325.27479187,211.12092805){\Large \entryfont \SPValue}
+	\rput[cc](325.27479187,176.51346225){\Large \entryfont \EPValue}
+	\rput[cc](325.27479187,141.90639645){\Large \entryfont \GPValue}
+	\rput[cc](325.27479187,107.29839731){\Large \entryfont \PPValue}
+	\rput[lt](360,278){\parbox{118pt}{\entryfont \justify \EquipmentValue}}
+	\rput[lt](296,100){\parbox{167pt}{\entryfont \justify \scriptsize \ClutterValue}}
+}{
+	% CHARACTER APPEARANCE PICTURE
+	\rput[lt](296,410){\parbox[b][390pt][c]{167pt}{%
+		\begin{minipage}[b][\height][c]{\linewidth}
+	    \centering
+		\includegraphics[height=175pt, width=167pt, keepaspectratio]{\CharacterAppearancePictureValue}
+		\end{minipage}
+	}}
+}
 
 % FREEFORM ENTRY
 
@@ -168,8 +180,6 @@
 }}
 
 \rput[lt](44,220){\parbox{167pt}{\entryfont \OtherProficienciesLanguagesValue}}
-\rput[lt](360,278){\parbox{118pt}{\entryfont \justify \EquipmentValue}}
-\rput[lt](296,100){\parbox{167pt}{\entryfont \justify \scriptsize \ClutterValue}}
 \rput[lt](548,556){\parbox{167pt}{\entryfont \justify \FeaturesTraitsValue}}
 
 % PERSONALITY

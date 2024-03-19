@@ -572,6 +572,7 @@
 }
 
 % EQUIPMENT
+\ifthenelse{\equal{\boolCharacterSheetImage}{false}}{
 {
 \pscustom[linestyle=none,fillstyle=solid,fillcolor=outline-color]
 	{
@@ -640,6 +641,7 @@
 		\closepath
 	}
 }
+}{}
 % TRAITS OUTLINE
 {
 \pscustom[linestyle=none,fillstyle=solid,fillcolor=outline-color]

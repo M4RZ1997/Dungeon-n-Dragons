@@ -74,14 +74,15 @@
 \HitDice{d10}
 \HitDiceSpent{0}
 
-\addWeaponStatistic{Shortbow}{KingJulien}{DEX}{P}{+2}{1d6 p (80/320)}
+\addWeaponStatistic{Shortbow}{KingJulien}{DEX}{P}{+2}{1d6 p}
 \addWeaponStatistic{Longsword}{KingJulien}{STR}{P}{0}{1d8 s}
 \addWeaponStatistic{Longsword}{KingJulienV}{STR}{P}{0}{1d10 s (v)}
+\addWeaponStatistic{Unarmed Strike}{BlankCharacter}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
-	\textbf{Shortbow}\\
-	\textbf{Longsword}\\
-	\textbf{Leather Armor}
+	Shortbow (80/120)\\
+	Longsword\\
+	Leather Armor
 }
 
 \OtherProficienciesLanguages{
@@ -413,21 +414,35 @@ If the target drops to 0 hit points before this spell ends, you can use a bonus 
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd or 4th level, you can maintain your concentration on the spell for up to 8 hours. When you use a spell slot of 5th level or higher, you can maintain your concentration on the spell for up to 24 hours.
 
+\vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Shortbow}
+\subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-1d20 + DEX-Modifier + Proficiency Modifier + 2 (Fighting Style: Archer) \\
+\underline{\textit{Longsword (Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Longsword (Versatile):}}\\
+1d8 (1d10) + STR-Modifier\\
+\indent Current Max (one-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{10}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier + 2 (Fighting Style: Archer)\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{2}}}
 \paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
 1d6 + DEX-Modifier\\
-\indent Current Max (Normal): \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}} \\
-\subsubsection*{Longsword}
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
 \paragraph*{Attack Roll}\hfill\\
-1d20 + STR-Modifier + Proficiency Modifier \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-1d8 (1d10 two-handed) + STR-Modifier\\
-\indent Current Max (one-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
-\indent Current Max (two-handed): \intcalcAdd{10}{\calculateModifier{\StrengthScoreValue}}\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 }

@@ -14,7 +14,9 @@
 		\input{\PATH templates/template_character-sheet/character-sheet/stats.tex}
 		\input{\PATH templates/template_character-sheet/character-sheet/battle-stats.tex}
 		\input{\PATH templates/template_character-sheet/character-sheet/outlines.tex}
-		\input{\PATH templates/template_character-sheet/character-sheet/money-outlines.tex}
+		\ifthenelse{\equal{\boolCharacterSheetImage}{false}}{
+			\input{\PATH templates/template_character-sheet/character-sheet/money-outlines.tex}
+		}{}
 		\input{\PATH templates/template_character-sheet/character-sheet/traits.tex}
 		\input{\PATH templates/template_character-sheet/character-sheet/player-input.tex}
 		\input{\PATH templates/template_character-sheet/character-sheet/proficiency-markers.tex}

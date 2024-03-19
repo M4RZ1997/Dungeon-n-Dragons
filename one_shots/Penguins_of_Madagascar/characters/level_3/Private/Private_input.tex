@@ -74,11 +74,12 @@
 \HitDice{d8}
 \HitDiceSpent{0}
 
-\addWeaponStatistic{Light Crossbow}{Private}{DEX}{P}{0}{1d8 p (80/320)}
+\addWeaponStatistic{Light Crossbow}{Private}{DEX}{P}{0}{1d8 p}
+\addWeaponStatistic{Unarmed Strike}{BlankCharacter}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
-	\textbf{Light Crossbow}\\
-	\textbf{Leather Armor}
+	Light Crossbow (80/320)\\
+	Leather Armor
 }
 
 \OtherProficienciesLanguages{
@@ -329,19 +330,25 @@ A creature you touch becomes invisible until the spell ends. Anything the target
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.
 
+\vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Light Crossbow}
+\subsubsection*{Ranged Weapons}
 \paragraph*{Attack Roll}\hfill\\
-1d20 + DEX-Modifier + Proficiency Modifier \\
+\underline{\textit{Light Crossbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Light Crossbow:}}\\
 1d8 + DEX-Modifier\\
-\indent Current Max (Normal): \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
-\subsubsection*{Any Hex Warrior Weapon}
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
 \paragraph*{Attack Roll}\hfill\\
-1d20 + CHA-Modifier + Proficiency Modifier \\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\CharismaScoreValue}}{\ProficiencyValue}}
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-Weapon Damage + CHA-Modifier
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 }

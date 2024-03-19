@@ -70,13 +70,16 @@
 
 
 \rput[cc](409.580659095,293.99779994){\scriptsize \textbf{\textsf{ATTACKS \& SPELLCASTING}}}
-\rput[cc](290.045526075,245.77543200){\tiny \textcolor{grey_text_color}{\textsf{CP}}}
-\rput[cc](290.045526075,211.49076620){\tiny \textcolor{grey_text_color}{\textsf{SP}}}
-\rput[cc](290.045526075,176.72971055){\tiny \textcolor{grey_text_color}{\textsf{EP}}}
-\rput[cc](290.045526075,141.96116794){\tiny \textcolor{grey_text_color}{\textsf{GP}}}
-\rput[cc](290.045526075,107.68024561){\tiny \textcolor{grey_text_color}{\textsf{PP}}}
 
-\rput[cc](409.580659095,40.76616174){\scriptsize \textbf{\textsf{EQUIPMENT}}}
+\ifthenelse{\equal{\boolCharacterSheetImage}{false}}{
+	\rput[cc](290.045526075,245.77543200){\tiny \textcolor{grey_text_color}{\textsf{CP}}}
+	\rput[cc](290.045526075,211.49076620){\tiny \textcolor{grey_text_color}{\textsf{SP}}}
+	\rput[cc](290.045526075,176.72971055){\tiny \textcolor{grey_text_color}{\textsf{EP}}}
+	\rput[cc](290.045526075,141.96116794){\tiny \textcolor{grey_text_color}{\textsf{GP}}}
+	\rput[cc](290.045526075,107.68024561){\tiny \textcolor{grey_text_color}{\textsf{PP}}}
+
+	\rput[cc](409.580659095,40.76616174){\scriptsize \textbf{\textsf{EQUIPMENT}}}
+}{}
 
 \rput[cc](660.73142704,799.27275150){\tiny \textsf{PERSONALITY TRAITS}}
 \rput[cc](660.73142704,725.90488667){\tiny \textsf{IDEALS}}

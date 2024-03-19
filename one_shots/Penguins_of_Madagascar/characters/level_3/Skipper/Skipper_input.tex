@@ -75,10 +75,11 @@
 \HitDiceSpent{0}
 
 \addWeaponStatistic{Great Sword}{Skipper}{STR}{P}{0}{2d6 s}
+\addWeaponStatistic{Unarmed Strike}{BlankCharacter}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
-	\textbf{Great Sword}\\
-	\textbf{Hide Armor}
+	Great Sword\\
+	Hide Armor
 }
 
 \OtherProficienciesLanguages{
@@ -184,13 +185,25 @@ When you hit a creature with a weapon attack, you can expend one superiority die
 \paragraph*{Riposte}
 When a creature misses you with a melee attack, you can use your reaction and expend one superiority die to make a melee weapon attack against the creature. If you hit, you add the superiority die to the attack's damage roll.
 
+\vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Great Sword}
+\subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-1d20 + STR-Modifier + Proficiency Modifier \\
+\underline{\textit{Great Sword:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-2d6 + STR-Modifier\\
-\indent Current Max: \intcalcAdd{\intcalcMul{2}{6}}{\calculateModifier{\StrengthScoreValue}}\\
+\underline{\textit{Greatsword:}}\\
+1d6 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 }
