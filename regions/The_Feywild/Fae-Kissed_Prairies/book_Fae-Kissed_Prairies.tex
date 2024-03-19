@@ -2,34 +2,51 @@
 
 \newcommand{\PATH}{../../../}
 
-\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
 
-\usepackage{\PATH regions/stylesheets/monster_book_commands}
-\usepackage{\PATH regions/stylesheets/regions_stylesheet}
-\usepackage{\PATH regions/stylesheets/dungeon_stylesheet}
-\usepackage{\PATH regions/stylesheets/monster_stylesheet}
-\usepackage{\PATH regions/stylesheets/shadowfy}
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
-
-%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
-\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
-\newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
+\usepackage{\PATH templates/template_book/book_usepackages}
+\usepackage{\PATH templates/template_book/book_commands}
+\usepackage{\PATH templates/template_dungeon/dungeon_usepackages}
+\usepackage{\PATH templates/template_dungeon/dungeon_commands}
+\usepackage{\PATH templates/template_monster/monster_usepackages}
+\usepackage{\PATH templates/template_monster/monster_commands}
 
 \begin{document}
 	% Titlepage	
-	\monstersTitlePage{Fae-Kissed Prairies}{images/titlepage_Fae-Kissed_Prairies.jpg}{0.5cm}{0cm}{height=\paperheight}{https://www.artofmtg.com/art/genesis-ultimatum/}{Genesis Ultimatum MtG Art from Ikoria}{Jason Rainville}{A collection of homebrew monsters found in the Fae-Kissed Prairies}
+	\bookTitlePage
+		{Fae-Kissed Prairies}
+		{images/titlepage_Fae-Kissed_Prairies.jpg}
+		{0.5cm}
+		{0cm}
+		{height=\paperheight}
+		{https://www.artofmtg.com/art/genesis-ultimatum/}
+		{Genesis Ultimatum MtG Art from Ikoria}
+		{Jason Rainville}
+		{A collection of homebrew monsters found in the Fae-Kissed Prairies}
 	
 	\tableofcontents
 	
 	\mainmatter
 	
+	\MonsterSheetGeometry
+	\part{Monsters}
 	\input{monsters/Cobalt_Fox/Cobalt_Fox_input.tex}
 	\input{monsters/Hypnomoth/Hypnomoth_input.tex}
 	
 	% Final Page
-	\monstersLastPage{images/backcover_Fae-Kissed_Prairies.jpg}{0cm}{3cm}{height=\paperheight}{https://www.worldanvil.com/media/cache/cover/uploads/images/d778432f3604f389555b172d4adb69da.jpg}{The Feywild}{Worldanvil}{}
+	\bookLastPage
+		{images/backcover_Fae-Kissed_Prairies.jpg}
+		{0cm}
+		{3cm}
+		{height=\paperheight}
+		{https://www.worldanvil.com/media/cache/cover/uploads/images/d778432f3604f389555b172d4adb69da.jpg}
+		{The Feywild}
+		{Worldanvil}
+		{}
 \end{document}

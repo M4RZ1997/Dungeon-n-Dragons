@@ -2,33 +2,50 @@
 
 \newcommand{\PATH}{../../../}
 
-\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
 
-\usepackage{\PATH regions/stylesheets/monster_book_commands}
-\usepackage{\PATH regions/stylesheets/regions_stylesheet}
-\usepackage{\PATH regions/stylesheets/dungeon_stylesheet}
-\usepackage{\PATH regions/stylesheets/monster_stylesheet}
-\usepackage{\PATH regions/stylesheets/shadowfy}
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-
-%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
-\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
-\newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
-
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
+\usepackage{\PATH templates/template_book/book_usepackages}
+\usepackage{\PATH templates/template_book/book_commands}
+\usepackage{\PATH templates/template_dungeon/dungeon_usepackages}
+\usepackage{\PATH templates/template_dungeon/dungeon_commands}
+\usepackage{\PATH templates/template_monster/monster_usepackages}
+\usepackage{\PATH templates/template_monster/monster_commands}
 
 \begin{document}
 	% Titlepage	
-	\monstersTitlePage{Mossdrip Caverns}{images/titlepage_Mossdrip_Caverns.jpg}{0.5cm}{0cm}{height=\paperheight}{https://wallpapersden.com/tomb-castle-ladder-wallpaper/}{Ancient Tomb}{WallpapersDen}{A collection of homebrew monsters found in the Mossdrip Caverns}
+	\bookTitlePage
+		{Mossdrip Caverns}
+		{images/titlepage_Mossdrip_Caverns.jpg}
+		{0.5cm}
+		{0cm}
+		{height=\paperheight}
+		{https://wallpapersden.com/tomb-castle-ladder-wallpaper/}
+		{Ancient Tomb}
+		{WallpapersDen}
+		{A collection of homebrew monsters found in the Mossdrip Caverns}
 	
 	\tableofcontents
 	
 	\mainmatter
 	
+	\MonsterSheetGeometry
+	\part{Monsters}
 	\input{monsters/Fleshgorger_Ant/Fleshgorger_Ant_input.tex}
 	
 	% Final Page
-	\monstersLastPage{images/backcover_Mossdrip_Caverns.jpg}{0cm}{3cm}{height=\paperheight}{https://www.artstation.com/artwork/XBxBqD}{Overgrown Tomb}{Svetlin Velinov}{}
+	\bookLastPage
+		{images/backcover_Mossdrip_Caverns.jpg}
+		{0cm}
+		{3cm}
+		{height=\paperheight}
+		{https://www.artstation.com/artwork/XBxBqD}
+		{Overgrown Tomb}
+		{Svetlin Velinov}
+		{}
 \end{document}

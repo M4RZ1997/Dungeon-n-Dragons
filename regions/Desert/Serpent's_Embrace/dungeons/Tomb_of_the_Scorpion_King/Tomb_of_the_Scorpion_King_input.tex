@@ -1,4 +1,4 @@
-\graphicspath{{./images},{./monsters/Blank_Monster/images}}
+\graphicspath{{./images},{./dungeons/Tomb_of_the_Scorpion_King/images}}
 
 %\DungeonSheetGeometry
 %
@@ -15,10 +15,12 @@
 	
 \clearpage
 \section*{History}
+\phantomsection\addcontentsline{toc}{section}{History}
 
 \clearpage
 
 \twocolumn[\section*{Entrance Area (Outside)}
+\phantomsection\addcontentsline{toc}{section}{Entrance Area (Outside)}
 \centerline{\begin{minipage}{\paperwidth}
 \begin{tikzpicture}[outer sep=0pt, inner sep=0pt, every shadow/.style={opacity=.8,fill=black}]
 	\node {\includegraphics[width=\paperwidth - 8pt, height=14cm]{\PATH templates/template_dungeon/backgrounds/dungeon_map.png}};
@@ -34,7 +36,13 @@
 	\begin{scope}[scale=0.3]
 		\path[clip, rounded corners=0.5cm] (-1.67\paperwidth + 250pt, -15) rectangle (1.67\paperwidth - 250pt, 15);
 		
-		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] {{\transparent{0.7}\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH templates/template_dungeon/backgrounds/sand_dungeon_texture.jpg}}};
+		\node[inner sep=0pt,outer sep=0pt,rounded corners=0.5cm,opacity=0.7] {
+			{
+				\includegraphics[width=\paperwidth-150pt, height=9cm]{
+					\PATH templates/template_dungeon/backgrounds/sand_dungeon_texture.jpg
+				}
+			}
+		};
 		
 		% Assets below Shadows
 		\begin{scope}
@@ -75,13 +83,24 @@
 		-- ++(15,0) -- ++(0,25) arc[start angle=180, end angle=90, radius=1] -- ++(2,0) -- ++(0,-6) arc[start angle=-180, end angle=0, radius=1] arc[start angle=90, end angle=15, radius=4] -- ++(6.275,0) arc[start angle=-195, end angle=-270, radius=4] -- ++(2,0) -- ++(0,7) -- ++(2,0) -- ++(0,-1) -- ++(1,0) -- ++(0,3) -- ++(3,0) -- ++(0,-5) -- ++(-1,0) -- ++(0,4) -- ++(-1,0) -- ++(0,-3) -- ++(-1,0) -- ++(0,-21) -- ++(-24,0) -- ++(0,-5)
 		-- (28,-16) -- (28,16) -- (-28,16) -- cycle;
 		
-		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] at (0,0) {{\transparent{0.7}\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH templates/template_dungeon/backgrounds/rocky_dungeon_texture.jpg}}};
+		\node[inner sep=0pt,outer sep=0pt,rounded corners=0.5cm,opacity=0.7] at (0,0) {%
+			{%
+				%\transparent{0.7}
+				\includegraphics[width=\paperwidth-150pt, height=9cm]{%
+					\PATH templates/template_dungeon/backgrounds/rocky_dungeon_texture.jpg%
+				}%
+			}%
+		};%
 		
 		\path[clip, drop shadow] (-28,-16)
 		-- ++(15,0) -- ++(0,5) -- ++(11,12) -- ++(0,2) -- ++(-2,0) -- ++(0,6) -- ++(6,0) -- ++(0,-6) -- ++(-2,0) -- ++(0,-2) -- ++(11,-12) -- ++(0,-5) 
 		-- (28,-16) -- (28,16) -- (-28,16) -- cycle;
 		
-		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] at (0,0) {\includegraphics[width=\paperwidth-150pt, height=9cm]{\PATH templates/template_dungeon/backgrounds/sandstone_dungeon_texture.jpg}};		
+		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] at (0,0) {%
+			\includegraphics[width=\paperwidth-150pt, height=9cm]{%
+				\PATH templates/template_dungeon/backgrounds/sandstone_dungeon_texture.jpg%
+			}%
+		};%	
 	\end{scope}
 	
 	% Assets above Shadows
@@ -223,6 +242,7 @@
 }
 
 \DungeonBannerGraphic{Scorpion's Gaze}{12.25cm}{13.5cm}{Scorpion_s_Gaze.png}{}
+\phantomsection\addcontentsline{toc}{section}{Scorpion's Gaze}
 {\entryfont
 	Upon reaching the pinnacle of the ancient sandstone staircase, the world stretches out before you in all its splendor. The lookout point, perched high above the expansive canyon plateau, revealing the sprawling grandeur of the canyon plateau in vivid detail. The rugged terrain, an untamed canvas of sun-kissed earth and wind-carved rock, extends as far as the eye can see. The landscape is alive with the hues of the desert, its palette ranging from warm ochres to deep russets, illuminated by the sun's golden embrace.
 	
@@ -248,3 +268,4 @@
 \clearpage
 
 \section*{Entrance Area (Inside)}
+\phantomsection\addcontentsline{toc}{section}{Entrance Area (Inside)}

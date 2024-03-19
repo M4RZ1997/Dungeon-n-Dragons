@@ -9,8 +9,7 @@
 % --------------------------------------------------------------------------------------------------- %
 
 \chapter*{Blank Monster}
-\stepcounter{chapter}
-\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}Blank Monster}
+\phantomsection\addcontentsline{toc}{chapter}{Blank Monster}
 
 \entryfont \noindent \DndDropCapLine{T}his document is a LaTeX-template for easily creating a DnD-Monster-Sheet. It provides many different environments and macros to build up many different blocks similar to the ones seen in the DnD books.\\\\
 This document uses the LaTeX dnd\textunderscore template provided in the GitHub repository:\\\\ https://github.com/rpgtex/DND-5e-LaTeX-Template\\\\ and requires XeLaTeX or LuaTeX as the fontspec package is not part of the normal PDFLaTeX. By altering the \string\entryfont -command in the preamble this requirement can be excluded, however, the font has to be reset to the default one. \\\\
@@ -141,7 +140,7 @@ This document uses the LaTeX dnd\textunderscore template provided in the GitHub 
 	{https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/mwe/example-image-b.pdf} % URL to picture or graphic
 	{example-image-b} % Name of Art
 	{LaTeX} % Artist
-\addcontentsline{toc}{section}{Blank Monster Group}
+\phantomsection\addcontentsline{toc}{section}{Blank Monster Group}
 
 \lipsum[1-1]
 
@@ -289,7 +288,7 @@ This document uses the LaTeX dnd\textunderscore template provided in the GitHub 
 	{https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/mwe/example-image-b.pdf}% URL to picture or graphic
 	{example-image-b}% Name of Art
 	{LaTeX}% Artist
-\addcontentsline{toc}{section}{Blank Monster 2}
+\phantomsection\addcontentsline{toc}{section}{Blank Monster 2}
 
 % Monster stat block
 \vspace*{-1.3cm}\begin{DndMonster}[width=0.5\textwidth]{Blank Monster}
