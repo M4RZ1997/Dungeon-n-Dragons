@@ -4,28 +4,20 @@
 
 \newcommand{\PATH}{../../../}
 
-\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
 
-\usepackage{pstricks}
-\usepackage{intcalc}
-\usepackage{pdfpages}
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage{\PATH one_shots/stylesheets/dungeon_stylesheet}
-\usepackage{\PATH one_shots/stylesheets/monster_stylesheet}
-\usepackage{\PATH one_shots/stylesheets/regions_stylesheet}
+%\usepackage{\PATH templates/template_book/book_commands}
+\usepackage{\PATH templates/template_dungeon/dungeon_commands}
+\usepackage{\PATH templates/template_monster/monster_commands}
 
-\usepackage{\PATH one_shots/stylesheets/character_template}
 
 \usepackage{\PATH one_shots/stylesheets/one_shot_commands}
-\usepackage{\PATH one_shots/stylesheets/shadowfy}
-
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-
-%\newcommand{\entryfont}{\DndFontStatBlockBody}
-%\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold]
-\newfontfamily\titlefont{Modesto Bold(2)}[Path=\PATH template/fonts/,Extension=.otf,UprightFont=Modesto Bold(2),BoldFont=Modesto Bold(2)] % requires XeLaTeX or LuaTeX
-\newfontfamily\notefont{Copenhagen}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Copenhagen, BoldFont=Copenhagen] % requires XeLaTeX or LuaTeX
 
 \newcommand{\numberCircled}[1]{%
   \tikz[baseline=(char.base)]{
@@ -37,11 +29,9 @@
     \node[shape=circle, draw, inner sep=-2pt]
     (char) {\phantom{\ifblank{#1}{#2}{#1}}};%
     \node at (char.center) {\makebox[0pt][c]{#2}};}}
-\robustify{\circled}
+\robustify{\inTextCircled}
 
 \graphicspath{{./images},{./one_shots/Penguins_of_Madagascar/images}}
-
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
 
 \begin{document}
 	\DungeonSheetGeometry	

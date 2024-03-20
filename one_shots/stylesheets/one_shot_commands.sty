@@ -15,8 +15,8 @@
 		
 		\node[opacity=1,inner sep=0pt,xshift=#2,yshift=#3] at (current page.center){\includegraphics[#4, keepaspectratio]{#5}};
 		\addImageDBEntry#6
-		\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyClassName{#7}};
-		\node[yshift=0.35\paperheight] at (current page.center) {\shadowfySubClassName{#8}};
+		\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyBookTitleName{#7}};
+		\node[yshift=0.35\paperheight] at (current page.center) {\shadowfyHeader{#8}{25}{20}};
 				
 		\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.375\paperheight)$);
 		\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
@@ -48,7 +48,7 @@
 			\adjustbox{valign=c}{%
 				\parbox{0.5\textwidth}{\centering{
 					\parbox{0.4\textwidth}{%
-						\centering\customtitle{Big} ~ \customtitle{Thanks} ~ \customtitle{To} ~ \customtitle{These} ~ \customtitle{Artists}%
+						\centering\shadowfiedSCTitle{Big} ~ \shadowfiedSCTitle{Thanks} ~ \shadowfiedSCTitle{To} ~ \shadowfiedSCTitle{These} ~ \shadowfiedSCTitle{Artists}%
 					}%
 					\par\vspace*{\ThanksSpacing}%
 					\parbox{0.45\textwidth}{%
