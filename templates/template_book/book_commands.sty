@@ -30,6 +30,7 @@
 		\begin{tikzpicture}[remember picture,overlay]
 			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};
 			\addImageDBEntry{FrontCover}{Front Cover}{Art}{#6}{#7}{#8}
+			
 			\node[yshift=0.395\paperheight] at (current page.center) {\shadowfyBookTitleName{#1}};
 			
 			\node[yshift=0.45\paperheight] at (current page.center) {%
@@ -64,6 +65,35 @@
 }%
 % ------------------------------------------------------------------------------------------------- %
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  One-Shot  Titlepage  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\oneShotTitlePage}[9]{%
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture,overlay]
+		\expandafter\def\expandafter\temp\expandafter{#1}%
+		\edef\temp{#1}
+		\expandafter\splitShadowfyColors\temp\relax%
+		
+		\node[opacity=1,inner sep=0pt,xshift=#2,yshift=#3] at (current page.center){\includegraphics[#4, keepaspectratio]{#5}};
+		\addImageDBEntry#6
+		
+		\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyBookTitleName{#7}};
+		\node[yshift=0.35\paperheight] at (current page.center) {\shadowfyHeader{25}{20}{#8}};
+				
+		\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.375\paperheight)$);
+		\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+		
+		\expandafter\def\expandafter\temp\expandafter{#9}%
+		\edef\temp{#9}
+		\expandafter\splitShadowfyColors\temp\relax%
+		\def\stackgap{0.01pt}
+		\node[yshift=-0.4\paperheight] at (current page.center) {\titlefont{ \shadowfy{The One-Shot Adventure "#8"}}};
+		
+		\stepcounter{part}
+		\phantomsection\addcontentsline{toc}{part}{Operation \thepart : Smile and Wave}
+	\end{tikzpicture}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Dungeon Last Page #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \newcommand{\bookLastPage}[8]{%
 	\clearpage%
@@ -72,7 +102,7 @@
 		\node[opacity=1,inner sep=0pt,yshift=#2, xshift=#3] at (current page.center){\includegraphics[#4,  keepaspectratio]{#1}};%
 		\addImageDBEntry{BackCover}{Back Cover}{Art}{#5}{#6}{#7}%
 		\node[opacity=1,inner sep=0pt] at (current page.center){%
-			\includegraphics[min width=\paperwidth, height=\paperheight, keepaspectratio]{%
+			\includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio]{% no min width?
 				\PATH  templates/template_book/images/titlepage/backcover-black-part.png%
 			}%
 		};%
@@ -81,22 +111,21 @@
 		\def\secondarycolor{black!80}%
 		%\def\secondarycolor{MarzDarkRed}%
 		\def\stackgap{0.1pt}
-		\node[yshift=0.1\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
-			\adjustbox{valign=c}{%
-				\parbox{0.5\textwidth}{\centering{
-					\parbox{0.4\textwidth}{%
-						\centering\shadowfiedSCTitle{Big} ~ \shadowfiedSCTitle{Thanks} ~ \shadowfiedSCTitle{To} ~ \shadowfiedSCTitle{These} ~ \shadowfiedSCTitle{Artists}%
-					}%
-					\par\vspace*{\ThanksSpacing}%
-					\parbox{0.45\textwidth}{%
-						\large{\begin{itemize}[label=\textcolor{white}{\textbullet}]%
-							\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{%
-								\item \textcolor{white}{\thisPage ~\thisAdditionalInformation :} \textcolor{orange}{\href{\thisURL}{\thisArtName ~by \thisArtist}}%
-							}%
-						\end{itemize}}%
-					}%
-				}}%
-			}%
+		\node[yshift=0.1\paperheight, xshift=-0.25\paperwidth, align=center, text width=0.5\textwidth] at (current page.center) {%
+			\begin{minipage}{1\textwidth}
+				\centering
+				\begin{minipage}{0.8\textwidth}
+					\centering\shadowfiedSCTitle{Big} ~ \shadowfiedSCTitle{Thanks} ~ \shadowfiedSCTitle{To} ~ \shadowfiedSCTitle{These} ~ \shadowfiedSCTitle{Artists}
+				\end{minipage}
+				\par\vspace*{\ThanksSpacing}%
+				\begin{minipage}{0.9\textwidth}
+					\large\begin{itemize}[label=\textcolor{white}{\textbullet}, leftmargin=*, align=left]
+						\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{%
+							\item \textcolor{white}{\thisPage ~\thisAdditionalInformation :} \textcolor{orange}{\href{\thisURL}{\thisArtName ~by \thisArtist}}
+					}
+				\end{itemize}
+				\end{minipage}
+		\end{minipage}
 		};
 		
 		\def\stackgap{0.01pt}

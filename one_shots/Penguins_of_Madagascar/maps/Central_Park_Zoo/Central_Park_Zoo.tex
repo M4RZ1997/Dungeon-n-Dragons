@@ -1,0 +1,29 @@
+\RequirePackage{pdfmanagement-testphase}
+\DeclareDocumentMetadata{}
+\documentclass[a3paper,openany,twoside]{book}
+
+\newcommand{\PATH}{../../../../}
+
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage{\PATH templates/template_dungeon/dungeon_commands}
+
+\geometry{landscape}
+
+\begin{document}
+	\DungeonSheetGeometry
+	
+	\centerline{\begin{minipage}{\paperwidth}
+		\begin{tikzpicture}[outer sep=0pt, inner sep=0pt, every shadow/.style={opacity=.8,fill=black}]
+			\begin{scope}[scale=2, yshift=-3cm]
+				\input{Central_Park_Zoo_input.tex}
+			\end{scope}
+		\end{tikzpicture}
+	\end{minipage}}
+\end{document}

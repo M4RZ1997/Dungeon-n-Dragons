@@ -4,6 +4,8 @@
 
 \newcommand{\PATH}{../../../}
 
+\usepackage{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+
 \usepackage{\PATH templates/utilities/image-db}
 \usepackage{\PATH templates/utilities/m4rz-fonts}
 \usepackage{\PATH templates/utilities/m4rz-colors}
@@ -12,12 +14,11 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-%\usepackage{\PATH templates/template_book/book_commands}
+\usepackage{\PATH templates/template_book/book_commands}
+\usepackage{\PATH templates/template_one-shot/one-shot_commands}
 \usepackage{\PATH templates/template_dungeon/dungeon_commands}
 \usepackage{\PATH templates/template_monster/monster_commands}
-
-
-\usepackage{\PATH one_shots/stylesheets/one_shot_commands}
+\usepackage{\PATH templates/template_magic-item/magic-items-commands}
 
 \newcommand{\numberCircled}[1]{%
   \tikz[baseline=(char.base)]{
@@ -34,7 +35,7 @@
 \graphicspath{{./images},{./one_shots/Penguins_of_Madagascar/images}}
 
 \begin{document}
-	\DungeonSheetGeometry	
+	\DungeonSheetGeometry
 	\oneShotTitlePage{white/MarzDarkRed}%
 		{0cm}%
 		{1cm}%
@@ -46,7 +47,6 @@
 		{Penguins of Madagascar}%
 		{Operation: Smile and Wave}%
 		{black/white}%
-	\phantomsection\addcontentsline{toc}{part}{Operation 1: Smile and Wave}
 	\clearpage
 	\tableofcontents
 	\input{operation_Smile_and_Wave_input.tex}
