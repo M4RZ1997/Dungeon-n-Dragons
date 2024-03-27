@@ -19,11 +19,11 @@
 \begin{document}
 	\DungeonSheetGeometry
 	
-	\centerline{\begin{minipage}{\paperwidth}
-		\begin{tikzpicture}[outer sep=0pt, inner sep=0pt, every shadow/.style={opacity=.8,fill=black}]
-			\begin{scope}[scale=2, yshift=-3cm]
-				\input{Central_Park_Zoo_input.tex}
-			\end{scope}
-		\end{tikzpicture}
-	\end{minipage}}
+	\thispagestyle{empty}
+	\def\scaleFactor{1.9}	
+	\begin{tikzpicture}[outer sep=0pt, inner sep=0pt, every shadow/.style={opacity=.8,fill=black}, remember picture, overlay]
+		\begin{scope}[scale=\scaleFactor, xshift=-11cm, yshift=-14.5cm]
+			\input{Central_Park_Zoo_input.tex}
+		\end{scope}
+	\end{tikzpicture}
 \end{document}
