@@ -8,8 +8,7 @@
 % --------------------------------------------- % Main Park  Tiling % --------------------------------------------- %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \begin{scope}
-	\path[draw, red, thick] (0.5\paperwidth, 0) -- (0.5\paperwidth, 16);
-	
+	% Red Concrete Path
 	\foreach \y in {0,...,15}{%
 		\node at (0.5\paperwidth, \y) {%
 			\includegraphics[width=\scaleFactor cm, height=\scaleFactor cm] {%
@@ -25,6 +24,21 @@
 			\node at (\dimexpr{0.5\paperwidth + \x cm}, \y) {%
 				\includegraphics[width=\scaleFactor cm, height=\scaleFactor cm] {%
 					\PATH one_shots/stylesheets/images/textures/red_concrete_path.png%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% Grass
+\begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
+	\path[clip] (34,5)
+		-- ++(-7,0) -- ++(0,1) -- ++(-1,0) -- ++(0,6) -- ++(6,0) -- ++(0,5) -- ++(-4,0) -- ++(-2,5) -- ++(-5,2) -- ++(0,4) -- ++(-29,0) -- ++(0,1) -- ++(-23,0) -- ++(0,-42) -- ++(-1,0) -- ++(0,-5) -- ++(4,0) -- ++(2,-5) -- ++(5,-2) -- ++(0,-4) -- ++(5,0) -- ++(0,7) -- ++(4,0) -- ++(0,-7) -- ++(24,0) -- ++(0,7) -- ++(4,0) -- ++(0,-7) -- ++(5,0) -- ++(0,4) -- ++(2,5) -- ++(5,2) -- ++(4,0) -- ++(0,5) -- ++(-6,0) -- ++(0,6) -- ++(1,0) -- ++(0,1) -- ++(7,0)
+		-- ++(0,-27) -- ++(-68,0) -- ++(0,64) -- ++(68,0) -- cycle;
+	\foreach \x in {0,...,16}{%
+		\foreach \y in {0,...,16}{%
+			\node at (-32 + 4*\x, 30 - 4*\y) {%
+				\includegraphics[width=\scaleFactor cm, height=\scaleFactor cm] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
 				}%
 			};%
 		}%
@@ -4124,17 +4138,86 @@
 			\PATH one_shots/stylesheets/images/textures/concrete.jpeg%
 		}%
 	};%
-	\path[clip, draw, drop shadow] (0, 22)
-		-- ++(6,0) -- ++(0,3) -- ++(-12,0) -- ++(0,-3) -- cycle;
-	\foreach \x in {0,...,3} {
-		\node[inner sep=0pt,outer sep=0pt,clip] at (-4.5 + 3*\x,23.5) {%
-			\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
-			\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
-			\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
-				\ASSETPATH/Textures/Artificial_Textures/Brick/Brick_Floor_04_D4%
-			}%
-		};%
-	}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (0,24.5)
+			-- ++(6,0) -- ++(0,2.5) -- ++(-12,0) -- ++(0,-2.5) -- cycle;
+		\foreach \x in {0,...,3} {
+			\node[inner sep=0pt,outer sep=0pt,clip] at (-4.5 + 3*\x,25.75) {%
+				\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Artificial_Textures/Metal/Metal_Floor_03_B1%
+				}%
+			};%
+		}
+		\begin{scope}
+			\path[clip, draw] (0,25)
+				-- ++(1.5,0) -- ++(0,1.5) -- ++(-3,0) -- ++(0,-1.5) -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.375*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.375*\scaleFactor}%
+			\foreach \x in {0,1.5} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-0.75 + \x, 25.75) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-0.75 + \x, 25.75) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}
+		\end{scope}
+		\begin{scope}
+			\path[clip, draw] (-3.5,25)
+				-- ++(1.5,0) -- ++(0,1.5) -- ++(-3,0) -- ++(0,-1.5) -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.375*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.375*\scaleFactor}%
+			\foreach \x in {0,1.5} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-4.25 + \x, 25.75) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-4.25 + \x, 25.75) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}
+		\end{scope}
+		\begin{scope}
+			\path[clip, draw] (3.5,25)
+				-- ++(1.5,0) -- ++(0,1.5) -- ++(-3,0) -- ++(0,-1.5) -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.375*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.375*\scaleFactor}%
+			\foreach \x in {0,1.5} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (2.75 + \x, 25.75) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (2.75 + \x, 25.75) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}
+		\end{scope}
+	\end{scope}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (0, 22)
+			-- ++(6,0) -- ++(0,2.5) -- ++(-12,0) -- ++(0,-2.5) -- cycle;
+		\foreach \x in {0,...,3} {
+			\node[inner sep=0pt,outer sep=0pt,clip] at (-4.5 + 3*\x,23.5) {%
+				\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Artificial_Textures/Brick/Brick_Floor_04_D4%
+				}%
+			};%
+		}
+	\end{scope}
 \end{scope}
 % Reptile House Building
 \begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
@@ -4146,11 +4229,40 @@
 				\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
 				\pgfmathsetmacro{\scaledHeight}{0.5*\scaleFactor}%
 				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
-					\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+					\ASSETPATH/Textures/Artificial_Textures/Brick/Brick_Floor_04_D4%
 				}%
 			};%
 		}%
 	}
+	\begin{scope}
+		\path[clip, draw] (-25.6,9.4)
+			-- ++(-5,-5) -- ++(4.9,-4.9) -- ++(-4.9,-4.9) -- ++(5,-5) -- ++(5,5) -- ++(-4.9,4.9) -- ++(4.9,4.9) -- cycle;
+		\foreach \x in {0,...,5} {
+			\foreach \y in {0,...,10} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-30.2 + 2*\x,9 - 2*\y) {%
+					\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+					\pgfmathsetmacro{\scaledHeight}{0.5*\scaleFactor}%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+					}%
+				};%
+			}%
+		}
+		\begin{scope}
+			\pgfmathsetmacro{\scaledWidth}{0.3525*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.3525*\scaleFactor}%
+			\node[inner sep=0pt,outer sep=0pt,clip,rotate=45] at (-25.6,8) {%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Overlays/Glass_Blue%
+				}%
+			};%
+			\node[inner sep=0pt,outer sep=0pt,clip,rotate=45] at (-25.6,8) {%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+				}%
+			};%
+		\end{scope}
+	\end{scope}
 \end{scope}
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % --------------------------------------- % Ice Bear Habitat (North East) % --------------------------------------- %
@@ -4270,10 +4382,22 @@
 					\ASSETPATH/Flora/Trees/Snow_Trees/Pines_Trees_Snow/Pine_Trees_Shadow_Snow/Pine_Tree_Shadow_Snow_A3_5x5%
 				}%
 			};%
+			\node[inner sep=0pt,outer sep=0pt,clip] at (24.5,13) {%
+				\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+					\ASSETPATH/Flora/Bushes/Snow_Bushes/Bare_Bushes_Snow/Bare_Bush_Snow_A3_2x2%
+				}%
+			};%
 			\node[inner sep=0pt,outer sep=0pt,clip] at (24,13) {%
 				\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
 				\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
 					\ASSETPATH/Flora/Trees/Snow_Trees/Pines_Trees_Snow/Pine_Trees_Shadow_Snow/Pine_Tree_Shadow_Snow_A3_5x5%
+				}%
+			};%
+			\node[inner sep=0pt,outer sep=0pt,clip] at (17,20.5) {%
+				\pgfmathsetmacro{\scaledWidth}{0.8*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+					\ASSETPATH/Flora/Bushes/Snow_Bushes/Bare_Bushes_Snow/Bare_Bush_Snow_A2_2x2%
 				}%
 			};%
 		\end{scope}
@@ -4362,6 +4486,99 @@
 			};%
 		}
 	}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (17, 22.5)
+			-- ++(3,0) -- ++(0,4.5) -- ++(-3,0) -- cycle;
+		\foreach \y in {0,1} {
+			\node[inner sep=0pt,outer sep=0pt,clip] at (18.5,24 + 3*\y) {%
+				\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+				}%
+			};%
+		}
+		\begin{scope}
+			\path[clip, draw] (17.75,23.25)
+				-- ++(1.5,0) -- ++(0,3) -- ++(-1.5,0) -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.375*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.375*\scaleFactor}%
+			\foreach \y in {0,1.5} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (18.5, 24 + \y) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (18.5, 24 + \y) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}
+		\end{scope}
+	\end{scope}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (26.5, 13)
+			-- ++(4.5,0) -- ++(0,3) -- ++(-4.5,0) -- cycle;
+		\foreach \x in {0,1} {
+			\node[inner sep=0pt,outer sep=0pt,clip] at (28 + 3*\x ,14.5) {%
+				\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+				}%
+			};%
+		}
+		\begin{scope}
+			\path[clip, draw] (27.25,13.75)
+				-- ++(3,0) -- ++(0,1.5) -- ++(-3,0) -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.375*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.375*\scaleFactor}%
+			\foreach \x in {0,1.5} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (28 + \x, 14.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (28 + \x, 14.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}
+		\end{scope}
+	\end{scope}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (25.25, 21.25)
+			-- ++(-3.5,1.4) -- ++(0,-1.9) arc[start angle=59.25, end angle=30.75, radius=9.5] -- ++(1.9,0) -- cycle;
+		\foreach \x in {0,1} {
+			\foreach \y in {0,1}{
+				\node[inner sep=0pt,outer sep=0pt,clip] at (23 + 3*\x,22 - 3*\y) {%
+					\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+					\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+					}%
+				};%
+			}
+		}
+		\begin{scope}
+			\path[clip, draw] (25,21)
+				arc[start angle=45, end angle=405, radius=1] -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.5*\scaleFactor}%
+			\node[inner sep=0pt,outer sep=0pt,clip] at (24.3,20.3) {%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Overlays/Glass_Blue%
+				}%
+			};%
+			\node[inner sep=0pt,outer sep=0pt,clip] at (24.3,20.3) {%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+				}%
+			};%
+		\end{scope}
+	\end{scope}
 \end{scope}
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % --------------------------------------- % Elephant Habitat (South East) % --------------------------------------- %
@@ -4518,14 +4735,303 @@
 			};%
 		}
 	}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (17, -23.5)
+			-- ++(3,0) -- ++(0,-4.5) -- ++(-3,0) -- cycle;
+		\foreach \y in {0,1} {
+			\node[inner sep=0pt,outer sep=0pt,clip] at (18.5,-25 - 3*\y) {%
+				\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+				}%
+			};%
+		}
+		\begin{scope}
+			\path[clip, draw] (17.75,-24.25)
+				-- ++(1.5,0) -- ++(0,-3) -- ++(-1.5,0) -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.375*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.375*\scaleFactor}%
+			\foreach \y in {0,1.5} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (18.5, -25 - \y) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (18.5, -25 - \y) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}
+		\end{scope}
+	\end{scope}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (26.5, -14)
+			-- ++(4.5,0) -- ++(0,-3) -- ++(-4.5,0) -- cycle;
+		\foreach \x in {0,1} {
+			\node[inner sep=0pt,outer sep=0pt,clip] at (28 + 3*\x ,-15.5) {%
+				\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+				}%
+			};%
+		}
+		\begin{scope}
+			\path[clip, draw] (27.25,-14.75)
+				-- ++(3,0) -- ++(0,-1.5) -- ++(-3,0) -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.375*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.375*\scaleFactor}%
+			\foreach \x in {0,1.5} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (28 + \x, -15.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (28 + \x, -15.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}
+		\end{scope}
+	\end{scope}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (25.25, -22.25)
+			-- ++(-3.5,-1.4) -- ++(0,1.9) arc[start angle=300.75, end angle=329.25, radius=9.5] -- ++(1.9,0) -- cycle;
+		\foreach \x in {0,1} {
+			\foreach \y in {0,1}{
+				\node[inner sep=0pt,outer sep=0pt,clip] at (23 + 3*\x,-23 + 3*\y) {%
+					\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+					\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+					}%
+				};%
+			}
+		}
+		\begin{scope}
+			\path[clip, draw] (25,-22)
+				arc[start angle=-45, end angle=-405, radius=1] -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.5*\scaleFactor}%
+			\node[inner sep=0pt,outer sep=0pt,clip] at (24.3,-21.3) {%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Overlays/Glass_Blue%
+				}%
+			};%
+			\node[inner sep=0pt,outer sep=0pt,clip] at (24.3,-21.3) {%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+				}%
+			};%
+		\end{scope}
+	\end{scope}
 \end{scope}
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % -------------------------------------- % Rhinoceros Habitat (South West) % -------------------------------------- %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
-	\path[draw] (-16, -17)
+\begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]	
+	\path[clip] (-16, -17)
 		-- ++(-4,4) -- ++(-12,0) -- ++(0,-5) -- ++(4,0) -- ++(2,-5) -- ++(5,-2) -- ++(0,-4) -- ++(5,0) -- cycle;
-	\path[draw] (-16,-22.5) arc[start angle=-90, end angle=-180, radius=9.5];
+	% Ground
+	\begin{scope}
+		\path[clip] (-20,-13)
+			-- ++(4,-4) -- ++(0,-5.5) arc[start angle=270, end angle=180, radius=9.5] -- cycle;
+		% Dirt
+		\foreach \x in {0,...,4} {
+			\foreach \y in {0,...,4} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-17 - 2*\x,-22 + 2*\y) {%
+					\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+					\pgfmathsetmacro{\scaledHeight}{0.5*\scaleFactor}%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Natural_Textures/Dirt/Gravel_07_E%
+					}%
+				};%
+			}
+		}
+	\end{scope}
+\end{scope}
+% Walls
+\begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
+	\path[clip] (-16,-23) -- ++(0,0.7) -- ++(1,0) -- ++(0,5.3) -- ++(-5,5) -- ++(-5.5,0) -- ++(0,-2) -- ++(4.5,0) -- ++(4,-4) -- ++(0,-5) -- cycle;
+	% Shadows
+	\path[drop shadow] (-16,-23) -- ++(0.15,0) -- ++(0,6.1) -- ++(-3.95,3.95) -- ++(-5.75,0) -- ++(0,-0.2) -- ++(5.5,0) -- ++(4,-4) -- ++(0,-6) -- cycle;
+	% Wall Straights
+	\node[inner sep=0pt,outer sep=0pt,clip,rotate=90] at (-16,-21.5) {%
+		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Walls_and_Curbs/Wall_Brick_A/Wall_Brick_Redrock_A_Straight_A_3x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip,rotate=90] at (-16,-18.5) {%
+		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Walls_and_Curbs/Wall_Brick_A/Wall_Brick_Redrock_A_Straight_A_3x1%
+		}%
+	};%
+	
+	\node[inner sep=0pt,outer sep=0pt,clip,rotate=-45] at (-17.25,-15.75) {%
+		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Walls_and_Curbs/Wall_Brick_A/Wall_Brick_Redrock_A_Straight_A_3x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip,rotate=-45] at (-18.75,-14.25) {%
+		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Walls_and_Curbs/Wall_Brick_A/Wall_Brick_Redrock_A_Straight_A_3x1%
+		}%
+	};%
+	
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-24.5,-13) {%
+		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Walls_and_Curbs/Wall_Brick_A/Wall_Brick_Redrock_A_Straight_A_3x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-21.5,-13) {%
+		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Walls_and_Curbs/Wall_Brick_A/Wall_Brick_Redrock_A_Straight_A_3x1%
+		}%
+	};%
+	% Wall Connectors
+	\node[inner sep=0pt,outer sep=0pt,clip,rotate=90] at (-16,-17) {%
+		\scalebox{-1}{%
+			\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
+			\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+				\ASSETPATH/Structures/Walls_and_Curbs/Wall_Brick_A/Wall_Brick_Redrock_A_Connector_DIAG_A_1x1%
+			}%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip, rotate=-45] at (-20,-13) {%
+		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Walls_and_Curbs/Wall_Brick_A/Wall_Brick_Redrock_A_Connector_DIAG_A_1x1%
+		}%
+	};%
+\end{scope}
+% Fix Outside Wall overlap
+\begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
+	\path[clip] (-16.5,-22.5)
+		-- ++(0,0.2) -- ++(1.5,0) -- ++(0,-0.4) -- ++(-1.5,0) -- cycle;
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-14,-22.5) {%
+		\pgfmathsetmacro{\scaledWidth}{1*\scaleFactor}%
+		\includegraphics[width=\scaledWidth cm, keepaspectratio]{%
+			\ASSETPATH/Structures/Walls_and_Curbs/Wall_Stone_C/Wall_Stone_Earthy_C_Straight_A_3x1%
+		}%
+	};%
+\end{scope}
+% Building
+\begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
+	\path[clip, draw, drop shadow] (-16, -22.5)
+		arc[start angle=270, end angle=180, radius=9.5] -- ++(-6.5,0) -- ++(0,-5) -- ++(4,0) -- ++(2,-5) -- ++(5,-2) -- ++(0,-4) -- ++(5,0) -- cycle;
+	\foreach \x in {0,...,5} {
+		\foreach \y in {0,...,5} {
+			\node[inner sep=0pt,outer sep=0pt,clip] at (-17.5 - 3*\x,-27.5 + 3*\y) {%
+				\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Artificial_Textures/Brick/Brick_Floor_04_D4%
+				}%
+			};%
+		}
+	}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (-17, -23.5)
+			-- ++(-3,0) -- ++(0,-4.5) -- ++(3,0) -- cycle;
+		\foreach \y in {0,1} {
+			\node[inner sep=0pt,outer sep=0pt,clip] at (-18.5,-25 - 3*\y) {%
+				\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+				}%
+			};%
+		}
+		\begin{scope}
+			\path[clip, draw] (-17.75,-24.25)
+				-- ++(-1.5,0) -- ++(0,-3) -- ++(1.5,0) -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.375*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.375*\scaleFactor}%
+			\foreach \y in {0,1.5} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-18.5, -25 - \y) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-18.5, -25 - \y) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}
+		\end{scope}
+	\end{scope}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (-26.5, -14)
+			-- ++(-4.5,0) -- ++(0,-3) -- ++(4.5,0) -- cycle;
+		\foreach \x in {0,1} {
+			\node[inner sep=0pt,outer sep=0pt,clip] at (-28 - 3*\x ,-15.5) {%
+				\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+				}%
+			};%
+		}
+		\begin{scope}
+			\path[clip, draw] (-27.25,-14.75)
+				-- ++(-3,0) -- ++(0,-1.5) -- ++(3,0) -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.375*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.375*\scaleFactor}%
+			\foreach \x in {0,1.5} {
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-28 - \x, -15.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-28 - \x, -15.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}
+		\end{scope}
+	\end{scope}
+	\begin{scope}
+		\path[clip, draw, drop shadow] (-25.25, -22.25)
+			-- ++(3.5,-1.4) -- ++(0,1.9) arc[start angle=239.25, end angle=210.75, radius=9.5] -- ++(-1.9,0) -- cycle;
+		\foreach \x in {0,1} {
+			\foreach \y in {0,1}{
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-23 - 3*\x,-23 + 3*\y) {%
+					\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+					\pgfmathsetmacro{\scaledHeight}{0.75*\scaleFactor}%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Artificial_Textures/Marble/Marble_A_Black%
+					}%
+				};%
+			}
+		}
+		\begin{scope}
+			\path[clip, draw] (-25,-22)
+				arc[start angle=225, end angle=585, radius=1] -- cycle;
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\pgfmathsetmacro{\scaledHeight}{0.5*\scaleFactor}%
+			\node[inner sep=0pt,outer sep=0pt,clip] at (-24.3,-21.3) {%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Overlays/Glass_Blue%
+				}%
+			};%
+			\node[inner sep=0pt,outer sep=0pt,clip] at (-24.3,-21.3) {%
+				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+					\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+				}%
+			};%
+		\end{scope}
+	\end{scope}
 \end{scope}
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % ------------------------------------------------- % Lighting % -------------------------------------------------- %
@@ -4672,19 +5178,34 @@
 % --------------------------------------------- % Indicator Numbers % --------------------------------------------- %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
-	% Numbers
-	{\Huge
-		\indicatorNumberField{(0,-0.5)}
-		\indicatorNumberField{(4.5,8)}
-		\indicatorNumberField{(-12,1.5)}
-		\indicatorNumberField{(11,0.5)}
-		\indicatorNumberField{(-0.5,-9.5)}
-		\indicatorNumberField{(6,-19)}
-		\indicatorNumberField{(-8,-20)}
-		
-		\indicatorNumberField{(-17,19)}
-		\indicatorNumberField{(-20,24)}
-		\indicatorNumberField{(-24,26)}
-		\indicatorNumberField{(-26,17)}
-	}
+	% Indicator Numbers
+	\pgfmathsetmacro{\IndicatorSize}{5*\scaleFactor}%
+	
+	\indicatorNumberField[10]{(0,-0.5)}{\IndicatorSize}
+	
+	\indicatorNumberField[10]{(-12,1.5)}{\IndicatorSize}
+	\indicatorNumberField[10]{(-0.5,-9.5)}{\IndicatorSize}
+	\indicatorNumberField[10]{(11,0.5)}{\IndicatorSize}
+	\indicatorNumberField[10]{(4.5,8)}{\IndicatorSize}
+	
+	\indicatorNumberField[10]{(25.5,4)}{\IndicatorSize}
+	\indicatorNumberField[10]{(19.5,18.5)}{\IndicatorSize}
+	\indicatorNumberField[10]{(7,21)}{\IndicatorSize}
+	
+	\indicatorNumberField[10]{(-17,19)}{\IndicatorSize}
+	\indicatorNumberField[10]{(-20,24)}{\IndicatorSize} 
+	\indicatorNumberField[10]{(-24,26)}{\IndicatorSize}
+	\indicatorNumberField[10]{(-26,17)}{\IndicatorSize}
+	
+	\indicatorNumberField[10]{(-30,11)}{\IndicatorSize}
+	\indicatorNumberField[10]{(-22,8.5)}{\IndicatorSize}
+	
+	\indicatorNumberField[10]{(-20.5,-14)}{\IndicatorSize}
+	
+	\indicatorNumberField[10]{(-8,-20)}{\IndicatorSize}
+	\indicatorNumberField[10]{(6,-19)}{\IndicatorSize}
+	\indicatorNumberField[10]{(2,-23.5)}{\IndicatorSize}
+	
+	\indicatorNumberField[10]{(23,-14)}{\IndicatorSize}
+	
 \end{scope}

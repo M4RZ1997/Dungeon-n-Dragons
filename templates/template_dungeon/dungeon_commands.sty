@@ -150,7 +150,19 @@
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Indicator Numbers #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \newcounter{indicatorNumber}
 \stepcounter{indicatorNumber}
-\newcommand{\indicatorNumberField}[1]{%
-	\node[circle, fill=white, radius=0.2cm, draw, outer sep=0pt] at #1 {\scriptsize{\theindicatorNumber}};
-	\stepcounter{indicatorNumber}
+
+\newcommand{\indicatorNumberField}[3][]{%
+	\node[shape=circle, fill=white, draw, inner sep=0pt] (char) at #2 {%
+		\phantom{\ifblank{#1}{\theindicatorNumber}{\fontsize{#3}{#3}\selectfont #1}}%
+	};%
+	\node at (char.center) {%
+		\makebox[0pt][c]{\fontsize{#3}{#3}\selectfont\theindicatorNumber}%
+	};%
+	\stepcounter{indicatorNumber}%
 }%
+\robustify{\indicatorNumberField}%
+
+%\newcommand{\indicatorNumberField}[1]{%
+%	\node[circle, fill=white, radius=0.2cm, draw, outer sep=0pt] at #1 {\scriptsize{\theindicatorNumber}};
+%	\stepcounter{indicatorNumber}
+%}%

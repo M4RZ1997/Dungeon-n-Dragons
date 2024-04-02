@@ -20,9 +20,24 @@
 	\DungeonSheetGeometry
 	
 	\thispagestyle{empty}
-	\def\scaleFactor{1.9}	
-	\begin{tikzpicture}[outer sep=0pt, inner sep=0pt, every shadow/.style={opacity=.8,fill=black}, remember picture, overlay]
-		\begin{scope}[scale=\scaleFactor, xshift=-11cm, yshift=-14.5cm]
+	\def\scaleFactor{1.9}
+	
+	\pgfmathsetmacro{\shadowXShift}{0.4*\scaleFactor}%
+	\pgfmathsetmacro{\shadowYShift}{-0.4*\scaleFactor}%
+	
+	\begin{tikzpicture}[
+		outer sep=0pt,
+		inner sep=0pt,
+		every shadow/.style={
+			opacity=.8,
+			fill=black,
+			shadow xshift=\shadowXShift ex,
+			shadow yshift=\shadowYShift ex
+		},
+		remember picture,
+		overlay
+	]
+		\begin{scope}[scale=\scaleFactor, xshift=-11cm, yshift=-14.65cm]
 			\input{Central_Park_Zoo_input.tex}
 		\end{scope}
 	\end{tikzpicture}
