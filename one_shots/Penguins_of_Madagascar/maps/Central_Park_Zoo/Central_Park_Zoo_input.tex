@@ -7,8 +7,8 @@
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % --------------------------------------------- % Main Park  Tiling % --------------------------------------------- %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% Red Concrete Path
 \begin{scope}
-	% Red Concrete Path
 	\foreach \y in {0,...,15}{%
 		\node at (0.5\paperwidth, \y) {%
 			\includegraphics[width=\scaleFactor cm, height=\scaleFactor cm] {%
@@ -32,7 +32,7 @@
 % Grass
 \begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
 	\path[clip] (34,5)
-		-- ++(-7,0) -- ++(0,1) -- ++(-1,0) -- ++(0,6) -- ++(6,0) -- ++(0,5) -- ++(-4,0) -- ++(-2,5) -- ++(-5,2) -- ++(0,4) -- ++(-29,0) -- ++(0,1) -- ++(-23,0) -- ++(0,-42) -- ++(-1,0) -- ++(0,-5) -- ++(4,0) -- ++(2,-5) -- ++(5,-2) -- ++(0,-4) -- ++(5,0) -- ++(0,7) -- ++(4,0) -- ++(0,-7) -- ++(24,0) -- ++(0,7) -- ++(4,0) -- ++(0,-7) -- ++(5,0) -- ++(0,4) -- ++(2,5) -- ++(5,2) -- ++(4,0) -- ++(0,5) -- ++(-6,0) -- ++(0,6) -- ++(1,0) -- ++(0,1) -- ++(7,0)
+		-- ++(-7,0) -- ++(0,1) -- ++(-1,0) -- ++(0,6) -- ++(6,0) -- ++(0,5) -- ++(-4,0) -- ++(-2,5) -- ++(-5,2) -- ++(0,3.75) -- ++(-29,0) -- ++(0,1.25) -- ++(-23,0) -- ++(0,-42) -- ++(-1,0) -- ++(0,-5) -- ++(4,0) -- ++(2,-5) -- ++(5,-2) -- ++(0,-4) -- ++(5,0) -- ++(0,7) -- ++(4,0) -- ++(0,-7) -- ++(24,0) -- ++(0,7) -- ++(4,0) -- ++(0,-7) -- ++(5,0) -- ++(0,4) -- ++(2,5) -- ++(5,2) -- ++(4,0) -- ++(0,5) -- ++(-6,0) -- ++(0,6) -- ++(1,0) -- ++(0,1) -- ++(7,0)
 		-- ++(0,-27) -- ++(-68,0) -- ++(0,64) -- ++(68,0) -- cycle;
 	\foreach \x in {0,...,16}{%
 		\foreach \y in {0,...,16}{%
@@ -4235,8 +4235,8 @@
 		}%
 	}
 	\begin{scope}
-		\path[clip, draw] (-25.6,9.4)
-			-- ++(-5,-5) -- ++(4.9,-4.9) -- ++(-4.9,-4.9) -- ++(5,-5) -- ++(5,5) -- ++(-4.9,4.9) -- ++(4.9,4.9) -- cycle;
+		\path[clip, draw, drop shadow] (-27,-0.5)
+				-- ++(-4,4) -- ++(2,2) -- ++ (-1,1) -- ++(3.4,3.4) -- ++(1,-1) -- ++(1,1) -- ++(3.4,-3.4) -- ++(-1,-1) -- ++(2,-2) -- ++(-4,-4) -- ++(4,-4) -- ++(-2,-2) -- ++(1,-1) -- ++(-3.4,-3.4) -- ++(-1,1) -- ++(-1,-1) -- ++(-3.4,3.4) -- ++(1,1) -- ++(-2,2) -- cycle;
 		\foreach \x in {0,...,5} {
 			\foreach \y in {0,...,10} {
 				\node[inner sep=0pt,outer sep=0pt,clip] at (-30.2 + 2*\x,9 - 2*\y) {%
@@ -4248,19 +4248,76 @@
 				};%
 			}%
 		}
+	\end{scope}
+	\begin{scope}
 		\begin{scope}
+			\path[draw] (-25.6,0.5)
+				-- ++(3,3) -- ++(-2,2) -- ++ (1,1) -- ++(-1,1) -- ++(-1,-1) -- ++(-1,1) -- ++(-1,-1) -- ++(1,-1) -- ++(-2,-2) -- cycle;
+			\path[draw] (-25.6,-1.5)
+				-- ++(3,-3) -- ++(-2,-2) -- ++ (1,-1) -- ++(-1,-1) -- ++(-1,1) -- ++(-1,-1) -- ++(-1,1) -- ++(1,1) -- ++(-2,2) -- cycle;
+			\path[draw] (-26.6,-0.5)
+				-- ++(-4,4) -- ++(2,2) -- ++ (-1,1) -- ++(3,3) -- ++(1,-1) -- ++(1,1) -- ++(3,-3) -- ++(-1,-1) -- ++(2,-2) -- ++(-4,-4) -- ++(4,-4) -- ++(-2,-2) -- ++(1,-1) -- ++(-3,-3) -- ++(-1,1) -- ++(-1,-1) -- ++(-3,3) -- ++(1,1) -- ++(-2,2) -- cycle;
+			
 			\pgfmathsetmacro{\scaledWidth}{0.3525*\scaleFactor}%
 			\pgfmathsetmacro{\scaledHeight}{0.3525*\scaleFactor}%
-			\node[inner sep=0pt,outer sep=0pt,clip,rotate=45] at (-25.6,8) {%
+			
+			\node[inner sep=0pt,outer sep=0pt,clip,rotate=45] at (-25.6,-0.5) {%
 				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
 					\ASSETPATH/Textures/Overlays/Glass_Blue%
 				}%
 			};%
-			\node[inner sep=0pt,outer sep=0pt,clip,rotate=45] at (-25.6,8) {%
+			\node[inner sep=0pt,outer sep=0pt,clip,rotate=45] at (-25.6,-0.5) {%
 				\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
 					\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
 				}%
 			};%
+			
+			\foreach \coord in {(-24.6,0.5),(-26.6,0.5),(-23.6,1.5),(-27.6,1.5),(-22.6,2.5),(-28.6,2.5),(-21.6,3.5),(-29.6,3.5),(-22.6,4.5),(-28.6,4.5),(-23.6,5.5),(-27.6,5.5),(-22.6,6.5),(-28.6,6.5),(-23.6,7.5),(-27.6,7.5),(-24.6,8.5),(-26.6,8.5),(-25.6,7.5),%
+				(-24.6,-1.5),(-26.6,-1.5),(-23.6,-2.5),(-27.6,-2.5),(-22.6,-3.5),(-28.6,-3.5),(-21.6,-4.5),(-29.6,-4.5),(-22.6,-5.5),(-28.6,-5.5),(-23.6,-6.5),(-27.6,-6.5),(-22.6,-7.5),(-28.6,-7.5),(-23.6,-8.5),(-27.6,-8.5),(-24.6,-9.5),(-26.6,-9.5),(-25.6,-8.5)}{%
+				\node[inner sep=0pt,outer sep=0pt,clip,rotate=45] at \coord {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip,rotate=45] at \coord {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			}%
+			
+			\begin{scope}
+				\path[clip, draw] (-25.6, 2.5)
+					arc[start angle=270, end angle=-90, radius=1] -- cycle;
+				\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.5*\scaleFactor}%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-25.6, 3.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-25.6, 3.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			\end{scope}
+			\begin{scope}
+				\path[clip, draw] (-25.6, -3.5)
+					arc[start angle=90, end angle=-270, radius=1] -- cycle;
+				\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+				\pgfmathsetmacro{\scaledHeight}{0.5*\scaleFactor}%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-25.6, -4.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Glass_Blue%
+					}%
+				};%
+				\node[inner sep=0pt,outer sep=0pt,clip] at (-25.6, -4.5) {%
+					\includegraphics[width=\scaledWidth cm, height=\scaledHeight cm] {%
+						\ASSETPATH/Textures/Overlays/Metal_Frames/Metal_Frame_03_A2%
+					}%
+				};%
+			\end{scope}
 		\end{scope}
 	\end{scope}
 \end{scope}
@@ -4409,7 +4466,7 @@
 \begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
 	\path[clip] (16,22) -- ++(0,-1) -- ++(-1,0) -- ++(0,-5) -- ++(5,-5) -- ++(5.5,0) -- ++(0,2) -- ++(-4.5,0) -- ++(-4,4) -- ++(0,5) -- cycle;
 	% Shadows
-	\path[drop shadow] (16,22) -- ++(-0.15,0) -- ++(0,-6.1) -- ++(3.95,-3.95) -- ++(5.75,0) -- ++(0,0.2) -- ++(-5.5,0) -- ++(-4,4) -- ++(0,6) -- cycle;
+	\path[drop shadow] (16,22) -- ++(-0.15,0) -- ++(0,-6.05) -- ++(4.1,-4.1) -- ++(5.75,0) -- ++(0,0.3) -- ++(-5.65,0) -- ++(-3.9,3.9) -- ++(0,6) -- cycle;
 	% Wall Straights
 	\node[inner sep=0pt,outer sep=0pt,clip,rotate=90] at (16,20.5) {%
 		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
@@ -4635,6 +4692,7 @@
 			}
 		}
 	\end{scope}
+	% Water
 	\begin{scope}
 		\path[clip, draw] (20,-13)
 			-- ++(-4,-4) -- ++(0,-1.5) arc[start angle=-80, end angle=-25, radius=3] arc[start angle=155, end angle=100, radius=5] arc[start angle=280, end angle=340, radius=3] -- cycle;
@@ -4649,13 +4707,73 @@
 				};%
 			}
 		}
+		% Foam and Waves
+		\node[inner sep=0pt,outer sep=0pt,rotate=135] at (19.75,-14) {%
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Terrain/Water/Cascades/Water_Cascade_A16_1x1%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt,rotate=-140] at (17.5,-16.25) {%
+			\pgfmathsetmacro{\scaledWidth}{1*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Terrain/Water/Waves/Water_Wave_B13_1x1%
+			}%
+		};%
+	\end{scope}
+	% Assets
+	\begin{scope}
+		% Rocks
+		\node[inner sep=0pt,outer sep=0pt] at (25,-14) {%
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Natural_Decor/Rocks/Rocks/Rock_Stone_Redrock_B15_1x1%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt,rotate=45] at (23.75,-15) {%
+			\pgfmathsetmacro{\scaledWidth}{0.65*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Natural_Decor/Rocks/Rocks/Rock_Stone_Redrock_B9_1x1%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt,rotate=-45] at (19.75,-20.5) {%
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Natural_Decor/Rocks/Rocks/Rock_Stone_Redrock_B21_1x1%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt] at (19,-21) {%
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Natural_Decor/Rocks/Rocks/Rock_Stone_Redrock_B12_1x1%
+			}%
+		};%
+		% Flora
+		\node[inner sep=0pt,outer sep=0pt] at (24,-14.5) {%
+			\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Flora/Plants/Ferns/Fern_Yellow_A5_2x2%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt] at (20,-17) {%
+			\pgfmathsetmacro{\scaledWidth}{1*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Flora/Trees/Bare_Trees/Bare_Trees_Shadows/Bare_Tree_Shadow_Dark_A10_9x10%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt] at (18,-20) {%
+			\pgfmathsetmacro{\scaledWidth}{0.75*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Flora/Trees/Bare_Trees/Bare_Trees_Shadows/Bare_Tree_Shadow_Dark_A5_9x9%
+			}%
+		};%
 	\end{scope}
 \end{scope}
 % Walls
 \begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
 	\path[clip] (16,-23) -- ++(0,0.7) -- ++(-1,0) -- ++(0,5.3) -- ++(5,5) -- ++(5.5,0) -- ++(0,-2) -- ++(-4.5,0) -- ++(-4,-4) -- ++(0,-5) -- cycle;
 	% Shadows
-	\path[drop shadow] (16,-23) -- ++(-0.15,0) -- ++(0,6.1) -- ++(3.95,3.95) -- ++(5.75,0) -- ++(0,-0.2) -- ++(-5.5,0) -- ++(-4,-4) -- ++(0,-6) -- cycle;
+	\path[drop shadow] (16,-22.9) -- ++(-0.15,0) -- ++(0,6.05) -- ++(4.1,4.1) -- ++(5.75,0) -- ++(0,-0.3) -- ++(-5.65,0) -- ++(-3.9,-3.9) -- ++(0,-6) -- cycle;
 	% Wall Straights
 	\node[inner sep=0pt,outer sep=0pt,clip,rotate=90] at (16,-21.5) {%
 		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
@@ -4711,8 +4829,8 @@
 \end{scope}
 % Fix Outside Wall overlap
 \begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
-	\path[clip] (16.5,-22.5)
-		-- ++(0,0.2) -- ++(-1.5,0) -- ++(0,-0.4) -- ++(1.5,0) -- cycle;
+	\path[clip] (16.5,-22.75)
+		-- ++(0,0.5) -- ++(-1.5,0) -- ++(0,-0.5) -- ++(1.5,0) -- cycle;
 	\node[inner sep=0pt,outer sep=0pt,clip] at (14,-22.5) {%
 		\pgfmathsetmacro{\scaledWidth}{1*\scaleFactor}%
 		\includegraphics[width=\scaledWidth cm, keepaspectratio]{%
@@ -4852,12 +4970,53 @@
 			}
 		}
 	\end{scope}
+	% Assets
+	\begin{scope}
+		% Rocks
+		\node[inner sep=0pt,outer sep=0pt] at (-25,-14) {%
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Natural_Decor/Rocks/Rocks/Rock_Stone_Slate_B15_1x1%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt,rotate=45] at (-23.75,-15) {%
+			\pgfmathsetmacro{\scaledWidth}{0.65*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Natural_Decor/Rocks/Rocks/Rock_Stone_Slate_B19_1x1%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt,rotate=-45] at (-19.75,-20.5) {%
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Natural_Decor/Rocks/Rocks/Rock_Stone_Slate_B21_1x1%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt] at (-19,-21) {%
+			\pgfmathsetmacro{\scaledWidth}{0.5*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Natural_Decor/Rocks/Rocks/Rock_Stone_Slate_B8_1x1%
+			}%
+		};%
+		% Flora
+		\node[inner sep=0pt,outer sep=0pt] at (-22,-15) {%
+			\pgfmathsetmacro{\scaledWidth}{1*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Flora/Trees/Bare_Trees/Bare_Trees_Shadows/Bare_Tree_Shadow_Light_A3_9x9%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt] at (-19,-18.5) {%
+			\pgfmathsetmacro{\scaledWidth}{1.25*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Flora/Trees/Bare_Trees/Bare_Trees_Shadows/Bare_Tree_Shadow_Light_A8_11x12%
+			}%
+		};%
+	\end{scope}
 \end{scope}
 % Walls
 \begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
 	\path[clip] (-16,-23) -- ++(0,0.7) -- ++(1,0) -- ++(0,5.3) -- ++(-5,5) -- ++(-5.5,0) -- ++(0,-2) -- ++(4.5,0) -- ++(4,-4) -- ++(0,-5) -- cycle;
 	% Shadows
-	\path[drop shadow] (-16,-23) -- ++(0.15,0) -- ++(0,6.1) -- ++(-3.95,3.95) -- ++(-5.75,0) -- ++(0,-0.2) -- ++(5.5,0) -- ++(4,-4) -- ++(0,-6) -- cycle;
+	\path[drop shadow] (-16,-23) -- ++(0.15,0) -- ++(0,6.05) -- ++(-4.1,4.1) -- ++(-5.75,0) -- ++(0,-0.3) -- ++(5.65,0) -- ++(3.9,-3.9) -- ++(0,-6) -- cycle;
 	% Wall Straights
 	\node[inner sep=0pt,outer sep=0pt,clip,rotate=90] at (-16,-21.5) {%
 		\pgfmathsetmacro{\scaledHeight}{0.25*\scaleFactor}%
@@ -4915,8 +5074,8 @@
 \end{scope}
 % Fix Outside Wall overlap
 \begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
-	\path[clip] (-16.5,-22.5)
-		-- ++(0,0.2) -- ++(1.5,0) -- ++(0,-0.4) -- ++(-1.5,0) -- cycle;
+	\path[clip] (-16.5,-22.75)
+		-- ++(0,0.5) -- ++(1.5,0) -- ++(0,-0.5) -- ++(-1.5,0) -- cycle;
 	\node[inner sep=0pt,outer sep=0pt,clip] at (-14,-22.5) {%
 		\pgfmathsetmacro{\scaledWidth}{1*\scaleFactor}%
 		\includegraphics[width=\scaledWidth cm, keepaspectratio]{%
@@ -5034,49 +5193,44 @@
 	\end{scope}
 \end{scope}
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-% ------------------------------------------------- % Lighting % -------------------------------------------------- %
+% ------------------------------------------- % Lighting and Planters % ------------------------------------------- %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% Lighting
 \begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
+	\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 	% Penguin Habitat
 	\node[inner sep=0pt,outer sep=0pt,clip] at (-4,-3) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (4,-3) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (-4,2) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (4,2) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	% Middle Stairs
 	\node[inner sep=0pt,outer sep=0pt,clip] at (9.5,-10.5) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (11.5,-8.5) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (-9.5,-10.5) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
@@ -5088,43 +5242,140 @@
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (9.5,9.5) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (11.5,7.5) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (-9.5,9.5) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (-11.5,7.5) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	% Arsenal Entry
 	\node[inner sep=0pt,outer sep=0pt,clip] at (1,-18.6) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
 	\node[inner sep=0pt,outer sep=0pt,clip] at (-1,-18.6) {%
-		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
 		}%
 	};%
-	% Planters Middle Stairs
+	% Cafe & Souvenir Shop
+	\node[inner sep=0pt,outer sep=0pt,clip] at (6.75,15.25) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-6.75,15.25) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (8.75,17.35) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-8.75,17.35) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	% Ice Bear Habitat
+	\node[inner sep=0pt,outer sep=0pt,clip] at (16,16) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (20,12) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	% Elephant Habitat
+	\node[inner sep=0pt,outer sep=0pt,clip] at (16,-17) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (20,-13) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	% Rhinoceros Habitat
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-16,-17) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-20,-13) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	% North West Habitats
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-15,15) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-17,13) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-24,12) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-23.25,15) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-29,15) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-29,25) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-27,27) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-22,27) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,clip] at (-15,25) {%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Lightsources/Lamps/Mage_Light_White_1x1%
+		}%
+	};%
+\end{scope}
+% Planters
+\begin{scope}[scale=0.25, xshift=2\paperwidth, yshift=\verticalOffset]
+	% Middle Stairs
 	\node[inner sep=0pt,outer sep=0pt,clip] at (11,-12) {%
 		\pgfmathsetmacro{\scaledHeight}{0.4*\scaleFactor}%
 		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%

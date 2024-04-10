@@ -206,3 +206,73 @@
 		\end{tikzpicture}%
 	};%
 }
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Newspaper #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% Newspaper Background
+\newtcolorbox{newspaperBackground}[4][]{
+	enhanced,
+	boxrule=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	frame hidden,
+	opacityback=0,
+	width=#2,
+	valign=center,
+	left=20pt, % Set left padding to zero
+	right=20pt, % Set right padding to zero
+	top=20pt, % Set top padding to zero
+	bottom=20pt, % Set bottom padding to zero
+	overlay={
+		\node[opacity=1, anchor=north west, inner sep=0pt, outer sep=0pt] at (frame.north west) {%
+			\includegraphics[width=#2, height=#3]{\PATH templates/template_book/images/newspaper/#4_newspaper.jpg}%
+		};%
+	},%
+	#1
+}
+\newcommand{\newspaper}[7]{
+	\node[inner sep=0pt, outer sep=0pt] {%
+		\begin{tikzpicture}%
+			\node [inner sep=0pt] {%
+				\begin{newspaperBackground}{#1}{\dimexpr 1.5\fontdimen6\font * (#2) + 40pt\relax}{#3}%
+					\begin{tabular}{lr}%
+						{\fontsize{60}{72}{\newspaperFancyHeaderFont #4}}&%
+						\hspace*{\dimexpr -0.025\fontdimen6\font * (#2)\relax}{\fontsize{16}{19.2}{\newspaperEntryFont%
+							\raisebox{0.75em}{\begin{tabular}[c]{r}%
+								\bfseries #5%
+							\end{tabular}}%
+						}}%
+					\end{tabular}\\%
+					\rule{\linewidth}{4pt}\vspace*{2pt}\\
+					{\fontsize{14}{16.8}{\newspaperEntryFont \parbox{\dimexpr 0.805\fontdimen6\font * (#2)\relax}{#6\hfill} 50 cents}}\vspace*{-5pt}\\
+					\rule{\linewidth}{1pt}\vspace*{4pt}\\
+					{\newspaperEntryFont #7}\vspace*{-15pt}\\%
+					\rule{\linewidth}{1pt}
+				\end{newspaperBackground}
+			};%
+		\end{tikzpicture}%
+	};%
+}
+\newcommand{\cipherNewspaper}[7]{
+	\node[inner sep=0pt, outer sep=0pt] {%
+		\begin{tikzpicture}%
+			\node [inner sep=0pt] {%
+				\begin{newspaperBackground}{#1}{\dimexpr 1.5\fontdimen6\font * (#2) + 40pt\relax}{#3}%
+					\begin{tabular}{lr}%
+						{\fontsize{60}{72}{\newspaperFancyHeaderFont #4}}&%
+						\hspace*{\dimexpr -0.025\fontdimen6\font * (#2)\relax}{\fontsize{16}{19.2}{\newspaperEntryFont%
+							\raisebox{0.75em}{\begin{tabular}[c]{r}%
+								\bfseries #5%
+							\end{tabular}}%
+						}}%
+					\end{tabular}\\%
+					\rule{\linewidth}{4pt}\vspace*{2pt}\\
+					{\fontsize{14}{16.8}{\newspaperEntryFont \parbox{\dimexpr 0.85\fontdimen6\font * (#2)\relax}{#6\hfill} 50 cents}}\vspace*{-5pt}\\
+					\rule{\linewidth}{1pt}\vspace*{4pt}\\
+					{\cipherfont #7}\vspace*{-15pt}\\%
+					\rule{\linewidth}{1pt}
+				\end{newspaperBackground}
+			};%
+		\end{tikzpicture}%
+	};%
+}

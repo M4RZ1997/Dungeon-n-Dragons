@@ -162,6 +162,14 @@
 }%
 \robustify{\indicatorNumberField}%
 
+\newcommand{\inTextCircled}[3][]{%
+	\tikz[baseline=(char.base)]{%
+		\node[shape=circle, draw, inner sep=0pt] (char) {
+			\phantom{\ifblank{#1}{#2}{\fontsize{#3}{#3}\selectfont #1}}
+		};%
+		\node at (char.center) {\makebox[0pt][c]{\fontsize{#3}{#3}\selectfont #2}};}}
+\robustify{\inTextCircled}
+
 %\newcommand{\indicatorNumberField}[1]{%
 %	\node[circle, fill=white, radius=0.2cm, draw, outer sep=0pt] at #1 {\scriptsize{\theindicatorNumber}};
 %	\stepcounter{indicatorNumber}

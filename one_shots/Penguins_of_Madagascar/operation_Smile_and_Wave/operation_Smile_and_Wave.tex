@@ -20,18 +20,6 @@
 \usepackage{\PATH templates/template_monster/monster_commands}
 \usepackage{\PATH templates/template_magic-item/magic-items-commands}
 
-\newcommand{\numberCircled}[1]{%
-  \tikz[baseline=(char.base)]{
-    \node[shape=circle,draw,inner sep=0.8pt] (char) {#1};}%
-}
-
-\newcommand{\inTextCircled}[2][]{%
-  \tikz[baseline=(char.base)]{%
-    \node[shape=circle, draw, inner sep=-2pt]
-    (char) {\phantom{\ifblank{#1}{#2}{#1}}};%
-    \node at (char.center) {\makebox[0pt][c]{#2}};}}
-\robustify{\inTextCircled}
-
 \graphicspath{{./images},{./one_shots/Penguins_of_Madagascar/images}}
 
 \begin{document}
