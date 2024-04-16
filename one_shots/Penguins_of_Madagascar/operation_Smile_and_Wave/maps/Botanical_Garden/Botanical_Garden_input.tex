@@ -1,0 +1,325 @@
+%\renewcommand{\ASSETPATH}{\PATH ../Dungeon_Map_Assets/FA_Mapmaking_Pack/}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ------------------------------------------- % Background Full Cross % ------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}
+	\path[draw, thick] (0,.5\paperheight) -- (0,-.5\paperheight);
+	\path[draw, thick] (.5\paperwidth,0) -- (-.5\paperwidth,0);
+	\path[draw, thick, red] (.5\paperwidth,-5.25) -- (-.5\paperwidth,-5.25);
+	\path[draw, thick, red] (.5\paperwidth,2.25) -- (-.5\paperwidth,2.25);
+	
+	\node at (.5\paperwidth,.5\paperheight) {};
+	\node at (-.5\paperwidth,-.5\paperheight) {};
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% --------------------------------------------------- % Tiling % -------------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (0,0)
+		arc[start angle=-90, end angle=-150, radius=9] -- ++(-2,-2) arc[start angle=-150, end angle=-100, radius=11] -- ++(0,-10.5) arc[start angle=100, end angle=170, radius=7] -- ++(-6,0) -- ++(0,-4) -- ++(6,0) arc[start angle=190, end angle=260, radius=7] -- ++(0,-2.5) -- ++(4.35,0)
+		-- ++(0,2.5) arc[start angle=280, end angle=350, radius=7] -- ++(6,0) -- ++(0,4) -- ++(-6,0) arc[start angle=10, end angle=80, radius=7] -- ++(0,10.5) arc[start angle=-80, end angle=-30, radius=11] -- ++(-2,2) arc[start angle=-30, end angle=-90, radius=9] -- cycle;%
+	\foreach \x in {0,...,5} {%
+		\foreach \y in {0,...,9} {%
+			\node at (-10 + 4*\x, 3 - 4*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{1*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Artificial_Textures/Herringbone/Herringbone_A_07%
+				}%
+			};%
+		}%
+	}%
+	% Shadow Patching Fountain
+	\path[drop shadow] (0,0) arc[start angle=-90, end angle=-150, radius=9]
+		-- ++(-2.5,-2.5) -- ++(-2,2) -- ++(2.5,2.5) -- ++(2,-2);
+\end{scope}
+% Plaza Ramp
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (-7.875,-23)
+		arc[start angle=190, end angle=260, radius=7] -- ++(0,-10) -- ++(4.35,0) -- ++(0,7.5) -- ++(-4.35,0);
+	\foreach \x in {0,1} {%
+		\foreach \y in {0,...,2} {%
+			\node at (-2 + 4*\x, -33 - 4*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{1*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Artificial_Textures/Herringbone/Herringbone_A_07%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ------------------------------------------------- % Fountains % ------------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% Middle
+\begin{scope}[scale=0.25]
+	\node[inner sep=0pt,outer sep=0pt] at (0,9) {%
+		\pgfmathsetmacro{\scaledHeight}{5*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Fountains/Fountain_Stone_Redrock_Cut_E1_4x4%
+		}%
+	};%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% --------------------------------------------------- % Plaza % --------------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]%
+	\path[clip, draw] (0,-16)%
+		arc[start angle=90, end angle=450, radius=5];%
+	\foreach \x in {0,1} {%
+		\foreach \y in {0,1} {%
+			\node at (-4 + 8*\x, -17 - 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}%
+\begin{scope}[scale=0.25]%
+	\node[inner sep=0pt,outer sep=0pt] at (0,-21) {%
+		\pgfmathsetmacro{\scaledHeight}{2.75*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Basins/Basin_Walls/Basin_Wall_Stone_Earthy_Cut_Extra_Large_Circle_A1_4x4%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt] at (0,-21) {%
+		\pgfmathsetmacro{\scaledHeight}{1.5*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Statues/Bases/Base_Marble_Black_Octogon_A_2x2%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt] at (0,-21) {%
+		\pgfmathsetmacro{\scaledHeight}{1.5*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Statues/Statue_Metal_Bronze_Sitting_Lion_A_2x2%
+		}%
+	};%
+\end{scope}%
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% --------------------------------------------------- % Stairs % -------------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\begin{scope}
+		\path[draw, clip] (-14,-21)%
+			-- ++(0,-2) -- ++(5.3,0) -- ++(0,4) -- ++(-5.3,0) -- cycle;%
+		\foreach \x in {0,1} {%
+			\foreach \y in {0,1} {%
+				\node at (-14 + 4*\x, -21) {%
+					\pgfmathsetmacro{\scaledHeight}{1*\scaleFactor}%
+					\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+						\ASSETPATH Textures/Artificial_Textures/Herringbone/Herringbone_A_08%
+					}%
+				};%
+			}%
+		}%
+	\end{scope}
+	\begin{scope}
+		\path[draw, clip] (14,-21)%
+			-- ++(0,-2) -- ++(-5.3,0) -- ++(0,4) -- ++(5.3,0) -- cycle;%
+		\foreach \x in {0,1} {%
+			\foreach \y in {0,1} {%
+				\node at (14 - 4*\x, -21) {%
+					\pgfmathsetmacro{\scaledHeight}{1*\scaleFactor}%
+					\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+						\ASSETPATH Textures/Artificial_Textures/Herringbone/Herringbone_A_08%
+					}%
+				};%
+			}%
+		}%
+	\end{scope}
+	\node[inner sep=0pt,outer sep=0pt,rotate=90] at (-10,-21) {%
+		\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Stairs_and_Ladders/Stairs_Stone/Stairs_Stone_Volcanic_A_1x3%
+		}%
+	};%
+	\node[inner sep=0pt,outer sep=0pt,rotate=-90] at (10,-21) {%
+		\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+		\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Stairs_and_Ladders/Stairs_Stone/Stairs_Stone_Volcanic_A_1x3%
+		}%
+	};%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ---------------------------------------------- % Center  Greenery % --------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% South West
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (-14,-23)
+		-- ++(6.125,0) arc[start angle=190, end angle=260, radius=7] -- ++(0,-10) arc[start angle=255, end angle=180, radius=15.925] -- cycle;
+	\foreach \x in {0,1} {%
+		\foreach \y in {0,1} {%
+			\node at (-10 + 8*\x, -27 - 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% South East
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (14,-23)
+		-- ++(-6.125,0) arc[start angle=-10, end angle=-80, radius=7] -- ++(0,-10) arc[start angle=285, end angle=360, radius=15.925] -- cycle;
+	\foreach \x in {0,1} {%
+		\foreach \y in {0,1} {%
+			\node at (10 - 8*\x, -27 - 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% North East
+\begin{scope}[scale=0.25]
+	\path[draw, clip, drop shadow] (14,-19)
+		arc[start angle=0, end angle=22.05, radius=57.25] arc[start angle=-30, end angle=-80, radius=11] -- ++(0,-10.5) arc[start angle=80, end angle=10, radius=7] -- cycle;
+	\foreach \x in {0,1} {%
+		\foreach \y in {0,...,2} {%
+			\node at (10 - 8*\x, 0 - 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% North West
+\begin{scope}[scale=0.25]
+	\path[draw, clip, drop shadow] (-14,-19)
+		arc[start angle=180, end angle=157.95, radius=57.25] arc[start angle=-150, end angle=-100, radius=11] -- ++(0,-10.5) arc[start angle=100, end angle=170, radius=7] -- cycle;
+	\foreach \x in {0,1} {%
+		\foreach \y in {0,...,2} {%
+			\node at (-10 + 8*\x, 0 - 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% North
+\begin{scope}[scale=0.25]
+	\path[draw, clip, drop shadow] (0,18.25)
+		arc[start angle=90, end angle=135, radius=9.25] arc[start angle=240, end angle=180, radius=35] -- ++(48,0) arc[start angle=0, end angle=-60, radius=35] arc[start angle=45, end angle=90, radius=9.25] -- cycle;
+	\foreach \x in {0,...,6} {%
+		\foreach \y in {0,...,3} {%
+			\node at (-24 + 8*\x, 19 + 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+	% Path
+	\path[draw, clip] (0,34.5)
+		-- ++(-25,0) -- ++(0,-6) -- ++(50,0) -- ++(0,6) -- cycle;
+	\foreach \x in {0,...,4} {%
+		\foreach \y in {0,...,2} {%
+			\node at (-10 - 4*\x, 35 - 4*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{1*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Artificial_Textures/Herringbone/Herringbone_A_07%
+				}%
+			};%
+			\node at (10 + 4*\x, 35 - 4*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{1*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Artificial_Textures/Herringbone/Herringbone_A_07%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ------------------------------------- % Main Stairs to Greenhouse Amazonia % ------------------------------------ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	% Shadows
+	\path[drop shadow] (0,27.5)
+		-- ++(-4,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,6.1) -- ++(21,0) -- ++(0,-6.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- cycle;
+	\foreach \x in {0,...,8} {%
+		\node[inner sep=0pt,outer sep=0pt,rotate=90] at (-10.25 + 0.67*\x,31.5) {%
+			\pgfmathsetmacro{\scaledHeight}{.8*\scaleFactor}%
+			\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+				\ASSETPATH/Structures/Stairs_and_Ladders/Dwarven/Dwarven_Stairs_Stone_Redrock_Offset_A3_2x1%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt,rotate=-90] at (10.25 - 0.67*\x,31.5) {%
+			\pgfmathsetmacro{\scaledHeight}{.8*\scaleFactor}%
+			\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+				\ASSETPATH/Structures/Stairs_and_Ladders/Dwarven/Dwarven_Stairs_Stone_Redrock_Offset_A3_2x1%
+			}%
+		};%
+	}%
+	\node[inner sep=0pt,outer sep=0pt] at (0,31.5) {%
+		\pgfmathsetmacro{\scaledWidth}{3.2*\scaleFactor}%
+		\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Platforms/Dwarven/Dwarven_Dias_Rectangle_Stone_Redrock_Metal_Rusty_B3_4x3%
+		}%
+	};%
+	% Shadows
+	\path[drop shadow] (0,33.75)
+			-- ++(-2.75,0) -- ++(-0.25,0.25) -- ++(-0.25,0) -- ++(0,2.5) -- ++(6.7,0) -- ++(0,-0.625) -- ++(-0.1,0) -- ++(0,-0.625) -- ++(-0.1,0) -- ++(0,-0.625) -- ++(-0.1,0)-- ++(0,-0.625) -- ++(-0.35,0) -- ++(-0.25,-0.25) -- cycle;
+	\foreach \y in {0,...,3} {%
+		\node[inner sep=0pt,outer sep=0pt,rotate=180] at (0,34 + 0.67*\y) {%
+			\pgfmathsetmacro{\scaledHeight}{.8*\scaleFactor}%
+			\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+				\ASSETPATH/Structures/Stairs_and_Ladders/Dwarven/Dwarven_Stairs_Stone_Redrock_Offset_A3_2x1%
+			}%
+		};%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ------------------------------------------------- % Main Path % ------------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (-3.5,-75)
+		-- ++(0,30) arc[start angle=255, end angle=183, radius=23]%
+		-- ++(-1,0)%
+		-- ++(0,6)%
+		-- ++(1,0)%
+		arc[start angle=178, end angle=156, radius=64.5] arc[start angle=192.35, end angle=165, radius=14] arc[start angle=232.5, end angle=180, radius=42]%
+		-- ++(-2,0)%
+		-- ++(0,6)%
+		-- ++(2,0)%
+		-- ++(0,25) -- ++(7.2,0) -- ++(0,-31.1) arc[start angle=180, end angle=240, radius=35] arc[start angle=135, end angle=210.5, radius=9.25] -- ++(-1.8,-1.8) arc[start angle=157.95, end angle=180, radius=57.25] -- ++(0,-4.3) arc[start angle=180, end angle=255, radius=15.925]%
+		-- ++(4.35,0)%
+		arc[start angle=285, end angle=360, radius=15.925] -- ++(0,4.3) arc[start angle=0, end angle=22.05, radius=57.25] -- ++(-1.8,1.8) arc[start angle=-30.5, end angle=45, radius=9.25] arc[start angle=-60, end angle=0, radius=35] -- ++(0,31.1) -- ++(7.2,0) -- ++(0,-25)%
+		-- ++(2,0)%
+		-- ++(0,-6)%
+		-- ++(-2,0)%
+		arc[start angle=0, end angle=-52.5, radius=42] arc[start angle=12.35, end angle=-15, radius=14] arc[start angle=24, end angle=2, radius=64.5]%
+		-- ++(1,0)%
+		-- ++(0,-6)%
+		-- ++(-1,0)%
+		arc[start angle=-3, end angle=-75, radius=23] -- ++(0,-30)%
+		-- cycle;
+	\foreach \x in {0,...,17} {%
+		\foreach \y in {0,...,40} {%
+			\node at (-34 + 4*\x, 79 - 4*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{1*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Artificial_Textures/Herringbone/Herringbone_A_06%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% --------------------------------------------- % Indicator Numbers % --------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	% Indicator Numbers
+	\pgfmathsetmacro{\IndicatorSize}{10*\scaleFactor}%
+	
+	\indicatorNumberField[10]{(0,9)}{\IndicatorSize}%
+	\indicatorNumberField[10]{(3,-18)}{\IndicatorSize}%
+\end{scope}
