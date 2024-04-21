@@ -142,7 +142,7 @@
 	};%
 \end{scope}
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-% ---------------------------------------------- % Center  Greenery % --------------------------------------------- %
+% ---------------------------------------------- % Center Greenery % ---------------------------------------------- %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % South West
 \begin{scope}[scale=0.25]
@@ -206,7 +206,9 @@
 \end{scope}
 % North
 \begin{scope}[scale=0.25]
-	\path[draw, clip, drop shadow] (0,18.25)
+	\path[drop shadow] (0,18.25)
+		arc[start angle=90, end angle=210, radius=9.25] -- ++(-1,0) arc[start angle=210, end angle=-30, radius=10.25] -- ++(-1,0) arc[start angle=-30, end angle=90, radius=9.25] -- cycle;
+	\path[draw, clip] (0,18.25)
 		arc[start angle=90, end angle=135, radius=9.25] arc[start angle=240, end angle=180, radius=35] -- ++(48,0) arc[start angle=0, end angle=-60, radius=35] arc[start angle=45, end angle=90, radius=9.25] -- cycle;
 	\foreach \x in {0,...,6} {%
 		\foreach \y in {0,...,3} {%
@@ -239,12 +241,133 @@
 	}%
 \end{scope}
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-% ------------------------------------- % Main Stairs to Greenhouse Amazonia % ------------------------------------ %
+% ----------------------------------------------- % Flower Garden % ----------------------------------------------- %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (52,-21)
+		-- ++(0,-55) -- ++(-52,0) -- ++(0,28) -- ++(20,27) -- cycle;
+	\foreach \x in {0,...,6} {%
+		\foreach \y in {0,...,6} {%
+			\node at (48 - 8*\x, -25 - 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ---------------------------------------------- % Japanese Garden % ---------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (52,-21)
+		-- ++(0,70) -- ++(-20,0) -- ++(-20,-40) -- ++(5,-30) -- cycle;
+	\foreach \x in {0,...,5} {%
+		\foreach \y in {0,...,8} {%
+			\node at (8 + 8*\x, -17 + 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ----------------------------------------- % Greenhouse  Plant Nursery % ----------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (52,49)
+		-- ++(0,28) -- ++(-24,0) -- ++(0,-28) -- cycle;
+	\foreach \x in {0,...,2} {%
+		\foreach \y in {0,...,3} {%
+			\node at (32 + 8*\x, 53 + 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ------------------------------------------------- % Labyrinth % ------------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (-28,77)
+		-- ++(56,0) -- ++(0,-32) -- ++(-56,0) -- cycle;
+	\foreach \x in {0,...,6} {%
+		\foreach \y in {0,...,3} {%
+			\node at (-24 + 8*\x, 73 - 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ------------------------------------------- % Greenhouse Northumbra % ------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (-52,49)
+		-- ++(0,28) -- ++(24,0) -- ++(0,-28) -- cycle;
+	\foreach \x in {0,...,2} {%
+		\foreach \y in {0,...,3} {%
+			\node at (-32 - 8*\x, 53 + 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Short_Grass_C_01%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ------------------------------------------------ % Dark Forest % ------------------------------------------------ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (-52,-21)
+		-- ++(0,70) -- ++(20,0) -- ++(20,-40) -- ++(-5,-30) -- cycle;
+	\foreach \x in {0,...,5} {%
+		\foreach \y in {0,...,8} {%
+			\node at (-8 - 8*\x, -17 + 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Forest/Forest_Floor_Twigs_04%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ----------------------------------------------- % Water  Garden % ----------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\begin{scope}[scale=0.25]
+	\path[draw, clip] (-52,-21)
+		-- ++(0,-55) -- ++(52,0) -- ++(0,28) -- ++(-20,27) -- cycle;
+	\foreach \x in {0,...,6} {%
+		\foreach \y in {0,...,6} {%
+			\node at (-48 + 8*\x, -25 - 8*\y) {%
+				\pgfmathsetmacro{\scaledHeight}{2*\scaleFactor}%
+				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
+					\ASSETPATH Textures/Natural_Textures/Grass/Grass_G_04%
+				}%
+			};%
+		}%
+	}%
+\end{scope}
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% -------------------------------------------- % Greenhouse Amazonia % -------------------------------------------- %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% Main Stairs
 \begin{scope}[scale=0.25]
 	% Shadows
 	\path[drop shadow] (0,27.5)
 		-- ++(-4,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,0.1) -- ++(-0.8125,0) -- ++(0,6.1) -- ++(21,0) -- ++(0,-6.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- ++(-0.8125,0) -- ++(0,-0.1) -- cycle;
+	% Lower Stairs
 	\foreach \x in {0,...,8} {%
 		\node[inner sep=0pt,outer sep=0pt,rotate=90] at (-10.25 + 0.67*\x,31.5) {%
 			\pgfmathsetmacro{\scaledHeight}{.8*\scaleFactor}%
@@ -259,6 +382,7 @@
 			}%
 		};%
 	}%
+	% Platform
 	\node[inner sep=0pt,outer sep=0pt] at (0,31.5) {%
 		\pgfmathsetmacro{\scaledWidth}{3.2*\scaleFactor}%
 		\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
@@ -267,7 +391,8 @@
 	};%
 	% Shadows
 	\path[drop shadow] (0,33.75)
-			-- ++(-2.75,0) -- ++(-0.25,0.25) -- ++(-0.25,0) -- ++(0,2.5) -- ++(6.7,0) -- ++(0,-0.625) -- ++(-0.1,0) -- ++(0,-0.625) -- ++(-0.1,0) -- ++(0,-0.625) -- ++(-0.1,0)-- ++(0,-0.625) -- ++(-0.35,0) -- ++(-0.25,-0.25) -- cycle;
+		-- ++(-2.75,0) -- ++(-0.25,0.25) -- ++(-0.25,0) -- ++(0,5.5) -- ++(6.7,0) -- ++(0,-3.625) -- ++(-0.1,0) -- ++(0,-0.625) -- ++(-0.1,0) -- ++(0,-0.625) -- ++(-0.1,0)-- ++(0,-0.625) -- ++(-0.35,0) -- ++(-0.25,-0.25) -- cycle;
+	% Upper Stairs
 	\foreach \y in {0,...,3} {%
 		\node[inner sep=0pt,outer sep=0pt,rotate=180] at (0,34 + 0.67*\y) {%
 			\pgfmathsetmacro{\scaledHeight}{.8*\scaleFactor}%
@@ -276,6 +401,231 @@
 			}%
 		};%
 	}%
+	% Bridge
+	\node[inner sep=0pt,outer sep=0pt, rotate=90] at (0,40.45) {%
+		\pgfmathsetmacro{\scaledWidth}{3.2*\scaleFactor}%
+		\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+			\ASSETPATH/Structures/Platforms/Dwarven/Dwarven_Dias_Rectangle_Stone_Redrock_Metal_Rusty_B1_4x3%
+		}%
+	};%
+\end{scope}
+% Greenhouse
+\begin{scope}[scale=0.25]%
+	\def\backgroundcolor{gray}%
+	\def\glassoverlay{Glass_ClearBlue}%
+	% Lowest Base
+	\begin{scope}
+		\path[draw, clip, drop shadow] (0,45.25)%
+			-- ++(-21,0) arc[start angle=270, end angle=180, radius=0.75] -- ++(0,7) arc[start angle=180, end angle=90, radius=0.75] -- ++(42,0) arc[start angle=90, end angle=00, radius=0.75] -- ++(0,-7) arc[start angle=0, end angle=-90, radius=0.75] -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\foreach \y in {0,1} {%
+			\node[inner sep=0pt,outer sep=0pt] at (-21,46 + 7*\y) {%
+				\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+					\ASSETPATH/Textures/Overlays/\glassoverlay%
+				}%
+			};%
+			\node[inner sep=0pt,outer sep=0pt] at (21,46 + 7*\y) {%
+				\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+					\ASSETPATH/Textures/Overlays/\glassoverlay%
+				}%
+			};%
+		}%
+	\end{scope}
+	% Left Back Entry
+	\begin{scope}
+		\path[draw, clip] (-5,59)%
+			-- ++(0,0.5) arc[start angle=0, end angle=90, radius=0.5] -- ++(-4,0) arc[start angle=90, end angle=180, radius=0.5] -- ++(0,-0.5) -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\node[inner sep=0pt,outer sep=0pt] at (-7,59.5) {%
+			\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Textures/Overlays/\glassoverlay%
+			}%
+		};%
+	\end{scope}
+	% Right Back Entry
+	\begin{scope}
+		\path[draw, clip] (5,59)%
+			-- ++(0,0.5) arc[start angle=180, end angle=90, radius=0.5] -- ++(4,0) arc[start angle=90, end angle=0, radius=0.5] -- ++(0,-0.5) -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\node[inner sep=0pt,outer sep=0pt] at (7,59.5) {%
+			\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Textures/Overlays/\glassoverlay%
+			}%
+		};%
+	\end{scope}
+	% Base
+	\begin{scope}
+		\path[draw, clip, drop shadow] (0,39)%
+			-- ++(-3.5,0) -- ++(0,1.5) -- ++(-8,0) arc[start angle=270, end angle=180, radius=2.5] -- ++(-1,0) arc[start angle=270, end angle=180, radius=3] -- ++(-1.5,0) arc[start angle=270, end angle=90, radius=3.5] -- ++(2,0) -- ++(0,1.5) arc[start angle=180, end angle=90, radius=1.5] -- ++(2,0) -- ++(0,1) arc[start angle=180, end angle=90, radius=2]%
+			-- ++(2,0) -- ++(0,0.5) arc[start angle=180, end angle=90, radius=0.5] -- ++(4,0) arc[start angle=90, end angle=0, radius=0.5] -- ++(0,-0.5)%
+			-- ++(10,0)%
+			-- ++(0,0.5) arc[start angle=180, end angle=90, radius=0.5] -- ++(4,0) arc[start angle=90, end angle=0, radius=0.5] -- ++(0,-0.5) -- ++(2,0)%
+			arc[start angle=90, end angle=0, radius=2] -- ++(0,-1) -- ++(2,0) arc[start angle=90, end angle=0, radius=1.5] -- ++(0,-1.5) -- ++(2,0) arc[start angle=90, end angle=-90, radius=3.5] -- ++(-1.5,0) arc[start angle=0, end angle=-90, radius=3] -- ++(-1,0) arc[start angle=0, end angle=-90, radius=2.5] -- ++(-8,0) -- ++(0,-1.5) -- cycle;%
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\node[inner sep=0pt,outer sep=0pt] at (21,50) {%
+			\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Textures/Overlays/\glassoverlay%
+			}%
+		};%
+		\node[inner sep=0pt,outer sep=0pt] at (-21,50) {%
+			\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Textures/Overlays/\glassoverlay%
+			}%
+		};%
+		\foreach \x in {0,...,3} {%
+			\foreach \y in {0,1} {%
+				\node[inner sep=0pt,outer sep=0pt] at (-12 + 8*\x,57 - 15*\y) {%
+					\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+					\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+						\ASSETPATH/Textures/Overlays/\glassoverlay%
+					}%
+				};%
+			}%
+		}%
+	\end{scope}
+	% Entry
+	\begin{scope}
+		\path[draw, clip, drop shadow] (0,39)%
+			-- ++(-3.5,0) -- ++(0,4) -- ++(7,0) -- ++(0,-4) -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\node[inner sep=0pt,outer sep=0pt] at (0,41) {%
+			\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Textures/Overlays/\glassoverlay%
+			}%
+		};%
+	\end{scope}
+	% Back Gallery
+	\begin{scope}
+		\path[draw, clip] (0,56.5)%
+			-- ++(-4.5,0)  arc[start angle=90, end angle=270, radius=1.5] -- ++(9,0) arc[start angle=-90, end angle=90, radius=1.5] -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\foreach \x in {0,1} {%
+			\node[inner sep=0pt,outer sep=0pt] at (-4 + 8*\x,55) {%
+				\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+					\ASSETPATH/Textures/Overlays/\glassoverlay%
+				}%
+			};%
+		}%
+	\end{scope}
+	% Left Atrium
+	\begin{scope}
+		\path[draw, clip, drop shadow] (-17.5,53)%
+			-- ++(0,1.5) arc[start angle=180, end angle=90, radius=1.5] -- ++(5,0) arc[start angle=90, end angle=0, radius=1.5] -- ++(0,-7) -- ++(-8,0) -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\node[inner sep=0pt,outer sep=0pt] at (-13.5,52) {%
+			\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Textures/Overlays/\glassoverlay%
+			}%
+		};%
+	\end{scope}
+	% Right Atrium
+	\begin{scope}
+		\path[draw, clip, drop shadow] (17.5,53)%
+			-- ++(0,1.5) arc[start angle=0, end angle=90, radius=1.5] -- ++(-5,0) arc[start angle=90, end angle=180, radius=1.5] -- ++(0,-7) -- ++(8,0) -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\node[inner sep=0pt,outer sep=0pt] at (13.5,52) {%
+			\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Textures/Overlays/\glassoverlay%
+			}%
+		};%
+	\end{scope}
+	% Middle Gallery
+	\begin{scope}
+		\path[draw, clip, drop shadow] (0,48)%
+			-- ++(-18.5,0) arc[start angle=270, end angle=90, radius=1.5] -- ++(37,0) arc[start angle=90, end angle=-90, radius=1.5] -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\foreach \x in {0,1} {%
+			\node[inner sep=0pt,outer sep=0pt] at (-16 + 8*\x,49.5) {%
+				\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+					\ASSETPATH/Textures/Overlays/\glassoverlay%
+				}%
+			};%
+			\node[inner sep=0pt,outer sep=0pt] at (16 - 8*\x,49.5) {%
+				\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+					\ASSETPATH/Textures/Overlays/\glassoverlay%
+				}%
+			};%
+		}%
+	\end{scope}
+	% Left Dome
+	\begin{scope}
+		\path[draw, clip, drop shadow] (-7.5,56)%
+			arc[start angle=-270, end angle=90, radius=4] -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\node[inner sep=0pt,outer sep=0pt] at (-7.5,52) {%
+			\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Textures/Overlays/\glassoverlay%
+			}%
+		};%
+	\end{scope}
+	% Right Dome
+	\begin{scope}
+		\path[draw, clip, drop shadow] (7.5,56)%
+			arc[start angle=-270, end angle=90, radius=4] -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\node[inner sep=0pt,outer sep=0pt] at (7.5,52) {%
+			\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+			\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+				\ASSETPATH/Textures/Overlays/\glassoverlay%
+			}%
+		};%
+	\end{scope}
+	% Front Gallery
+	\begin{scope}
+		\path[draw, clip, drop shadow] (0,43)%
+			-- ++(-15,0) arc[start angle=270, end angle=90, radius=3] -- ++(30,0) arc[start angle=90, end angle=-90, radius=3] -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\foreach \x in {0,...,4} {%
+			\node[inner sep=0pt,outer sep=0pt] at (-16 + 8*\x,46) {%
+				\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+				\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+					\ASSETPATH/Textures/Overlays/\glassoverlay%
+				}%
+			};%
+		}%
+	\end{scope}
+	% Main Dome
+	\begin{scope}
+		\path[draw, clip, drop shadow] (0,45)%
+			arc[start angle=-90, end angle=270, radius=5] -- cycle;
+		\path[fill=\backgroundcolor] (0,39)%
+			-- ++(-23,0) -- ++(0,21) -- ++(46,0) -- ++(0,-21) -- cycle;
+		\foreach \x in {0,1} {%
+			\foreach \y in {0,1} {%
+				\node[inner sep=0pt,outer sep=0pt] at (-4 + 8*\x,46 + 8*\y) {%
+					\pgfmathsetmacro{\scaledWidth}{2*\scaleFactor}%
+					\includegraphics[width=\scaledWidth cm, keepaspectratio] {%
+						\ASSETPATH/Textures/Overlays/\glassoverlay%
+					}%
+				};%
+			}%
+		}%
+	\end{scope}
 \end{scope}
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 % ------------------------------------------------- % Main Path % ------------------------------------------------- %
@@ -283,28 +633,29 @@
 \begin{scope}[scale=0.25]
 	\path[draw, clip] (-3.5,-75)
 		-- ++(0,30) arc[start angle=255, end angle=183, radius=23]%
-		-- ++(-1,0)%
+		-- ++(-31,0)%
 		-- ++(0,6)%
-		-- ++(1,0)%
+		-- ++(31,0)%
 		arc[start angle=178, end angle=156, radius=64.5] arc[start angle=192.35, end angle=165, radius=14] arc[start angle=232.5, end angle=180, radius=42]%
-		-- ++(-2,0)%
+		-- ++(-20,0)%
 		-- ++(0,6)%
-		-- ++(2,0)%
+		-- ++(20,0)%
 		-- ++(0,25) -- ++(7.2,0) -- ++(0,-31.1) arc[start angle=180, end angle=240, radius=35] arc[start angle=135, end angle=210.5, radius=9.25] -- ++(-1.8,-1.8) arc[start angle=157.95, end angle=180, radius=57.25] -- ++(0,-4.3) arc[start angle=180, end angle=255, radius=15.925]%
-		-- ++(4.35,0)%
-		arc[start angle=285, end angle=360, radius=15.925] -- ++(0,4.3) arc[start angle=0, end angle=22.05, radius=57.25] -- ++(-1.8,1.8) arc[start angle=-30.5, end angle=45, radius=9.25] arc[start angle=-60, end angle=0, radius=35] -- ++(0,31.1) -- ++(7.2,0) -- ++(0,-25)%
-		-- ++(2,0)%
+		-- ++(4.3,0)%
+		arc[start angle=285, end angle=360, radius=15.925] -- ++(0,4.3) arc[start angle=0, end angle=22.05, radius=57.25]
+		-- ++(-1.8,1.8) arc[start angle=-30.5, end angle=45, radius=9.25] arc[start angle=-60, end angle=0, radius=35] -- ++(0,31.1) -- ++(7.2,0) -- ++(0,-25)%
+		-- ++(20,0)%
 		-- ++(0,-6)%
-		-- ++(-2,0)%
+		-- ++(-20,0)%
 		arc[start angle=0, end angle=-52.5, radius=42] arc[start angle=12.35, end angle=-15, radius=14] arc[start angle=24, end angle=2, radius=64.5]%
-		-- ++(1,0)%
+		-- ++(31,0)%
 		-- ++(0,-6)%
-		-- ++(-1,0)%
+		-- ++(-31,0)%
 		arc[start angle=-3, end angle=-75, radius=23] -- ++(0,-30)%
 		-- cycle;
-	\foreach \x in {0,...,17} {%
+	\foreach \x in {0,...,25} {%
 		\foreach \y in {0,...,40} {%
-			\node at (-34 + 4*\x, 79 - 4*\y) {%
+			\node at (-50 + 4*\x, 79 - 4*\y) {%
 				\pgfmathsetmacro{\scaledHeight}{1*\scaleFactor}%
 				\includegraphics[height=\scaledHeight cm, keepaspectratio] {%
 					\ASSETPATH Textures/Artificial_Textures/Herringbone/Herringbone_A_06%
