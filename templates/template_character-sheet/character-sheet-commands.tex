@@ -288,6 +288,10 @@
 		\ifthenelse{\equal{#1}{DEX}}{%
 			\renewcommand{\tempAbilityScoreValue}{\DexterityScoreValue}
 		}{%
+			\ifthenelse{\equal{#1}{CHA}}{%
+				\renewcommand{\tempAbilityScoreValue}{\CharismaScoreValue}
+			}{%
+			}%
 		}%
 	}%
 	

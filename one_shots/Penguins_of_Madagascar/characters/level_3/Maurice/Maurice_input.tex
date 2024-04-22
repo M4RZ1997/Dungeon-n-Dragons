@@ -114,13 +114,14 @@
 		\item Arboreal Movement
 	\end{itemize}
 	\textbf{Hermit}\\
-	\textbf{Metamagic Adept}\\
 	\textbf{Druid Traits}
 	\begin{itemize}
 		\item Wild Shape
-		\item Druid Circle
+		\item Druid Circle (Spores)
 		\begin{itemize}
-			\item Circle of Spores
+			\item Circle Spells
+			\item Halo of Spores
+			\item Symbiotic Entity
 		\end{itemize}
 	\end{itemize}
 }
@@ -139,33 +140,16 @@
 \CantripSlotC{Shape Water (S)}
 
 \FirstLevelSpellSlotsTotal{4}
-\FirstLevelSpellSlotA{Absorb Elements (S)}
-\FirstLevelSpellSlotB{Detect Magic (V, S)}
-\FirstLevelSpellSlotC{Entangle (V, S)}
-\FirstLevelSpellSlotD{Faerie Fire (V)}
-\FirstLevelSpellSlotE{Healing Word (V)}
-
-\FirstLevelSpellSlotBPrepared{True}
-\FirstLevelSpellSlotCPrepared{True}
-\FirstLevelSpellSlotEPrepared{True}
+\FirstLevelSpellSlotA{Detect Magic (V, S)}
+\FirstLevelSpellSlotB{Entangle (V, S)}
+\FirstLevelSpellSlotC{Healing Word (V)}
 
 \SecondLevelSpellSlotsTotal{2}
 \SecondLevelSpellSlotA{Blindness/Deafness (V)}
 \SecondLevelSpellSlotB{Gentle Repose (V, S, M)}
 \SecondLevelSpellSlotC{Augury (V, S, M)}
-\SecondLevelSpellSlotD{Continual Flame (V, S, M)}
-\SecondLevelSpellSlotE{Darkvision (V, S, M)}
-\SecondLevelSpellSlotF{Enhance Ability (V, S, M)}
-\SecondLevelSpellSlotG{Lesser Restoration (V, S)}
-\SecondLevelSpellSlotH{Pass without Trace (V, S, M)}
-\SecondLevelSpellSlotI{Spike Growth (V, S, M)}
-\SecondLevelSpellSlotJ{Summon Beast (V, S, M)}
-
-\SecondLevelSpellSlotAPrepared{True}
-\SecondLevelSpellSlotBPrepared{True}
-\SecondLevelSpellSlotCPrepared{True}
-\SecondLevelSpellSlotEPrepared{True}
-\SecondLevelSpellSlotGPrepared{True}
+\SecondLevelSpellSlotD{Darkvision (V, S, M)}
+\SecondLevelSpellSlotE{Lesser Restoration (V, S)}
 
 \renewcommand{\FeaturesAndSpells}{
 \chapter*{Features, Magic Items and Spells}
@@ -274,18 +258,6 @@ If you cast this spell multiple times, you can have no more than two of its non-
 \subsection*{Level 1}
 
 \DndSpellHeader
-  {Absorb Elements}
-  {1st-Level Abjuration}
-  {1 Reaction, which you take when you take acid, cold, fire, lightning, or thunder damage}
-  {Self}
-  {S}
-  {1 Round}
-
-The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6 for each slot level above 1st.
-
-\DndSpellHeader
   {Detect Magic}
   {1st-Level Divination (Ritual)}
   {1 Action}
@@ -310,20 +282,6 @@ Grasping weeds and vines sprout from the ground in a 20-foot square starting fro
 A creature in the area when you cast the spell must succeed on a Strength saving throw or be restrained by the entangling plants until the spell ends. A creature restrained by the plants can use its action to make a Strength check against your spell save DC. On a success, it frees itself.
 
 When the spell ends, the conjured plants wilt away.
-
-\DndSpellHeader
-  {Fairie Fire}
-  {1st-Level Evocation}
-  {1 Action}
-  {60 feet}
-  {V}
-  {Concentration, up to 1 Minute}
-
-Each object in a 20-foot cube within range is outlined in blue, green, or violet light (your choice).
-
-Any creature in the area when the spell is cast is also outlined in light if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed dim light in a 10-foot radius.
-
-Any attack roll against an affected creature or object has advantage if the attacker can see it, and the affected creature or object can’t benefit from being invisible.
 
 \DndSpellHeader
   {Healing Word}
@@ -381,16 +339,6 @@ By casting gem-inlaid sticks, rolling dragon bones, laying out ornate cards, or 
 The spell doesn’t take into account any possible circumstances that might change the outcome, such as the casting of additional spells or the loss or gain of a companion. If you cast the spell two or more times before completing your next long rest, there is a cumulative 25 percent chance for each casting after the first that you get a random reading. The DM makes this roll in secret.
 
 \DndSpellHeader
-  {Continual Flame}
-  {2nd-Level Evocation}
-  {1 Action}
-  {Touch}
-  {V, S, M (ruby dust worth 50 gp, which the spell consumes)}
-  {Until dispelled}
-
-A flame, equivalent in brightness to a torch, springs forth from an object that you touch. The effect looks like a regular flame, but it creates no heat and doesn’t use oxygen. A continual flame can be covered or hidden but not smothered or quenched.
-
-\DndSpellHeader
   {Darkvision}
   {2nd-Level Transmutation}
   {1 Action}
@@ -401,26 +349,6 @@ A flame, equivalent in brightness to a torch, springs forth from an object that 
 You touch a willing creature to grant it the ability to see in the dark. For the duration, that creature has darkvision out to a range of 60 feet.
 
 \DndSpellHeader
-  {Enhance Ability}
-  {2nd-Level Transmutation}
-  {1 Action}
-  {Touch}
-  {V, S, M (fur or a feather from a beast)}
-  {Concentration, up to 1 Hour}
-
-You touch a creature and bestow upon it a magical enhancement. Choose one of the following effects; the target gains the effect until the spell ends.
-\begin{itemize}
-	\item \textbf{Bear’s Endurance.} The target has advantage on Constitution checks. It also gains 2d6 temporary hit points, which are lost when the spell ends.
-	\item \textbf{Bull’s Strength.} The target has advantage on Strength checks, and their carrying capacity doubles.
-	\item \textbf{Cat’s Grace.} The target has advantage on Dexterity checks. It also doesn’t take damage from falling 20 feet or less if it isn’t incapacitated.
-	\item \textbf{Eagle’s Splendor.} The target has advantage on Charisma checks.
-	\item \textbf{Fox’s Cunning.} The target has advantage on Intelligence checks.
-	\item \textbf{Owl’s Wisdom.} The target has advantage on Wisdom checks.
-\end{itemize}
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.
-
-\DndSpellHeader
   {Lesser Restoration}
   {2nd-Level Abjuration}
   {1 Action}
@@ -429,105 +357,6 @@ You touch a creature and bestow upon it a magical enhancement. Choose one of the
   {Instantaneous}
 
 You touch a creature and can end either one disease or one condition afflicting it. The condition can be blinded, deafened, paralyzed, or poisoned.
-
-\DndSpellHeader
-  {Pass Without Trace}
-  {2nd-Level Abjuration}
-  {1 Action}
-  {Self}
-  {V, S, M (ashes from a burned leaf of mistletoe and a sprig of spruce)}
-  {Concentration, up to 1 Hour}
-
-A veil of shadows and silence radiates from you, masking you and your companions from detection. For the duration, each creature you choose within 30 feet of you (including you) has a +10 bonus to Dexterity (Stealth) checks and can’t be tracked except by magical means. A creature that receives this bonus leaves behind no tracks or other traces of its passage.
-
-\DndSpellHeader
-  {Spike Growth}
-  {2nd-Level Transmutation}
-  {1 Action}
-  {150 feet}
-  {V, S, M (seven sharp thorns or seven small twigs, each sharpened to a point)}
-  {Concentration, up to 10 Minutes}
-
-The ground in a 20-foot radius centered on a point within range twists and sprouts hard spikes and thorns. The area becomes difficult terrain for the duration. When a creature moves into or within the area, it takes 2d4 piercing damage for every 5 feet it travels.
-
-The transformation of the ground is camouflaged to look natural. Any creature that can’t see the area at the time the spell is cast must make a Wisdom (Perception) check against your spell save DC to recognize the terrain as hazardous before entering it.
-
-\DndSpellHeader
-  {Summon Beast}
-  {2nd-Level Conjuration}
-  {1 Action}
-  {90 feet}
-  {V, S, M (a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp)}
-  {Concentration, up to 1 Hour}
-
-You call forth a bestial spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the Bestial Spirit stat block. When you cast the spell, choose an environment: Air, Land, or Water. The creature resembles an animal of your choice that is native to the chosen environment, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.
-
-The creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don’t issue any, it takes the Dodge action and uses its move to avoid danger.
-
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd level or higher, use the higher level where the spell’s level appears in the stat block.
-
-\begin{DndMonster}[width=0.5\textwidth]{Bestial Spirit}
-    \DndMonsterType{Small Beast}
-
-    % If you want to use commas in the key values, enclose the values in braces.
-    \DndMonsterBasics[
-        armor-class = {11 + the level of the spell (natural armor)},
-        hit-points  = {20 (Air only) or 30 (Land and Water only) + 5 for each spell level above 2nd},
-        speed       = {30 ft., climb 30 ft. (Land only), fly 60 ft. (Air only), swim 30 ft. (Water only)},
-    ]
-    
-	\renewcommand{\AbilityScoreSpacer}{~}
-    \DndMonsterAbilityScores[
-		str = 18,
-		dex = 11,
-		con = 16,
-		int = 4,
-		wis = 14,
-		cha = 5,
-    ]
-
-    \DndMonsterDetails[
-        %saving-throws = {STR +3 + PB, CON +3 + PB},
-        %skills = {Athletics +3 + PB, Intimidation +1 + (2 x PB)},
-        %damage-vulnerabilities = {cold},
-        %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-        %damage-immunities = {poison},
-        senses = {Darkvision 60 ft., Passive Perception 12},
-        %condition-immunities = {prone},
-        languages = {understands the languages you speak},
-        challenge = 1,
-    ]
-    
-    \DndMonsterAction{Flyby (Air Only)}
-    The beast doesn’t provoke opportunity attacks when it flies out of an enemy’s reach.
-    
-    \DndMonsterAction{Pack Tactics (Land and Water Only)}
-    The beast has advantage on an attack roll against a creature if at least one of the beast’s allies is within 5 feet of the creature and the ally isn’t incapacitated.
-    
-    \DndMonsterAction{Water Breathing (Water Only)}
-    The beast can breathe only underwater.
-	
-	\DndMonsterSection{Actions}
-	\DndMonsterAction{Multiattack}
-	The beast makes a number of attacks equal to half this spell’s level (rounded down).
-	
-	\DndMonsterAttack[
-      name=Maul,
-      distance=melee, % valid options are in the set {both,melee,ranged},
-      %type=weapon, %valid options are in the set {weapon,spell}
-      mod=your spell attack modifier,
-      reach=5,
-      %range=30,
-      targets=one target,
-      dmg=\DndDice{1d8} + 4 + the spell's level,
-      dmg-type=piercing,
-      %plus-dmg=,
-      %plus-dmg-type=,
-      %or-dmg=,
-      %or-dmg-when=,
-      %extra=,
-    ]
-\end{DndMonster}
 
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}

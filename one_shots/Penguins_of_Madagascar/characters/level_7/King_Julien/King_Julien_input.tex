@@ -2,7 +2,7 @@
 \CharacterName{King Julien}
 
 \Class{Ranger}
-\Level{3}
+\Level{7}
 \Background{Entertainer}
 \PlayerName{}
 \Race{Lemur o. M.}
@@ -62,32 +62,35 @@
 \CharismaModifierBonus{0}
 
 \Inspiration{}
-\Proficiency{+2}
+\Proficiency{+3}
 
 % Armor Class is not automatically calculated
-\ArmorClass{13}
+\ArmorClass{14}
 \InitiativeModifier{0}
 \Speed{30}
-\MaxHitPointsRolled{23} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{45} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{}
 \TemporaryHitPoints{}
 \HitDice{d10}
 \HitDiceSpent{0}
 
-\addWeaponStatistic{Shortbow}{KingJulien}{DEX}{P}{+2}{1d6 p (80/320)}
+\addWeaponStatistic{Shortbow}{KingJulien}{DEX}{P}{+2}{1d6 p}
 \addWeaponStatistic{Longsword}{KingJulien}{STR}{P}{0}{1d8 s}
 \addWeaponStatistic{Longsword}{KingJulienV}{STR}{P}{0}{1d10 s (v)}
+\addWeaponStatistic{Unarmed Strike}{BlankCharacter}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
-	\textbf{Shortbow}\\
-	\textbf{Longsword}\\
+	Shortbow (80/120)\\
+	Longsword\\
+	Leather Armor\\
+	\textbf{Bracers of Archery}
 }
 
 \OtherProficienciesLanguages{
-\textbf{Languages:}\\ Common \\
+\textbf{Languages:}\\ Common, Primordial \\
 \textbf{Armor:}\\ Light Armor, Medium Armor, Shields\\
 \textbf{Weapons:}\\ Simple Weapons, Martial Weapons \\
-\textbf{Tools:}\\  Lute
+\textbf{Tools:}\\ Lute
 }
 
 \PersonalityTraits{
@@ -114,6 +117,7 @@
 		\item Arboreal Movement
 	\end{itemize}
 	\textbf{Entertainer}\\
+	\textbf{Sharpshooter}\\
 	\textbf{Ranger Traits}
 	\begin{itemize}
 		\item Favored Enemy
@@ -125,6 +129,7 @@
 		\item Beast Master
 		\begin{itemize}
 			\item Primal Companion (Mort)
+			\item Exceptional Training
 		\end{itemize}
 		\item Primal Awareness
 	\end{itemize}
@@ -139,11 +144,16 @@
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
-\FirstLevelSpellSlotsTotal{3}
-\FirstLevelSpellSlotA{Speak with Animals (V, S)}
-\FirstLevelSpellSlotB{Absorb Elements (S)}
-\FirstLevelSpellSlotC{Entangle (V, S)}
-\FirstLevelSpellSlotD{Hunter's Mark (V)}
+\FirstLevelSpellSlotsTotal{4}
+\FirstLevelSpellSlotA{Absorb Elements (S)}
+\FirstLevelSpellSlotB{Entangle (V, S) (1x free per long rest)}
+\FirstLevelSpellSlotC{Hunter's Mark (V)}
+
+\SecondLevelSpellSlotsTotal{3}
+\SecondLevelSpellSlotA{Beast Sense (S) (1x free per long rest)}
+\SecondLevelSpellSlotB{Pass Without Trace (V, S, M)}
+\SecondLevelSpellSlotC{Silence (V, S)}
+\SecondLevelSpellSlotC{Spike Growth (V, S, M)}
 
 \renewcommand{\FeaturesAndSpells}{
 \chapter*{Features, Magic Items and Spells}
@@ -162,9 +172,17 @@ You thrive in front of an audience. You know how to entrance them, entertain the
 \subsection*{By Popular Demand}
 You can always find a place to perform, usually in an inn or tavern but possibly with a circus, at a theater, or even in a noble's court. At such a place, you receive free lodging and food of a modest or comfortable standard (depending on the quality of the establishment), as long as you perform each night. In addition, your performance makes you something of a local figure. When strangers recognize you in a town where you have performed, they typically take a liking to you.
 
+\section*{Sharpshooter}
+You have mastered ranged weapons and can make shots that others find impossible. You gain the following benefits:
+\begin{itemize}
+	\item Attacking at long range doesn't impose disadvantage on your ranged weapon attack rolls.
+	\item Your ranged weapon attacks ignore half and three-quarters cover.
+	\item Before you make an attack with a ranged weapon that you are proficient with, you can choose to take a -5 penalty to the attack roll. If that attack hits, you add +10 to the attack's damage.
+\end{itemize}
+
 \section*{Ranger Traits}
 \subsection*{Favored Enemy}
-\textbf{(Plants)}\\
+\textbf{(Plants, Elementals)}\\
 Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.
 
 Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies.
@@ -175,7 +193,7 @@ When you gain this feature, you also learn one language of your choice that is s
 
 You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.
 \subsection*{Natural Explorer}
-\textbf{(Forest)}\\
+\textbf{(Forest, Mountain)}\\
 Also at 1st level, you are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you’re proficient in.
 
 While traveling for an hour or more in your favored terrain, you gain the following benefits:
@@ -194,16 +212,6 @@ At 2nd level, you adopt a particular style of fighting as your specialty. Choose
 You gain a +2 bonus to attack rolls you make with ranged weapons.
 \subsection*{Beast Master}
 The Beast Master archetype embodies a friendship between the civilized races and the beasts of the world. United in focus, beast and ranger work as one to fight the monstrous foes that threaten civilization and the wilderness alike. Emulating the Beast Master archetype means committing yourself to this ideal, working in partnership with an animal as its companion and friend.
-\subsubsection*{Primal Companion}
-You magically summon a primal beast, which draws strength from your bond with nature. The beast is friendly to you and your companions and obeys your commands. Choose its stat block-Beast of the Land, Beast of the Sea, or Beast of the Sky-which uses your proficiency bonus (PB) in several places. You also determine the kind of animal the beast is, choosing a kind appropriate for the stat block. Whatever kind you choose, the beast bears primal markings, indicating its mystical origin.
-
-In combat, the beast acts during your turn. It can move and use its reaction on its own, but the only action it takes is the Dodge action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. You can also sacrifice one of your attacks when you take the Attack action to command the beast to take the Attack action. If you are incapacitated, the beast can take any action of its choice, not just Dodge.
-
-If the beast has died within the last hour, you can use your action to touch it and expend a spell slot of 1st level or higher. The beast returns to life after 1 minute with all its hit points restored. 
-
-King Julien can only have Mort as a Primal Companion and cannot summon another, different primal beast.
-
-The beast will vanish if you die.
 \begin{DndMonster}[width=0.5\textwidth]{Mort}
     \DndMonsterType{Tiny Beast}
 
@@ -260,8 +268,17 @@ The beast will vanish if you die.
       %extra=,
     ]	
 \end{DndMonster}
-\eject
-\vspace*{0.75cm}
+\subsubsection*{Primal Companion}
+You magically summon a primal beast, which draws strength from your bond with nature. The beast is friendly to you and your companions and obeys your commands. Choose its stat block-Beast of the Land, Beast of the Sea, or Beast of the Sky-which uses your proficiency bonus (PB) in several places. You also determine the kind of animal the beast is, choosing a kind appropriate for the stat block. Whatever kind you choose, the beast bears primal markings, indicating its mystical origin.
+
+In combat, the beast acts during your turn. It can move and use its reaction on its own, but the only action it takes is the Dodge action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. You can also sacrifice one of your attacks when you take the Attack action to command the beast to take the Attack action. If you are incapacitated, the beast can take any action of its choice, not just Dodge.
+
+If the beast has died within the last hour, you can use your action to touch it and expend a spell slot of 1st level or higher. The beast returns to life after 1 minute with all its hit points restored. 
+
+King Julien can only have Mort as a Primal Companion and cannot summon another,\\different primal beast.
+
+The beast will vanish if you die.
+
 \begin{DndMonster}[width=0.5\textwidth]{Buffed-Up Mort}
     \DndMonsterType{Medium Beast}
 
@@ -340,16 +357,17 @@ The beast will vanish if you die.
     If another creature provokes an opportunity attack of Mort, he can instead try to Grapple that creature and has advantage on the attack throw. Mort can not use this reaction if he already grapples another creature.
 \end{DndMonster}
 \begin{tikzpicture}[remember picture, overlay]
-	\node[opacity=1,inner sep=0pt, xshift=-2.9cm, yshift=-2.25cm] at (current page.north east){\includegraphics[width=0.25\paperwidth, keepaspectratio]{\PATH one_shots/Penguins_of_Madagascar/characters/images/Mort.png}};
+	\node[opacity=1,inner sep=0pt, xshift=-2.9cm, yshift=-8.5cm] at (current page.north east){\includegraphics[width=0.25\paperwidth, keepaspectratio]{\PATH one_shots/Penguins_of_Madagascar/characters/images/Mort.png}};
 \end{tikzpicture}
+\eject
+\subsubsection*{Exceptional Training}
+Beginning at 7th level, on any of your turns when your beast companion doesn’t attack, you can use a bonus action to command the beast to take the Dash, Disengage, or Help action on its turn. In addition, the beast’s attacks now count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.
 \subsection*{Primal Awareness}
-This 3rd-level feature replaces the Primeval Awareness feature. You gain no benefit from the replaced feature and don't qualify for anything in the game that requires it.
-
 You can focus your awareness through the interconnections of nature: you learn additional spells when you reach certain levels in this class if you don't already know them, as shown in the Primal Awareness Spells table. These spells don't count against the number of ranger spells you know.
 \begin{DndTable}[header=Primal Awareness Spells]{llX}
 			& \textbf{Ranger Level}  	&\textbf{Spells}		\\
-$\bullet$	& 3rd						&Speak with Animals		\\
-			& 5th						&Beast Sense			\\
+$\bullet$	& 3rd						&Entangle				\\
+$\bullet$	& 5th						&Beast Sense			\\
 			& 9th						&Speak with Plants		\\
 			& 13th						&Locate Creature		\\
 			& 17th						&Commune with Nature	\\
@@ -358,16 +376,6 @@ You can cast each of these spells once without expending a spell slot. Once you 
 
 \section*{Spells}
 \subsection*{Level 1}
-
-\DndSpellHeader
-  {Speak with Animals}
-  {1st-Level Divination (Ritual)}
-  {1 Action}
-  {Self}
-  {V, S}
-  {10 Minutes}
-
-You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the DM’s discretion.
 
 \DndSpellHeader
   {Absorb Elements}
@@ -409,23 +417,81 @@ If the target drops to 0 hit points before this spell ends, you can use a bonus 
 
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd or 4th level, you can maintain your concentration on the spell for up to 8 hours. When you use a spell slot of 5th level or higher, you can maintain your concentration on the spell for up to 24 hours.
 
+\subsection*{Level 2}
+\DndSpellHeader
+  {Beast Sense}
+  {2nd-Level Divination (Ritual)}
+  {1 Action}
+  {Touch}
+  {S}
+  {Concentration, up to 1 Hour}
+
+You touch a willing beast. For the duration of the spell, you can use your action to see through the beast’s eyes and hear what it hears, and continue to do so until you use your action to return to your normal senses.
+
+\DndSpellHeader
+  {Pass Without Trace}
+  {2nd-Level Abjuration}
+  {1 Action}
+  {Self}
+  {V, S, M (Ashes from a burned leaf of mistletoe and a sprig of spruce)}
+  {Concentration, up to 1 Hour}
+
+A veil of shadows and silence radiates from you, masking you and your companions from detection. For the duration, each creature you choose within 30 feet of you (including you) has a +10 bonus to Dexterity (Stealth) checks and can't be tracked except by magical means. A creature that receives this bonus leaves behind no tracks or other traces of its passage.
+
+\DndSpellHeader
+  {Silence}
+  {2nd-Level Illusion (Ritual)}
+  {1 Action}
+  {120 feet}
+  {V, S}
+  {Concentration, up to 10 Minutes}
+
+For the duration, no sound can be created within or pass through a 20-foot-radius sphere centered on a point you choose within range. Any creature or object entirely inside the sphere is immune to thunder damage, and creatures are deafened while entirely inside it. Casting a spell that includes a verbal component is impossible there.
+
+\DndSpellHeader
+  {Spike Growth}
+  {2nd-Level Transmutation}
+  {1 Action}
+  {150 feet}
+  {V, S, M (Seven sharp thorns or seven small twigs, each sharpened to a point)}
+  {Concentration, up to 10 Minutes}
+
+The ground in a 20-foot radius centered on a point within range twists and sprouts hard spikes and thorns. The area becomes difficult terrain for the duration. When a creature moves into or within the area, it takes 2d4 piercing damage for every 5 feet it travels.
+The transformation of the ground is camouflaged to look natural. Any creature that can’t see the area at the time the spell is cast must make a Wisdom (Perception) check against your spell save DC to recognize the terrain as hazardous before entering it.
+
+\section*{Magic Items}
+\subsection*{Bracers of Archery}
+While wearing these bracers, you have proficiency with the longbow and short-bow, and you gain a +2 bonus to damage rolls on ranged attacks made with such weapons.
+
+\vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
-\subsubsection*{Shortbow}
+\subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-\underline{\textit{Shortbow:}}\\
-1d20 + DEX-Modifier + Proficiency Modifier + 2 (Fighting Style: Archer) \\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{2}}} \\
+\underline{\textit{Longsword (Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-\underline{\textit{Shortbow:}}\\
-1d6 + DEX-Modifier\\
-\indent Current Max (Normal): \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}} \\
-\subsubsection*{Longsword}
-\paragraph*{Attack Roll}\hfill\\
-1d20 + STR-Modifier + Proficiency Modifier \\
-\indent Current Max (Normal): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
-\paragraph*{Damage Roll}\hfill\\
-1d8 (1d10 two-handed) + STR-Modifier\\
+\underline{\textit{Longsword (Versatile):}}\\
+1d8 (1d10) + STR-Modifier\\
 \indent Current Max (one-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
-\indent Current Max (two-handed): \intcalcAdd{10}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{10}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier + 2 (Fighting Style: Archer)\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\intcalcAdd{\ProficiencyValue}{2}}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
+1d6 + DEX-Modifier + 2 (Bracers of Archery)\\
+\indent Current Max: \intcalcAdd{6}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{2}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 }

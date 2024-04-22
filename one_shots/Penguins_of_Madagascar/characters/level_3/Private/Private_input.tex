@@ -74,10 +74,13 @@
 \HitDice{d8}
 \HitDiceSpent{0}
 
+\addWeaponStatistic{Rapier}{Private}{STR}{P}{0}{1d8 p}
+\addWeaponStatistic{Hex-Weapon}{Private}{CHA}{P}{0}{divers}
 \addWeaponStatistic{Light Crossbow}{Private}{DEX}{P}{0}{1d8 p}
 \addWeaponStatistic{Unarmed Strike}{BlankCharacter}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
 
 \AttacksAdditional{
+	Rapier\\
 	Light Crossbow (80/320)\\
 	Leather Armor
 }
@@ -119,7 +122,11 @@
 	\textbf{Spell Sniper}\\
 	\textbf{Warlock Traits}
 	\begin{itemize}
-		\item Otherworldly Patron
+		\item Otherworldly Patron (Hexblade)
+		\begin{itemize}
+			\item Hexblade's Curse
+			\item Hex Warrior
+		\end{itemize}
 		\item Eldritch Invocations
 		\begin{itemize}
 			\item Agonizing Blast
@@ -156,7 +163,7 @@
 
 \section*{SpecOp Penguin Traits}
 \subsection*{Arctic Native}
-You have resistance to cold damage. You are immune to the to the effects of both cold weather and Extreme Cold as described in the Dungeon Master’s Guide (page 110). Furthermore, you do not treat shallow water, snow, or ice as difficult terrain.
+You have resistance to cold damage. You are immune to the to the effects of both cold weather and Extreme Cold as described in the Dungeon Master's Guide (page 110). Furthermore, you do not treat shallow water, snow, or ice as difficult terrain.
 \subsection*{Creature of the Sea}
 You can breathe air and water, and you have resistance to cold damage. Aquatic animals have an extraordinary affinity with your people. You can communicate simple ideas to any Beast that has a swimming speed. It can understand your words, though you have no special ability to understand it in return.
 \subsection*{Penguin Nimbleness}
@@ -258,7 +265,7 @@ A spectral, floating hand appears at a point you choose within range. The hand l
 
 You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it.
 
-The hand can’t attack, activate magical items, or carry more than 10 pounds.
+The hand can't attack, activate magical items, or carry more than 10 pounds.
 
 \DndSpellHeader
 	{Ray of Frost}
@@ -270,7 +277,7 @@ The hand can’t attack, activate magical items, or carry more than 10 pounds.
 
 A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn.
 
-\subparagraph*{At Higher Levels} The spell’s damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).
+\subparagraph*{At Higher Levels} The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).
 
 \subsection*{Level 1}
 
@@ -333,6 +340,21 @@ A creature you touch becomes invisible until the spell ends. Anything the target
 \vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Rapier:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\underline{\textit{Rapier (Hex-Weapon):}}\\
+1d20 + CHA-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\CharismaScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Rapier:}}\\
+1d8 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
+\underline{\textit{Rapier (Hex-Weapon):}}\\
+1d8 + CHA-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\CharismaScoreValue}}
 \subsubsection*{Ranged Weapons}
 \paragraph*{Attack Roll}\hfill\\
 \underline{\textit{Light Crossbow:}}\\
