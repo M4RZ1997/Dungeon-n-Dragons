@@ -291,6 +291,10 @@
 			\ifthenelse{\equal{#1}{CHA}}{%
 				\renewcommand{\tempAbilityScoreValue}{\CharismaScoreValue}
 			}{%
+				\ifthenelse{\equal{#1}{INT}}{%
+					\renewcommand{\tempAbilityScoreValue}{\IntelligenceScoreValue}
+				}{%
+				}%
 			}%
 		}%
 	}%
