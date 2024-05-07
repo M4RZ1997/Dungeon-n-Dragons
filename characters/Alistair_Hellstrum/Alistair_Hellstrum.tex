@@ -4,7 +4,6 @@
 
 \usepackage{\PATH templates/utilities/m4rz-fonts}
 \usepackage{\PATH templates/utilities/m4rz-colors}
-\usepackage{\PATH templates/utilities/miscellaneous}
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
@@ -18,13 +17,13 @@
 \CharacterName{Alistair Hellstrum}
 
 \Class{Bard}
-%\MultiClassMainLevel{4}
-%\MultiClass{Warlock}
-\Level{4}
+\MultiClassMainLevel{4}
+\MultiClass{Warlock}
+\Level{5}
 \Background{Courtier}
 \PlayerName{M4RZ}
 \Race{Tiefling}
-\Alignment{Chaotic Good}
+\Alignment{Chaotic Good (Neutral)}
 \XP{}
 
 % Ability scores (correct scores, no modifiers are automatically applied)
@@ -78,17 +77,17 @@
 \ConstitutionModifierBonus{0}
 \IntelligenceModifierBonus{0}
 \WisdomModifierBonus{0}
-\CharismaModifierBonus{1}
+\CharismaModifierBonus{1} % Enchanted Locket of Lysandra Stage I
 
 \Inspiration{}
-\Proficiency{+2}
+\Proficiency{+3}
 \PassivePerceptionModifier{1}
 
 % Armor Class is not automatically calculated
 \ArmorClass{\intcalcAdd{11}{\calculateModifier{\DexterityScoreValue}}}
 \InitiativeModifier{0}
 \Speed{30ft}
-\MaxHitPointsRolled{27} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{34} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -111,7 +110,11 @@
 		\item Rapier
 		\item Dagger
 	\end{itemize}
-	\textbf{Psychic Blades}
+	\textbf{Psychic Blades} (\DndDice{2d6})\\
+	\textbf{Eldritch Blast} (2 Beams)\\
+	\textbf{Mind Sliver} (\DndDice{2d6})\\
+	\textbf{Vicious Mockery} (\DndDice{2d4})\\
+	\textbf{Fey Presence}
 }
 
 \OtherProficienciesLanguages{
@@ -171,6 +174,10 @@
 		\item Words of Terror
 	\end{itemize}
 \end{itemize}
+\textbf{Warlock}
+\begin{itemize}
+	\item Otherworldly Patron (The Archfey)
+\end{itemize}
 \textbf{Charm of the Monarch}\\
 \textbf{Compulsion (Locket)}
 \begin{itemize}
@@ -227,24 +234,28 @@
 
 % Magic
 
-\SpellcastingClass{Bard}
+\SpellcastingClass{Bard/Warlock}
 \SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{\CharismaModifierBonusValue} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{\CharismaModifierBonusValue} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
-\CantripSlotA{Mage Hand (V, S)}
-\CantripSlotB{Prestidigitation (V, S)}
-\CantripSlotC{Vicious Mockery (V)}
 
-\CantripSlotF{Once per Day:}
-\CantripSlotG{Shillelagh (V, S, M)}
-\CantripSlotH{Thaumaturgy (V)}
+\CantripSlotA{Eldritch Blast (V, S)}
+\CantripSlotB{Mage Hand (V, S)}
+\CantripSlotC{Mind Sliver (V)}
+\CantripSlotD{Prestidigitation (V, S)}
+\CantripSlotE{Vicious Mockery (V)}
 
-\FirstLevelSpellSlotsTotal{4}
-\FirstLevelSpellSlotA{Charm Person (V, S)}
-\FirstLevelSpellSlotB{Dissonant Whispers (V)}
-\FirstLevelSpellSlotC{Feather Fall (V, M)}
-\FirstLevelSpellSlotD{Healing Word (V)}
+\CantripSlotG{Shillelagh (V, S, M) (once per day)}
+\CantripSlotH{Thaumaturgy (V) (once per day)}
+
+\FirstLevelSpellSlotsTotal{5} % 4 Bard + 1 Warlock
+\FirstLevelSpellSlotA{Armor of Agathys (V, S, M)}
+\FirstLevelSpellSlotB{Charm Person (V, S)}
+\FirstLevelSpellSlotC{Dissonant Whispers (V)}
+\FirstLevelSpellSlotD{Feather Fall (V, M)}
+\FirstLevelSpellSlotE{Healing Word (V)}
+\FirstLevelSpellSlotF{Hex (V, S, M)}
 
 \FirstLevelSpellSlotH{Once per Day:}
 \FirstLevelSpellSlotI{Entangle (V, S)}
@@ -258,7 +269,8 @@
 \SecondLevelSpellSlotB{Shatter (V, S, M)}
 \SecondLevelSpellSlotC{Suggestion (V, M)}
 
-\SecondLevelSpellSlotK{Once per Day:}
+\SecondLevelSpellSlotJ{Once per Day:}
+\SecondLevelSpellSlotK{Darkness (V, M)}
 \SecondLevelSpellSlotL{Invisibility (V, S, M)}
 \SecondLevelSpellSlotM{Levitate (V, S, M)}
 
@@ -310,7 +322,22 @@ As they entered the carnival's enchanting realm, they were both acutely aware th
 And so, under the starlit sky, Alistair and Alaric explored their surroundings, united by the allure of the Feywild and the shared pursuit of the mysteries behind the Enchanted Locket of Lysandra. At the Witchlight Carnival their journey was about to take an unexpected turn, where the lines between reality and enchantment would blur, and the whimsy of the Feywild would guide them toward their destiny.
 }
 
-\clearpage
+\chapter*{A Dark, Mischievous Pact}
+Alistair Hellstrum's transformation into a Warlock of the Archfey was profoundly shaped by a devastating loss and near-death experience during a harrowing encounter with Granny Nightshade. This critical moment unfolded within her lair, ingeniously crafted inside a massive fallen tree trunk, nestled in a peculiar village inhabited by her goblin and tin soldier entourage.
+
+During this encounter, Granny Nightshade, a formidable fey-witch known for her cruelty and magical prowess, revealed her terrifying true form as a young red dragon, setting her surroundings ablaze and overwhelming Alistair and his companions. In the chaos, Alistair was struck down, and his life teetered on the brink of the abyss.
+
+Miraculously, his companions managed to revive him from the edge of death. However, Alistair's consciousness clung to a singular, vivid memory - feeling the enchanted locket he wore, known as the Locket of Lysandra, pulling him back from the precipice of mortality. This locket, imbued with a mysterious power, seemed to guide him to safety, or so he believed.
+
+As Alistair recovered from his injuries, the influence of the locket grew exponentially. Its whispers became louder, and visions of Lysandra, an enigmatic figure from the Feywild, began to haunt his dreams. Night after night, Lysandra visited him in these dreams, her voice both honeyed and tinged with darkness, promising him untold power and a destiny intertwined with her own.
+
+Driven by a mixture of curiosity, longing for power, and a desire to transcend his mortal limitations, Alistair was drawn deeper into the enigmatic allure of the Feywild. He ultimately made a fateful decision to forge a pact with Lysandra. This pact bound his fate to hers, sealing his transformation with each promise whispered in the shadows of the Feywild.
+
+With the power of the Archfey coursing through his veins, Alistair's persona began to change. His once jovial demeanor waned, his laughter turned hollow, and his smiles were tinged with shadows. His music adopted a darker tone, reflecting the deep and sometimes macabre influence of his new patron.
+
+As days passed, Alistair found himself drifting further from his previous path, his morals eroding under the weight of his newfound abilities. The mischievous and sometimes malevolent influence of Lysandra twisted his perceptions, leading him down a morally ambiguous path where the distinction between right and wrong blurred into obscurity. This marked the beginning of Alistair's journey as a warlock, forever changed by the locket's pull and the shadowy promises of the Feywild.
+
+\includegraphics[scale=0.25]{images/Alistair_Warlock_Appearance.png}
 
 \chapter*{Features, Magic Items and Spells}
 
@@ -329,11 +356,11 @@ Your knowledge of how bureaucracies function lets you gain access to the records
 \subsection*{Charismatic Presence}
 You gain proficiency in the Persuasion skill if you don't already have it. If you already have proficiency in Persuasion, you gain expertise in that skill, doubling your proficiency bonus for ability checks made with it.
 \subsection*{Charming Words}
-You can spend 10 minutes engaging in conversation with a creature you can see, and if the creature's Intelligence is 6 or higher, you can attempt to charm it. Make a Charisma (Persuasion) check contested by the creature's Wisdom saving throw. If you succeed, the creature becomes charmed by you for 1 hour or until you or your companions harm it. The DM determines the specifics of the creature's behavior while charmed.
+If you spend 1 minute talking to someone who can understand what you say, you can make a Charisma (Persuasion) check contested by the creature's Wisdom (Insight) check. If you or your companions are fighting the creature, your check automatically fails. If your check succeeds, the target is charmed by you as long as it remains within 60 feet of you and for 1 minute thereafter. This condition ends early if you or your companions do anything harmful to the target or its allies.
 \subsection*{Eloquent Performer}
 When you use the Performance skill to entertain, inspire, or captivate an audience, your performance is exceptionally compelling. You have advantage on Performance checks made to impress or engage a crowd.
 
-\section*{Bard}
+\section*{Bard Traits}
 \subsection*{Bardic Inspiration}
 You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.
 
@@ -366,12 +393,45 @@ If you speak to a humanoid alone for at least 1 minute, you can attempt to seed 
 If the target succeeds on its saving throw, the target has no hint that you tried to frighten it.
 
 Once you use this feature, you can't use it again until you finish a short rest or long rest.
+
+\section*{Warlock Traits}
+\subsection*{Otherworldly Patron}
+\subsubsection*{The Archfey}
+Your patron is a lord or lady of the fey, a creature of legend who holds secrets that were forgotten before the mortal races were born. This being's motivations are often inscrutable, and sometimes whimsical, and might involve a striving for greater magical power or the settling of age-old grudges. Beings of this sort include the Prince of Frost; the Queen of Air and Darkness, ruler of the Gloaming Court; Titania of the Summer Court; her consort Oberon, the Green Lord; Hyrsam, the Prince of Fools; and ancient hags.
+\subsubsection*{Expended Spell List}
+The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.
+\begin{DndTable}[header=Archfey Expanded Spells]{llX}
+			& \textbf{Spell Level}  	&\textbf{Spells}						\\
+$\bullet$	& 1st						&Faerie Fire, Sleep						\\
+			& 2nd						&Calm Emotions, Phantasmal Force		\\
+			& 3rd						&Blink, Plant Growth					\\
+			& 4th						&Dominate Beast, Greater Invisibility	\\
+			& 5th						&Dominate Person, Seeming				\\
+\end{DndTable}
+\subsubsection*{Fey Presence}
+Starting at 1st level, your patron bestows upon you the ability to project the beguiling and fearsome presence of the fey. As an action, you can cause each creature in a 10-foot cube originating from you to make a Wisdom saving throw against your warlock spell save DC. The creatures that fail their saving throws are all charmed or frightened by you (your choice) until the end of your next turn.
+
+Once you use this feature, you can't use it again until you finish a short or long rest.
+
+\section*{Other Traits}
 \subsection*{Charm of the Monarch}
 You can sprout a pair of beautiful butterfly wings, you gain flying speed equal to your walking speed, and you gain a +5 bonus on all Charisma-based ability checks. These effects last for 1 hour. After you use this charm two times, it vanishes from you.\\
 \textbf{(Usages: 1)}
 
 \section*{Spells}
 \subsection*{Cantrip}
+
+\DndSpellHeader
+  {Eldritch Blast}
+  {Evocation Cantrip}
+  {1 Action}
+  {120 feet}
+  {V, S}
+  {Instantaneous}
+  
+A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 force damage.
+
+\subparagraph*{At Higher Levels} The spell creates more than one beam when you reach higher levels: two beams at 5th level, three beams at 11th level, and four beams at 17th level. You can direct the beams at the same target or at different ones. Make a separate attack roll for each beam.
 
 \DndSpellHeader
   {Mage Hand}
@@ -386,12 +446,24 @@ You can use your action to control the hand. You can use the hand to manipulate 
 The hand can't attack, activate magic items, or carry more than 10 pounds.
 
 \DndSpellHeader
+  {Mind Sliver}
+  {Enchantment Cantrip}
+  {1 Action}
+  {60 feet}
+  {V}
+  {1 Round}
+  
+You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.
+
+\subparagraph*{At Higher Levels} This spell's damage increases by 1d6 when you reach certain levels: 5th level (2d6), 11th level (3d6), and 17th level (4d6).
+
+\DndSpellHeader
   {Prestidigitation}
   {Cantrip Transmutation}
   {1 Action}
   {10 feet}
   {V, S}
-  {Up to 1 hour}
+  {up to 1 hour}
 
 This spell is a minor magical trick that novice spellcasters use for practice. You create one of the following magical effects within range:\\
 You create an instantaneous, harmless sensory effect, such as a shower of sparks, a puff of wind, faint musical notes, or an odd odor.\\
@@ -418,7 +490,7 @@ The wood of a club or quarterstaff you are holding is imbued with nature's power
   {1 Action}
   {30 feet}
   {V}
-  {Up to 1 minute}
+  {up to 1 minute}
 
 You manifest a minor wonder, a sign of supernatural power create one of the following magical effects within range:\\
 Your voice booms up to three times as loud as normal for 1 minute.\\
@@ -439,7 +511,21 @@ If you cast this spell multiple times, you can have up to three of its effects a
 
 You unleash a string of insults laced with subtle enchantments at a creature you can see within range. If the target can hear you (though it need not understand you), it must succeed on a Wisdom saving throw or take \DndDice{1d4} psychic damage and have disadvantage on the next attack roll it makes before the end of its next turn.
 
+\subparagraph*{At Higher Levels} This spell's damage increases by 1d4 when you reach 5th level (2d4), 11th level (3d4), and 17th level (4d4).
+
 \subsection*{Level 1}
+
+\DndSpellHeader
+  {Armor of Agathys}
+  {1st Level Abjuration}
+  {1 Action}
+  {Self}
+  {V, S, M (a cup of water)}
+  {1 hour}
+  
+A protective magical force surrounds you, manifesting as a spectral frost that covers you and your gear. You gain 5 temporary hit points for the duration. If a creature hits you with a melee attack while you have these hit points, the creature takes 5 cold damage.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, both the temporary hit points and the cold damage increase by 5 for each slot.
 
 \DndSpellHeader
   {Charm Person}
@@ -471,7 +557,7 @@ You whisper a discordant melody that only one creature of your choice within ran
   {1 Action}
   {90 feet}
   {V, S}
-  {Concentration, Up to 1 Minute}
+  {Concentration, up to 1 Minute}
   
 Grasping weeds and vines sprout from the ground in a 20-foot square starting from a point within range. For the duration, these plants turn the ground in the area into difficult terrain.\\
 A creature in the area when you cast the spell must succeed on a Strength saving throw or be restrained by the entangling plants until the spell ends. A creature restrained by the plants can use its action to make a Strength check against your spell save DC. On a success, it frees itself.\\
@@ -524,12 +610,28 @@ You point your finger, and the creature that damaged you is momentarily surround
 \subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by \DndDice{1d10} for each slot level above 1st.
 
 \DndSpellHeader
+  {Hex}
+  {1st Level Enchantment}
+  {1 Bonus Action}
+  {90 feet}
+  {V, S, M (the petrified eye of a newt)}
+  {Concentration, up to 1 Hour}
+  
+You place a curse on a creature that you can see within range. Until the spell ends, you deal an extra 1d6 necrotic damage to the target whenever you hit it with an attack. Also, choose one ability when you cast the spell. The target has disadvantage on ability checks made with the chosen ability.
+
+If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to curse a new creature.
+
+A Remove Curse cast on the target ends this spell early.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 3rd or 4th level, you can maintain your concentration on the spell for up to 8 hours. When you use a spell slot of 5th level or higher, you can maintain your concentration on the spell for up to 24 hours.
+
+\DndSpellHeader
   {Protection from Evil and Good}
   {1st Level Abjuration}
   {1 Action}
   {Touch}
   {V, S, M (Holy water or powdered silver and iron, which the spell consumes)}
-  {Concentration, Up to 10 Minutes}
+  {Concentration, up to 10 Minutes}
   
 Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.\\
 The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can't be charmed, frightened, or possessed by them. If the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect.
@@ -547,12 +649,26 @@ You gain the ability to comprehend and verbally communicate with beasts for the 
 \subsection*{Level 2}
 
 \DndSpellHeader
+  {Darkness}
+  {2nd Level Evocation}
+  {1 Action}
+  {60 feet}
+  {V, M (Bat fur and a drop of pitch or piece of coal)}
+  {Concentration, up to 10 Minutes}
+  
+Magical darkness spreads from a point you choose within range to fill a 15-foot-radius sphere for the duration. The darkness spreads around corners. A creature with darkvision can't see through this darkness, and nonmagical light can't illuminate it.
+
+If the point you choose is on an object you are holding or one that isn't being worn or carried, the darkness emanates from the object and moves with it. Completely covering the source of the darkness with an opaque object, such as a bowl or a helm, blocks the darkness.
+
+If any of this spell's area overlaps with an area of light created by a spell of 2nd level or lower, the spell that created the light is dispelled.
+
+\DndSpellHeader
   {Invisibility}
   {2nd Level Illusion}
   {1 Action}
   {Touch}
   {V, S, M (An eyelash encased in gum arabic)}
-  {Concentration, Up to 1 Hour}
+  {Concentration, up to 1 Hour}
   
 A creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target's person. The spell ends for a target that attacks or casts a spell.
 
@@ -564,7 +680,7 @@ A creature you touch becomes invisible until the spell ends. Anything the target
   {1 Action}
   {60 feet}
   {V, S, M (Either a small leather loop or a piece of golden wire bent into a cup shape with a long shank on one end)}
-  {Concentration, Up to 10 Minutes}
+  {Concentration, up to 10 Minutes}
   
 One creature or object of your choice that you can see within range rises vertically, up to 20 feet, and remains suspended there for the duration. The spell can levitate a target that weighs up to 500 pounds. An unwilling creature that succeeds on a Constitution saving throw is unaffected.\\
 The target can move only by pushing or pulling against a fixed object or surface within reach (such as a wall or a ceiling), which allows it to move as if it were climbing. You can change the target's altitude by up to 20 feet in either direction on your turn. If you are the target, you can move up or down as part of your move. Otherwise, you can use your action to move the target, which must remain within the spell's range.\\
@@ -588,7 +704,7 @@ A sudden loud ringing noise, painfully intense, erupts from a point of your choi
   {1 Action}
   {30 feet}
   {V, M (A snake's tongue and either a bit of honeycomb or a drop of sweet oil)}
-  {Concentration, Up to 8 Hours}
+  {Concentration, up to 8 Hours}
 
 You suggest a course of activity (limited to a sentence or two) and magically influence a creature you can see within range that can hear and understand you. Creatures that can't be charmed are immune to this effect. The suggestion must be worded in such a manner as to make the course of action sound reasonable. Asking the creature to stab itself, throw itself onto a spear, immolate itself, or do some other obviously harmful act ends the spell.\\
 The target must make a Wisdom saving throw. On a failed save, it pursues the course of action you described to the best of its ability. The suggested course of action can continue for the entire duration. If the suggested activity can be completed in a shorter time, the spell ends when the subject finishes what it was asked to do.\\
@@ -603,7 +719,7 @@ If you or any of your companions damage the target, the spell ends.
   {1 Action}
   {Touch}
   {V, S, M (A wing feather from any bird)}
-  {Concentration, Up to 10 Minutes}
+  {Concentration, up to 10 Minutes}
   
 You touch a willing creature. The target gains a flying speed of 60 feet for the duration. When the spell ends, the target falls if it is still aloft, unless it can stop the fall.
 
