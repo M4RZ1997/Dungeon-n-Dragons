@@ -111,7 +111,7 @@
 		\item Dagger
 	\end{itemize}
 	\textbf{Psychic Blades} (\DndDice{2d6})\\
-	\textbf{Eldritch Blast} (2 Beams)\\
+	\textbf{Eldritch Blast} (2 Beams,\calculateModifier{\CharismaScoreValue} damage)\\
 	\textbf{Mind Sliver} (\DndDice{2d6})\\
 	\textbf{Vicious Mockery} (\DndDice{2d4})\\
 	\textbf{Fey Presence}
@@ -156,12 +156,14 @@
 	\item Hellish Resistance
 	\item Infernal Legacy
 \end{itemize}
-\textbf{Court Functionary}\\
-\textbf{Silver Tongued}
+\textbf{Court Functionary}
 \begin{itemize}
 	\item Charismatic Presence
-	\item Charming Words
 	\item Eloquent Performer
+\end{itemize}
+\textbf{Eldritch Adept}
+\begin{itemize}
+	\item Agonizing Blast
 \end{itemize}
 \textbf{Bard}
 \begin{itemize}
@@ -177,6 +179,10 @@
 \textbf{Warlock}
 \begin{itemize}
 	\item Otherworldly Patron (The Archfey)
+	\item Eldritch Invocations
+	\begin{itemize}
+		\item Agonizing Blast
+	\end{itemize}
 \end{itemize}
 \textbf{Charm of the Monarch}\\
 \textbf{Compulsion (Locket)}
@@ -352,14 +358,16 @@ You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Hel
 
 \section*{Court Functionary}
 Your knowledge of how bureaucracies function lets you gain access to the records and inner workings of any noble court or government you encounter. You know who the movers and shakers are, whom to go to for the favors you seek, and what the current intrigues of interest in the group are.
-
-\section*{Silver Tongued}
 \subsection*{Charismatic Presence}
 You gain proficiency in the Persuasion skill if you don't already have it. If you already have proficiency in Persuasion, you gain expertise in that skill, doubling your proficiency bonus for ability checks made with it.
-\subsection*{Charming Words}
-If you spend 1 minute talking to someone who can understand what you say, you can make a Charisma (Persuasion) check contested by the creature's Wisdom (Insight) check. If you or your companions are fighting the creature, your check automatically fails. If your check succeeds, the target is charmed by you as long as it remains within 60 feet of you and for 1 minute thereafter. This condition ends early if you or your companions do anything harmful to the target or its allies.
 \subsection*{Eloquent Performer}
 When you use the Performance skill to entertain, inspire, or captivate an audience, your performance is exceptionally compelling. You have advantage on Performance checks made to impress or engage a crowd.
+
+\section*{Eldritch Adept}
+\textbf{Agonizing Blast}\\
+Studying occult lore, you learn one Eldritch Invocation option of your choice from the warlock class. Your spellcasting ability for the invocation is Intelligence, Wisdom, or Charisma (choose when you select this feat). If the invocation has a prerequisite of any kind, you can choose that invocation only if you’re a warlock who meets the prerequisite.
+
+Whenever you gain a level, you can replace the invocation with another one from the warlock class.
 
 \section*{Bard Traits}
 \subsection*{Bardic Inspiration}
@@ -413,6 +421,15 @@ $\bullet$	& 1st						&Faerie Fire, Sleep						\\
 Starting at 1st level, your patron bestows upon you the ability to project the beguiling and fearsome presence of the fey. As an action, you can cause each creature in a 10-foot cube originating from you to make a Wisdom saving throw against your warlock spell save DC. The creatures that fail their saving throws are all charmed or frightened by you (your choice) until the end of your next turn.
 
 Once you use this feature, you can't use it again until you finish a short or long rest.
+
+\subsection*{Eldritch Invocations}
+In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.
+
+At 2nd level, you gain two eldritch invocations of your choice. When you gain certain warlock levels, you gain additional invocations of your choice, as shown in the Invocations Known column of the Warlock table. A level prerequisite refers to your level in this class.
+
+Additionally, when you gain a level in this class, you can choose one of the invocations you know and replace it with another invocation that you could learn at that level.
+\subsubsection*{Agonizing Blast}
+When you cast eldritch blast, add your Charisma modifier to the damage it deals on a hit.
 
 \section*{Other Traits}
 \subsection*{Charm of the Monarch}
