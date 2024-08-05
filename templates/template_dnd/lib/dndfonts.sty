@@ -190,6 +190,13 @@
     stat-block-section-style .tl_set:N         = \l__dnd_stat_block_section_style_tl,
     stat-block-section-style .initial:n        = \color{titlered} \scshape \large,
     stat-block-section-style .value_required:n = true,
+    % Siege Stat block section
+    stat-block-section-family .tl_set:N         = \l__dnd_siege_stat_block_section_family_tl,
+    stat-block-section-family .initial:n        = \sffamily,
+    stat-block-section-family .value_required:n = true,
+    stat-block-section-style .tl_set:N         = \l__dnd_siege_stat_block_section_style_tl,
+    stat-block-section-style .initial:n        = \color{titleblue} \scshape \large,
+    stat-block-section-style .value_required:n = true,
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Miscellaneous
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -292,6 +299,9 @@
 
 \NewDocumentCommand{\DndFontStatBlockSection}{}
   { \l__dnd_stat_block_section_family_tl \l__dnd_stat_block_section_style_tl }
+  
+\NewDocumentCommand{\DndFontSiegeStatBlockSection}{}
+  { \l__dnd_siege_stat_block_section_family_tl \l__dnd_siege_stat_block_section_style_tl }
 
 % Miscellaneous
 \NewDocumentCommand{\DndFontFooter}{}

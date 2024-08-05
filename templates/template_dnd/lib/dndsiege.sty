@@ -1,0 +1,271 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Monster environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stat block made to look like the Monster Manual NPC definitions
+\DeclareTColorBox {DndSiegeNoBg} { O{} m }
+  {
+    enhanced,
+    frame~hidden,
+    boxrule     = 0pt,
+    breakable,
+    parbox      = false,
+    boxsep      = 0pt,
+    toptitle    = 3mm,
+    left        = 0pt,
+    right       = 0pt,
+    sharp~corners,
+    opacityback = 0,
+    colframe    = titleblue,
+    fonttitle   = \DndFontStatBlockTitle,
+    fontupper   = \DndFontStatBlockBody,
+    fontlower   = \DndFontStatBlockBody,
+    title       = {#2 - Siege},
+    coltitle    = titleblue,
+    #1
+  }
+
+% Stat block made to look like stat blocks in the PHB.
+\DeclareTColorBox {DndSiegeBg} { O{} m }
+  {
+    enhanced,
+    frame~hidden,
+    before~skip      = 12pt plus 3pt minus 3pt,
+    boxrule          = 0pt,
+    breakable,
+    parbox           = false,
+    boxsep           = 2pt,
+    toptitle         = 8pt,
+    top              = 0pt,
+    left             = 2pt,
+    right            = 2pt,
+    bottom           = 7pt,
+    sharp~corners,
+    oversize         = 0pt,
+    borderline~north = {3pt} {0pt}   {titleblue},
+    borderline~north = {2pt} {0.5pt} {siegestatblockribbon},
+    borderline~south = {3pt} {0pt}   {titleblue},
+    borderline~south = {2pt} {0.5pt} {siegestatblockribbon},
+    colback          = siegestatblockbg,
+    colbacktitle     = siegestatblockbg,
+    colframe         = titleblue,
+    fonttitle        = \DndFontStatBlockTitle,
+    coltitle         = titleblue,
+    fontupper    	 = \small\entryfont,
+    fontlower        = \DndFontStatBlockBody,
+    title            = {#2~~-~~Siege},
+    #1
+  }
+
+% Alias DndMonster to correct background type
+\bool_if:NTF \l__dnd_show_background_bool
+  {
+    \let\DndSiege\DndSiegeBg
+    \let\endDndSiege\endDndSiegeBg
+  }{
+    \let\DndSiege\DndSiegeNoBg
+    \let\endDndSiege\endDndSiegeNoBg
+  }
+
+% Fancy DnD 5e stat block rule
+\NewDocumentCommand {\DndSiegeLine} {}
+  {
+    \par \vspace{-2pt} \noindent
+    \begin {tikzpicture}
+      \draw [ titleblue, fill = titleblue ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \linewidth, 0.05 );
+    \end {tikzpicture}
+    \par
+  }
+
+% A description variant used to list creature attributes.
+\newlist {__dnd_siege_attributes} {description} {1}
+\setlist [__dnd_siege_attributes]
+  {
+    before   = \color {titleblue},
+    font     = \entryfont,
+    labelsep = \l__dnd_space_dim,
+    nosep,
+  }
+
+% Only prints the item label if the value was supplied
+\cs_new_protected_nopar:Npn \__dnd_if_siege_attribute:nn #1#2
+  {
+    \tl_if_empty:NF {#1}
+      { \item [#2] #1 }
+  }
+
+%% Siege basics
+\keys_define:nn { dnd / siege / basics }
+  {
+    armor-class .tl_set:N          = \l__armor_class_tl,
+    armor-class .initial:n         = 10,
+    armor-class .value_required:n  = true,
+    armorclass .meta:n = { armor-class = {#1} },
+    hit-points .tl_set:N         = \l__hit_points_tl,
+    hit-points .initial:n        = \DndDice {1d8},
+    hit-points .value_required:n = true,
+    hitpoints .meta:n = { hit-points = {#1} },
+    attack-bonus .tl_set:N          = \l__attack_bonus_tl,
+    attack-bonus .initial:n         = 0,
+    attack-bonus .value_required:n  = true,
+    damage-bonus .tl_set:N          = \l__damage_bonus_tl,
+    damage-bonus .initial:n         = 0,
+    damage-bonus .value_required:n  = true,
+    
+%    speed .tl_set:N         = \l__speed_tl,
+%    speed .initial:n        = 30 ~ \unitsname,
+%    speed .value_required:n = true,
+  }
+
+\cs_new_protected_nopar:Npn \__dnd_siege_basics:
+  {
+      \begin {__dnd_siege_attributes}
+        \item [\armorclassname] 	\l__armor_class_tl
+        \item [\hitpointsname]  	\l__hit_points_tl
+        \item [\attackbonusname]	\l__attack_bonus_tl
+        \item [\damagebonusname]	\l__damage_bonus_tl
+      \end {__dnd_siege_attributes}
+  }
+
+\NewDocumentCommand {\DndSiegeBasics} {o}
+  {
+    \group_begin:
+      \keys_set:nn { dnd / siege / basics } {#1}
+      \DndSiegeLine
+      \__dnd_siege_basics:
+      \DndSiegeLine
+    \group_end:
+  }
+  
+% Inline header for monster actions - similar to a paragraph
+\NewDocumentCommand {\DndSiegeAction} {m}
+  { \par \smallskip \noindent \textsl { \textbf {#1.} } }
+
+% Inline header for monster sub actions - similar to a subparagraph
+\NewDocumentCommand {\DndSiegeSubAction} {m}
+  { \par \textsl { \textbf {#1.} } }
+
+% Monster subsection header style
+\NewDocumentCommand {\DndSiegeSection} {m}
+  {
+    \addvspace{6pt plus 2pt minus 2pt} \noindent
+    \group_begin:
+      \DndFontSiegeStatBlockSection #1\nopagebreak[4]
+      % \rule is a horizontal command, so placing it under the title incurs extra
+      % line spacing. Use \hrule (a vertical command) instead.
+      \vspace {2pt}\nopagebreak[4]
+      \hrule height 0.6pt
+    \group_end:
+      \par \vspace{5pt}
+    \noindent \ignorespaces
+  }
+
+% Siege Attack
+\keys_define:nn { dnd / siege / attack }
+  {
+    name .tl_set:N         = \l__name_tl,
+    name .value_required:n = true,
+    mod .tl_set:N         = \l__mod_tl,
+    mod .value_required:n = true,
+    dmg .tl_set:N         = \l__dmg_tl,
+    dmg .value_required:n = true,
+    plus-dmg .tl_set:N         = \l__plus_dmg_tl,
+    plus-dmg .value_required:n = true,
+    or-dmg .tl_set:N         = \l__or_dmg_tl,
+    or-dmg .value_required:n = true,
+    or-dmg-when .tl_set:N         = \l__or_dmg_when_tl,
+    or-dmg-when .value_required:n = true,
+    extra .tl_set:N         = \l__extra_tl,
+    extra .value_required:n = true,
+    description .tl_set:N         = \l__description_tl,
+    description .value_required:n = true,
+  }
+
+\cs_new_protected:Npn \__dnd_siege_attack:
+  {
+    \__dnd_check_for_key:Nnn \l__name_tl {\DndSiegeAttack} {name}
+    \__dnd_check_for_key:Nnn \l__mod_tl {\DndSiegeAttack} {mod}
+
+    \begin{DndSiegeAction} {\l__name_tl}~
+      \textit{\siegeattackactionname : } ~ \__dnd_caption:nn {\tohitname} {\l__mod_tl}.~\textit { \hitname : } ~
+
+      \str_if_empty:NF {\l__dmg_tl} % Don't show any damage if `dmg' is not set.
+        {
+          \l__dmg_tl\ \damagename
+          \__dnd_if_or_dmg:
+          \__dnd_if_plus_dmg:
+        }
+	  .
+	  \str_if_empty:NF {\l__extra_tl}
+      	{
+      		\ \l__extra_tl
+      	}
+      % `extra' is any special text that goes after the final damage
+      \str_if_empty:NF {\l__description_tl}
+      	{
+      		\\\textcolor{black!85}{\textit{"\l__description_tl"}}
+      	}
+    \end{DndSiegeAction}
+  }
+
+\NewDocumentCommand {\DndSiegeAttack} {o}
+  {
+    \group_begin:
+      \keys_set:nn { dnd / siege / attack } {#1}
+      \__dnd_siege_attack:
+    \group_end:
+  }
+  
+% Siege Effect
+\keys_define:nn { dnd / siege / effect }
+  {
+    name .tl_set:N         = \l__name_tl,
+    name .value_required:n = true,
+    mod .tl_set:N         = \l__mod_tl,
+    mod .value_required:n = true,
+    effect .tl_set:N         = \l__effect_tl,
+    effect .value_required:n = true,
+    description .tl_set:N         = \l__description_tl,
+    description .value_required:n = true,
+  }
+
+\cs_new_protected:Npn \__dnd_siege_effect:
+  {
+    \__dnd_check_for_key:Nnn \l__name_tl {\DndSiegeEffect} {name}
+    \__dnd_check_for_key:Nnn \l__mod_tl {\DndSiegeEffect} {mod}
+
+    \begin{DndSiegeAction} {\l__name_tl}~
+      \textit{\siegeeffectactionname : } ~ \__dnd_caption:nn {\tohappenname} {\l__mod_tl}.~\textit { \l__effect_tl }
+      % `extra' is any special text that goes after the final damage
+      \str_if_empty:NF {\l__description_tl}
+      	{
+      		\\\textcolor{black!85}{\textit{"\l__description_tl"}}
+      	}
+    \end{DndSiegeAction}
+  }
+
+\NewDocumentCommand {\DndSiegeEffect} {o}
+  {
+    \group_begin:
+      \keys_set:nn { dnd / siege / effect } {#1}
+      \__dnd_siege_effect:
+    \group_end:
+  }
+
+%% Legendary Actions
+
+\newlist {DndSiegeLegendaryActions} {description} {1}
+\setlist [DndSiegeLegendaryActions]
+  {
+    font     = \entryfont,
+    labelsep = \l__dnd_space_dim,
+    noitemsep,
+    topsep   = 6pt plus 2pt minus 2pt,
+  }
+
+\NewDocumentCommand {\DndSiegeLegendaryAction} { m m }
+  {
+    \item [ #1 . ] #2
+  }
+

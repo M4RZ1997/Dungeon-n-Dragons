@@ -1,0 +1,44 @@
+% ------------------------------------------------------------------------------------------------- %
+%							adventure_commands.sty  	Marcel Zauder 02/04/2023					%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  One-Shot  Titlepage  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\adventureHeader}[4]{%
+	\def\temp{#1}\ifthenelse{\equal{\temp}{}}{\def\shadowfyfont{\titlefont}}{\def\shadowfyfont{#1}}%
+	\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyBookTitleName{#2}};
+	\def\temp{#3}\ifthenelse{\equal{\temp}{}}{\def\shadowfyfont{\titlefont}}{\def\shadowfyfont{#3}}%
+	\node[yshift=0.35\paperheight] at (current page.center) {\shadowfyHeader{25}{20}{#4}};
+				
+	\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.375\paperheight)$);
+	\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+}%
+\newcommand{\adventureFooter}[2]{%
+	\def\temp{#1}\ifthenelse{\equal{\temp}{}}{\def\footerfont{\titlefont}}{\def\footerfont{#1}}%
+	\node[yshift=-0.4\paperheight] at (current page.center) {\footerfont{ \shadowfy{#2}}};
+}%
+\newcommand{\adventureTitlePage}[9]{%
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture,overlay]
+		\expandafter\def\expandafter\temp\expandafter{#1}%
+		\edef\temp{#1}
+		\expandafter\splitShadowfyColors\temp\relax%
+		
+		\node[opacity=1,inner sep=0pt,xshift=#2,yshift=#3] at (current page.center){\includegraphics[#4, keepaspectratio]{#5}};
+		\addImageDBEntry#6
+		
+		\adventureHeader#7
+		
+		\expandafter\def\expandafter\temp\expandafter{#9}%
+		\edef\temp{#9}
+		\expandafter\splitShadowfyColors\temp\relax%
+		\def\stackgap{0.01pt}
+		\adventureFooter#8
+		
+%		\stepcounter{part}
+	\end{tikzpicture}
+}%

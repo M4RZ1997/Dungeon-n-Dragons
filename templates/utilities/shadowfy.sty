@@ -12,6 +12,8 @@
 \def\secondarycolor{black}
 \def\uppercasefontsize{40}
 \def\lowercasefontsize{30}
+
+\def\shadowfyfont{\titlefont}
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % -------------------------------------- Base Shadowfy Makro -------------------------------------- %
@@ -144,9 +146,9 @@
 \newcommand{\formatShadowfySC}[1]{%
 	\isNumber{#1}\ifnum\numbool=0 %
 		\isUpperCase{#1}\ifnum\bool=1 \xdef\ucletter{#1}\else\toUpperCaseLetter{#1}\fi%
-    		\titlefont{\fontsize{\ifnum\bool=1 \uppercasefontsize\else\lowercasefontsize\fi}{1.2\uppercasefontsize}\selectfont\shadowfy{\ucletter}}%
+    		\shadowfyfont{\fontsize{\ifnum\bool=1 \uppercasefontsize\else\lowercasefontsize\fi}{1.2\uppercasefontsize}\selectfont\shadowfy{\ucletter}}%
     \else%
-    	\titlefont{\fontsize{\uppercasefontsize}{1.2\uppercasefontsize}\selectfont\shadowfy{#1}}%
+    	\shadowfyfont{\fontsize{\uppercasefontsize}{1.2\uppercasefontsize}\selectfont\shadowfy{#1}}%
     \fi%
 }%
 \newcommand{\shadowfiedSCTitle}[1]{%
@@ -177,6 +179,14 @@
 %                                                                                                    %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Auto-Shadowfy  Book Title Name #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \newcommand{\shadowfyBookTitleName}[1]{%
+	\def\uppercasefontsize{40}
+	\def\lowercasefontsize{30}
+	\streamLetterShadowfier{#1}
+}
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Auto-Shadowfy Class Name  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\shadowfyClassName}[1]{%
 	\def\uppercasefontsize{40}
 	\def\lowercasefontsize{30}
 	\streamLetterShadowfier{#1}

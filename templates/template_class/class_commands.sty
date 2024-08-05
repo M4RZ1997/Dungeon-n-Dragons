@@ -1,0 +1,127 @@
+% ------------------------------------------------------------------------------------------------- %
+%							class_commands.sty  	Marcel Zauder 02/04/2023						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\newcommand{\ClassNameValue}{}
+\newcommand{\ClassName}[1]{\renewcommand{\ClassNameValue}{#1}}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------- Command for Auto-Generating "Quick Build" --------------------------- %
+\newcommand{\sectionQuickBuild}[4]{%
+	\subsubsection{Quick Build}
+	You can make an \ClassNameValue~quickly by following these suggestions. First, #1 should be your highest ability score, followed by #2. Second, choose the #3 background. #4
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------- Command for Auto-Generating "Optional Rule"-Sidebar ---------------------- %
+\newcommand{\sidebarOptionalRule}[2]{%
+	\begin{DndSidebar}[float=!h]{\entryfont Optional Rule: #1}
+		\entryfont #2
+	\end{DndSidebar}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------- Command for Auto-Generating "Optional Rule: Multiclass" -------------------- %
+\newcommand{\sectionMultiClass}[4]{%
+	\sidebarOptionalRule{Multiclass}{%
+		If your group uses the multiclassing rule from the Player's Handbook, here's what you need to know if you choose \ClassNameValue~as one of your classes.%
+		
+		\subparagraph*{Ability Score Minimum} As a multiclass character, you must have at least an #1 score of #2#3 to take a level in this class, or to take a level in another class if you are already an \ClassNameValue.%
+		
+		\subparagraph*{Proficiencies Gained} If \ClassNameValue~isn't your initial class, you gain proficiency with #4 when you take your first level in the \ClassNameValue~class.%
+	}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------- Command for Auto-Generating "Hit Points" --------------------------- %
+\newcommand{\sectionHitPoints}[1]{%
+	\subsubsection*{Hit Points}
+	\textbf{Hit Dice:} 1d#1 per \ClassNameValue~level\\
+	\textbf{Hit Points at 1st Level:} #1 + your Constitution modifier\\
+	\textbf{Hit Points at Higher Levels:} \DndDice{1d#1} + your Constitution modifier per \ClassNameValue~level after 1st
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- New  Commands ----------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\classesTitlePage}[8]{%
+	\begin{titlepage}
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};
+			\addImageDBEntry{FrontCover}{Front Cover}{Art}{#6}{#7}{#8}
+			\node[yshift=0.385\paperheight] at (current page.center) {\shadowfyClassName{#1}};
+			
+			\node[yshift=0.45\paperheight] at (current page.center) {\includegraphics[width=0.11\paperwidth, keepaspectratio]{\PATH templates/utilities/images/titlepage/icons/5eMC.png}};			
+			\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.36\paperheight)$);
+			\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+			
+			\node[yshift=-0.325\paperheight, xshift=-0.3\paperwidth] at (current page.center){%
+				\includegraphics[width=0.4\paperwidth, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/Homebrew_Banner.png%
+				}%
+			};%
+			\node[yshift=-0.31725\paperheight, xshift=-0.45\paperwidth] at (current page.center){%
+				\includegraphics[width=0.075\paperheight, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/icons/Dragon-D.png%
+				}%
+			};%
+			
+			\node[yshift=-0.405\paperheight, xshift=0.39\paperwidth] at (current page.center){%
+				\includegraphics[width=0.2\paperwidth, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/icons/M4RZ-Crafting_icon.png%
+				}%
+			};%
+			
+			\def\stackgap{0.01pt}
+			\node[yshift=-0.4\paperheight] at (current page.center) {\titlefont{ \shadowfy{A homebrew class for DnD 5E}}};
+		\end{tikzpicture}
+	\end{titlepage}
+}%
+% ------------------------------------------------------------------------------------------------- %
+%                                                                                                   %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Last Page #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\classesLastPage}[8]{%
+	\clearpage%
+	\thispagestyle{empty}%
+	\begin{tikzpicture}[remember picture,overlay]%
+		\node[opacity=1,inner sep=0pt,yshift=#2, xshift=#3] at (current page.center){\includegraphics[#4,  keepaspectratio]{#1}};%
+		\addImageDBEntry{BackCover}{Back Cover}{Art}{#5}{#6}{#7}
+		\node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[height=\paperheight, keepaspectratio]{\PATH templates/utilities/images/titlepage/backcover-black-part.png}};%
+		
+		\def\primarycolor{MarzRed}%
+		\def\secondarycolor{black!80}%
+		%\def\secondarycolor{MarzDarkRed}%
+		\def\stackgap{0.1pt}
+		\node[yshift=0.1\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
+			\adjustbox{valign=c}{%
+				\parbox{0.5\textwidth}{\centering{
+					\parbox{0.4\textwidth}{%
+						\centering\shadowfiedSCTitle{Big} ~ \shadowfiedSCTitle{Thanks} ~ \shadowfiedSCTitle{To} ~ \shadowfiedSCTitle{These} ~ \shadowfiedSCTitle{Artists}%
+					}%
+					\par\vspace*{3cm}%
+					\parbox{0.45\textwidth}{%
+						\large\begin{itemize}[label=\textcolor{white}{\textbullet}, leftmargin=*, align=left]
+							\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{%
+								\item \textcolor{white}{\thisPage ~\thisAdditionalInformation :} \textcolor{orange}{\href{\thisURL}{\thisArtName ~by \thisArtist}}%
+							}%
+						\end{itemize}%
+					}%
+				}}%
+			}%
+		};
+		
+		\def\stackgap{0.01pt}
+		\ifthenelse{\equal{#8}{}}{}{%
+			\node[yshift=-0.275\paperheight, xshift=-0.25\paperwidth] at (current page.center) {%
+				\parbox{0.4\textwidth}{%
+					\centering\titlefont{\large\shadowfy{#8}}%
+				}
+			};%
+		}%
+		
+		\node[yshift=-0.4\paperheight, xshift=-0.25\paperwidth] at (current page.center) {\includegraphics[width=0.25\paperwidth, keepaspectratio]{\PATH templates/utilities/images/titlepage/icons/5eMC.png}};
+	\end{tikzpicture}%
+}%

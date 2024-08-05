@@ -1,0 +1,156 @@
+% ------------------------------------------------------------------------------------------------- %
+%                        	   ornamented.sty  Marcel Zauder 23/03/2021           	                %
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ Usepackages ------------------------------------------ %
+\RequirePackage{tikz}
+\usetikzlibrary{intersections}
+
+\usepackage{makecell}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\usepackage[export]{adjustbox}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------- Variables that can be changed --------------------------------- %
+\def\primarycolor{white}
+\def\secondarycolor{black}
+\def\stackgap{0.1pt}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------- Base Shadowfy Makro -------------------------------------- %
+\makeatletter
+\tikzset{
+  use path for main/.code={%
+    \tikz@addmode{%
+      \expandafter\pgfsyssoftpath@setcurrentpath\csname tikz@intersect@path@name@#1\endcsname
+    }%
+  },
+  use path for actions/.code={%
+    \expandafter\def\expandafter\tikz@preactions\expandafter{\tikz@preactions\expandafter\let\expandafter\tikz@actions@path\csname tikz@intersect@path@name@#1\endcsname}%
+  },
+  use path/.style={%
+    use path for main=#1,
+    use path for actions=#1,
+  }
+}
+\makeatother
+
+\colorlet{ornamentedFrameInner}{black}
+\definecolor{ornamentedFrameOuter}{HTML}{deb400}
+
+\tikzset{ornamented frame inner/.style={color=ornamentedFrameInner,
+                                        line width=2pt},
+         ornamented frame outer/.style={color=ornamentedFrameOuter,
+                                        line width=3pt}}
+
+\tcbsubskin{ornamented}{empty}{
+  skin first=ornamented, skin middle=ornamented, skin last=ornamented,
+  title engine=standard,
+  frame code={
+    % Account for the line widths in order not to draw beyond the bounding
+    % box---except for a few very small details for which this is intentional.
+    \coordinate (north west) at ([shift={(1.5pt,-1.5pt)}]frame.north west);
+    \coordinate (north east) at ([shift={(-1.5pt,-1.5pt)}]frame.north east);
+    \coordinate (south east) at ([shift={(-1.5pt,1.5pt)}]frame.south east);
+    \coordinate (south west) at ([shift={(1.5pt,1.5pt)}]frame.south west);
+    %
+    \foreach \xoffset/\point in {34pt/north west, -34pt/north east,
+                                  34pt/south west, -34pt/south east} {
+      \fill[color=ornamentedFrameOuter]
+        ([xshift=\xoffset]\point) circle[radius=2.5pt];
+    }
+    %
+    \path[name path=ornament 1]
+                                 ([yshift=-4pt]north west)
+      [rounded corners=0.5pt] -- ++(23pt,0)
+      [rounded corners=2pt]   -- ++(3pt,-4pt)
+                              -- ([shift={(-26pt,-8pt)}]north east)
+      [rounded corners=0.5pt] -- ++(3pt,4pt)
+      [rounded corners=4pt]   -- ([yshift=-4pt]north east)
+                              -- ([yshift=4pt]south east)
+      [rounded corners=0.5pt] -- ++(-23pt,0)
+      [rounded corners=2pt]   -- ++(-3pt,4pt)
+                              -- ([shift={(26pt,8pt)}]south west)
+      [rounded corners=0.5pt] -- ++(-3pt,-4pt)
+      [rounded corners=4pt]   -- ([yshift=4pt]south west)
+                              -- cycle;
+    %
+    \path[rounded corners=0.5pt, name path=ornament 2]
+                                 ([yshift=-20pt]north west)
+                              -- ++(-4pt,3pt)
+                              -- ++(0,4pt)
+               to[out=0, in=-90] ([shift={(8pt,0pt)}]north west)
+                              -- ([shift={(34pt,0pt)}]north west)
+                              -- ([shift={(-8pt,0pt)}]north east)
+             to[out=-90, in=180] ([shift={(4pt,-13pt)}]north east)
+                              -- ++(0,-4pt)
+                              -- ++(-4pt,-3pt)
+                              -- ([yshift=20pt]south east)
+                              -- ++(4pt,-3pt)
+                              -- ++(0,-4pt)
+              to[out=180, in=90] ([shift={(-8pt,0pt)}]south east)
+                              -- ([shift={(8pt,0pt)}]south west)
+                to[out=90, in=0] ([shift={(-4pt,13pt)}]south west)
+                              -- ++(0,4pt)
+                              -- ++(4pt,3pt)
+                              -- cycle;
+    %
+    \path[name path=ornament background, fill=white]
+                                 ([xshift=9pt,yshift=-4pt]north west)
+      [rounded corners=0.5pt] -- ++(13pt,0)
+      [rounded corners=2pt]   -- ++(3pt,-4pt)
+                              -- ([shift={(-26pt,-8pt)}]north east)
+      [rounded corners=0.5pt] -- ++(3pt,4pt)
+      [rounded corners=4pt]   -- ([xshift=-9pt,yshift=-4pt]north east)
+      						  -- ([yshift=-13pt]north east)
+                              -- ([yshift=13pt]south east)
+                              -- ([xshift=-9pt,yshift=4pt]south east)
+      [rounded corners=0.5pt] -- ++(-13pt,0)
+      [rounded corners=2pt]   -- ++(-3pt,4pt)
+                              -- ([shift={(26pt,8pt)}]south west)
+      [rounded corners=0.5pt] -- ++(-3pt,-4pt)
+      [rounded corners=4pt]   -- ([xshift=9pt,yshift=4pt]south west)
+                              -- ([yshift=13pt]south west)
+                              -- ([yshift=-13pt]north west)
+                              -- cycle;
+    %
+    \draw[color=white, line width=1pt, use path=ornament background];
+    \draw[ornamented frame outer, use path=ornament 1];
+    \draw[ornamented frame outer, use path=ornament 2];
+    \draw[ornamented frame inner, use path=ornament 1];
+    \draw[ornamented frame inner, use path=ornament 2];
+    %
+    \foreach \xoffset/\point in {34pt/north west, -34pt/north east,
+                                 34pt/south west, -34pt/south east} {
+      \fill[color=ornamentedFrameInner]
+        ([xshift=\xoffset]\point) circle[radius=2pt];
+    }
+  }
+}
+
+% These parameters---especially those related to geometry---are better located
+% here in a style than in the subskin definition (see the Subskins section of
+% the tcolorbox manual).
+\tcbset{ornamented/.style={skin=ornamented, toptitle=14.5pt, bottom=9.5pt,
+                           coltitle=black}
+}
+
+% Define the 'ornamentedbox' environment
+\newtcolorbox{ornamentedbox}[1][]{ornamented, fonttitle=\scshape, #1}
+
+% Convenient style to use with a tcolorbox preceded by text (or anything),
+% when one wants to prevent any page break before the tcolorbox.
+\tcbset{skip and no break/.style={
+  before={\par\nopagebreak\vspace{2ex}\noindent}}
+}
+
+% Style suitable for an “on line” (in the middle of a paragraph)
+% 'ornamentedbox'.
+\tcbset{my on line/.style={
+  capture=hbox, tcbox raise base, top=14pt, bottom=14pt,
+  before={\kern 5pt}, after={\kern 5pt}}
+}

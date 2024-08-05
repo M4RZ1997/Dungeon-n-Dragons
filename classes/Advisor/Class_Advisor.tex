@@ -3,33 +3,37 @@
 
 \newcommand{\PATH}{../../}
 
-\usepackage[justified]{\PATH dndtemplate/dnd}
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
 
-\usepackage{\PATH classes/stylesheet/classes_stylesheet}
-\usepackage{\PATH classes/stylesheet/classes_commands}
-\usepackage{\PATH classes/stylesheet/classes_variables}
-\usepackage{\PATH classes/stylesheet/shadowfy}
-\usepackage{\PATH classes/stylesheet/ornamented}
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
+\usepackage{\PATH templates/template_class/class_commands}
 
-%\newcommand{\entryfont}{\DndFontStatBlockBody} & uses the default font provided by the LaTeX DnD-Template
-\newfontfamily\entryfont{Kalam}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Kalam-Regular,BoldFont=Kalam-Bold] % requires XeLaTeX or LuaTeX
-\newfontfamily\titlefont{Modesto Bold}[Path=\PATH template/fonts/,Extension=.ttf,UprightFont=Modesto Bold,BoldFont=Modesto Bold] % requires XeLaTeX or LuaTeX
+\usepackage{\PATH templates/utilities/ornamented}
 
 \ClassName{Advisor}
 
 \begin{document}
 	% Titlepage	
-	\classesTitlePage{The Advisor}{images/titlepage_Advisor.jpg}{0cm}{-2cm}{min width=\paperwidth, min height=\paperheight}{https://www.artstation.com/artwork/arZ4R}{Piri Reis}{Guan Ye Chen}
+	\classesTitlePage{The Advisor}
+		{images/titlepage_Advisor.jpg}
+		{0cm}
+		{-2cm}
+		{width=\paperwidth}
+		{https://www.artstation.com/artwork/arZ4R}
+		{Piri Reis}
+		{Guan Ye Chen}
 	
 	\begin{tikzpicture}[remember picture, overlay]
 		\node[opacity=1,inner sep=0pt, anchor=north east, xshift=4cm] at (current page.north east){\includegraphics[height=0.5\paperheight, keepaspectratio]{images/Advisor(1).png}};
-		\addImageDBEntry{Page 2}{Background Art}{https://cdn.artstation.com/p/assets/images/images/000/697/528/large/tj-foo-grand-library.jpg?1431011034}{Grand Library}{TJ Foo}
 		\node[opacity=1,inner sep=0pt, xshift=6cm, yshift=-1cm] at (current page.center){\includegraphics[height=0.5\paperheight, keepaspectratio]{images/Advisor(2).png}};
-		\addImageDBEntry{Page 2}{Character Art}{https://www.behance.net/gallery/54878727/Empires-in-ruins-Main-Characters}{Empires in Ruins - Main Characters}{Konrad Langa}
 	\end{tikzpicture}
+	\addImageDBEntry{Advisor1}{Page \thepage}{Background Art}{https://cdn.artstation.com/p/assets/images/images/000/697/528/large/tj-foo-grand-library.jpg?1431011034}{Grand Library}{TJ Foo}
+	\addImageDBEntry{Advisor2}{Page \thepage}{Character Art}{https://www.behance.net/gallery/54878727/Empires-in-ruins-Main-Characters}{Empires in Ruins - Main Characters}{Konrad Langa}
 	\vspace*{-2.4\fontdimen6\font}
 	\section*{Advisor}
 	\entryfont The young elven woman's eyes\\light up with joy as soon as she\\steps through the tall and meticulously\\-crafted door into the magnificent study.\\Reverently, she runs her fingers across each\\page of ancient tomes, a treasure trove of old\\magics and invaluable guidance for the future.
@@ -110,8 +114,8 @@
 	
 	\begin{tikzpicture}[remember picture, overlay]
 		\node[opacity=1,inner sep=0pt, anchor=south east, yshift=-0.5cm, xshift=-1cm] at (current page.south east){\includegraphics[width=0.5\paperwidth, keepaspectratio]{images/Advisor(3).png}};
-		\addImageDBEntry{Page 3}{Art}{https://www.artofmtg.com/art/kambal-consul-of-allocation/}{Kambal, Consul of Allocation MtG Art from Kaladesh}{Vincent Proce}
 	\end{tikzpicture}
+	\addImageDBEntry{Advisor3}{Page \thepage}{Art}{https://www.artofmtg.com/art/kambal-consul-of-allocation/}{Kambal, Consul of Allocation MtG Art from Kaladesh}{Vincent Proce}
 	
 	\newpage
 	\subsection*{Word of Advice}
@@ -189,8 +193,8 @@
 
 	\begin{tikzpicture}[remember picture, overlay]
 		\node[opacity=1,inner sep=0pt, anchor=south west, yshift=0.4cm, xshift=0cm] at (current page.south west){\includegraphics[width=0.525\paperwidth, keepaspectratio]{images/Advisor(4).png}};
-		\addImageDBEntry{Page 5}{Art}{https://www.artofmtg.com/art/combat-research/}{Combat Research MtG Art from Dominaria United}{Justine Cruz}
 	\end{tikzpicture}
+	\addImageDBEntry{Advisor4}{Page \thepage}{Art}{https://www.artofmtg.com/art/combat-research/}{Combat Research MtG Art from Dominaria United}{Justine Cruz}
 	\vfill\eject
 	
 	\subparagraph*{Spells Known of 1st-Level and Higher}
@@ -238,6 +242,8 @@
 			\node[yshift=7.9cm, xshift=6.5cm, font=\bfseries\scriptsize] at (0,0) {\bfseries{- Spell Slots per Spell Level -}};
 		\end{tikzpicture}
 	\end{ornamentedbox}\end{adjustwidth}
+	
+	\eject
 	
 	\subsubsection*{Word of Wizardry}
 	\textnormal{\textit{3rd-Level Arcanology feature}}
@@ -330,8 +336,8 @@
 	
 	\begin{tikzpicture}[remember picture, overlay]
 		\node[opacity=1,inner sep=0pt, anchor=south west, yshift=-1.5cm, xshift=0cm] at (current page.south west){\includegraphics[width=\paperwidth, keepaspectratio]{images/Advisor(5).png}};
-		\addImageDBEntry{Page 7}{Art}{https://www.artofmtg.com/art/rob-the-archives/}{Rob the Archives MtG Art from Streets of New Capenna}{Steve Argyle}
 	\end{tikzpicture}
+	\addImageDBEntry{Advisor5}{Page \thepage}{Art}{https://www.artofmtg.com/art/rob-the-archives/}{Rob the Archives MtG Art from Streets of New Capenna}{Steve Argyle}
 	
 	\vfill\eject
 	
@@ -411,8 +417,8 @@
 	
 	\begin{tikzpicture}[remember picture, overlay]
 		\node[opacity=1,inner sep=0pt, anchor=south east, yshift=0cm, xshift=15cm] at (current page.south east){\includegraphics[height=\paperheight, keepaspectratio]{images/Advisor(6).png}};
-		\addImageDBEntry{Page 8}{Art}{https://www.artofmtg.com/art/general-kudro-of-drannith/}{General Kudro of Drannith MtG Art from Ikoria}{Ryan Pancoast}
 	\end{tikzpicture}
+	\addImageDBEntry{Advisor6}{Page \thepage}{Art}{https://www.artofmtg.com/art/general-kudro-of-drannith/}{General Kudro of Drannith MtG Art from Ikoria}{Ryan Pancoast}
 	
 	\vfill\newpage
 	
@@ -441,8 +447,8 @@
 	
 	\begin{tikzpicture}[remember picture, overlay]
 		\node[opacity=1,inner sep=0pt, anchor=south west, yshift=-0.35cm, xshift=-0.15cm] at (current page.south west){\includegraphics[width=0.55\paperwidth, keepaspectratio]{images/Advisor(7).png}};
-		\addImageDBEntry{Page 9}{Art}{https://www.artofmtg.com/art/gods-willing/}{Gods Willing MtG Art from Theros}{Mark Winters}
 	\end{tikzpicture}
+	\addImageDBEntry{Advisor7}{Page \thepage}{Art}{https://www.artofmtg.com/art/gods-willing/}{Gods Willing MtG Art from Theros}{Mark Winters}
 	\vfill\eject
 	
 	\begin{ornamentedbox}
@@ -587,16 +593,22 @@
 	      %extra=,
 	    ]
 	    
-	    \DndMonsterSection{Actions}
+	    \DndMonsterSection{Reactions}
 	    \DndMonsterAction{Intercept Attack}
 	    When a creature the companion can see hits a target with an attack, and the target is within 5 feet of the companion, the target instead takes half the damage. The companion takes the remainder of the damage.
 	\end{DndMonster}
 	
 	\begin{tikzpicture}[remember picture, overlay]
 		\node[opacity=1,inner sep=0pt, anchor=south east, yshift=1cm, xshift=2cm] at (current page.south east){\includegraphics[width=0.65\paperwidth, keepaspectratio]{images/Advisor(8).png}};
-		\addImageDBEntry{Page 10}{Art}{https://www.artofmtg.com/art/kari-zev-skyship-raider/}{Kari Zev, Skyship Raider MtG Art from Aether Revolt}{Brad Rigney}
 	\end{tikzpicture}
 	
 	% Final Page
-	\classesLastPage{images/backcover_Advisor.jpg}{0cm}{5cm}{height=\paperheight}{https://www.artstation.com/artwork/JvenZa}{The Enchanted Bibliotheca}{Nathanial Gibbs}{Created by Xcelar8 on GMBinder}
+	\classesLastPage{images/backcover_Advisor.jpg}
+		{0cm}
+		{5cm}
+		{height=\paperheight}
+		{https://www.artstation.com/artwork/JvenZa}
+		{The Enchanted Bibliotheca}
+		{Nathanial Gibbs}
+		{Created by Xcelar8 on GMBinder}
 \end{document}

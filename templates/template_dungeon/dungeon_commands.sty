@@ -4,7 +4,7 @@
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ------------------------------------------- Variables ------------------------------------------- %
-\newcommand{\pathSimpleAssets}{\PATH templates/template_dungeon/map_assets/}
+\newcommand{\pathSimpleAssets}{\PATH templates/utilities/images/map_assets/}
 \newcommand{\ASSETPATH}{\PATH ../Dungeon_Map_Assets/FA_Mapmaking_Pack/}
 
 \def\scaleFactor{1}
@@ -19,6 +19,30 @@
 		footskip  = .32in, % Bottom of text area to bottom of footer text
 		columnsep = .33in, % Space between columns
 	}%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Dungeon Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\dungeonTitlePage}[8]{%
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture,overlay]
+		\expandafter\def\expandafter\temp\expandafter{#1}%
+		\edef\temp{#1}
+		\expandafter\splitShadowfyColors\temp\relax%
+		
+		\node[opacity=1,inner sep=0pt,xshift=#2,yshift=#3] at (current page.center){\includegraphics[#4, keepaspectratio]{#5}};
+		\addImageDBEntry#6
+		\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyBookTitleName{#7}};
+				
+		\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.375\paperheight)$);
+		\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+		
+		\expandafter\def\expandafter\temp\expandafter{#8}%
+		\edef\temp{#8}
+		\expandafter\splitShadowfyColors\temp\relax%
+		\def\stackgap{0.01pt}
+		\node[yshift=-0.4\paperheight] at (current page.center) {\titlefont{ \shadowfy{The homebrew Dungeon "#7"}}};
+	\end{tikzpicture}
 }%
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %

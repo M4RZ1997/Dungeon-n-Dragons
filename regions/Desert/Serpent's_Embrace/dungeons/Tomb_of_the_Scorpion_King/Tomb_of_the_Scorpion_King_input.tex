@@ -12,7 +12,6 @@
 %	}%
 %	{Tomb of the Scorpion King}%
 %	{black/white}%
-	
 \clearpage
 \section*{History}
 \phantomsection\addcontentsline{toc}{section}{History}
@@ -21,9 +20,9 @@
 
 \twocolumn[\section*{Entrance Area (Outside)}
 \phantomsection\addcontentsline{toc}{section}{Entrance Area (Outside)}
-\centerline{\begin{minipage}{\paperwidth}
+\vspace*{-1em}\centerline{\begin{minipage}{\paperwidth}
 \begin{tikzpicture}[outer sep=0pt, inner sep=0pt, every shadow/.style={opacity=.8,fill=black}]
-	\node {\includegraphics[width=\paperwidth - 8pt, height=14cm]{\PATH templates/template_dungeon/backgrounds/dungeon_map.png}};
+	\node {\includegraphics[width=\paperwidth - 8pt, height=14cm]{\PATH  templates/utilities/images/backgrounds/dungeon_map.png}};
 	
 	% Guidelines
 	\begin{scope}[scale=0.3, every path/.style={black!80, thick}]
@@ -39,7 +38,7 @@
 		\node[inner sep=0pt,outer sep=0pt,rounded corners=0.5cm,opacity=0.7] {
 			{
 				\includegraphics[width=\paperwidth-150pt, height=9cm]{
-					\PATH templates/template_dungeon/backgrounds/sand_dungeon_texture.jpg
+					\PATH templates/utilities/images/backgrounds/sand_dungeon_texture.jpg
 				}
 			}
 		};
@@ -72,7 +71,7 @@
 			
 			%Stairs
 			\stairsField{sand}{13,8}{anchor=south west}{0.3cm}{0.3cm}
-			%\stairsField{sandspiral}{-12,9}{rotate=0, yscale=-1}{0.6cm}{0.6cm}
+			\stairsField{sandspiral}{-12,9}{rotate=0, yscale=-1}{0.6cm}{0.6cm}
 			
 			% Chests
 			\chestField{red}{closed}{8,10}{anchor=south west}{0.3cm}{0.3cm}
@@ -87,7 +86,7 @@
 			{%
 				%\transparent{0.7}
 				\includegraphics[width=\paperwidth-150pt, height=9cm]{%
-					\PATH templates/template_dungeon/backgrounds/rocky_dungeon_texture.jpg%
+					\PATH templates/utilities/images/backgrounds/rocky_dungeon_texture.jpg%
 				}%
 			}%
 		};%
@@ -98,7 +97,7 @@
 		
 		\node[inner sep=0pt,outer sep=0pt,clip,rounded corners=0.5cm] at (0,0) {%
 			\includegraphics[width=\paperwidth-150pt, height=9cm]{%
-				\PATH templates/template_dungeon/backgrounds/sandstone_dungeon_texture.jpg%
+				\PATH templates/utilities/images/backgrounds/sandstone_dungeon_texture.jpg%
 			}%
 		};%	
 	\end{scope}
@@ -113,14 +112,15 @@
 		\stairsField{sandspiral}{-12.04,9}{rotate=0, yscale=-1}{0.6cm}{0.6cm}
 		
 		% Numbers
-		\indicatorNumberField{(-1,-3)}
-		\indicatorNumberField{(-5,-5)}
-		\indicatorNumberField{(-2.5,1)}
-		\indicatorNumberField{(1,-10)}
-		\indicatorNumberField{(9.5,7)}
-		\indicatorNumberField{(11.5,8.5)}
-		\indicatorNumberField{(9,11)}
-		\indicatorNumberField{(-12.5,8.5)}
+		\pgfmathsetmacro{\IndicatorSize}{5}%
+		\indicatorNumberField[10]{(-1,-3)}{\IndicatorSize}
+		\indicatorNumberField[10]{(-5,-5)}{\IndicatorSize}
+		\indicatorNumberField[10]{(-2.5,1)}{\IndicatorSize}
+		\indicatorNumberField[10]{(1,-10)}{\IndicatorSize}
+		\indicatorNumberField[10]{(9.5,7)}{\IndicatorSize}
+		\indicatorNumberField[10]{(11.5,8.5)}{\IndicatorSize}
+		\indicatorNumberField[10]{(9,11)}{\IndicatorSize}
+		\indicatorNumberField[10]{(-12.5,8.5)}{\IndicatorSize}
 	\end{scope}
 	
 	% Outer Ornaments
@@ -181,7 +181,7 @@
 		\item \textbf{In front of the secret door}\\
 		Thunderwave Trap (DEX DC 18) that knocks a character back 20 feet. On an additional failed Consitution saving throw (DC 16) the target also takes \DndDice{1d6} force and \DndDice{1d8} bludgeoning damage.
 		\item \textbf{Near the cliffside on both sides}\\
-		Stron Drop Trap (DEX DC 14) that deals \DndDice{2d10} bludgeoning damage on a failed save.
+		Stone Drop Trap (DEX DC 14) that deals \DndDice{2d10} bludgeoning damage on a failed save.
 		\item \textbf{Middle of passageway}\\
 		Poisoned Spring Trap (DEX DC 16) that deals \DndDice{1d8} piercing damage on a failed save. On an additional failed Consitution saving throw (DC 18) the target is poisoned.
 	\end{itemize}
@@ -192,11 +192,11 @@
 	Embedded within the canyon's cliffside lies a covert passage, concealed by artful design. With a perceptive touch (DC 18 Perception or Investigation Check), the discerning eye may trace the subtle contour of a stone door, masterfully blended into the rugged façade. An engraving, reminiscent of a scorpion's stinger, graces this concealed entryway, a whispered promise of the secrets that lie beyond. Unveiling the portal's mystery requires the touch of destiny - a \textbf{Silver Scorpion Stinger Key}, a key to fate itself, snugly placed within the waiting notch.
 }
 
+\eject
+
 \subsection*{7. Twin-Chests}
 {\entryfont
 	Nestled at the conclusion of the rightward path, a dual set of chests emerges, twin entities united in their enigma, virtually indistinguishable from one another. Side by side, they stand as a testament to the balance of secrets they guard.
-	
-	\vfill\eject
 	
 	\textbf{Treasure}
 	In one of the chests the following treasures can be found:

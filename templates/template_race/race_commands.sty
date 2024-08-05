@@ -1,0 +1,86 @@
+% ------------------------------------------------------------------------------------------------- %
+%							race_commands.sty  	Marcel Zauder 02/04/2023						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\newcommand{\RaceNameValue}{}
+\newcommand{\RaceName}[1]{\renewcommand{\RaceNameValue}{#1}}
+\newcommand{\LineageNameValue}{}
+\newcommand{\LineageName}[1]{\renewcommand{\LineageNameValue}{#1}}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- New  Commands ----------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\racesTitlePage}[8]{%
+	\begin{titlepage}
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};
+			\addImageDBEntry{FrontCover}{Front Cover}{Art}{#6}{#7}{#8}
+			\node[yshift=0.385\paperheight] at (current page.center) {\shadowfyClassName{#1}};
+			\node[yshift=0.3475\paperheight] at (current page.center) {\shadowfyHeader{15}{12}{race}};
+			
+			\node[yshift=0.45\paperheight] at (current page.center) {\includegraphics[width=0.11\paperwidth, keepaspectratio]{\PATH templates/utilities/images/titlepage/icons/5eMC.png}};			
+			\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.36\paperheight)$);
+			\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+			
+			\node[yshift=-0.325\paperheight, xshift=-0.3\paperwidth] at (current page.center){%
+				\includegraphics[width=0.4\paperwidth, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/Homebrew_Banner.png%
+				}%
+			};%
+			\node[yshift=-0.31725\paperheight, xshift=-0.45\paperwidth] at (current page.center){%
+				\includegraphics[width=0.075\paperheight, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/icons/Dragon-D.png%
+				}%
+			};%
+			
+			\node[yshift=-0.405\paperheight, xshift=0.39\paperwidth] at (current page.center){%
+				\includegraphics[width=0.2\paperwidth, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/icons/M4RZ-Crafting_icon.png%
+				}%
+			};%
+			
+			\def\stackgap{0.01pt}
+			\node[yshift=-0.4\paperheight] at (current page.center) {\titlefont{ \shadowfy{A homebrew race for DnD 5E}}};
+		\end{tikzpicture}
+	\end{titlepage}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\lineagesTitlePage}[8]{%
+	\begin{titlepage}
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};
+			\addImageDBEntry{FrontCover}{Front Cover}{Art}{#6}{#7}{#8}
+			\node[yshift=0.385\paperheight] at (current page.center) {\shadowfyClassName{#1}};
+			\node[yshift=0.3475\paperheight] at (current page.center) {\shadowfyHeader{15}{12}{lineage}};
+			
+			\node[yshift=0.45\paperheight] at (current page.center) {\includegraphics[width=0.11\paperwidth, keepaspectratio]{\PATH templates/utilities/images/titlepage/icons/5eMC.png}};			
+			\coordinate (redline_left) at ($(current page.center) + (-0.3\paperwidth, 0.36\paperheight)$);
+			\draw [rulered, fill = red] (redline_left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+			
+			\node[yshift=-0.325\paperheight, xshift=-0.3\paperwidth] at (current page.center){%
+				\includegraphics[width=0.4\paperwidth, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/Homebrew_Banner.png%
+				}%
+			};%
+			\node[yshift=-0.31725\paperheight, xshift=-0.45\paperwidth] at (current page.center){%
+				\includegraphics[width=0.075\paperheight, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/icons/Dragon-D.png%
+				}%
+			};%
+			
+			\node[yshift=-0.405\paperheight, xshift=0.39\paperwidth] at (current page.center){%
+				\includegraphics[width=0.2\paperwidth, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/icons/M4RZ-Crafting_icon.png%
+				}%
+			};%
+			
+			\def\stackgap{0.01pt}
+			\node[yshift=-0.4\paperheight] at (current page.center) {\titlefont{ \shadowfy{A homebrew lineage for DnD 5E}}};
+		\end{tikzpicture}
+	\end{titlepage}
+}%

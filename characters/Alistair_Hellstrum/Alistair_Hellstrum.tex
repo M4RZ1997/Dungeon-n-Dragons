@@ -8,7 +8,7 @@
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
 \usepackage{\PATH templates/template_character-sheet/character-sheet-stylesheet}
-\usepackage{\PATH templates/template_magic-item/magic-items-commands}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
@@ -17,9 +17,9 @@
 \CharacterName{Alistair Hellstrum}
 
 \Class{Bard}
-\MultiClassMainLevel{4}
+\MultiClassMainLevel{5}
 \MultiClass{Warlock}
-\Level{5}
+\Level{6}
 \Background{Courtier}
 \PlayerName{M4RZ}
 \Race{Tiefling}
@@ -174,6 +174,7 @@
 		\item Psychic Blades
 		\item Words of Terror
 	\end{itemize}
+	\item Font of Inspiration
 \end{itemize}
 \textbf{Warlock}
 \begin{itemize}
@@ -279,6 +280,9 @@
 \SecondLevelSpellSlotL{Invisibility (V, S, M)}
 \SecondLevelSpellSlotM{Levitate (V, S, M)}
 
+\ThirdLevelSpellSlotsTotal{2}
+\ThirdLevelSpellSlotA{Counterspell (S)}
+\ThirdLevelSpellSlotB{Summon Fey (V, S, M)}
 \ThirdLevelSpellSlotK{Once per Day:}
 \ThirdLevelSpellSlotL{Fly (V, S, M)}
 \ThirdLevelSpellSlotM{Meld into Trees (V, S)}
@@ -368,6 +372,7 @@ Whenever you gain a level, you can replace the invocation with another one from 
 
 \section*{Bard Traits}
 \subsection*{Bardic Inspiration}
+\textbf{Inspiration Die: d8}\\
 You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.
 
 Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the d20 before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time.
@@ -399,6 +404,9 @@ If you speak to a humanoid alone for at least 1 minute, you can attempt to seed 
 If the target succeeds on its saving throw, the target has no hint that you tried to frighten it.
 
 Once you use this feature, you can't use it again until you finish a short rest or long rest.
+
+\subsection*{Font of Inspiration}
+Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest.
 
 \section*{Warlock Traits}
 \subsection*{Otherworldly Patron}
@@ -727,6 +735,99 @@ You can also specify conditions that will trigger a special activity during the 
 If you or any of your companions damage the target, the spell ends.
 
 \subsection*{Level 3}
+
+\DndSpellHeader
+  {Counterspell}
+  {3rd Level Abjuration}
+  {1 Reaction, which you take when you see a creature within 60 feet of you casting a spell}
+  {60 feet}
+  {S}
+  {Instantaneous}
+  
+You attempt to interrupt a creature in the process of casting a spell. If the creature is casting a spell of 3rd level or lower, its spell fails and has no effect. If it is casting a spell of 4th level or higher, make an ability check using your spellcasting ability. The DC equals 10 + the spell’s level. On a success, the creature’s spell fails and has no effect.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 4th level or higher, the interrupted spell has no effect if its level is less than or equal to the level of the spell slot you used.
+
+\DndSpellHeader
+  {Summon Fey}
+  {3rd Level Conjuration}
+  {1 Action}
+  {90 feet}
+  {V, S, M (a gilded flower worth at least 300 gp)}
+  {Concentration, up to 1 Hour}
+  
+You call forth a fey spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the Fey Spirit stat block. When you cast the spell, choose a mood. Fuming, Mirthful, or Tricksy. The creature resembles a fey creature of your choice marked by the chosen mood, which determines one of the traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.
+
+The creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don’t issue any, it takes the Dodge action and uses its move to avoid danger.
+
+\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 4th level or higher, use the higher level wherever the spell's level appears in the stat block.
+
+\begin{DndMonster}[width=0.5\textwidth]{Fey Spirit}
+	\DndMonsterType{Small Fey}
+		
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {12 + the level of the spell (Natural Armor)},
+		hit-points  = {30 + 10 for each Spell Level above 3rd},
+		speed       = {40 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 13,
+		dex = 16,
+		con = 14,
+		int = 14,
+		wis = 11,
+		cha = 16,
+	]
+		
+	\DndMonsterDetails[
+		%saving-throws = {Dex +3 + PB, Con +2 + PB +5},
+		%skills = {Perception +4, Stealth +7},
+		%damage-vulnerabilities = {cold},
+		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+		%damage-immunities = {cold},
+		senses = {Darkvision 60ft., Passive Perception 10},
+		condition-immunities = {charmed},
+		languages = {Sylvan, understands the languages you speak},
+		%challenge = 2,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Fey makes a number of attacks equal to half this spell's level (rounded down).
+	
+	\DndMonsterAttack[
+		name=Shortsword,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+3 + PB,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg={1d6 + 3 + the spell's level},
+		dmg-type={piercing},
+		plus-dmg={1d6},
+		plus-dmg-type={force},
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra=,
+	]
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Fey Step}
+	The fey magically teleports up to 30 feet to an unoccupied space it can see. Then one of the following effects occurs, based on the fey's chosen mood.
+	
+	\DndMonsterAction{Fuming}
+	The fey has advantage on the next attack roll it makes before the end of this turn.
+	
+	\DndMonsterAction{Mrithful}
+	The fey can force one creature it can see within 10 feet of it to make a Wisdom saving throw against your spell save DC. Unless the save succeeds, the target is charmed by you and the fey for 1 minute or until the target takes any damage.
+	
+	\DndMonsterAction{Tricksy}
+	The fey can fill a 5-foot cube within 5 feet of it with magical darkness, which lasts until the end of its next turn.
+\end{DndMonster}
 
 \DndSpellHeader
   {Fly}
