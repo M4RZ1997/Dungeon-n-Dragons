@@ -116,3 +116,81 @@
 		};%
 	\end{tikzpicture}%
 }%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------- Part Display Page --------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  ACT Version  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\renewcommand{\thepart}{\Roman{part}}%
+\newcommand{\actpart}[9]{%
+	\clearpage%
+	\stepcounter{part}%
+	\begin{tikzpicture}[overlay,remember picture]%
+		\ifthenelse{\equal{#2}{}}{}{%
+			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};%
+			\addImageDBEntry{#6}{Page \thepage}{Act-Cover Art}{#7}{#8}{#9}%
+		}%
+		\node[yshift=0.075\paperheight] at (current page.center) {\DndFontPart\DndContour{Act~\thepart}};%
+		\node[yshift=-0.025\paperheight] at (current page.center) {\DndFontPart\DndContour{#1}};%
+	\end{tikzpicture}%
+	\phantomsection\addcontentsline{toc}{part}{#1}%
+	\clearpage%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# BLANK Version #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\renewcommand{\thepart}{\Roman{part}}%
+\newcommand{\blankpart}[9]{%
+	\clearpage%
+	\begin{tikzpicture}[overlay,remember picture]%
+		\ifthenelse{\equal{#2}{}}{}{%
+			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};%
+			\addImageDBEntry{#6}{Page \thepage}{Act-Cover Art}{#7}{#8}{#9}%
+		}%
+		\node at (current page.center) {\DndFontPart\DndContour{#1}};%
+	\end{tikzpicture}%
+	\phantomsection\addcontentsline{toc}{part}{#1}%
+	\clearpage%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ Quest Hooks ------------------------------------------ %
+\makeatletter
+\newcommand{\rewardsList}{%
+	\begin{itemize}%
+	\renewcommand\labelitemi{\textbf{\textbullet}}%
+	\@rewardsListI%
+}%
+
+\newcommand{\@rewardsListI}{\@ifnextchar\stopRewardsList{\@rewardsListEnd}{\@rewardsListII}}%
+
+\newcommand{\@rewardsListII}[2]{%
+	\item \textbf{#1}\ifx\relax#2\relax\else\\#2\fi%
+	\@rewardsListI%
+}%
+
+\newcommand{\@rewardsListEnd}[1]{\end{itemize}}%
+\makeatother
+
+% Fancy DnD 5e stat block rule
+\NewDocumentCommand {\DndFullLine} {}
+  {
+    \par \vspace{-2pt} \noindent
+    \begin {tikzpicture}
+      \draw [ rulered, fill = rulered ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \linewidth, 0.1 ) -- ( \linewidth, 0 );%
+    \end {tikzpicture}
+    \par
+  }
+
+\newcommand{\sectionQuestHook}[7]{%
+	\subsection*{Quest Hook - #1}%
+	{\entryfont \paragraph*{Location} #2}%
+	{\entryfont \paragraph*{Quest Giver} #3}%
+	{\entryfont \paragraph*{Objective} #4\hfill}%
+	\DndMonsterLine
+	{\noindent\entryfont #5\hfill}%
+	\DndMonsterLine
+	{\entryfont \paragraph*{Reward} #6}%
+	{\entryfont \rewardsList #7 \stopRewardsList}%
+	\DndFullLine
+}%
