@@ -84,7 +84,8 @@
 \RequirePackage {\PATH templates/template_dnd/lib/dndcomment}    % inline comment boxes
 \RequirePackage {\PATH templates/template_dnd/lib/dndheader}     % fancy headers and footers
 \RequirePackage {\PATH templates/template_dnd/lib/dndmonster}    % stat blocks
-\RequirePackage {\PATH templates/template_dnd/lib/dndsiege}    % stat blocks
+\RequirePackage {\PATH templates/template_dnd/lib/dndsiege}    	 % stat blocks
+\RequirePackage {\PATH templates/template_dnd/lib/dndquest}    	 % Quest Hooks
 \RequirePackage {\PATH templates/template_dnd/lib/dndreadaloud}  % read-aloud text
 \RequirePackage {\PATH templates/template_dnd/lib/dndsections}   % section styling and special section headers
 \RequirePackage {\PATH templates/template_dnd/lib/dndsidebar}    % sidebars

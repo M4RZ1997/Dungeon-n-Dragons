@@ -198,6 +198,15 @@
     stat-block-section-style .initial:n        = \color{titleblue} \scshape \large,
     stat-block-section-style .value_required:n = true,
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Quest Hooks
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    quest-hook-family .tl_set:N         = \l__dnd_quest_hook_family_tl,
+    quest-hook-family .initial:n        = \normalfont,
+    quest-hook-family .value_required:n = true,
+    quest-hook-style .tl_set:N         = \l__dnd_quest_hook_style_tl,
+    quest-hook-style .initial:n        = \linespread{.9} \color{MarzPurple} \bfseries \Large \scshape \RaggedRight,
+    quest-hook-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Miscellaneous
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Footer
@@ -303,6 +312,10 @@
 \NewDocumentCommand{\DndFontSiegeStatBlockSection}{}
   { \l__dnd_siege_stat_block_section_family_tl \l__dnd_siege_stat_block_section_style_tl }
 
+% Quest Hook
+\NewDocumentCommand{\DndFontQuestHookTitle}{}
+  { \l__dnd_quest_hook_family_tl \l__dnd_quest_hook_style_tl }
+  
 % Miscellaneous
 \NewDocumentCommand{\DndFontFooter}{}
   { \l__dnd_footer_family_tl \l__dnd_footer_style_tl }

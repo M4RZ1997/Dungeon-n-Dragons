@@ -1,0 +1,139 @@
+% ------------------------------------------------------------------------------------------------- %
+%								quest_commands.sty  	Marcel Zauder 02/04/2023						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+
+\ExplSyntaxOn % Switch into Kernel-Mode
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------ Quest Hooks  Background ------------------------------------ %
+\DeclareTColorBox {DndQuestBg} { O{} m }
+  {
+    enhanced,
+    frame~hidden,
+    before~skip      = 12pt plus 3pt minus 3pt,
+    boxrule          = 0pt,
+    breakable,
+    parbox           = false,
+    boxsep           = 2pt,
+    toptitle         = 8pt,
+    top              = 0pt,
+    left             = 2pt,
+    right            = 2pt,
+    bottom           = 7pt,
+    sharp~corners,
+    oversize         = 0pt,
+    borderline~north = {3pt} {0pt}   {MarzPurple},
+    borderline~north = {2pt} {0.5pt} {MarzGold},
+    borderline~south = {3pt} {0pt}   {MarzPurple},
+    borderline~south = {2pt} {0.5pt} {MarzGold},
+    colback          = DmgLavender,
+    colbacktitle     = DmgLavender,
+    colframe         = titlered,
+    fonttitle        = \DndFontQuestHookTitle,
+    coltitle         = MarzPurple,
+    fontupper        = \DndFontStatBlockBody,
+    fontlower        = \DndFontStatBlockBody,
+    title            = {Quest~Hook~-~#2},
+    #1
+  }
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------- Quest Hooks Background Handling -------------------------------- %
+\bool_if:NTF \l__dnd_show_background_bool
+  {
+    \let\DndQuestHook\DndQuestBg
+    \let\endDndQuestHook\endDndQuestBg
+  }{
+    \let\DndQuestHook\DndQuestNoBg
+    \let\endDndQuestHook\endDndQuestNoBg
+  }
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- Quest Hook Line ---------------------------------------- %
+\NewDocumentCommand {\DndQuestLine} {}
+  {
+    \par \vspace{-2pt} \noindent
+    \begin {tikzpicture}
+      \draw [ rulered, fill = rulered ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \linewidth, 0.05 );
+    \end {tikzpicture}
+    \par
+  }
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------- Quest Hook Basics --------------------------------------- %
+\newlist {__dnd_quest_attributes} {description} {1}
+\setlist [__dnd_quest_attributes]
+  {
+    font     = \entryfont,
+    labelsep = \l__dnd_space_dim,
+    nosep,
+  }
+
+% Only prints the item label if the value was supplied
+\cs_new_protected_nopar:Npn \__dnd_if_quest_attribute:nn #1#2
+  {
+    \tl_if_empty:NF {#1}
+      { \item [#2] #1 }
+  }
+
+%% Monster basics
+\keys_define:nn { dnd / quest / basics }
+  {
+  	location		.tl_set:N			= \l__location_tl,
+  	location		.initial:n			= Location,
+  	location		.value_required:n	= true,
+  	quest-giver	.tl_set:N			= \l__quest_giver_tl,
+  	quest-giver	.initial:n			= NPC,
+	quest-giver	.value_required:n	= true,
+  	objective	.tl_set:N			= \l__objective_tl,
+  	objective	.initial:n			= Objective,
+  	objective		.value_required:n	= true,
+  }
+
+\cs_new_protected_nopar:Npn \__dnd_quest_basics:
+  {
+      \begin {__dnd_quest_attributes}
+        \item [\locationname] \entryfont\l__location_tl
+        \item [\questgivername] \entryfont\l__quest_giver_tl
+        \item [\objectivename] \entryfont\l__objective_tl
+      \end {__dnd_quest_attributes}
+  }
+
+\NewDocumentCommand {\DndQuestHookBasics} {o}
+  {
+    \group_begin:
+      \keys_set:nn { dnd / quest / basics } {#1}
+      \DndQuestLine
+      \__dnd_quest_basics:
+      \DndQuestLine
+    \group_end:
+  }
+\ExplSyntaxOff % Switch-Off Kernel Mode
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- Quest Rewards ----------------------------------------- %
+\makeatletter
+\newcommand{\rewardsList}{%
+	\begin{itemize}%
+	\renewcommand\labelitemi{\textbf{\textbullet}}%
+	\@rewardsListI%
+}%
+
+\newcommand{\@rewardsListI}{\@ifnextchar\stopRewardsList{\@rewardsListEnd}{\@rewardsListII}}%
+
+\newcommand{\@rewardsListII}[2]{%
+	\item \textbf{#1}\ifx\relax#2\relax\else\\#2\fi%
+	\@rewardsListI%
+}%
+
+\newcommand{\@rewardsListEnd}[1]{\end{itemize}}%
+\makeatother
+
+\newcommand{\DndQuestRewards}[2]{%
+	\DndQuestLine
+	{\entryfont \paragraph*{Reward} #1}%
+	{\entryfont \begingroup\rewardsList #2 \stopRewardsList\endgroup}%
+}%
