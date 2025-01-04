@@ -42,3 +42,23 @@
 %		\stepcounter{part}
 	\end{tikzpicture}
 }%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------- Part Display Page --------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  ACT Version  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\renewcommand{\thepart}{\Roman{part}}%
+\newcommand{\adventurepart}[9]{%
+	\clearpage%
+	\stepcounter{part}%
+	\begin{tikzpicture}[overlay,remember picture]%
+		\ifthenelse{\equal{#2}{}}{}{%
+			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};%
+			\addImageDBEntry{#6}{Page \thepage}{Act-Cover Art}{#7}{#8}{#9}%
+		}%
+		\node[yshift=0.075\paperheight] at (current page.center) {\DndFontPart\DndContour{Part~\thepart}};%
+		\node[yshift=-0.025\paperheight] at (current page.center) {\DndFontPart\DndContour{#1}};%
+	\end{tikzpicture}%
+	\phantomsection\addcontentsline{toc}{part}{#1}%
+	\clearpage%
+}%
