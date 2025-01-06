@@ -1,0 +1,24 @@
+% ADDITIONAL INFORMATION
+\newcommand{\OtherProficienciesLanguagesValue}{}
+\newcommand{\ClutterValue}{}
+\newcommand{\FeaturesTraitsValue}{}
+
+\newcommand{\OtherProficienciesLanguages}[1]{\renewcommand{\OtherProficienciesLanguagesValue}{\raggedright#1}}
+\newcommand{\Clutter}[1]{\renewcommand{\ClutterValue}{#1}}
+\newcommand{\FeaturesTraits}[1]{\renewcommand{\FeaturesTraitsValue}{#1}}
+
+% WEAPONS GENERATOR COMMAND
+\makeatletter
+\newcommand\AddWeapon[3]{%
+  \g@addto@macro\WeaponsHeld{\\ \entryfont #1 & \entryfont \ifthenelse{\lengthtest{#2 pt > 0pt}}{+}{}#2 & \entryfont #3}
+}
+\makeatother
+\newcommand{\addWeaponStatistic}[6]{%
+	\setAttackBonusValues{#3}{#4}{#5}%
+	\calculateAttackBonus{#2#1}%
+	\AddWeapon{#1}{\csname attackBonus#2#1\endcsname}{#6}%
+}%
+
+% SPELL MODIFIERS
+\newcommand{\SpellcastingClassValue}{}
+\newcommand{\SpellcastingClass}[1]{\renewcommand{\SpellcastingClassValue}{#1}}

@@ -1,0 +1,155 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% Headline
+\CharacterName{5e24 Test}
+
+\Class{Artificer}
+\MultiClassMainLevel{2}
+\MultiClass{Warlock}
+\Subclass{Superb}
+\Background{Mage of High Sorcery}
+\Race{Special}
+
+\Level{3}
+
+% ABILITY SCORES
+% (correct scores, no modifiers are automatically applied)
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{20}
+\DexterityRolledScore{20}
+\ConstitutionRolledScore{20}
+\IntelligenceRolledScore{1}
+\WisdomRolledScore{1}
+\CharismaRolledScore{1}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% PROFICIENCIES AND EXPERTIES
+%% SAVING THROWS
+\StrengthProficiency{E}
+\DexterityProficiency{E}
+\ConstitutionProficiency{E}
+\IntelligenceProficiency{E}
+\WisdomProficiency{E}
+\CharismaProficiency{E}
+
+%% STRENGTH SKILLS
+\AthleticsProficiency{E}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{E}
+\SleightOfHandProficiency{E}
+\StealthProficiency{E}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{E}
+\HistoryProficiency{E}
+\InvestigationProficiency{E}
+\NatureProficiency{E}
+\ReligionProficiency{E}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{E}
+\InsightProficiency{E}
+\MedicineProficiency{E}
+\PerceptionProficiency{E}
+\SurvivalProficiency{E}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{E}
+\IntimidationProficiency{E}
+\PerformanceProficiency{E}
+\PersuasionProficiency{E}
+
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+
+\Inspiration{5}
+\Proficiency{+2}
+\PassivePerceptionModifier{0}
+
+\EquipShield
+\ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+
+\MaxHitPointsRolled{18} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\MultiClassHitDice{d10}
+\HitDiceSpent{0}
+\MultiClassHitDiceSpent{0}
+
+\InitiativeModifier{0}
+\Speed{30}
+\Size{Medium}
+
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{P}
+\Shields{P}
+
+\WeaponsProficiency{Clubs, Daggers, Darts, Javelins, Maces, Quarterstaffs, Scimitars, Sickles, Slings, Spears}
+\ToolsProficiency{Alchemist's Supplies, Carpenter's Tools, Mason's Tools, Smith's Tools, Thieves' Tools, Tinker's Tools, Bagpipes}
+
+\addWeaponStatistic{Quarterstaff}{A.R.T.I.F.I.C.E.R-Q}{STR}{P}{0}{1d6 b}{versatile (1d8)}
+\addWeaponStatistic{Handaxe}{A.R.T.I.F.I.C.E.R-Q}{STR}{P}{0}{1d6 s}{thrown, light}
+\addWeaponStatistic{Light Crossbow}{A.R.T.I.F.I.C.E.R-Q}{DEX}{P}{0}{1d8 p}{}
+\addWeaponStatistic{Magic Weapon}{A.R.T.I.F.I.C.E.R-Q}{INT}{P}{0}{divers}{any Weapon can be the Magic Weapon}
+\addWeaponStatistic{Unarmed Strike}{A.R.T.I.F.I.C.E.R-Q}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
+
+\AddClassFeature{A}{\textbf{Class Feature II}\\this and that}
+\AddClassFeature{B}{\textbf{Class Feature III}\\this and that}
+\AddClassFeature{R}{\textbf{Class Feature IV}\\this and that}
+\AddClassFeature{L}{\textbf{Class Feature V}\\this and that}
+\AddClassFeature{Q}{\textbf{Class Feature VI}\\this and that}
+\AddClassFeature{A}{\textbf{Class Feature VII}\\this and that}
+\AddClassFeature{B}{\textbf{Class Feature VIII}\\this and that}
+\AddClassFeature{R}{\textbf{Class Feature XI}\\this and that}
+\AddClassFeature{L}{\textbf{Class Feature X}}
+\AddClassFeature{Q}{\textbf{Class Feature XI}\\this and that}
+\AddClassFeature{A}{\textbf{Class Feature XII}\\this and that}
+\AddClassFeature{B}{\textbf{Class Feature XIII}\\this and that}
+\AddClassFeature{R}{\textbf{Class Feature XIV}\\this and that}
+\AddClassFeature{L}{\textbf{Class Feature XV}\\this and that}
+
+\AddSpeciesFeature{A}{\textbf{Species Feature I}\\this and that}
+
+\AddFeat{\textbf{Feat I}\\this and that}
+
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+\restoregeometry
+
+\end{document}

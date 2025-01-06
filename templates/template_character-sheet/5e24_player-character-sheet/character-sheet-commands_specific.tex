@@ -1,0 +1,171 @@
+% Render pre-5e24 spell sheet
+\newcommand{\renderoldspellsheet}{%
+	\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet.tex}%
+}%
+
+% STAR COLOR CHANGES
+%% SHIELD USAGE
+\newrgbcolor{equippedShield}{1 1 1}
+
+\newcommand{\EquipShield}{%
+	\newrgbcolor{equippedShield}{0.850 0.764 0.466}
+}%
+%% TRAINING STARS
+\newrgbcolor{trainingLightArmor}{1 1 1}
+\newrgbcolor{trainingMediumArmor}{1 1 1}
+\newrgbcolor{trainingHeavyArmor}{1 1 1}
+\newrgbcolor{trainingShields}{1 1 1}
+
+\newcommand{\LightArmor}[1]{%
+	\ifthenelse{\equal{#1}{P}}
+	{
+		\newrgbcolor{trainingLightArmor}{0.850 0.764 0.466}
+	}{}%
+}%
+\newcommand{\MediumArmor}[1]{%
+	\ifthenelse{\equal{#1}{P}}
+	{
+		\newrgbcolor{trainingMediumArmor}{0.850 0.764 0.466}
+	}{}%
+}%
+\newcommand{\HeavyArmor}[1]{%
+	\ifthenelse{\equal{#1}{P}}
+	{
+		\newrgbcolor{trainingHeavyArmor}{0.850 0.764 0.466}
+	}{}%
+}%
+\newcommand{\Shields}[1]{%
+	\ifthenelse{\equal{#1}{P}}
+	{
+		\newrgbcolor{trainingShields}{0.850 0.764 0.466}
+	}{}%
+}%
+
+% SUBCLASS
+\newcommand{\SubclassValue}{}
+
+\newcommand{\Subclass}[1]{\renewcommand{\SubclassValue}{#1}}
+
+% SIZE
+\newcommand{\SizeValue}{}
+
+\newcommand{\Size}[1]{\renewcommand{\SizeValue}{#1}}
+
+% WEAPON PROFICIENCY
+\newcommand{\WeaponsProficiencyValue}{}
+\newcommand{\WeaponsProficiency}[1]{\renewcommand{\WeaponsProficiencyValue}{#1}}
+
+% TOOL PROFICIENCY
+\newcommand{\ToolsProficiencyValue}{}
+\newcommand{\ToolsProficiency}[1]{\renewcommand{\ToolsProficiencyValue}{#1}}
+
+% WEAPONS AND DAMAGE CANTRIPS
+\makeatletter
+\newcommand\AddWeapon[4]{%
+  \g@addto@macro\WeaponsHeld{\\ \entryfont #1 & \entryfont \ifthenelse{\lengthtest{#2 pt > 0pt}}{+}{}#2 & \entryfont #3 & \entryfont #4}
+}
+\makeatother
+\newcommand{\addWeaponStatistic}[7]{%
+	\setAttackBonusValues{#3}{#4}{#5}%
+	\calculateAttackBonus{#2#1}%
+	\AddWeapon{#1}{\csname attackBonus#2#1\endcsname}{#6}{#7}%
+}%
+
+% CUSTOM ITEM LABEL
+\newcommand{\CustomItemLabel}[1]{%
+	\ifthenelse{\equal{#1}{A}}{%
+		\renewcommand{\labelitemi}{%
+		    \rput(0,5){%
+		        \pscustom[linestyle=none,fillstyle=solid,fillcolor=grey_text_color]{%
+		            \pscircle(0,0){3.5}%
+		        }%
+		    }%
+		}%
+	}{%
+		\ifthenelse{\equal{#1}{B}}{%
+			\renewcommand{\labelitemi}{%
+			    \rput(0,5){%
+			        \pscustom[linestyle=none,fillstyle=solid,fillcolor=grey_text_color]{%
+			            \moveto(0,3.5)
+						\lineto(3.5,-3.5)
+						\lineto(-3.5,-3.5)
+						\closepath
+			        }%
+			    }%
+			}%
+		}{%
+			\ifthenelse{\equal{#1}{R}}{%
+				\renewcommand{\labelitemi}{%
+				    \rput(0,5){%
+				        \pscustom[linestyle=none,fillstyle=solid,fillcolor=grey_text_color]{%
+				            \moveto(0,3.5)
+							\lineto(3.5,0)
+							\lineto(0,-3.5)
+							\lineto(-3.5,0)
+							\closepath
+				        }%
+				    }%
+				}%
+			}{%
+				\ifthenelse{\equal{#1}{L}}{%
+					\renewcommand{\labelitemi}{%
+					    \rput(0,5){%
+					        \pscustom[linestyle=none,fillstyle=solid,fillcolor=grey_text_color]{%
+					            \moveto(3.5,3.5)
+								\lineto(3.5,-3.5)
+								\lineto(-3.5,-3.5)
+								\lineto(-3.5,3.5)
+								\closepath
+					        }%
+					    }%
+					}%
+				}{%
+					\renewcommand{\labelitemi}{\textbf{\textbullet}}
+				}%
+			}%
+		}%
+	}%
+}%
+
+% CLASS FEATURES
+\newcommand\ClassFeatures{}
+
+\makeatletter
+\newcommand{\AddClassFeature}[2]{%
+	\g@addto@macro\ClassFeatures{\CustomItemLabel{#1}\item #2}
+}%
+\makeatother
+
+% SPECIES FEATURES
+\newcommand\SpeciesFeatures{}
+
+\makeatletter
+\newcommand{\AddSpeciesFeature}[2]{%
+	\g@addto@macro\SpeciesFeatures{\CustomItemLabel{#1}\item #2}
+}%
+\makeatother
+
+% FEATS
+\newcommand\Feats{}
+
+\makeatletter
+\newcommand{\AddFeat}[1]{%
+	\g@addto@macro\Feats{\item #1}
+}%
+\makeatother
+
+%\newcommand{\calculateProficiencyColor}[2]{
+%	\ifthenelse{\equal{#1}{P}}
+%	{
+%		\newrgbcolor{#2proficiency}{0 0 0}
+%		\newrgbcolor{#2expertise}{0 0 0}
+%	}
+%	{
+%		\ifthenelse{\equal{#1}{E}}
+%		{
+%			\newrgbcolor{#2proficiency}{0 0 0}
+%			\newrgbcolor{#2expertise}{0.850 0.764 0.466}
+%		}
+%		{}
+%	}
+%}

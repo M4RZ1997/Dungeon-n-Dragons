@@ -7,7 +7,7 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=pre5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
@@ -22,7 +22,7 @@
 \PlayerName{}
 \Race{}
 \Alignment{}
-\XP{}
+%\XP{} % Can be used for Custom XP amount, otherwise it is calculated with the provided Level
 
 % Ability scores (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically

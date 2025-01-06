@@ -1,3 +1,4 @@
+\ProvidesPackage{character-sheet-stylesheet}
 % ------------------------------------------------------------------------------------------------- %
 %						character_sheet_stylesheet.sty  Marcel Zauder 09/08/2023					%
 % Stylesheet by Marcel                                                                              %
@@ -7,14 +8,40 @@
 \providecommand{\PATH}{} % Each tex file needs to provide the relative path to the superfolder
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
+% ------------------------------------ Edition-Specific  PATHS ------------------------------------ %
+\newcommand{\ePATH}{}
+\ExplSyntaxOn
+\keys_define:nn { character-sheet / options }
+{
+	edition .code:n =
+	{
+		\str_if_eq:nnTF {#1} {pre5e24}
+			{ \renewcommand{\ePATH}{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/} }
+			{
+				\str_if_eq:nnTF {#1} {5e24}
+					{ \renewcommand{\ePATH}{\PATH templates/template_character-sheet/5e24_player-character-sheet/} }
+				{ \msg_error:nnx {character-sheet} {invalid-edition} {#1} }
+			}
+	},
+	edition .value_required:n = true,
+	edition .default:n = pre5e24
+}
+
+\ProcessKeysOptions { character-sheet / options }
+\ExplSyntaxOff
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
 % -------------------------- Loading Settings,  Usepackages and Commands -------------------------- %
 \usepackage{\PATH templates/template_character-sheet/character-sheet-usepackages}
 \input{\PATH templates/template_character-sheet/character-sheet-settings}
-\input{\PATH templates/template_character-sheet/character-sheet-commands}
+%\input{\PATH templates/template_character-sheet/character-sheet-commands}
+\input{\PATH templates/template_character-sheet/character-sheet-commands_general}
+%% SPECIFICS
+\input{\ePATH character-sheet-commands_specific}
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % --------------------------------- Commands for  Rendering Pages --------------------------------- %
-\newcommand{\rendercharactersheet}{\input{\PATH templates/template_character-sheet/character-sheet.tex}}
 \newcommand{\renderbackgroundsheet}{\input{\PATH templates/template_character-sheet/background-sheet.tex}}
-\newcommand{\renderspellsheet}{\input{\PATH templates/template_character-sheet/spell-sheet.tex}}
+\newcommand{\rendercharactersheet}{\input{\ePATH character-sheet.tex}}
+\newcommand{\renderspellsheet}{\input{\ePATH spell-sheet.tex}}
 % ------------------------------------------------------------------------------------------------- %
