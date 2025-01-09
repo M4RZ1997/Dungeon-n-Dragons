@@ -154,18 +154,363 @@
 }%
 \makeatother
 
-%\newcommand{\calculateProficiencyColor}[2]{
-%	\ifthenelse{\equal{#1}{P}}
-%	{
-%		\newrgbcolor{#2proficiency}{0 0 0}
-%		\newrgbcolor{#2expertise}{0 0 0}
-%	}
-%	{
-%		\ifthenelse{\equal{#1}{E}}
-%		{
-%			\newrgbcolor{#2proficiency}{0 0 0}
-%			\newrgbcolor{#2expertise}{0.850 0.764 0.466}
-%		}
-%		{}
-%	}
-%}
+% LANGUAGES
+\newcommand{\LanguagesValue}{}
+\newcommand{\Languages}[1]{\renewcommand{\LanguagesValue}{#1}}
+
+% ATTUNEMENT SLOTS
+\newcommand{\AttunementAValue}{}
+\newcommand{\AttunementBValue}{}
+\newcommand{\AttunementCValue}{}
+
+\newrgbcolor{attunementSlotA}{1 1 1}
+\newrgbcolor{attunementSlotB}{1 1 1}
+\newrgbcolor{attunementSlotC}{1 1 1}
+
+\newcommand{\setAttunementColor}[1]{%
+	\newrgbcolor{attunementSlot#1}{0.850 0.764 0.466}
+}%
+
+\newcounter{attunementSlotCounter}
+\setcounter{attunementSlotCounter}{1}
+
+\newcommand{\addAttunedMagicItem}[1]{%
+	\ifnum\value{attunementSlotCounter}>3%
+		\PackageWarning{Specific Commands}{All attunement slots are filled! Cannot add "#1".}%
+	\else%
+		\expandafter\renewcommand\csname Attunement\Alph{attunementSlotCounter}Value\endcsname{#1}%
+		\setAttunementColor{\Alph{attunementSlotCounter}}%
+		\stepcounter{attunementSlotCounter}%
+	\fi
+}%
+
+% SPELL ENTRIES
+\newcommand{\SpellALevelValue}{}
+\newcommand{\SpellANameValue}{}
+\newcommand{\SpellACastingTimeValue}{}
+\newcommand{\SpellARangeValue}{}
+\newcommand{\SpellANotesValue}{}
+\newcommand{\SpellBLevelValue}{}
+\newcommand{\SpellBNameValue}{}
+\newcommand{\SpellBCastingTimeValue}{}
+\newcommand{\SpellBRangeValue}{}
+\newcommand{\SpellBNotesValue}{}
+\newcommand{\SpellCLevelValue}{}
+\newcommand{\SpellCNameValue}{}
+\newcommand{\SpellCCastingTimeValue}{}
+\newcommand{\SpellCRangeValue}{}
+\newcommand{\SpellCNotesValue}{}
+\newcommand{\SpellDLevelValue}{}
+\newcommand{\SpellDNameValue}{}
+\newcommand{\SpellDCastingTimeValue}{}
+\newcommand{\SpellDRangeValue}{}
+\newcommand{\SpellDNotesValue}{}
+\newcommand{\SpellELevelValue}{}
+\newcommand{\SpellENameValue}{}
+\newcommand{\SpellECastingTimeValue}{}
+\newcommand{\SpellERangeValue}{}
+\newcommand{\SpellENotesValue}{}
+\newcommand{\SpellFLevelValue}{}
+\newcommand{\SpellFNameValue}{}
+\newcommand{\SpellFCastingTimeValue}{}
+\newcommand{\SpellFRangeValue}{}
+\newcommand{\SpellFNotesValue}{}
+\newcommand{\SpellGLevelValue}{}
+\newcommand{\SpellGNameValue}{}
+\newcommand{\SpellGCastingTimeValue}{}
+\newcommand{\SpellGRangeValue}{}
+\newcommand{\SpellGNotesValue}{}
+\newcommand{\SpellHLevelValue}{}
+\newcommand{\SpellHNameValue}{}
+\newcommand{\SpellHCastingTimeValue}{}
+\newcommand{\SpellHRangeValue}{}
+\newcommand{\SpellHNotesValue}{}
+\newcommand{\SpellILevelValue}{}
+\newcommand{\SpellINameValue}{}
+\newcommand{\SpellICastingTimeValue}{}
+\newcommand{\SpellIRangeValue}{}
+\newcommand{\SpellINotesValue}{}
+\newcommand{\SpellJLevelValue}{}
+\newcommand{\SpellJNameValue}{}
+\newcommand{\SpellJCastingTimeValue}{}
+\newcommand{\SpellJRangeValue}{}
+\newcommand{\SpellJNotesValue}{}
+\newcommand{\SpellKLevelValue}{}
+\newcommand{\SpellKNameValue}{}
+\newcommand{\SpellKCastingTimeValue}{}
+\newcommand{\SpellKRangeValue}{}
+\newcommand{\SpellKNotesValue}{}
+\newcommand{\SpellLLevelValue}{}
+\newcommand{\SpellLNameValue}{}
+\newcommand{\SpellLCastingTimeValue}{}
+\newcommand{\SpellLRangeValue}{}
+\newcommand{\SpellLNotesValue}{}
+\newcommand{\SpellMLevelValue}{}
+\newcommand{\SpellMNameValue}{}
+\newcommand{\SpellMCastingTimeValue}{}
+\newcommand{\SpellMRangeValue}{}
+\newcommand{\SpellMNotesValue}{}
+\newcommand{\SpellNLevelValue}{}
+\newcommand{\SpellNNameValue}{}
+\newcommand{\SpellNCastingTimeValue}{}
+\newcommand{\SpellNRangeValue}{}
+\newcommand{\SpellNNotesValue}{}
+\newcommand{\SpellOLevelValue}{}
+\newcommand{\SpellONameValue}{}
+\newcommand{\SpellOCastingTimeValue}{}
+\newcommand{\SpellORangeValue}{}
+\newcommand{\SpellONotesValue}{}
+\newcommand{\SpellPLevelValue}{}
+\newcommand{\SpellPNameValue}{}
+\newcommand{\SpellPCastingTimeValue}{}
+\newcommand{\SpellPRangeValue}{}
+\newcommand{\SpellPNotesValue}{}
+\newcommand{\SpellQLevelValue}{}
+\newcommand{\SpellQNameValue}{}
+\newcommand{\SpellQCastingTimeValue}{}
+\newcommand{\SpellQRangeValue}{}
+\newcommand{\SpellQNotesValue}{}
+\newcommand{\SpellRLevelValue}{}
+\newcommand{\SpellRNameValue}{}
+\newcommand{\SpellRCastingTimeValue}{}
+\newcommand{\SpellRRangeValue}{}
+\newcommand{\SpellRNotesValue}{}
+\newcommand{\SpellSLevelValue}{}
+\newcommand{\SpellSNameValue}{}
+\newcommand{\SpellSCastingTimeValue}{}
+\newcommand{\SpellSRangeValue}{}
+\newcommand{\SpellSNotesValue}{}
+\newcommand{\SpellTLevelValue}{}
+\newcommand{\SpellTNameValue}{}
+\newcommand{\SpellTCastingTimeValue}{}
+\newcommand{\SpellTRangeValue}{}
+\newcommand{\SpellTNotesValue}{}
+\newcommand{\SpellULevelValue}{}
+\newcommand{\SpellUNameValue}{}
+\newcommand{\SpellUCastingTimeValue}{}
+\newcommand{\SpellURangeValue}{}
+\newcommand{\SpellUNotesValue}{}
+\newcommand{\SpellVLevelValue}{}
+\newcommand{\SpellVNameValue}{}
+\newcommand{\SpellVCastingTimeValue}{}
+\newcommand{\SpellVRangeValue}{}
+\newcommand{\SpellVNotesValue}{}
+\newcommand{\SpellWLevelValue}{}
+\newcommand{\SpellWNameValue}{}
+\newcommand{\SpellWCastingTimeValue}{}
+\newcommand{\SpellWRangeValue}{}
+\newcommand{\SpellWNotesValue}{}
+\newcommand{\SpellXLevelValue}{}
+\newcommand{\SpellXNameValue}{}
+\newcommand{\SpellXCastingTimeValue}{}
+\newcommand{\SpellXRangeValue}{}
+\newcommand{\SpellXNotesValue}{}
+\newcommand{\SpellYLevelValue}{}
+\newcommand{\SpellYNameValue}{}
+\newcommand{\SpellYCastingTimeValue}{}
+\newcommand{\SpellYRangeValue}{}
+\newcommand{\SpellYNotesValue}{}
+\newcommand{\SpellZLevelValue}{}
+\newcommand{\SpellZNameValue}{}
+\newcommand{\SpellZCastingTimeValue}{}
+\newcommand{\SpellZRangeValue}{}
+\newcommand{\SpellZNotesValue}{}
+\newcommand{\SpellAALevelValue}{}
+\newcommand{\SpellAANameValue}{}
+\newcommand{\SpellAACastingTimeValue}{}
+\newcommand{\SpellAARangeValue}{}
+\newcommand{\SpellAANotesValue}{}
+\newcommand{\SpellABLevelValue}{}
+\newcommand{\SpellABNameValue}{}
+\newcommand{\SpellABCastingTimeValue}{}
+\newcommand{\SpellABRangeValue}{}
+\newcommand{\SpellABNotesValue}{}
+\newcommand{\SpellACLevelValue}{}
+\newcommand{\SpellACNameValue}{}
+\newcommand{\SpellACCastingTimeValue}{}
+\newcommand{\SpellACRangeValue}{}
+\newcommand{\SpellACNotesValue}{}
+\newcommand{\SpellADLevelValue}{}
+\newcommand{\SpellADNameValue}{}
+\newcommand{\SpellADCastingTimeValue}{}
+\newcommand{\SpellADRangeValue}{}
+\newcommand{\SpellADNotesValue}{}
+\newcommand{\SpellAELevelValue}{}
+\newcommand{\SpellAENameValue}{}
+\newcommand{\SpellAECastingTimeValue}{}
+\newcommand{\SpellAERangeValue}{}
+\newcommand{\SpellAENotesValue}{}
+\newcommand{\SpellAFLevelValue}{}
+\newcommand{\SpellAFNameValue}{}
+\newcommand{\SpellAFCastingTimeValue}{}
+\newcommand{\SpellAFRangeValue}{}
+\newcommand{\SpellAFNotesValue}{}
+
+% SPELL STARS
+\newrgbcolor{spellAConcentration}{1 1 1}
+\newrgbcolor{spellBConcentration}{1 1 1}
+\newrgbcolor{spellCConcentration}{1 1 1}
+\newrgbcolor{spellDConcentration}{1 1 1}
+\newrgbcolor{spellEConcentration}{1 1 1}
+\newrgbcolor{spellFConcentration}{1 1 1}
+\newrgbcolor{spellGConcentration}{1 1 1}
+\newrgbcolor{spellHConcentration}{1 1 1}
+\newrgbcolor{spellIConcentration}{1 1 1}
+\newrgbcolor{spellJConcentration}{1 1 1}
+\newrgbcolor{spellKConcentration}{1 1 1}
+\newrgbcolor{spellLConcentration}{1 1 1}
+\newrgbcolor{spellMConcentration}{1 1 1}
+\newrgbcolor{spellNConcentration}{1 1 1}
+\newrgbcolor{spellOConcentration}{1 1 1}
+\newrgbcolor{spellPConcentration}{1 1 1}
+\newrgbcolor{spellQConcentration}{1 1 1}
+\newrgbcolor{spellRConcentration}{1 1 1}
+\newrgbcolor{spellSConcentration}{1 1 1}
+\newrgbcolor{spellTConcentration}{1 1 1}
+\newrgbcolor{spellUConcentration}{1 1 1}
+\newrgbcolor{spellVConcentration}{1 1 1}
+\newrgbcolor{spellWConcentration}{1 1 1}
+\newrgbcolor{spellXConcentration}{1 1 1}
+\newrgbcolor{spellYConcentration}{1 1 1}
+\newrgbcolor{spellZConcentration}{1 1 1}
+\newrgbcolor{spellAAConcentration}{1 1 1}
+\newrgbcolor{spellABConcentration}{1 1 1}
+\newrgbcolor{spellACConcentration}{1 1 1}
+\newrgbcolor{spellADConcentration}{1 1 1}
+\newrgbcolor{spellAEConcentration}{1 1 1}
+\newrgbcolor{spellAFConcentration}{1 1 1}
+\newrgbcolor{spellARitual}{1 1 1}
+\newrgbcolor{spellBRitual}{1 1 1}
+\newrgbcolor{spellCRitual}{1 1 1}
+\newrgbcolor{spellDRitual}{1 1 1}
+\newrgbcolor{spellERitual}{1 1 1}
+\newrgbcolor{spellFRitual}{1 1 1}
+\newrgbcolor{spellGRitual}{1 1 1}
+\newrgbcolor{spellHRitual}{1 1 1}
+\newrgbcolor{spellIRitual}{1 1 1}
+\newrgbcolor{spellJRitual}{1 1 1}
+\newrgbcolor{spellKRitual}{1 1 1}
+\newrgbcolor{spellLRitual}{1 1 1}
+\newrgbcolor{spellMRitual}{1 1 1}
+\newrgbcolor{spellNRitual}{1 1 1}
+\newrgbcolor{spellORitual}{1 1 1}
+\newrgbcolor{spellPRitual}{1 1 1}
+\newrgbcolor{spellQRitual}{1 1 1}
+\newrgbcolor{spellRRitual}{1 1 1}
+\newrgbcolor{spellSRitual}{1 1 1}
+\newrgbcolor{spellTRitual}{1 1 1}
+\newrgbcolor{spellURitual}{1 1 1}
+\newrgbcolor{spellVRitual}{1 1 1}
+\newrgbcolor{spellWRitual}{1 1 1}
+\newrgbcolor{spellXRitual}{1 1 1}
+\newrgbcolor{spellYRitual}{1 1 1}
+\newrgbcolor{spellZRitual}{1 1 1}
+\newrgbcolor{spellAARitual}{1 1 1}
+\newrgbcolor{spellABRitual}{1 1 1}
+\newrgbcolor{spellACRitual}{1 1 1}
+\newrgbcolor{spellADRitual}{1 1 1}
+\newrgbcolor{spellAERitual}{1 1 1}
+\newrgbcolor{spellAFRitual}{1 1 1}
+\newrgbcolor{spellAMaterial}{1 1 1}
+\newrgbcolor{spellBMaterial}{1 1 1}
+\newrgbcolor{spellCMaterial}{1 1 1}
+\newrgbcolor{spellDMaterial}{1 1 1}
+\newrgbcolor{spellEMaterial}{1 1 1}
+\newrgbcolor{spellFMaterial}{1 1 1}
+\newrgbcolor{spellGMaterial}{1 1 1}
+\newrgbcolor{spellHMaterial}{1 1 1}
+\newrgbcolor{spellIMaterial}{1 1 1}
+\newrgbcolor{spellJMaterial}{1 1 1}
+\newrgbcolor{spellKMaterial}{1 1 1}
+\newrgbcolor{spellLMaterial}{1 1 1}
+\newrgbcolor{spellMMaterial}{1 1 1}
+\newrgbcolor{spellNMaterial}{1 1 1}
+\newrgbcolor{spellOMaterial}{1 1 1}
+\newrgbcolor{spellPMaterial}{1 1 1}
+\newrgbcolor{spellQMaterial}{1 1 1}
+\newrgbcolor{spellRMaterial}{1 1 1}
+\newrgbcolor{spellSMaterial}{1 1 1}
+\newrgbcolor{spellTMaterial}{1 1 1}
+\newrgbcolor{spellUMaterial}{1 1 1}
+\newrgbcolor{spellVMaterial}{1 1 1}
+\newrgbcolor{spellWMaterial}{1 1 1}
+\newrgbcolor{spellXMaterial}{1 1 1}
+\newrgbcolor{spellYMaterial}{1 1 1}
+\newrgbcolor{spellZMaterial}{1 1 1}
+\newrgbcolor{spellAAMaterial}{1 1 1}
+\newrgbcolor{spellABMaterial}{1 1 1}
+\newrgbcolor{spellACMaterial}{1 1 1}
+\newrgbcolor{spellADMaterial}{1 1 1}
+\newrgbcolor{spellAEMaterial}{1 1 1}
+\newrgbcolor{spellAFMaterial}{1 1 1}
+
+\newcommand{\setSpellRequirementColor}[3]{%
+	\ifthenelse{\equal{#1}{T}}
+	{
+		\newrgbcolor{spell#2#3}{0.850 0.764 0.466}
+	}{}%
+}%
+
+\newcommand{\setCastingTime}[2]{%
+	\ifthenelse{\equal{#1}{Bonus Action}}{%
+		\expandafter\renewcommand\csname Spell#2CastingTimeValue\endcsname{
+			\rput(0,0){%
+				\pscustom[linestyle=none,fillstyle=solid,fillcolor=black]{%
+					\moveto(0,5)
+					\lineto(5,-5)
+					\lineto(-5,-5)
+					\closepath
+				}%
+			}%
+		}%
+	}{%
+		\ifthenelse{\equal{#1}{Reaction}}{%
+			\expandafter\renewcommand\csname Spell#2CastingTimeValue\endcsname{
+				\rput(0,0){%
+					\pscustom[linestyle=none,fillstyle=solid,fillcolor=black]{%
+						\moveto(5,5)
+						\lineto(5,-5)
+						\lineto(-5,-5)
+						\lineto(-5,5)
+						\closepath
+					}%
+				}%
+			}%
+		}{%
+			\expandafter\renewcommand\csname Spell#2CastingTimeValue\endcsname{#1}%
+		}%
+	}%
+}%
+
+\newcounter{spellSlotCounter}
+\setcounter{spellSlotCounter}{1}
+\newcounter{secondSpellSlotCounter}
+\setcounter{secondSpellSlotCounter}{1}
+
+\newcommand{\addPreparedSpell}[8]{%
+	\ifnum\value{secondSpellSlotCounter}>6%
+		\PackageWarning{Specific Commands}{All spell slots are filled! Cannot add "#2".}%
+	\else%
+		\ifnum\value{spellSlotCounter}<26%
+			\expandafter\renewcommand\csname Spell\Alph{spellSlotCounter}LevelValue\endcsname{#1}%
+			\expandafter\renewcommand\csname Spell\Alph{spellSlotCounter}NameValue\endcsname{#2}%
+			\setCastingTime{#3}{\Alph{spellSlotCounter}}%
+			\expandafter\renewcommand\csname Spell\Alph{spellSlotCounter}RangeValue\endcsname{#4}%
+			\setSpellRequirementColor{#5}{\Alph{spellSlotCounter}}{Concentration}%
+			\setSpellRequirementColor{#6}{\Alph{spellSlotCounter}}{Ritual}%
+			\setSpellRequirementColor{#7}{\Alph{spellSlotCounter}}{Material}%
+			\expandafter\renewcommand\csname Spell\Alph{spellSlotCounter}NotesValue\endcsname{#8}%
+			\stepcounter{spellSlotCounter}%
+		\else%
+			\expandafter\renewcommand\csname SpellA\Alph{secondSpellSlotCounter}LevelValue\endcsname{#1}%
+			\expandafter\renewcommand\csname SpellA\Alph{secondSpellSlotCounter}NameValue\endcsname{#2}%
+			\setCastingTime{#3}{A\Alph{secondSpellSlotCounter}}%
+			\expandafter\renewcommand\csname SpellA\Alph{secondSpellSlotCounter}RangeValue\endcsname{#4}%
+			\setSpellRequirementColor{#5}{A\Alph{secondSpellSlotCounter}}{Concentration}%
+			\setSpellRequirementColor{#6}{A\Alph{secondSpellSlotCounter}}{Ritual}%
+			\setSpellRequirementColor{#7}{A\Alph{secondSpellSlotCounter}}{Material}%
+			\expandafter\renewcommand\csname SpellA\Alph{secondSpellSlotCounter}NotesValue\endcsname{#8}%
+			\stepcounter{secondSpellSlotCounter}%
+		\fi%
+	\fi%
+}

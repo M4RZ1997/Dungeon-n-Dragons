@@ -1,0 +1,301 @@
+% SPELLCASTING INFORMATION
+\rput[l](36.29,1015.96){\Large \entryfont{%
+	\ifthenelse{\equal{\SpellcastingAbilityValue}{STR}}{%
+		Strength%
+	}{%
+		\ifthenelse{\equal{\SpellcastingAbilityValue}{DEX}}{%
+			Dexterity%
+		}{%
+			\ifthenelse{\equal{\SpellcastingAbilityValue}{CON}}{%
+				Constitution%
+			}{%
+				\ifthenelse{\equal{\SpellcastingAbilityValue}{INT}}{%
+					Intelligence%
+				}{%
+					\ifthenelse{\equal{\SpellcastingAbilityValue}{WIS}}{%
+						Wisdom%
+					}{%
+						\ifthenelse{\equal{\SpellcastingAbilityValue}{CHA}}{%
+							Charisma%		
+						}{NA}%
+					}%
+				}%
+			}%
+		}%
+	}%
+}}%
+
+\StrengthModifier{\calculateModifier{\StrengthScoreValue}}
+\DexterityModifier{\calculateModifier{\DexterityScoreValue}}
+\ConstitutionModifier{\calculateModifier{\ConstitutionScoreValue}}
+\IntelligenceModifier{\calculateModifier{\IntelligenceScoreValue}}
+\WisdomModifier{\calculateModifier{\WisdomScoreValue}}
+\CharismaModifier{\calculateModifier{\CharismaScoreValue}}
+%% SPELLCASTING MODIFIER
+\rput[cc](40.715,970.125){\large \entryfont{%
+	\ifthenelse{\equal{\SpellcastingAbilityValue}{STR}}{%
+		\StrengthModifierValue%
+	}{%
+		\ifthenelse{\equal{\SpellcastingAbilityValue}{DEX}}{%
+			\DexterityModifierValue%
+		}{%
+			\ifthenelse{\equal{\SpellcastingAbilityValue}{CON}}{%
+				\ConstitutionModifierValue%
+			}{%
+				\ifthenelse{\equal{\SpellcastingAbilityValue}{INT}}{%
+					\IntelligenceModifierValue%
+				}{%
+					\ifthenelse{\equal{\SpellcastingAbilityValue}{WIS}}{%
+						\WisdomModifierValue%
+					}{%
+						\ifthenelse{\equal{\SpellcastingAbilityValue}{CHA}}{%
+							\CharismaModifierValue%		
+						}{NA}%
+					}%
+				}%
+			}%
+		}%
+	}%
+}}%
+%% SPELL SAVE DC
+\rput[cc](40.715,932.475){\large \entryfont{%
+	\ifthenelse{\equal{\SpellcastingAbilityValue}{STR}}{%
+		\calculateSpellSaveDC{\StrengthModifierValue}%
+	}{%
+		\ifthenelse{\equal{\SpellcastingAbilityValue}{DEX}}{%
+			\calculateSpellSaveDC{\DexterityModifierValue}%
+		}{%
+			\ifthenelse{\equal{\SpellcastingAbilityValue}{CON}}{%
+				\calculateSpellSaveDC{\ConstitutionModifierValue}%
+			}{%
+				\ifthenelse{\equal{\SpellcastingAbilityValue}{INT}}{%
+					\calculateSpellSaveDC{\IntelligenceModifierValue}%
+				}{%
+					\ifthenelse{\equal{\SpellcastingAbilityValue}{WIS}}{%
+						\calculateSpellSaveDC{\WisdomModifierValue}%
+					}{%
+						\ifthenelse{\equal{\SpellcastingAbilityValue}{CHA}}{%
+							\calculateSpellSaveDC{\CharismaModifierValue}%				
+						}{NA}%
+					}%
+				}%
+			}%
+		}%
+	}%
+}}%
+%% SPELL ATTACK BONUS
+\rput[cc](40.715,894.825){\large \entryfont{
+	\ifthenelse{\equal{\SpellcastingAbilityValue}{STR}}{
+		\calculateSpellAttack{\StrengthModifierValue}
+	}{
+		\ifthenelse{\equal{\SpellcastingAbilityValue}{DEX}}{
+			\calculateSpellAttack{\DexterityModifierValue}
+		}{
+			\ifthenelse{\equal{\SpellcastingAbilityValue}{CON}}{
+				\calculateSpellAttack{\ConstitutionModifierValue}
+			}{
+				\ifthenelse{\equal{\SpellcastingAbilityValue}{INT}}{
+					\calculateSpellAttack{\IntelligenceModifierValue}
+				}{
+					\ifthenelse{\equal{\SpellcastingAbilityValue}{WIS}}{
+						\calculateSpellAttack{\WisdomModifierValue}	
+					}{
+						\ifthenelse{\equal{\SpellcastingAbilityValue}{CHA}}{
+							\calculateSpellAttack{\CharismaModifierValue}					
+						}{NA}
+					}
+				}
+			}
+		}
+	}
+}}
+
+% SPELL SLOTS
+\rput[cc](256.49,923.74){\entryfont \FirstLevelSpellSlotsTotalValue}
+\rput[cc](256.49,907.74){\entryfont \SecondLevelSpellSlotsTotalValue}
+\rput[cc](256.49,891.74){\entryfont \ThirdLevelSpellSlotsTotalValue}
+\rput[cc](374.55,923.74){\entryfont \FourthLevelSpellSlotsTotalValue}
+\rput[cc](374.55,907.74){\entryfont \FifthLevelSpellSlotsTotalValue}
+\rput[cc](374.55,891.74){\entryfont \SixthLevelSpellSlotsTotalValue}
+\rput[cc](480.24,923.74){\entryfont \SeventhLevelSpellSlotsTotalValue}
+\rput[cc](480.24,907.74){\entryfont \EighthLevelSpellSlotsTotalValue}
+\rput[cc](480.24,891.74){\entryfont \NinthLevelSpellSlotsTotalValue}
+
+% SPELL ENTRIES
+\rput[c](38.885,786){\entryfont \SpellALevelValue}
+\rput[l](59.28,786){\entryfont \SpellANameValue}
+\rput[c](231.03,786){\entryfont \SpellACastingTimeValue}
+\rput[l](259.10,786){\entryfont \SpellARangeValue}
+\rput[l](417.32,786){\entryfont \SpellANotesValue}
+\rput[c](38.885,761){\entryfont \SpellBLevelValue}
+\rput[l](59.28,761){\entryfont \SpellBNameValue}
+\rput[c](231.03,761){\entryfont \SpellBCastingTimeValue}
+\rput[l](259.10,761){\entryfont \SpellBRangeValue}
+\rput[l](417.32,761){\entryfont \SpellBNotesValue}
+\rput[c](38.885,736){\entryfont \SpellCLevelValue}
+\rput[l](59.28,736){\entryfont \SpellCNameValue}
+\rput[c](231.03,736){\entryfont \SpellCCastingTimeValue}
+\rput[l](259.10,736){\entryfont \SpellCRangeValue}
+\rput[l](417.32,736){\entryfont \SpellCNotesValue}
+\rput[c](38.885,711){\entryfont \SpellDLevelValue}
+\rput[l](59.28,711){\entryfont \SpellDNameValue}
+\rput[c](231.03,711){\entryfont \SpellDCastingTimeValue}
+\rput[l](259.10,711){\entryfont \SpellDRangeValue}
+\rput[l](417.32,711){\entryfont \SpellDNotesValue}
+\rput[c](38.885,686){\entryfont \SpellELevelValue}
+\rput[l](59.28,686){\entryfont \SpellENameValue}
+\rput[c](231.03,686){\entryfont \SpellECastingTimeValue}
+\rput[l](259.10,686){\entryfont \SpellERangeValue}
+\rput[l](417.32,686){\entryfont \SpellENotesValue}
+\rput[c](38.885,661){\entryfont \SpellFLevelValue}
+\rput[l](59.28,661){\entryfont \SpellFNameValue}
+\rput[c](231.03,661){\entryfont \SpellFCastingTimeValue}
+\rput[l](259.10,661){\entryfont \SpellFRangeValue}
+\rput[l](417.32,661){\entryfont \SpellFNotesValue}
+\rput[c](38.885,636){\entryfont \SpellGLevelValue}
+\rput[l](59.28,636){\entryfont \SpellGNameValue}
+\rput[c](231.03,636){\entryfont \SpellGCastingTimeValue}
+\rput[l](259.10,636){\entryfont \SpellGRangeValue}
+\rput[l](417.32,636){\entryfont \SpellGNotesValue}
+\rput[c](38.885,611){\entryfont \SpellHLevelValue}
+\rput[l](59.28,611){\entryfont \SpellHNameValue}
+\rput[c](231.03,611){\entryfont \SpellHCastingTimeValue}
+\rput[l](259.10,611){\entryfont \SpellHRangeValue}
+\rput[l](417.32,611){\entryfont \SpellHNotesValue}
+\rput[c](38.885,586){\entryfont \SpellILevelValue}
+\rput[l](59.28,586){\entryfont \SpellINameValue}
+\rput[c](231.03,586){\entryfont \SpellICastingTimeValue}
+\rput[l](259.10,586){\entryfont \SpellIRangeValue}
+\rput[l](417.32,586){\entryfont \SpellINotesValue}
+\rput[c](38.885,561){\entryfont \SpellJLevelValue}
+\rput[l](59.28,561){\entryfont \SpellJNameValue}
+\rput[c](231.03,561){\entryfont \SpellJCastingTimeValue}
+\rput[l](259.10,561){\entryfont \SpellJRangeValue}
+\rput[l](417.32,561){\entryfont \SpellJNotesValue}
+\rput[c](38.885,536){\entryfont \SpellKLevelValue}
+\rput[l](59.28,536){\entryfont \SpellKNameValue}
+\rput[c](231.03,536){\entryfont \SpellKCastingTimeValue}
+\rput[l](259.10,536){\entryfont \SpellKRangeValue}
+\rput[l](417.32,536){\entryfont \SpellKNotesValue}
+\rput[c](38.885,511){\entryfont \SpellLLevelValue}
+\rput[l](59.28,511){\entryfont \SpellLNameValue}
+\rput[c](231.03,511){\entryfont \SpellLCastingTimeValue}
+\rput[l](259.10,511){\entryfont \SpellLRangeValue}
+\rput[l](417.32,511){\entryfont \SpellLNotesValue}
+\rput[c](38.885,486){\entryfont \SpellMLevelValue}
+\rput[l](59.28,486){\entryfont \SpellMNameValue}
+\rput[c](231.03,486){\entryfont \SpellMCastingTimeValue}
+\rput[l](259.10,486){\entryfont \SpellMRangeValue}
+\rput[l](417.32,486){\entryfont \SpellMNotesValue}
+\rput[c](38.885,461){\entryfont \SpellNLevelValue}
+\rput[l](59.28,461){\entryfont \SpellNNameValue}
+\rput[c](231.03,461){\entryfont \SpellNCastingTimeValue}
+\rput[l](259.10,461){\entryfont \SpellNRangeValue}
+\rput[l](417.32,461){\entryfont \SpellNNotesValue}
+\rput[c](38.885,436){\entryfont \SpellOLevelValue}
+\rput[l](59.28,436){\entryfont \SpellONameValue}
+\rput[c](231.03,436){\entryfont \SpellOCastingTimeValue}
+\rput[l](259.10,436){\entryfont \SpellORangeValue}
+\rput[l](417.32,436){\entryfont \SpellONotesValue}
+\rput[c](38.885,411){\entryfont \SpellPLevelValue}
+\rput[l](59.28,411){\entryfont \SpellPNameValue}
+\rput[c](231.03,411){\entryfont \SpellPCastingTimeValue}
+\rput[l](259.10,411){\entryfont \SpellPRangeValue}
+\rput[l](417.32,411){\entryfont \SpellPNotesValue}
+\rput[c](38.885,386){\entryfont \SpellQLevelValue}
+\rput[l](59.28,386){\entryfont \SpellQNameValue}
+\rput[c](231.03,386){\entryfont \SpellQCastingTimeValue}
+\rput[l](259.10,386){\entryfont \SpellQRangeValue}
+\rput[l](417.32,386){\entryfont \SpellQNotesValue}
+\rput[c](38.885,361){\entryfont \SpellRLevelValue}
+\rput[l](59.28,361){\entryfont \SpellRNameValue}
+\rput[c](231.03,361){\entryfont \SpellRCastingTimeValue}
+\rput[l](259.10,361){\entryfont \SpellRRangeValue}
+\rput[l](417.32,361){\entryfont \SpellRNotesValue}
+\rput[c](38.885,336){\entryfont \SpellSLevelValue}
+\rput[l](59.28,336){\entryfont \SpellSNameValue}
+\rput[c](231.03,336){\entryfont \SpellSCastingTimeValue}
+\rput[l](259.10,336){\entryfont \SpellSRangeValue}
+\rput[l](417.32,336){\entryfont \SpellSNotesValue}
+\rput[c](38.885,311){\entryfont \SpellTLevelValue}
+\rput[l](59.28,311){\entryfont \SpellTNameValue}
+\rput[c](231.03,311){\entryfont \SpellTCastingTimeValue}
+\rput[l](259.10,311){\entryfont \SpellTRangeValue}
+\rput[l](417.32,311){\entryfont \SpellTNotesValue}
+\rput[c](38.885,286){\entryfont \SpellULevelValue}
+\rput[l](59.28,286){\entryfont \SpellUNameValue}
+\rput[c](231.03,286){\entryfont \SpellUCastingTimeValue}
+\rput[l](259.10,286){\entryfont \SpellURangeValue}
+\rput[l](417.32,286){\entryfont \SpellUNotesValue}
+\rput[c](38.885,261){\entryfont \SpellVLevelValue}
+\rput[l](59.28,261){\entryfont \SpellVNameValue}
+\rput[c](231.03,261){\entryfont \SpellVCastingTimeValue}
+\rput[l](259.10,261){\entryfont \SpellVRangeValue}
+\rput[l](417.32,261){\entryfont \SpellVNotesValue}
+\rput[c](38.885,236){\entryfont \SpellWLevelValue}
+\rput[l](59.28,236){\entryfont \SpellWNameValue}
+\rput[c](231.03,236){\entryfont \SpellWCastingTimeValue}
+\rput[l](259.10,236){\entryfont \SpellWRangeValue}
+\rput[l](417.32,236){\entryfont \SpellWNotesValue}
+\rput[c](38.885,211){\entryfont \SpellXLevelValue}
+\rput[l](59.28,211){\entryfont \SpellXNameValue}
+\rput[c](231.03,211){\entryfont \SpellXCastingTimeValue}
+\rput[l](259.10,211){\entryfont \SpellXRangeValue}
+\rput[l](417.32,211){\entryfont \SpellXNotesValue}
+\rput[c](38.885,186){\entryfont \SpellYLevelValue}
+\rput[l](59.28,186){\entryfont \SpellYNameValue}
+\rput[c](231.03,186){\entryfont \SpellYCastingTimeValue}
+\rput[l](259.10,186){\entryfont \SpellYRangeValue}
+\rput[l](417.32,186){\entryfont \SpellYNotesValue}
+\rput[c](38.885,161){\entryfont \SpellAALevelValue}
+\rput[l](59.28,161){\entryfont \SpellAANameValue}
+\rput[c](231.03,161){\entryfont \SpellAACastingTimeValue}
+\rput[l](259.10,161){\entryfont \SpellAARangeValue}
+\rput[l](417.32,161){\entryfont \SpellAANotesValue}
+\rput[c](38.885,136){\entryfont \SpellABLevelValue}
+\rput[l](59.28,136){\entryfont \SpellABNameValue}
+\rput[c](231.03,136){\entryfont \SpellABCastingTimeValue}
+\rput[l](259.10,136){\entryfont \SpellABRangeValue}
+\rput[l](417.32,136){\entryfont \SpellABNotesValue}
+\rput[c](38.885,111){\entryfont \SpellACLevelValue}
+\rput[l](59.28,111){\entryfont \SpellACNameValue}
+\rput[c](231.03,111){\entryfont \SpellACCastingTimeValue}
+\rput[l](259.10,111){\entryfont \SpellACRangeValue}
+\rput[l](417.32,111){\entryfont \SpellACNotesValue}
+\rput[c](38.885,86){\entryfont \SpellADLevelValue}
+\rput[l](59.28,86){\entryfont \SpellADNameValue}
+\rput[c](231.03,86){\entryfont \SpellADCastingTimeValue}
+\rput[l](259.10,86){\entryfont \SpellADRangeValue}
+\rput[l](417.32,86){\entryfont \SpellADNotesValue}
+\rput[c](38.885,61){\entryfont \SpellAELevelValue}
+\rput[l](59.28,61){\entryfont \SpellAENameValue}
+\rput[c](231.03,61){\entryfont \SpellAECastingTimeValue}
+\rput[l](259.10,61){\entryfont \SpellAERangeValue}
+\rput[l](417.32,61){\entryfont \SpellAENotesValue}
+\rput[c](38.885,36){\entryfont \SpellAFLevelValue}
+\rput[l](59.28,36){\entryfont \SpellAFNameValue}
+\rput[c](231.03,36){\entryfont \SpellAFCastingTimeValue}
+\rput[l](259.10,36){\entryfont \SpellAFRangeValue}
+\rput[l](417.32,36){\entryfont \SpellAFNotesValue}
+
+% PERSONALITY TRAITS
+\rput[lt](560,1019.17){\parbox{180pt}{\entryfont \justify \footnotesize \PersonalityTraitsValue}}
+\rput[lt](560,886.87){\parbox{180pt}{\entryfont \justify \footnotesize \IdealsValue}}
+\rput[lt](560,794.38){\parbox{180pt}{\entryfont \justify \footnotesize \BondsValue}}
+\rput[lt](560,701.89){\parbox{180pt}{\entryfont \justify \footnotesize \FlawsValue}}
+
+% LANGUAGES
+\rput[lt](560,609.40){\parbox{180pt}{\entryfont \justify \footnotesize \LanguagesValue}}
+
+% EQUIPMENT
+\rput[lt](560,515.41){\parbox{180pt}{\entryfont \justify \EquipmentValue}}
+%% ATTUNED MAGIC ITEMS
+\rput[l](583,229.71){\entryfont \AttunementAValue}
+\rput[l](583,204.71){\entryfont \AttunementBValue}
+\rput[l](583,179.71){\entryfont \AttunementCValue}
+%% COINS
+\rput[cc](585.355,83.79){\large \entryfont \CPValue}
+\rput[cc](633.655,83.79){\large \entryfont \SPValue}
+\rput[cc](681.955,83.79){\large \entryfont \EPValue}
+\rput[cc](730.255,83.79){\large \entryfont \GPValue}
+\rput[cc](778.555,83.79){\large \entryfont \PPValue}
