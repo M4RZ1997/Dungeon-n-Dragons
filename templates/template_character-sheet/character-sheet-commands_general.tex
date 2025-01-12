@@ -370,13 +370,14 @@
 \newcommand{\Skin}[1]{\renewcommand{\SkinValue}{#1}}
 \newcommand{\Hair}[1]{\renewcommand{\HairValue}{#1}}
 
-% background
 \newcommand{\CharacterAppearancePictureValue}{}
-\newcommand{\CharacterAppearanceValue}{}
-\newcommand{\CharacterAppearancePictureHeight}{140pt}
-\newcommand{\CharacterAppearancePictureWidth}{164pt}
-\newcommand{\CharacterAppearancePictureHorizontal}{0em}
-\newcommand{\CharacterAppearancePictureVertical}{0em}
+\newcommand{\CharacterAppearancePictureOrientation}{}
+\newcommand{\CharacterAppearanceTextOffset}{}
+\newcommand{\CharacterAppearanceDescriptionValue}{}
+\newcommand{\CharacterAppearanceSecondDescriptionValue}{}
+\newcommand{\caXShift}{}
+\newcommand{\caYShift}{}
+
 \newcommand{\AdditionalFeaturesAndTraitsValue}{}
 \newcommand{\CharacterbackgroundValue}{}
 \newcommand{\TreasureValue}{}
@@ -385,38 +386,42 @@
 \newcommand{\OrganizationNameValue}{}
 \newcommand{\OrganizationSymbolValue}{}
 
-\newcommand{\CharacterAppearancePicture}[1]{\renewcommand{\CharacterAppearancePictureValue}{#1}}
 
-\newcommand{\CharacterAppearance}[5]{%
-	\CharacterAppearancePicture{#1}%
-	\renewcommand{\CharacterAppearanceValue}{#2}%
-	\ifthenelse{\equal{#3}{}}{}{%
-		\expandafter\def\expandafter\temp\expandafter{#3}%
-		\edef\temp{#3}
-		\expandafter\splitPictureDimensions\temp\relax
-	}
-	\ifthenelse{\equal{#4}{}}{}{\renewcommand{\CharacterAppearancePictureHorizontal}{#4}}
-	\ifthenelse{\equal{#5}{}}{}{\renewcommand{\CharacterAppearancePictureVertical}{#5}}
+% APPEARANCE PICTURE + DESCRIPTION
+\newcommand{\setSplitDescription}[2]{%
+	\renewcommand{\CharacterAppearanceDescriptionValue}{#1}%
+	\renewcommand{\CharacterAppearanceSecondDescriptionValue}{#2}%
 }%
-\def\splitPictureDimensions#1/#2\relax{
-	\renewcommand{\CharacterAppearancePictureHeight}{#1}
-	\renewcommand{\CharacterAppearancePictureWidth}{#2}
-}
-\newcommand{\AdditionalFeaturesAndTraits}[1]{\renewcommand{\AdditionalFeaturesAndTraitsValue}{#1}}
-\newcommand{\Characterbackground}[1]{\renewcommand{\CharacterbackgroundValue}{#1}}
-\newcommand{\Treasure}[1]{\renewcommand{\TreasureValue}{#1}}
-\newcommand{\AlliesAndOrganizations}[2]{%
+\newcommand{\CharacterAppearance}[6]{%
+% #1=Orientation (vertical/horizontal/none), #2=Picture-Offset, #3=X-Shift, #4=Y-Shift, #5=Image, #6=Text
+	\renewcommand{\CharacterAppearancePictureOrientation}{#1}%
+	\renewcommand{\CharacterAppearanceTextOffset}{#2}%
+	\renewcommand{\caXShift}{#3}%
+	\renewcommand{\caYShift}{#4}%
+	\renewcommand{\CharacterAppearancePictureValue}{#5}%
+	\ifthenelse{\equal{#1}{horizontal}}{%
+		\renewcommand{\CharacterAppearanceDescriptionValue}{#6}%
+	}{%
+		\setSplitDescription#6
+	}%
+}%
+\newcommand{\Characterbackground}[1]{\renewcommand{\CharacterbackgroundValue}{#1}}\newcommand{\AlliesAndOrganizations}[2]{%
 	\renewcommand{\AlliesAndOrganizationsValue}{#1}
 	\renewcommand{\AlliesAndOrganizationsSecondValue}{#2}
 }
 \newcommand{\OrganizationName}[1]{\renewcommand{\OrganizationNameValue}{#1}}
 \newcommand{\OrganizationSymbol}[1]{\renewcommand{\OrganizationSymbolValue}{#1}}
+\newcommand{\AdditionalFeaturesAndTraits}[1]{\renewcommand{\AdditionalFeaturesAndTraitsValue}{#1}}
+\newcommand{\Treasure}[1]{\renewcommand{\TreasureValue}{#1}}
+
 
 % SPELL MODIFIERS
+\newcommand{\SpellcastingClassValue}{}
 \newcommand{\SpellcastingAbilityValue}{}
 \newcommand{\SpellSaveDCModifyValue}{}
 \newcommand{\SpellAttackModifyValue}{}
 
+\newcommand{\SpellcastingClass}[1]{\renewcommand{\SpellcastingClassValue}{#1}}
 \newcommand{\SpellcastingAbility}[1]{\renewcommand{\SpellcastingAbilityValue}{#1}}
 \newcommand{\SpellSaveDCModifier}[1]{\renewcommand{\SpellSaveDCModifyValue}{#1}}
 \newcommand{\SpellAttackModifier}[1]{\renewcommand{\SpellAttackModifyValue}{#1}}
@@ -917,7 +922,181 @@
 \newrgbcolor{level9prepared6}{1 1 1}\newcommand{\NinthLevelSpellSlotFPrepared}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{level9prepared6}{0 0 0}}{}}
 \newrgbcolor{level9prepared7}{1 1 1}\newcommand{\NinthLevelSpellSlotGPrepared}[1]{\ifthenelse{\equal{#1}{True}}{\newrgbcolor{level9prepared7}{0 0 0}}{}}
 
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- Spell Setters ----------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Cantrip  Spells  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{CantripSlotCounter}
+\setcounter{CantripSlotCounter}{1}
 
+\newcommand{\addCantrip}[2]{%
+	\ifnum\value{CantripSlotCounter}>8
+		\PackageWarning{General Commands}{All cantrip slots are filled! Cannot add "#1".}%
+	\else%
+		\expandafter\renewcommand\csname CantripSlot\Alph{CantripSlotCounter}Value\endcsname{#1~(#2)}%
+		\stepcounter{CantripSlotCounter}%
+	\fi%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# 1st-Level  Spells #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{FirstLevelSlotCounter}
+\setcounter{FirstLevelSlotCounter}{1}
+
+\newcommand{\addFirstLevelSpell}[3]{%
+	\ifnum\value{FirstLevelSlotCounter}>13
+		\PackageWarning{General Commands}{All 1st-level slots are filled! Cannot add "#2".}%
+	\else%
+		\expandafter\csname FirstLevelSpellSlot\Alph{FirstLevelSlotCounter}Prepared\endcsname{#1}%
+		\expandafter\renewcommand\csname FirstLevelSpellSlot\Alph{FirstLevelSlotCounter}Value\endcsname{#2~(#3)}%
+		\stepcounter{FirstLevelSlotCounter}%
+	\fi%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# 2nd-Level  Spells #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{SecondLevelSlotCounter}
+\setcounter{SecondLevelSlotCounter}{1}
+
+\newcommand{\addSecondLevelSpell}[3]{%
+	\ifnum\value{SecondLevelSlotCounter}>13
+		\PackageWarning{General Commands}{All 2nd-level slots are filled! Cannot add "#2".}%
+	\else%
+		\expandafter\csname SecondLevelSpellSlot\Alph{SecondLevelSlotCounter}Prepared\endcsname{#1}%
+		\expandafter\renewcommand\csname SecondLevelSpellSlot\Alph{SecondLevelSlotCounter}Value\endcsname{#2~(#3)}%
+		\stepcounter{SecondLevelSlotCounter}%
+	\fi%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# 3rd-Level  Spells #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{ThirdLevelSlotCounter}
+\setcounter{ThirdLevelSlotCounter}{1}
+
+\newcommand{\addThirdLevelSpell}[3]{%
+	\ifnum\value{ThirdLevelSlotCounter}>13
+		\PackageWarning{General Commands}{All 3rd-level slots are filled! Cannot add "#2".}%
+	\else%
+		\expandafter\csname ThirdLevelSpellSlot\Alph{ThirdLevelSlotCounter}Prepared\endcsname{#1}%
+		\expandafter\renewcommand\csname ThirdLevelSpellSlot\Alph{ThirdLevelSlotCounter}Value\endcsname{#2~(#3)}%
+		\stepcounter{ThirdLevelSlotCounter}%
+	\fi%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# 4th-Level  Spells #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{FourthLevelSlotCounter}
+\setcounter{FourthLevelSlotCounter}{1}
+
+\newcommand{\addFourthLevelSpell}[3]{%
+	\ifnum\value{FourthLevelSlotCounter}>13
+		\PackageWarning{General Commands}{All 4th-level slots are filled! Cannot add "#2".}%
+	\else%
+		\expandafter\csname FourthLevelSpellSlot\Alph{FourthLevelSlotCounter}Prepared\endcsname{#1}%
+		\expandafter\renewcommand\csname FourthLevelSpellSlot\Alph{FourthLevelSlotCounter}Value\endcsname{#2~(#3)}%
+		\stepcounter{FourthLevelSlotCounter}%
+	\fi%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# 5th-Level  Spells #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{FifthLevelSlotCounter}
+\setcounter{FifthLevelSlotCounter}{1}
+
+\newcommand{\addFifthLevelSpell}[3]{%
+	\ifnum\value{FifthLevelSlotCounter}>9
+		\PackageWarning{General Commands}{All 5th-level slots are filled! Cannot add "#2".}%
+	\else%
+		\expandafter\csname FifthLevelSpellSlot\Alph{FifthLevelSlotCounter}Prepared\endcsname{#1}%
+		\expandafter\renewcommand\csname FifthLevelSpellSlot\Alph{FifthLevelSlotCounter}Value\endcsname{#2~(#3)}%
+		\stepcounter{FifthLevelSlotCounter}%
+	\fi%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# 6th-Level  Spells #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{SixthLevelSlotCounter}
+\setcounter{SixthLevelSlotCounter}{1}
+
+\newcommand{\addSixthLevelSpell}[3]{%
+	\ifnum\value{SixthLevelSlotCounter}>9
+		\PackageWarning{General Commands}{All 6th-level slots are filled! Cannot add "#2".}%
+	\else%
+		\expandafter\csname SixthLevelSpellSlot\Alph{SixthLevelSlotCounter}Prepared\endcsname{#1}%
+		\expandafter\renewcommand\csname SixthLevelSpellSlot\Alph{SixthLevelSlotCounter}Value\endcsname{#2~(#3)}%
+		\stepcounter{SixthLevelSlotCounter}%
+	\fi%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# 7th-Level  Spells #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{SeventhLevelSlotCounter}
+\setcounter{SeventhLevelSlotCounter}{1}
+
+\newcommand{\addSeventhLevelSpell}[3]{%
+	\ifnum\value{SeventhLevelSlotCounter}>9
+		\PackageWarning{General Commands}{All 7th-level slots are filled! Cannot add "#2".}%
+	\else%
+		\expandafter\csname SeventhLevelSpellSlot\Alph{SeventhLevelSlotCounter}Prepared\endcsname{#1}%
+		\expandafter\renewcommand\csname SeventhLevelSpellSlot\Alph{SeventhLevelSlotCounter}Value\endcsname{#2~(#3)}%
+		\stepcounter{SeventhLevelSlotCounter}%
+	\fi%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# 8th-Level  Spells #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{EighthLevelSlotCounter}
+\setcounter{EighthLevelSlotCounter}{1}
+
+\newcommand{\addEighthLevelSpell}[3]{%
+	\ifnum\value{EighthLevelSlotCounter}>7
+		\PackageWarning{General Commands}{All 8th-level slots are filled! Cannot add "#2".}%
+	\else%
+		\expandafter\csname EighthLevelSpellSlot\Alph{EighthLevelSlotCounter}Prepared\endcsname{#1}%
+		\expandafter\renewcommand\csname EighthLevelSpellSlot\Alph{EighthLevelSlotCounter}Value\endcsname{#2~(#3)}%
+		\stepcounter{EighthLevelSlotCounter}%
+	\fi%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# 9th-Level  Spells #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{NinthLevelSlotCounter}
+\setcounter{NinthLevelSlotCounter}{1}
+
+\newcommand{\addNinthLevelSpell}[3]{%
+	\ifnum\value{NinthLevelSlotCounter}>7
+		\PackageWarning{General Commands}{All 9th-level slots are filled! Cannot add "#2".}%
+	\else%
+		\expandafter\csname NinthLevelSpellSlot\Alph{NinthLevelSlotCounter}Prepared\endcsname{#1}%
+		\expandafter\renewcommand\csname NinthLevelSpellSlot\Alph{NinthLevelSlotCounter}Value\endcsname{#2~(#3)}%
+		\stepcounter{NinthLevelSlotCounter}%
+	\fi%
+}%
+
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- Spell Add Suite --------------------------------------- %
+\ExplSyntaxOn
+\NewDocumentCommand {\AddSpell}{ m m m m }%
+% #1=Spell Level (0-9), #2=Spell Prepared (True, False), #3=Spell Name, #4=Spell Components (V, S, M)
+{
+	\str_case_e:nnF {#1}
+	{
+		{0} {\addCantrip{#3}{#4}}
+		{1} {\addFirstLevelSpell{#2}{#3}{#4}}
+		{2} {\addSecondLevelSpell{#2}{#3}{#4}}
+		{3} {\addThirdLevelSpell{#2}{#3}{#4}}
+		{4} {\addFourthLevelSpell{#2}{#3}{#4}}
+		{5} {\addFifthLevelSpell{#2}{#3}{#4}}
+		{6} {\addSixthLevelSpell{#2}{#3}{#4}}
+		{7} {\addSeventhLevelSpell{#2}{#3}{#4}}
+		{8} {\addEighthLevelSpell{#2}{#3}{#4}}
+		{9} {\addNinthLevelSpell{#2}{#3}{#4}}
+	}
+	{#1}
+}%
+\ExplSyntaxOff
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ---------------------------------------- Reset  Commands ---------------------------------------- %

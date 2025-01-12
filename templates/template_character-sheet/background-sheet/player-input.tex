@@ -10,18 +10,57 @@
 \rput[l](505,943){\Large \entryfont \SkinValue}
 \rput[l](634,943){\Large \entryfont \HairValue}
 
-
-% background
-\ifthenelse{\equal{\CharacterAppearancePictureValue}{}}{
-	\rput[lt](47,897){\parbox{164pt}{\entryfont \justify \CharacterAppearanceValue}}
-}{
-	\rput[lt](47,897){\hspace*{\CharacterAppearancePictureHorizontal}\parbox{\CharacterAppearancePictureWidth}{\vspace*{\CharacterAppearancePictureVertical}\begin{center}\includegraphics[width=\CharacterAppearancePictureWidth, height=\CharacterAppearancePictureHeight, keepaspectratio]{\CharacterAppearancePictureValue}\end{center}}}
-	\rput[lt](47,700){\parbox{164pt}{\entryfont \justify \CharacterAppearanceValue}}
+% CHARACTER APPEARANCE
+\ifthenelse{\equal{\CharacterAppearancePictureValue}{}}{%
+	\rput[lt](47,897){\parbox{164pt}{\entryfont \justify \CharacterAppearanceValue}}%
+}{%
+	\rput(-0.5,-3.25){%
+		\psclip{%
+			\pscustom[linestyle=none]{%
+				\moveto(49.60173209,572.50398569)%
+				\curveto(46.11773218,573.34665233)(43.32839892,575.26531895)(41.23239897,578.20798554)%
+				\lineto(41.23239897,882.26264461)%
+				\curveto(43.05506559,884.81597788)(45.72439886,887.03464449)(49.63506543,887.9999778)%
+				\lineto(262.39772677,887.9999778)%
+				\curveto(265.88306002,887.15597782)(268.67239328,885.23864454)(270.76839323,882.29597794)%
+				\lineto(270.76839323,578.23998554)%
+				\curveto(268.94705994,575.68665227)(266.27506001,573.46798566)(262.36306011,572.50398569)%
+				\closepath%
+			}%
+		}%
+			\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{horizontal}}{%
+				\FPset{xcoord}{0}
+				\FPset{ycoord}{0}
+				\FPeval{xcoord}{156.5 - \caXShift}
+				\FPeval{ycoord}{810 - \caYShift}
+				\rput[cc](\xcoord,\ycoord){%
+					\includegraphics[width=175pt, height=160pt, keepaspectratio]{\CharacterAppearancePictureValue}%
+				}%
+				\FPeval{ycoord}{740 - (15.75 * \CharacterAppearanceTextOffset)}
+				\rput[lt](47.5,\ycoord){\parbox{164pt}{\entryfont \justify \CharacterAppearanceDescriptionValue}}%
+			}{%
+				\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{vertical}}{%
+					\FPeval{ycoord}{805 - \caYShift}
+					\rput[cc](98,\ycoord){%
+						\includegraphics[width=87.5pt, height=170pt, keepaspectratio]{\CharacterAppearancePictureValue}%
+					}%
+					\rput[lt](163.75,898.25){\parbox{77pt}{\entryfont\justify \CharacterAppearanceDescriptionValue\linebreak}}%
+					\FPset{ycoord}{0}
+					\FPeval{ycoord}{898.25 - (15.75 * \CharacterAppearanceTextOffset)}
+					\rput[lt](47.5,\ycoord){\parbox{164pt}{\entryfont\justify \CharacterAppearanceSecondDescriptionValue}}%
+				}{%
+					\rput[lt](47.5,898.25){\parbox{164pt}{\entryfont\justify \CharacterAppearanceDescriptionValue}}%
+				}%
+			}%
+		\endpsclip%
+	}%
 }
-\rput[lt](299,570){\parbox{354pt}{\entryfont \justify \AdditionalFeaturesAndTraitsValue}}
-\rput[lt](47,555){\parbox{164pt}{\entryfont \justify \CharacterbackgroundValue}}
-\rput[lt](299,267){\parbox{354pt}{\entryfont \justify \TreasureValue}}
+
+
+\rput[lt](47,555){\parbox{164pt}{\entryfont \justify \AdditionalFeaturesAndTraitsValue}}
 \rput[lt](299,895){\parbox{182pt}{\entryfont \justify \AlliesAndOrganizationsValue}}
 \rput[lt](299,654){\parbox{354pt}{\entryfont \justify \AlliesAndOrganizationsSecondValue}}
 \rput[l](568,846){\parbox{132pt}{\entryfont \justify \textbf{\OrganizationNameValue}}}
 \rput[l](565,752){\parbox{137pt}{\begin{center}\includegraphics[width=137pt, height=100pt, keepaspectratio]{\OrganizationSymbolValue}\end{center}}}
+\rput[lt](299,570){\parbox{354pt}{\entryfont \justify \CharacterbackgroundValue}}
+\rput[lt](299,263.87628924){\parbox{354pt}{\entryfont \justify \TreasureValue}}

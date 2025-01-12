@@ -180,29 +180,27 @@
 \Hair{Blue}
 
 % background
-
-\CharacterAppearance{}{
-	\hspace*{-1.65em}\begin{tabular}{p{90pt}p{80pt}}
-		\begin{tabular}{p{90pt}}\vspace*{-1.75em}\includegraphics[width=90pt, height=140pt, keepaspectratio]{images/Grimmash_appearance.png}\end{tabular}
-		&
-		\hspace*{-1.6em}\begin{tabular}{p{83pt}}Grimmash is a formidable frost orc with a towering presence. His pale blue skin reflects his icy origins, and his wild blue hair cascades down past his broad shoulders. Tribal tattoos adorn ~~~~~~~~~~~~~~\end{tabular}
-	\end{tabular}\\\vspace*{-1.6em}\hfill\\
-	his rugged face, while his intense glacial blue eyes reveal a spark of mischief. With his tusks jutting from his lower jaw and scars marking his battle-worn body, he dresses in a mix of practical and flamboyant attire. He wields a massive greataxe, channeling his delusional belief in magic into each swing. 
-}{}{}{}
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{9.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{-17} % Picture Y-Shift (absolute value)
+	{images/Grimmash_appearance.png} %
+	{%
+		{Grimmash is a formidable frost orc with a towering presence. His pale blue skin reflects his icy origins, and his wild blue hair cascades down}{past his broad shoulders. Tribal tattoos adorn his rugged face, while his intense glacial blue eyes reveal a spark of mischief. With his tusks jutting from his lower jaw and scars marking his battle-worn body, he dresses in a mix of practical and flamboyant attire. He wields a massive greataxe, channeling his delusional belief in magic into each swing. }
+	}%
+%\CharacterAppearance{}{
+%	\hspace*{-1.65em}\begin{tabular}{p{90pt}p{80pt}}
+%		\begin{tabular}{p{90pt}}\vspace*{-1.75em}\includegraphics[width=90pt, height=140pt, keepaspectratio]{images/Grimmash_appearance.png}\end{tabular}
+%		&
+%		\hspace*{-1.6em}\begin{tabular}{p{83pt}}Grimmash is a formidable frost orc with a towering presence. His pale blue skin reflects his icy origins, and his wild blue hair cascades down past his broad shoulders. Tribal tattoos adorn ~~~~~~~~~~~~~~\end{tabular}
+%	\end{tabular}\\\vspace*{-1.6em}\hfill\\
+%	his rugged face, while his intense glacial blue eyes reveal a spark of mischief. With his tusks jutting from his lower jaw and scars marking his battle-worn body, he dresses in a mix of practical and flamboyant attire. He wields a massive greataxe, channeling his delusional belief in magic into each swing. 
+%}{}{}{}
 \AdditionalFeaturesAndTraits{
 	Grimmash believes his physical actions are the result of his "wizardry." When he casts "magic missile," he throws small enchanted objects like rocks, which he calls "magic stones". Grimmash is especially proud when he can throw a wizard while casting "magic missile" as this represents the most powerful form of his spell.\\
 	Grimmash sees his rage as channeling elemental forces. When he flies into a rage, he believes he is tapping into the powers of fire, lightning, or other elements, which fuel his enhanced physical abilities.\\
 	Despite his delusion, Grimmash is not malicious. He genuinely believes he is a wizard and possesses magical powers. He may even attempt to teach others his "spells," which often results in unintentional hilarity.\\
 	Grimmash's fascination with magic makes him childlike in many ways. He is easily impressed by actual spellcasters and may seek their approval, hoping to learn more about "real" magic.
-}
-\Characterbackground{
-	Grimmash, an orc born in a snow mountain tribe, yearned for magic despite his kin's focus on physical strength. Mocked for his aspirations and eventually exiled from his tribe, he wandered around the wilds. During his travels he stumbled across a vast tomb. While exploring it he found scripture and tomes that seemed to him to be of ancient spellcasting descent. Convinced he found a very special spellbook, he embraced the delusion of being a wizard.\\
-	Grimmash's ultimate goal is to uncover the ultimate spell—the one that will solidify his claim as the greatest "wizard" the world has ever known. He roams far and wide, seeking out ancient artifacts, enchanted items, and renowned spellcasters, hoping to learn from them and expand his understanding of magic. He yearns for the recognition and respect he believes he deserves, convinced that one day, his name will be uttered with awe and reverence throughout the realms.
-}
-\Treasure{
-	\textbf{The Amulet of Teleportation:} Grimmash believes that wearing this amulet allows him to instantly teleport to different locations. In reality, it's a mere decorative piece, but he often activates it with a flourish, pretending to vanish and reappear while his companions humorously watch him move around on foot.\\
-	\textbf{The Spellbook of Misguided Spells:} Grimmash acquired an old, tattered spellbook while exploring an ancient tomb. Unaware of its true purpose, he cherishes it as his personal grimoire. The book contains nonsensical scribbles, but Grimmash interprets them as his "wizard spells," despite their complete ineffectiveness.\\
-	\textbf{The Crystal Orb of Divination:} Grimmash possesses a polished crystal orb that he uses for divination purposes. Though he has no true understanding of divination magic, he gazes into the orb and pretends to discern hidden truths and glimpses of the future, offering guidance to his fellow adventurers.
 }
 \AlliesAndOrganizations{
 	The Savage Vanguard is an illustrious organization renowned for its ferocious warriors, embodying the essence of primal might and unyielding battle frenzy. Comprising a brotherhood of barbarians and berserkers from diverse backgrounds, the Savage Vanguard is revered for their unmatched combat skills and unwavering dedication to the art of war.\\
@@ -212,6 +210,15 @@
 }
 \OrganizationName{The Savage Vanguard}
 \OrganizationSymbol{images/Savage_Vanguard.png}
+\Characterbackground{
+	Grimmash, an orc born in a snow mountain tribe, yearned for magic despite his kin's focus on physical strength. Mocked for his aspirations and eventually exiled from his tribe, he wandered around the wilds. During his travels he stumbled across a vast tomb. While exploring it he found scripture and tomes that seemed to him to be of ancient spellcasting descent. Convinced he found a very special spellbook, he embraced the delusion of being a wizard.\\
+	Grimmash's ultimate goal is to uncover the ultimate spell—the one that will solidify his claim as the greatest "wizard" the world has ever known. He roams far and wide, seeking out ancient artifacts, enchanted items, and renowned spellcasters, hoping to learn from them and expand his understanding of magic. He yearns for the recognition and respect he believes he deserves, convinced that one day, his name will be uttered with awe and reverence throughout the realms.
+}
+\Treasure{
+	\textbf{The Amulet of Teleportation:} Grimmash believes that wearing this amulet allows him to instantly teleport to different locations. In reality, it's a mere decorative piece, but he often activates it with a flourish, pretending to vanish and reappear while his companions humorously watch him move around on foot.\\
+	\textbf{The Spellbook of Misguided Spells:} Grimmash acquired an old, tattered spellbook while exploring an ancient tomb. Unaware of its true purpose, he cherishes it as his personal grimoire. The book contains nonsensical scribbles, but Grimmash interprets them as his "wizard spells," despite their complete ineffectiveness.\\
+	\textbf{The Crystal Orb of Divination:} Grimmash possesses a polished crystal orb that he uses for divination purposes. Though he has no true understanding of divination magic, he gazes into the orb and pretends to discern hidden truths and glimpses of the future, offering guidance to his fellow adventurers.
+}
 
 % Magic
 

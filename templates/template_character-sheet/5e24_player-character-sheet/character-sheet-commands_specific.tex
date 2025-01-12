@@ -1,6 +1,27 @@
 % Render pre-5e24 spell sheet
 \newcommand{\renderoldspellsheet}{%
-	\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet.tex}%
+	\newgeometry{left=-0.6cm,right=0cm,top=0cm,bottom=0cm}
+	\newpage
+	
+	%\hspace*{-9mm}
+	\makebox[\paperwidth][s]{
+		%\newpage
+		\thispagestyle{empty}
+		\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}
+		\begin{pspicture}(816,1056)
+		{
+			%\psframe[fillstyle=solid,fillcolor=blue!20,linewidth=3pt,linecolor=black](0,0)(816,1056)
+			
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/header.tex}
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/outlines.tex}
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/spell-level-headers.tex}
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/player-input.tex}
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/spell-slots.tex}
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/template-text.tex}
+		}
+		\end{pspicture}
+	}
+	\restoregeometry
 }%
 
 % STAR COLOR CHANGES
@@ -487,7 +508,7 @@
 \newcounter{secondSpellSlotCounter}
 \setcounter{secondSpellSlotCounter}{1}
 
-\newcommand{\addPreparedSpell}[8]{%
+\newcommand{\addPreparedSpell}[9]{%
 	\ifnum\value{secondSpellSlotCounter}>6%
 		\PackageWarning{Specific Commands}{All spell slots are filled! Cannot add "#2".}%
 	\else%
@@ -512,5 +533,6 @@
 			\expandafter\renewcommand\csname SpellA\Alph{secondSpellSlotCounter}NotesValue\endcsname{#8}%
 			\stepcounter{secondSpellSlotCounter}%
 		\fi%
+		\AddSpell{#1}{True}{#2}{#9}
 	\fi%
 }

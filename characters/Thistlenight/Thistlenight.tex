@@ -1,0 +1,553 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% CHARACTER STATS
+\CharacterName{Thistlenight}
+
+\Class{Sorcerer}
+\MultiClassMainLevel{}
+\MultiClass{}
+\Subclass{Clockwork Sorcery}
+\Background{Feylost}
+\Race{Wechselkind}
+
+\Level{2}
+
+% ABILITY SCORES
+% (correct scores, no modifiers are automatically applied)
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{11}
+\DexterityRolledScore{15}
+\ConstitutionRolledScore{14}
+\IntelligenceRolledScore{11}
+\WisdomRolledScore{12}
+\CharismaRolledScore{16}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{2} % Wechselkind
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{1} % Wechselkind
+
+\calculateAbilityScores{}
+
+% PROFICIENCIES AND EXPERTIES
+%% SAVING THROWS
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{P}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{P}
+
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{P} % Wechselkind
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{}
+\SurvivalProficiency{P}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{P}
+\IntimidationProficiency{P}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+
+\Inspiration{}
+\Proficiency{+2}
+\PassivePerceptionModifier{0}
+
+%\EquipShield
+\ArmorClass{\intcalcAdd{10}{\calculateModifier{\DexterityScoreValue}}}
+
+\MaxHitPointsRolled{12} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d6}
+\MultiClassHitDice{}
+\HitDiceSpent{0}
+\MultiClassHitDiceSpent{}
+
+\InitiativeModifier{0}
+\Speed{25}
+\Size{Small}
+
+\LightArmor{}
+\MediumArmor{}
+\HeavyArmor{}
+\Shields{}
+
+\WeaponsProficiency{Simple Weapons}
+\ToolsProficiency{Glaur (Musical Instrument)}
+
+\addWeaponStatistic{Light Crossbow}{Thistlenight}{DEX}{P}{0}{1d8 p}{ranged (80/320), loading, two-handed}
+\addWeaponStatistic{Spear}{Thistlenight}{STR}{P}{0}{1d6 p}{thrown, versatile (1d8)}
+\addWeaponStatistic{Dagger}{Thistlenight}{DEX}{P}{0}{1d4 p}{finesse, light, thrown}
+\addWeaponStatistic{Unarmed Strike}{A.R.T.I.F.I.C.E.R-Q}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
+\addWeaponStatistic{Chill Touch}{Thistlenight}{CHA}{P}{0}{1d10}{Necrotic, target can't regain hit points}
+\addWeaponStatistic{Infestation}{Thistlenight}{CHA}{P}{0}{1d6}{Poison, must move if able}
+\addWeaponStatistic{Mind Sliver}{Thistlenight}{CHA}{P}{0}{1d6}{Psychic, 1d4 malus on next saving throw}
+\addWeaponStatistic{Chromatic Orb}{Thistlenight}{CHA}{P}{0}{3d8}{Acid, Cold, Fire, Lightning, Poison, or Thunder}
+\addWeaponStatistic{Ice Knife}{Thistlenight}{CHA}{P}{0}{1d10 p}{+ 2d6 Cold explosion (DEX save)}
+
+\AddClassFeature{B}{\textbf{Innate Sorcery}\\Unleash innate magic \textbf{twice} per Long Rest}
+\AddClassFeature{L}{\textbf{Font of Magic}\\2 Sorcery Points}
+\AddClassFeature{L}{\textbf{Metamagic}\\Subtle Spell, Seeking Spell}
+
+\AddSpeciesFeature{E}{\textbf{Artificial Form}\\Thistlenight is a construct.}
+\AddSpeciesFeature{L}{\textbf{Faerie Glamour}\\Can cast Disguise Self \textbf{once} per Long Rest.}
+\AddSpeciesFeature{E}{\textbf{Childish Agility}\\Can move through the space of any creature that is medium or larger.}
+
+%\AddFeat{}
+
+% BACKGROUND & APPEARANCE
+
+\Age{15 (since swap)}
+\Height{2'9''}
+\Weight{50 lbs}
+\Eyes{Silver-Gray}
+\Skin{Pale (Oak)}
+\Hair{White}
+
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{12.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{8} % Picture Y-Shift (absolute value)
+	{images/Thistlenight.png} %
+	{%
+		{Thistlenight's pale, oaken body and silver-gray, moonlit eyes hint at their fey origins. Their wiry frame is wrapped in tattered, smoke-stained clothing, and white, uneven hair falls around their}{face. When the glamour fades, faint thorn-like markings appear on their arms and neck, a haunting reminder of their awakening.}
+	}%
+\AdditionalFeaturesAndTraits{
+	When Thistlenight speaks, their voice carries a faint, almost imperceptible echo, like whispers lingering just beyond the edge of hearing. It is both haunting and mesmerizing, drawing listeners in while leaving an uneasy feeling in its wake. Those who stand close to them often shiver without explanation, as though a cold wind has brushed past, despite the stillness of the air.
+
+	Plants in Thistlenight's presence seem to sense their fey magic - some wilt and wither as though recoiling from their aura, while others bloom unnaturally, stretching toward them as if seeking their attention. Even the smallest weed might twist and shudder faintly when they pass.
+
+	When at rest, Thistlenight is unnaturally still, their body devoid of even the smallest fidget or breath-like movement. In these moments, they seem less a living being and more a shadow of something forgotten, tethered to the world by only the faintest thread of reality.
+}
+\AlliesAndOrganizations{\ }{\ }
+\OrganizationName{Maverick}
+\OrganizationSymbol{images/Organisation.png}
+\Characterbackground{
+	Swapped for a mortal child by the fairies, Thistlenight lived unnoticed among humans for years under the veil of fey glamour. As the magic faded, their foster parents realized the horrifying truth: their beloved child had been replaced by a wechselkind. Fear turned to violence as the parents tried to destroy the creature they saw as an abomination. But in that moment of betrayal, Thistlenight awakened, their latent magic surging forth. Thorned vines erupted, killing the parents in a moonless night of blood and terror.
+
+	Taking the name "Thistlenight" to mark their dark awakening, they fled the mortal world, leaving behind the ruined house and the twisted remnants of their foster family.
+
+	Now stranded in Sigil's Lower Wards after fleeing through a portal, Thistlenight struggles to survive in the smoke-filled alleys of the city. Their ability to mimic the child they replaced offers fleeting safety, but the glamour cannot hold forever. Using their fey-born magic of illusion and trickery, they navigate the brutal streets, avoiding bounty hunters and other dangers.
+}
+\Treasure{
+	\textbf{Amber Necklace} A tarnished bronze chain holds a smooth amber stone with a tiny, frozen insect trapped within. Worn and weathered, it radiates a faint warmth, as if it holds a quiet, hidden power. Thistlenight treasures it as the last remnant of their old life.\\
+	\textbf{8-Inch Glass Ant Figurine} This delicate glass ant, eerily lifelike, catches light in faint rainbow hues. A small crack mars one of its legs, yet its weight feels oddly grounding in Thistlenight's hand.\\
+	\textbf{Silver Fork with Bent Tines} A tarnished silver fork with its outer tines bent sideways, bearing a faint, nearly illegible engraving. Its imperfections make it oddly compelling, and Thistlenight keeps it as an inexplicable token of resilience.
+}
+
+% PERSONALITY TRAITS
+\PersonalityTraits{
+	Thistlenight reads people with uncanny precision, trusting no one fully. They exude an unnerving calm, their soft voice both soothing and unsettling. A pragmatic survivor, they manipulate and deceive when needed but avoid unnecessary cruelty.
+}
+\Alignment{Chaotic Neutral}
+
+\Ideals{
+	\textbf{Survival Above All}\\"The world is cruel, and only the cunning survive. I'll do whatever it takes to endure."
+}
+
+\Bonds{
+	\textbf{A Singular Focus}\\"Survival is my only bond. Until I am truly free, I cannot afford to care for anything else."
+}
+
+\Flaws{
+	Anyone in a position of power immediately raises their suspicions, making it difficult for them to accept help or alliances.
+}
+
+% LANGUAGES
+\Languages{Common, Sylvan, Elvish}
+
+% EQUIPMENT
+\Equipment{
+	\textbf{Amber Necklace} (Arcane Focus), 2 Daggers, Spear, Light Crossbow, 20 bolts, Gloon (spooky Glaur), set of traveler's clothes, candlestick whose candlelight looks like a tiny dancing fairy made of fire, 8-inch-long glass ant figurine, silver fork with the outer tines bent sideways, backpack, crowbar, hammer, 10 pitons, tinderbox, 10 days of rations, waterskin, 50 feet of hempen rope
+}
+
+%\addAttunedMagicItem{}
+
+\CP{}
+\SP{}
+\EP{}
+\GP{11}
+\PP{}
+
+% SPELLS
+\SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+
+\FirstLevelSpellSlotsTotal{3}
+
+\addPreparedSpell{0}
+	{Chill Touch}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{0}
+	{Infestation}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{0}
+	{Mage Hand}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S, 1 Minute}
+	{V, S}
+\addPreparedSpell{0}
+	{Mind Sliver}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{Charm Person}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Chromatic Orb}
+	{Action}
+	{90 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 3d8}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Disguise Self}
+	{Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S}
+	{Once per Long Rest}
+\addPreparedSpell{1}
+	{False Life}
+	{Action}
+	{Self}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Ice Knife}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{T}
+	{S, 1d10 p + 2d6}
+	{S, M}
+
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Wechselkind Traits}
+Constructed of sturdy materials and enchanted with powerful faerie magic, wechselkind possess several traits that distinguish them from the other races of Etharis.
+\subsection*{Artificial Form}
+As a constructed creature, your body functions differently than a normal person.
+\begin{itemize}
+	\item You have advantage on saving throws against being poisoned, and you have resistance to poison damage.
+	\item You are immune to disease. You don't need to eat, drink, sleep, or breathe. You are still considered humanoid.
+\end{itemize}
+\subsection*{Faerie Glamour}
+When the faerie leaves a wechselkind in place of a mortal child, they cover it with a glamour to make it appear identical to the child that was stolen. Over time this glamour fades, but a wechselkind can still call upon it in times of need.
+
+You may cast the Disguise Self spell once with this trait, but only to take on the appearance of the child you were intended to replace, and you regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for this spell.
+\subsection*{Childish Agility}
+You can move through the space of any creature that is of a size larger than yours. You gain proficiency in the Acrobatics skill.
+
+\section*{Sorcerer Traits}
+\subsection*{Innate Sorcery}
+An event in your past left an indelible mark on you, infusing you with simmering magic. As a Bonus Action, you can unleash that magic for 1 minute, during which you gain the following benefits:
+\begin{itemize}
+	\item The spell save DC of your Sorcerer spells increases by 1.
+	\item You have Advantage on the attack rolls of Sorcerer spells you cast.
+\end{itemize}
+You can use this feature twice, and you regain expended uses of it when you finish a Long Rest.
+\subsection*{Font of Magic}
+You can tap into the wellspring within yourself. This wellspring is represented by Sorcery Points, which allow you to create a variety of magical effects.
+
+You have 2 Sorcery Points, and you gain more as you reach higher levels, as shown in the Sorcery Points column of the Sorcery Features table. You can't have more Sorcery Points than the number shown in the table for your level. You regain all expended Sorcery Points when you finish a Long Rest.
+
+You can use your Sorcery Points to fuel the options below, along with other features, such as Metamagic, that use those points.
+
+\paragraph*{Converting Spell Slots to Sorcery Points} You can expend a spell slot to gain a number of Sorcery Points equal to the slot's level (no action required)
+
+\paragraph*{Creating Spell Slots} As a Bonus Action, you can transform unexpended Sorcery Points into one spell slot. The Creating Spell Slot table shows the cost of creating a spell slot of a given level, and it lists the minimum Sorcerer level you must be to create a slot. You can create a spell slot no higher than level 5.
+
+Any spell slot you create with this feature vanishes when you finish a Long Rest.
+\begin{DndTable}[header=Creating Spell Slots]{ccc}
+	\textbf{Spell Slot Level} & \textbf{Sorcery Point Cost} & \textbf{Min. Sorcerer Level} \\
+	1 & 2 & 2 \\
+	2 & 3 & 3 \\
+	3 & 5 & 5 \\
+	4 & 6 & 7 \\
+	5 & 7 & 9 \\
+\end{DndTable}
+
+\subsection*{Metamagic}
+Because your magic flows from within, you can alter your spells to suit your needs; you gain two Metamagic options of your choice from "Metamagic Options" later in this class's description. You use the chosen options to temporarily modify spells you cast. To use an option, you must spend the number of Sorcery Points that it costs.
+
+You can use only one Metamagic option on a spell when you cast it unless otherwise noted in one of those options.
+
+Whenever you gain a Sorcerer level, you can replace one of your Metamagic options with one you don't know. You gain two more options at Sorcerer level 10 and two more at Sorcerer level 17.
+\subsubsection*{Seeking Spell}
+\textit{Cost: 1 Sorcery Point}\\
+If you make an attack roll for a spell and miss, you can spend 1 Sorcery Point to reroll the d20, and you must use the new roll.
+
+You can use Seeking Spell even if you've already used a different Metamagic option during the casting of the spell.
+\subsubsection*{Subtle Spell}
+\textit{Cost: 1 Sorcery Point}\\
+When you cast a spell, you can spend 1 Sorcery Point to cast it without any Verbal, Somatic, or Material components, except Material components that are consumed by the spell or that have a cost specified in the spell.
+
+\section*{Spells}
+\subsection*{Cantrips}
+
+\DndSpellHeader
+  {Chill Touch}
+  {Necromancy Cantrip}
+  {Action}
+  {Touch}
+  {V, S}
+  {Instantaneous}
+
+Channeling the chill of the grave, make a melee spell attack against a target within reach. On a hit, the target takes 1d10 Necrotic damage and it can't regain Hit Points until the end of your next turn.
+
+\subparagraph*{At Higher Levels} The damage increases by 1d10 when you reach level 5 (2d10), 11 (3d10), and 17 (4d10)
+
+\DndSpellHeader
+  {Infestation}
+  {Conjuration Cantrip}
+  {Action}
+  {30 Feet}
+  {V, S, M (a living flea)}
+  {Instantaneous}
+
+You cause a cloud of mites, fleas, and other parasites to appear momentarily on one creature you can see within range. The target must succeed on a Constitution saving throw, or it takes 1d6 poison damage and moves 5 feet in a random direction if it can move and its speed is at least 5 feet. Roll a d4 for the direction: 1, north; 2, south; 3, east; or 4, west. This movement doesn't provoke opportunity attacks, and if the direction rolled is blocked, the target doesn't move.
+
+\subparagraph*{At Higher Levels} The spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).
+
+\DndSpellHeader
+  {Mage Hand}
+  {Conjuration Cantrip}
+  {Action}
+  {30 Feet}
+  {V, S}
+  {1 Minute}
+
+A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.
+
+You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it.
+
+The hand can't attack, activate magical items, or carry more than 10 pounds.
+
+\DndSpellHeader
+  {Mind Sliver}
+  {Enchantment Cantrip}
+  {Action}
+  {60 Feet}
+  {V}
+  {1 Round}
+
+You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.
+
+\subparagraph*{At Higher Levels} This spell's damage increases by 1d6 when you reach certain levels: 5th level (2d6), 11th level (3d6), and 17th level (4d6).
+
+\subsection*{1st Level}
+
+\DndSpellHeader
+  {Charm Person}
+  {1st-Level Enchantment}
+  {Action}
+  {30 Feet}
+  {V, S}
+  {1 Hour}
+
+You attempt to charm a humanoid you can see within range. It must make a Wisdom saving throw, and does so with advantage if you or your companions are fighting it. If it fails the saving throw, it is charmed by you until the spell ends or until you or your companions do anything harmful to it. The charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was charmed by you.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st. The creatures must be within 30 feet of each other when you target them.
+
+\DndSpellHeader
+  {Chromatic Orb}
+  {1st-Level Evocation}
+  {Action}
+  {90 Feet}
+  {V, S, M (a diamond worth at least 50 gp)}
+  {Instantaneous}
+
+You hurl an orb of energy at a target within range. Choose Acid, Cold, Fire, Lightning, Poison, or Thunder for the type of orb you create, and then make a ranged spell attack against the target. On a hit, the target takes 3d8 damage of the chosen type.
+
+If you roll the same number on two or more of the d8s, the orb leaps to a different target of your choice within 30 feet of the target. Make an attack roll against the new target, and make a new damage roll. The orb can't leap again unless you cast the spell with a level 2+ spell slot.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d8 for each spell slot level above 1. The orb can leap a maximum number of times equal to the level of the slot expended, and a creature can be targeted only once by each casting of this spell.
+
+\DndSpellHeader
+  {Disguise Self}
+  {1st-Level Illusion}
+  {Action}
+  {Self}
+  {V, S}
+  {1 Hour}
+
+You make yourself – including your clothing, armor, weapons, and other belongings on your person – look different until the spell ends or until you use your action to dismiss it. You can seem 1 foot shorter or taller and can appear thin, fat, or in between. You can't change your body type, so you must adopt a form that has the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.
+
+The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing.
+
+To discern that you are disguised, a creature must take the Study action to inspect your appearance and succeed on an Intelligence (Investigation) check against your spell save DC.
+
+\DndSpellHeader
+  {False Life}
+  {1st-Level Necromancy}
+  {Action}
+  {Self}
+  {V, S, M (a small amount of alcohol or distilled spirits)}
+  {1 Hour}
+
+You gain \DndDice{2d4 + 4} Temporary Hit Points.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You gain 5 additional Temporary Hit Points for each spell slot level above 1.
+
+\DndSpellHeader
+  {Ice Knife}
+  {1st-Level Conjuration}
+  {Action}
+  {60 Feet}
+  {S, M (a drop of water or piece of ice)}
+  {Instantaneous}
+
+You create a shard of ice and fling it at one creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Piercing damage. Hit or miss, the shard then explodes. The target and each creature within 5 feet of the point where the ice exploded must succeed on a Dexterity saving throw or take 2d6 Cold damage.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The Cold damage increases by 1d6 for each spell slot level above 1.
+
+\vfill\eject
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Dagger (Finesse):}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Spear (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Spear (Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Dagger (Finesse):}}\\
+1d4 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}
+\\
+\underline{\textit{Spear (Throwable):}}\\
+1d6 + STR-Modifier\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Spear (Versatile):}}\\
+1d8 + STR-Modifier\\
+\indent Current Max (one-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Light Crossbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Light Crossbow:}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
+
+%\input{\PATH magic_items/Blank/Blank_Item/Blank_Item_input}
+
+\end{document}
