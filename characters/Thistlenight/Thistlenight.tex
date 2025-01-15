@@ -39,7 +39,7 @@
 \DexterityScoreBonus{0}
 \ConstitutionScoreBonus{2} % Wechselkind
 \IntelligenceScoreBonus{0}
-\WisdomScoreBonus{0}
+\WisdomScoreBonus{1} % Beggar? in the Lower Wards
 \CharismaScoreBonus{1} % Wechselkind
 
 \calculateAbilityScores{}
@@ -120,11 +120,11 @@
 \addWeaponStatistic{Spear}{Thistlenight}{STR}{P}{0}{1d6 p}{thrown, versatile (1d8)}
 \addWeaponStatistic{Dagger}{Thistlenight}{DEX}{P}{0}{1d4 p}{finesse, light, thrown}
 \addWeaponStatistic{Unarmed Strike}{A.R.T.I.F.I.C.E.R-Q}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
-\addWeaponStatistic{Chill Touch}{Thistlenight}{CHA}{P}{0}{1d10}{Necrotic, target can't regain hit points}
-\addWeaponStatistic{Infestation}{Thistlenight}{CHA}{P}{0}{1d6}{Poison, must move if able}
-\addWeaponStatistic{Mind Sliver}{Thistlenight}{CHA}{P}{0}{1d6}{Psychic, 1d4 malus on next saving throw}
-\addWeaponStatistic{Chromatic Orb}{Thistlenight}{CHA}{P}{0}{3d8}{Acid, Cold, Fire, Lightning, Poison, or Thunder}
-\addWeaponStatistic{Ice Knife}{Thistlenight}{CHA}{P}{0}{1d10 p}{+ 2d6 Cold explosion (DEX save)}
+\addSpellStatistic{Chill Touch}{ATK}{\calculateModifier{\CharismaScoreValue}}{1d10}{Necrotic, target can't regain hit points}
+\addSpellStatistic{Infestation}{DC}{\calculateModifier{\CharismaScoreValue}}{1d6}{Poison, must move if able, CON save}
+\addSpellStatistic{Mind Sliver}{DC}{\calculateModifier{\CharismaScoreValue}}{1d6}{Psychic, 1d4 malus on next saving throw}
+\addSpellStatistic{Mind Sliver}{ATK}{\calculateModifier{\CharismaScoreValue}}{3d8}{Acid, Cold, Fire, Lightning, Poison, or Thunder}
+\addSpellStatistic{Ice Knife}{BOTH}{\calculateModifier{\CharismaScoreValue}}{1d10 p}{+ 2d6 Cold explosion, DEX save}
 
 \AddClassFeature{B}{\textbf{Innate Sorcery}\\Unleash innate magic \textbf{twice} per Long Rest}
 \AddClassFeature{L}{\textbf{Font of Magic}\\2 Sorcery Points}
@@ -171,9 +171,9 @@
 	Now stranded in Sigil's Lower Wards after fleeing through a portal, Thistlenight struggles to survive in the smoke-filled alleys of the city. Their ability to mimic the child they replaced offers fleeting safety, but the glamour cannot hold forever. Using their fey-born magic of illusion and trickery, they navigate the brutal streets, avoiding bounty hunters and other dangers.
 }
 \Treasure{
-	\textbf{Amber Necklace} A tarnished bronze chain holds a smooth amber stone with a tiny, frozen insect trapped within. Worn and weathered, it radiates a faint warmth, as if it holds a quiet, hidden power. Thistlenight treasures it as the last remnant of their old life.\\
-	\textbf{8-Inch Glass Ant Figurine} This delicate glass ant, eerily lifelike, catches light in faint rainbow hues. A small crack mars one of its legs, yet its weight feels oddly grounding in Thistlenight's hand.\\
-	\textbf{Silver Fork with Bent Tines} A tarnished silver fork with its outer tines bent sideways, bearing a faint, nearly illegible engraving. Its imperfections make it oddly compelling, and Thistlenight keeps it as an inexplicable token of resilience.
+	\textbf{1. Amber Necklace:} A tarnished bronze chain holds a smooth amber stone with a tiny, frozen insect trapped within. Worn and weathered, it radiates a faint warmth, as if it holds a quiet, hidden power. Thistlenight treasures it as the last remnant of their old life.\\
+	\textbf{2. 8-Inch Glass Ant Figurine:} This delicate glass ant, eerily lifelike, catches light in faint rainbow hues. A small crack mars one of its legs, yet its weight feels oddly grounding in Thistlenight's hand.\\
+	\textbf{3. Silver Fork with Bent Tines:} A tarnished silver fork with its outer tines bent sideways, bearing a faint, nearly illegible engraving. Its imperfections make it oddly compelling, and Thistlenight keeps it as an inexplicable token of resilience.
 }
 
 % PERSONALITY TRAITS
@@ -199,15 +199,15 @@
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Amber Necklace} (Arcane Focus), 2 Daggers, Spear, Light Crossbow, 20 bolts, Gloon (spooky Glaur), set of traveler's clothes, candlestick whose candlelight looks like a tiny dancing fairy made of fire, 8-inch-long glass ant figurine, silver fork with the outer tines bent sideways, backpack, crowbar, hammer, 10 pitons, tinderbox, 10 days of rations, waterskin, 50 feet of hempen rope
+	\textbf{Amber Necklace} (Arcane Focus), Scroll of Entangle, Potion of Invisibility, 2 Daggers, Spear, Light Crossbow, 20 bolts, Gloon (spooky Glaur), set of traveler's clothes, candlestick whose candlelight looks like a tiny dancing fairy made of fire, 8-inch-long glass ant figurine, silver fork with the outer tines bent sideways, backpack, crowbar, hammer, 10 pitons, tinderbox, 10 days of rations, waterskin, 50 feet of hempen rope
 }
 
 %\addAttunedMagicItem{}
 
 \CP{}
-\SP{}
+\SP{5}
 \EP{}
-\GP{11}
+\GP{539}
 \PP{}
 
 % SPELLS
@@ -356,7 +356,7 @@ You can use your Sorcery Points to fuel the options below, along with other feat
 
 Any spell slot you create with this feature vanishes when you finish a Long Rest.
 \begin{DndTable}[header=Creating Spell Slots]{ccc}
-	\textbf{Spell Slot Level} & \textbf{Sorcery Point Cost} & \textbf{Min. Sorcerer Level} \\
+	\textbf{Spell Slot Lvl} & \textbf{Sorcery Point Cost} & \textbf{Min. Sorcerer Lvl} \\
 	1 & 2 & 2 \\
 	2 & 3 & 3 \\
 	3 & 5 & 5 \\

@@ -91,6 +91,32 @@
 	\calculateAttackBonus{#2#1}%
 	\AddWeapon{#1}{\csname attackBonus#2#1\endcsname}{#6}{#7}%
 }%
+\makeatletter
+\newcommand\AddDamageSpell[5]{%
+	\g@addto@macro\WeaponsHeld{\\ \entryfont #1 &%
+	\ifthenelse{\equal{#2}{}}{%
+		\entryfont #3%
+	}{%
+		\entryfont #2%
+		\ifthenelse{\equal{#3}{}}{}{\entryfont / #3}%
+	}% 	
+	& \entryfont #4 & \entryfont #5}
+}
+\makeatother
+\newcommand{\addSpellStatistic}[5]{%
+	\ifthenelse{\equal{#2}{ATK}}{%
+		\AddDamageSpell{#1}{\calculateSpellAttack{#3}}{}{#4}{#5}%
+	}{%
+		\ifthenelse{\equal{#2}{DC}}{%
+			\AddDamageSpell{#1}{}{\calculateSpellSaveDC{#3}}{#4}{#5}%
+		}{%
+			\ifthenelse{\equal{#2}{BOTH}}{%
+				\AddDamageSpell{#1}{\calculateSpellAttack{#3}}{\calculateSpellSaveDC{#3}}{#4}{#5}%
+			}{%
+			}%
+		}%
+	}%
+}%
 
 % CUSTOM ITEM LABEL
 \newcommand{\CustomItemLabel}[1]{%
@@ -489,10 +515,10 @@
 			\expandafter\renewcommand\csname Spell#2CastingTimeValue\endcsname{
 				\rput(0,0){%
 					\pscustom[linestyle=none,fillstyle=solid,fillcolor=black]{%
-						\moveto(5,5)
-						\lineto(5,-5)
-						\lineto(-5,-5)
-						\lineto(-5,5)
+						\moveto(0,5)
+						\lineto(5,0)
+						\lineto(0,-5)
+						\lineto(-5,0)
 						\closepath
 					}%
 				}%
