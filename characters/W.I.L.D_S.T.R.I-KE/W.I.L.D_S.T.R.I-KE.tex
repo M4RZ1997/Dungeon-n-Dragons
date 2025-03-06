@@ -136,7 +136,7 @@
 \AddSpeciesFeature{E}{\textbf{Constructed Resilience}}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
 \AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
-\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Perception Proficiency and Thieves' Tools Proficiency}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Perception Proficiency\\Woodcarver's Tools Proficiency}
 
 \AddFeat{\textbf{Archery}\\+2 to Ranged attacks}
 
@@ -158,7 +158,7 @@
 		{W.I.L.D/S.T.R.I-KE resembles a mechanical wood elf, with a lithe, angular frame combining sleek metallic plating and intricately carved wooden components. His head is aerodynamic and elven in shape, with a glowing blue visor in place of eyes. Etched with runic patterns, his body blends technology and nature seamlessly, giving him the appearance of an otherworldly archer.}
 	}%
 \Characterbackground{
-	W.I.L.D/S.T.R.I-KE is part of the Wilderness Infiltrator for Lethal Deployment series, crafted by Lantan's renowned "G.E. Petto" factory. Originally known for creating helper constructs, "G.E. Petto" shifted to combat designs as threats to Lantan increased. Modelled after the legendary wood elf ranger Laucian Ilphelkiir, one of the Seven Musketeers who aided the Storm Giants during the Ordning, the W.I.L.D/S.T.R.I-KE series was designed to combine precision, stealth, and a deep connection to the natural world.
+	W.I.L.D/S.T.R.I-KE is part of a construct series called Wilderness Infiltrator Unit for Lethal Deployment in Stealth \& Tactical Ranged Incursion - Kinetic Model, crafted by Lantan's renowned "G.E. Petto" factory. Originally known for creating helper constructs, "G.E. Petto" shifted to combat designs as threats to Lantan increased. Modelled after the legendary wood elf ranger Laucian Ilphelkiir, one of the Seven Musketeers who aided the Storm Giants during the Ordning, the W.I.L.D/S.T.R.I-KE series was designed to combine precision, stealth, and a deep connection to the natural world.
 
 	Deployed in the "Lantan Ranger Corps", W.I.L.D./S.T.R.I-KE specialized in solo missions, excelling in reconnaissance and precision strikes against high-value targets. Their efficient, emotionless methods earned respect and unease alike among their peers. On one mission, they uncovered a lead on a dangerous enemy of the state, tracing the suspect's activities to Sigil, the City of Doors.
 
@@ -207,10 +207,11 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Laucian's Warden Token} (Druidic Focus), Studded Leather Armor (equipped), Scimitar, Shortsword, 20 Arrows, Quiver, Woodcarver's Tools, a set of common clothes, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope
+	\textbf{Laucian's Warden Token} (Druidic Focus), \textbf{Scroll of Scrying}, Studded Leather Armor (equipped), Scimitar, Shortsword, 20 Arrows, Quiver, Woodcarver's Tools, a set of common clothes, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope
 }
 
 \addAttunedMagicItem{Glimmering Moonbow}
+\addAttunedMagicItem{Ring of Mind Shielding}
 
 \CP{}
 \SP{}
@@ -320,7 +321,7 @@ You were created to have remarkable fortitude, represented by the following bene
 \begin{itemize}
 	\item You have advantage on saving throws against being poisoned, and you have resistance to poison damage.
 	\item You don't need to eat, drink, or breathe.
-	\item  are immune to disease.
+	\item You are immune to disease.
 	\item You don't need to sleep, and magic can't put you to sleep.
 \end{itemize}
 \subsection*{Sentry's Rest}
@@ -427,7 +428,7 @@ You magically mark one creature you can see within range as your quarry. Until t
 
 If the target drops to 0 Hit Points before this spell ends, you can take a Bonus Action to move the mark to a new creature you can see within range.
 
-\subparagraph*{Using a Higher-Level Spell Slot} Your Concentration can last longer with a spell slot of level 3-4(up to 8 hours) or 5+ (up to 24 hours).
+\subparagraph*{Using a Higher-Level Spell Slot} Your Concentration can last longer with a spell slot of level 3-4 (up to 8 hours) or 5+ (up to 24 hours).
 
 \DndSpellHeader
   {Longstrider}
@@ -511,6 +512,17 @@ Once before the spell ends, you can give yourself advantage on one weapon attack
 1 + STR-Modifier\\
 \indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
 
+\part*{Magic Items}
+
 \input{\PATH magic_items/Weapons/Bows/Glimmering_Moonbow/Glimmering_Moonbow_input}
+
+\newpage
+\subsection*{Ring of Mind Shielding}
+\textit{Ring, uncommon (requires attunement)}\\
+While wearing this ring, you are immune to magic that allows other creatures to read your thoughts, determine whether you are lying, know your alignment, or know your creature type. Creatures can telepathically communicate with you only if you allow it.
+
+You can use an action to cause the ring to become invisible until you use another action to make it visible, until you remove the ring, or until you die.
+
+If you die while wearing the ring, your soul enters it, unless it already houses a soul. You can remain in the ring or depart for the afterlife. As long as your soul is in the ring, you can telepathically communicate with any creature wearing it. A wearer can't prevent this telepathic communication.
 
 \end{document}

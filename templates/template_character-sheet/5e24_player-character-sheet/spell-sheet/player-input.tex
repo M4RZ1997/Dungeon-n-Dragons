@@ -281,9 +281,45 @@
 % PERSONALITY TRAITS
 \rput[lt](560,1019.17){\parbox{180pt}{\entryfont \justify \footnotesize \PersonalityTraitsValue}}
 \rput[l](625,927.12){\entryfont \footnotesize \AlignmentValue}
-\rput[lt](560,886.87){\parbox{180pt}{\entryfont \justify \footnotesize \IdealsValue}}
-\rput[lt](560,794.38){\parbox{180pt}{\entryfont \justify \footnotesize \BondsValue}}
-\rput[lt](560,701.89){\parbox{180pt}{\entryfont \justify \footnotesize \FlawsValue}}
+
+%\rput[lt](560,886.87){\parbox{180pt}{\entryfont \justify \footnotesize \IdealsValue}}
+\rput[lt](560,886.87){%
+	\parbox{180pt}{\entryfont\justify\footnotesize%
+		\begingroup%
+			\setbox0=\vbox{\IdealsValue}%
+			\vsplit0 to 30pt%
+			\rput[lt](7.5,32.5){%
+				\parbox{180pt}{\entryfont\justify\footnotesize\unvbox0}%
+			}%
+		\endgroup
+	}%
+}%
+
+%\rput[lt](560,794.38){\parbox{180pt}{\entryfont \justify \footnotesize \BondsValue}}
+\rput[lt](560,794.38){%
+	\parbox{180pt}{\entryfont\justify\footnotesize%
+		\begingroup%
+			\setbox0=\vbox{\BondsValue}%
+			\vsplit0 to 30pt%
+			\rput[lt](7.5,32.5){%
+				\parbox{180pt}{\entryfont\justify\footnotesize\unvbox0}%
+			}%
+		\endgroup
+	}%
+}%
+
+%\rput[lt](560,701.89){\parbox{180pt}{\entryfont \justify \footnotesize \FlawsValue}}
+\rput[lt](560,701.89){%
+	\parbox{180pt}{\entryfont\justify\footnotesize%
+		\begingroup%
+			\setbox0=\vbox{\FlawsValue}%
+			\vsplit0 to 30pt%
+			\rput[lt](7.5,32.5){%
+				\parbox{180pt}{\entryfont\justify\footnotesize\unvbox0}%
+			}%
+		\endgroup
+	}%
+}%
 
 % LANGUAGES
 \rput[lt](560,609.40){\parbox{180pt}{\entryfont \justify \footnotesize \LanguagesValue}}

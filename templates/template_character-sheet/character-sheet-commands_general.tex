@@ -734,6 +734,8 @@
 \newcommand{\WisdomProficiency}[1]{\renewcommand{\WisdomProficiencyValue}{#1}\calculateProficiencyColor{#1}{wisdom}}
 \newcommand{\CharismaProficiency}[1]{\renewcommand{\CharismaProficiencyValue}{#1}\calculateProficiencyColor{#1}{charisma}}
 
+% SKILLS
+
 \newcommand{\AcrobaticsProficiencyValue}{}
 \newcommand{\AnimalHandlingProficiencyValue}{}
 \newcommand{\ArcanaProficiencyValue}{}
@@ -752,6 +754,25 @@
 \newcommand{\SleightOfHandProficiencyValue}{}
 \newcommand{\StealthProficiencyValue}{}
 \newcommand{\SurvivalProficiencyValue}{}
+
+\newcommand{\AcrobaticsSkillModifierBonusValue}{0}
+\newcommand{\AnimalHandlingSkillModifierBonusValue}{0}
+\newcommand{\ArcanaSkillModifierBonusValue}{0}
+\newcommand{\AthleticsSkillModifierBonusValue}{0}
+\newcommand{\DeceptionSkillModifierBonusValue}{0}
+\newcommand{\HistorySkillModifierBonusValue}{0}
+\newcommand{\InsightSkillModifierBonusValue}{0}
+\newcommand{\IntimidationSkillModifierBonusValue}{0}
+\newcommand{\InvestigationSkillModifierBonusValue}{0}
+\newcommand{\MedicineSkillModifierBonusValue}{0}
+\newcommand{\NatureSkillModifierBonusValue}{0}
+\newcommand{\PerceptionSkillModifierBonusValue}{0}
+\newcommand{\PerformanceSkillModifierBonusValue}{0}
+\newcommand{\PersuasionSkillModifierBonusValue}{0}
+\newcommand{\ReligionSkillModifierBonusValue}{0}
+\newcommand{\SleightOfHandSkillModifierBonusValue}{0}
+\newcommand{\StealthSkillModifierBonusValue}{0}
+\newcommand{\SurvivalSkillModifierBonusValue}{0}
 
 \newrgbcolor{acrobaticsproficiency}{1 1 1}
 \newrgbcolor{acrobaticsexpertise}{1 1 1}
@@ -790,24 +811,132 @@
 \newrgbcolor{survivalproficiency}{1 1 1}
 \newrgbcolor{survivalexpertise}{1 1 1}
 
-\newcommand{\AcrobaticsProficiency}[1]{\renewcommand{\AcrobaticsProficiencyValue}{#1}\calculateProficiencyColor{#1}{acrobatics}}
-\newcommand{\AnimalHandlingProficiency}[1]{\renewcommand{\AnimalHandlingProficiencyValue}{#1}\calculateProficiencyColor{#1}{animalhandling}}
-\newcommand{\ArcanaProficiency}[1]{\renewcommand{\ArcanaProficiencyValue}{#1}\calculateProficiencyColor{#1}{arcana}}
-\newcommand{\AthleticsProficiency}[1]{\renewcommand{\AthleticsProficiencyValue}{#1}\calculateProficiencyColor{#1}{athletics}}
-\newcommand{\DeceptionProficiency}[1]{\renewcommand{\DeceptionProficiencyValue}{#1}\calculateProficiencyColor{#1}{deception}}
-\newcommand{\HistoryProficiency}[1]{\renewcommand{\HistoryProficiencyValue}{#1}\calculateProficiencyColor{#1}{history}}
-\newcommand{\InsightProficiency}[1]{\renewcommand{\InsightProficiencyValue}{#1}\calculateProficiencyColor{#1}{insight}}
-\newcommand{\IntimidationProficiency}[1]{\renewcommand{\IntimidationProficiencyValue}{#1}\calculateProficiencyColor{#1}{intimidation}}
-\newcommand{\InvestigationProficiency}[1]{\renewcommand{\InvestigationProficiencyValue}{#1}\calculateProficiencyColor{#1}{investigation}}
-\newcommand{\MedicineProficiency}[1]{\renewcommand{\MedicineProficiencyValue}{#1}\calculateProficiencyColor{#1}{medicine}}
-\newcommand{\NatureProficiency}[1]{\renewcommand{\NatureProficiencyValue}{#1}\calculateProficiencyColor{#1}{nature}}
-\newcommand{\PerceptionProficiency}[1]{\renewcommand{\PerceptionProficiencyValue}{#1}\calculateProficiencyColor{#1}{perception}}
-\newcommand{\PerformanceProficiency}[1]{\renewcommand{\PerformanceProficiencyValue}{#1}\calculateProficiencyColor{#1}{performance}}
-\newcommand{\PersuasionProficiency}[1]{\renewcommand{\PersuasionProficiencyValue}{#1}\calculateProficiencyColor{#1}{persuasion}}
-\newcommand{\ReligionProficiency}[1]{\renewcommand{\ReligionProficiencyValue}{#1}\calculateProficiencyColor{#1}{religion}}
-\newcommand{\SleightOfHandProficiency}[1]{\renewcommand{\SleightOfHandProficiencyValue}{#1}\calculateProficiencyColor{#1}{sleightofhand}}
-\newcommand{\StealthProficiency}[1]{\renewcommand{\StealthProficiencyValue}{#1}\calculateProficiencyColor{#1}{stealth}}
-\newcommand{\SurvivalProficiency}[1]{\renewcommand{\SurvivalProficiencyValue}{#1}\calculateProficiencyColor{#1}{survival}}
+\NewDocumentCommand{\AcrobaticsProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\AcrobaticsSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\AcrobaticsProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{acrobatics}%
+}%
+\NewDocumentCommand{\AnimalHandlingProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\AnimalHandlingSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\AnimalHandlingProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{animalhandling}%
+}%
+\NewDocumentCommand{\ArcanaProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\ArcanaSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\ArcanaProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{arcana}%
+}%
+\NewDocumentCommand{\AthleticsProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\AthleticsSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\AthleticsProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{athletics}%
+}%
+\NewDocumentCommand{\DeceptionProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\DeceptionSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\DeceptionProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{deception}%
+}%
+\NewDocumentCommand{\HistoryProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\HistorySkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\HistoryProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{history}%
+}%
+\NewDocumentCommand{\InsightProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\InsightSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\InsightProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{insight}%
+}%
+\NewDocumentCommand{\IntimidationProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\IntimidationSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\IntimidationProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{intimidation}%
+}%
+\NewDocumentCommand{\InvestigationProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\InvestigationSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\InvestigationProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{investigation}%
+}%
+\NewDocumentCommand{\MedicineProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\MedicineSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\MedicineProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{medicine}%
+}%
+\NewDocumentCommand{\NatureProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\NatureSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\NatureProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{nature}%
+}%
+\NewDocumentCommand{\PerceptionProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\PerceptionSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\PerceptionProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{perception}%
+}%
+\NewDocumentCommand{\PerformanceProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\PerformanceSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\PerformanceProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{performance}%
+}%
+\NewDocumentCommand{\PersuasionProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\PersuasionSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\PersuasionProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{persuasion}%
+}%
+\NewDocumentCommand{\ReligionProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\ReligionSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\ReligionProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{religion}%
+}%
+\NewDocumentCommand{\SleightOfHandProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\SleightOfHandSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\SleightOfHandProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{sleightofhand}%
+}%
+\NewDocumentCommand{\StealthProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\StealthSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\StealthProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{stealth}%
+}%
+\NewDocumentCommand{\SurvivalProficiency}{ om }{%
+	\IfNoValueTF{#1}{}{%
+		\renewcommand{\SurvivalSkillModifierBonusValue}{#1}%
+	}%
+	\renewcommand{\SurvivalProficiencyValue}{#2}%
+	\calculateProficiencyColor{#2}{survival}%
+}%
 
 % SPELL PREPARED COLOR CHANGES
 
