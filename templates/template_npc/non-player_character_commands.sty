@@ -1,0 +1,28 @@
+% ------------------------------------------------------------------------------------------------- %
+%					non-player_character_commands.sty 	 Marcel Zauder 23/03/2021					%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\newcommand{\NPCNameValue}{}
+
+\newcommand{\NPCName}[1]{\renewcommand{\NPCNameValue}{#1}}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- NPC Image ------------------------------------------- %
+\newcommand{\npcImage}[2]{%
+	\begin{center}%
+		\begin{tikzpicture}[remember picture, overlay]%
+			\ifthenelse{\equal{#1}{example}}{%
+				\node[yshift=1cm, anchor=north] {\includegraphics[width=1\columnwidth]{%
+					example-image-b%
+				}};%
+			}{%
+				\node[yshift=1cm, anchor=north] {\includegraphics[width=1\columnwidth]{%
+					\PATH non-player_characters/\NPCNameValue/images/#1%
+				}};%
+			}%
+		\end{tikzpicture}%
+	\end{center}%
+	\vspace*{#2}%
+}%
