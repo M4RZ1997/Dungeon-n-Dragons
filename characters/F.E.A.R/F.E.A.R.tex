@@ -116,8 +116,8 @@
 \ToolsProficiency{Herbalism Kit, Poisoner's Kit}
 
 \addWeaponStatistic{Quarterstaff}{F.E.A.R}{STR}{P}{0}{1d6 b}{versatile (1d8)}
-\addWeaponStatistic{Scimitar}{F.E.A.R}{STR}{P}{0}{1d6 s}{finesse, light}
-\addWeaponStatistic{Unarmed Strike}{F.E.A.R}{STR}{P}{2}{\intcalcAdd{3}{\calculateModifier{\StrengthScoreValue}} b}{}
+\addWeaponStatistic{Armblade}{F.E.A.R}{STR}{P}{+1}{1d8 s}{heavy}
+\addWeaponStatistic{Unarmed Strike}{F.E.A.R}{STR}{P}{+1}{\intcalcAdd{2}{\calculateModifier{\StrengthScoreValue}} b}{}
 
 \addSpellStatistic{Eldritch Blast}{ATK}{\calculateModifier{\CharismaScoreValue}}{1d10 F}{2 Beams}
 \addSpellStatistic{Frostbite}{DC}{\calculateModifier{\WisdomScoreValue}}{2d6 C}{Target has disadvantage on next weapon attack}
@@ -136,7 +136,7 @@
 \AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
 \AddSpeciesFeature{E}{\textbf{Specialized Design}\\Athletics Proficiency\\Poisoner's Kit Proficiency}
 
-\AddFeat{\textbf{Dreadful Strike}\\this and that}
+\AddFeat{\textbf{Glistening Oil}\\Poison (DC 13 CON save) coated melee attacks}
 
 % BACKGROUND & APPEARANCE
 
@@ -203,7 +203,7 @@
 }
 
 \addAttunedMagicItem{Ventilating Lungs}
-\addAttunedMagicItem{Eldritch Claw Tattoo}
+\addAttunedMagicItem{Armblade +1}
 
 \CP{}
 \SP{}
@@ -423,19 +423,9 @@ You gain one skill proficiency and one tool proficiency of your choice.
 \section*{Compleated Traits}
 \textit{"Flesh is weakness. Steel is purpose."}\\
 Once, you were mortal - limited, fragile. Now, you are something more. Through the process of compleation, your flesh has been reforged with machinery, your mind sharpened with new purpose. Whether you embraced this change or had it forced upon you, you are no longer what you once were.
-\vfill\eject
 \subsection*{Glistening Oil}
 Whenever you hit a creature with a melee attack it will be affected by the glistening oil oozing out of your body:
-\paragraph*{Blinding Oil} The target takes an extra 1d4 poison damage. If the target is a creature, it must succeed on a Constitution saving throw, or you become invisible to it until the start of your next turn or until immediately after you make an attack roll or cast a spell. (or maybe creature gets blinded?)
-\paragraph*{Poisonous Oil} The target takes an extra 1d6 poison damage. If the target is a creature, it must succeed on a Constitution saving throw, or is poisoned until the start of your next turn.
-
-\textbf{DC = 8 + Proficiency Bonus + Strength Mod}, Proficiency Bonus Value Uses
-
-\subsection*{Dreadful Artifice}
-You gain one weapon of your choice that attaches to your body, becoming inseparable from you.  As a bonus action, you can retract the weapon into your body or extend it from there. While it is extended, you can use the item as if you were holding it, and you are proficient with it. If you hit another creature with an attack using this weapon or an Unarmed Strike it gains the following benefit.
-\paragraph*{Necrotic Fear} The target takes an extra 1d4 necrotic damage. If the target is a creature, it must succeed on a Wisdom saving throw, or becomes frightened of you until the start of your next turn.
-
-\textbf{DC = 8 + Proficiency Bonus + Charisma Mod}, Charisma Modifier Uses (at least 1)
+\paragraph*{Poisonous Oil} The target takes an extra 1d6 poison damage. If the target is a creature, it must succeed on a DC 13 Constitution saving throw, or is poisoned until the start of your next turn.
 
 \section*{Druid Traits}
 \subsection*{Wild Shape}
@@ -713,63 +703,35 @@ On each of your turns after you cast this spell, you can use an action to move t
 
 \subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d10 for each slot level above 2nd.
 
-\vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
 \subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\
-\underline{\textit{Mace:}}\\
-1d20 + STR-Modifier + Proficiency Modifier\\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
-\\
-\underline{\textit{Rapier (Finesse):}}\\
-1d20 + DEX-Modifier + Proficiency Modifier\\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
-\\
-\underline{\textit{Handaxe (Throwable):}}\\
-1d20 + STR-Modifier + Proficiency Modifier\\
-\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
-\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\underline{\textit{Armblade + 1}}\\
+1d20 + 1 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}}{\ProficiencyValue}}
 \\
 \underline{\textit{Quarterstaff (Versatile):}}\\
 1d20 + STR-Modifier + Proficiency Modifier\\
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
-\underline{\textit{Mace:}}\\
-1d6 + STR-Modifier\\
-\indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
-\\
-\underline{\textit{Rapier (Finesse):}}\\
-1d8 + DEX-Modifier\\
-\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
-\\
-\underline{\textit{Handaxe (Throwable):}}\\
-1d6 + STR-Modifier\\
-\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
-\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\underline{\textit{Armblade +1:}}\\
+1d8 + 1 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}}
 \\
 \underline{\textit{Quarterstaff (Versatile):}}\\
 1d6 (1d8) + STR-Modifier\\
 \indent Current Max (one-handed): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
 \indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
-\subsubsection*{Ranged Weapons}
-\paragraph*{Attack Roll}\hfill\\
-\underline{\textit{Shortbow:}}\\
-1d20 + DEX-Modifier + Proficiency Modifier\\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
-\paragraph*{Damage Roll}\hfill\\
-\underline{\textit{Shortbow:}}\\
-1d6 + DEX-Modifier\\
-\indent Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
 \subsubsection*{Special Attacks}
 \paragraph*{Attack Roll}\hfill\\
 \underline{\textit{Unarmed Strike:}}\\
-1d20 + STR-Modifier + Proficiency Modifier\\
-\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+1d20 + STR-Modifier + Proficiency Modifier + 1 (Insignia of Claws)\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\intcalcAdd{\ProficiencyValue}{1}}}
 \paragraph*{Damage Roll}\hfill\\
 \underline{\textit{Unarmed Strike:}}\\
-1 + STR-Modifier\\
-\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
+1 + STR-Modifier + 1 (Insignia of Claws)\\
+\indent Current Max: \intcalcAdd{1}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{1}}
 
 \part*{Shape-Shifting Options}
 \section*{Ice Spider}
@@ -780,7 +742,7 @@ On each of your turns after you cast this spell, you can use an action to move t
       	\end{minipage}%
 	};%
 \end{tikzpicture}%
-\vspace*{-2.4\fontdimen6\font}\hfill\\
+\vspace*{-2.7\fontdimen6\font}\hfill\\
 \begin{DndMonster}[width=0.5\textwidth]{Ice Spider}
 	\DndMonsterType{Large Beast, unaligned}
 	
@@ -836,6 +798,22 @@ On each of your turns after you cast this spell, you can use an action to move t
 		%or-dmg			= ,
 		%or-dmg-when	= ,
 		extra			= {, and the target must make a DC 11 Constitution saving throw, taking \DndDice{2d8} poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but poisened for 1 hour, even after regaining hit points, and is paralyzed while poisened in this way},
+	]
+	\DndMonsterAttack[
+		name			= Armblade,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +7,
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 4},
+		dmg-type		= slashing,
+		%plus-dmg		= ,
+		%plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+		%extra			= {},
 	]
 	\DndMonsterAttack[
 		name			= Web (Recharge 5-6),
@@ -914,11 +892,11 @@ On each of your turns after you cast this spell, you can use an action to move t
 		name			= Claw,
 		distance		= melee,
 		%type			= weapon,
-		mod				= +8,
+		mod				= +7,
 		reach			= 5,
 		%range			= 20/60,
 		targets			= one target,
-		dmg				= \DndDice{1d8 + 5},
+		dmg				= \DndDice{1d8 + 4},
 		dmg-type		= slashing,
 		%plus-dmg		= ,
 		%plus-dmg-type	= ,
@@ -926,9 +904,33 @@ On each of your turns after you cast this spell, you can use an action to move t
 		%or-dmg-when	= ,
 		%extra			= {, },
 	]
+	\DndMonsterAttack[
+		name			= Armblade,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +7,
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 4},
+		dmg-type		= slashing,
+		%plus-dmg		= ,
+		%plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+		%extra			= {},
+	]
 \end{DndMonster}
 \vfill\eject
 \section*{Giant Octopus}
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+	\node[anchor=south west] at (current page.south west) {%
+		\begin{minipage}{\paperwidth}%%
+        	\centering\includegraphics[width=\paperwidth]{images/Spider_Octopus}%
+      	\end{minipage}%
+	};%
+\end{tikzpicture}%
+\vspace*{-2.7\fontdimen6\font}\hfill\\
 \begin{DndMonster}[width=0.5\textwidth]{Giant Octopus}
 	\DndMonsterType{Large Beast, unaligned}
 	
@@ -973,11 +975,11 @@ On each of your turns after you cast this spell, you can use an action to move t
 		name			= Tentacles,
 		distance		= melee,
 		%type			= weapon,
-		mod				= +8,
+		mod				= +7,
 		reach			= 15,
 		%range			= 20/60,
 		targets			= one target,
-		dmg				= \DndDice{2d6 + 5},
+		dmg				= \DndDice{2d6 + 4},
 		dmg-type		= bludgeoning,
 		%plus-dmg		= ,
 		%plus-dmg-type	= ,
@@ -985,17 +987,26 @@ On each of your turns after you cast this spell, you can use an action to move t
 		%or-dmg-when	= ,
 		extra			= {. If the target is a creature, it is grappled (escape DC 17). Until this grapple ends, the target is restrained, and the octopus can't use its tentacles on another target},
 	]
+	\DndMonsterAttack[
+		name			= Armblade,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +7,
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 4},
+		dmg-type		= slashing,
+		%plus-dmg		= ,
+		%plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+		%extra			= {},
+	]
 	
 	\DndMonsterAction{Ink Cloud (Recharges after a Short or Long Rest)}
 	A 20-foot-radius cloud of ink extends all around the octopus if it is underwater. The area is heavily obscured for 1 minute, although a significant current can disperse the ink. After releasing the ink, the octopus can use the Dash Action as a Bonus Action.
 \end{DndMonster}
-\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
-	\node[anchor=south west] at (current page.south west) {%
-		\begin{minipage}{\paperwidth}%%
-        	\centering\includegraphics[width=\paperwidth]{images/Spider_Octopus}%
-      	\end{minipage}%
-	};%
-\end{tikzpicture}%
 \vfill\eject
 \section*{Brown Bear}
 \begin{DndMonster}[width=0.5\textwidth]{Brown Bear}
@@ -1058,11 +1069,27 @@ On each of your turns after you cast this spell, you can use an action to move t
 		name			= Claws,
 		distance		= melee,
 		%type			= weapon,
-		mod				= +9,
+		mod				= +8,
 		reach			= 5,
 		%range			= 20/60,
 		targets			= one target,
-		dmg				= \DndDice{2d6 + 6},
+		dmg				= \DndDice{2d6 + 5},
+		dmg-type		= slashing,
+		%plus-dmg		= ,
+		%plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+		%extra			= {},
+	]
+	\DndMonsterAttack[
+		name			= Armblade,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +8,
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 5},
 		dmg-type		= slashing,
 		%plus-dmg		= ,
 		%plus-dmg-type	= ,
@@ -1089,10 +1116,10 @@ If your attunement to the lungs ends, your original lungs reappear.
   {2nd-Level Evocation}
   {Action}
   {Self (60-footline)}
-  {V, S, M (a legume seed)}
+  {V, S}
   {Concentration, up to 1 Minute}
 
-A line of strong wind 60 feet long and 10 feet wide blasts from you in a direction you choose for the spell’s duration. Each creature that starts its turn in the line must succeed on a DC 15 Strength saving throw or be pushed 15 feet away from you in a direction following the line.
+A line of strong wind 60 feet long and 10 feet wide blasts from you in a direction you choose for the spell's duration. Each creature that starts its turn in the line must succeed on a DC 15 Strength saving throw or be pushed 15 feet away from you in a direction following the line.
 
 Any creature in the line must spend 2 feet of movement for every 1 foot it moves when moving closer to you.
 
@@ -1106,16 +1133,10 @@ The jewels in this insignia of the Cult of the Dragon flare with purple light wh
 
 While wearing the insignia, you gain a +1 bonus to the attack rolls and the damage rolls you make with unarmed strikes and natural weapons. Such attacks are considered to be magical.
 
-\subsection*{Eldritch Claw Tattoo}
-\textit{Wondrous Item (Tattoo), uncommon (requires attunement)}\\
-Produced by a special needle, this magic tattoo depicts clawlike forms and other jagged shapes.
+\subsection*{Armblade +1}
+\textit{Weapon, uncommon (requires attunement by a warforged)}\\
+An armblade is a magic weapon that attaches to your arm, becoming inseparable from you as long as you're attuned to it. To attune to this item, you must hold it against your forearm for the entire attunement period.
 
-\paragraph*{Tattoo Attunement} To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.
-
-If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.
-
-\paragraph*{Magical Strikes} While the tattoo is on your skin, your unarmed strikes are considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks, and you gain a +1 bonus to attack and damage rolls with unarmed strikes.
-
-\paragraph*{Eldritch Maul} As a bonus action, you can empower the tattoo for 1 minute. For the duration, each of your melee attacks with a weapon or an unarmed strike can reach a target up to 15 feet away from you, as inky tendrils launch toward the target. In addition, your melee attacks deal an extra 1d6 force damage on a hit. Once used, this bonus action can't be used again until the next dawn.
+As a bonus action, you can retract the armblade into your forearm or extend it from there. While it is extended, you can use the weapon as if you were holding it, and you can't use that hand for other purposes.
 
 \end{document}
