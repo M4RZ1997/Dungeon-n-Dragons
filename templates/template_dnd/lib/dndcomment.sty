@@ -76,3 +76,32 @@
     \end {__dnd_comment}
     \group_end:
   }
+
+% The DndOptionalRule environment
+\newcounter{optionalRuleCounter}%
+\setcounter{optionalRuleCounter}{0}%
+\NewDocumentEnvironment {DndOptionalRule} { m }%
+	{%
+		\group_begin:%
+		\keys_set_known:nnN { dnd / comment } {color = PhbLightCyan} \l_tmpa_tl%
+		
+		\str_if_eq:VnT \l_tmpa_tl { -NoValue- }%
+			{ \tl_set_eq:NN \l_tmpa_tl \c_empty_tl }%
+		
+		\refstepcounter{optionalRuleCounter}%
+		\protected@edef\@currentlabelname{#1}%
+		
+		\__dnd_start_comment:nV%
+		{%
+			colback      = \l__dnd_comment_color_tl,%
+			colbacktitle = \l__dnd_comment_color_tl,%
+			title        = {Optional~Rule~\int_compare:nNnTF {\value{optionalRuleCounter}} < {10} {0}{}\int_to_arabic:n {\value{optionalRuleCounter}}~-~#1},%
+			fontupper	 = \itshape\DndFontCommentBody,%
+			fontlower	 = \itshape\DndFontCommentBody,%
+		}%
+		{ \l_tmpa_tl }%
+	}%
+	{%
+		\end {__dnd_comment}%
+		\group_end:%
+	}%
