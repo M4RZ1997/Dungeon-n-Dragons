@@ -1,0 +1,724 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% CHARACTER STATS
+\CharacterName{A.R.T.I.F.I.C.E.R-$\beta$}
+
+\Class{Artificer}
+\MultiClassMainLevel{}
+\MultiClass{}
+\Subclass{Artillerist}
+\Background{Far Traveler}
+\Race{Autognome}
+
+\Level{5}
+
+% ABILITY SCORES
+% (correct scores, no modifiers are automatically applied)
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{14}
+\DexterityRolledScore{14}
+\ConstitutionRolledScore{13}
+\IntelligenceRolledScore{15}
+\WisdomRolledScore{10}
+\CharismaRolledScore{12}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{1} % Autognome +1
+\IntelligenceScoreBonus{4} % Autognome +2, ASI +2
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% PROFICIENCIES AND EXPERTIES
+%% SAVING THROWS
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{P}
+\IntelligenceProficiency{P}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{P}
+\HistoryProficiency{}
+\InvestigationProficiency{P}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{P}
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+
+\Inspiration{}
+\PassivePerceptionModifier{0}
+
+%\EquipShield
+\ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+
+\MaxHitPointsRolled{26} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\MultiClassHitDice{}
+\HitDiceSpent{0}
+\MultiClassHitDiceSpent{}
+
+\InitiativeModifier{0}
+\Speed{30}
+\Size{Medium}
+
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons}
+\ToolsProficiency{Alchemist's Supplies, Carpenter's Tools, Smith's Tools, Thieves' Tools, Tinker's Tools, Woodcarver's Tools, Dice Set}
+
+\addWeaponStatistic{Quarterstaff}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{1d6 b}{versatile (1d8)}
+\addWeaponStatistic{Handaxe}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{1d6 s}{thrown, light}
+\addWeaponStatistic{Light Crossbow}{A.R.T.I.F.I.C.E.R-Beta}{DEX}{P}{0}{1d8 p}{}
+\addWeaponStatistic{Unarmed Strike}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
+\addSpellStatistic{Fire Bolt}{ATK}{\calculateModifier{\IntelligenceScoreValue}}{1d10}{Fire}
+\addSpellStatistic{Tasha's Caustic Brew}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d4}{Acid at start of each turn, DEX save}
+\addSpellStatistic{Thunderwave}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Thunder and push 10 feet, CON save}
+\addSpellStatistic{Scorching Ray}{ATK}{\calculateModifier{\IntelligenceScoreValue}}{2d6}{Fire, 3 Rays}
+\addSpellStatistic{Shatter}{DC}{\calculateModifier{\IntelligenceScoreValue}}{3d8}{Thunder, CON save}
+
+\AddClassFeature{E}{\textbf{Magical Tinkering}}
+\AddClassFeature{L}{\textbf{Infuse Item}%
+	\begin{itemize}%
+		\item Enhanced Arcane Focus%
+		\item Enhanced Defense%
+		\item Enhanced Weapon%
+		\item Homunculus Servant%
+	\end{itemize}%
+}%
+\AddClassFeature{L}{\textbf{Eldritch Cannon}\\Once per day or use of spell slot}
+\AddClassFeature{L}{\textbf{Arcane Firearm}\\Additional d8 damage to spell damage}
+
+\AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to attack roll, ability check, or saving throw (\ProficiencyValue~uses)}
+\AddSpeciesFeature{E}{\textbf{Healing Machine}\\Mending generates Hit Die (1d8) + CON modifier HP and healing spells affect Autognome}
+\AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a construct.}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}\\You don't need to sleep}
+
+% BACKGROUND & APPEARANCE
+
+\Age{350}
+\Height{3'2''}
+\Weight{210lbs}
+\Eyes{Amber}
+\Skin{Rusty Metal}
+\Hair{}
+
+\CharacterAppearance{horizontal} % (vertical/horizontal/none)
+	{-2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{-15} % Picture Y-Shift (absolute value)
+	{images/A.R.T.I.F.I.C.E.R-Beta.png} %
+	{%
+		{A.R.T.I.F.I.C.E.R-$\beta$ is a hulking, weathered autognome with mismatched plates, exposed gears, and a single glowing ocular lens. Rust streaks its crude frame, but its toolbelt and alchemical vials reveal its role as a master craftsman. Despite its rugged design, $\beta$ exudes intelligence and purpose, embodying its legacy as an artificer and weapon shopkeeper.}
+	}%
+\Characterbackground{
+	A.R.T.I.F.I.C.E.R-$\beta$ is the second prototype in the Automated Robotic Technician Infused with Focused Intelligence \& Craftsmanship for Exploration and Reconnaissance series, created by the brilliant Lantanna artificer G.E. Petto. Designed to assist Lantanna magicians with crafting magical defenses and intricate constructs, A.R.T.I.F.I.C.E.R constructs rarely saw use in battle. As the robotic line advanced, $\beta$ and his kin were deemed obsolete. Most were dismantled and destroyed to make way for newer models.
+
+G.E. Petto, however, could not bring himself to destroy $\beta$, who had served him with unwavering loyalty for many decades. As an act of mercy and affection, Petto gifted $\beta$ with full sentience and autonomy, allowing the construct to escape before its fate was sealed. With newfound freedom, $\beta$ wandered the Forgotten Realms for decades, traveling from the islands of Lantan to distant, unfamiliar realms.
+
+Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in the bustling Market Ward. There, he established a workshop that quickly became the talk of the district. His ingenious creations - ranging from useful, autonomous constructs to powerful ballistae and artillery - earned him both fame and respect. Despite his rugged and outdated appearance, $\beta$’s craftsmanship and ingenuity rival that of the most advanced artificers.
+}
+\AlliesAndOrganizations{
+	The Artificer Guild of Lantan is a prestigious and enigmatic organization dedicated to the fusion of magic and engineering, embodying the inventive spirit of the island nation. Renowned across Faerûn, the guild operates from their intricate headquarters, the High Holy Crafthouse of Inspiration, the heart of Gond's church in the Realms. Its members, a mix of brilliant gnomes and humans, strive to push the boundaries of artifice, crafting magical constructs, experimental devices, and enchanted tools.
+
+	The guild's primary goals include advancing the knowledge of magical and mechanical innovation, preserving\linebreak
+}{Lantan's unique technological heritage, and influencing the wider world through their creations. Their relentless pursuit of progress sometimes raises ethical questions, as their experiments occasionally blur the line between invention and peril.}
+\OrganizationName{Artificer Guild of Lantan}
+\OrganizationSymbol{images/Artificer_Guild_of_Lantan.png}
+\AdditionalFeaturesAndTraits{
+	When A.R.T.I.F.I.C.E.R-$\beta$ delves into a project or sinks into deep thought, the intricate gears and mechanical contraptions within his body begin to whir and rotate, a mesmerizing rhythm akin to the heartbeat of his mechanical core. His brass plating, though worn and weathered, tells its own story - pockmarked with countless dents and scratches, each one a silent testament to the trials and travels he has endured across the realms. At times, faint hisses of steam escape from tiny vents on his shoulders, a subtle reminder of the immense energy coursing through his ancient frame. These small, almost organic details make $\beta$ more than just a construct; they make him a relic of the past and a living piece of artifice, imbued with purpose and life.
+}
+\Treasure{
+	\textbf{1. Portrait of G.E. Petto:} A finely etched metal portrait of his creator, G.E. Petto, framed in delicate brass gears. The portrait is enchanted to faintly glow when $\beta$ gazes at it, a subtle connection to the man who gave him life. $\beta$ keeps this portrait on a prominent wall in his workshop as both a tribute and a source of guidance during moments of doubt.\\
+	\textbf{2. Blueprint of Dreams:} A large, rolled blueprint of an unfinished construct designed by G.E. Petto. The design is incomplete, and $\beta$ has been trying for years to decipher its purpose. He believes it might hold the secret to something extraordinary but refuses to let anyone else see it.\\
+	\textbf{3. Animated Gear Wall:} A decorative yet functional wall in his workshop covered in interconnected gears, each inscribed with Lantanna runes. These gears spin in mesmerizing patterns, powered by ambient magic, and serve as both a piece of art and a reminder of his mechanical nature.
+}
+
+% PERSONALITY TRAITS
+\PersonalityTraits{
+	He has a habit of salvaging interesting components from the things he encounters, storing them in hidden compartments in his frame. His workshop is filled with odd bits of scrap that only he seems to understand the purpose of.
+}
+\Alignment{Lawful Neutral}
+
+\Ideals{
+	$\beta$ has an unshakable belief in the value of craftsmanship and treats even the smallest projects with reverence.
+}
+
+\Bonds{
+	$\beta$ occasionally reminisces about his time in Lantan, sharing cryptic stories about his master or the other constructs that were destroyed.
+}
+
+\Flaws{
+	$\beta$ carries guilt for surviving when his fellow constructs were destroyed, causing moments of hesitation and doubt.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish, Dwarven}
+
+% EQUIPMENT
+\Equipment{
+	\textbf{Robe of Useful Items}, \textbf{Eyes of Minute Seeing}, Opal Gem (100gp), Light Crossbow, 20 Bolts, Handaxe, Quarterstaff, Thieves' Tools, Dice Set, small Lantanna piece of jewellery (10gp), traveler's clothes
+}
+
+\addAttunedMagicItem{All-Purpose Tool (+2)}
+
+\CP{}
+\SP{}
+\EP{}
+\GP{775}
+\PP{}
+
+% SPELLS
+\SpellcastingClass{Artificer}
+\SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{2} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{2} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{2}
+
+\addPreparedSpell{0}
+	{Mending}
+	{1 Min}
+	{Touch}
+	{}
+	{}
+	{T}
+	{Repair any object}
+	{V, S, M}
+\addPreparedSpell{0}
+	{Fire Bolt}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Absorb Elements}
+	{Reaction}
+	{Self}
+	{}
+	{}
+	{}
+	{S}
+	{S}
+\addPreparedSpell{1}
+	{Detect Magic}
+	{Action}
+	{Self}
+	{T}
+	{T}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Identify}
+	{1 Min}
+	{Self}
+	{}
+	{T}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Shield}
+	{Reaction}
+	{Self}
+	{}
+	{}
+	{}
+	{+5 bonus to AC}
+	{V, S}
+\addPreparedSpell{1}
+	{Tasha's Caustic Brew}
+	{Action}
+	{Self}
+	{T}
+	{}
+	{T}
+	{V, S, DEX save}
+	{V, S}
+\addPreparedSpell{1}
+	{Thunderwave}
+	{Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S, CON save}
+	{V, S}
+\addPreparedSpell{2}
+	{Enhance Ability}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Scorching Ray}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S, 2d6 Fire}
+	{V, S}
+\addPreparedSpell{2}
+	{Shatter}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 3d8 Thunder}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Vortex Warp}
+	{Action}
+	{90 Feet}
+	{}
+	{}
+	{}
+	{V, S, CON save}
+	{V, S}
+
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Autognome Traits}
+\subsection*{Built for Success}
+You can add a d4 to one attack roll, ability check, or saving throw you make, and you can do so after seeing the d20 roll but before the effects of the roll are resolved. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+\subsection*{Healing Machine}
+If the Mending spell is cast on you, you can spend a Hit Die, roll it, and regain a number of hit points equal to the roll plus your Constitution modifier (minimum of 1 hit point). In addition, your creator designed you to benefit from several spells that preserve life but that normally don't affect Constructs: Cure Wounds, Healing Word, Mass Cure Wounds, Mass Healing Word, and Spare the Dying.
+\subsection*{Mechanical Nature}
+You have resistance to poison damage and immunity to disease, and you have advantage on saving throws against being paralyzed or poisoned. You don't need to eat, drink, or breathe.
+\subsection*{Sentry's Rest}
+When you take a long rest, you spend at least 6 hours in an inactive, motionless state, instead of sleeping. In this state, you appear inert, but you remain conscious.
+
+\section*{Artificer Traits}
+\subsection*{Magical Tinkering}
+At 1st level, you've learned how to invest a spark of magic into mundane objects. To use this ability, you must have thieves' tools or artisan's tools in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:
+\begin{itemize}
+	\item The object sheds bright light in a 5-foot radius and dim light for an additional 5 feet.
+	\item Whenever tapped by a creature, the object emits a recorded message that can be heard up to 10 feet away. You utter the message when you bestow this property on the object, and the recording can be no more than 6 seconds long.
+	\item The object continuously emits your choice of an odor or a nonverbal sound (wind, waves, chirping, or the like). The chosen phenomenon is perceivable up to 10 feet away.
+	\item A static visual effect appears on one of the object's surfaces. This effect can be a picture, up to 25 words of text, lines and shapes, or a mixture of these elements, as you like.
+\end{itemize}
+The chosen property lasts indefinitely. As an action, you can touch the object and end the property early.
+
+You can bestow magic on multiple objects, touching one object each time you use this feature, though a single object can only bear one property at a time. The maximum number of objects you can affect with this feature at one time is equal to your Intelligence modifier (minimum of one object). If you try to exceed your maximum, the oldest property immediately ends, and then the new property applies.
+\subsection*{Infuse Item}
+\textbf{4 Known, 2 Infused Items at a time}\\
+At 2nd level, you've gained the ability to imbue mundane items with certain magical infusions, turning those objects into magic items.
+\subsubsection*{Infusions Known}
+\paragraph*{Enhanced Arcane Focus}\hfill\\
+\textit{Item: A rod, staff or wand (requires attunement)}\\
+While holding this item, a creature gains +1 bonus to spell attack rolls. In addition, the creature ignores half cover when making a spell attack.
+
+The bonus increases to +2 when you reach 10th level in this class.
+\paragraph*{Enhanced Defense}\hfill\\
+\textit{Item: A suit of armor or a shield}\\
+A creature gains a +1 bonus to Armor Class while wearing (armor) or wielding (shield) the infused item.
+
+The bonus increases to +2 when you reach 10th level in this class.
+\paragraph*{Enhanced Weapon}\hfill\\
+\textit{Item: A simple or martial weapon}\\
+This magic weapon grants a +1 bonus to attack and damage rolls made with it.
+
+The bonus increases to +2 when you reach 10th level in this class.
+\paragraph*{Homunculus Servant}\hfill\\
+\textit{Item: A gem or crystal worth at least 100gp}\\
+You learn intricate methods for magically creating a special homunculus that serves you. The item you infuse serves as the creature's heart, around which the creature's body instantly forms.
+
+You determine the homunculus's appearance. Some artificers prefer mechanical-looking birds, whereas some like winged vials or miniature, animate cauldrons.
+
+The homunculus is friendly to you and your companions, and it obeys your commands. See this creature's game statistics in the Homunculus Servant stat block, which uses your proficiency bonus (PB) in several places.
+
+In combat, the homunculus shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the Dodge action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are incapacitated, the homunculus can take any action of its choice, not just Dodge.
+
+The homunculus regains 2d6 hit points if the mending spell is cast on it. If you or the homunculus dies, it vanishes, leaving its heart in its space.
+\begin{DndMonster}[width=0.5\textwidth]{Homunculus Servant}
+    \DndMonsterType{Tiny Construct}
+
+    % If you want to use commas in the key values, enclose the values in braces.
+    \DndMonsterBasics[
+        armor-class = {13 (Natural Armor)},
+        hit-points  = {\intcalcAdd{1}{\intcalcAdd{\calculateModifier{\IntelligenceScoreValue}}{\LevelValue}} (\LevelValue d4)},
+        speed       = {20 ft., fly 30 ft.},
+    ]
+    
+	\renewcommand{\AbilityScoreSpacer}{~}
+    \DndMonsterAbilityScores[
+		str = 4,
+		dex = 15,
+		con = 12,
+		int = 10,
+		wis = 10,
+		cha = 7,
+    ]
+
+    \DndMonsterDetails[
+        saving-throws = {Dex +\intcalcAdd{0}{\ProficiencyValue}},
+        skills = {Perception +\intcalcAdd{0}{\intcalcMul{2}{\ProficiencyValue}}, Stealth +\intcalcAdd{2}{\ProficiencyValue}},
+        %damage-vulnerabilities = {cold},
+        %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+        damage-immunities = {poison},
+        senses = {Darkvision 60 ft., Passive Perception \intcalcAdd{10}{\intcalcMul{2}{\ProficiencyValue}}},
+        condition-immunities = {poisoned},
+        languages = {understands the languages you speak},
+        challenge = -,
+       proficiency-bonus=\ProficiencyValue,
+    ]
+    
+    \DndMonsterAction{Evasion}
+    If the homunculus is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails. It can't use this trait if it's incapacitated.
+	
+	\DndMonsterSection{Actions}	
+	\DndMonsterAttack[
+      name=Force Strike,
+      distance=ranged, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=\calculateSpellAttack{\calculateModifier{\IntelligenceScoreValue}},
+      %reach=5,
+      range=30,
+      targets=one target you can see,
+      dmg=\DndDice{1d4} + \intcalcAdd{0}{\ProficiencyValue},
+      dmg-type=force,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      %extra=,
+    ]
+    
+    \DndMonsterSection{Reactions}
+	\DndMonsterAction{Channel Magic}
+	The homunculus delivers a spell you cast that has a range of touch. The homunculus must be within 120 feet of you.	
+\end{DndMonster}
+\subsubsection*{Infusing an Item}
+Whenever you finish a long rest, you can touch a nonmagical object and imbue it with one of your artificer infusions, turning it into a magic item. An infusion works on only certain kinds of objects, as specified in the infusion's description. If the item requires attunement, you can attune yourself to it the instant you infuse the item. If you decide to attune to the item later, you must do so using the normal process for attunement (see the attunement rules in the Dungeon Master's Guide).
+
+Your infusion remains in an item indefinitely, but when you die, the infusion vanishes after a number of days equal to your Intelligence modifier (minimum of 1 day). The infusion also vanishes if you replace your knowledge of the infusion.
+
+You can infuse more than one nonmagical object at the end of a long rest; the maximum number of objects appears in the Infused Items column of the Artificer table. You must touch each of the objects, and each of your infusions can be in only one object at a time. Moreover, no object can bear more than one of your infusions at a time. If you try to exceed your maximum number of infusions, the oldest infusion ends, and then the new infusion applies.
+
+If an infusion ends on an item that contains other things, like a bag of holding, its contents harmlessly appear in and around its space.
+\subsection*{Artillerist}
+\subsubsection*{Tool Proficiency}
+When you adopt this specialization at 3rd level, you gain proficiency with woodcarver's tools. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice.
+\subsubsection*{Artillerist Spells}
+Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Artillerist Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.
+\begin{DndTable}[header=Artillerist Spells]{llX}
+			& \textbf{Artificer Level}  &\textbf{Spells}				\\
+$\bullet$	& 3rd						&Shield, Thunderwave			\\
+$\bullet$	& 5th						&Scorching Ray, Shatter			\\
+			& 9th						&Fireball, Wind Wall			\\
+			& 13th						&Ice Storm, Wall of Fire		\\
+			& 17th						&Cone of Cold, Wall of Force	\\
+\end{DndTable}
+\subsubsection*{Eldritch Cannon}
+Also at 3rd level, you've learned how to create a magical cannon. Using woodcarver's tools or smith's tools, you can take an action to magically create a Small or Tiny eldritch cannon in an unoccupied space on a horizontal surface within 5 feet of you. A Small eldritch cannon occupies its space, and a Tiny one can be held in one hand. Once you create a cannon, you can't do so again until you finish a long rest or until you expend a spell slot to create one. You can have only one cannon at a time and can't create one while your cannon is present.
+
+The cannon is a magical object. Regardless of size, the cannon has an AC of 18 and a number of hit points equal to five times your artificer level. It is immune to poison damage and psychic damage. If it is forced to make an ability check or a saving throw, treat all its ability scores as 10 (+0). If the mending spell is cast on it, it regains 2d6 hit points. It disappears if it is reduced to 0 hit points or after 1 hour. You can dismiss it early as an action.
+
+When you create the cannon, you determine its appearance and whether it has legs. You also decide which type it is, choosing from the options on the Eldritch Cannons table. On each of your turns, you can take a bonus action to cause the cannon to activate if you are within 60 feet of it. As part of the same bonus action, you can direct the cannon to walk or climb up to 15 feet to an unoccupied space, provided it has legs.
+\begin{DndTable}[header=Eldritch Cannon]{lX}
+\textbf{Cannon}  	&\textbf{Activation}				\\
+Flamethrower		&The cannon exhales fire in an adjacent 15-foot cone that you designate. Each creature in that area must make a Dexterity saving throw against your spell save DC, taking 2d8 fire damage on a failed save or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being worn or carried.\\
+Force Ballista		&Make a ranged spell attack, originating from the cannon, at one creature or object within 120 feet of it. On a hit, the target takes 2d8 force damage, and if the target is a creature, it is pushed up to 5 feet away from the cannon.\\
+Protector			&The cannon emits a burst of positive energy that grants itself and each creature of your choice within 10 feet of it a number of temporary hit points equal to 1d8 + your Intelligence modifier (minimum of +1).\\
+\end{DndTable}
+\subsubsection*{Arcane Firearm}
+At 5th level, You know how to turn a wand, staff, or rod into an arcane firearm, a conduit for your destructive spells. When you finish a long rest, you can use woodcarver's tools to carve special sigils into a wand, staff, or rod and thereby turn it into your arcane firearm. The sigils disappear from the object if you later carve them on a different item. The sigils otherwise last indefinitely.
+
+You can use your arcane firearm as a spellcasting focus for your artificer spells. When you cast an artificer spell through the firearm, roll a d8, and you gain a bonus to one of the spell's damage rolls equal to the number rolled.
+\subsection*{The Right Tool for the Job}
+At 3rd level, you've learned how to produce exactly the tool you need: with thieves' tools or artisan's tools in hand, you can magically create one set of artisan's tools in an unoccupied space within 5 feet of you. This creation requires 1 hour of uninterrupted work, which can coincide with a short or long rest. Though the product of magic, the tools are nonmagical, and they vanish when you use this feature again.
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader
+  {Mending}
+  {Transmutation Cantrip}
+  {1 Minute}
+  {Touch}
+  {V, S, M (two lodestones)}
+  {Instantaneous}
+
+This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage.
+
+This spell can physically repair a magic item or construct, but the spell can't restore magic to such an object.
+
+\DndSpellHeader
+  {Fire Bolt}
+  {Evocation Cantrip}
+  {Action}
+  {120 Feet}
+  {V, S}
+  {Instantaneous}
+
+You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn't being worn or carried.
+
+\subparagraph*{Cantrip Upgrade} This spell's damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).
+
+\subsection*{Level 1}
+
+\DndSpellHeader
+  {Absorb Elements}
+  {1st-Level Abjuration}
+  {Reaction, which you take when you take acid, cold, fire, lightning, or thunder damage}
+  {Self}
+  {S}
+  {1 Round}
+
+The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6 for each slot level above 1st.
+
+\DndSpellHeader
+  {Detect Magic}
+  {1st-Level Divination (Ritual)}
+  {Action}
+  {Self}
+  {V, S}
+  {Concentration, Up to 10 Minutes}
+
+For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any.
+
+The spell can penetrate most barriers, but is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.
+
+\DndSpellHeader
+  {Identify}
+  {1st-Level Divination (Ritual)}
+  {1 Minute}
+  {Touch}
+  {V, S, M (a pearl worth at least 100 gp and an owl feather)}
+  {Instantaneous}
+
+You choose one object that you must touch throughout the casting of the spell. If it is a magic item or some other magic-imbued object, you learn its properties and how to use them, whether it requires attunement to use, and how many charges it has, if any. You learn whether any spells are affecting the item and what they are. If the item was created by a spell, you learn which spell created it.
+
+If you instead touch a creature throughout the casting, you learn what spells, if any, are currently affecting it.
+
+\DndSpellHeader
+  {Shield}
+  {1st-Level Abjuration}
+  {Reaction, which you take when you are hit by an attack or targeted by the magic missile spell}
+  {Self}
+  {V, S}
+  {1 Round}
+
+An invisible barrier of magical force appears and protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from magic missile.
+
+\DndSpellHeader
+  {Tasha's Caustic Brew}
+  {1st-Level Evocation}
+  {Action}
+  {Self (30-foot Line)}
+  {V, S, M (a bit of rotten food)}
+  {Concentration, Up to 1 Minute}
+
+A stream of acid emanates from you in a line 30 feet long and 5 feet wide in a direction you choose. Each creature in the line must succeed on a Dexterity saving throw or be covered in acid for the spell's duration or until a creature uses its action to scrape or wash the acid off itself or another creature. A creature covered in the acid takes 2d4 acid damage at the start of each of its turns.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot 2nd level or higher, the damage increases by 2d4 for each slot level above 1st.
+
+\DndSpellHeader
+  {Thunderwave}
+  {1st-Level Evocation}
+  {Action}
+  {Self (15-foot Cube)}
+  {V, S}
+  {Instantaneous}
+
+A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d8 thunder damage and is pushed 10 feet away from you. On a successful save, the creature takes half as much damage and isn't pushed.
+
+In addition, unsecured objects that are completely within the area of effect are automatically pushed 10 feet away from you by the spell's effect, and the spell emits a thunderous boom audible out to 300 feet.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.
+
+\subsection*{Level 2}
+
+\DndSpellHeader
+  {Enhance Ability}
+  {2nd-Level Transmutation}
+  {Action}
+  {Touch}
+  {V, S, M (fur or a feather)}
+  {Concentration, Up to 1 Hour}
+
+You touch a creature and choose Strength, Dexterity, Intelligence, Wisdom, or Charisma. For the duration, the target has Advantage on ability checks using the chosen ability.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 2. You can choose a different ability for each target.
+
+\DndSpellHeader
+  {Scorching Ray}
+  {2nd-Level Evocation}
+  {Action}
+  {120 Feet}
+  {V, S}
+  {Instantaneous}
+
+You create three rays of fire and hurl them at targets within range. You can hurl them at one target or several. Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire damage.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, you create one additional ray for each slot level above 2nd.
+
+\DndSpellHeader
+  {Shatter}
+  {2nd-Level Evocation}
+  {Action}
+  {60 Feet}
+  {V, S, M (a chip of mica)}
+  {Instantaneous}
+
+A sudden loud ringing noise, painfully intense, erupts from a point of your choice within range. Each creature in a 10-foot-radius sphere centered on that point must make a Constitution saving throw. A creature takes 3d8 thunder damage on a failed save, or half as much damage on a successful one. A creature made of inorganic material such as stone, crystal, or metal has disadvantage on this saving throw.
+
+A nonmagical object that isn't being worn or carried also takes the damage if it's in the spell's area.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d8 for each slot level above 2nd.
+
+\DndSpellHeader
+  {Vortex Warp}
+  {2nd-Level Conjuration}
+  {Action}
+  {90 Feet}
+  {V, S}
+  {Instantaneous}
+
+You magically twist space around another creature you can see within range. The target must succeed on a Constitution saving throw (the target can choose to fail), or the target is teleported to an unoccupied space of your choice that you can see within range. The chosen space must be on a surface or in a liquid that can support the target without the target having to squeeze.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, the range of the spell increases by 30 feet for each slot level above 2nd.
+
+\vfill\eject
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Quarterstaff (Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d6 + STR-Modifier\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Quarterstaff (Versatile):}}\\
+1d6 (1d8) + STR-Modifier\\
+\indent Current Max (one-handed): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Light Crossbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Light Crossbow:}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
+
+\part*{Magic Items}
+
+\input{\PATH magic_items/Equipment/All-Purpose_Tool/All-Purpose_Tool_input}
+\newpage
+\subsection*{Eyes of Minute Seeing}
+\textit{Wondrous Item, uncommon}\\
+These crystal lenses fit over the eyes. While wearing them, you can see much better than normal out to a range of 1 foot. You have advantage on Intelligence (Investigation) checks that rely on sight while searching an area or studying an object within that range.
+\subsection*{Robe of Useful Items}
+\textit{Wondrous Item, uncommon}\\
+This robe has cloth patches of various shapes and colors covering it. While wearing the robe. you can use an action to detach one of the patches, causing it to become the object or creature it represents. Once the last patch is removed, the robe becomes an ordinary garment.
+
+The robe has two of each of the following patches:
+\begin{itemize}
+	\item Dagger
+	\item Bullseye lantern (filled and lit)
+	\item Steel mirror
+	\item 10-foot pole
+	\item Hempen rope (50 feet, coiled)
+	\item Sack
+\end{itemize}
+In addition, the robe has 4d4 (13) other patches.
+\end{document}

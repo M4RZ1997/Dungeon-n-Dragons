@@ -1,0 +1,582 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% CHARACTER STATS
+\CharacterName{W.I.L.D/S.T.R.I-KE}
+
+\Class{Ranger}
+\MultiClassMainLevel{}
+\MultiClass{}
+\Subclass{Gloom Stalker}
+\Background{Lantan Ranger Corps} % Whitestone Rifle Corps
+\Race{Warforged}
+
+\Level{5}
+
+% ABILITY SCORES
+% (correct scores, no modifiers are automatically applied)
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{14}
+\DexterityRolledScore{16}
+\ConstitutionRolledScore{14}
+\IntelligenceRolledScore{11}
+\WisdomRolledScore{15}
+\CharismaRolledScore{10}
+
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{2} % Warforged +1, ASI +1
+\ConstitutionScoreBonus{2} % Warforged +2
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{1} % ASI +1
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% PROFICIENCIES AND EXPERTIES
+%% SAVING THROWS
+\StrengthProficiency{P}
+\DexterityProficiency{P}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% STRENGTH SKILLS
+\AthleticsProficiency{P}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{P}
+\SleightOfHandProficiency{}
+\StealthProficiency{P}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{E}
+\SurvivalProficiency{P}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+% ABILITY MODIFIERS BONUS
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+
+\Inspiration{}
+\PassivePerceptionModifier{0}
+
+%\EquipShield
+\ArmorClass{\intcalcAdd{14}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
+
+\MaxHitPointsRolled{35} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d10}
+\MultiClassHitDice{}
+\HitDiceSpent{0}
+\MultiClassHitDiceSpent{0}
+
+\InitiativeModifier{\calculateModifier{\WisdomScoreValue}}
+\Speed{30}
+\Size{Medium}
+
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Woodcarver's Tools}
+
+\addWeaponStatistic{Moonbow}{W.I.L.D/S.T.R.I-KE}{DEX}{P}{+3}{1d8 p}{+1d6 R, ranged (150/600), heavy, two-handed}
+\addWeaponStatistic{Scimitar}{W.I.L.D/S.T.R.I-KE}{DEX}{P}{0}{1d6 s}{finesse, light}
+\addWeaponStatistic{Shortsword}{W.I.L.D/S.T.R.I-KE}{DEX}{P}{0}{1d6 p}{finesse, light}
+\addWeaponStatistic{Spear}{W.I.L.D/S.T.R.I-KE}{STR}{P}{0}{1d6 p}{thrown (20/60), versatile (1d8)}
+\addWeaponStatistic{Unarmed Strike}{W.I.L.D/S.T.R.I-KE}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
+
+\AddClassFeature{L}{\textbf{Favored Enemy}\\Free Hunter's Mark (3 per Long Rest)}%
+\AddClassFeature{E}{\textbf{Weapon Mastery}\\Longbow, Scimitar}%
+\AddClassFeature{E}{\textbf{Deft Explorer}\\Perception Expertise, 2 Languages}%
+\AddClassFeature{L}{\textbf{Dread Ambusher}%
+\begin{itemize}%
+	\item Ambusher's Leap%
+	\item Dreadful Strike%
+	\item Initiative Bonus%
+\end{itemize}%
+}%
+\AddClassFeature{E}{\textbf{Umbral Sight}\\Darkvision 60 feet}
+\AddClassFeature{E}{\textbf{Extra Attack}}
+
+\AddSpeciesFeature{E}{\textbf{Constructed Resilience}}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Perception Proficiency\\Woodcarver's Tools Proficiency}
+
+\AddFeat{\textbf{Archery}\\+2 to Ranged attacks}
+
+% BACKGROUND & APPEARANCE
+
+\Age{35}
+\Height{6'5''}
+\Weight{305lbs}
+\Eyes{Blue Visor}
+\Skin{Wooden Metal}
+\Hair{}
+
+\CharacterAppearance{horizontal} % (vertical/horizontal/none)
+	{-2.35} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{-15} % Picture Y-Shift (absolute value)
+	{images/W.I.L.D_S.T.R.I-KE.png} %
+	{%
+		{W.I.L.D/S.T.R.I-KE resembles a mechanical wood elf, with a lithe, angular frame combining sleek metallic plating and intricately carved wooden components. His head is aerodynamic and elven in shape, with a glowing blue visor in place of eyes. Etched with runic patterns, his body blends technology and nature seamlessly, giving him the appearance of an otherworldly archer.}
+	}%
+\Characterbackground{
+	W.I.L.D/S.T.R.I-KE is part of a construct series called Wilderness Infiltrator Unit for Lethal Deployment in Stealth \& Tactical Ranged Incursion - Kinetic Model, crafted by Lantan's renowned "G.E. Petto" factory. Originally known for creating helper constructs, "G.E. Petto" shifted to combat designs as threats to Lantan increased. Modelled after the legendary wood elf ranger Laucian Ilphelkiir, one of the Seven Musketeers who aided the Storm Giants during the Ordning, the W.I.L.D/S.T.R.I-KE series was designed to combine precision, stealth, and a deep connection to the natural world.
+
+	Deployed in the "Lantan Ranger Corps", W.I.L.D./S.T.R.I-KE specialized in solo missions, excelling in reconnaissance and precision strikes against high-value targets. Their efficient, emotionless methods earned respect and unease alike among their peers. On one mission, they uncovered a lead on a dangerous enemy of the state, tracing the suspect's activities to Sigil, the City of Doors.
+
+	Now in Sigil, W.I.L.D./S.T.R.I-KE pursues their target in a city of infinite possibilities, navigating its chaos with their calculated precision. Yet, amidst the hunt, questions arise - are they merely a tool of the state, or is there more to their existence than the mission?
+}
+\AlliesAndOrganizations{
+	The "Lantan Ranger Corps" is an elite division of Lantan's defence forces, specializing in reconnaissance, intelligence gathering, and precision strikes. Originally comprised of highly trained humans and gnomes, the Corps initially relied on rigorous military academies to prepare recruits for survival, stealth, and combat. However, as their organic forces proved limited in large-scale operations, the Corps gradually transitioned to using advanced constructs, a hallmark of Lantanna innovation.
+
+Blending traditional woodcraft with cutting-edge technology, the Corps operates autonomously in hostile\linebreak
+}{
+	or uncharted territories. Their tools, often enhanced with magical and mechanical upgrades, enable them to excel in diverse environments. Renowned for their silent efficiency and precision, the Lantan Ranger Corps embodies their motto: "Silent Step, Unseen Strike."
+}
+\OrganizationName{Lantan Ranger Corps}
+\OrganizationSymbol{images/Lantan_Ranger_Corps.png}
+\AdditionalFeaturesAndTraits{
+	W.I.L.D/S.T.R.I-KE's behaviour is a testament to their design as a precision-driven construct. Instinctively drawn to the highest vantage point available, they seem incapable of remaining at ground level for long, their ever-analytical nature compelling them to seek optimal visibility. As they move, their metallic surfaces reflect and refract light faintly, blending subtly with their surroundings. This passive camouflage is enhanced by small patches of moss and lichen that cling to their wooden components, giving them an almost organic appearance.
+
+	When preparing for action, W.I.L.D/S.T.R.I-KE often calculates probabilities aloud in a flat, monotone voice, methodically outlining odds and scenarios with unsettling precision. Whether unnerving or amusing to their companions, this habit underscores their relentless focus on efficiency. Equally peculiar, they have an inexplicable tendency to announce the exact time with pinpoint accuracy, regardless of its relevance to the situation - a habit that borders on both useful and bizarre.
+}
+\Treasure{
+	\textbf{1. Laucian's Warden Token:} A petrified wood token etched with vine-like patterns and framed in polished metal engraved with Lantanna runes. A faint pine scent clings to it, a connection to nature and their wood elf inspiration. This token was personally gifted to W.I.L.D/S.T.R.I-KE by the legendary Laucian Ilphelkiir himself, marking an exceptional honour bestowed upon the construct for their dedication to the ideals of balance and protection.\\
+	\textbf{2. Worn Ranger Corps Insignia:} A small, tarnished badge bearing the sigil of the Lantan Ranger Corps. Scratches and wear tell the story of countless missions, a symbol of duty and honor.\\
+	\textbf{3. Splinter of the Elderwood:} A thin, polished splinter from a legendary tree said to have once been a sanctuary for wood elf heroes. It's small enough to be carried within a hidden compartment.
+}
+
+% PERSONALITY TRAITS
+\PersonalityTraits{
+	\textbf{Mission-Focused} My purpose is defined by the mission at hand. I prioritize objectives above all else, disregarding personal needs, emotional entanglements, or external distractions. Success is the only acceptable outcome, and everything else is secondary.
+}
+\Alignment{Lawful Neutral}
+
+\Ideals{
+	\textbf{Adaptation} Survival requires flexibility. Even constructs must evolve to overcome challenges.
+}
+
+\Bonds{
+	\textbf{The State of Lantan} My loyalty to Lantan defines my existence. I will ensure its survival and prosperity at all costs.
+}
+
+\Flaws{
+	\textbf{Emotionally Disconnect} I find emotions illogical and difficult to process, which creates friction with organic beings.
+}
+
+% LANGUAGES
+\Languages{Common, Common Sign Language, Dwarvish, Gnomish, Undercommon}
+
+% EQUIPMENT
+\Equipment{
+	\textbf{Serpent Scale Armor}, \textbf{Laucian's Warden Token} (Druidic Focus), \textbf{Scroll of Scrying}, Scimitar, Shortsword, 20 Arrows, Quiver, Woodcarver's Tools, a set of common clothes, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope
+}
+
+\addAttunedMagicItem{Glimmering Moonbow}
+\addAttunedMagicItem{Ring of Mind Shielding}
+
+\CP{}
+\SP{}
+\EP{}
+\GP{17}
+\PP{}
+
+% SPELLS
+\SpellcastingClass{Ranger}
+\SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{2}
+
+\addPreparedSpell{1}
+	{Absorb Elements}
+	{Reaction}
+	{Self}
+	{}
+	{}
+	{}
+	{S}
+	{S}
+\addPreparedSpell{1}
+	{Disguise Self}
+	{Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Fog Cloud}
+	{Action}
+	{120 Feet}
+	{T}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Hunter's Mark}
+	{Bonus Action}
+	{90 Feet}
+	{T}
+	{}
+	{}
+	{V, 2x free/LR}
+	{V}
+\addPreparedSpell{1}
+	{Longstrider}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, +10 feet speed}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Snare}
+	{1 Min}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, Trap}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Zephyr Strike}
+	{Bonus Action}
+	{Self}
+	{T}
+	{}
+	{}
+	{V, Disengage}
+	{V}
+
+\addPreparedSpell{2}
+	{Cordon of Arrows}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Rope Trick}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+% SPELLCASTING PRE5E24 PAGE
+%\renderoldspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Warforged Traits}
+\subsection*{Constructed Resilience}
+You were created to have remarkable fortitude, represented by the following benefits:
+\begin{itemize}
+	\item You have advantage on saving throws against being poisoned, and you have resistance to poison damage.
+	\item You don't need to eat, drink, or breathe.
+	\item You are immune to disease.
+	\item You don't need to sleep, and magic can't put you to sleep.
+\end{itemize}
+\subsection*{Sentry's Rest}
+When you take a long rest, you must spend at least six hours in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious, and you can see and hear as normal.
+\subsection*{Integrated Protection}
+Your body has built-in defensive layers, which can be enhanced with armor.
+\begin{itemize}
+	\item You gain a +1 bonus to Armor Class.
+	\item You can don only armor with which you have proficiency. To don armor, you must incorporate it into your body over the course of 1 hour, during which you must remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.
+	\item While you live, your armor can't be removed from your body against your will.
+\end{itemize}
+\subsection*{Specialized Design}
+\textit{Woodcarver's Tools, Perception Proficiency}\\
+You gain one skill proficiency and one tool proficiency of your choice.
+
+\section*{Ranger Traits}
+\subsection*{Favored Enemy}
+\textbf{3 Uses per Long Rest}\\
+You always have the \textit{Hunter's Mark} spell prepared. You can cast it twice without expending a spell slot, and you regain all expended uses of this ability when you finish a Long Rest.
+\subsection*{Weapon Mastery}
+Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords.
+
+Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Longswords
+\subsubsection*{Longbow (Slow)}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+\subsubsection*{Scimitar (Nick)}
+When you make an extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.
+\subsection*{Fighting Style}
+You gain a Fighting Style feat of your choice.
+\subsubsection*{Archery}
+You gain a +2 bonus to attack rolls you make with Ranged weapons.
+\subsection*{Gloom Stalker}
+\textit{Draw on Shadow Magic to Fight Your Foes}
+\subsubsection*{Dread Ambusher}
+You have mastered the art of creating fearsome ambushes, granting you the following benefits.
+\paragraph*{Ambusher's Leap} At the start of your first turn of each combat, your Speed increases by 10 feet until the end of that turn.
+\paragraph*{Dreadful Strike} When you attack a creature and hit it with a weapon, you can deal an extra 2d6 Psychic damage. You can use this benefit only once per turn, you can use it a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.
+\paragraph*{Initiative Bonus} When you roll Initiative, you can add your Wisdom modifier to the roll.
+\subsubsection*{Gloom Stalker Spells}
+When you reach a Ranger level specified in the Gloom Stalker Spells table, you thereafter always have the listed spells prepared.
+\begin{DndTable}[header=Gloom Stalker Spells]{llX}
+			& \textbf{Ranger Level}  &\textbf{Spells}			\\
+$\bullet$	& 3rd						&Disguise Self			\\
+$\bullet$	& 5th						&Rope Trick				\\
+			& 9th						&Fear					\\
+			& 13th						&Greater Invisibility	\\
+			& 17th						&Seeming				\\
+\end{DndTable}
+\subsubsection*{Umbral Sight}
+You gain Darkvision with a range of 60 feet. If you already have Darkvision when you gain this feature, its range increases by 60 feet.
+
+You are also adept at evading creatures that rely on Darkvision. While entirely in Darkness, you have the Invisible condition to any creature that relies on Darkvision to see you in that darkness
+\subsubsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn.
+
+\section*{Spells}
+\subsection*{Level 1}
+
+\DndSpellHeader
+  {Absorb Elements}
+  {1st-Level Abjuration}
+  {Reaction, which you take when you take acid, cold, fire, lightning, or thunder damage}
+  {Self}
+  {S}
+  {1 Round}
+
+The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6 for each slot level above 1st.
+
+\DndSpellHeader
+  {Disguise Self}
+  {1st-Level Illusion}
+  {Action}
+  {Self}
+  {V, S}
+  {1 Hour}
+
+You make yourself – including your clothing, armor, weapons, and other belongings on your person – look different until the spell ends or until you use your action to dismiss it. You can seem 1 foot shorter or taller and can appear thin, fat, or in between. You can't change your body type, so you must adopt a form that has the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.
+
+The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing.
+
+To discern that you are disguised, a creature must take the Study action to inspect your appearance and succeed on an Intelligence (Investigation) check against your spell save DC.
+
+\DndSpellHeader
+  {Fog Cloud}
+  {1st-Level Conjuration}
+  {Action}
+  {120 Feet}
+  {V, S}
+  {Concentration, Up to 1 Hour}
+
+You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners, and its area is heavily obscured. It lasts for the duration or until a wind of moderate or greater speed (such as one created by \textit{Gust of Wind}) disperses it.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the radius of the fog increases by 20 feet for each slot level above 1st.
+
+\DndSpellHeader
+  {Hunter's Mark}
+  {1st-Level Divination}
+  {Bonus Action}
+  {90 Feet}
+  {V}
+  {Concentration, Up to 1 Hour}
+
+You magically mark one creature you can see within range as your quarry. Until the spell ends, you deal an extra 1d6 Force damage to the target whenever you hit it with an attack roll. You also have Advantage on any Wisdom (Perception or Survival) check you make to find it.
+
+If the target drops to 0 Hit Points before this spell ends, you can take a Bonus Action to move the mark to a new creature you can see within range.
+
+\subparagraph*{Using a Higher-Level Spell Slot} Your Concentration can last longer with a spell slot of level 3-4 (up to 8 hours) or 5+ (up to 24 hours).
+
+\DndSpellHeader
+  {Longstrider}
+  {1st-Level Transmutation}
+  {Action}
+  {Touch}
+  {V, S, M (a pinch of dirt)}
+  {1 Hour}
+
+You touch a creature. The target's Speed increases by 10 feet until the spell ends.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 1.
+
+\DndSpellHeader
+  {Snare}
+  {1st-Level Abjuration}
+  {1 Min}
+  {Touch}
+  {V, S, M (30 feet of cord or rope, which is consumed by the spell)}
+  {Until dispelled or triggered}
+
+While you cast this spell, you use the cord or rope to create a circle with a 5-foot radius on a flat surface within your reach. When you finish casting, the cord or rope disappears to become a magical trap.
+
+The trap is nearly invisible and requires a successful Intelligence (Investigation) check against your spell save DC to be found.
+
+The trap triggers when a Small creature or larger moves into the area protected by the spell. The triggering creature must succeed on a Dexterity saving throw or fall prone and be hoisted into the air until it hangs upside down 3 feet above the protected surface, where it is restrained.
+
+The restrained creature can make a Dexterity saving throw with disadvantage at the end of each of its turns and ends the restrained effect on a success. Alternatively, another creature that can reach the restrained creature can use an action to make an Intelligence (Arcana) check against your spell save DC. On a success, the restrained effect also ends.
+
+\DndSpellHeader
+  {Zephyr Strike}
+  {1st-Level Transmutation}
+  {Bonus Action}
+  {Self}
+  {V}
+  {Concentration, Up to 1 Minute}
+
+You move like the wind. For the duration, your movement doesn't provoke opportunity attacks.
+
+Once before the spell ends, you can give yourself advantage on one weapon attack roll on your turn. That attack deals an extra 1d8 force damage on a hit. Whether you hit or miss, your walking speed increases by 30 feet until the end of that turn.
+
+\subsection*{Level 2}
+
+\DndSpellHeader
+  {Cordon of Arrows}
+  {2nd-Level Transmutation}
+  {Action}
+  {Touch}
+  {V, S, M (an ornamental braid)}
+  {8 Hours}
+
+You touch up to four nonmagical Arrows or Bolts and plant them in the ground in your space. Until the spell ends, the ammunition can't be physically uprooted, and whenever a creature other than you enters a space within 30 feet of the ammunition for the first time on a turn or ends its turn there, one piece of ammunition flies up to strike it. The creature must succeed on a Dexterity saving throw or take 2d4 Piercing damage. The piece of ammunition is then destroyed. The spell ends when none of the ammunition remains planted in the ground.
+
+When you cast this spell, you can designate any creatures you choose, and the spell ignores them.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The amount of ammunition that can be affected increases by two for each spell slot level above 2.
+
+\DndSpellHeader
+  {Rope Trick}
+  {2nd-Level Transmutation}
+  {Action}
+  {Touch}
+  {V, S, M (a segment of rope)}
+  {1 Hour}
+
+You touch a rope. One end of it hovers upward until the rope hangs perpendicular to the ground or the rope reaches the ceiling. At the rope's upper end, an Invisible 3-foot-by-5-foot portal opens to an extra-dimensional space that lasts until the spell ends. That space can be reached by climbing the rope, which can be pulled into or dropped out of it.
+
+The space can hold up to eight Medium or smaller creatures. Attacks, spells, and other effects can't pass into or out of the space, but creatures inside it can see through the portal. Anything inside the space drops out when the spell ends.
+
+\vfill\eject
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Scimitar (Finesse):}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Spear (Throwable, Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier (+ 2 (Fighting Style: Archery) [if thrown])\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}{2}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Scimitar (Finesse):}}\\
+1d6 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
+\\
+\underline{\textit{Spear (Throwable, Versatile):}}\\
+1d6 (1d8) + STR-Modifier\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Longbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier + 2 (Fighting Style: Archery)\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}{2}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Longbow:}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
+
+\part*{Magic Items}
+
+\input{\PATH magic_items/Weapons/Bows/Glimmering_Moonbow/Glimmering_Moonbow_input}
+
+\newpage
+\subsection*{Ring of Mind Shielding}
+\textit{Ring, uncommon (requires attunement)}\\
+While wearing this ring, you are immune to magic that allows other creatures to read your thoughts, determine whether you are lying, know your alignment, or know your creature type. Creatures can telepathically communicate with you only if you allow it.
+
+You can use an action to cause the ring to become invisible until you use another action to make it visible, until you remove the ring, or until you die.
+
+If you die while wearing the ring, your soul enters it, unless it already houses a soul. You can remain in the ring or depart for the afterlife. As long as your soul is in the ring, you can telepathically communicate with any creature wearing it. A wearer can't prevent this telepathic communication.
+
+\subsection*{Serpent Scale Armor}
+\textit{Armor (Scale Mail), Uncommon}\\
+This suit of magic armor is made from shimmering scales. While wearing it, you can apply your full Dexterity modifier (instead of a maximum of +2) when determining your Armor Class. In addition, this armor does not impose disadvantage on your Dexterity (Stealth) checks.
+\end{document}

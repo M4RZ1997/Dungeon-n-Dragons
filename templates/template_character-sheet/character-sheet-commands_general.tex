@@ -39,12 +39,40 @@
 	}
 	{#1}
 }
+
+\NewDocumentCommand {\AutoProficiencyBonus} { m }
+{
+	\str_case_e:nnF {#1}
+	{
+		{1} {\renewcommand{\ProficiencyValue}{+2}}
+		{2} {\renewcommand{\ProficiencyValue}{+2}}
+		{3} {\renewcommand{\ProficiencyValue}{+2}}
+		{4} {\renewcommand{\ProficiencyValue}{+2}}
+		{5} {\renewcommand{\ProficiencyValue}{+3}}
+		{6} {\renewcommand{\ProficiencyValue}{+3}}
+		{7} {\renewcommand{\ProficiencyValue}{+3}}
+		{8} {\renewcommand{\ProficiencyValue}{+3}}
+		{9} {\renewcommand{\ProficiencyValue}{+4}}
+		{10} {\renewcommand{\ProficiencyValue}{+4}}
+		{11} {\renewcommand{\ProficiencyValue}{+4}}
+		{12} {\renewcommand{\ProficiencyValue}{+4}}
+		{13} {\renewcommand{\ProficiencyValue}{+5}}
+		{14} {\renewcommand{\ProficiencyValue}{+5}}
+		{15} {\renewcommand{\ProficiencyValue}{+5}}
+		{16} {\renewcommand{\ProficiencyValue}{+5}}
+		{17} {\renewcommand{\ProficiencyValue}{+6}}
+		{18} {\renewcommand{\ProficiencyValue}{+6}}
+		{19} {\renewcommand{\ProficiencyValue}{+6}}
+		{20} {\renewcommand{\ProficiencyValue}{+6}}
+	}
+	{#1}
+}
 \ExplSyntaxOff
 
 \newcommand{\CharacterName}[1]{\renewcommand{\CharacterNameValue}{#1}}
 \newcommand{\Class}[1]{\renewcommand{\ClassValue}{#1}}
 \newcommand{\MultiClass}[1]{\renewcommand{\MultiClassValue}{#1}}
-\newcommand{\Level}[1]{\renewcommand{\LevelValue}{#1}\AutoXP{#1}}
+\newcommand{\Level}[1]{\renewcommand{\LevelValue}{#1}\AutoXP{#1}\AutoProficiencyBonus{#1}}
 \newcommand{\MultiClassMainLevel}[1]{\renewcommand{\MultiClassLevelValue}{#1}}
 \newcommand{\Background}[1]{\renewcommand{\BackgroundValue}{#1}}
 \newcommand{\PlayerName}[1]{\renewcommand{\PlayerNameValue}{#1}}
@@ -167,6 +195,31 @@
 \newcommand{\JackOfAllTradesValue}{0}
 
 \newcommand{\calculateSavingThrow}[3]{%
+	\ifthenelse{\equal{#3}{P}}%
+	{%
+		\ifnum \intcalcAdd{#1}{\intcalcAdd{#2}{\ProficiencyValue}}>0%
+			+%
+		\fi%
+		\intcalcAdd{#1}{\intcalcAdd{#2}{\ProficiencyValue}}%
+	}%
+	{%
+		\ifthenelse{\equal{#3}{E}}%
+		{%
+			\ifnum \intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcMul{\ProficiencyValue}{2}}}>0%
+				+%
+			\fi%
+			\intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcMul{\ProficiencyValue}{2}}}%
+		}%
+		{%
+			\ifnum \intcalcAdd{#1}{#2}>0%
+				+%
+			\fi%
+			\intcalcAdd{#1}{#2}
+		}%
+	}%
+}%
+
+\newcommand{\calculateSkillModifier}[3]{%
 	\ifthenelse{\equal{#3}{P}}%
 	{%
 		\ifnum \intcalcAdd{#1}{\intcalcAdd{#2}{\ProficiencyValue}}>0%
