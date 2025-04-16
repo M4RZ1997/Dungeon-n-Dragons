@@ -1,0 +1,113 @@
+\begin{DndMonster}[width=\textwidth + 8pt]{Hootsman}
+	\vspace*{-17.5pt}\begin{multicols}{2}
+		\DndMonsterType{Warforged Barbarian (Lvl 9, Path fo the Berserker), chaotic neutral}
+		
+		% If you want to use commas in the key values, enclose the values in braces.
+		\DndMonsterBasics[
+			armor-class = {16 (Natural Armor)},
+			hit-points  = {\DndDice{9d12 + 36}},
+			speed       = {40 ft.},
+		]
+		
+		\renewcommand{\AbilityScoreSpacer}{~}
+		\DndMonsterAbilityScores[
+			str = 20,
+			dex = 14,
+			con = 16,
+			int = 11,
+			wis = 14,
+			cha = 10,
+		]
+		
+		\DndMonsterDetails[
+			saving-throws = {STR +9, CON +7},
+			skills = {Animal Handling +6, Athletics +9, Intimidation +4, Nature +4, Perception +6, Survival +6},
+			%damage-vulnerabilities = {cold},
+			damage-resistances = {Poison},
+			%damage-immunities = {poison},
+			senses = {Passive Perception 16},
+			condition-immunities = {disease},
+			languages = {Common, Sylvan},
+			challenge = -,
+			proficiency-bonus=+4
+		]
+		
+		\DndMonsterSection{Traits}
+		\DndMonsterAction{Rage}
+		While the Rage is active, the Hootsman gains the following benefits:
+		\begin{itemize}
+			\item He has resistance against bludgeoning, slashing, and piercing damage
+			\item When he makes an attack using Strength, his damage increases by +3
+			\item He has advantage on Strength checks and Strength saving throws
+		\end{itemize}
+		While in Rage, the Hootsman is also immune to the Charmed and Frightened condition and already affecting conditions of that kind end if he enters his Rage.
+		Additionally, the Hootsman can make any checks of the following skills as a Strength check: Acrobatics, Intimidation, Perception, Stealth, and Survival.
+		
+		\DndMonsterAction{Feral Instinct}
+		The Hootsman has advantage on Initiative Rolls.
+		
+		\DndMonsterAction{Reckless Attack}
+		When the Hootsman makes his first attack roll he can give himself Advantage on it until the next turn, but attack rolls against him have Advantage during that time.
+		He can forego the Advantage to deal an additional \DndDice{1d10} damage and either push the target 15 feet and move up to half his Speed towards the target without provoking Opportunity Attacks or reduce the targets speed by 15 feet.
+		If the Hootsman's Rage is active when using this trait the target also takes \DndDice{3d6} additional damage of the same type as the attack.
+		
+		\DndMonsterSection{Actions}
+		\DndMonsterAction{Extra Attack}
+		The Hootsman can attack twice whenever he takes the Attack Action.
+		
+		\DndMonsterAttack[
+			name=Battleaxe,
+			distance=melee, % valid options are in the set {both,melee,ranged},
+			%type=weapon, %valid options are in the set {weapon,spell}
+			mod=+9,
+			reach=5,
+			%range=20/60,
+			targets=one target,
+			dmg=\DndDice{1d8 + 5},
+			dmg-type=slashing,
+			%plus-dmg=\DndDice{1d6},
+			%plus-dmg-type=poison,
+			or-dmg=\DndDice{1d10 + 5},
+			or-dmg-when={when used with two hands},
+			extra={. The creature hit with this attack must succeed on a DC 17 Constitution Saving Throw or is knocked prone},
+		]
+		
+		\DndMonsterAttack[
+			name=Greataxe,
+			distance=melee, % valid options are in the set {both,melee,ranged},
+			%type=weapon, %valid options are in the set {weapon,spell}
+			mod=+9,
+			reach=5,
+			%range=20/60,
+			targets=one target,
+			dmg=\DndDice{1d12 + 5},
+			dmg-type=slashing,
+			%plus-dmg=\DndDice{1d6},
+			%plus-dmg-type=poison,
+			%or-dmg=\DndDice{1d10 + 5},
+			%or-dmg-when={when used with two hands},
+			extra={. Once per turn when the Hootsman hits a creature with this attack he can make another attack roll against another creature within 5 feet of the first target. On a hit the creature takes \DndDice{1d12} slashing damage},
+		]
+		
+		\DndMonsterAttack[
+			name=Longbow,
+			distance=ranged, % valid options are in the set {both,melee,ranged},
+			%type=weapon, %valid options are in the set {weapon,spell}
+			mod=+7,
+			%reach=5,
+			range=150/600,
+			targets=one target,
+			dmg=\DndDice{1d8 + 2},
+			dmg-type=piercing,
+			%plus-dmg=\DndDice{1d6},
+			%plus-dmg-type=poison,
+			%or-dmg=\DndDice{1d10 + 5},
+			%or-dmg-when={when used with two hands},
+			extra={. A creature hit with this attack has its speed reduced by 10 feet, up to a maximum reduction of 10 feet},
+		]
+		
+		\DndMonsterSection{Bonus Action}
+		\DndMonsterAction{Rage (4 / Short or Long Rest)}
+		The Hootsman can enter a Rage while he is not wearing Heavy Armor. He will gain all Rage benefits and it lasts until the end of his next turn if he does not extend it. He can maintain the Rage for up to 10 minutes.
+	\end{multicols}
+\end{DndMonster}

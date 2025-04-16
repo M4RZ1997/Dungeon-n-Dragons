@@ -1,0 +1,113 @@
+\begin{DndMonster}[width=\textwidth + 8pt]{Ser Proletius}
+	\vspace*{-17.5pt}\begin{multicols}{2}
+		\DndMonsterType{Human Paladin (Lvl 10, Oath of the Crown), lawful good}
+		
+		% If you want to use commas in the key values, enclose the values in braces.
+		\DndMonsterBasics[
+			armor-class = {20 (Plate Armor, Shield)},
+			hit-points  = {\DndDice{10d10 + 30}},
+			speed       = {30 ft.},
+		]
+		
+		\renewcommand{\AbilityScoreSpacer}{~}
+		\DndMonsterAbilityScores[
+			str = 20,
+			dex = 9,
+			con = 16,
+			int = 10,
+			wis = 11,
+			cha = 16,
+		]
+		
+		\DndMonsterDetails[
+			saving-throws = {WIS +4, CHA +7},
+			skills = {Athletics +6, History +4, Insight +4, Intimidation +7, Persuasion +7},
+			%damage-vulnerabilities = {cold},
+			%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+			%damage-immunities = {poison},
+			senses = {Passive Perception 10},
+			%condition-immunities = {poisoned},
+			languages = {Common},
+			challenge = -,
+			proficiency-bonus=+4
+		]
+		
+		\DndMonsterSection{Traits}	
+	    \DndMonsterAction{Savage Attacker}
+		Once per turn when Ser Proletius hits another creature with a weapon, he can roll the weapon's damage twice and use either roll against the target.
+		
+		\DndMonsterAction{Channel Divinity}
+		Ser Proletius has two Channel Divinity charges per Long Rest.
+		
+		\DndMonsterAction{Aura of Protection}
+		Ser Proletius and his allies within a 10-foot radius of him gains a +3 bonus to all saving throws. Also all have Immunity to the Frightened condition while in the area of effect.
+		
+		\begin{DndMonsterSpells}
+			\item[Spellcasting] Ser Proletius is a 10th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). Ser Proletius has the following paladin spells prepared:
+			\DndInnateSpellLevel[1]{Aura of Vitality, Command, Compelled Duel, Divine Smite, Find Steed, Spirit Guardians, Warding Bond, Zone of Truth}
+			\DndMonsterSpellLevel[1][4]{Bless, Command, Compelled Duel, Divine Smite, Heroism, Shield of Faith}
+			\DndMonsterSpellLevel[2][3]{Aid, Branding Smite, Find Steed, Prayer of Healing, Warding Bond, Zone of Truth}
+			\DndMonsterSpellLevel[3][2]{Aura of Vitality, Crusader's Mantle, Revivify, Spirit Guardians}
+		\end{DndMonsterSpells}
+		
+		\DndMonsterSection{Actions}
+		\DndMonsterAction{Extra Attack}
+		Ser Proletius can attack twice whenever he takes the Attack Action.
+		
+		\DndMonsterAttack[
+			name=Longsword,
+			distance=melee, % valid options are in the set {both,melee,ranged},
+			%type=weapon, %valid options are in the set {weapon,spell}
+			mod=+9,
+			reach=5,
+			%range=20/60,
+			targets=one target,
+			dmg=\DndDice{1d8 + 5},
+			dmg-type=slashing,
+			%plus-dmg=\DndDice{1d6},
+			%plus-dmg-type=poison,
+			or-dmg=\DndDice{1d10 + 5},
+			or-dmg-when={when used with two hands},
+			extra={. The creature hit with this attack has Disadvantage on its next attack roll before the start of Ser Proletius' next turn},
+		]
+		
+		\DndMonsterAttack[
+			name=Javelin,
+			distance=ranged, % valid options are in the set {both,melee,ranged},
+			%type=weapon, %valid options are in the set {weapon,spell}
+			mod=+9,
+			%reach=5,
+			range=30/120,
+			targets=one target,
+			dmg=\DndDice{1d6 + 5},
+			dmg-type=piercing,
+			%plus-dmg=\DndDice{1d6},
+			%plus-dmg-type=poison,
+			%or-dmg=,
+			%or-dmg-when=,
+			extra={. A creature hit with this attack has its speed reduced by 10 feet, up to a maximum reduction of 10 feet},
+		]
+		
+		\DndMonsterSection{Bonus Action}
+		\DndMonsterAction{Lay on Hands}
+		Ser Proletius can touch a creature and draw power from the pool of healing (50 points) to restore a number of Hit Points to that creature.
+		
+		He can also expend 5 Hit Points from the pool to remove the Poisoned condition from that creature
+		
+		\DndMonsterAction{Divine Sense}
+		Ser Proletius can use a Channel Divinity charge and open his awareness to detect Celestials, Fiends, and Undead within 60 feet of himself. Additionally, within the same radius he can also detect the presence of any place or object that has been consecrated or desecrated, as with the Hallow spell.
+		
+		\DndMonsterAction{Champion Challenge}
+		Ser Proletius can use a Channel Divinity charge to compel other creatures to battle with him. Each creature of his choice within 30 feet must make a Wisdom saving throw. On a failed save a creature cannot willingly move more than 30 feet away from him. The condition ends if Ser Proletius is incapacitated or the creature is more than 30 feet away from him.
+		
+		\DndMonsterAction{Champion Challenge}
+		Ser Proletius can use a Channel Divinity charge to bolster injured creatures. Each creature within 30 feet regains \DndDice{1d6 + 3} Hit Points if it has no more than half of its Hit Points.
+		
+		\DndMonsterSection{Reaction}
+		\DndMonsterAction{Interception}
+		When Ser Proletius sees a creature hit another creature within 5 feet of him with an attack roll, he can reduce the damage by \DndDice{1d10 + 4}.
+		
+		\DndMonsterAction{Divine Allegiance}
+		If a creature within 5 feet of Ser Proletius takes damage, he can use his reaction to magically substitute his own health for that of the target creature, causing that creature not to take the damage. Instead, Ser Proletius takes the damage. This damage to him can't be reduced or prevented in any way.
+	\end{multicols}
+\end{DndMonster}

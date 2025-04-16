@@ -1,0 +1,100 @@
+\begin{DndMonster}[width=\textwidth + 8pt]{Zargothrax} % Acererak
+	\vspace*{-17.5pt}\begin{multicols}{2}
+		\DndMonsterType{Medium Undead, chaotic evil}
+		
+		% If you want to use commas in the key values, enclose the values in braces.
+		\DndMonsterBasics[
+			armor-class = {21 (Natural Armor)},
+			hit-points  = {\DndDice{30d8 + 150}},
+			speed       = {30 ft.},
+		]
+		
+		\renewcommand{\AbilityScoreSpacer}{~}
+		\DndMonsterAbilityScores[
+			str = 13,
+			dex = 16,
+			con = 20,
+			int = 27,
+			wis = 21,
+			cha = 20,
+		]
+		
+		\DndMonsterDetails[
+			%saving-throws = {CON +8, CHA +9},
+			skills = {Arcana +22, History +22, Insight +12. Perception +12},
+			%damage-vulnerabilities = {cold},
+			damage-resistances = {cold, lightning},
+			damage-immunities = {bludgeoning, piercing, and slashing damage from nonmagical attack, necrotic, poison},
+			senses = {Truesight 120 ft., Passive Perception 22},
+			condition-immunities = {Blinded, Charmed, Deafened, Exhaustion, Frightened, Paralyzed, Petrified, Poisoned, Stunned},
+			languages = {Abyssal, Common, Draconic, Dwarvish, Elvish, Giant, Infernal, Primordial, Undercommon},
+			challenge = 23,
+			proficiency-bonus = +7,
+		]
+		
+		\DndMonsterSection{Traits}
+		\DndMonsterAction{Legendary Resistance (3/Day)}
+		If Zargothrax fails a saving throw, he can choose to succeed instead.
+		
+		\begin{DndMonsterSpells}
+			\item[Spellcasting] Zargothrax is a 20th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 23, +15 to hit with spell attacks). Zargothrax has the following wizard spells prepared:
+			\DndMonsterSpellLevel[Cantrips][At will]{Mage Hand, Ray of Frost, Shocking Grasp}
+			\DndMonsterSpellLevel[1][At will]{Ray of Sickness, Shield}
+			\DndMonsterSpellLevel[2][At will]{Arcane Lock, Knock}
+			\DndMonsterSpellLevel[3][At will]{Animate Dead, Counterspell}
+			\DndMonsterSpellLevel[4][3]{Blight, Ice Storm, Phantasmal Killer}
+			\DndMonsterSpellLevel[5][3]{Cloudkill, Hold Monster, Wall of Force}
+			\DndMonsterSpellLevel[6][3]{Chain Lightning, Circle of Death, Disintegrate}
+			\DndMonsterSpellLevel[7][3]{Finger of Death, Plane Shift, Teleport}
+			\DndMonsterSpellLevel[8][2]{Maze, Mind Blank}
+			\DndMonsterSpellLevel[9][2]{Power Word Kill, Time Stop}
+		\end{DndMonsterSpells}
+		
+		\DndMonsterAction{Turn Resistance}
+		Zargothrax has advantage on saving throws against any effect that turns undead.
+		
+		\DndMonsterSection{Actions}
+		\DndMonsterAttack[
+			name=Knife of Evil,
+			distance=melee, % valid options are in the set {both,melee,ranged},
+			%type=weapon, %valid options are in the set {weapon,spell}
+			mod=+11,
+			reach=5,
+			%range=20/60,
+			targets=one target,
+			dmg=\DndDice{1d4 + 4},
+			dmg-type=piercing,
+			%plus-dmg=\DndDice{3d6},
+			%plus-dmg-type=necrotic,
+			%or-dmg=,
+			%or-dmg-when=,
+			%extra={},
+		]
+		
+		\DndMonsterAttack[
+			name=Paralyzing Touch,
+			distance=melee, % valid options are in the set {both,melee,ranged},
+			%type=weapon, %valid options are in the set {weapon,spell}
+			mod=+15,
+			reach=5,
+			%range=20/60,
+			targets=one target,
+			dmg=\DndDice{3d6},
+			dmg-type=cold,
+			%plus-dmg=\DndDice{1d6},
+			%plus-dmg-type=poison,
+			%or-dmg=,
+			%or-dmg-when=,
+			extra={, and the target must succeed on a DC 20 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success},
+		]
+		
+		\DndMonsterSection{Legendary Actions}
+		Zargothrax can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. Zargothrax regains spent legendary actions at the start of its turn.
+		\begin{DndMonsterLegendaryActions}
+			\DndMonsterLegendaryAction{At-Will Spell}{Zargothrax cast one of his at-will spells.}
+			\DndMonsterLegendaryAction{Melee Attack}{Zargothrax uses Paralyzing Touch or makes one melee attack with his Knife of Evil.}
+			\DndMonsterLegendaryAction{Frightening Gaze (Costs 2 Actions)}{Zargothrax fixes his gaze on one creature he can see within 10 feet of him. The target must succeed on a DC 20 Wisdom saving throw against this magic or become frightened for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target its immune to Zargothrax's gaze for the next 24 hours.}
+			\DndMonsterLegendaryAction{Disrupt Life (Costs 3 Actions)}{Each creature within 20 feet of Zargothrax must make a DC 20 Constitution saving throw against this magic, taking 42 (12d6) necrotic damage on a failed save, or half as much damage on a successful one.}
+		\end{DndMonsterLegendaryActions}
+	\end{multicols}
+\end{DndMonster}

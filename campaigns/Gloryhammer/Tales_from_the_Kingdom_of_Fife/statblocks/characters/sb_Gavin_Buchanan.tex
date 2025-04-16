@@ -1,0 +1,96 @@
+\begin{DndMonster}[width=0.5\textwidth]{Gavin Buchanan}
+	\DndMonsterType{Halfling Rogue, chaotic neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15 (Leather Armor)},
+		hit-points  = {\DndDice{2d10 + 4}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 9,
+		dex = 18,
+		con = 14,
+		int = 15,
+		wis = 13,
+		cha = 12,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws = {DEX +6, INT +4},
+		skills = {Acrobatics +6, Perception +5, Stealth +8},
+		%damage-vulnerabilities = {cold},
+		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+		%damage-immunities = {poison},
+		senses = {Passive Perception 15},
+		%condition-immunities = {poisoned},
+		languages = {Common, Thieves' Cant},
+		challenge = 1/2,
+	]
+    
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Brave}
+	Gavin has Advantage on saving throws he makes to avoid or end the Frightened condition.
+	
+	\DndMonsterAction{Halfling Nimbleness}
+	Gavin can move through the space of any creature that is a size larger than him, but he can't stop in the same space.
+	
+	\DndMonsterAction{Luck}
+	When Gavin rolls a 1 on the d20 of a D20 Test, he can reroll the die, and he must use the new roll.
+	
+	\DndMonsterAction{Naturally Stealthy}
+	Gavin can take the Hide action even when he is obscured only by a creature that is at least one size larger than him.
+	
+	\DndMonsterAction{Sneak Attack}
+	Once per turn, Gavin can deal an extra 2d6 damage to one creature he hits with an attack roll if he has Advantage on the roll and the attack uses a Finesse or Ranged weapon. The extra damage's tyoe is the same as the weapon's type.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name=Dagger,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+6,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg=\DndDice{1d4 + 4},
+		dmg-type=piercing,
+		%plus-dmg=\DndDice{1d6},
+		%plus-dmg-type=poison,
+		%or-dmg=,
+		%or-dmg-when={when used with two hands},
+		%extra={},
+	]
+	
+	\DndMonsterAttack[
+		name=Shortbow,
+		distance=ranged, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+6,
+		%reach=5,
+		range=80/320,
+		targets=one target,
+		dmg=\DndDice{1d6 + 4},
+		dmg-type=piercing,
+		%plus-dmg=\DndDice{1d6},
+		%plus-dmg-type=poison,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+	
+	\begin{DndMonsterSpells}
+		\item[Spellcasting] Gavin Buchanan can cast the following spells using Intelligence as the spellcasting ability (spell save DC 12, +4 to hit with spell attacks):
+		\DndInnateSpellLevel{Mage Hand, Mind Sliver, Minor Illusion}
+		\DndMonsterSpellLevel[1][2]{Disguise Self, Fog Cloud, Long Strider}
+	\end{DndMonsterSpells}
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Cunning Action}
+	Gavin can take one of the following actions as a Bonus Action: Dash, Disengage, or Hide.
+	
+	\DndMonsterAction{Steady Aim}
+	If Gavin hasn't moved during his turn, he can give himself Advantage on his next attack on the current turn. After he uses it, his Speed is 0 until the end of the current turn.
+\end{DndMonster}

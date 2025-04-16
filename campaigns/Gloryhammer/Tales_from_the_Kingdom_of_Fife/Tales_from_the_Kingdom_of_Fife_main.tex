@@ -1,0 +1,68 @@
+\RequirePackage{pdfmanagement-testphase}
+\DeclareDocumentMetadata{}
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../}
+
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+
+\usepackage{\PATH templates/template_book/book_commands}
+
+\usepackage{\PATH templates/template_adventure/adventure_commands}
+\usepackage{\PATH templates/template_dungeon/dungeon_commands}
+\usepackage{\PATH templates/template_monster/monster_commands}
+%\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet} FAULTY INPUT?
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+
+\graphicspath{{./images}}
+
+\newrefformat{or}{\hyperref[#1]{\LinkFont{Optional Rule \ifnumcomp{\getrefnumber{#1}}<10{0}{}\ref{#1}}}}
+
+\begin{document}
+	\DungeonSheetGeometry
+
+	\adventureTitlePage{MarzIceBlue/MarzIce}%
+		{0cm}%
+		{0cm}%
+		{height=\paperheight}%
+		{bookcover_Tales_from_the_Kingdom_of_Fife.jpg}%
+		{%
+			{Gloryhammer1}{Page \thepage}{Art}{https://casinodundee.com/art/}{Tales from the Kingdom of Fife}{GLORYHAMMER}%
+		}%
+		{{\darkcrystalfont}{Gloryhammer}{\digitalfont}{Tales from the Kingdom of Fife}}%
+		{{\digitalfont}{The Gloryhammer - Tales from the Kingdom of Fife Campaign}}%
+		{MarzIce/black}%
+	
+	\clearpage
+	\tableofcontents
+	
+	\DndSetThemeColor[PhbTan]
+	
+	\input{parts/act00_chapters/ch01_introduction}
+	\input{parts/act00_chapters/ch02_kingdom_of_fife}
+	\input{parts/act00_chapters/campaign_pitch}
+	
+	\input{parts/act01}
+	\input{parts/act02}
+	\input{parts/act03}
+	\input{parts/act04}
+	\input{parts/act05}
+	\input{parts/act06}
+	\input{parts/act07}
+	
+	\input{parts/p_magic_items}
+	\input{parts/p_resources}
+	
+	%https://www.reddit.com/r/Gloryhammer/comments/17srxqi/gloryhammer_dnd_guide_setting_version_1/
+	
+	
+%	\renewcommand\labelitemi{\textbf{\textbullet}}
+\end{document}

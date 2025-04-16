@@ -1,0 +1,119 @@
+\chapter*{Way of Tay}\stepcounter{chapter}\phantomsection\addcontentsline{toc}{chapter}{Way of Tay}
+
+\DndDropCapLine{S}{\entryfont etting out along the paved road most travelled, the party makes their way toward the distant citadel of Crail. The path follows the rugged eastern coastline of Caledonia, cutting through windswept highlands, brackish moors, and sparse coastal woods. Early in their journey, grim sights greet them - bodies left where they fell beside the road, likely survivors of the siege who were not as fortunate as others.}
+
+{\entryfont The journey takes approximately two days. The party will need to rest at least once, most likely in the mist-choked moors near the estuary of the river Eden.
+
+If \prettyref{or:HastyDeparture} is in effect, the adventurers must forage for food and water, or find other means to sustain themselves during travel.
+
+Throughout their journey, the party will face a series of challenges. One encounter should take place during the first day of travel, and another on the second. These can be selected by the DM, determined randomly, or influenced by the party's choices - for example, encountering a spriggan while foraging in a nearby grove. During the night the party will experience a fixed event tied to an ancient Caledonian legend. This encounter is narrative in nature and intended to build atmosphere and mystery rather than present a direct threat.}
+
+\section*{Random Encounter}\phantomsection\addcontentsline{toc}{section}{Random Encounter}
+\subsection*{Travelling Merchant (Day 1)}
+\begin{DndReadAloud}
+	A ragged figure stumbles onto the path ahead, clothing torn and caked in mud, his face pale and streaked with dried blood. He raises a trembling hand as you approach. \textit{"My cart... it crashed down the ravine... I barely made it out"}, he gasps, gesturing weakly toward a steep drop nearby. \textit{"Please, my father's sword and crown are down there... family heirlooms. If you retrieve them, you can keep whatever else you find. But be warned... there are things in the marsh - froglike creatures, savage and territorial. I was lucky to get away."}
+\end{DndReadAloud}
+
+{\noindent\entryfont To reach the crash site, the party must climb down a 30-foot ravine. This requires a DC 15 Strength (Athletics) check. If the party does not attempt a stealthy descent, they draw the attention of a Grung warband currently looting the cart. The group consists of 4 Grung, 2 Grung Wildlings, and 1 Grung Elite Warrior. The Grung will scatter and flee once the Elite Warrior is slain or if the party successfully ambushes them.
+
+After the encounter, each party member may search the wreckage of the cart:
+\begin{itemize}
+	\renewcommand\labelitemi{\textbf{\textbullet}}
+	\item \textbf{DC 10 Perception / Investigation Check}\\Heirloom Sword and Crown
+	\item \textbf{DC 15 Perception / Investigation Check}\\1 Ration (Apples) for each success
+	\item \textbf{DC 20 Perception / Investigation Check}\\2 Potions of Healing and 20 GP
+	\item \textbf{NAT20 Perception / Investigation Check}\\Potion of Lesser Restoration
+\end{itemize}}
+
+\subsection*{Firbolg Forest (Day 1)}
+{\entryfont As the party moves through the coastal woods in search for food, they are approached by a large, moss-covered figure slowly steps into view - a Firbolg with bark-like skin, a tangled beard, and wide, gentle eyes. His presence is calm and uncertain, and expression carries a quiet, worried sorrow.}
+
+\begin{DndReadAloud}
+	A strange, thick-bodied and tall creature leaps into your path, eyeing you with hopeful urgency.
+
+	\textit{"Smallfolk! Help Firbolg!"} he rumbles, his voice low and anxious. \textit{"Firbolg lost his Shrubbies. Sing beautiful. Firbolg sad."}
+
+	He steps closer, glancing behind him before continuing:
+
+	\textit{"Shrubbies gone! Four!... No more songs in woods. If brave Smallfolk help... Firbolg give... Nature Wonder! Yes! Also show good food place. Many berries. Fat squirrels!"}
+\end{DndReadAloud}
+
+{\noindent\entryfont If the party agrees to help, the Firbolg brightens immediately, clapping with joy. He begins to describe his four lost companions - sentient, singing plants he affectionately calls his "Shrubbies".}
+
+\begin{DndQuestHook}[width=0.5\textwidth - 4pt]{{\large Mis}SING Shrubbies}
+	\DndQuestHookBasics[
+		location = {Way of Tay, South of Dundee},
+		quest-giver = {Firbolg},
+		objective = {Find the 4 Awakened Shrubs in the woods.},
+	]
+	
+	{%
+		\noindent\entryfont Before searching for the Awakened Shrubs the party can deduce where the Firbolg last saw them before losing track of them (\textbf{DC 13 Insight Check}), thereby reducing every subsequent DC by 2. Ideas how to find the Shrubbies are stated below - but the players can also come up with ideas of their own:
+		\begin{itemize}
+			\renewcommand\labelitemi{\textbf{\textbullet}}
+			\item \textbf{DC 17 Survival - \textit{"Little Leafy Tracks"}}\\Tracking the small, erratic prints of the Shrubbies through mud, fallen leaves, or soft moss. Some are partially disguised as natural disturbances.
+			\item \textbf{DC 13 Perception - \textit{"Hear the Hum"}}\\The Awakened Shrubs emit faint, melodic hums when alone. A character who listens carefully can hear one humming in the distance, helping the party home in on its location.
+			\item \textbf{DC 15 Arcana - \textit{"Magical Signatures"}}\\A character senses faint traces of druidic magic lingering in the area and uses that arcane residue to triangulate a Shrubby's location.
+			\item \textbf{DC 17 Nature - \textit{"Follow the Roots"}}\\A character uses their knowledge of local flora to identify signs of movement among plants that may suggest the Shrubbies passed through, such as unusual vine trails or bent branches.
+			\item \textbf{DC 13 Performance - \textit{"Sing Along"}}\\One Shrubby responds to song. A character can sing or play an instrument to draw it out of hiding, encouraging it to sing back and reveal itself.
+			\item \textbf{DC 15 Animal Handling - \textit{"Ask the Woodland Creatures"}}\\The character attempts to communicate or bribe a small woodland animal, like a squirrel or jay, to point toward one of the Shrubbies' hiding spots.
+		\end{itemize}
+	}%
+	
+	\DndQuestRewards{Upon successfully retrieving the Awakened Shrubs, the Firbolg will reward the party with the following items:}
+	{%
+		{5 Dried Leeches}{}%
+		{Conditional Magic Item}{%
+			Depending on which classes your players are, you can give them a suitable uncommon item from the following list:
+			\begin{itemize}
+				\item If a party member is a Druid or Ranger:\\
+				\textbf{Nature's Mantle}
+				\item If a party member is a Bard:\\
+				\textbf{Rhythm Maker's Drum}
+				\item Otherwise:\\
+				\textbf{Gloves of Thievery}
+			\end{itemize}
+		}%
+		{Plentiful Gathering Grounds}{The Firbolg eagerly leads the party to a hidden grove teeming with wild edibles. Each adventurer is able to gather enough to create 2 rations of fresh, nourishing food.}
+	}%
+\end{DndQuestHook}
+
+{\noindent\entryfont As an additional thank-you once the Shrubbies are found, the Firbolg insists they sing for the party. The four leafy performers sway, rustle, and begin their enthusiastic serenade. However, the melody is far from pleasant. Each adventurer must make a \textbf{DC 12 Constitution Saving Throw} or suffer 1d6 psychic damage from the Shrubbies' truly dreadful performance.}
+
+\subsection*{Soul Snatching Feline (Night)}
+{\entryfont In the middle of the night, while the players are fast asleep, any player with a \textbf{Passive Perception of 15 or higher} is awoken by an eerie howling sound. The Cait-Sìth is not intended as a combat encounter but as a narrative and atmospheric event, emphasizing the mystical and eerie tone of the moors. Read aloud or paraphrase:}
+\begin{DndReadAloud}
+	As the night deepens and the mist thickens over the estuary of the River Eden, an otherworldly wail slices through the stillness, its haunting tones reverberating across the moors. Turning towards the sound, you glimpse a faint green light drifting through the shallow marsh, a brighter white glow hovering beneath it. The lights move with a ghostly grace, pausing in place as the mournful cry echoes once more. Then, as if guided by some unseen purpose, the lights drift onward, vanishing briefly into the mist before reappearing at the next stop.
+\end{DndReadAloud}
+
+{\noindent\entryfont A successful \textbf{DC 18 Perception Check} reveals that the lights belong to a dark, wolf-sized shape skulking through the marsh. Its outline is blurred and ill-defined, as if the mist itself clings to its form, distorting its presence.
+
+The party may attempt to follow the creature and investigate the spots where it pauses. At each stop, they will uncover bodies - likely survivors of the recent siege who have succumbed to their injuries. Despite their efforts, the party will find it impossible to catch up to the creature. It moves with unnatural speed and grace, occasionally seeming to blink out of existence entirely, vanishing into the mist only to reappear further along its path.
+
+A \textbf{DC 15 Religion Check} (or \textbf{History Check} if the character has a Caledonian background) allows a character to recall the local legend of the Cait-Sìth, a spectral feline said to roam the night, collecting souls.}
+
+\begin{DndComment}[color=DmgCoral]{Real World Legend of the Cait-Sìth}
+	The Cait-Sìth, \textit{Fairy Cat}, is a spectral creature rooted in Celtic mythology. Described as a large, black feline with piercing green eyes and a distinctive white spot upon its chest, it is said to prowl ancient barrows and linger among the cold, mossy grounds of forgotten cemeteries. There, it watches with silent patience, guarding sacred places and observing as souls slip from the bodies of the recently deceased.
+
+	Legends tell that if the Cait-Sìth reaches a corpse before it has been properly prepared, it will claim the soul, dragging it into the otherworld. To prevent such a fate, wakes were held in vigil, where friends and family would gather around the deceased, filling the air with noise, laughter, and distraction to deter the Cait-Sìth from drawing near.
+
+	The Cait-Sìth endures as a symbol of ritual and community, a spectral reminder of the importance of honouring the dead and guarding their passage to the afterlife.
+\end{DndComment}
+
+{\noindent\entryfont Near their camp, the party can choose to perform proper burial rites for one of the bodies. During this process, the Cait-Sìth will silently observe from atop a nearby boulder, its green eyes faintly glowing in the dark. To successfully complete the rite, the party must succeed in both a \textbf{DC 13 Religion Check} and a \textbf{DC 13 Medicine Check}.
+
+If successful, the Cait-Sìth vanishes without a trace, but the party will find a \textbf{Soul Coin} resting on the boulder where it sat.
+
+If unsuccessful, the ethereal form of the Cait-Sìth will descend, snatching the soul of the fallen and fades away into the mist. Each player must make a \textbf{DC 17 Constitution Saving Throw}. On a failure, the player does not recover a level of exhaustion during this Long Rest.}
+
+\subsection*{Haunted Wreckage (Day 2)}
+{\entryfont On the following morning, as the party continues their journey near the southern edge of the River Eden delta, they spot the remains of a large trade vessel half-buried in the brackish mud. Its hull leans at a precarious angle, split and weatherworn by time and tide. The scene is quiet, but carries a heavy, eerie presence.}
+
+\begin{DndReadAloud}
+	The wind flows through the torn sails and crooked masts, producing a mournful howling sound that echoes across the marsh. But beneath that hollow moan, you could swear you hear something else - a voice, faint and whispering, calling you closer. It seems to beckon from within the wreck, promising treasure for those brave enough to claim it.
+
+	A large hole gapes in the stern of the ship, its jagged edges framed by broken timbers. The hollow darkness beyond invites you in.
+\end{DndReadAloud}
+
+\subsection*{Bandit Nest (Day 2)}
+Caged Owl-Bear Cub, some (not yet dead) bandits and mastiffs

@@ -1,0 +1,105 @@
+\begin{DndMonster}[width=0.5\textwidth]{Festival Dragon}
+	\DndMonsterType{Large Construct, neutral good}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16},
+		hit-points  = {\DndDice{9d10 + 36}},
+		speed       = {20 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 7,
+		dex = 7,
+		con = 18,
+		int = 8,
+		wis = 18,
+		cha = 20,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws = {CON +8, CHA +9},
+		skills = {Insight +8, Intimidation +9, Perception +8},
+		%damage-vulnerabilities = {cold},
+		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+		%damage-immunities = {poison},
+		senses = {Passive Perception 18},
+		%condition-immunities = {poisoned},
+		languages = {-},
+		challenge = -,
+		proficiency-bonus = +4,
+	]
+	
+	\DndMonsterSection{Traits}
+    \DndMonsterAction{Operative Mastery}
+    The Festival Dragon must be operated by a group of at least 6 people. If the Festival Dragon is operated by a properly trained performing team, its AC is increased by 2 and gains a bonus of +4 to each melee attack and damage roll.
+    
+	\DndMonsterAction{Non-Lethal Attacks}
+	Each attack the Festival Dragon makes is considered non-lethal
+	
+	\DndMonsterAction{Friendly Nature}
+    The Festival Dragon is usually friendly towards children and only chases them away, unless they get too greedy.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Festival Dragon makes one Claw Attack and one Bite or Tail Attack.
+	
+	\DndMonsterAttack[
+		name=Claw,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=-2,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg=\DndDice{1d4 - 2},
+		dmg-type=slashing,
+		%plus-dmg=\DndDice{1d6},
+		%plus-dmg-type=poison,
+		%or-dmg=,
+		%or-dmg-when=,
+		extra={ (minimum of 1 damage)},
+	]
+	
+	\DndMonsterAttack[
+		name=Bite,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=-2,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg=\DndDice{1d6 - 2},
+		dmg-type=piercing,
+		%plus-dmg=\DndDice{1d6},
+		%plus-dmg-type=poison,
+		%or-dmg=,
+		%or-dmg-when=,
+		extra={ (minimum of 1 damage)},
+	]
+	
+	\DndMonsterAttack[
+		name=Tail,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=-2,
+		reach=20,
+		%range=20/60,
+		targets=one target,
+		dmg=\DndDice{1d6 - 2},
+		dmg-type=bludgeoning,
+		%plus-dmg=\DndDice{1d6},
+		%plus-dmg-type=poison,
+		%or-dmg=,
+		%or-dmg-when=,
+		extra={ (minimum of 1 damage)},
+	]
+	
+	\DndMonsterAction{Breath Weapon (Recharge 5 Rounds)}
+	Each creature in a 30ft. long, 5 ft. wide line must make a DC16 Dexterity Saving Throw or are instantly out of the Dragon's Gold game.
+	
+	\DndMonsterSection{Reactions}
+	\DndMonsterAction{Automated Construct}
+	The Festival Dragon can make one attack of opportunity with each of its front limbs, mouth, and tail.
+\end{DndMonster}

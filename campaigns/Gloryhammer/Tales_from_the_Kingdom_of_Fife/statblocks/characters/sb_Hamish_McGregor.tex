@@ -1,0 +1,84 @@
+\begin{DndMonster}[width=0.5\textwidth]{Hamish McGregor}
+	\DndMonsterType{Human Bard, chaotic good}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {9 (Leather Armor)},
+		hit-points  = {\DndDice{1d8 + 2}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 7,
+		dex = 7,
+		con = 14,
+		int = 8,
+		wis = 14,
+		cha = 20,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws = {DEX +0, CHA +7},
+		skills = {Acrobatics +0, Performance +7, Survival +4},
+		%damage-vulnerabilities = {cold},
+		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+		%damage-immunities = {poison},
+		senses = {Passive Perception 12},
+		%condition-immunities = {poisoned},
+		languages = {Common},
+		challenge = 1/4,
+	]
+	
+	\DndMonsterSection{Traits}
+    \DndMonsterAction{Lucky (2 / Long Rest)}
+    Hamish can expend one use of his Lucky Trait to give himself Advantage whenever he rolls a d20 for a D20 test. He can also expend a use to give another creature Disadvantage on its next attack roll against him.
+    
+	\DndMonsterAction{Encouraging Song}
+	Whenever Hamish finishes a Short or Long Rest he can use an instrument he is proficient with and give Heroic Inspiration to up to 2 allies that can hear the song.
+	
+	\begin{DndMonsterSpells}
+		\item[Spellcasting] Hamish McGregor can cast the following spells using Charisma as the spellcasting ability (spell save DC 15, +7 to hit with spell attacks):
+		\DndInnateSpellLevel{Dancing Lights, Vicious Mockery}
+		\DndMonsterSpellLevel[1][2]{Charm Person, Disguise Self, Faerie Fire, Unseen Servant}
+	\end{DndMonsterSpells}
+	
+	\DndMonsterSection{Actions}	
+	\DndMonsterAttack[
+		name=Dagger,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+0,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg=\DndDice{1d4 - 2},
+		dmg-type=slashing,
+		%plus-dmg=\DndDice{1d6},
+		%plus-dmg-type=poison,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+	
+	\DndMonsterAttack[
+		name=Shortbow,
+		distance=ranged, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+0,
+		%reach=5,
+		range=80/320,
+		targets=one target,
+		dmg=\DndDice{1d6 - 2},
+		dmg-type=piercing,
+		%plus-dmg=\DndDice{1d6},
+		%plus-dmg-type=poison,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+	
+	\DndMonsterSection{Bonus Action}
+	\DndMonsterAction{Bardic Inspiration (5 / Long Rest)}
+	Hamish can inspire another creature within 60 feet of himself that can hear him. That creature gains Bardic Inspiration. Once within the next hour when the creature fails a D20 Test, the creature can expend its Bardic Inspiration and roll a d6, adding the number rolled to the d20, potentially turning the failure into a success.
+\end{DndMonster}

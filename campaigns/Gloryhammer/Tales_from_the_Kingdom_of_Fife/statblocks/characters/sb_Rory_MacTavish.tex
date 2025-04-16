@@ -1,0 +1,82 @@
+\begin{DndMonster}[width=0.5\textwidth]{Rory MacTavish}
+	\DndMonsterType{Woodelf Ranger, neutral good}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16 (Studded Leather Armor)},
+		hit-points  = {\DndDice{2d10 + 0}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 12,
+		dex = 18,
+		con = 10,
+		int = 8,
+		wis = 15,
+		cha = 10,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws = {STR +3, DEX +6},
+		skills = {Animal Handling +4, Stealth +6, Survival +4},
+		%damage-vulnerabilities = {cold},
+		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+		%damage-immunities = {poison},
+		senses = {Passive Perception 12},
+		%condition-immunities = {poisoned},
+		languages = {Common, Elvish},
+		challenge = 1/2,
+	]
+    
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Darkvision}
+	Rory has Darkvision with a range of 60 feet.
+	
+	\DndMonsterAction{Fey Ancestry}
+	Rory has Advantage on saving throws to avoid or end the Charmed condition.
+	
+	\begin{DndMonsterSpells}
+		\item[Spellcasting] Rory MacTavish can cast the following spells using Wisdom as the spellcasting ability (spell save DC 12, +4 to hit with spell attacks):
+		\DndInnateSpellLevel{Druidcraft, Guidance}
+		\DndInnateSpellLevel[1]{Create or Destroy Water}
+		\DndInnateSpellLevel[2]{Hunter's Mark}
+		\DndMonsterSpellLevel[1][2]{Animal Friendship, Speak with Animals, Hunter's Mark, Create or Destroy Water}
+	\end{DndMonsterSpells}
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name=Shortsword,
+		distance=melee, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+6,
+		reach=5,
+		%range=20/60,
+		targets=one target,
+		dmg=\DndDice{1d6 + 4},
+		dmg-type=slashing,
+		%plus-dmg=\DndDice{1d6},
+		%plus-dmg-type=poison,
+		%or-dmg=,
+		%or-dmg-when={when used with two hands},
+		%extra={},
+	]
+	
+	\DndMonsterAttack[
+		name=Shortbow,
+		distance=ranged, % valid options are in the set {both,melee,ranged},
+		%type=weapon, %valid options are in the set {weapon,spell}
+		mod=+6,
+		%reach=5,
+		range=80/320,
+		targets=one target,
+		dmg=\DndDice{1d6 + 4},
+		dmg-type=piercing,
+		%plus-dmg=\DndDice{1d6},
+		%plus-dmg-type=poison,
+		%or-dmg=,
+		%or-dmg-when=,
+		%extra={},
+	]
+\end{DndMonster}
