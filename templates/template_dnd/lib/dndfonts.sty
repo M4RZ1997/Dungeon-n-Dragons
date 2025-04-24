@@ -207,6 +207,15 @@
     quest-hook-style .initial:n        = \linespread{.9} \color{MarzPurple} \bfseries \Large \scshape \RaggedRight,
     quest-hook-style .value_required:n = true,
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Traps
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    trap-family .tl_set:N         = \l__dnd_trap_family_tl,
+    trap-family .initial:n        = \normalfont,
+    trap-family .value_required:n = true,
+    trap-style .tl_set:N         = \l__dnd_trap_style_tl,
+    trap-style .initial:n        = \linespread{.9} \color{titlered} \bfseries \large \scshape \RaggedRight,
+    trap-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Miscellaneous
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Footer
@@ -315,6 +324,10 @@
 % Quest Hook
 \NewDocumentCommand{\DndFontQuestHookTitle}{}
   { \l__dnd_quest_hook_family_tl \l__dnd_quest_hook_style_tl }
+
+% Traps
+\NewDocumentCommand{\DndFontTrapTitle}{}
+  { \l__dnd_trap_family_tl \l__dnd_trap_style_tl }
   
 % Miscellaneous
 \NewDocumentCommand{\DndFontFooter}{}

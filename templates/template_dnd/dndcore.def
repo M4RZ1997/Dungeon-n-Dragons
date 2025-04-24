@@ -90,4 +90,5 @@
 \RequirePackage {\PATH templates/template_dnd/lib/dndsections}   % section styling and special section headers
 \RequirePackage {\PATH templates/template_dnd/lib/dndsidebar}    % sidebars
 \RequirePackage {\PATH templates/template_dnd/lib/dndtable}      % tables
+\RequirePackage {\PATH templates/template_dnd/lib/dndtrap}       % traps
 \RequirePackage {\PATH templates/template_dnd/lib/dndtoc}        % table of contents styling

@@ -1,15 +1,15 @@
 % ------------------------------------------------------------------------------------------------- %
-%								dndquest.sty			Marcel Zauder 02/04/2023						%
+%								dndtraps.sty  	Marcel Zauder 02/04/2023						%
 % Stylesheet by Marcel                                                                              %
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ------------------------------------------- Variables ------------------------------------------- %
 
-\ExplSyntaxOn % Switch into Kernel-Mode
+\ExplSyntaxOn
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ------------------------------------ Quest Hooks  Background ------------------------------------ %
-\DeclareTColorBox {DndQuestBg} { O{} m }
+\DeclareTColorBox {DndTrapBg} { O{} m }
   {
     enhanced,
     frame~hidden,
@@ -25,18 +25,18 @@
     bottom           = 7pt,
     sharp~corners,
     oversize         = 0pt,
-    borderline~north = {3pt} {0pt}   {MarzPurple},
-    borderline~north = {2pt} {0.5pt} {MarzGold},
-    borderline~south = {3pt} {0pt}   {MarzPurple},
-    borderline~south = {2pt} {0.5pt} {MarzGold},
-    colback          = DmgLavender,
-    colbacktitle     = DmgLavender,
+    borderline~north = {3pt} {0pt}   {black},
+    borderline~north = {2pt} {0.5pt} {rulered},
+    borderline~south = {3pt} {0pt}   {black},
+    borderline~south = {2pt} {0.5pt} {rulered},
+    colback          = lightgray,
+    colbacktitle     = lightgray,
     colframe         = titlered,
-    fonttitle        = \DndFontQuestHookTitle,
-    coltitle         = MarzPurple,
+    fonttitle        = \DndFontTrapTitle,
+    coltitle         = titlered,
     fontupper        = \DndFontStatBlockBody,
     fontlower        = \DndFontStatBlockBody,
-    title            = {Quest~Hook~-~#2},
+    title            = {#2},
     #1
   }
 % ------------------------------------------------------------------------------------------------- %
@@ -44,16 +44,16 @@
 % -------------------------------- Quest Hooks Background Handling -------------------------------- %
 \bool_if:NTF \l__dnd_show_background_bool
   {
-    \let\DndQuestHook\DndQuestBg
-    \let\endDndQuestHook\endDndQuestBg
+    \let\DndTrap\DndTrapBg
+    \let\endDndTrap\endDndTrapBg
   }{
-    \let\DndQuestHook\DndQuestNoBg
-    \let\endDndQuestHook\endDndQuestNoBg
+    \let\DndTrap\DndTrapNoBg
+    \let\endDndTrap\endDndTrapNoBg
   }
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ---------------------------------------- Quest Hook Line ---------------------------------------- %
-\NewDocumentCommand {\DndQuestLine} {}
+\NewDocumentCommand {\DndTrapLine} {}
   {
     \par \vspace{-2pt} \noindent
     \begin {tikzpicture}
@@ -63,9 +63,9 @@
   }
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
-% --------------------------------------- Quest Hook Basics --------------------------------------- %
-\newlist {__dnd_quest_attributes} {description} {1}
-\setlist [__dnd_quest_attributes]
+% ------------------------------------------ Trap Basics ------------------------------------------ %
+\newlist {__dnd_trap_attributes} {description} {1}
+\setlist [__dnd_trap_attributes]
   {
     font     = \entryfont,
     labelsep = \l__dnd_space_dim,
@@ -73,67 +73,45 @@
   }
 
 % Only prints the item label if the value was supplied
-\cs_new_protected_nopar:Npn \__dnd_if_quest_attribute:nn #1#2
+\cs_new_protected_nopar:Npn \__dnd_if_trap_attribute:nn #1#2
   {
     \tl_if_empty:NF {#1}
       { \item [#2] #1 }
   }
 
-%% Monster basics
-\keys_define:nn { dnd / quest / basics }
+%% Trap basics
+\keys_define:nn { dnd / trap / basics }
   {
-  	location		.tl_set:N			= \l__location_tl,
-  	location		.initial:n			= Location,
-  	location		.value_required:n	= true,
-  	quest-giver	.tl_set:N			= \l__quest_giver_tl,
-  	quest-giver	.initial:n			= NPC,
-	quest-giver	.value_required:n	= true,
-  	objective	.tl_set:N			= \l__objective_tl,
-  	objective	.initial:n			= Objective,
-  	objective		.value_required:n	= true,
+  	save_dc		.tl_set:N			= \l__save_dc_tl,
+  	save_dc		.initial:n			= 10,
+  	save_dc		.value_required:n	= true,
+  	skill		.tl_set:N			= \l__skill_tl,
+  	skill		.initial:n			= Dexterity,
+  	skill		.value_required:n	= true,
+  	damage_value	.tl_set:N			= \l__damage_value_tl,
+  	damage_value	.initial:n			= 0,
+  	damage_value	.value_required:n	= false,
+  	damage_type	.tl_set:N			= \l__damage_type_tl,
+  	damage_type	.initial:n			= {Damage Type},
+	damage_type	.value_required:n	= false,
   }
 
-\cs_new_protected_nopar:Npn \__dnd_quest_basics:
+\cs_new_protected_nopar:Npn \__dnd_trap_basics:
   {
       \begin {__dnd_quest_attributes}
-        \item [\locationname] \entryfont\l__location_tl
-        \item [\questgivername] \entryfont\l__quest_giver_tl
-        \item [\objectivename] \entryfont\l__objective_tl
+        \item [DC] \entryfont\l__save_dc_tl
+        \item [Skill] \entryfont\l__skill_tl
+        \item [Damage] \entryfont\l__damage_value_tl\ \l__damage_type_tl
       \end {__dnd_quest_attributes}
   }
 
-\NewDocumentCommand {\DndQuestHookBasics} {o}
+\NewDocumentCommand {\DndTrapBasics} {o}
   {
     \group_begin:
-      \keys_set:nn { dnd / quest / basics } {#1}
-      \DndQuestLine
-      \__dnd_quest_basics:
-      \DndQuestLine
+      \keys_set:nn { dnd / trap / basics } {#1}
+      \DndTrapLine
+      \__dnd_trap_basics:
+      \DndTrapLine
     \group_end:
   }
 \ExplSyntaxOff % Switch-Off Kernel Mode
-% ------------------------------------------------------------------------------------------------- %
-% ################################################################################################# %
-% ----------------------------------------- Quest Rewards ----------------------------------------- %
-\makeatletter
-\newcommand{\rewardsList}{%
-	\begin{itemize}%
-	\renewcommand\labelitemi{\textbf{\textbullet}}%
-	\@rewardsListI%
-}%
-
-\newcommand{\@rewardsListI}{\@ifnextchar\stopRewardsList{\@rewardsListEnd}{\@rewardsListII}}%
-
-\newcommand{\@rewardsListII}[2]{%
-	\item \textbf{#1}\ifx\relax#2\relax\else\\#2\fi%
-	\@rewardsListI%
-}%
-
-\newcommand{\@rewardsListEnd}[1]{\end{itemize}}%
-\makeatother
-
-\newcommand{\DndQuestRewards}[2]{%
-	\DndQuestLine
-	{\entryfont \paragraph*{Reward} #1}%
-	{\entryfont \begingroup\rewardsList #2 \stopRewardsList\endgroup}%
-}%
