@@ -1,7 +1,52 @@
+\makeatletter
+\NewDocumentCommand{\toclessPart}{ m }{%
+	\begingroup
+		% Disable \addcontentsline and related internal writing
+		\let\addcontentsline\@gobblethree
+		\let\@writefile\@gobbletwo
+		\part*{#1}
+	\endgroup
+}%
+\makeatother
+
 \chapter*{Monster Statblocks}\phantomsection\addcontentsline{toc}{chapter}{Monster Statblocks}
-\section*{Corrupted Unicorn}\phantomsection\addcontentsline{toc}{section}{Corrupted Unicorn}\label{monster:CorruptedUnicorn}
-\input{statblocks/monsters/sb_Corrupted_Unicorn}
+
+\toclessPart{Bandits}
+\section*{Bandit}\phantomsection\addcontentsline{toc}{section}{Bandit}
+\label{monster:Bandit}
+\input{statblocks/monsters/Bandits/sb_Bandit}
+\section*{Bandit Captain}\phantomsection\addcontentsline{toc}{section}{Bandit Captain}
+\label{monster:BanditCaptain}
+\input{statblocks/monsters/Bandits/sb_Bandit_Captain}
+\section*{Bandit Archer}\phantomsection\addcontentsline{toc}{section}{Bandit Archer}
+\label{monster:BanditArcher}
+\input{statblocks/monsters/Bandits/sb_Bandit_Archer}
+\section*{Bandit Scout}\phantomsection\addcontentsline{toc}{section}{Bandit Scout}
+\label{monster:BanditScout}
+\input{statblocks/monsters/Bandits/sb_Bandit_Scout}
+\section*{Mastiff}\phantomsection\addcontentsline{toc}{section}{Mastiff}
+\label{monster:Mastiff}
+\input{statblocks/monsters/Bandits/sb_Mastiff}
+\section*{Shadow Mastiff}\phantomsection\addcontentsline{toc}{section}{Shadow Mastiff}
+\label{monster:ShadowMastiff}
+\input{statblocks/monsters/Bandits/sb_Shadow_Mastiff}
+
+\toclessPart{Creatures}
+\section*{Grung}\phantomsection\addcontentsline{toc}{section}{Grung}
+\label{monster:Grung}
+\input{statblocks/monsters/Creatures/sb_Grung}
 \vfill\eject
+\section*{Grung Wildling}\phantomsection\addcontentsline{toc}{section}{Grung Wildling}
+\label{monster:GrungWildling}
+\input{statblocks/monsters/Creatures/sb_Grung_Wildling}
+\vfill\eject
+\section*{Grung Elite Warrior}\phantomsection\addcontentsline{toc}{section}{Grung Elite Warrior}
+\label{monster:GrungEliteWarrior}
+\input{statblocks/monsters/Creatures/sb_Grung_Elite_Warrior}
+
+\toclessPart{Undead}
+\section*{Corrupted Unicorn}\phantomsection\addcontentsline{toc}{section}{Corrupted Unicorn}\label{monster:CorruptedUnicorn}
+\input{statblocks/monsters/Undead/sb_Corrupted_Unicorn}
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 	\node[anchor=south east] at (current page.south east) {%
 		\begin{minipage}{0.55\paperwidth}%%
@@ -9,6 +54,14 @@
       	\end{minipage}%
 	};%
 \end{tikzpicture}%
-\newpage
+\vfill\eject
 \section*{Undead Soldier}\phantomsection\addcontentsline{toc}{section}{Undead Soldier}\label{monster:UndeadSoldier}
-\input{statblocks/monsters/sb_Undead_Soldier}
+\input{statblocks/monsters/Undead/sb_Undead_Soldier}
+\vfill\eject
+\section*{Captain Yarrface}\phantomsection\addcontentsline{toc}{section}{Captain Yarrface}\label{monster:CaptainYarrface}
+\input{statblocks/monsters/Undead/sb_Ghost_of_Captain_Yarrface}
+\vfill\eject
+\section*{Shadow}\phantomsection\addcontentsline{toc}{section}{Shadow}\label{monster:Shadow}
+\input{statblocks/monsters/Undead/sb_Shadow}
+
+\part*{Test Part}

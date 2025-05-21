@@ -1,9 +1,10 @@
 \begin{DndMonster}[width=0.5\textwidth]{Gavin Buchanan}
-	\DndMonsterType{Halfling Rogue, chaotic neutral}
+	\DndMonsterType{Halfling Rogue, Chaotic Neutral}
 	
 	% If you want to use commas in the key values, enclose the values in braces.
 	\DndMonsterBasics[
 		armor-class = {15 (Leather Armor)},
+		initiative	= +4,
 		hit-points  = {\DndDice{2d10 + 4}},
 		speed       = {30 ft.},
 	]
@@ -19,15 +20,17 @@
 	]
 	
 	\DndMonsterDetails[
-		saving-throws = {DEX +6, INT +4},
-		skills = {Acrobatics +6, Perception +5, Stealth +8},
-		%damage-vulnerabilities = {cold},
-		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-		%damage-immunities = {poison},
-		senses = {Passive Perception 15},
-		%condition-immunities = {poisoned},
-		languages = {Common, Thieves' Cant},
-		challenge = 1/2,
+		saving-throws			= {DEX +6, INT +4},
+		skills					= {Acrobatics +6, Perception +5, Stealth +8},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Passive Perception 15},
+		languages				= {Common, Thieves' Cant},
+%		challenge				= -,
+%		proficiency-bonus		= +2,
 	]
     
 	\DndMonsterSection{Traits}
@@ -46,41 +49,45 @@
 	\DndMonsterAction{Sneak Attack}
 	Once per turn, Gavin can deal an extra 2d6 damage to one creature he hits with an attack roll if he has Advantage on the roll and the attack uses a Finesse or Ranged weapon. The extra damage's tyoe is the same as the weapon's type.
 	
+	\DndMonsterAction{Steady Aim}
+	If Gavin hasn't moved during his turn, he can give himself Advantage on his next attack on the current turn. After he uses it, his Speed is 0 until the end of the current turn.
+	
 	\DndMonsterSection{Actions}
 	\DndMonsterAttack[
-		name=Dagger,
-		distance=melee, % valid options are in the set {both,melee,ranged},
-		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+6,
-		reach=5,
-		%range=20/60,
-		targets=one target,
-		dmg=\DndDice{1d4 + 4},
-		dmg-type=piercing,
-		%plus-dmg=\DndDice{1d6},
-		%plus-dmg-type=poison,
-		%or-dmg=,
-		%or-dmg-when={when used with two hands},
-		%extra={},
+		name			= Dagger,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d4 + 4},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
 	]
 	
 	\DndMonsterAttack[
-		name=Shortbow,
-		distance=ranged, % valid options are in the set {both,melee,ranged},
-		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+6,
-		%reach=5,
-		range=80/320,
-		targets=one target,
-		dmg=\DndDice{1d6 + 4},
-		dmg-type=piercing,
-		%plus-dmg=\DndDice{1d6},
-		%plus-dmg-type=poison,
-		%or-dmg=,
-		%or-dmg-when=,
-		%extra={},
+		name			= Shortbow,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+		%type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		%reach			= 5,
+		range			= 80/320,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 4},
+		dmg-type		= Piercing,
+		%plus-dmg		= \DndDice{1d6},
+		%plus-dmg-type	= Poison,
+		%or-dmg			= \DndDice{1d20},
+		%or-dmg-when	= {},
+		%extra			= {},
 	]
 	
+	\DndMonsterSection{Spells}
 	\begin{DndMonsterSpells}
 		\item[Spellcasting] Gavin Buchanan can cast the following spells using Intelligence as the spellcasting ability (spell save DC 12, +4 to hit with spell attacks):
 		\DndInnateSpellLevel{Mage Hand, Mind Sliver, Minor Illusion}
@@ -90,7 +97,4 @@
 	\DndMonsterSection{Bonus Actions}
 	\DndMonsterAction{Cunning Action}
 	Gavin can take one of the following actions as a Bonus Action: Dash, Disengage, or Hide.
-	
-	\DndMonsterAction{Steady Aim}
-	If Gavin hasn't moved during his turn, he can give himself Advantage on his next attack on the current turn. After he uses it, his Speed is 0 until the end of the current turn.
 \end{DndMonster}

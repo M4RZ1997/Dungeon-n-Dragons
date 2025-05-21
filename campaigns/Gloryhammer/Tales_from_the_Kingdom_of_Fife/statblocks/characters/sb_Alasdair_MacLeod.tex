@@ -1,9 +1,10 @@
 \begin{DndMonster}[width=0.5\textwidth]{Alasdair MacLeod}
-	\DndMonsterType{Goliath (Stone) Barbarian, neutral}
+	\DndMonsterType{Goliath (Stone) Barbarian, Neutral}
 	
 	% If you want to use commas in the key values, enclose the values in braces.
 	\DndMonsterBasics[
 		armor-class = {16 (Natural Armor)},
+		initiative	= +1,
 		hit-points  = {\DndDice{1d12 + 4}},
 		speed       = {35 ft.},
 	]
@@ -19,15 +20,17 @@
 	]
 	
 	\DndMonsterDetails[
-		saving-throws = {STR +6, CON +4},
-		skills = {Athletics +6, Animal Handling +3, Survival +3},
-		%damage-vulnerabilities = {cold},
-		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-		%damage-immunities = {poison},
-		senses = {Passive Perception 11},
-		%condition-immunities = {poisoned},
-		languages = {Common, Giant},
-		challenge = 1/2,
+		saving-throws			= {STR +6, CON +4},
+		skills					= {Athletics +6, Animal Handling +3, Survival +3},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Passive Perception 11},
+		languages				= {Common, Giant},
+%		challenge				= -,
+%		proficiency-bonus		= +2,
 	]
     
 	\DndMonsterSection{Traits}
@@ -44,37 +47,37 @@
 	
 	\DndMonsterSection{Actions}
 	\DndMonsterAttack[
-		name=Battleaxe,
-		distance=melee, % valid options are in the set {both,melee,ranged},
-		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+6,
-		reach=5,
-		%range=20/60,
-		targets=one target,
-		dmg=\DndDice{1d8 + 4},
-		dmg-type=slashing,
-		%plus-dmg=\DndDice{1d6},
-		%plus-dmg-type=poison,
-		or-dmg=\DndDice{1d10 + 4},
-		or-dmg-when={when used with two hands},
-		%extra={},
+		name			= Battleaxe,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 4},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+		or-dmg			= \DndDice{1d10 + 4},
+		or-dmg-when		= {when used with two hands},
+%		extra			= {},
 	]
 	
 	\DndMonsterAttack[
-		name=Shortbow,
-		distance=ranged, % valid options are in the set {both,melee,ranged},
-		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+3,
-		%reach=5,
-		range=80/320,
-		targets=one target,
-		dmg=\DndDice{1d6 + 1},
-		dmg-type=piercing,
-		%plus-dmg=\DndDice{1d6},
-		%plus-dmg-type=poison,
-		%or-dmg=,
-		%or-dmg-when=,
-		%extra={},
+		name			= Shortbow,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +3,
+%		reach			= 5,
+		range			= 80/320,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 1},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
 	]
 	
 	\DndMonsterSection{Bonus Actions}

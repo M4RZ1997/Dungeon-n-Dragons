@@ -14,7 +14,7 @@ Throughout their journey, the party will face a series of challenges. One encoun
 	A ragged figure stumbles onto the path ahead, clothing torn and caked in mud, his face pale and streaked with dried blood. He raises a trembling hand as you approach. \textit{"My cart... it crashed down the ravine... I barely made it out"}, he gasps, gesturing weakly toward a steep drop nearby. \textit{"Please, my father's sword and crown are down there... family heirlooms. If you retrieve them, you can keep whatever else you find. But be warned... there are things in the marsh - froglike creatures, savage and territorial. I was lucky to get away."}
 \end{DndReadAloud}
 
-{\noindent\entryfont To reach the crash site, the party must climb down a 30-foot ravine. This requires a DC 15 Strength (Athletics) check. If the party does not attempt a stealthy descent, they draw the attention of a Grung warband currently looting the cart. The group consists of 4 Grung, 2 Grung Wildlings, and 1 Grung Elite Warrior. The Grung will scatter and flee once the Elite Warrior is slain or if the party successfully ambushes them.
+{\noindent\entryfont To reach the crash site, the party must climb down a 30-foot ravine. This requires a DC 15 Strength (Athletics) check. If the party does not attempt a stealthy descent, they draw the attention of a Grung warband currently looting the cart. The group consists of 4 \hyperref[monster:Grung]{\LinkFont{Grung}}, 2 \hyperref[monster:GrungWildling]{\LinkFont{Grung Wildlings}}, and 1 \hyperref[monster:GrungEliteWarrior]{\LinkFont{Grung Elite Warrior}}. The Grung will scatter and flee once the Elite Warrior is slain or if the party successfully ambushes them.
 
 After the encounter, each party member may search the wreckage of the cart:
 \begin{itemize}
@@ -119,43 +119,124 @@ If unsuccessful, the ethereal form of the Cait-Sìth will descend, snatching the
 
 Unbeknownst to the party, these figures are a group of juvenile Grung who have made a hideaway within the wreck.}
 
+\subsubsection*{Croaking Nuisances}
+{\entryfont A small group of juvenile Grung have claimed the River Maiden as their personal playground. They leap across beams, splash through flooded decks, and whisper ghost stories to each other in the dark. As a simple but effective alarm, they've rigged a "Cluttering Clutter Trap" at the entrance hole - an improvised line of shells, potsherds, and bones strung between timbers. If disturbed, it produces a loud clatter that alerts the Grung to any intruders entering their domain.}
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Clattering Clutter Trap}
+	\DndTrapBasics[
+		save_dc			= 15,
+		skill			= {Wisdom (Perception)},
+		%pos_reaction	= {Brace},
+		%neg_reaction	= {Jump},
+		%damage			= {-},
+	]
+	{\entryfont Rusted cookware, broken bottles, and shells strung together fall loudly when triggered. The Grung children become alerted and gain a +2 bonus when attempting to steal the party's gold and clutter.}
+\end{DndTrap}
+
+{\noindent\entryfont The juvenile Grung that inhabit the wreck of the River Maiden are more pranksters than predators. To deter intruders, they've rigged a variety of makeshift traps and nuisances throughout the ship. While most are not truly dangerous, they serve to slow, frustrate, or confuse those exploring the wreck, often with comedic or inconvenient results.
+
+Some of these traps, especially those that restrain or trap a creature (such as the Moss Net), are strategically positioned near hidden crawlspaces and tunnels. From these concealed spots, one or more young Grung may emerge and attempt to pilfer items from distracted adventurers.
+
+When a creature is restrained, prone, or otherwise vulnerable near one of these trap sites, a juvenile Grung can make a DC 10 Sleight of Hand check to steal a small item (a pouch, a coin purse, a ring, etc.) or a minor amount of gold. The exact item stolen is left to DM discretion, and may depend on the degree of success - rolling significantly above the DC may allow a more valuable or specific item to be taken.
+
+All stolen goods are carried away to the Grung's hideout located on the main deck of the River Maiden. This hideout may be discovered later in the encounter and can serve as a reward cache for perceptive or persistent players.}
+
+{\entryfont\paragraph*{Makeshift Traps} Below is a list of makeshift traps. Each includes a potential advantageous and/or detrimental reaction to be used with the custom "Click"-Ruling.}
+
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Moss Net Drop}
+	\DndTrapBasics[
+		save_dc			= 12,
+		skill			= {Dexterity Saving Throw},
+		%pos_reaction	= {Brace},
+		neg_reaction	= {Jump},
+		%damage			= {-},
+	]
+	{\entryfont\noindent \textbf{Grung Steal Possible}\\A simple net made of vines and moss drops from above. All creatures within a 10-foot-by-10-foot area that failed the saving throw are restrained by the net. A creature can use its action to make a \textbf{DC 10 Strength Check} to try to free itself or another creature in the net. Dealing 5 Slashing damage to the net (AC 10, HP 20) destroys a 5-foot-square of it, freeing any creature trapped in that section.}
+\end{DndTrap}
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Greased Planks}
+	\DndTrapBasics[
+		save_dc			= 12,
+		skill			= {Dexterity Saving Throw},
+		pos_reaction	= {Brace},
+		%neg_reaction	= {Jump},
+		damage			= {\DndDice{1d4} Bludgeoning},
+	]
+	{\entryfont\noindent A section of the deck has been slicked with fish oil and swamp gunk. Any creature failing the saving throw slips and falls prone.}
+\end{DndTrap}
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Sticky Sap Patch}
+	\DndTrapBasics[
+		save_dc			= 11,
+		skill			= {Strength Saving Throw},
+		%pos_reaction	= {Brace},
+		neg_reaction	= {Duck/Brace},
+		%damage			= {-},
+	]
+	{\entryfont\noindent \textbf{Grung Steal Possible}\\A section of the floor has been smeared with thick, tacky sap. When stepped on, it clings to boots or gear, anchoring the creature in place. Escaping risks losing or tearing equipment.}
+\end{DndTrap}
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Springy Log Trap}
+	\DndTrapBasics[
+		save_dc			= 12,
+		skill			= {Dexterity Saving Throw},
+		pos_reaction	= {Duck},
+		neg_reaction	= {Brace},
+		%damage			= {-},
+	]
+	{\entryfont\noindent A creature failing the saving throw is blinded for 1 Round by flying muck. For 1 Minute the creature has Disadvantage on Wisdom (Perception) Checks that rely on sight.}
+\end{DndTrap}
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Trip Vine Pebble Shower}
+	\DndTrapBasics[
+		save_dc			= 11,
+		skill			= {Dexterity Saving Throw},
+		pos_reaction	= {Jump},
+		%neg_reaction	= {Duck/Brace},
+		damage			= {1 Bludgeoning},
+	]
+	{\entryfont\noindent All creatures within a 5-foot radius have to make the saving throw. Each creature failing the save takes 1 Bludgeoning damage and lose concentration on any spell.}
+\end{DndTrap}
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Tied-Together Buckets}
+	\DndTrapBasics[
+		save_dc			= 12,
+		skill			= {Dexterity Saving Throw},
+		pos_reaction	= {Freeze/Step Back},
+		%neg_reaction	= {Duck/Brace},
+		%damage			= {-},
+	]
+	{\entryfont\noindent Two old pails filled with water or swamp goo swing inward when a character walks through a narrow passage. Each creature in a 15-foot cone must make the save. Each creature that failed the check has Disadvantage on all Charisma-Checks for 10 minutes and must make a \textbf{DC 10 Constitution Saving Throw}, taking \DndDice{1d4} poison damage, or half as much if successful.}
+\end{DndTrap}
+
 \subsubsection*{Traversing the Wreckage}
 {\entryfont\noindent Exploring the River Maiden is dangerous - the ship is old, splintered, and partially sunken. Boards groan underfoot, rusted nails jut from shattered beams, and sections of the deck and hull have collapsed entirely. As the party moves through the vessel, they will encounter several natural hazards and obstacles.
 
-Below are a few examples of traversal challenges; DMs are encouraged to invent their own, provided they keep the danger moderate. Saving throw or skill check DCs for environmental hazards should not exceed 14, and the maximum damage dealt on a failed check should be no more than 2d10.}
+\noindent Below are a few examples of traversal challenges; DMs are encouraged to invent their own, provided they keep the danger moderate. Saving throw or skill check DCs for environmental hazards should not exceed 14, and the maximum damage dealt on a failed check should be no more than 2d10.}
 
 {\entryfont \paragraph*{Environmental Hazards} These natural hazards reflect the unpredictable dangers of traversing a wrecked and decaying vessel. They aren't traps in the traditional sense, but they still carry risk - often resulting in minor injury or disorientation if not carefully avoided.
 \begin{DndTrap}[width=0.5\textwidth - 4pt]{Flooded Passage}
 	\DndTrapBasics[
 		save_dc = 12,
-		skill = {WIS (Perception)},
-		damage_value = {\DndDice{1d10}},
-		damage_type = {piercing},
+		skill = {Wisdom (Perception)},
+		damage = {\DndDice{1d10} Piercing},
 	]
 	{\entryfont\noindent Parts of the lower hold are submerged in cold, murky water. Jagged splinters, rusted nails, and broken crates lurk beneath the surface.}
 \end{DndTrap}
 \begin{DndTrap}[width=0.5\textwidth - 4pt]{Rotten Hull}
 	\DndTrapBasics[
 		save_dc = 12,
-		skill = {DEX},
-		damage_value = {\DndDice{1d8}},
-		damage_type = {bludgeoning},
+		skill = {Dexterity Saving Throw},
+		damage = {\DndDice{1d8} Bludgeoning},
 	]
 	{\entryfont\noindent Some of the ship's outer walls and support beams are structurally compromised and may collapse inward.}
 \end{DndTrap}
 \begin{DndTrap}[width=0.5\textwidth - 4pt]{Slippery Slope}
 	\DndTrapBasics[
 		save_dc = 13,
-		skill = {DEX (Acrobatics)},
+		skill = {Dexterity (Acrobatics)},
 	]
-	{\entryfont\noindent Several interior slopes and gangways are coated in algae and moisture. A character must succeed on a \textbf{DC 13 Dexterity (Acrobatics) Check} to keep their footing. On a failure, they slide uncontrollably and fall prone, potentially colliding with sharp wreckage for \DndDice{1d6} damage.}
+	{\entryfont\noindent Several interior slopes and gangways are coated in algae and moisture. On a failure, they slide uncontrollably and fall prone, potentially colliding with sharp wreckage for \DndDice{1d6} damage.}
 \end{DndTrap}
 \begin{DndTrap}[width=0.5\textwidth - 4pt]{Swinging Beam}
 	\DndTrapBasics[
 		save_dc = 14,
-		skill = {DEX},
-		damage_value = {\DndDice{2d6}},
-		damage_type = {bludgeoning},
+		skill = {Dexterity Saving Throw},
+		damage = {\DndDice{2d6} Bludgeoning},
 	]
 	{\entryfont\noindent An unstable section of ceiling creaks ominously. A sudden gust or shift in weight causes a thick wooden beam to fall from above.}
 \end{DndTrap}
@@ -168,9 +249,30 @@ Below are a few examples of traversal challenges; DMs are encouraged to invent t
 \subparagraph*{Fractured Decking} Large, jagged holes have opened in the ship's deck. Characters must cross by jumping or balancing on narrow beams. A successful \textbf{DC 13 Dexterity (Acrobatics) Check} clears the gap. Alternatively, a successful \textbf{DC 12 Investigation Check} might reveal a more stable path.
 }
 
-\subsubsection*{Croaking Nuisances}
+\subsubsection*{All On Deck}
+{\entryfont Upon reaching the River Maiden's main deck, the party is met with a brief moment of calm, broken only by the wind whispering through the rigging and the rhythmic creak of the ship's worn timbers. With a successful \textbf{DC 16 Wisdom (Perception) Check}, a character can spot a small opening hidden beneath torn canvas and driftwood - just large enough for a Small or smaller creature to crawl through.
 
-{\entryfont \paragraph*{Makeshift Traps} DC < 8, maximum damage 1d6}
+This tunnel leads to the juvenile Grung's hideout. If entered, the Grung will immediately scatter in a panicked flurry, abandoning their wooden playground and vanishing into the nooks of the wreck. Inside the hideout, the party will find any stolen items the Grung have taken, along with additional trinkets (up to 10 GP).
+
+Nearby stands a reinforced door leading to the captain's quarters. It can be unlocked with either a \textbf{DC 17 Dexterity (Sleight of Hand) Check}, the key found in the Grung's hideout, or brute-forced open with a \textbf{DC 25 Strength (Athletics) Check}.}
+
+\subsubsection*{Encounter with Captain Yarrface}
+{\entryfont Beyond the creaking door lies a dim and dust-choked chamber, once regal but now rotted and sunken with age. The walls are hung with shredded naval banners, and the scent of salt and decay clings thick in the air. At the far end of the room sits an old, iron-banded chest, streaked with sea salt and green with mildew.
+
+When a player attempts to open or touch the chest, a sudden chill sweeps through the room. The ghostly figure of \hyperref[monster:CaptainYarrface]{\LinkFont{Captain Yarrface}} materializes from the air. With a shriek that echoes through the wreck, he attempts to possess the interloper.
+
+At the same time, two \hyperref[monster:Shadow]{\LinkFont{Shadows}} rise from the corners of the room, their forms flickering like black sails in a storm.
+
+\paragraph*{Combat} Captain Yarrface opens combat with Possession if possible, targeting the character who touched the chest. When Yarrface is reduced below 10 HP, he becomes ethereal and flees, vowing to one day reclaim his treasure.
+
+\paragraph*{Reward} If the party successfully defeats the Shadows and drives off Yarrface, they are free to open the chest. Inside they can find the following loot:
+\begin{itemize}
+	\item 50 GP
+	\item Breathing Bubble
+	\item Medal of the Conch
+	\item Shield of the Turtoise (cursed)
+\end{itemize}
+}
 
 \subsection*{Bandit Nest (Day 2)}
 Caged Owl-Bear Cub, some (not yet dead) bandits and mastiffs

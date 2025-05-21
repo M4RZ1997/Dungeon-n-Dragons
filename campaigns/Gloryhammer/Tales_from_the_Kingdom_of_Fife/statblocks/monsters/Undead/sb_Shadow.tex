@@ -1,0 +1,64 @@
+\begin{DndMonster}[width=0.5\textwidth]{Shadow}
+	\DndMonsterType{Medium Undead, Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {12},
+		initiative	= +2,
+		hit-points  = {\DndDice{5d8 + 5}},
+		speed       = {40 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 6,
+		dex = 14,
+		con = 11,
+		int = 6,
+		wis = 10,
+		cha = 8,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+		skills					= {Stealth +6},
+		damage-vulnerabilities	= {Radiant},
+		damage-resistances		= {Acid, Cold, Fire, Lightning, Thunder},
+		damage-immunities		= {Necrotic, Poison},
+		condition-immunities	= {Exhaustion, Frightened, Grappled, Paralyzed, Petrified, Poisoned, Prone, Restrained, Unconscious},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 60 ft., Passive Perception 10},
+%		languages				= {-},
+		challenge				= 1/2,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+    \DndMonsterAction{Amorphous}
+	The shadow can move through a space as narrow as 1 inch without expending extra movement to do so.
+	
+	\DndMonsterAction{Sunlight Weakness}
+	While in the sunlight, the shadow has Disadvantage on D20 Tests.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Draining Swipe,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 2},
+		dmg-type		= Necrotic,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+		extra			= {, and the target's Strength score decrease by 1d4. The target dies if this reduces that score to 0. If a Humanoid is slain by this attack, a \textbf{Shadow} rises from the corpse 1d4 hours later},
+	]
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Shadow Stealth}
+	While in Dim Light or in Darkness, the Shadow takes the Hide action.
+\end{DndMonster}

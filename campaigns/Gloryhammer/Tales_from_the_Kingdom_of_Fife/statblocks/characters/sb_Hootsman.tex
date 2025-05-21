@@ -1,10 +1,11 @@
 \begin{DndMonster}[width=\textwidth + 8pt]{Hootsman}
 	\vspace*{-17.5pt}\begin{multicols}{2}
-		\DndMonsterType{Warforged Barbarian (Lvl 9, Path fo the Berserker), chaotic neutral}
+		\DndMonsterType{Warforged Barbarian (Lvl 9, Path fo the Berserker), Chaotic Neutral}
 		
 		% If you want to use commas in the key values, enclose the values in braces.
 		\DndMonsterBasics[
 			armor-class = {16 (Natural Armor)},
+			initiative	= +2,
 			hit-points  = {\DndDice{9d12 + 36}},
 			speed       = {40 ft.},
 		]
@@ -20,16 +21,17 @@
 		]
 		
 		\DndMonsterDetails[
-			saving-throws = {STR +9, CON +7},
-			skills = {Animal Handling +6, Athletics +9, Intimidation +4, Nature +4, Perception +6, Survival +6},
-			%damage-vulnerabilities = {cold},
-			damage-resistances = {Poison},
-			%damage-immunities = {poison},
-			senses = {Passive Perception 16},
-			condition-immunities = {disease},
-			languages = {Common, Sylvan},
-			challenge = -,
-			proficiency-bonus=+4
+			saving-throws			= {STR +9, CON +7},
+			skills					= {Animal Handling +6, Athletics +9, Intimidation +4, Nature +4, Perception +6, Survival +6},
+%			damage-vulnerabilities	= {Cold},
+			damage-resistances		= {Poison},
+%			damage-immunities		= {Poison},
+			condition-immunities	= {Diseased, Poisoned},
+%			gear					= {Leather Armor, Light Crossbow, Scimitar},
+			senses					= {Passive Perception 16},
+			languages				= {Common, Sylvan},
+%			challenge				= -,
+			proficiency-bonus		= +4
 		]
 		
 		\DndMonsterSection{Traits}
@@ -56,54 +58,54 @@
 		The Hootsman can attack twice whenever he takes the Attack Action.
 		
 		\DndMonsterAttack[
-			name=Battleaxe,
-			distance=melee, % valid options are in the set {both,melee,ranged},
-			%type=weapon, %valid options are in the set {weapon,spell}
-			mod=+9,
-			reach=5,
-			%range=20/60,
-			targets=one target,
-			dmg=\DndDice{1d8 + 5},
-			dmg-type=slashing,
-			%plus-dmg=\DndDice{1d6},
-			%plus-dmg-type=poison,
-			or-dmg=\DndDice{1d10 + 5},
-			or-dmg-when={when used with two hands},
-			extra={. The creature hit with this attack must succeed on a DC 17 Constitution Saving Throw or is knocked prone},
+			name			= Battleaxe,
+			distance		= melee,	% valid options are in the set {both,melee,ranged}
+%			type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +9,
+			reach			= 5,
+%			range			= 20/60,
+			targets			= one target,
+			dmg				= \DndDice{1d8 + 5},
+			dmg-type		= Slashing,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+			or-dmg			= \DndDice{1d10 + 5},
+			or-dmg-when		= {when used with two hands},
+			extra			= {. The creature hit with this attack must succeed on a DC 17 Constitution Saving Throw or is knocked prone},
 		]
 		
 		\DndMonsterAttack[
-			name=Greataxe,
-			distance=melee, % valid options are in the set {both,melee,ranged},
-			%type=weapon, %valid options are in the set {weapon,spell}
-			mod=+9,
-			reach=5,
-			%range=20/60,
-			targets=one target,
-			dmg=\DndDice{1d12 + 5},
-			dmg-type=slashing,
-			%plus-dmg=\DndDice{1d6},
-			%plus-dmg-type=poison,
-			%or-dmg=\DndDice{1d10 + 5},
-			%or-dmg-when={when used with two hands},
-			extra={. Once per turn when the Hootsman hits a creature with this attack he can make another attack roll against another creature within 5 feet of the first target. On a hit the creature takes \DndDice{1d12} slashing damage},
+			name			= Greataxe,
+			distance		= melee,	% valid options are in the set {both,melee,ranged}
+%			type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +9,
+			reach			= 5,
+%			range			= 20/60,
+			targets			= one target,
+			dmg				= \DndDice{1d12 + 5},
+			dmg-type		= Slashing,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+%			or-dmg			= \DndDice{1d20},
+%			or-dmg-when		= {},
+			extra			= {. Once per turn when the Hootsman hits a creature with this attack he can make another attack roll against another creature within 5 feet of the first target. On a hit the creature takes \DndDice{1d12} slashing damage},
 		]
 		
 		\DndMonsterAttack[
-			name=Longbow,
-			distance=ranged, % valid options are in the set {both,melee,ranged},
-			%type=weapon, %valid options are in the set {weapon,spell}
-			mod=+7,
-			%reach=5,
-			range=150/600,
-			targets=one target,
-			dmg=\DndDice{1d8 + 2},
-			dmg-type=piercing,
-			%plus-dmg=\DndDice{1d6},
-			%plus-dmg-type=poison,
-			%or-dmg=\DndDice{1d10 + 5},
-			%or-dmg-when={when used with two hands},
-			extra={. A creature hit with this attack has its speed reduced by 10 feet, up to a maximum reduction of 10 feet},
+			name			= Longbow,
+			distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%			type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +7,
+%			reach			= 5,
+			range			= 150/600,
+			targets			= one target,
+			dmg				= \DndDice{1d8 + 2},
+			dmg-type		= Piercing,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+%			or-dmg			= \DndDice{1d20},
+%			or-dmg-when		= {},
+			extra			= {. A creature hit with this attack has its speed reduced by 10 feet, up to a maximum reduction of 10 feet},
 		]
 		
 		\DndMonsterSection{Bonus Action}

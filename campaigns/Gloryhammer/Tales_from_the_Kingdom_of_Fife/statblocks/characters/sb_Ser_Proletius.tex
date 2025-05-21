@@ -1,10 +1,11 @@
 \begin{DndMonster}[width=\textwidth + 8pt]{Ser Proletius}
 	\vspace*{-17.5pt}\begin{multicols}{2}
-		\DndMonsterType{Human Paladin (Lvl 10, Oath of the Crown), lawful good}
+		\DndMonsterType{Human Paladin (Lvl 10, Oath of the Crown), Lawful Good}
 		
 		% If you want to use commas in the key values, enclose the values in braces.
 		\DndMonsterBasics[
 			armor-class = {20 (Plate Armor, Shield)},
+			initiative	= +3,
 			hit-points  = {\DndDice{10d10 + 30}},
 			speed       = {30 ft.},
 		]
@@ -20,16 +21,17 @@
 		]
 		
 		\DndMonsterDetails[
-			saving-throws = {WIS +4, CHA +7},
-			skills = {Athletics +6, History +4, Insight +4, Intimidation +7, Persuasion +7},
-			%damage-vulnerabilities = {cold},
-			%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-			%damage-immunities = {poison},
-			senses = {Passive Perception 10},
-			%condition-immunities = {poisoned},
-			languages = {Common},
-			challenge = -,
-			proficiency-bonus=+4
+			saving-throws			= {WIS +4, CHA +7},
+			skills					= {Athletics +6, History +4, Insight +4, Intimidation +7, Persuasion +7},
+%			damage-vulnerabilities	= {Cold},
+%			damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+%			damage-immunities		= {Poison},
+%			condition-immunities	= {Poisoned},
+%			gear					= {Leather Armor, Light Crossbow, Scimitar},
+			senses					= {Passive Perception 10},
+			languages				= {Common},
+%			challenge				= -,
+			proficiency-bonus		= +4,
 		]
 		
 		\DndMonsterSection{Traits}	
@@ -42,6 +44,45 @@
 		\DndMonsterAction{Aura of Protection}
 		Ser Proletius and his allies within a 10-foot radius of him gains a +3 bonus to all saving throws. Also all have Immunity to the Frightened condition while in the area of effect.
 		
+		\DndMonsterSection{Actions}
+		\DndMonsterAction{Extra Attack}
+		Ser Proletius can attack twice whenever he takes the Attack Action.
+		
+		\DndMonsterAttack[
+			name			= Longsword,
+			distance		= melee,	% valid options are in the set {both,melee,ranged}
+%			type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +9,
+			reach			= 5,
+%			range			= 20/60,
+			targets			= one target,
+			dmg				= \DndDice{1d8 + 5},
+			dmg-type		= Slashing,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+			or-dmg			= \DndDice{1d10 + 5},
+			or-dmg-when		= {when used with two hands},
+			extra			= {. The creature hit with this attack has Disadvantage on its next attack roll before the start of Ser Proletius' next turn},
+		]
+		
+		\DndMonsterAttack[
+			name			= Javelin,
+			distance		= ranged, % valid options are in the set {both,melee,ranged},
+%			type			= weapon, %valid options are in the set {weapon,spell}
+			mod				= +9,
+%			reach			= 5,
+			range			= 30/120,
+			targets			= one target,
+			dmg				= \DndDice{1d6 + 5},
+			dmg-type		= Piercing,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+%			or-dmg			= \DndDice{1d20},
+%			or-dmg-when		= {},
+			extra			= {. A creature hit with this attack has its speed reduced by 10 feet, up to a maximum reduction of 10 feet},
+		]
+		
+		\DndMonsterSection{Spells}
 		\begin{DndMonsterSpells}
 			\item[Spellcasting] Ser Proletius is a 10th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). Ser Proletius has the following paladin spells prepared:
 			\DndInnateSpellLevel[1]{Aura of Vitality, Command, Compelled Duel, Divine Smite, Find Steed, Spirit Guardians, Warding Bond, Zone of Truth}
@@ -49,44 +90,6 @@
 			\DndMonsterSpellLevel[2][3]{Aid, Branding Smite, Find Steed, Prayer of Healing, Warding Bond, Zone of Truth}
 			\DndMonsterSpellLevel[3][2]{Aura of Vitality, Crusader's Mantle, Revivify, Spirit Guardians}
 		\end{DndMonsterSpells}
-		
-		\DndMonsterSection{Actions}
-		\DndMonsterAction{Extra Attack}
-		Ser Proletius can attack twice whenever he takes the Attack Action.
-		
-		\DndMonsterAttack[
-			name=Longsword,
-			distance=melee, % valid options are in the set {both,melee,ranged},
-			%type=weapon, %valid options are in the set {weapon,spell}
-			mod=+9,
-			reach=5,
-			%range=20/60,
-			targets=one target,
-			dmg=\DndDice{1d8 + 5},
-			dmg-type=slashing,
-			%plus-dmg=\DndDice{1d6},
-			%plus-dmg-type=poison,
-			or-dmg=\DndDice{1d10 + 5},
-			or-dmg-when={when used with two hands},
-			extra={. The creature hit with this attack has Disadvantage on its next attack roll before the start of Ser Proletius' next turn},
-		]
-		
-		\DndMonsterAttack[
-			name=Javelin,
-			distance=ranged, % valid options are in the set {both,melee,ranged},
-			%type=weapon, %valid options are in the set {weapon,spell}
-			mod=+9,
-			%reach=5,
-			range=30/120,
-			targets=one target,
-			dmg=\DndDice{1d6 + 5},
-			dmg-type=piercing,
-			%plus-dmg=\DndDice{1d6},
-			%plus-dmg-type=poison,
-			%or-dmg=,
-			%or-dmg-when=,
-			extra={. A creature hit with this attack has its speed reduced by 10 feet, up to a maximum reduction of 10 feet},
-		]
 		
 		\DndMonsterSection{Bonus Action}
 		\DndMonsterAction{Lay on Hands}

@@ -19,7 +19,7 @@ The Methven dwarves believe that drinking from the keg is a blessing of fortune 
 It is tradition among the dwarves that the keg be brought forth at grand unions and feasts of great joy, for a wedding without chaos is a wedding doomed to boredom. Legends claim the first Grandmaster of Crail himself drank from its frothy depths and spent an entire evening levitating uncontrollably while composing a ballad about cheese wheels - a song still sung in dwarven halls to this day.}
 \begin{tikzpicture}[remember picture, overlay]%
 	\node[xshift=0.25cm, yshift=-0.25cm, anchor=south east] at (current page.south east) {\includegraphics[width=.5\paperwidth]{%
-		images/Others/Pocket_Meat_Pie%
+		images/Props/Pocket_Meat_Pie%
 	}};%
 \end{tikzpicture}%
 \begin{DndTable}[header=Magical Effects]{cX}
@@ -66,26 +66,41 @@ Should one succumb to the Destiny Coma, they experience the following effect:}
 \vfill\eject
 
 \section*{Floating Goblets}\phantomsection\addcontentsline{toc}{section}{Floating Goblets}
-{\entryfont Tucked into a shadowed corner of the bustling grand plaza, a small table draws a lively crowd. Laughter, cheers, and playful jeers rise above the din, as people gather around what appears to be a simple game - yet there's a spark of excitement, and perhaps mischief, in the air.
+\begin{tikzpicture}[remember picture, overlay]%
+	\node[xshift=0.25cm, yshift=0.25cm, anchor=north east] at (current page.north east) {\includegraphics[width=.25\paperwidth]{%
+		images/Props/Hobgoblet_Shuffleboard%
+	}};%
+\end{tikzpicture}%
+{\entryfont Tucked into a shadowed corner of the bustling\\grand plaza, a small table draws a lively crowd.\\ Laughter, cheers, and playful jeers rise above\\the din, as people gather around what appears\\to be a simple game - yet there's a spark of\\excitement, and perhaps mischief, in the air.
 
-The "stall" is hosted by the charismatic Lady Belissa and the quick-tongued Sir Alrik the Swift, both commanding the crowd with practised flair and contagious energy. However, beneath their convincing appearances, these two are in fact the notorious Breeza and Arlen in masterful disguise.
+The "stall" is hosted by the charismatic\\Lady Belissa and the quick-tongued Sir Alrik the Swift, both commanding the crowd with practised flair and contagious energy. However, beneath their convincing appearances, these two are in fact the notorious Breeza and Arlen in masterful disguise.
 
 Only a successful DC 30 Wisdom (Insight) Check reveals subtle clues - a familiar piece of jewelry worn by "Belissa", or a fleeting speech quirk in "Alrik's" banter - hinting at their true identities beneath the disguises. To everyone else, they remain just another pair of colourful revellers adding their own brand of excitement to the festivities.}
 
 \subsection*{The Hobgoblet Shuffleboard}
-{\entryfont Players each take turns sliding a goblet down the polished table, aiming for marked scoring zones at the far end. The goal is to accumulate the highest total score over three rounds.}
+{\entryfont A Player Character and Alrik (Sleight of Hand +2) each take turns sliding a goblet down the polished table (Dexterity Sleight of Hand Check), aiming for marked scoring zones at the far end. The goal is to accumulate the highest total score over three rounds.}
 
 \begin{DndTable}[header=Shuffleboard Scoring]{lXX}
-\textbf{Attack Roll}		& \textbf{Location}		& \textbf{Points}		\\
-less than 8				& Too Short				& 0						\\
-8+						& First Zone				& 1						\\
-12+						& Second Zone			& 2						\\
-16+						& Third Zone				& 3						\\
-NAT20					& Right on the Edge		& 3	- chance to cheat	\\
-20+						& Too Long				& 0						\\
+\textbf{Roll}	& \textbf{Location}		& \textbf{Points}		\\
+less than 8		& Too Short				& 0						\\
+8+				& First Zone			& 1						\\
+12+				& Second Zone			& 2						\\
+16+				& Third Zone			& 3						\\
+NAT20			& Right on the Edge		& 3	- chance to cheat	\\
+20+				& Too Long				& 0						\\
 \end{DndTable}
 
-{\entryfont \paragraph*{Cheating} The hosts still cannot move away from their cheating ways and again created a sophisticated cheating mechanism to turn the odds in their favour. The table can be tilted by Belissa to ensure Alrik's goblet either moves further into a higher scoring zone or not falling from the table and stopping right at the end.}
+{\entryfont \paragraph*{Cheating} The hosts still cannot move away from their cheating ways and again created a sophisticated cheating mechanism to turn the odds in their favour. The table can be tilted by Belissa to ensure a goblet either moving further - even off the table - or stopping earlier than expected.
+
+Whenever Sir Alrik takes his turn, Lady Belissa subtly tilts the table at just the right moment, allowing her to adjust Alrik’s roll by $\pm 2$. Additionally, if an opponent rolls a natural 20, Belissa can discreetly interfere - shifting the balance of the table just enough to cause the goblet to veer off and fall, nullifying what would have been a perfect shot.
+
+The player or a bystander can notice this kind of cheating with a successful DC 15 Wisdom (Perception) Check and possibly intervene.}\\\\
+{\entryfont \paragraph*{Fleeing Revellers} If the players catch Belissa and Alrik cheating, they slip into the crowd and vanish, leaving behind a small pouch of valuable:
+\begin{itemize}
+	\item 75GP
+	\item Cantrip Scroll of Minor Illusion
+\end{itemize}
+}
 
 \vfill\clearpage
 

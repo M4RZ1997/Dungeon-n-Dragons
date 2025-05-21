@@ -1,9 +1,10 @@
 \begin{DndMonster}[width=0.5\textwidth]{Hamish McGregor}
-	\DndMonsterType{Human Bard, chaotic good}
+	\DndMonsterType{Human Bard, Chaotic Good}
 	
 	% If you want to use commas in the key values, enclose the values in braces.
 	\DndMonsterBasics[
 		armor-class = {9 (Leather Armor)},
+		initiative	= -2,
 		hit-points  = {\DndDice{1d8 + 2}},
 		speed       = {30 ft.},
 	]
@@ -19,15 +20,17 @@
 	]
 	
 	\DndMonsterDetails[
-		saving-throws = {DEX +0, CHA +7},
-		skills = {Acrobatics +0, Performance +7, Survival +4},
-		%damage-vulnerabilities = {cold},
-		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-		%damage-immunities = {poison},
-		senses = {Passive Perception 12},
-		%condition-immunities = {poisoned},
-		languages = {Common},
-		challenge = 1/4,
+		saving-throws			= {DEX +0, CHA +7},
+		skills					= {Acrobatics +0, Performance +7, Survival +4},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Passive Perception 12},
+		languages				= {Common},
+%		challenge				= -,
+%		proficiency-bonus		= +2,
 	]
 	
 	\DndMonsterSection{Traits}
@@ -37,46 +40,47 @@
 	\DndMonsterAction{Encouraging Song}
 	Whenever Hamish finishes a Short or Long Rest he can use an instrument he is proficient with and give Heroic Inspiration to up to 2 allies that can hear the song.
 	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Dagger,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +0,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d4 - 2},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterAttack[
+		name			= Shortbow,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +0,
+%		reach			= 5,
+		range			= 80/320,
+		targets			= one target,
+		dmg				= \DndDice{1d6 - 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterSection{Spells}
 	\begin{DndMonsterSpells}
 		\item[Spellcasting] Hamish McGregor can cast the following spells using Charisma as the spellcasting ability (spell save DC 15, +7 to hit with spell attacks):
 		\DndInnateSpellLevel{Dancing Lights, Vicious Mockery}
 		\DndMonsterSpellLevel[1][2]{Charm Person, Disguise Self, Faerie Fire, Unseen Servant}
 	\end{DndMonsterSpells}
-	
-	\DndMonsterSection{Actions}	
-	\DndMonsterAttack[
-		name=Dagger,
-		distance=melee, % valid options are in the set {both,melee,ranged},
-		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+0,
-		reach=5,
-		%range=20/60,
-		targets=one target,
-		dmg=\DndDice{1d4 - 2},
-		dmg-type=slashing,
-		%plus-dmg=\DndDice{1d6},
-		%plus-dmg-type=poison,
-		%or-dmg=,
-		%or-dmg-when=,
-		%extra={},
-	]
-	
-	\DndMonsterAttack[
-		name=Shortbow,
-		distance=ranged, % valid options are in the set {both,melee,ranged},
-		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+0,
-		%reach=5,
-		range=80/320,
-		targets=one target,
-		dmg=\DndDice{1d6 - 2},
-		dmg-type=piercing,
-		%plus-dmg=\DndDice{1d6},
-		%plus-dmg-type=poison,
-		%or-dmg=,
-		%or-dmg-when=,
-		%extra={},
-	]
 	
 	\DndMonsterSection{Bonus Action}
 	\DndMonsterAction{Bardic Inspiration (5 / Long Rest)}
