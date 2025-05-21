@@ -29,8 +29,8 @@
     borderline~north = {2pt} {0.5pt} {rulered},
     borderline~south = {3pt} {0pt}   {black},
     borderline~south = {2pt} {0.5pt} {rulered},
-    colback          = lightgray,
-    colbacktitle     = lightgray,
+    colback          = statblockbg,
+    colbacktitle     = statblockbg,
     colframe         = titlered,
     fonttitle        = \DndFontTrapTitle,
     coltitle         = titlered,
@@ -72,13 +72,6 @@
     nosep,
   }
 
-% Only prints the item label if the value was supplied
-\cs_new_protected_nopar:Npn \__dnd_if_trap_attribute:nn #1#2
-  {
-    \tl_if_empty:NF {#1}
-      { \item [#2] #1 }
-  }
-
 %% Trap basics
 \keys_define:nn { dnd / trap / basics }
   {
@@ -88,22 +81,54 @@
   	skill		.tl_set:N			= \l__skill_tl,
   	skill		.initial:n			= Dexterity,
   	skill		.value_required:n	= true,
-  	damage_value	.tl_set:N			= \l__damage_value_tl,
-  	damage_value	.initial:n			= 0,
-  	damage_value	.value_required:n	= false,
-  	damage_type	.tl_set:N			= \l__damage_type_tl,
-  	damage_type	.initial:n			= {Damage Type},
-	damage_type	.value_required:n	= false,
+  	pos_reaction.tl_set:N			= \l__pos_reaction_tl,
+  	pos_reaction.initial:n			= -,
+  	pos_reaction.value_required:n	= false,
+  	neg_reaction.tl_set:N			= \l__neg_reaction_tl,
+  	neg_reaction.initial:n			= -,
+  	neg_reaction.value_required:n	= false,
+  	damage		.tl_set:N			= \l__damage_tl,
+  	damage		.initial:n			= -,
+  	damage		.value_required:n	= false,
   }
+  
+\cs_new_protected_nopar:Npn \__dnd_trap_dcskill:
+{
+	\vspace*{-7.5em}
+	\begin{tikzpicture}
+		\node at (0,0) {};
+		\draw[line~width = 1pt, fill=statblockbg]
+			(7,0) -- (7.07,0)
+			.. controls (7.33,-0.22) and (7.53,-0.28) .. (8,-0.24)
+			.. controls (8.01,-1) and (7.73,-2) .. (7,-2.25)
+			.. controls (6.27,-2) and (5.99,-1) .. (6,-0.24)
+			.. controls (6.47,-0.28) and (6.67,-0.22) .. (6.93,0)
+			-- cycle;
+		\draw[line~width = 1pt, statblockoutline]
+			(7,-0.25)
+			.. controls (7.25,-0.47) and (7.40,-0.53) .. (7.75,-0.5)
+			.. controls (7.76,-1) and (7.55,-1.75) .. (7,-1.75)
+			.. controls (6.45,-1.75) and (6.24,-1) .. (6.25,-0.5)
+			.. controls (6.60,-0.53) and (6.75,-0.47) .. (7,-0.25)
+			-- cycle;
+		\draw[line~width = 2pt]
+			(5.5,-1.5) -- (8.5,-1.5) -- (8.5,-2) -- (5.5,-2) -- cycle;
+		\draw[line~width = 1pt, rulered, fill=statblockbg]
+			(5.5,-1.5) -- (8.5,-1.5) -- (8.5,-2) -- (5.5,-2) -- cycle;
+		\node[fill=statblockbg, inner~sep=0.5pt] at (6.35,-0.45) {\digitalfont DC};
+		\node at (7,-1) {\digitalfont\LARGE \l__save_dc_tl};
+		\node at (7,-1.75) {\entryfont\footnotesize \l__skill_tl};
+	\end{tikzpicture}
+}
 
 \cs_new_protected_nopar:Npn \__dnd_trap_basics:
-  {
-      \begin {__dnd_quest_attributes}
-        \item [DC] \entryfont\l__save_dc_tl
-        \item [Skill] \entryfont\l__skill_tl
-        \item [Damage] \entryfont\l__damage_value_tl\ \l__damage_type_tl
-      \end {__dnd_quest_attributes}
-  }
+{
+	\begin {__dnd_quest_attributes}
+		\item [Positive~Reaction] \entryfont\l__pos_reaction_tl
+		\item [Negative~Reaction] \entryfont\l__neg_reaction_tl
+		\item [Damage] \entryfont\l__damage_tl
+	\end {__dnd_quest_attributes}
+}
 
 \NewDocumentCommand {\DndTrapBasics} {o}
   {
@@ -112,6 +137,7 @@
       \DndTrapLine
       \__dnd_trap_basics:
       \DndTrapLine
+      \__dnd_trap_dcskill:
     \group_end:
   }
 \ExplSyntaxOff % Switch-Off Kernel Mode
