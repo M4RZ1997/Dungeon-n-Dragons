@@ -160,12 +160,25 @@
     speed .tl_set:N         = \l__speed_tl,
     speed .initial:n        = 30 ~ \unitsname,
     speed .value_required:n = true,
+    initiative .tl_set:N         = \l__initiative_tl,
+    initiative .initial:n        = 0,
+    initiative .value_required:n = true,
   }
 
 \cs_new_protected_nopar:Npn \__dnd_monster_basics:
   {
       \begin {__dnd_monster_attributes}
-        \item [\armorclassname] \l__armor_class_tl
+        \item [\armorclassname]
+        {
+			\begin{minipage}[t]{.5\linewidth}
+				\l__armor_class_tl
+			\end{minipage}%
+			\hfill
+			\begin{minipage}[t]{.3\linewidth}
+				\raggedleft
+				\textbf{\initiativename}~\l__initiative_tl\ (\fp_eval:n { 10 + \l__initiative_tl })
+			\end{minipage}
+		}
         \item [\hitpointsname]  \l__hit_points_tl
         \item [\speedname]      \l__speed_tl
       \end {__dnd_monster_attributes}
@@ -259,6 +272,8 @@
   condition-immunities .tl_set:N         = \l__condition_immunities_tl,
   condition-immunities .value_required:n = true,
   conditionimmunities .meta:n = { condition-immunities = {#1} },
+  gear .tl_set:N         = \l__gear_tl,
+  gear .value_required:n = true,
   senses .tl_set:N         = \l__senses_tl,
   senses .initial:n        = \defaultsensesname,
   senses .value_required:n = true,
@@ -266,7 +281,7 @@
   languages .initial:n        = -,
   languages .value_required:n = true,
   challenge .tl_set:N         = \l__challenge_tl,
-  challenge .initial:n        = 1,
+  challenge .initial:n        = -,
   challenge .value_required:n = true,
   proficiency-bonus .tl_set:N = \l__proficiency_bonus_tl,
   proficiency-bonus .value_required:n = true,
@@ -282,6 +297,7 @@
       \__dnd_if_monster_attribute:nn {\l__damage_resistances_tl}     {\dresname}
       \__dnd_if_monster_attribute:nn {\l__damage_immunities_tl}      {\dimmname}
       \__dnd_if_monster_attribute:nn {\l__condition_immunities_tl}   {\cimmname}
+      \__dnd_if_monster_attribute:nn {\l__gear_tl}   {\gearname}
       \item [\sensesname]    \l__senses_tl
       \item [\languagesname] \l__languages_tl
       \item [\challengename] 
@@ -476,6 +492,49 @@
       ]
     \DndEmphSpellString{#3}
   }
+  
+%% Monster spell actions
+\tl_new:N \l__save_skill_tl
+
+\keys_define:nn { dnd / monster / spell }
+{
+	name		.tl_set:N			= \l__name_tl,
+	name		.value_required:n	= true,
+	save_skill	.choice:,
+	save_skill	.choices:nn	=
+		{ Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma }
+		{ \tl_set:Nn \l__save_skill_tl {\l_keys_choice_tl} },
+	save_skill	.initial:n			= Wisdom,
+	save_dc		.tl_set:N			= \l__save_dc_tl,
+	save_dc		.value_required:n	= true,
+	targets		.tl_set:N			= \l__targets_tl,
+	targets		.value_required:n	= true,
+	failure		.tl_set:N			= \l__failure_tl,
+	failure		.value_required:n	= true,
+	success		.tl_set:N			= \l__success_tl,
+	success		.value_required:n	= true,
+}
+
+\cs_new_protected:Npn \__dnd_monster_spell:
+{
+	\__dnd_check_for_key:Nnn \l__name_tl {\DndMonsterSpell} {name}
+
+	\begin{DndMonsterAction} {\l__name_tl}~
+		 \textit{ \l__save_skill_tl\ Saving ~ Throw: } ~ DC ~ \l__save_dc_tl, ~ \l__targets_tl .
+		 \\
+		 \textit{Failure:}~\l__failure_tl
+		 \\
+		 \textit{Success:}~\l__success_tl
+	\end{DndMonsterAction}
+}
+
+\NewDocumentCommand {\DndMonsterSpell} {o}
+{
+	\group_begin:
+		\keys_set:nn { dnd / monster / spell } {#1}
+		\__dnd_monster_spell:
+	\group_end:
+}
 
 %% Monster attacks
 \tl_new:N \l__dnd_attack_distance_tl
@@ -608,6 +667,36 @@
       \__dnd_monster_attack:
     \group_end:
   }
+  
+%% Monster Reaction
+\keys_define:nn { dnd / monster / reaction }
+{
+	name		.tl_set:N			= \l__name_tl,
+	name		.value_required:n	= true,
+	trigger		.tl_set:N			= \l__trigger_tl,
+	trigger		.value_required:n	= true,
+	response	.tl_set:N			= \l__response_tl,
+	response	.value_required:n	= true,
+}
+
+\cs_new_protected:Npn \__dnd_monster_reaction:
+{
+	\__dnd_check_for_key:Nnn \l__name_tl {\DndMonsterReaction} {name}
+
+	\begin{DndMonsterAction} {\l__name_tl}~
+		 \textit{Trigger:}~\l__trigger_tl
+		 \\
+		 \textit{Response:}~\l__response_tl
+	\end{DndMonsterAction}
+}
+
+\NewDocumentCommand {\DndMonsterReaction} {o}
+{
+	\group_begin:
+		\keys_set:nn { dnd / monster / reaction } {#1}
+		\__dnd_monster_reaction:
+	\group_end:
+}
 
 %% Legendary Actions
 
