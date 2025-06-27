@@ -512,7 +512,21 @@
 	failure		.tl_set:N			= \l__failure_tl,
 	failure		.value_required:n	= true,
 	success		.tl_set:N			= \l__success_tl,
-	success		.value_required:n	= true,
+	success		.value_required:n	= false,
+	extra		.tl_set:N			= \l__extra_tl,
+	extra		.value_required:n	= false,
+}
+
+\cs_new_protected:Npn \__dnd_if_success_spell:
+{
+	\tl_if_empty:NF {\l__success_tl}
+	{ \\\textit{Success:}~\l__success_tl }
+}
+
+\cs_new_protected:Npn \__dnd_if_extra_spell:
+{
+	\tl_if_empty:NF {\l__extra_tl}
+	{ \\\indent\l__extra_tl }
 }
 
 \cs_new_protected:Npn \__dnd_monster_spell:
@@ -520,11 +534,11 @@
 	\__dnd_check_for_key:Nnn \l__name_tl {\DndMonsterSpell} {name}
 
 	\begin{DndMonsterAction} {\l__name_tl}~
-		 \textit{ \l__save_skill_tl\ Saving ~ Throw: } ~ DC ~ \l__save_dc_tl, ~ \l__targets_tl .
-		 \\
-		 \textit{Failure:}~\l__failure_tl
-		 \\
-		 \textit{Success:}~\l__success_tl
+		\textit{ \l__save_skill_tl\ Saving ~ Throw: } ~ DC ~ \l__save_dc_tl, ~ \l__targets_tl .
+		\\
+		\textit{Failure:}~\l__failure_tl
+		\__dnd_if_success_spell:
+		\__dnd_if_extra_spell:
 	\end{DndMonsterAction}
 }
 

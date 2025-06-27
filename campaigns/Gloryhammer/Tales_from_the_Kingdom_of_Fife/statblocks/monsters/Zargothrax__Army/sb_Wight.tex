@@ -1,0 +1,90 @@
+\begin{DndMonster}[width=0.5\textwidth]{Wight\phantomsection\addcontentsline{toc}{section}{Wight}\label{monster:Wight}}
+	\DndMonsterType{Medium Undead, Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {14},
+		initiative	= +4,
+		hit-points  = {\DndDice{11d8 + 33}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 15,
+		dex = 14,
+		con = 16,
+		int = 10,
+		wis = 13,
+		cha = 15,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+		skills					= {Perception +3, Stealth +4},
+%		damage-vulnerabilities	= {cold},
+		damage-resistances		= {Necrotic},
+		damage-immunities		= {Poison},
+		condition-immunities	= {Exhaustion, Poisoned},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 60 ft., Passive Perception 13},
+		languages				= {Common, Primordial},
+		challenge				= 3,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+    \DndMonsterAction{Sunlight Sensitivity}
+	While in sunlight, the wight has Disadvantage on ability checks and attack rolls.
+	
+	\DndMonsterAction{Undead Nature}
+	The wight doesn't require food, air, drink, or sleep.
+	
+	\DndMonsterSection{Actions}	
+	\DndMonsterAction{Multiattack}
+	The wight makes two attacks, using Necrotic Sword or Necrotic Bow in any combination. It can replace one attack with a use of Life Drain.
+	
+	\DndMonsterAttack[
+		name			= Necrotic Sword,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Slashing,
+		plus-dmg		= \DndDice{1d8},
+		plus-dmg-type	= Necrotic,
+%		or-dmg			= \DndDice{1d10 + 2},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterAttack[
+		name			= Necrotic Bow,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+%		reach			= 5,
+		range			= 150/600,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{1d8},
+		plus-dmg-type	= Necrotic,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterSpell[
+		name		= Life Drain,
+		save_skill	= Constitution,
+		save_dc		= 13,
+		targets		= {one creature within 5 feet},
+		failure		= {\DndDice{1d8 + 2} Necrotic damage, and the target's Hit Point maximum decreases by an amount equal to the damage taken.},
+%		success		= {},
+		extra		= {A Humanoid slain by this attack rises 24 hours later as a Zombie under the wight's control, unless the Humanoid is restored to life or its body is destroyed. The wight can have no more than twelve zombies under its control at a time},
+	]
+\end{DndMonster}

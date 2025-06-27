@@ -1,0 +1,57 @@
+\begin{DndMonster}[width=0.5\textwidth]{Bandit Berserker\phantomsection\addcontentsline{toc}{section}{Bandit Berserker}\label{monster:BanditBerserker}}
+	\DndMonsterType{Medium or Small Humanoid, Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {13},
+		initiative	= +1,
+		hit-points  = {\DndDice{9d8 + 27}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 16,
+		dex = 12,
+		con = 17,
+		int = 9,
+		wis = 11,
+		cha = 9,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+%		skills					= {Nature +4, Perception +5, Stealth +6, Survival +5},
+%		damage-vulnerabilities	= {cold},
+%		damage-resistances		= {necrotic},
+%		damage-immunities		= {poison},
+%		condition-immunities	= {Poisoned},
+		gear					= {Greataxe, Hide Armor},
+		senses					= {Passive Perception 10},
+		languages				= {Common, Thieves' Cant},
+		challenge				= 2,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Bloodied Frenzy}
+	While Bloodied the berserker has Advantage on attack rolls and saving throws.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Greataxe,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d12 + 3},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20 + 2},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+\end{DndMonster}

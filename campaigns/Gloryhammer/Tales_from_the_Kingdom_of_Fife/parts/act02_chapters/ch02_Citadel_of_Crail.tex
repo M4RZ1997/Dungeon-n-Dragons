@@ -1,1 +1,92 @@
 \chapter*{Citadel of Crail}\stepcounter{chapter}\phantomsection\addcontentsline{toc}{chapter}{Citadel of Crail}
+
+\DndDropCapLine{R}{\entryfont ising like a bastion of defiance between the wind-scoured cliffs of the Eagle Mountains and the storm-lashed shores of the North Sea, the Citadel of Crail stands as an indomitable guardian of the Firth of Forth. Hewn from black stone and crowned with soaring battlements, it serves as both a military stronghold and the revered home of the legendary Knights of Crail. From its towering walls, vigilant sentinels keep watch over the waves and the mountain passes alike, ever ready to repel invaders and uphold their sacred oath to defend the Kingdom of Fife.}
+
+\subsection*{A Feathered Friend}
+{\entryfont If the party rescued and freed the owlbear cub during their encounter with the Crimson Paw Bandits, the feathered beast will approach them shortly before they can enter the Citadel of Crail. Its golden eyes gleam with recognition, and a low, affectionate hoot rumbles from its beak as it presses its weight into a party member's side. Should the party choose to bond further with the cub, it will follow them, ready to fight by their side.}
+
+\section*{The Missing Matriarch}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{The Missing Matriarch}
+\begin{DndQuestHook}[width=0.5\textwidth - 4pt]{The Great Eagles}
+	\DndQuestHookBasics[
+		location = {Citadel of Crail},
+		quest-giver = {Quartermaster of Crail and Ser Proletius},
+		objective = {Find out what happened to the Great Eagle's matriarch},
+	]
+	
+	{%
+		\noindent\entryfont The party overhears the quartermaster mentioning her worries about "", the matriarch of the Great Eagles, hasn't been seen for two weeks and she worries something bad happened to her.
+	}%
+	
+	\DndQuestRewards{Upon successfully retrieving the Awakened Shrubs, the Firbolg will reward the party with the following items:}
+	{%
+		{Players' Bastion}{see next section}%
+	}%
+\end{DndQuestHook}
+
+\section*{Players' Bastion}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Players' Bastion}
+{\entryfont DMG p.334 ff.}
+\subsection*{Special Facilities}
+{\entryfont%
+	\begin{itemize}
+		\item Arcane Study (Ability to use Arcane Focus or Tool as a Spellcasting Focus)
+		\item Armory (X)
+		\item Barrack (X)
+		\item Garden
+		\item Library (Fixed)
+		\item Sanctuary (Ability to use Holy Symbol or Druidic Focus as a Spellcasting Focus)
+		\item Smithy
+		\item Storehouse
+		\item Workshop
+	\end{itemize}
+}%
+\subsection*{Changes to Official Rules}
+{\entryfont Given the bastion's urban location and the protection of the city guard, the bastion functions differently from typical frontier fortresses or wilderness bastions. The following changes apply to the standard bastion rules found in the Dungeon Master's Guide (2024 Edition), p.334 ff.:}
+\subsubsection*{Double the Events}
+{\entryfont During each Bastion Turn, two Bastion Events are rolled instead of one. This reflects the dynamic and politically charged nature of Crail's citadel, where court intrigues, merchant rivalries, and street-level rumours abound.}
+\subsubsection*{Replacing Attacks with Thefts}
+{\entryfont Due to the bastion's secure location within Crail's citadel, large-scale attacks are not plausible. Instead, Thefts replace standard Attack Events. When a Theft occurs:
+\begin{itemize}
+	\item Roll as normal for an Attack event to determine how many successes and failures the bastion has (based on Bastion Defender presence and traits).
+	\item For each 1 rolled on the event dice, the bastion suffers a successful theft unless a Bastion Defender is present. Such a Defender is then removed from the bastion.
+	\begin{itemize}
+		\item If no Defender is present, the bastion's treasury is reduced by 1d6 × 100 GP per 1 rolled.
+		\item If the die (1d6) also results in a 1, a valuable or magical item may be stolen:
+		\begin{itemize}
+			\item This could be a decorative item on display (e.g., enchanted artwork, ceremonial armour, fine jewellery).
+			\item Or it could be a magic item stored in the bastion and not actively carried or worn by the players.
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+}
+\begingroup
+	\DndSetThemeColor[PhbTan]
+	\begin{DndComment}{DM Annotation}
+		The DM selects a suitable item or uses a random table, and may allow recovery attempts via urban investigation, seedy contacts, or market tracking.
+	\end{DndComment}
+\endgroup
+\paragraph*{Theft Discourages Visitors}
+{\entryfont If the bastion was subjected to a successful theft, no friendly NPCs will visit the bastion during the next Bastion Turn. Word travels fast in Crail, and few wish to associate with a location rumoured to be unsecured or under scrutiny by the city's less savory elements. Instead the events \textbf{Extraordinary Opportunity}, \textbf{Friendly Visitors}, and \textbf{Guests} are replaced by the \textbf{All is Well} event.}
+\subsection*{Layout Example (4 Players)}
+\hspace*{-0.35em}\begin{tikzpicture}%
+	\node at (0,0) {};
+	\node[anchor=north west, inner sep=0pt] at (0,0) {\includegraphics[width=\columnwidth]{%
+		images/Maps/Players__Bastion%
+	}};%
+	
+	\begin{scope}[scale=0.25, yshift=-24cm]
+		\pgfmathsetmacro{\IndicatorSize}{7*\scaleFactor}%
+		\resetIndicatorCounter
+		
+		\indicatorNumberField[10]{(10,11)}{\IndicatorSize}
+		\indicatorNumberField[10]{(20,8)}{\IndicatorSize}
+		\indicatorNumberField[10]{(28,6)}{\IndicatorSize}
+		\indicatorNumberField[10]{(25,14)}{\IndicatorSize}
+		\indicatorNumberField[10]{(24,19)}{\IndicatorSize}
+		\indicatorNumberField[10]{(32,13)}{\IndicatorSize}
+	\end{scope}
+\end{tikzpicture}%
+\subsubsection*{\inTextCircled[10]{1}{8} Sleeping Quarters (cramped)}
+\subsubsection*{\inTextCircled[10]{2}{8} Parlor (roomy)}
+\subsubsection*{\inTextCircled[10]{3}{8} Kitchen (cramped - roomy)}
+\subsubsection*{\inTextCircled[10]{4}{8} Library (cramped)}
+\subsubsection*{\inTextCircled[10]{5}{8}/\inTextCircled[10]{6}{8} Empty Special Facilities (cramped)}

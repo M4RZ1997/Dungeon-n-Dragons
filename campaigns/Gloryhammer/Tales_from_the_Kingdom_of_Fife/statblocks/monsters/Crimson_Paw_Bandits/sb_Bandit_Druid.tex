@@ -1,0 +1,81 @@
+\begin{DndMonster}[width=0.5\textwidth]{Bandit Druid\phantomsection\addcontentsline{toc}{section}{Bandit Druid}\label{monster:BanditDruid}}
+	\DndMonsterType{Medium or Small Humanoid (Druid), Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {13},
+		initiative	= +1,
+		hit-points  = {\DndDice{8d8 + 8}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 10,
+		dex = 12,
+		con = 13,
+		int = 12,
+		wis = 16,
+		cha = 11,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+		skills					= {Medicine +5, Nature +3, Perception +5},
+%		damage-vulnerabilities	= {cold},
+%		damage-resistances		= {necrotic},
+%		damage-immunities		= {poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Studded Leather Armor},
+		senses					= {Passive Perception 15},
+		languages				= {Common, Druidic, Thieves' Cant},
+		challenge				= 2,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The druid makes two attacks, using Vine Staff or Verdant Wisp in any combination.
+	
+	\DndMonsterAttack[
+		name			= Vine Staff,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= {+5},
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 3},
+		dmg-type		= Bludgeoning,
+		plus-dmg		= \DndDice{1d4},
+		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterAttack[
+		name			= Verdant Wisp,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+		type			= spell,	% valid options are in the set {weapon,spell}
+		mod				= {+5},
+%		reach			= 5,
+		range			= 90,
+		targets			= one target,
+		dmg				= \DndDice{3d6},
+		dmg-type		= Radiant,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Spellcasting] The Druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). It has the following druid spells prepared:
+		\DndMonsterSpellLevel{Druidcraft, Speak with Animals}
+		\DndMonsterSpellLevel[1][4]{Snare, Thunderwave}
+		\DndMonsterSpellLevel[2][3]{Animal Messenger, Longstrider, Moonbeam}
+	\end{DndMonsterSpells}
+\end{DndMonster}

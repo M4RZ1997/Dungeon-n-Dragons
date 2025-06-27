@@ -1,0 +1,77 @@
+\begin{DndMonster}[width=0.5\textwidth]{Modron Quadrone\phantomsection\addcontentsline{toc}{section}{Modron Quadrone}\label{monster:ModronQuadrone}}
+	\DndMonsterType{Medium Construct, Lawful Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16},
+		initiative	= +2,
+		hit-points  = {\DndDice{4d8 + 4}},
+		speed       = {30 ft., Fly 30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 12,
+		dex = 14,
+		con = 12,
+		int = 10,
+		wis = 10,
+		cha = 11,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {DEX +4},
+		skills					= {Perception +2},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+		condition-immunities	= {Charmed},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Truesight 120 ft., Passive Perception 12},
+		languages				= {Modron},
+		challenge				= 1,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Disintegration}
+	If the modron dies, it disintegrates into dust, leaving behind anything it was wearing or carrying.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The modron makes four Slam attacks or four Gears Launcher attacks.
+	
+	\DndMonsterAttack[
+		name			= Slam,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+		reach			= 5,
+%		range			= 120,
+		targets			= one target,
+		dmg				= \DndDice{1d4 + 2},
+		dmg-type		= Force,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {},
+	]
+	
+	\DndMonsterAttack[
+		name			= Gears Launcher,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+%		reach			= 5,
+		range			= 320,
+		targets			= one target,
+		dmg				= \DndDice{1d4 + 2},
+		dmg-type		= Force,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {},
+	]
+\end{DndMonster}

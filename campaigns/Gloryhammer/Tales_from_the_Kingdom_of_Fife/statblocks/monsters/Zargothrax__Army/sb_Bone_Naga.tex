@@ -1,0 +1,73 @@
+\begin{DndMonster}[width=0.5\textwidth]{Bone Naga\phantomsection\addcontentsline{toc}{section}{Bone Naga}\label{monster:BoneNaga}}
+	\DndMonsterType{Large Undead, Neutral Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15},
+		initiative	= +3,
+		hit-points  = {\DndDice{10d10 + 10}},
+		speed       = {40 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 15,
+		dex = 16,
+		con = 12,
+		int = 16,
+		wis = 15,
+		cha = 15,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+%		skills					= {Athletics +4},
+%		damage-vulnerabilities	= {cold},
+%		damage-resistances		= {Necrotic},
+		damage-immunities		= {Poison},
+		condition-immunities	= {Charmed, Exhaustion, Paralyzed, Poisoned},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 60 ft., Passive Perception 12},
+		languages				= {Common, Primordial},
+		challenge				= 4,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Actions}
+    \DndMonsterAction{Martial Advantage}
+    The naga makes two Bite attacks. It can replace any attack with a use of Serpentine Gaze.
+    
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 3},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{2d6},
+		plus-dmg-type	= Necrotic,
+%		or-dmg			= \DndDice{1d10 + 2},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterSpell[
+		name		= Serpentine Gaze,
+		save_skill	= Wisdom,
+		save_dc		= 13,
+		targets		= {one creature the naga can see within 60 feet},
+		failure		= {\DndDice{3d6 + 3} Psychic damage, and the target has the Charmed condition until the start of the naga's next turn.},
+%		success		= {},
+	]
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The naga casts one of the following spells, requiring no Material components and using Intelligence as the spellcasting ability (Spell Save DC 13):
+		\DndInnateSpellLevel{Mage Hand, Thaumaturgy}
+		\DndInnateSpellLevel[1]{Command, Detect Thoughts, Lightning Bolt}
+	\end{DndMonsterSpells}
+	
+\end{DndMonster}

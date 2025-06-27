@@ -1,0 +1,57 @@
+\begin{DndMonster}[width=0.5\textwidth]{Modron Monodrone\phantomsection\addcontentsline{toc}{section}{Modron Monodrone}\label{monster:ModronMonodrone}}
+	\DndMonsterType{Medium Construct, Lawful Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15},
+		initiative	= +2,
+		hit-points  = {\DndDice{1d8 + 1}},
+		speed       = {30 ft., Fly 30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 10,
+		dex = 14,
+		con = 12,
+		int = 4,
+		wis = 10,
+		cha = 5,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {DEX +4},
+%		skills					= {Athletics +2, Perception +2, Stealth +4, Survival +2},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+		condition-immunities	= {Charmed},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Truesight 120 ft., Passive Perception 10},
+		languages				= {Modron},
+		challenge				= 1/8,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Disintegration}
+	If the modron dies, it disintegrates into dust, leaving behind anything it was wearing or carrying.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Gear,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Force,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {},
+	]
+\end{DndMonster}

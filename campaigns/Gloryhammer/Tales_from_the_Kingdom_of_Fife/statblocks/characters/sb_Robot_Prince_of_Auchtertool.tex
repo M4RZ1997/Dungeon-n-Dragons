@@ -1,0 +1,96 @@
+\begin{DndMonster}[width=\textwidth + 8pt]{Robot Prince of Auchtertool}
+	\vspace*{-17.5pt}\begin{multicols}{2}
+		\DndMonsterType{Warforged Artificer (Lvl 6, Armorer Infiltrator), Lawful Neutral}
+		
+		% If you want to use commas in the key values, enclose the values in braces.
+		\DndMonsterBasics[
+			armor-class = {18 (Splint Armor)},
+			initiative	= +2,
+			hit-points  = {\DndDice{6d8 + 18}},
+			speed       = {35 ft.},
+		]
+		
+		\renewcommand{\AbilityScoreSpacer}{~}
+		\DndMonsterAbilityScores[
+			str = 14,
+			dex = 14,
+			con = 16,
+			int = 18,
+			wis = 9,
+			cha = 12,
+		]
+		
+		\DndMonsterDetails[
+			saving-throws			= {Con +6, INT +7},
+			skills					= {Acrobatics +5, Arcana +7, Athletics +5, History +7, Investigation +7, Perception +2, Persuasion +4, Stealth +5},
+%			damage-vulnerabilities	= {Cold},
+			damage-resistances		= {Cold, Poison},
+%			damage-immunities		= {Poison},
+%			condition-immunities	= {Poisoned},
+%			gear					= {Leather Armor, Light Crossbow, Scimitar},
+			senses					= {Passive Perception 12},
+			languages				= {Common, Dwarvish, Gnomish},
+%			challenge				= -,
+			proficiency-bonus		= +3,
+		]
+		
+		\DndMonsterSection{Traits}	
+	    \DndMonsterAction{Winged Armor}
+		The Robot Prince of Auchtertool has a flying speed equal to his walking speed. He can use this feature to fly for up to 4 hours, all at once or in several shorter flights, each one using a minimum of 1 minute from the duration. If he is flying when the duration expires, he descends at a rate of 30 feet per round until he lands.
+		
+		The armor regains 2 hours of flying capability for every 12 hours it isn't in use.
+		
+		\DndMonsterAction{Dampening Field}
+		The Robot Prince of Auchtertool has advantage on Dexterity (Stealth) checks. If the armor normally imposes disadvantage on such checks, the advantage and disadvantage cancel each other, as normal.
+		
+		\DndMonsterSection{Actions}
+		\DndMonsterAction{Extra Attack}
+		The Robot Prince of Auchtertool can attack twice whenever he takes the Attack Action.
+		
+		\DndMonsterAttack[
+			name			= Armblade +2,
+			distance		= melee, % valid options are in the set {both,melee,ranged},
+%			type			= weapon, %valid options are in the set {weapon,spell}
+			mod				= +7,
+			reach			= 5,
+%			range			= 20/60,
+			targets			= one target,
+			dmg				= \DndDice{1d8 + 4},
+			dmg-type		= Slashing,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+%			or-dmg			= ,
+%			or-dmg-when		= {},
+%			extra			= {},
+		]
+		
+		\DndMonsterAttack[
+			name			= Lightning Launcher,
+			distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%			type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +7,
+%			reach			= 5,
+			range			= 90/300,
+			targets			= one target,
+			dmg				= \DndDice{1d6 + 4},
+			dmg-type		= Lightning,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+%			or-dmg			= \DndDice{1d20},
+%			or-dmg-when		= {},
+			extra			= {. Once per turn the Robot Prince of Auchtertool can deal an additional \DndDice{1d6} Lightning damage to a target hit with this attack},
+		]
+		
+		\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Spellcasting] The Robot Prince of Auchtertool is a 6th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 15, +7 to hit with spell attacks). He has the following artificer spells prepared:
+		\DndMonsterSpellLevel{Green-Flame Blade, Mending}
+		\DndMonsterSpellLevel[1][4]{Catapult, Detect Magic, Expeditious Retreat, Identify, Magic Missile, Thunderwave}
+		\DndMonsterSpellLevel[2][3]{Darkvision, Enhance Ability, Mirror Image, See Invisibility, Shatter}
+	\end{DndMonsterSpells}
+		
+		\DndMonsterSection{Bonus Action}
+		\DndMonsterAction{Armblade}
+		The Robot Prince of Auchtertool can retract the armblade into his forearm or extend it from there. While it is extended, he can use the weapon as if he was holding it, and he can't use that hand for other purposes.
+	\end{multicols}
+\end{DndMonster}

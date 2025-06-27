@@ -1,10 +1,10 @@
 % ------------------------------------------------------------------------------------------------- %
-%								resource_commands.sty  	Marcel Zauder 02/04/2023						%
+%								resource_commands.sty  	Marcel Zauder 02/04/2023					%
 % Stylesheet by Marcel                                                                              %
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
-% ------------------------------------------- Variables ------------------------------------------- %
-
+% ------------------------------------- Variables // Packages ------------------------------------- %
+%\usepackage{pgf}
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ---------------------------------- Letter, Notes  and Messages ---------------------------------- %
@@ -20,10 +20,10 @@
 	opacityback=0,
 	width=#2,
 	valign=center,
-	left=20pt, % Set left padding to zero
-	right=20pt, % Set right padding to zero
-	top=20pt, % Set top padding to zero
-	bottom=20pt, % Set bottom padding to zero
+	left=0.08#2,
+	right=0.08#2,
+	top=20pt,
+	bottom=20pt,
 	overlay={
 		\node[opacity=1, anchor=north west, inner sep=0pt, outer sep=0pt] at (frame.north west) {%
 			\includegraphics[width=#2, height=#3]{\PATH templates/utilities/images/letters-and-notes/#4}%
@@ -31,17 +31,52 @@
 	},%
 	#1
 }
+
+% WRITTEN NOTE
+%% BASICS
+\ExplSyntaxOn
+\keys_define:nn { dnd / written / basics }
+{
+	font			.tl_set:N          = \l__font_tl,
+	font			.initial:n         = \handwrittenfont,
+	font			.value_required:n  = false,
+	size			.tl_set:N          = \l__size_tl,
+	size			.initial:n         = 20,
+	size			.value_required:n  = false,
+	baselineskip	.tl_set:N          = \l__baselineskip_tl,
+	baselineskip	.initial:n         = 7,
+	baselineskip	.value_required:n  = false,
+}
+
+\NewDocumentCommand{\WrittenNote}{ ommmm }%
+{%
+	\group_begin:
+		\keys_set:nn { dnd / written / basics } {#1}
+		\node[inner~sep=0pt, outer~sep=0pt] {%
+			\begin{tikzpicture}%
+				\node [inner~sep=0pt] {%
+					\begin{weatheredNote}{#2}{\dimexpr 1.5\fontdimen6\font * (#3) + 40pt\relax}{#4}%
+						{\fontsize{\l__size_tl}{\l__baselineskip_tl}{\l__font_tl #5}}%
+					\end{weatheredNote}
+				};%
+			\end{tikzpicture}%
+		};%
+	\group_end:
+}%
+\ExplSyntaxOff
+
+%% DEPRECATED!!
 \newcommand{\handwrittenNote}[4]{
 	\node[inner sep=0pt, outer sep=0pt] {%
 		\begin{tikzpicture}%
 			\node [inner sep=0pt] {%
 				\begin{weatheredNote}{#1}{\dimexpr 1.5\fontdimen6\font * (#2) + 40pt\relax}{#3}%
-					{\fontsize{20}{7}{\notefont #4}}%
+					{\fontsize{20}{7}{\handwrittenfont #4}}%
 				\end{weatheredNote}
 			};%
 		\end{tikzpicture}%
 	};%
-}
+}%
 % ------------------------------------------------------------------------------------------------- %
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Newspaper #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %

@@ -1,6 +1,7 @@
 % ------------------------------------------------------------------------------------------------- %
 %                	      		  m4rz-fonts.sty  Marcel Zauder 09/08/2023	       	                %
 % Stylesheet by Marcel                                                                              %
+% Font Sources https://www.dafont.com/themes.php													%
 % ------------------------------------------------------------------------------------------------- %
 \usepackage{fontspec}
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
@@ -60,11 +61,18 @@
 % ------------------------------------------------------------------------------------------------- %
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Font for Notes  and Letters  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\newfontfamily\notefont{Copenhagen}[%
+% Fast Handwritten
+\newfontfamily\handwrittenfont{Copenhagen}[%
 	Path			=	\PATH templates/template_dnd/fonts/copenhagen/,%
 	Extension		=	.ttf,%
 	UprightFont		=	Copenhagen,%
 	BoldFont		=	Copenhagen%
+]%
+% Orderly Handwritten
+\newfontfamily\notefont{Dungeon}[%
+	Path			=	\PATH templates/template_dnd/fonts/dungeon/,%
+	Extension		=	.ttf,%
+	UprightFont		=	DUNGRG__%
 ]%
 % ------------------------------------------------------------------------------------------------- %
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %

@@ -194,6 +194,10 @@
 		\node at (char.center) {\makebox[0pt][c]{\fontsize{#3}{#3}\selectfont #2}};}}
 \robustify{\inTextCircled}
 
+\newcommand{\resetIndicatorCounter}{%
+	\setcounter{indicatorNumber}{1}
+}%
+
 %\newcommand{\indicatorNumberField}[1]{%
 %	\node[circle, fill=white, radius=0.2cm, draw, outer sep=0pt] at #1 {\scriptsize{\theindicatorNumber}};
 %	\stepcounter{indicatorNumber}
