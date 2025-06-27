@@ -1,0 +1,463 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{5e24 Test}
+
+\Class{Artificer}
+\Subclass{Superb}
+\Background{Mage of High Sorcery}
+\Race{Special}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{1} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{10}
+\DexterityRolledScore{10}
+\ConstitutionRolledScore{10}
+\IntelligenceRolledScore{10}
+\WisdomRolledScore{10}
+\CharismaRolledScore{10}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{}
+\PerceptionProficiency{}
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+\MaxHitPointsRolled{8} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{P}
+\Shields{P}
+
+\WeaponsProficiency{Clubs, Daggers, Darts, Javelins, Maces, Quarterstaffs, Scimitars, Sickles, Slings, Spears}
+\ToolsProficiency{Alchemist's Supplies, Carpenter's Tools, Mason's Tools, Smith's Tools, Thieves' Tools, Tinker's Tools, Bagpipes}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Quarterstaff}{Test}{STR}{P}{0}{1d6 b}{versatile (1d8)}
+\addWeaponStatistic{Handaxe}{Test}{STR}{P}{0}{1d6 s}{thrown, light}
+\addWeaponStatistic{Light Crossbow}{Test}{DEX}{P}{0}{1d8 p}{}
+\addWeaponStatistic{Magic Weapon}{Test}{INT}{P}{0}{divers}{any Weapon can be the Magic Weapon}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
+\AddClassFeature{A}{\textbf{Class Feature II}\\this and that}
+% SPECIES TRAITS
+\AddSpeciesFeature{A}{\textbf{Species Feature I}\\this and that}
+% FEATS
+\AddFeat{\textbf{Feat I}\\this and that}
+
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Age{}
+\Height{}
+\Weight{}
+\Eyes{}
+\Skin{}
+\Hair{}
+
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{11.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Character_Portrait.jpg} %
+	{%
+		{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis}{mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas.}
+	}%
+\Characterbackground{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+}
+\AlliesAndOrganizations{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi\linebreak
+}{
+	tristique.
+}
+\OrganizationName{DnD Organization}
+\OrganizationSymbol{images/Organisation.png}
+\AdditionalFeaturesAndTraits{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+}
+\Treasure{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+}
+\Alignment{True Neutral}
+
+\Ideals{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+}
+
+\Bonds{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+}
+
+\Flaws{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish, Draconic, Deep Speech, Undercommon, Thieves' Cant}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Alchemist's Tools, Mason's Tools, Carpenter's Tools, Thieves' Tools, Tinker's Tools
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Magic Item I}
+\addAttunedMagicItem{Magic Item II}
+\addAttunedMagicItem{Magic Item III}
+\addAttunedMagicItem{Magic Item IV}
+%% Gold
+\CP{10000}
+\SP{9}
+\EP{1}
+\GP{9000}
+\PP{100}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Blank}
+\SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{3}
+\ThirdLevelSpellSlotsTotal{3}
+\FourthLevelSpellSlotsTotal{3}
+\FifthLevelSpellSlotsTotal{3}
+\SixthLevelSpellSlotsTotal{2}
+\SeventhLevelSpellSlotsTotal{2}
+\EighthLevelSpellSlotsTotal{1}
+\NinthLevelSpellSlotsTotal{1}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+\addPreparedSpell{0}
+	{Conjure Minor Elemental}
+	{Action}
+	{120 Feet}
+	{T}
+	{}
+	{T}
+	{Evocation Boost}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Random Spell I}
+	{Reaction}
+	{300 Feet}
+	{T}
+	{T}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+\AddSpell{1}
+	{False}
+	{Random Unprepared Spell}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Random Spell 2}
+	{Bonus Action}
+	{300 Feet}
+	{}
+	{T}
+	{T}
+	{1d8 Fire Damage}
+	{S, M}
+\AddSpell{2}
+	{False}
+	{Random Unprepared Spell}
+	{V, S}
+
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+% SPELLCASTING PRE5E24 PAGE
+\renderoldspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Section 1}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+\subsection*{Subsection 1.1}
+Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare.
+\paragraph*{Paragraph 1.1.1}
+Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare.
+\subparagraph*{Subparagraph 1.1.1.1}
+Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas.
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader
+  {Spell Name}
+  {Spell Type}
+  {Bonus Action}
+  {Target}
+  {V, S, M}
+  {Duration}
+
+Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue.
+
+\subparagraph*{Cantrip Upgrade} Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique.
+
+\subsection*{Level X}
+
+\DndSpellHeader
+  {Spell Name}
+  {Spell Type}
+  {Bonus Action}
+  {Target}
+  {V, S, M}
+  {Duration}
+
+Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue.
+
+\subparagraph*{Using a Higher-Level Spell Slot} Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique.
+
+\vfill\eject
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Mace:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Rapier (Finesse):}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Quarterstaff (Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Mace:}}\\
+1d6 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Rapier (Finesse):}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d6 + STR-Modifier\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Quarterstaff (Versatile):}}\\
+1d6 (1d8) + STR-Modifier\\
+\indent Current Max (one-handed): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
+1d6 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}}
+
+\part*{Magic Items}
+
+\input{\PATH magic_items/Blank/Blank_Item/Blank_Item_input}
+
+\end{document}

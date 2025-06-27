@@ -23,7 +23,7 @@
 \Background{Feylost}
 \Race{Wechselkind}
 
-\Level{5}
+\Level{6}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
 
-\MaxHitPointsRolled{26} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{31} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d6}
@@ -120,16 +120,13 @@
 \addSpellStatistic{Chill Touch}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d10}{Necrotic, target can't regain hit points}
 \addSpellStatistic{Infestation}{DC}{\calculateModifier{\CharismaScoreValue}}{2d6}{Poison, must move if able, CON save}
 \addSpellStatistic{Mind Sliver}{DC}{\calculateModifier{\CharismaScoreValue}}{2d6}{Psychic, 1d4 malus on next saving throw}
-\addSpellStatistic{Chromatic Orb}{ATK}{\calculateModifier{\CharismaScoreValue}}{3d8}{Acid, Cold, Fire, Lightning, Poison, or Thunder}
-\addSpellStatistic{Ice Knife}{BOTH}{\calculateModifier{\CharismaScoreValue}}{1d10 p}{+ 2d6 Cold explosion, DEX save}
-\addSpellStatistic{Antagonize}{DC}{\calculateModifier{\CharismaScoreValue}}{4d4}{Psychic, WIS save}
-\addSpellStatistic{Vampiric Touch}{ATK}{\calculateModifier{\CharismaScoreValue}}{3d6}{Necrotic, regain half damage Hit Points}
 
 \AddClassFeature{B}{\textbf{Innate Sorcery}\\Unleash innate magic \textbf{twice} per Long Rest}
-\AddClassFeature{L}{\textbf{Font of Magic}\\5 Sorcery Points}
+\AddClassFeature{L}{\textbf{Font of Magic}\\6 Sorcery Points}
 \AddClassFeature{L}{\textbf{Metamagic}\\Subtle Spell, Seeking Spell}
 \AddClassFeature{R}{\textbf{Restore Balance}\\Revert effects of Advantage or Disadvantage (4 uses per Long Rest)}
 \AddClassFeature{L}{\textbf{Sorcerous Restoration}\\Restore \intcalcShr{\LevelValue} Sorcery Points once per Long Rest}
+\AddClassFeature{E}{\textbf{Bastion of Law}\\Use Sorcery Points to create shielding ward}
 
 \AddSpeciesFeature{E}{\textbf{Artificial Form}\\Thistlenight is a construct.}
 \AddSpeciesFeature{L}{\textbf{Faerie Glamour}\\Can cast Disguise Self \textbf{once} per Long Rest.}
@@ -219,7 +216,7 @@
 
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
-\ThirdLevelSpellSlotsTotal{2}
+\ThirdLevelSpellSlotsTotal{3}
 
 \addPreparedSpell{0}
 	{Chill Touch}
@@ -393,6 +390,15 @@
 	{V, S}
 	{V, S}
 \addPreparedSpell{3}
+	{Melf's Minute Meteors}
+	{Action}
+	{Self}
+	{T}
+	{}
+	{T}
+	{V, S, 10 Minutes}
+	{V, S, M}
+\addPreparedSpell{3}
 	{Protection from Energy}
 	{Action}
 	{Touch}
@@ -518,6 +524,10 @@ $\bullet$	& 2				&The hands of a clock spin in your eyes.\\
 Your connection to the plane of absolute order allows you to equalize chaotic moments. When a creature you can see within 60 feet of yourself is about to roll a d20 with Advantage or Disadvantage, you can take a Reaction to prevent the roll from being affected by Advantage and Disadvantage.
 
 You can use this feature a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.
+\subsubsection*{Bastion of Law}
+You can tap into the grand equation of existence to imbue a creature with a shimmering shield of order. As a Magic action, you can expend 1 to 5 Sorcery Points to create a magical ward around yourself or another creature you can see within 30 feet of yourself. The ward is represented by a number of d8s equal to the number of Sorcery Points spent to create it. When the warded creature takes damage, it can expend a number of those dice, roll them, and reduce the damage taken by the total rolled on those dice.
+
+The ward lasts until you finish a Long Rest or until you use this feature again.
 
 \section*{Spells}
 \subsection*{Cantrips}
@@ -770,6 +780,18 @@ Choose one creature, object, or magical effect within range. Any ongoing spell o
 \subparagraph*{Using a Higher-Level Spell Slot} You automatically end a spell on the target if the spell's level is equal to or less than the level of the spell slot you use.
 
 \DndSpellHeader
+  {Melf's Minute Meteors}
+  {3rd-Level Evocation}
+  {Action}
+  {Self}
+  {V, S, M (niter, sulfur, and pine tar formed into a bead)}
+  {Concentration, Up to 10 Minutes}
+
+You create six tiny meteors in your space. They float in the air and orbit you for the spell's duration. When you cast the spell — and as a bonus action on each of your turns thereafter — you can expend one or two of the meteors, sending them streaking toward a point or points you choose within 120 feet of you. Once a meteor reaches its destination or impacts against a solid surface, the meteor explodes. Each creature within 5 feet of the point where the meteor explodes must make a Dexterity saving throw. A creature takes 2d6 fire damage on a failed save, or half as much damage on a successful one.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 4th level or higher, the number of meteors created increases by two for each slot level above 3rd.
+
+\DndSpellHeader
   {Protection from Energy}
   {3rd-Level Abjuration}
   {Action}
@@ -792,7 +814,7 @@ The touch of your shadow-wreathed hand can siphon force from others to heal your
 Until the spell ends, you can make the attack again on each of your turns as a Magic action, targeting the same creature or a different one.
 
 \subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 3.
-
+\vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
 \subsubsection*{Melee Weapons}

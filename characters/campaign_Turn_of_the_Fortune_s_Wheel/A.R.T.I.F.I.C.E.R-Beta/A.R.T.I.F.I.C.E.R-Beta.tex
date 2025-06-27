@@ -23,7 +23,7 @@
 \Background{Far Traveler}
 \Race{Autognome}
 
-\Level{5}
+\Level{6}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -93,9 +93,9 @@
 \PassivePerceptionModifier{0}
 
 %\EquipShield
-\ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+\ArmorClass{\intcalcAdd{12}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}} % +1 Enhanced Defense
 
-\MaxHitPointsRolled{26} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{30} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -118,12 +118,8 @@
 \addWeaponStatistic{Quarterstaff}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{1d6 b}{versatile (1d8)}
 \addWeaponStatistic{Handaxe}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{1d6 s}{thrown, light}
 \addWeaponStatistic{Light Crossbow}{A.R.T.I.F.I.C.E.R-Beta}{DEX}{P}{0}{1d8 p}{}
-\addWeaponStatistic{Unarmed Strike}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
+\addWeaponStatistic{Unarmed Strike}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
 \addSpellStatistic{Fire Bolt}{ATK}{\calculateModifier{\IntelligenceScoreValue}}{1d10}{Fire}
-\addSpellStatistic{Tasha's Caustic Brew}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d4}{Acid at start of each turn, DEX save}
-\addSpellStatistic{Thunderwave}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Thunder and push 10 feet, CON save}
-\addSpellStatistic{Scorching Ray}{ATK}{\calculateModifier{\IntelligenceScoreValue}}{2d6}{Fire, 3 Rays}
-\addSpellStatistic{Shatter}{DC}{\calculateModifier{\IntelligenceScoreValue}}{3d8}{Thunder, CON save}
 
 \AddClassFeature{E}{\textbf{Magical Tinkering}}
 \AddClassFeature{L}{\textbf{Infuse Item}%
@@ -132,6 +128,8 @@
 		\item Enhanced Defense%
 		\item Enhanced Weapon%
 		\item Homunculus Servant%
+		\item Resistant Armor%
+		\item Spell-Refueling Ring%
 	\end{itemize}%
 }%
 \AddClassFeature{L}{\textbf{Eldritch Cannon}\\Once per day or use of spell slot}
@@ -316,6 +314,15 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 	{V, S, 2d6 Fire}
 	{V, S}
 \addPreparedSpell{2}
+	{See Invisibility}
+	{Action}
+	{Self}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{2}
 	{Shatter}
 	{Action}
 	{60 Feet}
@@ -378,7 +385,7 @@ The chosen property lasts indefinitely. As an action, you can touch the object a
 
 You can bestow magic on multiple objects, touching one object each time you use this feature, though a single object can only bear one property at a time. The maximum number of objects you can affect with this feature at one time is equal to your Intelligence modifier (minimum of one object). If you try to exceed your maximum, the oldest property immediately ends, and then the new property applies.
 \subsection*{Infuse Item}
-\textbf{4 Known, 2 Infused Items at a time}\\
+\textbf{6 Known, 3 Infused Items at a time}\\
 At 2nd level, you've gained the ability to imbue mundane items with certain magical infusions, turning those objects into magic items.
 \subsubsection*{Infusions Known}
 \paragraph*{Enhanced Arcane Focus}\hfill\\
@@ -465,6 +472,12 @@ The homunculus regains 2d6 hit points if the mending spell is cast on it. If you
 	\DndMonsterAction{Channel Magic}
 	The homunculus delivers a spell you cast that has a range of touch. The homunculus must be within 120 feet of you.	
 \end{DndMonster}
+\paragraph*{Resistant Armor}\hfill\\
+\textit{Item: A Suit or Armor (requires attunement)}\\
+While wearing this armor, a creature has resistance to one of the following damage types, which you choose when you infuse the item: acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant, or thunder.
+\paragraph*{Spell-Refueling Ring}\hfill\\
+\textit{Item: A Ring (requires attunement)}\\
+While wearing this ring, the creature can recover one expended spell slot as an action. The recovered slot can be of 3rd level or lower. Once used, the ring can't be used again until the next dawn.
 \subsubsection*{Infusing an Item}
 Whenever you finish a long rest, you can touch a nonmagical object and imbue it with one of your artificer infusions, turning it into a magic item. An infusion works on only certain kinds of objects, as specified in the infusion's description. If the item requires attunement, you can attune yourself to it the instant you infuse the item. If you decide to attune to the item later, you must do so using the normal process for attunement (see the attunement rules in the Dungeon Master's Guide).
 
@@ -474,8 +487,6 @@ You can infuse more than one nonmagical object at the end of a long rest; the ma
 
 If an infusion ends on an item that contains other things, like a bag of holding, its contents harmlessly appear in and around its space.
 \subsection*{Artillerist}
-\subsubsection*{Tool Proficiency}
-When you adopt this specialization at 3rd level, you gain proficiency with woodcarver's tools. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice.
 \subsubsection*{Artillerist Spells}
 Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Artillerist Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.
 \begin{DndTable}[header=Artillerist Spells]{llX}
@@ -504,6 +515,8 @@ At 5th level, You know how to turn a wand, staff, or rod into an arcane firearm,
 You can use your arcane firearm as a spellcasting focus for your artificer spells. When you cast an artificer spell through the firearm, roll a d8, and you gain a bonus to one of the spell's damage rolls equal to the number rolled.
 \subsection*{The Right Tool for the Job}
 At 3rd level, you've learned how to produce exactly the tool you need: with thieves' tools or artisan's tools in hand, you can magically create one set of artisan's tools in an unoccupied space within 5 feet of you. This creation requires 1 hour of uninterrupted work, which can coincide with a short or long rest. Though the product of magic, the tools are nonmagical, and they vanish when you use this feature again.
+\subsection*{Tool Expertise}
+At 6th level, your proficiency bonus is now doubled for any ability check you make that uses your proficiency with a tool.
 
 \section*{Spells}
 \subsection*{Cantrip}
@@ -633,6 +646,16 @@ You create three rays of fire and hurl them at targets within range. You can hur
 \subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, you create one additional ray for each slot level above 2nd.
 
 \DndSpellHeader
+  {See Invisibility}
+  {2nd-Level Divination}
+  {Action}
+  {Self}
+  {V, S, M (a pinch of talc and a small sprinkling of powdered silver)}
+  {1 Hour}
+  
+For the duration, you see invisible creatures and objects as if they were visible, and you can see into the Ethereal Plane. Ethereal creatures and objects appear ghostly and translucent.
+
+\DndSpellHeader
   {Shatter}
   {2nd-Level Evocation}
   {Action}
@@ -720,5 +743,16 @@ The robe has two of each of the following patches:
 	\item Hempen rope (50 feet, coiled)
 	\item Sack
 \end{itemize}
-In addition, the robe has 4d4 (13) other patches.
+In addition, the robe has 4d4 (10) other patches.
+\begin{itemize}
+	\item Window
+	\item Iron Door
+	\item Rowboat
+	\item Portable Ram
+	\item 2x Potion of Healing
+	\item 10 gems worth 100gp
+	\item Pit
+	\item Magic Missile Scroll
+	\item Shield Scroll
+\end{itemize}
 \end{document}

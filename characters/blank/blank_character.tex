@@ -13,26 +13,32 @@
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% Headline
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Blank}
 
 \Class{}
-\Level{1}
+\Level{1} % Adds XP and Proficiency Bonus automatically
 \Background{}
 \PlayerName{}
 \Race{}
 \Alignment{}
 %\XP{} % Can be used for Custom XP amount, otherwise it is calculated with the provided Level
 
-% Ability scores (correct scores, no modifiers are automatically applied)
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthRolledScore{1}
-\DexterityRolledScore{1}
-\ConstitutionRolledScore{1}
-\IntelligenceRolledScore{1}
-\WisdomRolledScore{1}
-\CharismaRolledScore{1}
+\StrengthRolledScore{10}
+\DexterityRolledScore{10}
+\ConstitutionRolledScore{10}
+\IntelligenceRolledScore{10}
+\WisdomRolledScore{10}
+\CharismaRolledScore{10}
 
+% SCORE MODIFIERS (ASI, Background and Race Boni)
 \StrengthScoreBonus{0}
 \DexterityScoreBonus{0}
 \ConstitutionScoreBonus{0}
@@ -42,85 +48,139 @@
 
 \calculateAbilityScores{}
 
-% Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
-\StrengthProficiency{E}
-\DexterityProficiency{P}
-\ConstitutionProficiency{}
-\IntelligenceProficiency{P}
-\WisdomProficiency{E}
-\CharismaProficiency{}
-
-\AcrobaticsProficiency{E}
-\AnimalHandlingProficiency{P}
-\ArcanaProficiency{}
-\AthleticsProficiency{E}
-\DeceptionProficiency{P}
-\HistoryProficiency{}
-\InsightProficiency{E}
-\IntimidationProficiency{P}
-\InvestigationProficiency{}
-\MedicineProficiency{E}
-\NatureProficiency{P}
-\PerceptionProficiency{}
-\PerformanceProficiency{E}
-\PersuasionProficiency{P}
-\ReligionProficiency{}
-\SleightOfHandProficiency{E}
-\StealthProficiency{P}
-\SurvivalProficiency{}
-
-% ABILITY MODIFIERS BONUS
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
 \StrengthModifierBonus{0}
 \DexterityModifierBonus{0}
 \ConstitutionModifierBonus{0}
 \IntelligenceModifierBonus{0}
 \WisdomModifierBonus{0}
 \CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{}
 
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+\AcrobaticsProficiency{}
+\AnimalHandlingProficiency{}
+\ArcanaProficiency{}
+\AthleticsProficiency{}
+\DeceptionProficiency{}
+\HistoryProficiency{}
+\InsightProficiency{}
+\IntimidationProficiency{}
+\InvestigationProficiency{}
+\MedicineProficiency{}
+\NatureProficiency{}
+\PerceptionProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+\ReligionProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+\SurvivalProficiency{}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
 \Inspiration{}
-\Proficiency{+1}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
-% Armor Class is not automatically calculated
-\ArmorClass{}
-\InitiativeModifier{0}
-\Speed{}
-\MaxHitPointsRolled{0} % Without Constitution Bonus, is added automatically
-\CurrentHitPoints{}
-\TemporaryHitPoints{}
-\HitDice{d0}
-\HitDiceSpent{0}
+% ARMOR CLASS
+\ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
 
+% HIT POINTS
+\MaxHitPointsRolled{8} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+\addWeaponStatistic{Quarterstaff}{Test}{STR}{P}{0}{1d6 b}
+\addWeaponStatistic{Handaxe}{Test}{STR}{P}{0}{1d6 s}
+\addWeaponStatistic{Light Crossbow}{Test}{DEX}{P}{0}{1d8 p}
+\addWeaponStatistic{Magic Weapon}{Test}{INT}{P}{0}{divers}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS (WIP)
+% \addSpellStatistic{#1}{#2}{#3}{#4}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+
+% ADDITIONAL INFORMATION
+\AttacksAdditional{
+	Additional Information
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# LANGUAGES, ARMOR, WEAPONS, AND TOOL PROFICIENCY #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\OtherProficienciesLanguages{
+	\textbf{Languages:}\\None\\
+	\textbf{Armor:}\\None\\
+	\textbf{Weapons:}\\None\\
+	\textbf{Tools:}\\None
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Tools,
+	Health Potion
+}
+% CLUTTER (i.e. Expedition Pack)
+\Clutter{
+	a backpack
+}
+% GOLD
 \CP{}
 \SP{}
 \EP{}
 \GP{}
 \PP{}
-
-% Weapon Arsenal
-\addWeaponStatistic{Weapon1}{BlankCharacter}{DEX}{P}{0}{1d6 p}
-\addWeaponStatistic{Weapon2}{BlankCharacter}{STR}{P}{0}{1d10 b}
-\addWeaponStatistic{Unarmed Strike}{BlankCharacter}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
-
-\AttacksAdditional{
-	Additional Information
-}
-
-\OtherProficienciesLanguages{
-\textbf{Languages:}\\None\\
-\textbf{Armor:}\\None\\
-\textbf{Weapons:}\\None\\
-\textbf{Tools:}\\None
-}
-
-\Equipment{
-	Tools,
-	Health Potion
-}
-\Clutter{
-	a backpack
-}
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 }
@@ -136,7 +196,9 @@
 \Flaws{
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 }
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \FeaturesTraits{
 \textbf{Traits}
 \begin{itemize}
@@ -150,8 +212,9 @@
 \end{itemize}
 }
 
-% Appearance
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Age{}
 \Height{}
 \Weight{}
@@ -159,7 +222,7 @@
 \Skin{}
 \Hair{}
 
-% background
+% Background
 
 \CharacterAppearance{horizontal} % (vertical/horizontal/none)
 	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
@@ -186,13 +249,31 @@
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
 }
 
-% Magic
-
-\SpellcastingClass{}
-\SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Blank}
+\SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{3}
+\ThirdLevelSpellSlotsTotal{3}
+\FourthLevelSpellSlotsTotal{3}
+\FifthLevelSpellSlotsTotal{3}
+\SixthLevelSpellSlotsTotal{2}
+\SeventhLevelSpellSlotsTotal{2}
+\EighthLevelSpellSlotsTotal{1}
+\NinthLevelSpellSlotsTotal{1}
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
 \AddSpell{0}{}{Eldritch Blast}{V, S}
 \AddSpell{0}{}{Eldritch Blast II}{V, S}
 \AddSpell{1}{True}{Armor of Agathys}{V, S, M}
@@ -315,8 +396,9 @@ Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augu
 \paragraph*{Damage Roll}\hfill\\
 \underline{\textit{Unarmed Strike:}}\\
 1 + STR-Modifier\\
-\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
+\indent Current Max: \intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}}
 
+\part*{Magic Items}
 \input{\PATH magic_items/Blank/Blank_Item/Blank_Item_input}
 
 \end{document}

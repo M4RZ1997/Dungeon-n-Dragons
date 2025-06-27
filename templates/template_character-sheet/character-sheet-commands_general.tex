@@ -192,29 +192,52 @@
 \newcommand{\WisdomSavingThrowModifier}[1]{\renewcommand{\WisdomSavingThrowModifierValue}{#1}}
 \newcommand{\CharismaSavingThrowModifier}[1]{\renewcommand{\CharismaSavingThrowModifierValue}{#1}}
 
+% SAVING THROW BONUS
+\newcommand{\StrengthSavingThrowBonusValue}{0}
+\newcommand{\DexteritySavingThrowBonusValue}{0}
+\newcommand{\ConstitutionSavingThrowBonusValue}{0}
+\newcommand{\IntelligenceSavingThrowBonusValue}{0}
+\newcommand{\WisdomSavingThrowBonusValue}{0}
+\newcommand{\CharismaSavingThrowBonusValue}{0}
+
+\newcommand{\StrengthSavingThrowBonus}[1]{\renewcommand{\StrengthSavingThrowBonusValue}{#1}}
+\newcommand{\DexteritySavingThrowBonus}[1]{\renewcommand{\DexteritySavingThrowBonusValue}{#1}}
+\newcommand{\ConstitutionSavingThrowBonus}[1]{\renewcommand{\ConstitutionSavingThrowBonusValue}{#1}}
+\newcommand{\IntelligenceSavingThrowBonus}[1]{\renewcommand{\IntelligenceSavingThrowBonusValue}{#1}}
+\newcommand{\WisdomSavingThrowBonus}[1]{\renewcommand{\WisdomSavingThrowBonusValue}{#1}}
+\newcommand{\CharismaSavingThrowBonus}[1]{\renewcommand{\CharismaSavingThrowBonusValue}{#1}}
+
+% JACK OF ALL TRADES
 \newcommand{\JackOfAllTradesValue}{0}
 
-\newcommand{\calculateSavingThrow}[3]{%
-	\ifthenelse{\equal{#3}{P}}%
-	{%
-		\ifnum \intcalcAdd{#1}{\intcalcAdd{#2}{\ProficiencyValue}}>0%
+% CALCULATIONS
+\newcommand{\calculateSavingThrow}[1]{%
+	\ifthenelse{\equal{\csname #1ProficiencyValue\endcsname}{P}}{%
+		\ifnum \intcalcAdd{\csname #1ModifierValue\endcsname}{\intcalcAdd{\csname #1ModifierBonusValue\endcsname}{\intcalcAdd{\csname #1SavingThrowBonusValue\endcsname}{\ProficiencyValue}}}>0%
 			+%
 		\fi%
-		\intcalcAdd{#1}{\intcalcAdd{#2}{\ProficiencyValue}}%
-	}%
-	{%
-		\ifthenelse{\equal{#3}{E}}%
-		{%
-			\ifnum \intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcMul{\ProficiencyValue}{2}}}>0%
-				+%
-			\fi%
-			\intcalcAdd{#1}{\intcalcAdd{#2}{\intcalcMul{\ProficiencyValue}{2}}}%
+		\intcalcAdd{\csname #1ModifierValue\endcsname}{%
+			\intcalcAdd{\csname #1ModifierBonusValue\endcsname}{%
+				\intcalcAdd{\csname #1SavingThrowBonusValue\endcsname}{\ProficiencyValue}%
+			}%
 		}%
-		{%
-			\ifnum \intcalcAdd{#1}{#2}>0%
+	}{%
+		\ifthenelse{\equal{\csname #1ProficiencyValue\endcsname}{E}}{%
+			\ifnum \intcalcAdd{\csname #1ModifierValue\endcsname}{\intcalcAdd{\csname #1ModifierBonusValue\endcsname}{\intcalcAdd{\csname #1SavingThrowBonusValue\endcsname}{\intcalcMul{\ProficiencyValue}{2}}}}>0%
 				+%
 			\fi%
-			\intcalcAdd{#1}{#2}
+			\intcalcAdd{\csname #1ModifierValue\endcsname}{%
+				\intcalcAdd{\csname #1ModifierBonusValue\endcsname}{%
+					\intcalcAdd{\csname #1SavingThrowBonusValue\endcsname}{\intcalcMul{\ProficiencyValue}{2}}%
+				}%
+			}%
+		}{%
+			\ifnum \intcalcAdd{\csname #1ModifierValue\endcsname}{\intcalcAdd{\csname #1ModifierBonusValue\endcsname}{\csname #1SavingThrowBonusValue\endcsname}}>0%
+				+%
+			\fi
+			\intcalcAdd{\csname #1ModifierValue\endcsname}{%
+				\intcalcAdd{\csname #1ModifierBonusValue\endcsname}{\csname #1SavingThrowBonusValue\endcsname}%
+			}%
 		}%
 	}%
 }%
@@ -366,6 +389,10 @@
 				\ifthenelse{\equal{#1}{INT}}{%
 					\renewcommand{\tempAbilityScoreValue}{\IntelligenceScoreValue}
 				}{%
+					\ifthenelse{\equal{#1}{WIS}}{%
+						\renewcommand{\tempAbilityScoreValue}{\WisdomScoreValue}
+					}{%
+					}%
 				}%
 			}%
 		}%

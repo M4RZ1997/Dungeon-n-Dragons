@@ -23,7 +23,7 @@
 \Background{Lantan Ranger Corps} % Whitestone Rifle Corps
 \Race{Warforged}
 
-\Level{5}
+\Level{6}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{14}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{35} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{40} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d10}
@@ -104,7 +104,7 @@
 \MultiClassHitDiceSpent{0}
 
 \InitiativeModifier{\calculateModifier{\WisdomScoreValue}}
-\Speed{30}
+\Speed{40}
 \Size{Medium}
 
 \LightArmor{P}
@@ -133,6 +133,7 @@
 }%
 \AddClassFeature{E}{\textbf{Umbral Sight}\\Darkvision 60 feet}
 \AddClassFeature{E}{\textbf{Extra Attack}}
+\AddClassFeature{E}{\textbf{Roving}\\Climb and Swim Speed}
 
 \AddSpeciesFeature{E}{\textbf{Constructed Resilience}}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
@@ -397,6 +398,8 @@ You gain Darkvision with a range of 60 feet. If you already have Darkvision when
 You are also adept at evading creatures that rely on Darkvision. While entirely in Darkness, you have the Invisible condition to any creature that relies on Darkvision to see you in that darkness
 \subsubsection*{Extra Attack}
 You can attack twice instead of once whenever you take the Attack action on your turn.
+\subsubsection*{Roving}
+Your Speed increases by 10 feet while you aren't wearing Heavy armor. You also have a Climb Speed and a Swim Speed equal to your Speed.
 
 \section*{Spells}
 \subsection*{Level 1}

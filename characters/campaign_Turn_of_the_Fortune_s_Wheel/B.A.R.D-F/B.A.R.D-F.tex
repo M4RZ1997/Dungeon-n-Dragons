@@ -23,7 +23,7 @@
 \Background{Gate Warden}
 \Race{Warforged}
 
-\Level{5}
+\Level{6}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{31} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{39} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -119,13 +119,13 @@
 \addWeaponStatistic{Light Crossbow}{B.A.R.D-F}{DEX}{P}{0}{1d8 p}{ranged (80/320), loading, two-handed}
 \addWeaponStatistic{Handaxe}{B.A.R.D-F}{STR}{P}{0}{1d6 s}{thrown (20/60), light}
 \addWeaponStatistic{Unarmed Strike}{B.A.R.D-F}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
-\addSpellStatistic{Chill Touch}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d10}{Necrotic, can't regain Hit Points, CON save}
+\addSpellStatistic{Chill Touch}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d10}{Necrotic, can't regain Hit Points}
 \addSpellStatistic{Vicious Mockery}{DC}{\calculateModifier{\CharismaScoreValue}}{2d6}{Psychic, Disadvantage next attack, WIS save}
-\addSpellStatistic{Dissonant Whispers}{DC}{\calculateModifier{\CharismaScoreValue}}{3d6}{Psychic, must move away safely, WIS save}
 
-\AddClassFeature{B}{\textbf{Bardic Inspiration}\\\intcalcAdd{0}{\calculateModifier{\CharismaScoreValue}} Uses, Inspiration Die: d8}
+\AddClassFeature{B}{\textbf{Bardic Inspiration}(\intcalcAdd{0}{\calculateModifier{\CharismaScoreValue}}/SR)\\Inspiration Die: d8}
 \AddClassFeature{E}{\textbf{Combat Inspiration}}
 \AddClassFeature{E}{\textbf{Font of Inspiration}}
+\AddClassFeature{E}{\textbf{Extra Attack}}
 
 \AddSpeciesFeature{E}{\textbf{Constructed Resilience}}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
@@ -201,10 +201,11 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Armor of Fungal Spores} (Chain Shirt), \textbf{Acheron Blade} (Longsword), 2 Handaxes, Light Crossbow, 20 Bolts, Wargong, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope, ring of keys to unknown locks, black book, ink pen and quill, bottle of black ink, traveler's clothes, ring made from a chain link that, once donned, won't come off without pulling painfully hard
+	\textbf{Armor of Fungal Spores} (Chain Shirt), \textbf{Acheron Blade} (Longsword), \textbf{Scroll of Wall of Fire}, \textbf{Scroll of Sunburst}, 2 Handaxes, Light Crossbow, 20 Bolts, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope, ring of keys to unknown locks, black book, ink pen and quill, bottle of black ink, traveler's clothes, ring made from a chain link that, once donned, won't come off without pulling painfully hard
 }
 
 \addAttunedMagicItem{Acheron Blade (Longsword)}
+\addAttunedMagicItem{Ring of Resistance (Fire)}
 \addAttunedMagicItem{Doss Lute}
 
 \CP{}
@@ -221,7 +222,7 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
-\ThirdLevelSpellSlotsTotal{2}
+\ThirdLevelSpellSlotsTotal{3}
 
 \addPreparedSpell{0}
 	{Blade Ward}
@@ -332,6 +333,15 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 	{V, S}
 	{V, S}
 \addPreparedSpell{3}
+	{Feign Death}
+	{Action}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{3}
 	{Motivational Speech}
 	{1 Min}
 	{60 Feet}
@@ -430,6 +440,10 @@ You can use your wit to turn the tide of battle. A creature that has a Bardic In
 You gain proficiency with Martial weapons and training with Medium armor and Shields.
 
 In addition, you can use a Simple or Martial weapon as a Spellcasting Focus to cast spells from your Bard spell list.
+\subsubsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn.
+
+In addition, you can cast one of your cantrips that has a casting time of an action in place of one of those attacks.
 
 \subsection*{Font of Inspiration}
 You now regain all your expended uses of Bardic Inspiration when you finish a Short or Long Rest.
@@ -604,6 +618,20 @@ You touch a creature, which must succeed on a Wisdom saving throw or become curs
 \subparagraph*{Using a Higher-Level Spell Slot} If you cast this spell using a level 4 spell slot, you can maintain Concentration on it for up to 10 minutes. If you use a level 5+ spell slot, the spell doesn't require Concentration, and the duration becomes 8 hours (level 5-6 slot) or 24 hours (level 7-8 slot). If you use a level 9 spell slot, the spell lasts until dispelled.
 
 \DndSpellHeader
+  {Feign Death}
+  {3rd-Level Necromancy}
+  {Action}
+  {Touch}
+  {V, S, M}
+  {1 Hour}
+
+You touch a willing creature and put it into a cataleptic state that is indistinguishable from death.
+
+For the duration, the target appears dead to outward inspection and to spells used to determine the target's status. The target has the Blinded and Incapacitated condition, and its Speed is 0.
+
+The target also has Resistance to all damage except Psychic damage, and it has Immunity to the Poisoned condition.
+
+\DndSpellHeader
   {Motivational Speech}
   {3rd-Level Enchantment}
   {1 Minute}
@@ -661,7 +689,52 @@ Choose up to five creatures within range that can hear you. For the duration, ea
 \input{\PATH magic_items/Weapons/Swords/Acheron_Blade_Longsword/Acheron_Blade_Longsword_input}
 \input{\PATH magic_items/Instruments/Doss_Lute/Doss_Lute_input}
 \newpage
+\subsection*{Ring of Resistance}
+\textit{Ring, rare (requires attunement)}\\
+You have resistance to one damage type while wearing this ring. The gem in the ring indicates the type, which the DM chooses or determines randomly.
+\begin{DndTable}{lccc}
+			&d10  	&Damage Type	&Gem		\\
+			&1		&Acid			&Pearl		\\
+			&2		&Cold			&Tourmaline	\\
+$\bullet$	&3		&Fire			&Garnet		\\
+			&4		&Force			&Sapphire	\\
+			&5		&Lightning		&Citrine	\\
+			&6		&Necrotic		&Jet		\\
+			&7		&Poison			&Amethyst	\\
+			&8		&Psychic		&Jade		\\
+			&9		&Radiant		&Topaz		\\
+			&10		&Thunder		&Spinet		\\
+\end{DndTable}
 \subsection*{Armor of Fungal Spores}
 \textit{Armor (Chain Shirt), uncommon}\\
 While wearing this armor, you can take a bonus action to make the armor emit poisonous spores, which fill a 10-foot-radius sphere centered on yourself. Each creature in that area must succeed on a DC 15 Constitution saving throw or have the poisoned condition until the end of your next turn. Once this property is used, it can't be used again until the next dawn.
+\subsection*{Scroll of Wall of Fire}
+\DndSpellHeader
+  {Wall of Fire}
+  {4th-Level Evocation}
+  {Action}
+  {120 Feet}
+  {V, S, M (a piece of charcoal)}
+  {Concentration, Up to 1 Minute}
+
+You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.
+When the wall appears, each creature in its area makes a Dexterity saving throw, taking 5d8 Fire damage on a failed save or half as much damage on a successful one.
+
+One side of the wall, selected by you when you cast this spell, deals 5d8 Fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for t he first time on a turn or ends its turn there. The other side of the wall deals no damage.
+\vfill\eject
+\subsection*{Scroll of Sunburst}
+\DndSpellHeader
+  {Sunburst}
+  {8th-Level Evocation}
+  {Action}
+  {150 Feet}
+  {V, S, M (a piece of sunstone)}
+  {Instantaneous}
+
+Brilliant sunlight flashes in a 60-foot-radius Sphere centered on a point you choose within range. Each
+creature in the Sphere makes a Constitution saving throw. On a failed save, a creature takes 12d6 Radiant damage and has the Blinded condition for 1 minute. On a successful save, it takes half as much damage only.
+
+A creature Blinded by this spell makes another Constitution saving throw at the end of each of its turns, ending the effect on itself on a success.
+
+This spell dispels Darkness in its area that was created by any spell.
 \end{document}
