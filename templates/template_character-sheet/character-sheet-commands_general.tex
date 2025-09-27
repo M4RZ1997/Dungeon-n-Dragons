@@ -327,6 +327,7 @@
 \newcommand{\MultiClassHitDiceValue}{}
 \newcommand{\HitDiceSpentValue}{}
 \newcommand{\MultiClassHitDiceSpentValue}{}
+\newcommand{\ToughFeatValue}{0}
 
 \newcommand{\ArmorClass}[1]{\renewcommand{\ArmorClassValue}{#1}}
 \newcommand{\InitiativeModifier}[1]{\renewcommand{\InitiativeModifierValue}{#1}}
@@ -339,14 +340,53 @@
 \newcommand{\MultiClassHitDice}[1]{\renewcommand{\MultiClassHitDiceValue}{#1}}
 \newcommand{\HitDiceSpent}[1]{\renewcommand{\HitDiceSpentValue}{#1}}
 \newcommand{\MultiClassHitDiceSpent}[1]{\renewcommand{\MultiClassHitDiceSpentValue}{#1}}
+\newcommand{\ToughFeat}[1]{\renewcommand{\ToughFeatValue}{#1}}
 
 \newcommand{\MaxHitPointsValue}{%
 	\ifthenelse{\ConstitutionScoreValue<10}%
 	{%
-		\intcalcSub{\MaxHitPointsRolledValue}{\intcalcMul{\LevelValue}{\intcalcShr{\intcalcSub{11}{\ConstitutionScoreValue}}}}%
-	}%
+		\intcalcAdd%
+		{\intcalcSub%
+			{\MaxHitPointsRolledValue}%
+			{\intcalcMul%
+				{\LevelValue}%
+				{\intcalcShr%
+					{\intcalcSub%
+						{11}%
+						{\ConstitutionScoreValue}%
+					}%
+				}%
+			}%
+		}%
+		{\intcalcMul%
+			{\ToughFeatValue}%
+				{\intcalcMul%
+					{2}%
+					{\LevelValue}%
+				}%
+			}%
+		}%
 	{%
-		\intcalcAdd{\MaxHitPointsRolledValue}{\intcalcMul{\LevelValue}{\intcalcShr{\intcalcSub{\ConstitutionScoreValue}{10}}}}%
+		\intcalcAdd%
+		{\intcalcAdd%
+			{\MaxHitPointsRolledValue}%
+			{\intcalcMul%
+				{\LevelValue}%
+				{\intcalcShr%
+					{\intcalcSub%
+						{\ConstitutionScoreValue}%
+						{10}%
+					}%
+				}%
+			}%
+		}%
+		{\intcalcMul%
+			{\ToughFeatValue}%
+			{\intcalcMul%
+				{2}%
+				{\LevelValue}%
+			}%
+		}%
 	}%
 }
 
