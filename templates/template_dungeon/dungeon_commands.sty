@@ -197,8 +197,23 @@
 \newcommand{\resetIndicatorCounter}{%
 	\setcounter{indicatorNumber}{1}
 }%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Indicator Alph #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{indicatorAlph}
+\stepcounter{indicatorAlph}
 
-%\newcommand{\indicatorNumberField}[1]{%
-%	\node[circle, fill=white, radius=0.2cm, draw, outer sep=0pt] at #1 {\scriptsize{\theindicatorNumber}};
-%	\stepcounter{indicatorNumber}
-%}%
+\newcommand{\indicatorAlphField}[3][]{%
+	\node[shape=circle, fill=white, draw, inner sep=0pt] (char) at #2 {%
+		\phantom{\ifblank{#1}{\Alph{indicatorAlph}}{\fontsize{#3}{#3}\selectfont #1}}%
+	};%
+	\node[yshift=0.5pt] at (char.center) {%
+		\makebox[0pt][c]{\fontsize{#3}{#3}\selectfont\Alph{indicatorAlph}}%
+	};%
+	\stepcounter{indicatorAlph}%
+}%
+\robustify{\indicatorAlphField}%
+
+\newcommand{\resetIndicatorAlphCounter}{%
+	\setcounter{indicatorAlph}{1}
+}%
