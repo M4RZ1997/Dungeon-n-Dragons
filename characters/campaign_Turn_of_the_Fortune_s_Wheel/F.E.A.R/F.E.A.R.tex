@@ -810,8 +810,9 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 	
 	\DndMonsterBasics[
 		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
-		hit-points	= {\intcalcAdd{44}{\intcalcMul{3}{\MultiClassLevelValue}}},
+		hit-points	= {\MaxHitPointsValue\ + \intcalcMul{3}{\MultiClassLevelValue} temp HP},
 		speed		= {30 ft., climb 30 ft.},
+		initiative	= +3,
 	]
 	
 	\renewcommand{\AbilityScoreSpacer}{~}
@@ -901,8 +902,9 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 	
 	\DndMonsterBasics[
 		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
-		hit-points	= {\intcalcAdd{44}{\intcalcMul{3}{\MultiClassLevelValue}}},
+		hit-points	= {\MaxHitPointsValue\ + \intcalcMul{3}{\MultiClassLevelValue} temp HP},
 		speed		= {40 ft.},
+		initiative	= +2,
 	]
 	
 	\renewcommand{\AbilityScoreSpacer}{~}
@@ -998,8 +1000,9 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 	
 	\DndMonsterBasics[
 		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
-		hit-points	= {\intcalcAdd{44}{\intcalcMul{3}{\MultiClassLevelValue}}},
+		hit-points	= {\MaxHitPointsValue\ + \intcalcMul{3}{\MultiClassLevelValue} temp HP},
 		speed		= {10 ft., swim 60 ft.},
+		initiative	= +1,
 	]
 	
 	\renewcommand{\AbilityScoreSpacer}{~}
@@ -1076,8 +1079,9 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 	
 	\DndMonsterBasics[
 		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
-		hit-points	= {\intcalcAdd{44}{\intcalcMul{3}{\MultiClassLevelValue}}},
+		hit-points	= {\MaxHitPointsValue\ + \intcalcMul{3}{\MultiClassLevelValue} temp HP},
 		speed		= {40 ft., climb 30 ft.},
+		initiative	= +1,
 	]
 	
 	\renewcommand{\AbilityScoreSpacer}{~}

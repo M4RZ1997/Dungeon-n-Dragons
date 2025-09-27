@@ -24,9 +24,10 @@
 \Race{Wechselkind}
 
 \Level{6}
-
-% ABILITY SCORES
-% (correct scores, no modifiers are automatically applied)
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{11}
 \DexterityRolledScore{15}
@@ -35,17 +36,27 @@
 \WisdomRolledScore{12}
 \CharismaRolledScore{16}
 
+% SCORE MODIFIERS (ASI, Background and Race Boni)
 \StrengthScoreBonus{0}
-\DexterityScoreBonus{1} % ASI +1
-\ConstitutionScoreBonus{2} % Wechselkind
+\DexterityScoreBonus{1}			% ASI +1
+\ConstitutionScoreBonus{2}		% Wechselkind +2
 \IntelligenceScoreBonus{0}
-\WisdomScoreBonus{1} % Beggar? in the Lower Wards
-\CharismaScoreBonus{2} % Wechselkind, ASI +1
+\WisdomScoreBonus{1}			% Beggar (?) in the Lower Wards
+\CharismaScoreBonus{2}			% Wechselkind +1, ASI +1
 
 \calculateAbilityScores{}
 
-% PROFICIENCIES AND EXPERTIES
-%% SAVING THROWS
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{1}		% Stone of Good Luck +1
+\DexterityModifierBonus{1}		% Stone of Good Luck +1
+\ConstitutionModifierBonus{1}	% Stone of Good Luck +1
+\IntelligenceModifierBonus{1}	% Stone of Good Luck +1
+\WisdomModifierBonus{1}			% Stone of Good Luck +1
+\CharismaModifierBonus{1}		% Stone of Good Luck +1
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{}
 \DexterityProficiency{}
 \ConstitutionProficiency{P}
@@ -53,11 +64,23 @@
 \WisdomProficiency{}
 \CharismaProficiency{P}
 
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
 %% STRENGTH SKILLS
 \AthleticsProficiency{}
 
 %% DEXTERITY SKILLS
-\AcrobaticsProficiency{P} % Wechselkind
+\AcrobaticsProficiency{P}		% Wechselkind
 \SleightOfHandProficiency{}
 \StealthProficiency{}
 
@@ -80,15 +103,10 @@
 \IntimidationProficiency{P}
 \PerformanceProficiency{}
 \PersuasionProficiency{}
-
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{0}
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
 \Inspiration{}
 \PassivePerceptionModifier{0}
 
@@ -132,7 +150,7 @@
 \AddSpeciesFeature{L}{\textbf{Faerie Glamour}\\Can cast Disguise Self \textbf{once} per Long Rest.}
 \AddSpeciesFeature{E}{\textbf{Childish Agility}\\Can move through the space of any creature that is medium or larger.}
 
-%\AddFeat{}
+\AddFeat{\textbf{Construct Compatibility}\\+ 10 to Wisdom (Perception) and Intelligence (Investigation) Checks that rely on senses (i.e. Smell, Sight) while in contact with Iedcaru (Giant, Walking Castle)}
 
 % BACKGROUND & APPEARANCE
 
@@ -197,16 +215,18 @@
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Elven Chain}, \textbf{Amber Necklace} (Arcane Focus), Scroll of Entangle, Potion of Invisibility, 2 Daggers, Spear, Light Crossbow, 20 bolts, Gloon (spooky Glaur), set of traveler's clothes, candlestick whose candlelight looks like a tiny dancing fairy made of fire, 8-inch-long glass ant figurine, silver fork with the outer tines bent sideways, backpack, crowbar, hammer, 10 pitons, tinderbox, 10 days of rations, waterskin, 50 feet of hempen rope
+	\textbf{Elven Chain}, \textbf{Magical Wood Polish}, \textbf{Amber Necklace} (Arcane Focus), 2 \textbf{Magical Mechanical Gear}, Scroll of Entangle, Potion of Invisibility, Flask of Holy Water, 2 Daggers, Spear, Light Crossbow, 20 bolts, Gloon (spooky Glaur), set of traveler's clothes, candlestick whose candlelight looks like a tiny dancing fairy made of fire, 8-inch-long glass ant figurine, silver fork with the outer tines bent sideways, backpack, crowbar, hammer, 10 pitons, tinderbox, 10 days of rations, waterskin, 50 feet of hempen rope\\
+	\textbf{Rod of Retribution} (unattuned)
 }
 
 \addAttunedMagicItem{Amulet of Proof Against Detection}
-\addAttunedMagicItem{Rod of Retribution}
+\addAttunedMagicItem{Stone of Good Luck}
+\addAttunedMagicItem{Cube of Force}
 
 \CP{}
 \SP{5}
 \EP{}
-\GP{539}
+\GP{799}
 \PP{}
 
 % SPELLS
@@ -870,10 +890,51 @@ Until the spell ends, you can make the attack again on each of your turns as a M
 \textit{Wondrous Item, uncommon (requires attunement)}\\
 While wearing this amulet, you are hidden from divination magic. You can't be targeted by such magic or perceived through magical scrying sensors.
 
+\subsection*{Stone of Good Luck}
+\textit{Wondrous Item, uncommon (requires attunement)}\\
+While this polished agate is on your person, you gain a + 1 bonus to ability checks and saving throws.
+
+\subsection*{Cube of Force}
+\textit{Wondrous Item, rare (requires attunement)}\\
+This cube is about an inch across. Each face has a distinct marking on it that can be pressed. The cube starts with 36 charges, and it regains 1d20 expended charges daily at dawn.
+
+You can use an action to press one of the cube's faces, expending a number of charges based on the chosen face, as shown in the Cube of Force Faces table. Each face has a different effect. If the cube has insufficient charges remaining, nothing happens. Otherwise, a barrier of invisible force springs into existence, forming a cube 15 feet on a side. The barrier is centered on you, moves with you, and lasts for 1 minute, until you use an action to press the cube's sixth face, or the cube runs out of charges. You can change the barrier's effect by pressing a different face of the cube and expending the requisite number of charges, resetting the duration. If your movement causes the barrier to come into contact with a solid object that can't pass through the cube, you can't move any closer to that object as long as the barrier remains.
+
+\begin{DndTable}[header=Clockwork Spells]{llX}
+	Face		& Charges	& Effect												\\
+	1			& 1			& Gases, wind, and fog can't pass through the barrier.	\\
+	2			& 2			& Nonliving matter can't pass through the barrier. Walls, floors, and ceilings can pass through at your discretion. \\
+	3			& 3			& Living matter can 't pass through the barrier.		\\
+	4			& 4			& Spell effects can 't pass through the barrier.		\\
+	5			& 5			& Nothing can pass through the barrier. Walls, floors, and ceilings can pass through at your discretion. \\
+	6			& 0			& The barrier deactivates.								\\
+\end{DndTable}
+
+The cube loses charges when the barrier is targeted by certain spells or comes into contact with certain spell or magic item effects, as shown in the table below.
+
+\begin{DndTable}[header=Clockwork Spells]{lX}
+	Spell or item		& Charges Lost	\\
+	Disintegrate		& 1d12			\\
+	Horn of Blasting	& 1d10			\\
+	Passwall			& 1d6			\\
+	Prismatic spray		& 1d20			\\
+	Wall of Fire		& 1d4			\\
+\end{DndTable}
+
 \subsection*{Elven Chain}
 \textit{Armor (Chain Shirt), rare}\\
 You gain a +1 bonus to AC while you wear this armor. You are considered proficient with this armor even if you lack proficiency with medium armor.
 
+\subsection*{Magical Mechanical Gear}
+\textit{Wondrous Item, uncommon}\\
+You can expend this item to give yourself a Heroic Inspiration
+
+\subsection*{Magical Wood Polish}
+\textit{Wondrous Item, uncommon}\\
+WHen you would drop to 0 Hit Points as a result of taking damage, you instead drop to 1 Hit Point and the Magical Wood Polish is expended.\\
+When you are subjected to an effect that would kill you instantaneously without dealing damage, that effect is instead negated against you, and the Magical Wood Polish is expended.
+
+\section*{Unattuned}
 \subsection*{Rod of Retribution}
 \textit{Rod, uncommon (requires attunement)}\\
 This adamantine rod is tipped with a glowing crystalline eye. The rod has 3 charges and regains all its expended charges daily at dawn.
