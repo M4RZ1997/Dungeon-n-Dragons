@@ -5,6 +5,69 @@
 \subsection*{A Feathered Friend}
 {\entryfont If the party rescued and freed the owlbear cub during their encounter with the Crimson Paw Bandits, the feathered beast will approach them shortly before they can enter the Citadel of Crail. Its golden eyes gleam with recognition, and a low, affectionate hoot rumbles from its beak as it presses its weight into a party member's side. Should the party choose to bond further with the cub, it will follow them, ready to fight by their side.}
 
+\section*{Unassailable Fort}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Unassailable Fort}
+{\entryfont Perched upon a rocky island fortress surrounded by the roaring tides of the North Sea, the Citadel of Crail commands both awe and fear. Carved into the very cliffs that rise from the waves, its sprawling structure forms the unmistakable outline of a giant eagle when viewed from above - wings outstretched and head turned toward the Firth of Forth in eternal vigilance. This avian shape is no coincidence, but a symbol of the ancient order that resides within. Accessible only by a single fortified bridge spanning the narrow strait from the Caledonian coast, the citadel stands as a near-impenetrable bastion against all who would threaten the realm.}
+\subsection*{\inTextCircled[10]{A}{10} Grand Citadel}
+{\entryfont At the heart of the eagle-shaped complex stands the Grand Citadel - a towering fortress of dark stone and proud heraldry. Ringed by high battlements and sharp watchtowers, it serves as the command center of the Knights of Crail.}
+\begin{DndReadAloud}
+	As you pass beneath the final archway of the outer ring, the storm winds seem to hush in reverence. Before you rises the Grand Citadel of Crail, a monolithic fortress of granite and iron-veined stone. Its soaring watchtowers pierce the clouds like spears, and the ramparts are adorned with fluttering red and blue banners. Soldiers clad in gleaming armor patrol the walls with silent discipline. But it is the main gate that draws your eye: flanked by statues of noble knights and wrought in reinforced oak and steel, it is crowned by a monumental mural carved into the stone itself - an eagle of titanic wingspan, talons outstretched in mid-dive. Above it, etched in bold, eternal script: "In Alis Aquilae" - On Eagle's Wings.
+\end{DndReadAloud}
+\subsection*{\inTextCircled[10]{B}{10} Military Ward}
+\subsubsection*{\inTextCircled[10]{1}{10} Beak \& Talon Blacksmith}
+\subsubsection*{\inTextCircled[10]{2}{10} Barracks}
+\subsubsection*{\inTextCircled[10]{3}{10} Beast Den}
+
+\clearpage
+\begin{tikzpicture}[remember picture, overlay]
+	\node[xshift=-1cm, rotate=-90] at (current page.center) {\includegraphics[width=1\paperheight]{%
+		images/Maps/Citadel_of_crail_72DPI%
+	}};%
+	\node[xshift=-1cm, yshift=-1cm, anchor=west, rotate=-90] at (current page.north east) {\DndFontSection Map of the Citadel of Crail};
+	\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Map of the Citadel of Crail}
+	
+	\begin{scope}[scale=0.25, every node/.style = {anchor=center, rotate=-90}]
+		\resetIndicatorAlphCounter
+		\resetIndicatorCounter
+		% ALPH
+		\pgfmathsetmacro{\IndicatorSize}{10*\scaleFactor}%
+		
+		\indicatorAlphField[10]{(39,-50)}{\IndicatorSize};
+		\indicatorAlphField[10]{(39,-14)}{\IndicatorSize};
+		\indicatorAlphField[10]{(32,-24)}{\IndicatorSize};
+		\indicatorAlphField[10]{(43,-77)}{\IndicatorSize};
+		\indicatorAlphField[10]{(57,-46)}{\IndicatorSize};
+		
+		% NUMBERS
+		\pgfmathsetmacro{\IndicatorSize}{8*\scaleFactor}%
+		
+		% Military Ward
+		\indicatorNumberField[10]{(42,-8)}{\IndicatorSize};
+		\indicatorNumberField[10]{(45,-22)}{\IndicatorSize};
+		\indicatorNumberField[10]{(37,-27)}{\IndicatorSize};
+		
+		% The Docks
+		\indicatorNumberField[10]{(27,-20)}{\IndicatorSize};
+		
+		% Citizens Ward
+		\indicatorNumberField[10]{(38,-85)}{\IndicatorSize};
+		\indicatorNumberField[10]{(45,-92)}{\IndicatorSize};
+		\indicatorNumberField[10]{(30,-100)}{\IndicatorSize};
+		
+		% Eagle's Landing
+		\indicatorNumberField[10]{(50,-60)}{\IndicatorSize}
+	\end{scope}
+\end{tikzpicture}
+\clearpage
+
+\subsection*{\inTextCircled[10]{C}{10} The Docks}
+\subsubsection*{\inTextCircled[10]{4}{10} Iolaire}
+\subsection*{\inTextCircled[10]{D}{10} Citizens' Ward}
+\subsubsection*{\inTextCircled[10]{5}{10} The Golden Feather}
+\subsubsection*{\inTextCircled[10]{6}{10} Player's Bastion}
+\subsubsection*{\inTextCircled[10]{7}{10} Market Quarters}
+\subsection*{\inTextCircled[10]{E}{10} Eagle's Landing}
+\subsubsection*{\inTextCircled[10]{8}{10} Fledgling's Cove}
+
 \section*{The Missing Matriarch}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{The Missing Matriarch}
 \begin{DndQuestHook}[width=0.5\textwidth - 4pt]{The Great Eagles}
 	\DndQuestHookBasics[
@@ -25,20 +88,6 @@
 
 \section*{Players' Bastion}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Players' Bastion}
 {\entryfont DMG p.334 ff.}
-\subsection*{Special Facilities}
-{\entryfont%
-	\begin{itemize}
-		\item Arcane Study (Ability to use Arcane Focus or Tool as a Spellcasting Focus)
-		\item Armory (X)
-		\item Barrack (X)
-		\item Garden
-		\item Library (Fixed)
-		\item Sanctuary (Ability to use Holy Symbol or Druidic Focus as a Spellcasting Focus)
-		\item Smithy
-		\item Storehouse
-		\item Workshop
-	\end{itemize}
-}%
 \subsection*{Changes to Official Rules}
 {\entryfont Given the bastion's urban location and the protection of the city guard, the bastion functions differently from typical frontier fortresses or wilderness bastions. The following changes apply to the standard bastion rules found in the Dungeon Master's Guide (2024 Edition), p.334 ff.:}
 \subsubsection*{Double the Events}
@@ -70,23 +119,35 @@
 \hspace*{-0.35em}\begin{tikzpicture}%
 	\node at (0,0) {};
 	\node[anchor=north west, inner sep=0pt] at (0,0) {\includegraphics[width=\columnwidth]{%
-		images/Maps/Players__Bastion%
+		images/Maps/Players__Bastion_72DPI%
 	}};%
 	
 	\begin{scope}[scale=0.25, yshift=-24cm]
 		\pgfmathsetmacro{\IndicatorSize}{7*\scaleFactor}%
 		\resetIndicatorCounter
 		
-		\indicatorNumberField[10]{(10,11)}{\IndicatorSize}
+		\indicatorNumberField[10]{(6,12)}{\IndicatorSize}
 		\indicatorNumberField[10]{(20,8)}{\IndicatorSize}
-		\indicatorNumberField[10]{(28,6)}{\IndicatorSize}
-		\indicatorNumberField[10]{(25,14)}{\IndicatorSize}
-		\indicatorNumberField[10]{(24,19)}{\IndicatorSize}
-		\indicatorNumberField[10]{(32,13)}{\IndicatorSize}
+		\indicatorNumberField[10]{(27,7.5)}{\IndicatorSize}
+		\indicatorNumberField[10]{(24,17)}{\IndicatorSize}
+		\indicatorNumberField[10]{(12,16)}{\IndicatorSize}
+		\indicatorNumberField[10]{(32,16)}{\IndicatorSize}
 	\end{scope}
 \end{tikzpicture}%
 \subsubsection*{\inTextCircled[10]{1}{8} Sleeping Quarters (cramped)}
 \subsubsection*{\inTextCircled[10]{2}{8} Parlor (roomy)}
-\subsubsection*{\inTextCircled[10]{3}{8} Kitchen (cramped - roomy)}
-\subsubsection*{\inTextCircled[10]{4}{8} Library (cramped)}
-\subsubsection*{\inTextCircled[10]{5}{8}/\inTextCircled[10]{6}{8} Empty Special Facilities (cramped)}
+\subsubsection*{\inTextCircled[10]{3}{8} Kitchen (cramped)}
+\subsubsection*{\inTextCircled[10]{4}{8} Library (roomy)}
+\subsubsection*{\inTextCircled[10]{5}{8}/\inTextCircled[10]{6}{8} Empty Special Facilities (roomy)}
+{\entryfont%
+	\begin{itemize}
+		\item Arcane Study (Ability to use Arcane Focus or Tool as a Spellcasting Focus)
+		\item Armory
+		\item Barrack
+		\item Garden
+		\item Sanctuary (Ability to use Holy Symbol or Druidic Focus as a Spellcasting Focus)
+		\item Smithy
+		\item Storehouse
+		\item Workshop
+	\end{itemize}
+}%
