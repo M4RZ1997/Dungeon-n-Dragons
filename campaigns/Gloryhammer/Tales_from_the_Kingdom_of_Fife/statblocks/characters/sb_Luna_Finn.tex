@@ -1,0 +1,131 @@
+\begin{DndMonster}[width=\textwidth + 8pt]{Luna Finn} % Acererak
+	\vspace*{-18pt}\begin{multicols}{2}\vspace*{-9pt}\hfill\\
+		\DndMonsterType{Satyr Druid (Lvl 4, Circle of the Shepherd), Lawful Good}
+		
+		% If you want to use commas in the key values, enclose the values in braces.
+		\DndMonsterBasics[
+			armor-class = {14 (Leather Armor)},
+			initiative	= +2,
+			hit-points  = {\DndDice{4d8 + 20}},
+			speed       = {45 ft.},
+		]
+		
+		\renewcommand{\AbilityScoreSpacer}{~}
+		\DndMonsterAbilityScores[
+			str = 9,
+			dex = 15,
+			con = 16,
+			int = 12,
+			wis = 18,
+			cha = 12,
+		]
+		
+		\DndMonsterDetails[
+			saving-throws			= {INT +3, WIS +6},
+			skills					= {Animal Handling +6, Arcane +5, Nature +7, Performance +3, Persuasion +3, Religion +3, Survival +6},
+%			damage-vulnerabilities	= {Cold},
+%			damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+%			damage-immunities		= {Poison},
+%			condition-immunities	= {Poisoned},
+%			gear					= {Leather Armor, Light Crossbow, Scimitar},
+			senses					= {Passive Perception 14},
+			languages				= {Common, Druidic, Dwarvish, Sylvan (can speak with any beast)},
+%			challenge				= -,
+%			proficiency-bonus		= +2,
+		]
+	    
+		\DndMonsterSection{Traits}
+		\DndMonsterAction{Magic Resistance}
+		Advantage on Saving Throws against spells.
+		
+		\DndMonsterAction{Mirthful Leaps}
+		When Luna makes a long or high jump, she can roll a d8 adding the number rolled to the number of feet covered.
+		
+		\DndMonsterAction{Speedy}
+		When Luna takes the Dash Action Difficult Terrain doesn't cost extra movement for the rest of the turn.
+		
+		Opportunity Attacks have Disadvantage against Luna.
+		
+		\DndMonsterAction{Wild Companion}
+		Luna can expend a spell slot or a use of Wild Shape to cast the Find Familiar spell. The familiar is a fey and disappears after finishing a Long Rest.
+		
+		\DndMonsterAction{Lupophobia}
+		Luna is afraid of wolves - especially of their pubs.
+		
+		\DndMonsterSection{Actions}
+		\DndMonsterAttack[
+			name			= Ram,
+			distance		= melee,	% valid options are in the set {both,melee,ranged}
+%			type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +1,
+			reach			= 5,
+%			range			= 20/60,
+			targets			= one target,
+			dmg				= \DndDice{1d6 - 1},
+			dmg-type		= Bludgeoning,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+%			or-dmg			= \DndDice{1d20},
+%			or-dmg-when		= {},
+%			extra			= {},
+		]
+		
+		\DndMonsterAttack[
+			name			= Quartestaff,
+			distance		= melee,	% valid options are in the set {both,melee,ranged}
+%			type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +1,
+			reach			= 5,
+%			range			= 80/320,
+			targets			= one target,
+			dmg				= \DndDice{1d6 - 1},
+			dmg-type		= Piercing,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+			or-dmg			= \DndDice{1d8 - 1},
+			or-dmg-when		= {if used with two hands},
+%			extra			= {},
+		]
+		
+		\DndMonsterAttack[
+			name			= Sickle,
+			distance		= melee,	% valid options are in the set {both,melee,ranged}
+%			type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +1,
+			reach			= 5,
+%			range			= 80/320,
+			targets			= one target,
+			dmg				= \DndDice{1d4 - 1},
+			dmg-type		= Slashing,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+%			or-dmg			= \DndDice{1d20},
+%			or-dmg-when		= {},
+			extra			= {. As a Bonus Action, Luna can make another attack against the same target. On a hit the target takes \DndDice{1d4} Slashing damage},
+		]
+		
+		\DndMonsterSection{Spells}
+		\begin{DndMonsterSpells}
+			\item[Spellcasting] Luna can cast the following spells using Wisdom as the spellcasting ability (spell save DC 14, +6 to hit with spell attacks):
+			\DndInnateSpellLevel{Guidance, Gust, Mold Earth, Primal Savagery}
+			\DndMonsterSpellLevel[1][4]{Animal Friendship, Beast Bond, Cure Wounds, Faerie Fire}
+			\DndMonsterSpellLevel[2][3]{Dust Devil, Summon Beast, Warding Wind}
+		\end{DndMonsterSpells}
+		
+		\DndMonsterSection{Bonus Actions}
+		\DndMonsterAction{Change Shape (2/Day)}
+		Luna magically shape-shifts into a beast with a challenge rating of 2 or less, and can remain in this form for up to 2 hours. Luna can choose whether her equipment falls to the ground, melds with her new form, or is worn by the new form. She reverts to her true form if she dies or falls unconscious. Luna can revert to her true form using a bonus action on her turn.
+	
+		While in a new form, Luna retains her game statistics and ability to speak, but her movement modes, Strength, and Dexterity are replaced by those of the new form, and she gains any special senses, proficiencies, traits, actions, and reactions (except class features, legendary actions, and lair actions) that the new form has but that she lacks. While in beast shape she cannot cast spells but can still hold concentration on previously cast spells. Additionally, her AC becomes 17 and she gains 12 Temporary Hit Points.
+	
+		The new form's attacks count as magical for the purpose of overcoming resistances and immunity to nonmagical attacks.
+		
+		\DndMonsterAction{Spirit Totem}
+		Once per Short or Long Rest, Luna can magically summon an incorporeal spirit to a point she can see within 60 feet of her. This spirit creates an aura in a 30-foot radius around that point:
+		\begin{itemize}
+			\item \textbf{Bear Spirit} Each creature of her choice gains 9 temp HP while in the aura. Additionally Strength checks and Strength Saving Throws are made with advantage while in the aura.
+			\item \textbf{Hawk Spirit} When a creature makes an attack roll against a target in the area of the aura Luna can use her Reaction to grant advantage on the attack roll. Additionally, Luna and her allies have advantage on Wisdom (Perception) checks while in the aura.
+			\item \textbf{Unicorn Spirit} Luna and all her allies gain advantage on all ability checks made to detect creature's while in the aura. Additionally, when Luna casts a spell using a spell slot that restores Hit Points to any creature inside or outside the aura, each creature of her choice in the aura also regains 4 Hit Points.
+		\end{itemize}
+	\end{multicols}
+\end{DndMonster}

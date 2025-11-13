@@ -1,0 +1,63 @@
+\begin{DndMonster}[width=0.5\textwidth]{Eagle's Peak Guardian\phantomsection\addcontentsline{toc}{section}{Eagle's Peak Guardian}\label{monster:EaglesPeakGuardian}}
+	\DndMonsterType{Medium Elemental, Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {18 (Plate)},
+		initiative	= +0,
+		hit-points  = {\DndDice{17d8 + 51}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 18,
+		dex = 10,
+		con = 17,
+		int = 8,
+		wis = 10,
+		cha = 10,
+	]
+		
+	\DndMonsterDetails[
+%		saving-throws			= {},
+%		skills					= {},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+		damage-immunities		= {Poison},
+		condition-immunities	= {Paralyzed, Petrified, Poisoned, Prone},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 60 ft., Passive Perception 10},
+		languages				= {can understand Sylvan and Terran, but doesn't speak},
+		challenge				= 7,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}	
+    \DndMonsterAction{Magic Weapons}
+	The Guardian's weapon attacks are magical.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Guardian makes two maul attacks.
+	
+	\DndMonsterAttack[
+		name			= Maul,
+		distance		= melee, % valid options are in the set {both,melee,ranged},
+%		type			= weapon, %valid options are in the set {weapon,spell}
+		mod				= +7,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 4},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= ,
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterAction{Thunderous Strike (Recharge 6)}
+	The Guardian makes one maul attack. If the attack hits, it deals an extra \DndDice{2d10} Thunder damage, and the target must succeed on a DC 14 Strength Saving Throw or be knocked prone.
+\end{DndMonster}

@@ -217,3 +217,38 @@
 \newcommand{\resetIndicatorAlphCounter}{%
 	\setcounter{indicatorAlph}{1}
 }%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Indicator Alph (Lower Case)  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcounter{indicatorLowerCaseAlph}
+\stepcounter{indicatorLowerCaseAlph}
+
+\newcommand{\indicatorLowerCaseAlphField}[3][]{%
+	\node[shape=circle, fill=white, draw, inner sep=0pt] (char) at #2 {%
+		\phantom{\ifblank{#1}{\alph{indicatorLowerCaseAlph}}{\fontsize{#3}{#3}\selectfont #1}}%
+	};%
+	\node[yshift=0.5pt] at (char.center) {%
+		\makebox[0pt][c]{\fontsize{#3}{#3}\selectfont\alph{indicatorLowerCaseAlph}}%
+	};%
+	\stepcounter{indicatorLowerCaseAlph}%
+}%
+\robustify{\indicatorLowerCaseAlphField}%
+
+\newcommand{\resetIndicatorLowerCaseAlphCounter}{%
+	\setcounter{indicatorLowerCaseAlph}{1}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-# Questionmark and Exclamationmark Addition #-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\indicatorAddition}[3][?]{%
+	\pgfmathsetmacro{\scaledXShift}{0.65 * #3}
+	\pgfmathsetmacro{\scaledYShift}{-0.65 * #3}
+	\pgfmathsetmacro{\scaledsize}{0.5 * #3}
+	\node[shape=circle, fill=white, draw, inner sep=0pt, xshift=\scaledXShift, yshift=\scaledYShift] (char) at #2 {%
+		\phantom{\fontsize{\scaledsize}{\scaledsize}\selectfont 10}%
+	};%
+	\node[yshift=0.5pt] at (char.center) {%
+		\makebox[0pt][c]{\fontsize{\scaledsize}{\scaledsize}\selectfont #1}%
+	};%
+}%
+\robustify{\indicatorAddition}%

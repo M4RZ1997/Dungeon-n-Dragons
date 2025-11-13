@@ -1,0 +1,57 @@
+\begin{DndMonster}[width=0.5\textwidth]{Bulette Pup\phantomsection\addcontentsline{toc}{section}{Bulette Pup}\label{monster:BulettePup}}
+	\DndMonsterType{Medium Monstrosity, Unaligned}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16},
+		initiative	= -1,
+		hit-points  = {\DndDice{6d8 + 18}},
+		speed       = {30 ft., Burrow 20 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 16,
+		dex = 8,
+		con = 17,
+		int = 2,
+		wis = 10,
+		cha = 4,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+		skills					= {Perception +4},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Acid, Bludgeoning, Cold, Fire, Lightning, Piercing, Slashing, Thunder},
+%		damage-immunities		= {Necrotic, Poison},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 30 ft., Tremorsense 60 ft., Passive Perception 14},
+%		condition-immunities	= {Charmed, Exhaustion, Frightened, Grappled, Paralyzed, Petrified, Poisoned, Prone, Restrained},
+		languages				= {None},
+		challenge				= 2,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Actions}	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d10 + 3},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Leap}
+	The bulette jumps up to 30 feet by spending 10 feet of movement.
+\end{DndMonster}

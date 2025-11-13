@@ -2,8 +2,255 @@
 
 \DndDropCapLine{R}{\entryfont ising like a bastion of defiance between the wind-scoured cliffs of the Eagle Mountains and the storm-lashed shores of the North Sea, the Citadel of Crail stands as an indomitable guardian of the Firth of Forth. Hewn from black stone and crowned with soaring battlements, it serves as both a military stronghold and the revered home of the legendary Knights of Crail. From its towering walls, vigilant sentinels keep watch over the waves and the mountain passes alike, ever ready to repel invaders and uphold their sacred oath to defend the Kingdom of Fife.}
 
-\subsection*{A Feathered Friend}
-{\entryfont If the party rescued and freed the owlbear cub during their encounter with the Crimson Paw Bandits, the feathered beast will approach them shortly before they can enter the Citadel of Crail. Its golden eyes gleam with recognition, and a low, affectionate hoot rumbles from its beak as it presses its weight into a party member's side. Should the party choose to bond further with the cub, it will follow them, ready to fight by their side.}
+\begingroup
+	\DndSetThemeColor[PhbMauve]
+	\begin{DndComment}{A Feathered Friend}
+		If the party rescued and freed the owlbear cub during their encounter with the Crimson Paw Bandits, the feathered beast will approach them shortly before they can enter the Citadel of Crail. Its golden eyes gleam with recognition, and a low, affectionate hoot rumbles from its beak as it presses its weight into a party member's side. Should the party choose to bond further with the cub, it will follow them, ready to fight by their side.
+	\end{DndComment}
+\endgroup
+
+\subsection*{A Stern Welcome}
+{\entryfont As the players reach the gates of the Citadel of Crail, they are met by a pair of armoured sentinels who halt them without hesitation. Presenting the token given by Ser Proletius grants them immediate, if cautious, entry. Soon after, they are greeted by Moira Kincaid, the quartermaster of the Knights of Crail - a stern, no-nonsense woman known for her discipline and sharp eye.}
+\begin{DndReadAloud}
+	The heavy gates of the Citadel of Crail rise before you, wrought from blackened iron and etched with the sigil of a soaring eagle. Two guards lower their halberds in unison as you approach, their expressions unreadable beneath polished helms. One of them steps forward.
+	
+	With a steady hand, you present the token bestowed upon you by Ser Proletius. The guards exchange a brief glance before silently standing aside, allowing you passage into the shadow of the citadel.
+
+	Within moments, the echo of bootsteps announces the arrival of a tall, broad-shouldered woman clad in a crimson tabard trimmed with steel. Her eyes scan you with practiced suspicion.
+	
+	\textit{"I am Moira Kincaid, quartermaster of this citadel"}, she says flatly, her voice like gravel beneath an iron boot. \textit{"You bear a token of Ser Proletius, yet none were informed of your coming. You will follow me - \textbf{NOW} - to the Great Hall."}
+\end{DndReadAloud}
+{\noindent\entryfont Once in the Great Hall, the players may explain what happened in Dundee: that the city was ransacked on the morning after the royal wedding, and that Ser Proletius, along with Prince Angus McFife, remained behind to aid and support survivors on the opposite bank of the River Tay. Moira believes their story immediately - any bearer of Ser Proletius' personal token is beyond suspicion in her eyes - and wastes no time ordering a scouting and rescue party to depart at once to search for survivors across the river.}
+
+\section*{The Missing Matriarch}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{The Missing Matriarch}
+\begin{DndQuestHook}[width=0.5\textwidth - 4pt]{The Great Eagles}
+	\DndQuestHookBasics[
+		location = {Citadel of Crail},
+		quest-giver = {Quartermaster of Crail and Luna Finn (Eagle's Shepherd)},
+		objective = {Find out what happened to the Great Eagle's matriarch},
+	]
+	
+	{%
+		\noindent\entryfont While the heroes speak with Quartermaster Moira Kincaid in the grand hall of the Citadel of Crail a \hyperref[char:EagleShepherd]{\LinkFont{Satyr Druid}} of the Eagle's Shepherd Circle bursts into the chamber, visibly distraught. She reports that the Matriarch of the Eagles has been missing for two weeks, and no new eggs have been brought to the Fledgling's Cove. Sightings of wild Great Eagles near the citadel have grown alarmingly rare.
+		
+		Moira's stern composure falters for a moment as worry crosses her features. She asks the party to investigate the matter, directing them toward Eagle's Peak, a small mountain to the west of Crail where the Great Eagle's home is. The satyr is instructed to accompany the heroes and guide them on the way.
+	}%
+	
+	\DndQuestRewards{Upon successfully helping Luna and finding out what happen to the matriarch of the Great Eagles, Ser Proletius will reward the party with the following items:}
+	{%
+		{Players' Bastion}{see \hyperref[sec:PlayersBastion]{\LinkFont{Player's Bastion Section}}}%
+	}%
+\end{DndQuestHook}
+\begingroup
+	\DndSetThemeColor[PhbTan]
+	\begin{DndComment}{DM Annotation}
+		A complete statblock and further information for the satyr druid named Luna Finn is provided in the \hyperref[ch:CharacterStatblocks]{\LinkFont{Character Statblocks Chapter}} at the end of this document. The following encounters are created given that this character is part of the group - she can either be played by the DM themselves or by a guest.
+	\end{DndComment}
+\endgroup
+\subsection*{Foot of Eagle's Peak}
+{\entryfont The journey west from the Citadel of Crail leads through a rugged expanse of windswept moorland and craggy hills, where the grass grows coarse and salt-stained from the sea's breath. Scattered stone fences and the ruins of old watchtowers mark the land - remnants of an age when knights guarded these passes. As the party travels farther, the terrain rises into jagged ridges, with distant glimpses of Eagle's Peak shrouded in cold mist.
+
+The air grows unnaturally still the closer they draw. Birds fall silent, and even the wind seems to carry a heavy weight. The satyr guide remarks that the land feels "unanswered" - as though the mountain spirits have withdrawn their presence.}
+\begin{DndReadAloud}
+	The rolling grasslands of Crail fade into harsher country - wild moors of stone and heather, bending beneath a salt-chilled wind. The path winds between ancient cairns and forgotten ruins, their stones marked with faint druidic carvings long since worn by time.
+
+	Ahead, the dark silhouette of Eagle's Peak rises through a shroud of mist, its summit lost among the clouds. The air grows heavy, the light dimmer - and though no storm brews, the sky seems to hold its breath.
+\end{DndReadAloud}
+\subsubsection*{The Trapped Wolf}
+{\entryfont At the foot of Eagle's Peak, the trail skirts a stretch of dense underbrush and twisted pine. The party may hear the distant, pained howls of a wolf echoing through the forest. Following the sound leads to a small clearing where a young silver-furred wolf lies caught in a rusted bear trap, its leg bleeding and twisted. The trap is old, crudely made, and clearly out of place in this sacred land - likely set by poachers or scavengers ignoring the druidic laws protecting the mountain.
+\begin{itemize}
+	\item \textbf{Approach} The wolf is frightened but not aggressive unless approached recklessly. A successful \textbf{Animal Handling (DC 13) Check} can calm it.
+	\item \textbf{Freeing the Wolf} The trap requires a \textbf{Strength (DC 12) Check} to open, or creative use of magic/tools.
+	\item \textbf{Consequences}
+	\begin{itemize}
+		\item \textbf{If the party frees and tends to the wolf, it howls softly before limping away} - the air around the clearing grows calm and still, as though the mountain itself acknowledges the party's compassion. During the later encounter with the Elemental Guardian, all ability checks made to appease it are rolled with advantage.
+		\item \textbf{If the wolf is ignored or killed, faint distant howls will follow the party up the slopes} -  a cold gust passes through the trees, and an uneasy silence settles over the path. During the later encounter with the Elemental Guardian, all ability checks made to appease it are rolled with disadvantage.
+	\end{itemize}
+\end{itemize}
+\subsubsection*{The Elemental Guardian}
+{\entryfont Two weathered standing stones frame the ravine's entrance; faint druidic carvings on their surfaces indicate ancient warding marks. The area is recognized by local druids as the threshold to the Blessed Way, the path leading to the higher sanctuaries of Eagle's Peak.
+
+At the mouth of the ravine, an \hyperref[monster:EaglesPeakGuardian]{\LinkFont{Earth Elemental Guardian}} watches over this passage. It remains dormant at first, its form indistinguishable from the surrounding stone until the party approaches.
+
+A \textbf{DC 20 Perception Check} reveals faint climbing marks on the cliffside near the ravine - indications that someone bypassed the main path, likely avoiding the guardian's watchful gaze.}
+\begin{itemize}
+	\item \textbf{Intent} The elemental does not attack unless disrespected or provoked. It will block the path, forcing the heroes to prove reverence or goodwill toward the land and its spirits.
+	\item \textbf{Ways to Appease the Guardian}
+	\begin{itemize}
+		\item \textbf{Offering of the Land} A respectful offering such as fertile soil, a crafted stone idol, or something representing harmony with nature. \textbf{DC 15 Nature or Insight Check} to interpret what it desires.
+		\item \textbf{Act of Humility} Placing weapons aside and kneeling, or invoking a druidic blessing or prayer to the mountain. \textbf{DC 15 Religion or Performance Check} to perform the rite sincerely.
+		\item \textbf{Truthful Words} Explaining the party's quest to find the Matriarch and restore balance. \textbf{DC 18 Persuasion Check} to convey honest intent.
+	\end{itemize}
+\end{itemize}}
+\vfill\eject
+\subsection*{The Blessed Way}
+{\entryfont The Blessed Way marks the beginning of the sacred ascent toward Eagle's Peak, recognized by the druids of the Eagle's Shepherd Circle as a holy route of pilgrimage. The path winds upward through steep, windswept terrain, where the stone underfoot bears centuries of wear.
+
+Further up the slope, the trail eventually splits in two - a narrow, ancient path once used by the first druids, and a wider, longer route that climbs more gradually around the mountain. The party can choose either way to continue their ascent, though the decision will carry consequences.}
+\subsubsection*{Winding Mountain Path (Short)}
+{\entryfont This ancient path is the original trail carved into the eastern face of Eagle's Peak, used by the first druids of the Eagle's Shepherd Circle to ascend toward the high sanctuaries. The path is steep, uneven, and exposed to the mountain's harsh winds. In many places, the trail has crumbled away, leaving only narrow ledges and precarious crossings. The route is faster than the long path, but far more dangerous.}
+\paragraph*{Skill Challenges and Obstacles}
+{\entryfont As the ancient shepherd's path is no longer maintained and time has taken its toll, the ascent is filled with hazards and moments that test both body and spirit. If the Guardian was appeased reduce the DC of every challenge by 2.
+
+The following examples represent some of the possible challenges the party may encounter along the climb:}
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Cliff Climbing}
+	\DndTrapBasics[
+		save_dc			= 15,
+		skill			= {Strength (Athletics)},
+%		pos_reaction	= {Brace},
+%		neg_reaction	= {Jump},
+%		damage			= {-},
+	]
+	{\entryfont The path abruptly ends where the rock face rises near-vertically above the trail. The ancient handholds once carved by shepherds have crumbled with time. The only way forward is upward, along a steep stretch of slick stone.}
+\end{DndTrap}
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Narrow Crossing}
+	\DndTrapBasics[
+		save_dc			= 16,
+		skill			= {Dexterity (Acrobatics)},
+%		pos_reaction	= {Brace},
+%		neg_reaction	= {Jump},
+		damage			= {3d10 Bludgeoning (30 ft. fall)},
+	]
+	{\entryfont Ahead, the trail gives way to a yawning 20 foot gap carved by centuries of wind and water. A broken fragment of the old bridge remains - a narrow, weathered beam spanning the ravine.}
+\end{DndTrap}
+\begin{DndTrap}[width=0.5\textwidth - 4pt]{Crumbling Ledge}
+	\DndTrapBasics[
+		save_dc			= 16,
+		skill			= {Dexterity (Acrobatics)},
+%		pos_reaction	= {Brace},
+%		neg_reaction	= {Jump},
+		damage			= {2d10 Bludgeoning (20 ft. fall)},
+	]
+	{\entryfont The path tightens along the mountain's outer wall, reduced to a narrow strip of stone clinging to the cliffside. A previous DC 13 Wisdom (Perception) Check may reveal more unstable sections of path reducing the required DC to cross it by 2.}
+\end{DndTrap}
+\subparagraph*{The Rockslide}
+{\entryfont Not far along the winding mountain path, the way forward is completely blocked by a massive rockslide. The fall appears recent — the stones are sharp-edged, the dust still clings to the air, and a few larger boulders remain precariously balanced above. The entire slope is unstable, shifting slightly with every gust of mountain wind or misplaced step. The slide stretches high up the cliffs and deep into the valley below, cutting off the original trail entirely.
+
+To clear or cross the obstruction requires careful coordination and multiple checks, or a particularly creative approach:
+\begin{itemize}
+	\item \textbf{Athletics (DC 18)} Scaling the rock pile or moving large stones to form a stable route.
+	\item \textbf{Acrobatics (DC 16)} Keeping balance on loose debris while traversing the shifting surface.
+	\item \textbf{Survival (DC 16)} Identifying the most stable sections or safe footholds.
+	\item Characters assisting one another can grant advantage, but rushing or heavy impacts may trigger small slides or falling debris (Dexterity saving throws, DC 13, to avoid minor damage).
+	\item Securing the climb with ropes, pitons, or spells like Mold Earth or Levitate can provide effective solutions. However, brute force alone risks further collapse.
+\end{itemize}
+At the base of the rockslide, keen observation (\textbf{DC 14 Perception Check}) reveals a narrow cave entrance partially concealed behind a jut of stone. The opening descends beneath the fallen debris, offering an \hyperref[subsubsec:MountainCave]{\LinkFont{alternate route}} deeper into the mountain and eventually reconnecting with the higher path.}
+\subparagraph*{The Chasm Ambush}
+{\entryfont The trail narrows into a tight chasm, forcing the party to proceed in single-file for several meters. The confined space limits visibility and movement, preventing the group from easily defending themselves or coordinating actions.
+
+Within the chasm dwell a small group of Cliff Sprites - minor fey creatures that resemble stony, winged humanoids. They are mischievous scavengers rather than violent predators and are attracted to the sound of metal and the gleam of valuables. When the party enters the chasm, the sprites attempt to harass and distract them, darting close to snatch gold, jewellery, or small trinkets before retreating into cracks and crevices.
+
+The encounter should emphasize tension and inconvenience rather than danger. The sprites' goal is theft and mischief, not combat, though they may defend themselves if attacked.}
+\begingroup
+	\DndSetThemeColor[PhbTan]
+	\begin{DndComment}{DM Annotation}
+		As an alternative to a fight between the players and the sprites, after the players hurt or even kill at least one of the sprites, all of them must make 3 consecutive DC 10 Constitution Saving Throws as the sprites use their poison-tipped darts to defend themselves. Each player that fails two of those Saves will fall unconscious for 1 minute and the sprites may loot a fixed amount of gold (i.e. 10 GP) from that player. This indicates that a swarm of these attack the players without the cumbersome setup of a fight.
+	\end{DndComment}
+\endgroup
+\vfill\eject
+\subsubsection*{Mountain Cave}\phantomsection\label{subsubsec:MountainCave}
+{\entryfont The air is thick and earthy, filled with the distant sound of shifting rock. The tunnel winds through uneven chambers of gravel, boulders, and small underground pools before splitting deeper within.
+
+While traversing the cave, the party becomes aware of subtle tremors beneath their feet — rhythmic vibrations that move unpredictably through the ground. Dust falls from the ceiling in short bursts, hinting that something is burrowing just below the surface.}
+\paragraph*{The Bulette Pups} {\entryfont Three young \hyperref[monster:BulettePup]{\LinkFont{Bulette Pups}} inhabit this stretch of the cave. They are large enough to be intimidating, but not yet fully grown. The pups are curious and playful, not truly aggressive, and see the party's movement as a game. They circle beneath the ground, occasionally bursting up to nip or bump a target before diving back below the surface.
+\begin{itemize}
+	\item The pups attack in short bursts, each surfacing once every 1d4 rounds.
+	\item Their bites are weak (reduce base Bulette damage by half), and their intent is not to kill but to play.
+	\item \textbf{Nature (DC 14)}: The pups' movements are erratic and clumsy, more playful than hostile.
+	\item If the party does not retaliate violently, the pups lose interest after 3 - 4 attack rounds, eventually retreating into deeper tunnels.
+\end{itemize}
+If attacked:
+\begin{itemize}
+	\item When a pup takes any damage, it lets out a sharp, distressed cry before immediately burrowing away.
+	\item This cry is followed by a low rumble echoing through the cave.
+	\item If the party deals more than 20 total damage to a single pup, the rumbling intensifies, shaking the walls like an oncoming earthquake. Larger rocks and dust fall from the ceiling.
+\end{itemize}}
+\paragraph*{The Mother Bulette}
+{\entryfont If the party dealt 20 or more total damage to any one pup, the \hyperref[monster:Bulette]{\LinkFont{Mother Bulette}} begins stalking them through the tunnels. She follows silently for several rounds, staying out of sight beneath the ground.
+
+Shortly before the party reaches the exit of the cave, she burrows up from behind, trying to be stealthy and surprise them. The attack is sudden but deliberate, fueled by protective rage rather than hunger.}
+\subparagraph*{Combat Encounter}
+{\entryfont During the encounter, any player may try to heal the pups with magic or healing potions. If the pups are successfully healed, the mother halts her aggression. After observing this for a brief moment, she emits a low rumble and retreats, taking the pups with her as they burrow away into the earth, ending the encounter peacefully.
+
+If, however, the players attack the pups or otherwise harm them during combat, the mother becomes enraged. She immediately focuses her full fury on the character responsible, attempting to kill the attacker first. Her tactics shift from defensive to lethal — using Burrow, Deadly Leap, and full melee attacks until the perceived threat is destroyed or driven off. The encounter ends only if the mother is slain or the party runs out of the cave.}
+\vfill\eject
+\subsubsection*{The Road Most Travelled (Long)}
+\paragraph*{Crimson Paw Bandit Camp}
+{\entryfont Following the makeshift sledge tracks leads to a small outcrop cliffway, partially shielded by jagged rocks and overlooking the valley below. This area serves as a temporary encampment for the Crimson Paw, a violent bandit group known for poaching and trafficking rare beasts. The camp is crude but functional — a few tents made of tattered hides, scattered crates and bedrolls, and a smoldering firepit surrounded by broken weapons and bones.
+
+The signs of conflict and desperation are immediately visible. Two dead bandits lie near the camp's edge, their bodies torn and bloodied. Blood stains the rocky ground, mixing with feathers and scraps of rope.
+
+Three enemies remain active within the camp:
+\begin{itemize}
+	\item bloodied (half HP) \hyperref[monster:BanditBerserker]{\LinkFont{Bandit Berserker}}
+	\item \hyperref[monster:BanditDruid]{\LinkFont{Bandit Druid}}
+	\item \hyperref[monster:BanditCaptain]{\LinkFont{Bandit Captain}}
+\end{itemize}
+At the far end of the camp, a small makeshift wooden cage sits against the cliff wall. Inside lies a Great Eagle chick, wounded, malnourished, and weak. Its feathers are matted with blood and dirt, and its talons scrape feebly against the cage floor.
+
+As soon as the party approaches or is spotted, the bandits immediately engage in combat.}
+\subparagraph*{Combat Encounter}
+{\entryfont During the fight, and only once per turn, a character can spend a Bonus Action on their turn to assist the chick — freeing it from its bindings, offering comfort, or magically healing it. If the party spends a total of three rounds of successful aid, the chick lets out a piercing cry that echoes through the mountain. The outcome depends on earlier events with the Matriarch:
+\begin{itemize}
+	\item \textbf{If the Matriarch was healed during their encounter on Eagle's Peak Top:}
+	The cry is answered moments later by a piercing shriek from above. The Matriarch descends from the clouds, accompanied by two to three Great Eagles. They strike like a storm, killing or scattering the remaining bandits instantly. The combat ends immediately, leaving the party unharmed.
+	\item \textbf{If the Matriarch was not encountered or not healed:}
+	A cry echoes across the mountain, followed by a distant screech from above. The sound terrifies the bandits — each of them becomes Frightened for 2 turns, with no saving throw.
+\end{itemize}}
+\subparagraph*{Loot}
+{\entryfont After defeating the bandits the players can find 50 GP in total, a Bag of Holding, and a \hyperref[resource:TatteredDirective]{\LinkFont{Tattered Directive}} in the camp. If the bandit captain's body is still in the camp and was not mauled by the Great Eagles and thrown over the cliff's edge Boots of False Tracks and a Candle of the Deep can be found on him.}
+\vfill\eject
+\subsection*{Eagle's Peak Top}
+{\entryfont At the top of Eagle's Peak, the party is greeted by a sweeping view over the surrounding lands of Fife — rolling hills, glimmering rivers, and distant towns visible beneath the clouds. The summit itself, however, contrasts sharply with the beauty around it.}
+
+\begin{DndReadAloud}
+	The wind howls across the summit as you crest the final ridge, carrying with it the chill of the high mountain air. Before you, the world opens in every direction — endless hills, rivers glinting in the distance, and the faint shimmer of the sea far to the east. For a moment, the view is breathtaking. The Kingdom of Fife lies quiet and vast beneath.
+
+	Then your eyes fall upon the scene before you.
+
+	Nestled in a crevice between two jagged rock faces lies a colossal nest of branches and bone. Two great eggs lie broken within it, their shells splintered and streaked with blood. Another shattered fragment rests a short distance away, half-buried in the dust. Within the nest lie two humanoid bodies, bloodied and mangled, their features twisted and barely recognizable beneath torn armour and feathers.
+
+	Perched upon a broad outcrop above the nest rests a Great Eagle — vast, proud, and grievously wounded. Her feathers are dulled and ragged, one wing held close to her side. She watches your approach with weary golden eyes, letting out a low, mournful cry that echoes down the cliffs below.
+\end{DndReadAloud}
+
+{\entryfont\noindent Approaching or interacting with the Matriarch requires care and tact:
+\begin{itemize}
+	\item \textbf{Animal Handling (DC 17)} Calm her or prevent further distress.
+	\item \textbf{Nature (DC 13)} Recognize signs of fatigue, poisoning, or magical interference.
+	\item \textbf{Medicine (DC 16)} Identify and tend to her injuries.
+	\item The Shepherd's Druid companion has advantage on all checks made to calm, communicate with, and heal the Matriarch.
+\end{itemize}
+A closer inspection of the nest reveals evidence of disturbance and removal:
+\begin{itemize}
+	\item Each of the dead bodies carries an expended \hyperref[mi:RabbitsFoot]{\LinkFont{Rabbit's Foot}}.
+	\item \textbf{Survival (DC 15)} The party notices two flat, egg-shaped indentations in the nesting material — indicating that two eggs were taken intact - one is broken nearby.
+	\item \textbf{Perception (DC 12)} The party finds scrape marks and faint drag trails, consistent with a makeshift sledge or large object being pulled away from the nest.\\
+	The tracks lead down toward the wider mountain path, suggesting the last missing egg was taken that way (these tracks lead to the bandit camp).
+\end{itemize}
+The following items can also be found during the search of the nest based on the succeeded Difficulty Class of the \textbf{Investigation Check}:
+\begin{itemize}
+	\item \textbf{DC 10} Pouch containing 50 GP
+	\item \textbf{DC 12} Charlatan's Die
+	\item \textbf{DC 15} Amethyst (100 GP)
+	\item \textbf{DC 18} Orb of Direction
+	\item \textbf{DC 20} Rival Coin
+\end{itemize}}
+
+\subsection*{Possible Outcomes}
+{\entryfont The conclusion of The Missing Matriarch depends on the actions and choices made throughout the adventure. Each decision the party takes — their chosen path, how they treat the Matriarch and her kin, and whether they intervene in the bandit conflict — determines the future strength of the Great Eagles of Crail and their role in the campaign's later events.
+\begin{itemize}
+	\item \textbf{If the short path was taken, the Matriarch healed, the chick healed, and the bandits defeated by the Great Eagles:} The Shepherd Druid completes a sacred transformation, taking the form of a Great Eagle and carrying the rescued chick safely back to Fledgling's Cove. The heroes receive the Boon of the Great Eagles, symbolizing the bond between mortals and the Sky Guardians. In future events, the Great Eagles will be at full strength during the final battle.
+	\item \textbf{If the long path was taken, the chick healed, and the Matriarch healed afterwards:} The Great Eagles will be at full strength during the final battle, though no special boon is granted to the heroes.
+	\item \textbf{If the Matriarch was not healed:} The loss of the Matriarch's strength and guidance leaves the Great Eagles diminished. They will not be at full strength during the final battle, their numbers and morale weakened by her lingering wounds and grief.
+\end{itemize}}
+\begingroup
+	\DndSetThemeColor[PhbMauve]
+	\begin{DndComment}{Boon of the Great Eagles}
+		Once per long rest, when the character or an ally within 10 feet would take damage from an attack, a spectral eagle wing manifests and reduces the damage by 2d8 + the character's proficiency bonus. The wing fades immediately after.
+	\end{DndComment}
+\endgroup
+
+\clearpage
 
 \section*{Unassailable Fort}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Unassailable Fort}
 {\entryfont Perched upon a rocky island fortress surrounded by the roaring tides of the North Sea, the Citadel of Crail commands both awe and fear. Carved into the very cliffs that rise from the waves, its sprawling structure forms the unmistakable outline of a giant eagle when viewed from above - wings outstretched and head turned toward the Firth of Forth in eternal vigilance. This avian shape is no coincidence, but a symbol of the ancient order that resides within. Accessible only by a single fortified bridge spanning the narrow strait from the Caledonian coast, the citadel stands as a near-impenetrable bastion against all who would threaten the realm.}
@@ -13,8 +260,34 @@
 	As you pass beneath the final archway of the outer ring, the storm winds seem to hush in reverence. Before you rises the Grand Citadel of Crail, a monolithic fortress of granite and iron-veined stone. Its soaring watchtowers pierce the clouds like spears, and the ramparts are adorned with fluttering red and blue banners. Soldiers clad in gleaming armor patrol the walls with silent discipline. But it is the main gate that draws your eye: flanked by statues of noble knights and wrought in reinforced oak and steel, it is crowned by a monumental mural carved into the stone itself - an eagle of titanic wingspan, talons outstretched in mid-dive. Above it, etched in bold, eternal script: "In Alis Aquilae" - On Eagle's Wings.
 \end{DndReadAloud}
 \subsection*{\inTextCircled[10]{B}{10} Military Ward}
-\subsubsection*{\inTextCircled[10]{1}{10} Beak \& Talon Blacksmith}
-\subsubsection*{\inTextCircled[10]{2}{10} Barracks}
+{\entryfont The Military Ward occupies the entire eastern wing of the Citadel of Crail and serves as the core of the Knights' martial operations. It includes expansive training grounds for drills and combat practice, a massive forge operated by master smiths, and well-maintained animal pens for mounts and beasts of burden. It is always active - day and night - with clanking weapons, shouted commands, and the bustle of disciplined order. This area is heavily guarded and only accessible to those with official business or under escort.}
+\begin{DndReadAloud}
+	As you pass through a fortified archway into the eastern wing, the air grows thick with the scent of sweat, steel, and smoke. The rhythmic clash of weapons rings out across the wide courtyards, where knights in full armour drill with unwavering focus. You catch glimpses of younger squires running drills under the stern gaze of their instructors, while far across the ward, the fiery glow of a sprawling forge flickers against soot-darkened stone. Warhorses snort and stomp within nearby pens, their breath rising in clouds as stable hands move between them with practiced ease. The entire ward thrums with purpose - every step and strike part of a greater machine built for war.
+\end{DndReadAloud}
+\subsubsection*{\inTextCircled[10]{1}{10} Barracks}
+\subsubsection*{\inTextCircled[10]{2}{10} Beak \& Talon Blacksmith}
+{\noindent\entryfont The Beak \& Talon Blacksmith is the beating heart of the Military Ward's armament production, responsible for crafting and maintaining the weapons and armour of the Knights of Crail. Unusually, the forge is run by three industrious fairies - Argenta, Rubidia, and Tinny - whose ingenuity and magical craftsmanship once produced gear of remarkable sharpness and strength. Despite their diminutive size, they designed elaborate systems of pulleys, enchanted bellows, and hammering devices that allowed them to work with precision equal to any dwarven smith. However, in recent weeks, the forge's once-blazing fires have begun to falter, and the metal they produce has grown brittle and dull. The cause remains unknown, and the fairies are becoming increasingly anxious as their reputation - and the armory's efficiency - hangs in the balance.}
+\begin{DndReadAloud}
+	The rhythmic clang of metal fades into a strained sputter as you approach the Beak \& Talon. The air smells faintly of soot and enchantment, but the usual roar of the forge is subdued - its once-fiery glow now reduced to a sullen ember. Inside, the workshop hums with curious motion: enchanted bellows wheeze, gears turn on their own, and tiny figures dart between anvils and tongs with dazzling speed. Three fairies - Argenta, Rubidia, and Tinny - flit about in a flurry of motion, each no taller than your hand yet commanding a forge built for giants.
+
+	Argenta wipes her brow with a glowing scrap of fabric, muttering, \textit{"The flame just won't catch like it used to."} Rubidia tests a newly-forged blade, which snaps cleanly in two with a frustrated sigh. Tinny scowls, kicking a loose bolt across the floor before glancing your way. The forge hums with exhaustion - something is clearly wrong at the Beak \& Talon.
+\end{DndReadAloud}
+\begin{DndQuestHook}[width=0.5\textwidth - 4pt]{The Cursed Scrap}
+	\DndQuestHookBasics[%
+		location = {Beak \& Talon Blacksmith (Citadel of Crail)},
+		quest-giver = {Steelsisters (Fairy Smiths)},
+		objective = {Deal with the cursed item.}
+	]
+	
+	{\noindent\entryfont Bla}
+	
+	\DndQuestRewards{Depending on how the party dealt with the cursed object, they will be rewarded with the following items:}%
+	{%
+		{Plate of Knight's Fellowship}{Obtained if the party cleansed and reforged the cursed item.}%
+		{Leather Golem Armor}{Obtained if the party reforged the item, but not cleansed it.}%
+		{10 Pieces of Ammunition +1 (each)}{Obtained if the cursed item is fully destroyed.}%
+	}%
+\end{DndQuestHook}
 \subsubsection*{\inTextCircled[10]{3}{10} Beast Den}
 
 \clearpage
@@ -41,8 +314,8 @@
 		\pgfmathsetmacro{\IndicatorSize}{8*\scaleFactor}%
 		
 		% Military Ward
-		\indicatorNumberField[10]{(42,-8)}{\IndicatorSize};
 		\indicatorNumberField[10]{(45,-22)}{\IndicatorSize};
+		\indicatorNumberField[10]{(42,-8)}{\IndicatorSize};
 		\indicatorNumberField[10]{(37,-27)}{\IndicatorSize};
 		
 		% The Docks
@@ -60,33 +333,38 @@
 \clearpage
 
 \subsection*{\inTextCircled[10]{C}{10} The Docks}
+{\entryfont At the northern edge of the Military Ward lies the citadel's dockyard - a fortified harbour carved into the island's rocky shore. It serves as both a bustling trade hub and the mooring point for Crail's modest naval fleet, which is primarily used for patrols, reconnaissance, and supply runs rather than open warfare. The area is busy with sailors, merchants, and dockhands, all operating under strict military oversight.}
 \subsubsection*{\inTextCircled[10]{4}{10} Iolaire}
 \subsection*{\inTextCircled[10]{D}{10} Citizens' Ward}
+{\entryfont The western wing of the Citadel of Crail is known as the Citizens' Ward, a bustling quarter where daily life unfolds within the protective embrace of the fortress walls. It houses the families of resident commanders, essential craftsmen, and trusted civilians who support the citadel's operations. The area includes a lively market square, a well-frequented tavern, and clusters of modest homes built from sturdy stone. Though far more relaxed than the Military Ward, the Citizen Ward is still well-patrolled and maintains a sense of quiet order beneath the ever-watchful eyes of the Knights of Crail.}
+\begin{DndReadAloud}
+	Crossing into the western reaches of the citadel, the atmosphere shifts from rigid discipline to the hum of daily life. Cobbled streets wind between compact stone houses, each marked with carved wooden signs or blooming window boxes. The smell of baked bread and roasted meats drifts from a nearby tavern, where laughter and music spill into the street. Just ahead lies the market quarter, where colourful stalls and tents crowd the square, hawking everything from fresh produce to finely crafted goods. Life here is hard-earned but vibrant - flourishing in the shadow of steel and stone.
+\end{DndReadAloud}
 \subsubsection*{\inTextCircled[10]{5}{10} The Golden Feather}
+\paragraph*{Rumours}\hfill\\
+\begin{DndTable}[header=Random Rumours Table]{cX}
+	d10	& Overheard Rumour	\\
+	1	& Lordship of Auchtertool try to overthrow the Dread-Witch WQueen of Cellardyke \\
+	2	& Legend of Anstruther's Dark Prophecy \\
+	3	& Mysterious sighting near the Woods of Lomond \\
+	4	& Undead Unicorns sightings up North \\
+	5	& Mysterious Hermit sighting in a cave beneath Cowdenbeath \\
+	6	& Legend of the Celestial Flame of Abernethy \\
+	7	& The swampy marsh near Paisly is corrupted \\
+	8	& Feud between Aberdeenshi and Methven Dwarves \\
+	9	& Real world legend (Cait Sith / Shellycoat / Kelpies) \\
+	10	& Roll again
+\end{DndTable}
 \subsubsection*{\inTextCircled[10]{6}{10} Player's Bastion}
 \subsubsection*{\inTextCircled[10]{7}{10} Market Quarters}
 \subsection*{\inTextCircled[10]{E}{10} Eagle's Landing}
+{\entryfont Located at the southernmost tip of the Citadel of Crail, this large plaza forms the head of the eagle in the citadel's overall outline. This vast landing platform serves as a vital station for the Great Eagles of Crail, where they come to rest, feed, or deliver their precious cargo - most notably eggs, which are then brought to the nearby Fledgling's Cove. Overseen by the Eagle Shepherds of Crail, it also serves as the primary launch point for aerial patrols across the kingdom.}
+\begin{DndReadAloud}
+	The stone path leads you to the very edge of the citadel's southern cliffs, where the land stretches out into a broad, wind-beaten platform suspended high above the crashing waves of the North Sea. The air is thick with salt and spray, the wind howling with wild abandon as it tears across the open space. Below, the sea slams against the jagged rocks with a thunderous rhythm, sending mist curling through the air like breath from some unseen beast. Troughs, perches, and thick ropes lie anchored in weathered stone, their edges worn smooth by years of exposure. Despite the absence of motion, the platform thrums with purpose - like a stage set for something vast and untamed to return at any moment.
+\end{DndReadAloud}
 \subsubsection*{\inTextCircled[10]{8}{10} Fledgling's Cove}
 
-\section*{The Missing Matriarch}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{The Missing Matriarch}
-\begin{DndQuestHook}[width=0.5\textwidth - 4pt]{The Great Eagles}
-	\DndQuestHookBasics[
-		location = {Citadel of Crail},
-		quest-giver = {Quartermaster of Crail and Ser Proletius},
-		objective = {Find out what happened to the Great Eagle's matriarch},
-	]
-	
-	{%
-		\noindent\entryfont The party overhears the quartermaster mentioning her worries about "", the matriarch of the Great Eagles, hasn't been seen for two weeks and she worries something bad happened to her.
-	}%
-	
-	\DndQuestRewards{Upon successfully retrieving the Awakened Shrubs, the Firbolg will reward the party with the following items:}
-	{%
-		{Players' Bastion}{see next section}%
-	}%
-\end{DndQuestHook}
-
-\section*{Players' Bastion}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Players' Bastion}
+\section*{Players' Bastion}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Players' Bastion}\label{sec:PlayersBastion}
 {\entryfont DMG p.334 ff.}
 \subsection*{Changes to Official Rules}
 {\entryfont Given the bastion's urban location and the protection of the city guard, the bastion functions differently from typical frontier fortresses or wilderness bastions. The following changes apply to the standard bastion rules found in the Dungeon Master's Guide (2024 Edition), p.334 ff.:}
@@ -116,7 +394,9 @@
 \paragraph*{Theft Discourages Visitors}
 {\entryfont If the bastion was subjected to a successful theft, no friendly NPCs will visit the bastion during the next Bastion Turn. Word travels fast in Crail, and few wish to associate with a location rumoured to be unsecured or under scrutiny by the city's less savory elements. Instead the events \textbf{Extraordinary Opportunity}, \textbf{Friendly Visitors}, and \textbf{Guests} are replaced by the \textbf{All is Well} event.}
 \subsection*{Layout Example (4 Players)}
-\hspace*{-0.35em}\begin{tikzpicture}%
+{\entryfont The following section provides an example layout of the Player's Bastion within the city of Crail. It serves as inspiration and reference for how the bastion might be structured and organized. However, players are encouraged to design and customize their own bastion according to their preferences, story choices, and creative vision.}
+
+\noindent\hspace*{-0.35em}\begin{tikzpicture}%
 	\node at (0,0) {};
 	\node[anchor=north west, inner sep=0pt] at (0,0) {\includegraphics[width=\columnwidth]{%
 		images/Maps/Players__Bastion_72DPI%
@@ -134,20 +414,66 @@
 		\indicatorNumberField[10]{(32,16)}{\IndicatorSize}
 	\end{scope}
 \end{tikzpicture}%
+
 \subsubsection*{\inTextCircled[10]{1}{8} Sleeping Quarters (cramped)}
+{\entryfont The sleeping quarters are compact and somewhat cramped, offering just enough space for a bed, a small chest, and a few personal belongings. Despite their modest size, each room is clean, warm, and comfortable - providing all that's needed for a well-earned night's rest after a long day of adventuring.}
 \subsubsection*{\inTextCircled[10]{2}{8} Parlor (roomy)}
+{\entryfont The parlor serves as the welcoming heart of the bastion - a spacious, lively foyer where adventurers and guests alike can unwind. A polished piano stands proudly near the hearth, often filling the room with cheerful melodies. Several sturdy tables invite friendly games, hearty drinks, and shared laughter, making it the perfect place to rest and revel in good company.}
 \subsubsection*{\inTextCircled[10]{3}{8} Kitchen (cramped)}
+{\entryfont Though modest in size, the kitchen is a marvel of efficiency and warmth. Its well-worn hearths and sturdy counters are constantly alive with the scents of roasting meats and freshly baked bread. Despite its limited space, it can easily produce grand feasts and culinary delights fit for a hall full of hungry heroes.}
 \subsubsection*{\inTextCircled[10]{4}{8} Library (roomy)}
+{\entryfont It is recommended that players have access to a Library within their bastion, as it provides a natural way to uncover world lore, research known events, locations, or rumours, and deepen their understanding of Fife's history. The facility is managed by \hyperref[cha:OwlHooters]{\LinkFont{Mr. Owl Hooters}}, an owlin scribe of vast knowledge and peculiar charm, who has gathered an impressive collection of scrolls, tomes, and manuscripts over the years. Within these shelves lies both wisdom and mystery - waiting for the curious to seek it out.}
+\vfill\eject
 \subsubsection*{\inTextCircled[10]{5}{8}/\inTextCircled[10]{6}{8} Empty Special Facilities (roomy)}
-{\entryfont%
+{\entryfont The bastion contains two empty rooms that the players can customize to their liking. These spaces can be adapted into a variety of useful facilities chosen from the provided list. For detailed descriptions and additional rules regarding these Special Facilities, refer to the Dungeon Master's Guide (2024 Edition), p. 336 ff.
+\begin{itemize}\renewcommand\labelitemi{\textbf{\textbullet}}
+	\item \textbf{Arcane Study} (Ability to use Arcane Focus or Tool as a Spellcasting Focus)
 	\begin{itemize}
-		\item Arcane Study (Ability to use Arcane Focus or Tool as a Spellcasting Focus)
-		\item Armory
-		\item Barrack
-		\item Garden
-		\item Sanctuary (Ability to use Holy Symbol or Druidic Focus as a Spellcasting Focus)
-		\item Smithy
-		\item Storehouse
-		\item Workshop
+		\item \textbf{Hirelings:} 1
+		\item \textbf{Long Rest Charm:} You can cast Identify without expending a spell slot or using material components once until the next Bastion Event.
+		\item \textbf{Craft:} You can order this facility to craft an Arcane Focus (no cost) or a book (10 GP).
 	\end{itemize}
+	\item \textbf{Armory}
+	\begin{itemize}
+		\item \textbf{Trade:} Pay 100 GP (+ 100 GP for each Bastion Defender present) to trade in armour, weapons, and shields to make your Bastion Defenders tougher to overcome.
+	\end{itemize}
+	\item \textbf{Barrack}
+	\begin{itemize}
+		\item Holds up to twelve Bastion Defenders.
+		\item Defends Bastion during Theft Events.
+		\item \textbf{Recruit:} Up to 4 Defenders are recruited to the Bastion.
+		\item \textbf{Enlarge:} 2'000 GP; Barracks can accommodate up to 25 Bastion Defenders.
+	\end{itemize}
+	\item \textbf{Garden}
+	\begin{itemize}
+		\item \textbf{Hirelings:} 1
+		\item \textbf{Garden Types:} Decorative, Food, Herb, Poison (can be changed but takes a long time).
+		\item \textbf{Harvest:} Collect items from the garden based on the garden type.
+		\item \textbf{Enlarge:} 2'000 GP; Counts as two Gardens, either of the same type or different ones.
+	\end{itemize}
+	\item \textbf{Sanctuary} (Ability to use Holy Symbol or Druidic Focus as a Spellcasting Focus)
+	\begin{itemize}
+		\item \textbf{Hirelings:} 1
+		\item \textbf{Long Rest Charm:} You can cast Healing Word without expending a spell slot or using material components once until the next Bastion Event.
+		\item \textbf{Craft:} Craft a Druidic Focus (like a woooden staff) or a Holy Symbol at no cost.
+	\end{itemize}
+	\item \textbf{Smithy}
+	\begin{itemize}
+		\item \textbf{Hirelings:} 2
+		\item \textbf{Craft:} Can craft anything that can be made with Smith's Tools.
+	\end{itemize}
+	\item \textbf{Storehouse}
+	\begin{itemize}
+		\item \textbf{Hirelings:} 1
+		\item \textbf{Trade:} Invest up to 500 GP to gain a return of 10 percent at the next Bastion Event.
+	\end{itemize}
+	\item \textbf{Workshop}
+	\begin{itemize}
+		\item \textbf{Hirelings:} 3
+		\item \textbf{Short Rest Inspiration:} Heroic Inspiration
+		\item Comes equipped with six different kinds of Artisan's Tools.
+		\item \textbf{Craft:} Can craft anything that can be made with the tools chosen when the Workshop is added to the Bastion.
+		\item \textbf{Enlarge:} 2'000 GP; 2 additional Artisan's Tools
+	\end{itemize}
+\end{itemize}
 }%
