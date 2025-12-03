@@ -1,0 +1,61 @@
+\begin{DndMonster}[width=0.5\textwidth]{Scarecrow\phantomsection\addcontentsline{toc}{section}{Scarecrow}\label{monster:Scarecrow}}
+	\DndMonsterType{Medium Construct, Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {11},
+		initiative	= +3,
+		hit-points  = {\DndDice{6d8}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 11,
+		dex = 13,
+		con = 11,
+		int = 10,
+		wis = 10,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+%		skills					= {Stealth +6},
+		damage-vulnerabilities	= {Fire},
+%		damage-resistances		= {Acid, Cold, Fire, Lightning, Thunder},
+		damage-immunities		= {Poison, Charmed, Exhaustion, Frightened, Paralyzed, Petrified, Poisoned, Unconscious},
+%		condition-immunities	= {},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 60 ft., Passive Perception 10},
+		languages				= {Common, Infernal},
+		challenge				= 1,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Fearsome Claw,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +3,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d4 + 1},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{3d6},
+%		plus-dmg-type	= Fire,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+		extra			= {, and the target has the Frightened condition until the end of the scarecrow's next turn.},
+	]
+	
+	\DndMonsterSpell[
+		name		= Terrifying Glare,
+		save_skill	= Wisdom,
+		save_dc		= 11,
+		targets		= {one creature the scarecrow can see within 30 feet},
+		failure		= {The target has the Frightened condition until the end of the scarecrow's next turn. While Frightened, the target has the Paralyzed condition.},
+	]
+\end{DndMonster}

@@ -1,0 +1,63 @@
+\begin{DndMonster}[width=0.5\textwidth]{Nightmare\phantomsection\addcontentsline{toc}{section}{Nightmare}\label{monster:Nightmare}}
+	\DndMonsterType{Medium Fiend, Neutral Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {13},
+		initiative	= +2,
+		hit-points  = {\DndDice{8d10 + 24}},
+		speed       = {60 ft., Fly 90 ft. (hover)},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 18,
+		dex = 15,
+		con = 16,
+		int = 10,
+		wis = 13,
+		cha = 15,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+%		skills					= {Stealth +6},
+%		damage-vulnerabilities	= {Radiant},
+%		damage-resistances		= {Acid, Cold, Fire, Lightning, Thunder},
+		damage-immunities		= {Fire},
+%		condition-immunities	= {},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Passive Perception 11},
+		languages				= {Understands Abyssal, Common, and Infernal but can't speak},
+		challenge				= 3,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+    \DndMonsterAction{Confer Fire Resistance}
+	The nightmare can grant Resistance to Fire damage to a rider while it is on the nightmare.
+	
+	\DndMonsterAction{Illumination}
+	The nightmare sheds Bright Light in a 10-foot radius and Dim Light for an additional 10 feet.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Hooves,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 4},
+		dmg-type		= Bludgeoning,
+		plus-dmg		= \DndDice{3d6},
+		plus-dmg-type	= Fire,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {, },
+	]
+	
+	\DndMonsterAction{Ethereal Stride}
+	The nightmare and up to three creatures within 5 feet of it teleport to the Etherel Plane from the Material Plane or vice versa.
+\end{DndMonster}

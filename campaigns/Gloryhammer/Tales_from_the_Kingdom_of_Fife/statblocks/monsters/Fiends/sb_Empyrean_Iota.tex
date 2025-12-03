@@ -1,0 +1,70 @@
+\begin{DndMonster}[width=0.5\textwidth]{Empyrean Iota\phantomsection\addcontentsline{toc}{section}{Empyrean Iota}\label{monster:EmpyreanIota}}
+	\DndMonsterType{Medium Fiend, Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {13},
+		initiative	= +2,
+		hit-points  = {\DndDice{5d8}},
+		speed       = {5 ft., Fly 30 ft. (hover)},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 1,
+		dex = 14,
+		con = 10,
+		int = 15,
+		wis = 16,
+		cha = 16,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+		skills					= {History +4, Insight +5, Perception +5},
+%		damage-vulnerabilities	= {Fire},
+		damage-resistances		= {Bludgeoning, Piercing, Slashing},
+		damage-immunities		= {Prone},
+%		condition-immunities	= {},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Truesight 30 ft., Passive Perception 15},
+		languages				= {All},
+		challenge				= 1,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Incorporeal Movement}
+	The empyrean can move through other creatures and objects as if they were Difficult Terrain. It takes \DndDice{1d10} Force damage if it ends its turn inside an object.
+	
+	\DndMonsterAction{Magic Resistance}
+	The empyrean has Advantage on saving throws against spells and other magical effects.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Otherworldly Strike,
+		distance		= both,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 5,
+		range			= 30,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 3},
+		dmg-type		= Necrotic,
+%		plus-dmg		= \DndDice{3d6},
+%		plus-dmg-type	= Fire,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {, and the target has the Frightened condition until the end of the scarecrow's next turn.},
+	]
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The empyrean casts one of the following spells, requiring no Material components and using Wisdom (spell save DC 13, +5 to hit with spell attacks) as the spellcasting ability:
+		\DndInnateSpellLevel[1]{Bless, Lesser Restoration (as an action)}
+	\end{DndMonsterSpells}
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Healing Word (1/Day)}
+	The empyrean casts Healing Word, using the same spellcasting ability as Spellcasting.
+\end{DndMonster}
