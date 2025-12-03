@@ -23,7 +23,7 @@
 \Background{Gate Warden}
 \Race{Warforged}
 
-\Level{6}
+\Level{7}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{39} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{47} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -126,6 +126,7 @@
 \AddClassFeature{E}{\textbf{Combat Inspiration}}
 \AddClassFeature{E}{\textbf{Font of Inspiration}}
 \AddClassFeature{E}{\textbf{Extra Attack}}
+\AddClassFeature{R}{\textbf{Countercharm}}
 
 \AddSpeciesFeature{E}{\textbf{Constructed Resilience}}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
@@ -223,6 +224,7 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{3}
+\FourthLevelSpellSlotsTotal{1}
 
 \addPreparedSpell{0}
 	{Blade Ward}
@@ -350,6 +352,15 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 	{}
 	{V}
 	{V}
+\addPreparedSpell{4}
+	{Confusion}
+	{Action}
+	{90 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
 
 \begin{document}
 
@@ -449,6 +460,9 @@ In addition, you can cast one of your cantrips that has a casting time of an act
 You now regain all your expended uses of Bardic Inspiration when you finish a Short or Long Rest.
 
 In addition, you can expend a spell slot (no action required) to regain one expended use of Bardic Inspiration
+
+\subsection*{Countercharm}
+You can use musical notes or words of power to disrupt mind-influencing effects. If you or a creature within 30 feet of you fails a saving throw against an effect that applies the Charmed or Frightened condition, you can take a Reaction to cause the save to be rerolled, and the new roll has advantage.
 
 \section*{Spells}
 \subsection*{Cantrip}
@@ -642,6 +656,29 @@ The target also has Resistance to all damage except Psychic damage, and it has I
 Choose up to five creatures within range that can hear you. For the duration, each affected creature gains 5 temporary hit points and has advantage on Wisdom saving throws. If an affected creature is hit by an attack, it has advantage on the next attack roll it makes. Once an affected creature loses the temporary hit points granted by this spell, the spell ends for that creature.
 
 \subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 4th level or higher, the temporary hit points increase by 5 for each slot level above 3rd.
+
+\subsection*{Level 4}
+
+\DndSpellHeader
+  {Confusion}
+  {4th-Level Enchantment}
+  {Action}
+  {90 Feet}
+  {V, S, M (three nut shells)}
+  {Concentration, Up to 1 Minute}
+  
+Each creature in a 10-foot-radius Sphere centered on a point you choose within range must succeed on a Wisdom saving throw, or that target can't take Bonus Actions or Reactions and must roll 1d10 at the start of each of its turns to determine its behavior for that turn, consulting the table below.
+\begin{DndTable}{lX}
+	1d10	& Behavior for the Turn \\
+	1		& The target doesn't take an action, and it uses all its movement to move. Roll 1d4 for the direction: 1, north; 2, east; 3, south; 4, west.\\
+	2-6		& The target doesn't move or take actions.\\
+	7-8		& The target doesn't move, and it takes the Attack action to make one melee attack against a random creature within reach. If none are within reach, the target takes no action.\\
+	9-10	& The target chooses its bahvior.
+\end{DndTable}
+
+At the end of each of its turns, an affected target repeats the save, ending the spell on itself on a success.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The Sphere's radius increases by 5 feet for each spell slot level above 4.
 
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}

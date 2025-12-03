@@ -23,7 +23,7 @@
 \Background{Lantan Ranger Corps} % Whitestone Rifle Corps
 \Race{Warforged}
 
-\Level{6}
+\Level{7}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -50,7 +50,7 @@
 \DexterityProficiency{P}
 \ConstitutionProficiency{}
 \IntelligenceProficiency{}
-\WisdomProficiency{}
+\WisdomProficiency{P} % Iron Mind (Gloom Stalker Feature)
 \CharismaProficiency{}
 
 %% STRENGTH SKILLS
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{14}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{40} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{44} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d10}
@@ -228,7 +228,7 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 \FirstLevelSpellSlotsTotal{4}
-\SecondLevelSpellSlotsTotal{2}
+\SecondLevelSpellSlotsTotal{3}
 
 \addPreparedSpell{1}
 	{Absorb Elements}
@@ -303,6 +303,15 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 	{T}
 	{V, S}
 	{V, S, M}
+\addPreparedSpell{2}
+	{Find Traps}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
 \addPreparedSpell{2}
 	{Rope Trick}
 	{Action}
@@ -395,10 +404,13 @@ $\bullet$	& 5th						&Rope Trick				\\
 \subsubsection*{Umbral Sight}
 You gain Darkvision with a range of 60 feet. If you already have Darkvision when you gain this feature, its range increases by 60 feet.
 
-You are also adept at evading creatures that rely on Darkvision. While entirely in Darkness, you have the Invisible condition to any creature that relies on Darkvision to see you in that darkness
-\subsubsection*{Extra Attack}
+You are also adept at evading creatures that rely on Darkvision. While entirely in Darkness, you have the Invisible condition to any creature that relies on Darkvision to see you in that darkness.
+\subsubsection*{Iron Mind}
+\textbf{Proficiency in Wisdom Saving Throws}\\
+You have honed your ability to resist mind-altering powers. You gain proficiency in Wisdom saving throws. If you already have this proficiency, you instead gain proficiency in Intelligence or Charisma saving throws (your choice).
+\subsection*{Extra Attack}
 You can attack twice instead of once whenever you take the Attack action on your turn.
-\subsubsection*{Roving}
+\subsection*{Roving}
 Your Speed increases by 10 feet while you aren't wearing Heavy armor. You also have a Climb Speed and a Swim Speed equal to your Speed.
 
 \section*{Spells}
@@ -511,6 +523,20 @@ You touch up to four nonmagical Arrows or Bolts and plant them in the ground in 
 When you cast this spell, you can designate any creatures you choose, and the spell ignores them.
 
 \subparagraph*{Using a Higher-Level Spell Slot} The amount of ammunition that can be affected increases by two for each spell slot level above 2.
+
+\DndSpellHeader
+  {Find Traps}
+  {2nd-Level Divination}
+  {Action}
+  {120 Feet}
+  {V, S}
+  {Instantaneous}
+
+You sense the presence of any trap within range that is within line of sight.
+
+A trap, for the purpose of this spell, includes anything that would inflict a sudden or unexpected effect you consider harmful or undesirable, which was specifically intended as such by its creator. Thus, the spell would sense an area affected by the alarm spell, a glyph of warding, or a mechanical pit trap, but it would not reveal a natural weakness in the floor, an unstable ceiling, or a hidden sinkhole.
+
+This spell merely reveals that a trap is present. You don't learn the location of each trap, but you do learn the general nature of the danger posed by a trap you sense.
 
 \DndSpellHeader
   {Rope Trick}

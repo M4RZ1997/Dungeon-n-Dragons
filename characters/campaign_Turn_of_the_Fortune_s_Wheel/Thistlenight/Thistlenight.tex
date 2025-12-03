@@ -23,7 +23,7 @@
 \Background{Feylost}
 \Race{Wechselkind}
 
-\Level{6}
+\Level{7}
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -113,7 +113,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
 
-\MaxHitPointsRolled{31} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{34} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d6}
@@ -145,6 +145,7 @@
 \AddClassFeature{R}{\textbf{Restore Balance}\\Revert effects of Advantage or Disadvantage (4 uses per Long Rest)}
 \AddClassFeature{L}{\textbf{Sorcerous Restoration}\\Restore \intcalcShr{\LevelValue} Sorcery Points once per Long Rest}
 \AddClassFeature{E}{\textbf{Bastion of Law}\\Use Sorcery Points to create shielding ward}
+\AddClassFeature{E}{\textbf{Sorcery Incarnate}}
 
 \AddSpeciesFeature{E}{\textbf{Artificial Form}\\Thistlenight is a construct.}
 \AddSpeciesFeature{L}{\textbf{Faerie Glamour}\\Can cast Disguise Self \textbf{once} per Long Rest.}
@@ -215,13 +216,12 @@
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Elven Chain}, \textbf{Magical Wood Polish}, \textbf{Amber Necklace} (Arcane Focus), 2 \textbf{Magical Mechanical Gear}, Scroll of Entangle, Potion of Invisibility, Flask of Holy Water, 2 Daggers, Spear, Light Crossbow, 20 bolts, Gloon (spooky Glaur), set of traveler's clothes, candlestick whose candlelight looks like a tiny dancing fairy made of fire, 8-inch-long glass ant figurine, silver fork with the outer tines bent sideways, backpack, crowbar, hammer, 10 pitons, tinderbox, 10 days of rations, waterskin, 50 feet of hempen rope\\
-	\textbf{Rod of Retribution} (unattuned)
+	\textbf{Elven Chain}, \textbf{Magical Wood Polish}, \textbf{Amber Necklace} (Arcane Focus), 2 \textbf{Magical Mechanical Gear}, Scroll of Entangle, Potion of Invisibility, Flask of Holy Water, 2 Daggers, Spear, Light Crossbow, 20 bolts, Gloon (spooky Glaur), set of traveler's clothes, candlestick whose candlelight looks like a tiny dancing fairy made of fire, 8-inch-long glass ant figurine, silver fork with the outer tines bent sideways, backpack, crowbar, hammer, 10 pitons, tinderbox, 10 days of rations, waterskin, 50 feet of hempen rope
 }
 
 \addAttunedMagicItem{Amulet of Proof Against Detection}
 \addAttunedMagicItem{Stone of Good Luck}
-\addAttunedMagicItem{Cube of Force}
+\addAttunedMagicItem{Rod of Retribution}
 
 \CP{}
 \SP{5}
@@ -237,6 +237,7 @@
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{3}
+\FourthLevelSpellSlotsTotal{1}
 
 \addPreparedSpell{0}
 	{Chill Touch}
@@ -436,6 +437,34 @@
 	{}
 	{V, S, 1 Minute}
 	{V, S}
+	
+\addPreparedSpell{4}
+	{Dominate Beast}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{4}
+	{Freedom of Movement}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{4}
+	{Summon Construct}
+	{Action}
+	{90 Feet}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
 
 \begin{document}
 
@@ -548,6 +577,10 @@ You can use this feature a number of times equal to your Charisma modifier (mini
 You can tap into the grand equation of existence to imbue a creature with a shimmering shield of order. As a Magic action, you can expend 1 to 5 Sorcery Points to create a magical ward around yourself or another creature you can see within 30 feet of yourself. The ward is represented by a number of d8s equal to the number of Sorcery Points spent to create it. When the warded creature takes damage, it can expend a number of those dice, roll them, and reduce the damage taken by the total rolled on those dice.
 
 The ward lasts until you finish a Long Rest or until you use this feature again.
+\subsubsection*{Sorcery Incarnate}
+If you have no uses of Innate Sorcery left, you can use it if you spend 2 Sorcery Points when you take the Bonus Action to activate.
+
+In addition, while your Innate Sorcery feature is active, you can use up to two of your Metamagic option on each spell you cast.
 
 \section*{Spells}
 \subsection*{Cantrips}
@@ -834,6 +867,122 @@ The touch of your shadow-wreathed hand can siphon force from others to heal your
 Until the spell ends, you can make the attack again on each of your turns as a Magic action, targeting the same creature or a different one.
 
 \subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 3.
+
+\subsection*{4th Level}
+
+\DndSpellHeader
+  {Dominate Beast}
+  {4th-Level Enchantment}
+  {Action}
+  {60 Feet}
+  {V, S}
+  {Concentration, Up to 1 Minute}
+
+You attempt to beguile a beast that you can see within range. It must succeed on a Wisdom saving throw or be charmed by you for the duration. If you or creatures that are friendly to you are fighting it, it has advantage on the saving throw.
+
+While the beast is charmed, you have a telepathic link with it as long as the two of you are on the same plane of existence. You can use this telepathic link to issue commands to the creature while you are conscious (no action required), which it does its best to obey. You can specify a simple and general course of action, such as "Attack that creature", "Run over there", or "Fetch that object". If the creature completes the order and doesn't receive further direction from you, it defends and preserves itself to the best of its ability.
+
+You can use your action to take total and precise control of the target. Until the end of your next turn, the creature takes only the actions you choose, and doesn't do anything that you don't allow it to do. During this time, you can also cause the creature to use a reaction, but this requires you to use your own reaction as well.
+
+Each time the target takes damage, it makes a new Wisdom saving throw against the spell. If the saving throw succeeds, the spell ends.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell with a 5th-level spell slot, the duration is concentration, up to 10 minutes. When you use a 6th-level spell slot, the duration is concentration, up to 1 hour. When you use a spell slot of 7th level or higher, the duration is concentration, up to 8 hours.
+
+\DndSpellHeader
+  {Freedom of Movement}
+  {4th-Level Abjuration}
+  {Action}
+  {Touch}
+  {V, S, M (a leather strap, bound around the arm or a similar appendage)}
+  {1 Hour}
+  
+You touch a willing creature. For the duration, the target's movement is unaffected by difficult terrain, and spells and other magical effects can neither reduce the target's speed nor cause the target to be paralyzed or restrained.
+
+The target can also spend 5 feet of movement to automatically escape from nonmagical restraints, such as manacles or a creature that has it grappled. Finally, being underwater imposes no penalties on the target's movement or attacks.
+
+\DndSpellHeader
+  {Summon Construct}
+  {4th-Level Conjuration}
+  {Action}
+  {90 Feet}
+  {V, S, M (a lockbox worth 400+ GP)}
+  {Concentration, up to 1 Hour}
+  
+You call forth the spirit of a construct. It manifests in an unoccupied space that you can see within range. This corporeal form uses the Construct Spirit stat block. When you cast the spell, choose a material: Clay, Metal, or Stone. The creature resembles a golem or a modron (your choice) made of the chosen material, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.
+
+The creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.
+
+\subparagraph*{Using a Higher-Level Spell Slot} Use the spell slot's level for the spell's level in the stat block.
+
+\begin{DndMonster}[width=0.5\textwidth]{Construct Spirit}
+    \DndMonsterType{Medium Construct, Neutral}
+
+    % If you want to use commas in the key values, enclose the values in braces.
+    \DndMonsterBasics[
+        armor-class = {13 + tje spell's level},
+        hit-points  = {40 + 15 for each spell level above 4},
+        speed       = {30 ft.},
+    ]
+    
+	\renewcommand{\AbilityScoreSpacer}{~}
+    \DndMonsterAbilityScores[
+		str = 18,
+		dex = 10,
+		con = 18,
+		int = 14,
+		wis = 11,
+		cha = 5,
+    ]
+
+    \DndMonsterDetails[
+%		saving-throws = {Dex +\intcalcAdd{0}{\ProficiencyValue}},
+%		skills = {Perception +\intcalcAdd{0}{\intcalcMul{2}{\ProficiencyValue}}, Stealth +\intcalcAdd{2}{\ProficiencyValue}},
+%		damage-vulnerabilities = {cold},
+		damage-resistances = {Poison},
+%		damage-immunities = {Fire},
+		senses = {Darkvision 60 ft., Passive Perception 10},
+		condition-immunities = {Charmed, Exhaustion, Frightened, Paralyzed, Poisoned},
+		languages = {understands the languages you speak},
+		challenge = -,
+		proficiency-bonus=\ProficiencyValue,
+	]
+    
+    \DndMonsterSection{Traits}
+    \DndMonsterAction{Heated Body (Metal Only)}
+    A creature that hits the spirit with a melee attack or that starts its turn in a grapple with the spirit takes 1d10 Fire damage.
+    
+    \DndMonsterAction{Stone Lethargy (Stone Only)}
+    When a creature starts its turn within 1ß feet of the spirit, the spirit can target it with magical energy if the spirit can see it.\\
+    \textbf{Wisdom Saving Throw:} \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\WisdomScoreValue}}}, the target.\\
+    \textbf{Failure:} Until the start of its next turn, the target can't make Opportunity Attacks, and its Speed is halved.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The spirit makes a number of Slam attacks equal to half this spell's level (rounded down).
+	
+	\DndMonsterAttack[
+      name=Slam,
+      distance=melee, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=\calculateSpellAttack{\calculateModifier{\CharismaScoreValue}},
+      %reach=5,
+      range=30,
+      targets=one target you can see,
+      dmg=\DndDice{1d8} + 4 + the spell's level,
+      dmg-type=Bludgeoning,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      %extra=,
+    ]
+    
+    \DndMonsterSection{Reactions}
+	\DndMonsterAction{Berserk Lashing (Clay Only)}
+	\textbf{Trigger:} The spirit takes damage from a creature.\\
+	\textbf{Response:} The spirit makes a Slam attack against that creature if possible, or the spirit moves up to half its Speed toward that creaturte without provoking Opportunity Attacks.	
+\end{DndMonster}
+  
 \vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
@@ -894,32 +1043,11 @@ While wearing this amulet, you are hidden from divination magic. You can't be ta
 \textit{Wondrous Item, uncommon (requires attunement)}\\
 While this polished agate is on your person, you gain a + 1 bonus to ability checks and saving throws.
 
-\subsection*{Cube of Force}
-\textit{Wondrous Item, rare (requires attunement)}\\
-This cube is about an inch across. Each face has a distinct marking on it that can be pressed. The cube starts with 36 charges, and it regains 1d20 expended charges daily at dawn.
+\subsection*{Rod of Retribution}
+\textit{Rod, uncommon (requires attunement)}\\
+This adamantine rod is tipped with a glowing crystalline eye. The rod has 3 charges and regains all its expended charges daily at dawn.
 
-You can use an action to press one of the cube's faces, expending a number of charges based on the chosen face, as shown in the Cube of Force Faces table. Each face has a different effect. If the cube has insufficient charges remaining, nothing happens. Otherwise, a barrier of invisible force springs into existence, forming a cube 15 feet on a side. The barrier is centered on you, moves with you, and lasts for 1 minute, until you use an action to press the cube's sixth face, or the cube runs out of charges. You can change the barrier's effect by pressing a different face of the cube and expending the requisite number of charges, resetting the duration. If your movement causes the barrier to come into contact with a solid object that can't pass through the cube, you can't move any closer to that object as long as the barrier remains.
-
-\begin{DndTable}[header=Clockwork Spells]{llX}
-	Face		& Charges	& Effect												\\
-	1			& 1			& Gases, wind, and fog can't pass through the barrier.	\\
-	2			& 2			& Nonliving matter can't pass through the barrier. Walls, floors, and ceilings can pass through at your discretion. \\
-	3			& 3			& Living matter can 't pass through the barrier.		\\
-	4			& 4			& Spell effects can 't pass through the barrier.		\\
-	5			& 5			& Nothing can pass through the barrier. Walls, floors, and ceilings can pass through at your discretion. \\
-	6			& 0			& The barrier deactivates.								\\
-\end{DndTable}
-
-The cube loses charges when the barrier is targeted by certain spells or comes into contact with certain spell or magic item effects, as shown in the table below.
-
-\begin{DndTable}[header=Clockwork Spells]{lX}
-	Spell or item		& Charges Lost	\\
-	Disintegrate		& 1d12			\\
-	Horn of Blasting	& 1d10			\\
-	Passwall			& 1d6			\\
-	Prismatic spray		& 1d20			\\
-	Wall of Fire		& 1d4			\\
-\end{DndTable}
+When a creature you can see within 60 feet of you damages you while you are holding this rod, you can use your reaction to expend 1 of the rod's charges to force the creature to make a DC 13 Dexterity saving throw. The creature takes 2d10 lightning damage on a failed save, or half as much damage on a successful one.
 
 \subsection*{Elven Chain}
 \textit{Armor (Chain Shirt), rare}\\
@@ -933,12 +1061,4 @@ You can expend this item to give yourself a Heroic Inspiration
 \textit{Wondrous Item, uncommon}\\
 WHen you would drop to 0 Hit Points as a result of taking damage, you instead drop to 1 Hit Point and the Magical Wood Polish is expended.\\
 When you are subjected to an effect that would kill you instantaneously without dealing damage, that effect is instead negated against you, and the Magical Wood Polish is expended.
-
-\section*{Unattuned}
-\subsection*{Rod of Retribution}
-\textit{Rod, uncommon (requires attunement)}\\
-This adamantine rod is tipped with a glowing crystalline eye. The rod has 3 charges and regains all its expended charges daily at dawn.
-
-When a creature you can see within 60 feet of you damages you while you are holding this rod, you can use your reaction to expend 1 of the rod's charges to force the creature to make a DC 13 Dexterity saving throw. The creature takes 2d10 lightning damage on a failed save, or half as much damage on a successful one.
-
 \end{document}

@@ -23,7 +23,7 @@
 \Background{Far Traveler}
 \Race{Autognome}
 
-\Level{6}
+\Level{7}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{12}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}} % +1 Enhanced Defense
 
-\MaxHitPointsRolled{30} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{32} % Without Constitution Bonus, is added automatically (33 Rolled -1 Malus throughout campaign)
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -130,12 +130,14 @@
 		\item Homunculus Servant%
 		\item Resistant Armor%
 		\item Spell-Refueling Ring%
+		\item Eyes of Minute Seeing%
 	\end{itemize}%
 }%
 \AddClassFeature{L}{\textbf{Eldritch Cannon}\\Once per day or use of spell slot}
-\AddClassFeature{L}{\textbf{Arcane Firearm}\\Additional d8 damage to spell damage}
+\AddClassFeature{E}{\textbf{Arcane Firearm}\\Additional d8 damage to spell damage}
+\AddClassFeature{R}{\textbf{Flash of Genius}\\Add Intelligence Modifier to your or allies' Saving Throw (\intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}} Uses)}
 
-\AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to attack roll, ability check, or saving throw (\ProficiencyValue~uses)}
+\AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to attack roll, ability check, or saving throw (\intcalcAdd{0}{\ProficiencyValue} Uses)}
 \AddSpeciesFeature{E}{\textbf{Healing Machine}\\Mending generates Hit Die (1d8) + CON modifier HP and healing spells affect Autognome}
 \AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a construct.}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}\\You don't need to sleep}
@@ -207,6 +209,7 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 }
 
 \addAttunedMagicItem{All-Purpose Tool (+2)}
+\addAttunedMagicItem{Cube of Force}
 
 \CP{}
 \SP{}
@@ -221,7 +224,7 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 \SpellAttackModifier{2} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 \FirstLevelSpellSlotsTotal{4}
-\SecondLevelSpellSlotsTotal{2}
+\SecondLevelSpellSlotsTotal{3}
 
 \addPreparedSpell{0}
 	{Mending}
@@ -478,6 +481,9 @@ While wearing this armor, a creature has resistance to one of the following dama
 \paragraph*{Spell-Refueling Ring}\hfill\\
 \textit{Item: A Ring (requires attunement)}\\
 While wearing this ring, the creature can recover one expended spell slot as an action. The recovered slot can be of 3rd level or lower. Once used, the ring can't be used again until the next dawn.
+\paragraph*{Eyes of Minute Seeing}\hfill\\
+\textit{Item: Any spectacles or goggles}\\
+While wearing these lenses you have advantage on Intelligence (Investigation) checks that rely on sight while searching an area or studying an object within range.
 \subsubsection*{Infusing an Item}
 Whenever you finish a long rest, you can touch a nonmagical object and imbue it with one of your artificer infusions, turning it into a magic item. An infusion works on only certain kinds of objects, as specified in the infusion's description. If the item requires attunement, you can attune yourself to it the instant you infuse the item. If you decide to attune to the item later, you must do so using the normal process for attunement (see the attunement rules in the Dungeon Master's Guide).
 
@@ -501,14 +507,13 @@ $\bullet$	& 5th						&Scorching Ray, Shatter			\\
 Also at 3rd level, you've learned how to create a magical cannon. Using woodcarver's tools or smith's tools, you can take an action to magically create a Small or Tiny eldritch cannon in an unoccupied space on a horizontal surface within 5 feet of you. A Small eldritch cannon occupies its space, and a Tiny one can be held in one hand. Once you create a cannon, you can't do so again until you finish a long rest or until you expend a spell slot to create one. You can have only one cannon at a time and can't create one while your cannon is present.
 
 The cannon is a magical object. Regardless of size, the cannon has an AC of 18 and a number of hit points equal to five times your artificer level. It is immune to poison damage and psychic damage. If it is forced to make an ability check or a saving throw, treat all its ability scores as 10 (+0). If the mending spell is cast on it, it regains 2d6 hit points. It disappears if it is reduced to 0 hit points or after 1 hour. You can dismiss it early as an action.
-
-When you create the cannon, you determine its appearance and whether it has legs. You also decide which type it is, choosing from the options on the Eldritch Cannons table. On each of your turns, you can take a bonus action to cause the cannon to activate if you are within 60 feet of it. As part of the same bonus action, you can direct the cannon to walk or climb up to 15 feet to an unoccupied space, provided it has legs.
 \begin{DndTable}[header=Eldritch Cannon]{lX}
 \textbf{Cannon}  	&\textbf{Activation}				\\
 Flamethrower		&The cannon exhales fire in an adjacent 15-foot cone that you designate. Each creature in that area must make a Dexterity saving throw against your spell save DC, taking 2d8 fire damage on a failed save or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being worn or carried.\\
 Force Ballista		&Make a ranged spell attack, originating from the cannon, at one creature or object within 120 feet of it. On a hit, the target takes 2d8 force damage, and if the target is a creature, it is pushed up to 5 feet away from the cannon.\\
 Protector			&The cannon emits a burst of positive energy that grants itself and each creature of your choice within 10 feet of it a number of temporary hit points equal to 1d8 + your Intelligence modifier (minimum of +1).\\
 \end{DndTable}
+When you create the cannon, you determine its appearance and whether it has legs. You also decide which type it is, choosing from the options on the Eldritch Cannons table. On each of your turns, you can take a bonus action to cause the cannon to activate if you are within 60 feet of it. As part of the same bonus action, you can direct the cannon to walk or climb up to 15 feet to an unoccupied space, provided it has legs.
 \subsubsection*{Arcane Firearm}
 At 5th level, You know how to turn a wand, staff, or rod into an arcane firearm, a conduit for your destructive spells. When you finish a long rest, you can use woodcarver's tools to carve special sigils into a wand, staff, or rod and thereby turn it into your arcane firearm. The sigils disappear from the object if you later carve them on a different item. The sigils otherwise last indefinitely.
 
@@ -517,6 +522,11 @@ You can use your arcane firearm as a spellcasting focus for your artificer spell
 At 3rd level, you've learned how to produce exactly the tool you need: with thieves' tools or artisan's tools in hand, you can magically create one set of artisan's tools in an unoccupied space within 5 feet of you. This creation requires 1 hour of uninterrupted work, which can coincide with a short or long rest. Though the product of magic, the tools are nonmagical, and they vanish when you use this feature again.
 \subsection*{Tool Expertise}
 At 6th level, your proficiency bonus is now doubled for any ability check you make that uses your proficiency with a tool.
+\subsection*{Flash of Genius}
+\textbf{\intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}} Uses}\\
+At 7th level, you've gained the ability to come up with solutions under pressure. When you or another creature you can see within 30 feet of you makes an ability check or a saving throw, you can use your reaction to add your Intelligence modifier to the roll.
+
+You can use this feature a number of times equal to your Intelligence modifier (minimum of once). You regain all expended uses when you finish a long rest.
 
 \section*{Spells}
 \subsection*{Cantrip}
@@ -741,7 +751,7 @@ The robe has two of each of the following patches:
 	\item Steel mirror
 	\item 10-foot pole
 	\item Hempen rope (50 feet, coiled)
-	\item Sack
+	\item Sack (1/2)
 \end{itemize}
 In addition, the robe has 4d4 (10) other patches.
 \begin{itemize}
@@ -755,4 +765,29 @@ In addition, the robe has 4d4 (10) other patches.
 	\item Magic Missile Scroll
 	\item Shield Scroll
 \end{itemize}
+\subsection*{Cube of Force}
+\textit{Wondrous Item, rare (requires attunement)}\\
+This cube is about an inch across. Each face has a distinct marking on it that can be pressed. The cube starts with 36 charges, and it regains 1d20 expended charges daily at dawn.
+
+You can use an action to press one of the cube's faces, expending a number of charges based on the chosen face, as shown in the Cube of Force Faces table. Each face has a different effect. If the cube has insufficient charges remaining, nothing happens. Otherwise, a barrier of invisible force springs into existence, forming a cube 15 feet on a side. The barrier is centered on you, moves with you, and lasts for 1 minute, until you use an action to press the cube's sixth face, or the cube runs out of charges. You can change the barrier's effect by pressing a different face of the cube and expending the requisite number of charges, resetting the duration.
+
+If your movement causes the barrier to come into contact with a solid object that can't pass through the cube, you can't move any closer to that object as long as the barrier remains.
+\begin{DndTable}[header=Cube of Force Faces]{llX}
+	Face  	& Charges  	& Effect \\
+	1		& 1			& Gases, wind, and fog can't pass through the barrier.\\
+	2		& 2			& Non-living matter can't pass through the barrier. Walls, floors, and ceilings can pass through at your discretion.\\
+	3		& 3			& Living matter can't pass through the barrier.\\
+	4		& 4			& Spell effects can't pass through the barrier.\\
+	5		& 5			& Nothing can pass through the barrier. Walls, floors, and ceilings can pass through at your discretion.\\
+	6		& 0			& The barrier deactivates.\\
+\end{DndTable}
+The cube loses charges when the barrier is targeted by certain spells or comes into contact with certain spell or magic item effects, as shown in the table below.
+\begin{DndTable}{lX}
+	Spell or item  		& Charges Lost\\
+	Disintegrate		& 1d12\\
+	Horn of Blasting	& 1d10\\
+	Passwall 			& 1d6\\
+	Prismatic Spray		& 1d20\\
+	Wall of Fire		& 1d4
+\end{DndTable}
 \end{document}
