@@ -503,7 +503,7 @@
 	save_skill	.choice:,
 	save_skill	.choices:nn	=
 		{ Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma }
-		{ \tl_set:Nn \l__save_skill_tl {\l_keys_choice_tl} },
+		{ \tl_set_eq:NN \l__save_skill_tl {\l_keys_choice_tl} },
 	save_skill	.initial:n			= Wisdom,
 	save_dc		.tl_set:N			= \l__save_dc_tl,
 	save_dc		.value_required:n	= true,
