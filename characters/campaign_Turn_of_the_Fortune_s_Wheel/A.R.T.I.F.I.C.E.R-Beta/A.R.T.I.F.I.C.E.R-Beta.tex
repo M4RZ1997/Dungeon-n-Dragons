@@ -135,9 +135,9 @@
 }%
 \AddClassFeature{L}{\textbf{Eldritch Cannon}\\Once per day or use of spell slot}
 \AddClassFeature{E}{\textbf{Arcane Firearm}\\Additional d8 damage to spell damage}
-\AddClassFeature{R}{\textbf{Flash of Genius}\\Add Intelligence Modifier to your or allies' Saving Throw (\intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}} Uses)}
+\AddClassFeature{R}{\textbf{Flash of Genius}\\Add \calculateModifier{\IntelligenceScoreValue} to your or allies' Ability Check or Saving Throw (\intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}} Uses)}
 
-\AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to attack roll, ability check, or saving throw (\intcalcAdd{0}{\ProficiencyValue} Uses)}
+\AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to Attack Roll, Ability Check, or Saving Throw (\intcalcAdd{0}{\ProficiencyValue} Uses)}
 \AddSpeciesFeature{E}{\textbf{Healing Machine}\\Mending generates Hit Die (1d8) + CON modifier HP and healing spells affect Autognome}
 \AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a construct.}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}\\You don't need to sleep}
@@ -205,7 +205,7 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Robe of Useful Items}, \textbf{Eyes of Minute Seeing}, Opal Gem (100gp), Light Crossbow, 20 Bolts, Handaxe, Quarterstaff, Thieves' Tools, Dice Set, small Lantanna piece of jewellery (10gp), traveler's clothes
+	\textbf{Robe of Useful Items}, \textbf{Eyes of Minute Seeing}, \textbf{Potion of Gaseous Form}\\Opal Gem (100gp), Light Crossbow, 20 Bolts, Handaxe, Quarterstaff, Thieves' Tools, Dice Set, small Lantanna piece of jewellery (10gp), traveler's clothes
 }
 
 \addAttunedMagicItem{All-Purpose Tool (+2)}
@@ -214,7 +214,7 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 \CP{}
 \SP{}
 \EP{}
-\GP{775}
+\GP{620}
 \PP{}
 
 % SPELLS
@@ -756,7 +756,6 @@ The robe has two of each of the following patches:
 In addition, the robe has 4d4 (10) other patches.
 \begin{itemize}
 	\item Window
-	\item Iron Door
 	\item Rowboat
 	\item Portable Ram
 	\item 2x Potion of Healing
@@ -790,4 +789,19 @@ The cube loses charges when the barrier is targeted by certain spells or comes i
 	Prismatic Spray		& 1d20\\
 	Wall of Fire		& 1d4
 \end{DndTable}
+\subsection*{Potion of Gaseous Form}
+\textit{Potion, Rare}\\
+When you drink this potion, you gain the effect of the gaseous form spell for 1 hour (no concentration required) or until you end the effect as a bonus action. This potion's container seems to hold fog that moves and pours like water.
+
+\DndSpellHeader
+  {Gaseous Form}
+  {3rd-Level Transmutation}
+  {Action}
+  {Touch}
+  {V, S, M (a bit of gauze and a wisp of smoke)}
+  {Concentration, Up to 1 Hour}
+  
+You transform a willing creature you touch, along with everything it's wearing and carrying, into a misty cloud for the duration. The spell ends if the creature drops to 0 hit points. An incorporeal creature isn't affected.
+While in this form, the target's only method of movement is a flying speed of 10 feet. The target can enter and occupy the space of another creature. The target has resistance to non-magical damage, and it has advantage on Strength, Dexterity, and Constitution saving throws. The target can pass through small holes, narrow openings, and even mere cracks, though it treats liquids as though they were solid surfaces. The target can't fall and remains hovering in the air even when stunned or otherwise incapacitated.
+While in the form of a misty cloud, the target can't talk or manipulate objects, and any objects it was carrying or holding can't be dropped, used, or otherwise interacted with. The target can't attack or cast spells.
 \end{document}
