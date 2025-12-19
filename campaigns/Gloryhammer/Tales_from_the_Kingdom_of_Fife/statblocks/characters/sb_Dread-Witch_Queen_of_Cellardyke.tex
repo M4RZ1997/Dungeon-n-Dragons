@@ -1,0 +1,102 @@
+\begin{DndMonster}[width=\textwidth + 8pt]{Dread-Witch Queen of Cellardyke}
+	\begin{multicols}{2}
+		\DndMonsterType{Medium Humanoid (Drow Elf), Neutral Evil}
+		
+		% If you want to use commas in the key values, enclose the values in braces.
+		\DndMonsterBasics[
+			armor-class = {16 (Scale Mail)},
+			initiative	= +5,
+			hit-points  = {\DndDice{13d8 + 13}},
+			speed       = {30 ft.},
+		]
+		
+		\renewcommand{\AbilityScoreSpacer}{~}
+		\DndMonsterAbilityScores[
+			str = 10,
+			dex = 14,
+			con = 12,
+			int = 13,
+			wis = 17,
+			cha = 18,
+		]
+		
+		\DndMonsterDetails[
+			saving-throws			= {CON +4, WIS +6, CHA +7},
+			skills					= {Insight +6, Perception +6, Religion +4, Stealth +5},
+%			damage-vulnerabilities	= {Cold},
+			damage-resistances		= {Cold, Fire},
+%			damage-immunities		= {},
+%			condition-immunities	= {},
+%			gear					= {Leather Armor, Light Crossbow, Scimitar},
+			senses					= {Darkvision 120 ft., Passive Perception 16},
+			languages				= {Common, Elvish, Undercommon},
+			challenge				= 8,
+			proficiency-bonus		= +3
+		]
+		
+		\DndMonsterSection{Traits}
+		\DndMonsterAction{Fey Ancestry}
+		The Dread-Witch Queen has advantage on saving throws against being charmed, and magic can't put the drow to sleep.
+		
+		\DndMonsterAction{Magic Resistance}
+		The Dread-Witch Queen has Advantage on Saving Throws against spells and other magical effects.
+		
+		\DndMonsterAction{Soul Bag}
+		The Dread-Witch Queen has a soul bag. While holding or carrying the bag, the Dread-Witch Queen can use its Nightmare Haunting action.
+		
+		The bag has AC 15, HP 20, and Resistance to all damage. The bag turns to dust if reduced to 0 Hit Points. If the bag is destroyed, any souls the bag is holding are released. The hag can create a new bag after 7 days.
+		
+		\DndMonsterAction{Sunlight Sensitivity}
+		While in sunlight, the Dread-Witch Queen has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight.
+		
+		\DndMonsterSection{Actions}
+		\DndMonsterAction{Extra Attack}
+		The Dread-Witch Queen makes two Scourge attacks.
+		
+		\DndMonsterAttack[
+			name			= Scourge,
+			distance		= melee,	% valid options are in the set {both,melee,ranged}
+%			type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +5,
+			reach			= 5,
+%			range			= 20/60,
+			targets			= one target,
+			dmg				= \DndDice{1d6 + 2},
+			dmg-type		= piercing,
+			plus-dmg		= \DndDice{5d6},
+			plus-dmg-type	= Necrotic,
+%			or-dmg			= \DndDice{1d20},
+%			or-dmg-when		= {},
+%			extra			= {. },
+		]
+		
+		\DndMonsterAction{Summon Demon (1 / Day)}
+		The Dread-Witch Queen attempts to magically summon a demon (\hyperref[monster:Vrock]{\LinkFont{Vrock}}, \hyperref[monster:Maurezhi]{\LinkFont{Maurezhi}}, or \hyperref[monster:Hezrou]{\LinkFont{Hezrou}}) with a 5\% chance of success. (The creature summoned depends on choices during the campaign and when the Dread-Witch Queen is encountered - see \hyperref[cha:SummonableDemons]{\LinkFont{Summonable Demons Section}}) The Dread-Witch Queen can offer souls from her Soul Bag to increase the chance of summoning the demon by 5\% for each soul offered this way. If the attempt fails, the Dread-Witch Queen takes \DndDice{1d10} Psychic damage.
+		
+		Otherwise, the summoned demon appears in an unoccupied space within 60 feet of its summoner, acts as an ally of its summoner, and can't summon other demons. It remains for 10 minutes, until it or its summoner dies, or until its summoner dismisses it as an action.
+		
+		\DndMonsterSection{Spells}
+		\begin{DndMonsterSpells}
+			\item[Innate Spellcasting] The Dread-Witch Queen's Innate Spellcasting ability is Charisma (Spell Save DC 15). She can innately cast the following spells, requiring no material components:
+			\DndInnateSpellLevel{Dancing Lights}
+			\DndInnateSpellLevel[1]{Darkness, Fairie Fire, Levitate (Self only)}
+		\end{DndMonsterSpells}
+		
+		\begin{DndMonsterSpells}
+			\item[Spellcasting] The Dread-Witch Queen can cast the following spells using Wisdom as the spellcasting ability (spell save DC 14, +6 to hit with spell attacks):
+			\DndMonsterSpellLevel[0]{Guidance, Poison Spray, Resistance, Spare the Dying, Thaumaturgy}
+			\DndMonsterSpellLevel[1][4]{Hex, Detect Poison and Disease, Ray of Sickness, Witch Bolt}
+			\DndMonsterSpellLevel[2][3]{Crown of Madness, Lesser Restoration, Suggestion}
+			\DndMonsterSpellLevel[3][3]{Bestow Curse, Fear}
+			\DndMonsterSpellLevel[4][3]{Blight, Polymorph}
+			\DndMonsterSpellLevel[5][2]{Dominate Person, Scrying}
+		\end{DndMonsterSpells}
+		
+		\DndMonsterAction{Nightmare Haunting (1 / Day; Requires Soul Bag)}
+		While on the Ethereal Plane, the Dread-Witch Queen casts Dream, using the same Spellcasting ability as Spellcasting. Only the Dread-Witch Queen can serve as the spell's messenger, and the target must be a creature the Dread-Witch Queen can see on the Material Plane. Additionally, the Dream spell can also affect constructs that are resting and puts them into a sleep-like state.
+		
+		The spell fails and is wasted if the target is under the effect of the Protection from Evil and Good spell or within a Magic Circle spell.
+		
+		If the target takes damage from the Dream spell, the target's Hit Point maximum decreases by an amount equal to that damage. If the spell kills the target, its soul is trapped in the Dread-Witch Queen's soul bag, and the target can't be raised from the dead until its soul is released.
+	\end{multicols}
+\end{DndMonster}

@@ -468,6 +468,7 @@
       [
         \str_case_e:nnF {#1}
           {
+          	{0} {\spellcantripsname}
             {1} {\spellfirstlevelname}
             {2} {\spellsecondlevelname}
             {3} {\spellthirdlevelname}
@@ -493,13 +494,15 @@
     \DndEmphSpellString{#3}
   }
   
-%% Monster spell actions
+%% Monster Saving Throw Effect Action
 \tl_new:N \l__save_skill_tl
 
-\keys_define:nn { dnd / monster / spell }
+\keys_define:nn { dnd / monster / savingthrow }
 {
 	name		.tl_set:N			= \l__name_tl,
 	name		.value_required:n	= true,
+	description .tl_set:N			= \l__description_tl,
+	description .value_required:n	= false,
 	save_skill	.choice:,
 	save_skill	.choices:nn	=
 		{ Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma }
@@ -517,36 +520,43 @@
 	extra		.value_required:n	= false,
 }
 
-\cs_new_protected:Npn \__dnd_if_success_spell:
+\cs_new_protected:Npn \__dnd_if_description_saving_throw_effect:
+{
+	\tl_if_empty:NF {\l__description_tl}
+	{ \l__description_tl .~}
+}
+
+\cs_new_protected:Npn \__dnd_if_success_saving_throw_effect:
 {
 	\tl_if_empty:NF {\l__success_tl}
-	{ \\\textit{Success:}~\l__success_tl }
+	{ \\\textit{Success:}~\l__success_tl .}
 }
 
-\cs_new_protected:Npn \__dnd_if_extra_spell:
+\cs_new_protected:Npn \__dnd_if_extra_saving_throw_effect:
 {
 	\tl_if_empty:NF {\l__extra_tl}
-	{ \\\indent\l__extra_tl }
+	{ \\\indent\l__extra_tl .}
 }
 
-\cs_new_protected:Npn \__dnd_monster_spell:
+\cs_new_protected:Npn \__dnd_monster_saving_throw_effect:
 {
-	\__dnd_check_for_key:Nnn \l__name_tl {\DndMonsterSpell} {name}
+	\__dnd_check_for_key:Nnn \l__name_tl {\DndMonsterSavingThrowEffect} {name}
 
 	\begin{DndMonsterAction} {\l__name_tl}~
+		\__dnd_if_description_saving_throw_effect:
 		\textit{ \l__save_skill_tl\ Saving ~ Throw: } ~ DC ~ \l__save_dc_tl, ~ \l__targets_tl .
 		\\
-		\textit{Failure:}~\l__failure_tl
-		\__dnd_if_success_spell:
-		\__dnd_if_extra_spell:
+		\textit{Failure:}~\l__failure_tl .
+		\__dnd_if_success_saving_throw_effect:
+		\__dnd_if_extra_saving_throw_effect:
 	\end{DndMonsterAction}
 }
 
-\NewDocumentCommand {\DndMonsterSpell} {o}
+\NewDocumentCommand {\DndMonsterSavingThrowEffect} {o}
 {
 	\group_begin:
-		\keys_set:nn { dnd / monster / spell } {#1}
-		\__dnd_monster_spell:
+		\keys_set:nn { dnd / monster / savingthrow } {#1}
+		\__dnd_monster_saving_throw_effect:
 	\group_end:
 }
 

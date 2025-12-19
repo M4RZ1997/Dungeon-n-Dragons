@@ -1,0 +1,86 @@
+\begin{DndMonster}[width=0.5\textwidth]{Maurezhi\phantomsection\addcontentsline{toc}{section}{Maurezhi}\label{monster:Maurezhi}}
+	\DndMonsterType{Medium Fiend (Demon), Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15 (Natural Armor)},
+		initiative	= +3,
+		hit-points  = {\DndDice{16d8 + 16}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 14,
+		dex = 17,
+		con = 12,
+		int = 11,
+		wis = 12,
+		cha = 15,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+		skills					= {Deception +5},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Cold, Fire, Lightning, Necrotic, Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+		damage-immunities		= {Poison},
+		condition-immunities	= {Charmed, Exhaustion, Poisoned},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 120 ft., Passive Perception 11},
+		languages				= {Abyssal, Evlish,  Telepathy 120 ft.},
+		challenge				= 7,
+		proficiency-bonus		= +3,
+	]
+    
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Demonic Restoration}
+	If the Maurezhi dies outside the Abyss, its body dissolves into ichor, and it gains a new body instantly, reviving with all its Hit Points somewhere in the Abyss.
+	
+	\DndMonsterAction{Assume Form}
+	The Maurezhi can assume the appearance of any Medium humanoid it has eaten. It remains in this form for 1d6 days, during which time the form gradually decays until, when the effect ends, the form sloughs from the demon's body.
+	
+	\DndMonsterAction{Magic Resistance}
+	The Maurezhi has Advantage on saving throws against spells and other magical effects.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Maurezhi makes two attacks: one with its Bite and one with its Claws.
+	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d10 + 3},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+		extra			= {. If the target is a humanoid, its Charisma score is reduced by 1d4. This reduction lasts until the target finishes a Short or Long Rest. The target dies if this reduces its Charisma to 0. It rises 24 hours later as a ghoul, unless it has been revived or its corpse has been destroyed},
+	]
+	
+	\DndMonsterAttack[
+		name			= Claws,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 3},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+		extra			= {. If the target is a creature other than an undead, it must succeed on a DC 12 Constitution Saving Throw or be Paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success},
+	]
+	
+	\DndMonsterAction{Raise Ghoul (Recharge 5-6)}
+	The Maurezhi targets one dead ghoul or ghast it can see within 30 feet of it. The target is revived with all its hit points.
+\end{DndMonster}

@@ -38,7 +38,7 @@ While the Hypnomoth is often encountered alone, there are whispered tales of eph
 {Monsters/Hypnomoth.png}%
 \addImageDBEntry{HandleHypnomoth1}{Page \thepage}{Art}{https://www.deviantart.com/davesrightmind/art/Tokyo-SOS-Behemoth-854082946}{Tokyo-SOS-Behemoth}{Davesrightmind}%
 
-\vfill\eject\vspace*{-5.6em}
+\vfill\eject\vspace*{-6.8em}
 \begin{DndMonster}[width=0.5\textwidth]{Hypnomoth (Colourful)\label{monster:HypnomothColourful}}
 	\DndMonsterType{Large Fey, neutral}
 	
@@ -60,15 +60,16 @@ While the Hypnomoth is often encountered alone, there are whispered tales of eph
 	]
 	
 	\DndMonsterDetails[
-		%saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+%		saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
 		skills = {Perception +4},
-		%damage-vulnerabilities = {cold},
-		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks (not Sandwidow), poison},
-		%damage-immunities = {cold},
+%		damage-vulnerabilities = {cold},
+%		damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks (not Sandwidow), poison},
+%		damage-immunities = {cold},
 		senses = {Darkvision 60 ft., passive Perception 14},
-		%condition-immunities = {frightened, poisoned, prone},
+%		condition-immunities = {frightened, poisoned, prone},
 		languages = {Understands Sylvan but can't speak},
-		challenge =5,
+		challenge = 5,
+		proficiency-bonus		= +3,
 	]
 	
 	\DndMonsterAction{Hypnotic  Aura}
@@ -76,50 +77,58 @@ While the Hypnomoth is often encountered alone, there are whispered tales of eph
 	
 	\DndMonsterSection{Actions}
 	\DndMonsterAction{Multiattack}
-	The Hypnomoth makes three stinger attacks.   
+	The Hypnomoth makes two Radiant Dart and one Stinger attack.   
 	
 	\DndMonsterAttack[
 		name=Stinger,
 		distance=melee, % valid options are in the set {both,melee,ranged},
-		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+5,
+%		type=weapon, %valid options are in the set {weapon,spell}
+		mod=+6,
 		reach=5,
-		%range=20/60,
+%		range=20/60,
 		targets=one target,
 		dmg={\DndDice{1d8 + 3}},
 		dmg-type=piercing,
 		plus-dmg={\DndDice{2d6}},
 		plus-dmg-type=poison,
-		%or-dmg=,
-		%or-dmg-when=,
-		%extra=,
+%		or-dmg=,
+%		or-dmg-when=,
+%		extra=,
 	]
 	
 	\DndMonsterAttack[
 		name=Radiant Dart,
-		distance=melee, % valid options are in the set {both,melee,ranged},
-		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+5,
-		reach=120,
-		%range=20/60,
+		distance=ranged, % valid options are in the set {both,melee,ranged},
+%		type=weapon, %valid options are in the set {weapon,spell}
+		mod=+6,
+%		reach=120,
+		range=120/360,
 		targets=one target,
 		dmg={\DndDice{1d12 + 3}},
 		dmg-type=radiant,
-		%plus-dmg=,
-		%plus-dmg-type=,
-		%or-dmg=,
-		%or-dmg-when=,
-		%extra=,
+%		plus-dmg=,
+%		plus-dmg-type=,
+%		or-dmg=,
+%		or-dmg-when=,
+%		extra=,
 	]
 	
-	\DndMonsterAction{Color Burst (Recharge 5-6)}
-	The Hypnomoth emits an explosion of numerous Radiant Darts, emerging from the Hypnomoth's wings in a 60 foot cone. Each creature in the area of effect must make a DC 14 Dexterity Saving Throw taking \DndDice{5d8} radiant damage on a failed save, or half as much damage on a successful one.  After the Hypnomoth takes this action, it transforms into the Shade version of the Hypnomoth. The hit points and all conditions - except of being poisoned - persist during the form change.
+	\DndMonsterSavingThrowEffect[%
+		name = {Colour Burst},
+		description = {The Hypnomoth emits an explosion of numerous Radiant Darts, emerging from the Hypnomoth's wings},
+		save_skill = {Dexterity},
+		save_dc = {14},
+		targets = {each creature in a 60-foot Cone from the Hypnomoth},
+		failure = {\DndDice{5d8} Radiant damage},
+		success = {Half as much damage},
+		extra={After the Hypnomoth takes this action, it transforms into the Shade version of the Hypnomoth. The Hit Points and all conditions - except of being poisoned - persist during the form change}
+	]
 \end{DndMonster}
 
-\vspace*{3\fontdimen6\font}
+\vspace*{3.2\fontdimen6\font}
 \noindent \hspace*{4.85em}it to bask in its hypnotic beauty. But this allure\linebreak\hspace*{4.5em}comes with a price, as the moth's powers can\linebreak\hspace*{4.15em}render even the strongest minds vulnerable to its\linebreak\hspace*{3.8em}charms. Those who brave the Hypnomoth's\linebreak\hspace*{3.45em}presence must navigate the boundary between awe\linebreak\hspace*{3em}and peril, for within its mesmerizing display lies the\linebreak\hspace*{2.5em}potential for enchantment and danger alike.
 
-\hspace*{1em}Scholars of the Feywild regard the Hypnomoth as a living\linebreak\hspace*{1.35em}embodiment of the realm's capricious nature. Its vibrant\linebreak\hspace*{0.9em}colors and intoxicating aura serve as a reminder that the\linebreak\hspace*{0.2em}beauty of this plane is often intertwined with hidden threats. Yet, its existence is also a symbol of the Feywild's connection to enchantment and wonder, a living testament to the magic that pulses through every aspect of this realm.
+\hspace*{1em}Scholars of the Feywild regard the Hypnomoth as a living\linebreak\hspace*{1.35em}embodiment of the realm's capricious nature. Its vibrant\linebreak\hspace*{0.9em}colours and intoxicating aura serve as a reminder that the\linebreak\hspace*{0.2em}beauty of this plane is often intertwined with hidden threats. Yet, its existence is also a symbol of the Feywild's connection to enchantment and wonder, a living testament to the magic that pulses through every aspect of this realm.
 
 \clearpage
 
@@ -135,7 +144,7 @@ While the Hypnomoth is often encountered alone, there are whispered tales of eph
 	]
 	
 	\DndMonsterAbilityScores[
-		str = 14,
+		str = 12,
 		dex = 14,
 		con = 14,
 		int = 6,
@@ -144,33 +153,44 @@ While the Hypnomoth is often encountered alone, there are whispered tales of eph
 	]
 	
 	\DndMonsterDetails[
-		%saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+%		saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
 		skills = {Perception +5},
-		%damage-vulnerabilities = {cold},
-		%damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks (not Sandwidow), poison},
-		%damage-immunities = {cold},
+%		damage-vulnerabilities = {cold},
+%		damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks (not Sandwidow), poison},
+%		damage-immunities = {cold},
 		senses = {Darkvision 60 ft., passive Perception 15},
 		condition-immunities = {Poisoned},
 		languages = {Understands Sylvan but can't speak},
-		challenge =5,
+		challenge = 5,
+		proficiency-bonus		= +3,
 	]
 	
 	\DndMonsterAction{Ethereal Siphon}
-	The Hypnomoth gains a Color counter each time it successfully uses its Chromavore ability. When its Color counter reaches a number equal to its Challenge Rating, it transforms back into the Colorful version of the Hypnomoth.
+	The Hypnomoth gains a Colour counter each time it successfully uses its Chromavore ability. When its Colour counter reaches a number equal to its Challenge Rating, it transforms back into the Colourful version of the Hypnomoth.
 	
-	\DndMonsterAction{Chromavore}
-	Whenever the Chromatic Tail Stinger attack hits, the target must make a DC 12 Constitution saving throw. On a failed save, the target's body is drained of color, leaving it visually muted and monochromatic. The target becomes affected by Monochromatism and takes \DndDice{1d8} necrotic damage. The Hypnomoth gains one Color counter.
+	\DndMonsterSavingThrowEffect[
+		name = {Chromavore},
+%		description = {},
+		save_skill = {Constitution},
+		save_dc = {14},
+		targets = {a creature that is hit by a Chromatic Tail Stinger attack},
+		failure = {The target's body is drained of colour, leaving it visually muted and monochromatic. The target is affected by \hyperref[sec:Monochromatism]{\LinkFont{Monochromatism}} and takes \DndDice{1d8} Necrotic damage},
+%		success = {},
+%		extra={}
+	]
 	
 	\DndMonsterAction{Ethereal Cloak}
 	The Hypnomoth gains partial incorporeality, allowing it to move through objects and avoid physical harm. Attacks against it that rely on non-magical weapons have disadvantage. 
 	
 	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Hypnomoth makes two attacks, one with its Bloddsucking Beak and one with its Stinger Strike.  
 	
 	\DndMonsterAttack[
 		name=Bloodsucking Beak,
 		distance=melee, % valid options are in the set {both,melee,ranged},
 		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+4,
+		mod=+5,
 		reach=5,
 		%range=20/60,
 		targets=one target,
@@ -187,7 +207,7 @@ While the Hypnomoth is often encountered alone, there are whispered tales of eph
 		name=Stinger Strike,
 		distance=melee, % valid options are in the set {both,melee,ranged},
 		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+4,
+		mod=+5,
 		reach=5,
 		%range=20/60,
 		targets=one target,
@@ -204,11 +224,11 @@ While the Hypnomoth is often encountered alone, there are whispered tales of eph
 		name=Chromatic Tail Stinger,
 		distance=melee, % valid options are in the set {both,melee,ranged},
 		%type=weapon, %valid options are in the set {weapon,spell}
-		mod=+3,
+		mod=+4,
 		reach=5,
 		%range=20/60,
 		targets=one target,
-		dmg={\DndDice{1d4 + 3}},
+		dmg={\DndDice{1d4 + 1}},
 		dmg-type=piercing,
 		%plus-dmg=,
 		%plus-dmg-type=,
@@ -219,7 +239,7 @@ While the Hypnomoth is often encountered alone, there are whispered tales of eph
 	
 	\DndMonsterSection{Reactions}
 	\DndMonsterAction{Lightning Tail Whip}
-	Whenever the Hypnomoth's (Shade) hits a target with a melee attack or is attacked by a melee attack it can use its Reaction to make a Chromatic Tail Stinger Attack on the other creature.
+	Whenever the Hypnomoth's (Shade) hits a target with a melee attack other than a Chromatic Tail Stinger or is attacked by a melee attack it can use its Reaction to make a Chromatic Tail Stinger attack at that creature.
 \end{DndMonster}
 
 \MonsterGraphicAndShortInfo[] % either true for displaying the box or nothing
@@ -233,18 +253,18 @@ While the Hypnomoth is often encountered alone, there are whispered tales of eph
 \addImageDBEntry{HandleHypnomoth2}{Page \thepage}{Art}{https://www.deviantart.com/davesrightmind/art/Adult-Spear-Fly-879317343}{Adult Spear Fly}{Davesrightmind}%
 \vspace*{-1.2\fontdimen6\font}
 \section*{The Shade's Unveiling}
-As the radiant burst reaches its zenith and the darts disperse into the air, a subtle yet profound shift begins to weave its magic. The once-vibrant colors that adorned the Hypnomoth's wings, each a brushstroke of the Feywild's enigmatic palette, start to ebb away. In their wake emerges a spectral pallor, a gossamer cloak of hues that shimmers with a delicate translucence. Each hue fades like the receding echoes of an ancient melody, leaving behind a canvas of twilight beauty.
+As the radiant burst reaches its zenith and the darts disperse into the air, a subtle yet profound shift begins to weave its magic. The once-vibrant colours that adorned the Hypnomoth's wings, each a brushstroke of the Feywild's enigmatic palette, start to ebb away. In their wake emerges a spectral pallor, a gossamer cloak of hues that shimmers with a delicate translucence. Each hue fades like the receding echoes of an ancient melody, leaving behind a canvas of twilight beauty.
 \vfill\eject
-\noindent From within the radiant aftermath\\of the burst and amidst the spectral\\luminescence, the Hypnomoth's\\metamorphosis concludes.\\Emerging from the depths\\of shimmering radiance,\\the creature reveals its\\new incarnation - the\\Shade version of the\\Hypnomoth. The vibrant\\colors that once danced\\upon its wings now yield\\to a pale, ghostly trans-\\lucence, akin to the delicate\\wings of a moth caught\\between moonbeams. Its\\form resonates with an\\enigmatic allure that hints\\at the very essence of the\\Feywild's mysteries.
+\noindent From within the radiant aftermath\\of the burst and amidst the spectral\\luminescence, the Hypnomoth's\\metamorphosis concludes.\\Emerging from the depths\\of shimmering radiance,\\the creature reveals its\\new incarnation - the\\Shade version of the\\Hypnomoth. The vibrant\\colours that once danced\\upon its wings now yield\\to a pale, ghostly trans-\\lucence, akin to the delicate\\wings of a moth caught\\between moonbeams. Its\\form resonates with an\\enigmatic allure that hints\\at the very essence of the\\Feywild's mysteries.
 \\\\
 \paragraph*{Behavior and Impact}\hfill\\
 The Shade Hypnomoth's\\behavior takes on an otherworldly demeanor.\\It moves with a quiet grace, its wingbeats barely\\audible as it drifts through the air like a specter. Rather than drawing attention with vibrant displays, it maintains a somber elegance, as if acknowledging its altered presence within the realm.
 
-The creature's Chromavore ability reveals its inscrutable nature. Engaging in its unique form of feeding, it drains the color from its foes, leaving them muted and devoid of life's vibrancy. As it gathers these chromatic essences, its own spectral form seems to intensify, as if empowered by the very shades it consumes.
+The creature's Chromavore ability reveals its inscrutable nature. Engaging in its unique form of feeding, it drains the colour from its foes, leaving them muted and devoid of life's vibrancy. As it gathers these chromatic essences, its own spectral form seems to intensify, as if empowered by the very shades it consumes.
 
 The impact on its environment is both subtle and profound. Creatures within its vicinity often display signs of unease, as if the natural hues around them have dimmed in the Hypnomoth's presence. Vegetation loses a fraction of its lushness, and the world seems to momentarily hold its breath in acknowledgment of the creature's ethereal essence.
 \\
-\subsubsection*{Effect of Monochromatism}
-The absence of vibrant colors and the muted palette detract from a creature's ability to express emotions and intentions through visual cues. This leads to a disadvantage on Charisma-based ability checks, as their communication becomes less engaging and relatable.
+\subsubsection*{Effect of Monochromatism}\phantomsection\label{sec:Monochromatism}
+The absence of vibrant colours and the muted palette detract from a creature's ability to express emotions and intentions through visual cues. This leads to a disadvantage on Charisma-based ability checks, as their communication becomes less engaging and relatable.
 
-Restoring a creature's lost color is no simple feat, as the Chromavore's effects run deeper than mere physical appearance. It requires the performance of the Chromatic Restoration Ritual which utilizes the delicate wings of the Hypnomoth as a key ingredient which must be bathed in moonlight thus restoring the color of the affected partaking in the ritual.
+Restoring a creature's lost colour is no simple feat, as the Chromavore's effects run deeper than mere physical appearance. It requires the performance of the Chromatic Restoration Ritual which utilizes the delicate wings of the Hypnomoth as a key ingredient which must be bathed in moonlight thus restoring the colour of the affected partaking in the ritual.

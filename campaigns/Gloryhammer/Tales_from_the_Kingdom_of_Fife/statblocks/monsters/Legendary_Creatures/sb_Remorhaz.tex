@@ -1,0 +1,72 @@
+\begin{DndMonster}[width=0.5\textwidth]{Remorhaz\phantomsection\addcontentsline{toc}{section}{Remorhaz}\label{monster:Remorhaz}} % Name of Monster / Creature
+	\DndMonsterType{Huge Monstrosity, Unaligned}
+	
+	% Monster Basic Stats
+	\DndMonsterBasics[
+		armor-class = {17},
+		hit-points  = {\DndDice{17d12 + 85}},
+		speed       = {40 ft., Burrow 30 ft.},
+		initiative	= +5,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~} % needed so it displays correctly
+	
+	% Monster Ability Scores
+	\DndMonsterAbilityScores[
+		str = 24,
+		dex = 13,
+		con = 21,
+		int = 4,
+		wis = 10,
+		cha = 5,
+	]
+	
+	% Monster Proficiencies, Vulnerabilities, Resistances, Immunities, Senses, Languages, CR, and Proficiency Bonus
+	\DndMonsterDetails[
+%		saving-throws			= {STR +0, DEX +0, CON +5, INT +5, WIS -5},
+%		skills					= {Acrobatics +3, Stealth -3},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Fire, Lightning},
+		damage-immunities		= {Cold, Fire},
+%		condition-immunities	= {Frightened, Poisoned},
+%		gear					= {a mysterious item},
+		senses					= {Darkvision 60 ft., Tremorsense 60 ft., Passive Perception 10},
+%		languages				= {Common, Abyssal},
+		challenge				= 11, % XP are calculated automatically; can be omitted to display "-"
+		proficiency-bonus		= +4, % default value +2
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Heat Aura}
+	At the end of each of the remorhaz's turns, each creature in a 5-foot Emanation originating from the remorhaz takes \DndDice{3d10} Fire damage.
+	
+	\DndMonsterSection{Actions}	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged},
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +11,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d10 + 7},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{4d6},
+		plus-dmg-type	= Fire,
+%		or-dmg			= \DndDice{1d10 + 2},
+%		or-dmg-when		= {},
+		extra			= {. If the tareget is a Large or smaller creature, it has the Grappled condition (escape DC 17), and it has the Restrained condition until the grapple ends},
+	]
+    
+    \DndMonsterSection{Bonus Actions}
+    \DndMonsterSavingThrowEffect[
+    	name = {Swallow},
+%    	description = {},
+    	save_skill = {Strength},
+    	save_dc = {19},
+    	targets = {one Large or smaller creature Grappled by the remorhaz (it can have up to two creatures swallowed at a time)},
+    	failure = {The target is swallowed by the remorhaz, and the Grappled condition ends. A swallowed creature has the Blinded and Restrained conditions, it has Total Cover against attacks and other effects outside the remorhaz, and it takes \DndDice{3d6} Acid damage plus \DndDice{3d6}\\Fire damage at the start of each of the remorhaz's turns},
+%    	success = {},
+    	extra={If the remorhaz takes 30+ damage on a single turn\\from a creature inside it, the remorhaz must succeed\\on a DC 15 Constitution saving throw at the end of that\\turn or regurgitate all swallowed creatures, each of which\\falls in a space within 5 feet of the remorhaz and has\\the Prone condition. If the remorhaz dies,\\any swallowed creature no longer has the\\Restrained condition and can escape from\\the corpse using 15 feet of movement, exiting\\Prone}
+    ]
+\end{DndMonster}

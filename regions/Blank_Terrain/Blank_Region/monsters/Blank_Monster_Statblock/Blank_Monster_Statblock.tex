@@ -1,0 +1,24 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../}
+
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage{\PATH templates/template_monster/monster_commands}
+
+\begin{document}
+	\chapter*{OneColumn Monster StatBlock}
+	\input{Blank_Monster_Statblock_onecolumn_input.tex}
+	\clearpage
+	\chapter*{TwoColumn Monster StatBlock}
+	\input{Blank_Monster_Statblock_twocolumn_input.tex}
+	\clearpage
+	\chapter*{TwoColumn Monster (Long Name) StatBlock}
+	\input{Blank_Monster_Long_Name_Statblock_twocolumn_input.tex}
+\end{document}

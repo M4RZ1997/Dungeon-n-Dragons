@@ -1,0 +1,83 @@
+\begin{DndMonster}[width=0.5\textwidth]{Cambion\phantomsection\addcontentsline{toc}{section}{Cambion}\label{monster:Cambion}} % Name of Monster / Creature
+	\DndMonsterType{Medium Fiend, Neutral Evil}
+	
+	% Monster Basic Stats
+	\DndMonsterBasics[
+		armor-class = {19},
+		hit-points  = {\DndDice{14d8 + 42}},
+		speed       = {30 ft., Fly 60 ft.},
+		initiative	= +4,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~} % needed so it displays correctly
+	
+	% Monster Ability Scores
+	\DndMonsterAbilityScores[
+		str = 18,
+		dex = 18,
+		con = 16,
+		int = 14,
+		wis = 12,
+		cha = 16,
+	]
+	
+	% Monster Proficiencies, Vulnerabilities, Resistances, Immunities, Senses, Languages, CR, and Proficiency Bonus
+	\DndMonsterDetails[
+		saving-throws			= {STR +7, CON +6, INT +5, CHA +6},
+%		skills					= {Acrobatics +3, Stealth -3},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Cold, Fire, Lightning, Poison},
+%		damage-immunities		= {Poison},
+		condition-immunities	= {Poisoned},
+%		gear					= {a mysterious item},
+		senses					= {Darkvision 120 ft., Passive Perception 14},
+		languages				= {Abyssal, Common, Infernal},
+		challenge				= 5, % XP are calculated automatically; can be omitted to display "-"
+		proficiency-bonus		= +3, % default value +2
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The cambion makes two attacks, using Claw or Fire Ray in any combination.
+	
+	\DndMonsterAttack[
+		name			= Claw,
+		distance		= melee,	% valid options are in the set {both,melee,ranged},
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +7,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 4},
+		dmg-type		= Slashing,
+		plus-dmg		= \DndDice{2d6},
+		plus-dmg-type	= Fire,
+%		or-dmg			= \DndDice{1d10 + 2},
+%		or-dmg-when		= {if used with two hands},
+%		extra			= {. },
+	]
+	
+	\DndMonsterAttack[
+		name			= Fire Ray,
+		distance		= ranged,		% valid options are in the set {both,melee,ranged},
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +7,
+%		reach			= 10,
+		range			= 120 ft.,
+		targets			= one target,
+		dmg				= \DndDice{3d6 + 3},
+		dmg-type		= Fire,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d10},
+%		or-dmg-when		= {},
+%		extra			= {. },
+    ]
+    
+    \DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The cambion casts one of the following spells, requiring no Material components and using Charisma as the spellcasting ability (spell save DC 14):
+		\DndInnateSpellLevel[2]{Alter Self, Command (level 3 version), Detect Magic}
+		\DndInnateSpellLevel[1]{Dominate Person (level 8 version), Plane Shift (self only)}
+	\end{DndMonsterSpells}
+\end{DndMonster}

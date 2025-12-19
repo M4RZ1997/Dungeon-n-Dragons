@@ -1,5 +1,5 @@
 \begin{DndMonster}[width=\textwidth + 8pt]{Ser Proletius}
-	\vspace*{-18pt}\begin{multicols}{2}\vspace*{-9pt}\hfil\\
+	\vspace*{-18pt}\begin{multicols}{2}\vspace*{9pt}
 		\DndMonsterType{Human Paladin (Lvl 10, Oath of the Crown), Lawful Good}
 		
 		% If you want to use commas in the key values, enclose the values in braces.
@@ -26,7 +26,7 @@
 %			damage-vulnerabilities	= {Cold},
 %			damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
 %			damage-immunities		= {Poison},
-%			condition-immunities	= {Poisoned},
+			condition-immunities	= {Disease},
 %			gear					= {Leather Armor, Light Crossbow, Scimitar},
 			senses					= {Passive Perception 10},
 			languages				= {Common},
@@ -81,7 +81,7 @@
 %			or-dmg-when		= {},
 			extra			= {. A creature hit with this attack has its speed reduced by 10 feet, up to a maximum reduction of 10 feet},
 		]
-		
+		\hfill\\\\\\
 		\DndMonsterSection{Spells}
 		\begin{DndMonsterSpells}
 			\item[Spellcasting] Ser Proletius is a 10th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). Ser Proletius has the following paladin spells prepared:
@@ -103,14 +103,20 @@
 		\DndMonsterAction{Champion Challenge}
 		Ser Proletius can use a Channel Divinity charge to compel other creatures to battle with him. Each creature of his choice within 30 feet must make a Wisdom saving throw. On a failed save a creature cannot willingly move more than 30 feet away from him. The condition ends if Ser Proletius is incapacitated or the creature is more than 30 feet away from him.
 		
-		\DndMonsterAction{Champion Challenge}
+		\DndMonsterAction{Turn the Tide}
 		Ser Proletius can use a Channel Divinity charge to bolster injured creatures. Each creature within 30 feet regains \DndDice{1d6 + 3} Hit Points if it has no more than half of its Hit Points.
 		
 		\DndMonsterSection{Reaction}
-		\DndMonsterAction{Interception}
-		When Ser Proletius sees a creature hit another creature within 5 feet of him with an attack roll, he can reduce the damage by \DndDice{1d10 + 4}.
+		\DndMonsterReaction[%
+			name = {Interception},
+			trigger = {Ser Proletius sees a creature hit another creature within 5 feet of him with an attack roll.},
+			response = {He reduces the damage taken by \DndDice{1d10 + 4}}
+		]
 		
-		\DndMonsterAction{Divine Allegiance}
-		If a creature within 5 feet of Ser Proletius takes damage, he can use his reaction to magically substitute his own health for that of the target creature, causing that creature not to take the damage. Instead, Ser Proletius takes the damage. This damage to him can't be reduced or prevented in any way.
+		\DndMonsterReaction[%
+			name = {Divine Allegiance},
+			trigger = {A creature within 5 feet of Ser Proletius takes damage.},
+			response = {Ser Proletius magically substitutes his own health for that of the creature, causing that creature not to take the damage. Instead, Ser Proletius takes the damage. This damage to him can't be reduced or prevented in any way.}
+		]
 	\end{multicols}
 \end{DndMonster}

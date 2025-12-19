@@ -1,0 +1,79 @@
+\begin{DndMonster}[width=0.5\textwidth]{Vrock\phantomsection\addcontentsline{toc}{section}{Vrock}\label{monster:Vrock}}
+	\DndMonsterType{Large Fiend (Demon), Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15 (Natural Armor)},
+		initiative	= +2,
+		hit-points  = {\DndDice{16d10 + 64}},
+		speed       = {40 ft., Fly 60 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 17,
+		dex = 15,
+		con = 18,
+		int = 8,
+		wis = 13,
+		cha = 8,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {DEX +5, WIS +4, CHA +2},
+		skills					= {Acrobatics +6, Perception +5, Stealth +8},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Cold, Fire, Lightning},
+		damage-immunities		= {Poison},
+		condition-immunities	= {Poisoned},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 120 ft., Passive Perception 11},
+		languages				= {Abyssal, Telepathy 120 ft.},
+		challenge				= 6,
+		proficiency-bonus		= +3,
+	]
+    
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Demonic Restoration}
+	If the Vrock dies outside the Abyss, its body dissolves into ichor, and it gains a new body instantly, reviving with all its Hit Points somewhere in the Abyss.
+	
+	\DndMonsterAction{Magic Resistance}
+	The Vrock has Advantage on saving throws against spells and other magical effects.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Vrock makes two Shred attacks.
+	
+	\DndMonsterAttack[
+		name			= Shred,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 3},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{3d6},
+		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterSavingThrowEffect[
+		name		= Spores (Recharge 6),
+		save_skill	= Constitution,
+		save_dc		= 15,
+		targets		= {each creature in a 20-foot Emanation originating from the Vrock},
+		failure		= {The target has the Poisoned condition and repeats the save at the end of each of its turns, ending the effect on itself on a success. While Poisoned, the target takes \DndDice{1d10} Poison damage at the start of its turns. Emptying a flask of Holy Water on the target ends the effect early.},
+	]
+	
+	\DndMonsterSavingThrowEffect[
+		name		= Stunning Screech (1 / Day),
+		save_skill	= Constitution,
+		save_dc		= 15,
+		targets		= {each creature in a 20-foot Emanation originating from the Vrock (demons succeed automatically)},
+		failure		= {\DndDice{3d6} Thunder damage, and the target has the Stunned condition until the end of the vrock's next turn.},
+	]
+\end{DndMonster}

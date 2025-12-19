@@ -1,0 +1,60 @@
+\begin{DndMonster}[width=0.5\textwidth]{Young Remorhaz\phantomsection\addcontentsline{toc}{section}{Young Remorhaz}\label{monster:YoungRemorhaz}} % Name of Monster / Creature
+	\DndMonsterType{Large Monstrosity, Unaligned}
+	
+	% Monster Basic Stats
+	\DndMonsterBasics[
+		armor-class = {14},
+		hit-points  = {\DndDice{11d10 + 33}},
+		speed       = {30 ft., Burrow 20 ft.},
+		initiative	= +1,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~} % needed so it displays correctly
+	
+	% Monster Ability Scores
+	\DndMonsterAbilityScores[
+		str = 18,
+		dex = 13,
+		con = 17,
+		int = 3,
+		wis = 10,
+		cha = 4,
+	]
+	
+	% Monster Proficiencies, Vulnerabilities, Resistances, Immunities, Senses, Languages, CR, and Proficiency Bonus
+	\DndMonsterDetails[
+%		saving-throws			= {STR +0, DEX +0, CON +5, INT +5, WIS -5},
+%		skills					= {Acrobatics +3, Stealth -3},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Fire, Lightning},
+		damage-immunities		= {Cold, Fire},
+%		condition-immunities	= {Frightened, Poisoned},
+%		gear					= {a mysterious item},
+		senses					= {Darkvision 60 ft., Tremorsense 60 ft., Passive Perception 10},
+%		languages				= {Common, Abyssal},
+		challenge				= 5, % XP are calculated automatically; can be omitted to display "-"
+		proficiency-bonus		= +3, % default value +2
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Heat Aura}
+	At the end of each of the remorhaz's turns, each creature in a 5-foot Emanation originating from the remorhaz takes \DndDice{2d10} Fire damage.
+	
+	\DndMonsterSection{Actions}	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged},
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +7,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d10 + 4},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{3d8},
+		plus-dmg-type	= Fire,
+%		or-dmg			= \DndDice{1d10 + 2},
+%		or-dmg-when		= {},
+%		extra			= {. },
+	]
+\end{DndMonster}

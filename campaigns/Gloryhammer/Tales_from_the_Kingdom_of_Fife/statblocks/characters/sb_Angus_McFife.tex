@@ -1,5 +1,5 @@
 \begin{DndMonster}[width=\textwidth + 8pt]{Angus McFife}
-	\vspace*{-18pt}\begin{multicols}{2}\vspace*{-9pt}\hfill\\
+	\vspace*{-18pt}\begin{multicols}{2}\vspace*{9pt}
 		\DndMonsterType{Human Fighter (Lvl 7, Battle Master), Lawful Good}
 		
 		% If you want to use commas in the key values, enclose the values in braces.
@@ -21,7 +21,7 @@
 		]
 		
 		\DndMonsterDetails[
-			saving-throws			= {STR +4, Con +5},
+			saving-throws			= {STR +4, CON +5},
 			skills					= {Animal Handling +4, Acrobatics +7, History +3, Insight +4, Nature +3, Perception +4, Performance +6, Persuasion +6,\\Stealth +7},
 %			damage-vulnerabilities	= {Cold},
 %			damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
@@ -41,14 +41,14 @@
 		\DndMonsterAction{Great Weapon Fighting}
 		When Angus rolls damage for an attack he makes with a Melee weapon that he is holding with two hands, he can treat any 1 or 2 on a damage die as a 3. The weapon must have the Two-Handed or Versatile property to gain this benefit.
 		
-		\DndMonsterAction{Action Surge (1 use per SR or LR)}
+		\DndMonsterAction{Action Surge (1 / Short Rest or Long Rest)}
 		Angus McFife can take an additional action during his turn.
 		
 		\DndMonsterAction{Combat Superiority}
 		Angus McFife has 5 Superiority Dice (d8) which he can use to do his maneuvers. He regains all expended Superiority Dice when he finishes a Short or Long Rest.
 		
 		\DndMonsterAction{Commanding Presence}
-		When Angus McFife makes a Charisma (Intimidation, Performance, or Persuasion) check he can add one Superiority Die to the roll.
+		When Angus McFife makes a Charisma (Intimidation, Performance, or Persuasion) check he can expend and add one Superiority Die to the roll.
 		
 		\DndMonsterAction{Trip Attack}
 		When Angus McFife hits a creature with an attack, he can expend a Superiority Dice and add it to the damage roll. If the target is Large or smaller, it must succeed on a Strength Saving Throw (DC 15) or be knocked prone.
@@ -57,41 +57,38 @@
 		\DndMonsterAction{Extra Attack}
 		Angus McFife can attack twice whenever he takes the Attack Action.
 		
-		\DndMonsterAction{Commander's Strike}
-		When Angus McFife takes the Attack Action he can forego his attack to command another companion to strike. That creature takes its Reaction to make an attack, adding the Superiority Die to the attack's damage roll on a hit.
-		
 		\DndMonsterAttack[
-			name			= Scimitar,
+			name			= Longsword,
 			distance		= melee, % valid options are in the set {both,melee,ranged},
 %			type			= weapon, %valid options are in the set {weapon,spell}
-			mod				= +7,
+			mod				= +5,
 			reach			= 5,
 %			range			= 20/60,
 			targets			= one target,
-			dmg				= \DndDice{1d6 + 4},
+			dmg				= \DndDice{1d8 + 2},
 			dmg-type		= Slashing,
 %			plus-dmg		= \DndDice{1d6},
 %			plus-dmg-type	= Poison,
-			or-dmg			= \DndDice{1d10 + 5},
+			or-dmg			= \DndDice{1d10 + 2},
 			or-dmg-when		= {when used with two hands},
-			extra			= {. When Angus McFife makes an extra attack using the Scimitar hec an do so as part of the Attack action instead of using the Bonus Action},
+			extra			= {. When Angus hits the target, that creature has Disadvantage on its next attack roll before the start of Angus's next turn},
 		]
 		
 		\DndMonsterAttack[
-			name			= Shortsword,
+			name			= Maul,
 			distance		= melee,	% valid options are in the set {both,melee,ranged}
 %			type			= weapon,	% valid options are in the set {weapon,spell}
-			mod				= +7,
+			mod				= +5,
 			reach			= 5,
 %			range			= 20/60,
 			targets			= one target,
-			dmg				= \DndDice{1d6 + 4},
+			dmg				= \DndDice{2d6 + 2},
 			dmg-type		= Piercing,
 %			plus-dmg		= \DndDice{1d6},
 %			plus-dmg-type	= Poison,
 %			or-dmg			= \DndDice{1d20},
 %			or-dmg-when		= {},
-			extra			= {. When Angus hits a creature with this weapon he gains Advantage on the next attack roll against that creature},
+			extra			= {. When Angus hits the target, it must succeed on a DC 13 Constitution Saving Throw or be knocked prone},
 		]
 		
 		\DndMonsterAttack[
@@ -112,14 +109,20 @@
 		]
 		
 		\DndMonsterSection{Bonus Action}
+		\DndMonsterAction{Commander's Strike}
+		When Angus McFife takes the Attack Action he can forego his attack and use his Bonus Action to command another companion to strike. That creature takes its Reaction to make an attack, adding an expended Superiority Die to the attack's damage roll on a hit.
+		
 		\DndMonsterAction{Second Wind (3 charges)}
-		Angus McFife regains \DndDice{1d10 + 7} Hit Points. Also he can move up to half his speed without provoking Opportunity Attacks.
+		Angus McFife regains \DndDice{1d10 + 7} Hit Points. Additionally, he can move up to half his speed without provoking Opportunity Attacks.
 		
 		\DndMonsterAction{Rally}
 	    Angus McFife bolsters the resolve of a creature. By expending one Superiority Die that creature gains \DndDice{1d8 + 3} Temporary Hit Points.
 		
 		\DndMonsterSection{Reaction}
-		\DndMonsterAction{Riposte}
-		When a creature misses Angus McFife he can expend a Superiority Die to immediately attack that creature adding the Superiority Die to the attack's damage roll on a hit.
+		\DndMonsterReaction[%
+			name		= Riposte, 
+			trigger 	= {A creature misses Angus McFife with a melee attack.},
+			response	= {Angus McFife expends a Superiority Die to immediately attack that creature, adding the Superiority Die to the attack's damage roll on a hit.},
+		]%
 	\end{multicols}
 \end{DndMonster}

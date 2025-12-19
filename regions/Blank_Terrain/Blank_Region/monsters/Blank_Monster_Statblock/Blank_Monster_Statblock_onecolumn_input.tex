@@ -1,0 +1,154 @@
+% ------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ------------------------------------------------------------------------------------------------------------- %
+%										MONSTER STAT BLOCK - OneColumn											%
+% ------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ------------------------------------------------------------------------------------------------------------- %
+\begin{DndMonster}[width=0.5\textwidth]{Blank Monster} % Name of Monster / Creature
+	\DndMonsterType{Unidentified Monster, unaligned}
+	
+	% Monster Basic Stats
+	\DndMonsterBasics[
+		armor-class = {10},
+		hit-points  = {\DndDice{1d12 + 6}},
+		speed       = {30 ft., Climb 25 ft.},
+		initiative	= +3,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~} % needed so it displays correctly
+	
+	% Monster Ability Scores
+	\DndMonsterAbilityScores[
+		str = 10,
+		dex = 12,
+		con = 8,
+		int = 14,
+		wis = 6,
+		cha = 16,
+	]
+	
+	% Monster Proficiencies, Vulnerabilities, Resistances, Immunities, Senses, Languages, CR, and Proficiency Bonus
+	\DndMonsterDetails[
+		saving-throws			= {STR +0, DEX +0, CON +5, INT +5, WIS -5},
+		skills					= {Acrobatics +3, Stealth -3},
+		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Fire, Lightning},
+		damage-immunities		= {Poison},
+		condition-immunities	= {Frightened, Poisoned},
+		gear					= {a mysterious item},
+		senses					= {Darkvision 60 ft., Passive Perception 14},
+		languages				= {Common, Abyssal},
+		challenge				= 6, % XP are calculated automatically; can be omitted to display "-"
+		proficiency-bonus		= +3, % default value +2
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{One of Many}
+	The Blank Monster has advantage against being detected and on hiding in large groups.
+	
+    \DndMonsterAction{Legendary Resistance (3 / Day)}
+    If the Blank Monster fails a saving throw, it can choose to succeed instead.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Blank Monster makes two attacks with its dagger.
+	
+	\DndMonsterAttack[
+		name			= Longsword,
+		distance		= melee,	% valid options are in the set {both,melee,ranged},
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +3,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+		or-dmg			= \DndDice{1d10 + 2},
+		or-dmg-when		= {if used with two hands},
+%		extra			= {. },
+	]
+	
+	\DndMonsterAttack[
+		name			= Poisoned Dagger,
+		distance		= both,		% valid options are in the set {both,melee,ranged},
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 10,
+		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{1d6},
+		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d10},
+%		or-dmg-when		= {},
+%		extra			= {. },
+    ]
+    
+	\DndMonsterAttack[
+		name			= Longbow of Fate,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged},
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+%		reach			= 10,
+		range			= 150/450,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d10 + 2},
+%		or-dmg-when		= {if used with two hands},
+		extra			= {. Critically hits the target on rolls of 19 and 20},
+    ]
+    
+    \DndMonsterSavingThrowEffect[%
+    	name = {Poison Cloud},
+    	description = {The creature releases a poisonous cloud from its body}, % can be omitted
+    	save_skill = {Constitution},
+    	save_dc = {15},
+    	targets = {all creatures within a 50 feet Emanation originating from the Blank Monster},
+    	failure = {The target has the Poisoned condition for 1 minute},
+    	success = {The target is not Poisoned}, % can be omitted
+    	extra={Any Poisoned creature takes \DndDice{1d6} Poison damage at the start of its turn} % can be omitted
+    ]
+    
+    \DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The Blank Monster Innate Spellcasting ability is Charisma (Spell Save DC 15). She can innately cast the following spells, requiring no material components:
+		\DndInnateSpellLevel{At-Will Spell}
+		\DndInnateSpellLevel[1]{Once-Per-Day Spells}
+	\end{DndMonsterSpells}
+	
+	\begin{DndMonsterSpells}
+		\item[Spellcasting] The Blank Monster can cast the following spells using Wisdom as the spellcasting ability (spell save DC 14, +6 to hit with spell attacks):
+		\DndMonsterSpellLevel{Cantrip Spells}
+		\DndMonsterSpellLevel[1]{1st Level Spells}
+		\DndMonsterSpellLevel[2][3]{2nd Level Spells}
+		\DndMonsterSpellLevel[3][3]{3rd Level Spells}
+		\DndMonsterSpellLevel[4][3]{4th Level Spells}
+		\DndMonsterSpellLevel[5][2]{5th Level Spells}
+	\end{DndMonsterSpells}
+    
+    \DndMonsterSection{Bonus Actions}
+    \DndMonsterAction{Cunning Action}
+    The Blank Monster can take one of the following actions as a Bonus Action: Dash, Disengage, or Hide.
+    
+    \DndMonsterSection{Reactions}
+    \DndMonsterReaction[
+    	name = {Retaliation},
+    	trigger = {A creature hits the Blank Monster with a melee attack},
+    	response = {The Blank Monster can make an attack against that creature}
+    ]
+    
+    \DndMonsterSection{Legendary Actions}
+    The Blank Monster can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The Blank Monster regains spent legendary actions at the start of its turn.
+	\begin{DndMonsterLegendaryActions}
+		\DndMonsterLegendaryAction{Detect}{The Blank Monster makes a Wisdom (Perception) check.}
+		\DndMonsterLegendaryAction{Attack}{The Blank Monster makes a Longsword attack.}
+		\DndMonsterLegendaryAction{Barrage (Costs 2 Actions)}{The Blank Monster makes two Longbow attacks.}
+	\end{DndMonsterLegendaryActions}
+\end{DndMonster}

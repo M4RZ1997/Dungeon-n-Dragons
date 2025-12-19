@@ -1,12 +1,12 @@
 \begin{DndMonster}[width=\textwidth + 8pt]{Hootsman}
-	\vspace*{-18pt}\begin{multicols}{2}\vspace*{-9pt}\hfill\\
-		\DndMonsterType{Warforged Barbarian (Lvl 9, Path of the Berserker), Chaotic Neutral}
+	\vspace*{-18pt}\begin{multicols}{2}\vspace*{9pt}
+		\DndMonsterType{Human Barbarian (Lvl 9, Path of the Berserker), Chaotic Neutral}
 		
 		% If you want to use commas in the key values, enclose the values in braces.
 		\DndMonsterBasics[
 			armor-class = {16 (Natural Armor)},
 			initiative	= +2,
-			hit-points  = {\DndDice{9d12 + 36}},
+			hit-points  = {\DndDice{9d12 + 45}},
 			speed       = {40 ft.},
 		]
 		
@@ -24,9 +24,9 @@
 			saving-throws			= {STR +9, CON +7},
 			skills					= {Animal Handling +6, Athletics +9, Intimidation +4, Nature +4, Perception +6, Survival +6},
 %			damage-vulnerabilities	= {Cold},
-			damage-resistances		= {Poison},
+%			damage-resistances		= {Poison},
 %			damage-immunities		= {Poison},
-			condition-immunities	= {Diseased, Poisoned},
+%			condition-immunities	= {Diseased, Poisoned},
 %			gear					= {Leather Armor, Light Crossbow, Scimitar},
 			senses					= {Passive Perception 16},
 			languages				= {Common, Sylvan},
@@ -38,15 +38,18 @@
 		\DndMonsterAction{Rage}
 		While the Rage is active, the Hootsman gains the following benefits:
 		\begin{itemize}
-			\item He has resistance against bludgeoning, slashing, and piercing damage
+			\item He has resistance against Bludgeoning, Slashing, and Piercing damage
 			\item When he makes an attack using Strength, his damage increases by +3
-			\item He has advantage on Strength checks and Strength saving throws
+			\item He has Advantage on Strength checks and Strength saving throws
 		\end{itemize}
 		While in Rage, the Hootsman is also immune to the Charmed and Frightened condition and already affecting conditions of that kind end if he enters his Rage.
 		Additionally, the Hootsman can make any checks of the following skills as a Strength check: Acrobatics, Intimidation, Perception, Stealth, and Survival.
 		
 		\DndMonsterAction{Feral Instinct}
 		The Hootsman has advantage on Initiative Rolls.
+		
+		\DndMonsterAction{Tavern Brawler}
+		The Hootsman is proficient in using improvised weapons.
 		
 		\DndMonsterAction{Reckless Attack}
 		When the Hootsman makes his first attack roll he can give himself Advantage on it until the next turn, but attack rolls against him have Advantage during that time.
@@ -92,20 +95,20 @@
 		]
 		
 		\DndMonsterAttack[
-			name			= Longbow,
-			distance		= ranged,	% valid options are in the set {both,melee,ranged}
+			name			= Enhanced Unarmed Strike,
+			distance		= melee,	% valid options are in the set {both,melee,ranged}
 %			type			= weapon,	% valid options are in the set {weapon,spell}
 			mod				= +7,
-%			reach			= 5,
-			range			= 150/600,
+			reach			= 5,
+%			range			= 150/600,
 			targets			= one target,
-			dmg				= \DndDice{1d8 + 2},
-			dmg-type		= Piercing,
+			dmg				= \DndDice{1d4 + 5},
+			dmg-type		= Bludgeoning,
 %			plus-dmg		= \DndDice{1d6},
 %			plus-dmg-type	= Poison,
 %			or-dmg			= \DndDice{1d20},
 %			or-dmg-when		= {},
-			extra			= {. A creature hit with this attack has its speed reduced by 10 feet, up to a maximum reduction of 10 feet},
+			extra			= {. When the Hootsman rolls a 1 on a damage roll using this attack, he can reroll that die and must use the new roll. Additionally, when hitting a creature, once per turn, he can push that creature 5 feet},
 		]
 		
 		\DndMonsterSection{Bonus Action}

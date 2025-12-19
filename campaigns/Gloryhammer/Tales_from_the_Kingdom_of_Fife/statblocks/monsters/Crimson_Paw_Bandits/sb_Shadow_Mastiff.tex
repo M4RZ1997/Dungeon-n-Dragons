@@ -42,8 +42,14 @@
 	\DndMonsterAction{Sunlight Weakness}
 	While in bright light created by sunlight, the Shadow Mastiff has disadvantage on attack rolls, ability checks, and  saving throws.
 	
-	\DndMonsterAction{Terrifying Howl (Alpha Only)}
-	The Shadow Mastiff howls. Any beast or humanoid within 300 feet of the mastiff and able to hear its howl must succeed on a DC 11 Wisdom saving throw or be frightened for 1 minute. A frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to any Shadow Mastiff's Terrifying Howl for the next 24 hours.
+	\DndMonsterSavingThrowEffect[
+		name = {Terrifying Howl (Alpha Only)},
+		save_skill = {Wisdom},
+		save_dc = {11},
+		targets = {each humanoid or beast within 300 feet of the mastiff and is able to hear its howl},
+		failure = {The target is Frightened for 1 minute and can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success},
+		success = {The target is immune to any Shadow Mastiff's Terrifying Howl for the next 24 hours},
+	]
 	
 	\DndMonsterSection{Actions}
 	\DndMonsterAttack[

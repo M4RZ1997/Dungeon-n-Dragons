@@ -22,6 +22,16 @@
 \input{statblocks/monsters/sb_Bulette_Pup}
 \input{statblocks/monsters/sb_Bulette}
 
+\toclessPart{Constructs}
+\chapter*{Modrons}
+\input{statblocks/monsters/Constructs/sb_Monodrone}
+\input{statblocks/monsters/Constructs/sb_Duodrone}
+\vfill\eject
+\input{statblocks/monsters/Constructs/sb_Tridrone}
+\input{statblocks/monsters/Constructs/sb_Quadrone}
+\vfill\eject
+\input{statblocks/monsters/Constructs/sb_Scarecrow.tex}
+
 \toclessPart{Crimson Paw Bandits}
 \input{statblocks/monsters/Crimson_Paw_Bandits/sb_Bandit}
 \input{statblocks/monsters/Crimson_Paw_Bandits/sb_Bandit_Scout}
@@ -41,25 +51,47 @@
 \input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/mon_Hypnomoth.tex}
 
 \toclessPart{Fiends}
-\input{statblocks/monsters/Fiends/sb_Empyrean_Iota.tex}
-\input{statblocks/monsters/Fiends/sb_Nightmare.tex}
-\input{statblocks/monsters/Fiends/sb_Scarecrow.tex}
-\input{statblocks/monsters/Fiends/sb_Will_o_Wisp.tex}
-
-\toclessPart{Modrons}
-\input{statblocks/monsters/Modrons/sb_Monodrone}
-\input{statblocks/monsters/Modrons/sb_Duodrone}
+\input{statblocks/monsters/Fiends/sb_Cambion.tex}
 \vfill\eject
-\input{statblocks/monsters/Modrons/sb_Tridrone}
-\input{statblocks/monsters/Modrons/sb_Quadrone}
+\input{statblocks/monsters/Fiends/sb_Empyrean_Iota.tex}
+\vfill\eject
+\input{statblocks/monsters/Fiends/sb_Nightmare.tex}
+\clearpage
+\chapter*{Summonable Demons}
+\input{statblocks/monsters/Fiends/sb_Vrock}
+\vfill\eject
+\input{statblocks/monsters/Fiends/sb_Maurezhi}
+\vfill\eject
+\input{statblocks/monsters/Fiends/sb_Hezrou}
+
+\toclessPart{Legendary Creatures}
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+	\node[anchor=south east] at (current page.south east) {%
+		\begin{minipage}{1\paperwidth}%%
+        	\centering\includegraphics[width=1\paperwidth]{monsters/Remorhaz}%
+      	\end{minipage}%
+	};%
+\end{tikzpicture}%
+\vspace*{-1.825\baselineskip}\input{statblocks/monsters/Legendary_Creatures/sb_Remorhaz.tex}
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+	\node[anchor=south east] at (current page.south east) {%
+		\begin{minipage}{1\paperwidth}%%
+        	\centering\includegraphics[width=1\paperwidth]{monsters/Remorhaz_cutout}%
+      	\end{minipage}%
+	};%
+\end{tikzpicture}%
+\vfill\eject
+\input{statblocks/monsters/Legendary_Creatures/sb_Young_Remorhaz.tex}
 
 \toclessPart{Undead}
 \input{statblocks/monsters/Undead/sb_Ghost_of_Captain_Yarrface}
 \vfill\eject
 \input{statblocks/monsters/Undead/sb_Shadow}
+\input{statblocks/monsters/Undead/sb_Will_o_Wisp.tex}
+\input{statblocks/monsters/Undead/sb_Wight}
 
-\toclessPart{Zargothrax' Army}
-\input{statblocks/monsters/Zargothrax__Army/sb_Corrupted_Unicorn}
+\chapter*{Zargothrax' Army}
+\input{statblocks/monsters/Undead/sb_Corrupted_Unicorn}
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 	\node[anchor=south east] at (current page.south east) {%
 		\begin{minipage}{0.55\paperwidth}%%
@@ -68,10 +100,9 @@
 	};%
 \end{tikzpicture}%
 \vfill\eject
-\input{statblocks/monsters/Zargothrax__Army/sb_Undead_Soldier}
+\vspace*{-3cm}\hfill\\
+\input{statblocks/monsters/Undead/sb_Undead_Soldier}
 \vfill\eject
-\input{statblocks/monsters/Zargothrax__Army/sb_Wight}
-\vfill\eject
-\input{statblocks/monsters/Zargothrax__Army/sb_Bone_Naga}
+\input{statblocks/monsters/Undead/sb_Bone_Naga}
 
 \part*{Test Part}
