@@ -20,6 +20,7 @@
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 \usepackage{\PATH templates/template_resource/resource_commands}
 
+\usepackage{amssymb}
 
 \graphicspath{{.././images}}
 
@@ -36,7 +37,8 @@
 		\begin{scope}[scale=0.25, xshift=-4cm, yshift=-110cm]			
 			% Travel Routes
 			\draw[line width=3pt, blue] (70,95) -- (78,78) -- (85,75) -- (95,60);
-			\draw[line width=3pt, red] (95,60) -- (88,63);
+			\draw[line width=3pt, blue] (95,60) -- (88,63);
+			\draw[line width=3pt, red] (95,60) -- (73,58) -- (50,47) -- (63,50);
 			
 			% Known PoIs
 			\pgfmathsetmacro{\IndicatorSize}{15*\scaleFactor}%
@@ -54,10 +56,11 @@
 			% Possible PoIs / Rumors
 			\pgfmathsetmacro{\IndicatorSize}{13*\scaleFactor}%
 			\indicatorNumberField[10]{(82,78)}{\IndicatorSize}\indicatorAddition[?]{(82,78)}{\IndicatorSize};
-			\indicatorNumberField[10]{(88,63)}{\IndicatorSize};
+			\indicatorNumberField[10]{(88,63)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(88,63)}{\IndicatorSize};
 			\indicatorNumberField[10]{(47,63)}{\IndicatorSize}\indicatorAddition[?]{(47,63)}{\IndicatorSize};
 			\indicatorNumberField[10]{(55,70)}{\IndicatorSize}\indicatorAddition[?]{(55,70)}{\IndicatorSize};
 			\indicatorNumberField[10]{(2,40)}{\IndicatorSize}\indicatorAddition[$\swarrow$]{(2,40)}{\IndicatorSize};
+			\indicatorNumberField[10]{(63,50)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(63,50)}{\IndicatorSize};
 		\end{scope}
 	\end{tikzpicture}%
 	\clearpage
@@ -105,10 +108,11 @@
 	\subsubsection*{Home Cities}
 	\inTextCircled[10]{a}{10} {\entryfont Aberdeen (3 days travel from Dundee)}\\
 	\inTextCircled[10]{b}{10} {\entryfont Sylvani Elves Village}\\
-	\subsection*{Landmarks and Locations}
+	\subsection*{Landmarks and Smaller Towns}
 	\inTextCircled[10]{1}{10} {\entryfont River Maiden Wreckage}\\
 	\inTextCircled[10]{2}{10} {\entryfont Eagle's Peak}\\
 	\inTextCircled[10]{3}{10} {\entryfont Elven Village}\\
 	\inTextCircled[10]{4}{10} {\entryfont Auchtermuchty}\\
 	\inTextCircled[10]{5}{10} {\entryfont Swamps of Paisley (3 days travel from Auchtertool)}\\
+	\inTextCircled[10]{6}{10} {\entryfont Ravenscraig Castle}\\
 \end{document}
