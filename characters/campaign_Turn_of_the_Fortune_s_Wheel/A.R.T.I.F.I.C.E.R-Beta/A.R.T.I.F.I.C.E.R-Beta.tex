@@ -23,7 +23,7 @@
 \Background{Far Traveler}
 \Race{Autognome}
 
-\Level{7}
+\Level{8}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -37,8 +37,8 @@
 
 \StrengthScoreBonus{0}
 \DexterityScoreBonus{0}
-\ConstitutionScoreBonus{1} % Autognome +1
-\IntelligenceScoreBonus{4} % Autognome +2, ASI +2
+\ConstitutionScoreBonus{2} % Autognome +1, ASI +1
+\IntelligenceScoreBonus{5} % Autognome +2, ASI +3
 \WisdomScoreBonus{0}
 \CharismaScoreBonus{0}
 
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{12}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}} % +1 Enhanced Defense
 
-\MaxHitPointsRolled{32} % Without Constitution Bonus, is added automatically (33 Rolled -1 Malus throughout campaign)
+\MaxHitPointsRolled{37} % Without Constitution Bonus, is added automatically (33 Rolled -1 Malus throughout campaign)
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -137,10 +137,12 @@
 \AddClassFeature{E}{\textbf{Arcane Firearm}\\Additional d8 damage to spell damage}
 \AddClassFeature{R}{\textbf{Flash of Genius}\\Add \calculateModifier{\IntelligenceScoreValue} to your or allies' Ability Check or Saving Throw (\intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}} Uses)}
 
-\AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to Attack Roll, Ability Check, or Saving Throw (\intcalcAdd{0}{\ProficiencyValue} Uses)}
-\AddSpeciesFeature{E}{\textbf{Healing Machine}\\Mending generates Hit Die (1d8) + CON modifier HP and healing spells affect Autognome}
-\AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a construct.}
-\AddSpeciesFeature{E}{\textbf{Sentry's Rest}\\You don't need to sleep}
+\AddSpeciesFeature{E}{\textbf{Armored Casing}\\Natural AC = \intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+\AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to Attack Roll, Ability Check, or Saving Throw (\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses)}}
+\AddSpeciesFeature{E}{\textbf{Healing Machine}\\Mending regenerates Hit Die + CON modifier HP; healing spells affect you}
+\AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\Resistance against Poison Damage\\Advantage vs. Poisoned/Paralyzed}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Carpenter's and Woodcarver's Tools}
 
 % BACKGROUND & APPEARANCE
 
@@ -205,7 +207,7 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Robe of Useful Items}, \textbf{Eyes of Minute Seeing}, \textbf{Potion of Gaseous Form}\\Opal Gem (100gp), Light Crossbow, 20 Bolts, Handaxe, Quarterstaff, Thieves' Tools, Dice Set, small Lantanna piece of jewellery (10gp), traveler's clothes
+	\textbf{Robe of Useful Items}, \textbf{Eyes of Minute Seeing}, \textbf{Inevitable Disabling Device}, \textbf{Potion of Gaseous Form}\\Opal Gem (100gp), Light Crossbow, 20 Bolts, Handaxe, Quarterstaff, Thieves' Tools, Dice Set, small Lantanna piece of jewellery (10gp), traveler's clothes
 }
 
 \addAttunedMagicItem{All-Purpose Tool (+2)}
@@ -299,10 +301,28 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 	{V, S, CON save}
 	{V, S}
 \addPreparedSpell{2}
+	{Arcane Lock}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{2}
 	{Enhance Ability}
 	{Action}
 	{Touch}
 	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Enlarge/Reduce}
+	{Action}
+	{30 Feet}
+	{T}
 	{}
 	{T}
 	{V, S}
@@ -390,22 +410,30 @@ You can bestow magic on multiple objects, touching one object each time you use 
 \subsection*{Infuse Item}
 \textbf{6 Known, 3 Infused Items at a time}\\
 At 2nd level, you've gained the ability to imbue mundane items with certain magical infusions, turning those objects into magic items.
+\subsubsection*{Infusing an Item}
+Whenever you finish a long rest, you can touch a nonmagical object and imbue it with one of your artificer infusions, turning it into a magic item. An infusion works on only certain kinds of objects, as specified in the infusion's description. If the item requires attunement, you can attune yourself to it the instant you infuse the item. If you decide to attune to the item later, you must do so using the normal process for attunement (see the attunement rules in the Dungeon Master's Guide).
+
+Your infusion remains in an item indefinitely, but when you die, the infusion vanishes after a number of days equal to your Intelligence modifier (minimum of 1 day). The infusion also vanishes if you replace your knowledge of the infusion.
+
+You can infuse more than one nonmagical object at the end of a long rest; the maximum number of objects appears in the Infused Items column of the Artificer table. You must touch each of the objects, and each of your infusions can be in only one object at a time. Moreover, no object can bear more than one of your infusions at a time. If you try to exceed your maximum number of infusions, the oldest infusion ends, and then the new infusion applies.
+
+If an infusion ends on an item that contains other things, like a bag of holding, its contents harmlessly appear in and around its space.
 \subsubsection*{Infusions Known}
 \paragraph*{Enhanced Arcane Focus}\hfill\\
 \textit{Item: A rod, staff or wand (requires attunement)}\\
 While holding this item, a creature gains +1 bonus to spell attack rolls. In addition, the creature ignores half cover when making a spell attack.
 
-The bonus increases to +2 when you reach 10th level in this class.
+The bonus increases to +2 when you reach 10th level in this class.\\\\
 \paragraph*{Enhanced Defense}\hfill\\
 \textit{Item: A suit of armor or a shield}\\
 A creature gains a +1 bonus to Armor Class while wearing (armor) or wielding (shield) the infused item.
 
-The bonus increases to +2 when you reach 10th level in this class.
+The bonus increases to +2 when you reach 10th level in this class.\\\\
 \paragraph*{Enhanced Weapon}\hfill\\
 \textit{Item: A simple or martial weapon}\\
 This magic weapon grants a +1 bonus to attack and damage rolls made with it.
 
-The bonus increases to +2 when you reach 10th level in this class.
+The bonus increases to +2 when you reach 10th level in this class.\\\\
 \paragraph*{Homunculus Servant}\hfill\\
 \textit{Item: A gem or crystal worth at least 100gp}\\
 You learn intricate methods for magically creating a special homunculus that serves you. The item you infuse serves as the creature's heart, around which the creature's body instantly forms.
@@ -417,6 +445,7 @@ The homunculus is friendly to you and your companions, and it obeys your command
 In combat, the homunculus shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the Dodge action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are incapacitated, the homunculus can take any action of its choice, not just Dodge.
 
 The homunculus regains 2d6 hit points if the mending spell is cast on it. If you or the homunculus dies, it vanishes, leaving its heart in its space.
+\vfill\eject
 \begin{DndMonster}[width=0.5\textwidth]{Homunculus Servant}
     \DndMonsterType{Tiny Construct}
 
@@ -438,13 +467,13 @@ The homunculus regains 2d6 hit points if the mending spell is cast on it. If you
     ]
 
     \DndMonsterDetails[
-        saving-throws = {Dex +\intcalcAdd{0}{\ProficiencyValue}},
+        saving-throws = {DEX +\intcalcAdd{2}{\ProficiencyValue}},
         skills = {Perception +\intcalcAdd{0}{\intcalcMul{2}{\ProficiencyValue}}, Stealth +\intcalcAdd{2}{\ProficiencyValue}},
         %damage-vulnerabilities = {cold},
         %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-        damage-immunities = {poison},
+        damage-immunities = {Poison},
+        condition-immunities = {Poisoned},
         senses = {Darkvision 60 ft., Passive Perception \intcalcAdd{10}{\intcalcMul{2}{\ProficiencyValue}}},
-        condition-immunities = {poisoned},
         languages = {understands the languages you speak},
         challenge = -,
        proficiency-bonus=\ProficiencyValue,
@@ -475,23 +504,20 @@ The homunculus regains 2d6 hit points if the mending spell is cast on it. If you
 	\DndMonsterAction{Channel Magic}
 	The homunculus delivers a spell you cast that has a range of touch. The homunculus must be within 120 feet of you.	
 \end{DndMonster}
+\vspace*{-\baselineskip}\hfill\\
+\begin{tikzpicture}[remember picture, overlay]
+	\node[opacity=1,inner sep=0pt, xshift=-2cm, yshift=-2.25cm] at (current page.north east){\includegraphics[width=0.175\paperwidth, keepaspectratio]{images/Homunculus_Servant.png}};
+\end{tikzpicture}
 \paragraph*{Resistant Armor}\hfill\\
 \textit{Item: A Suit or Armor (requires attunement)}\\
-While wearing this armor, a creature has resistance to one of the following damage types, which you choose when you infuse the item: acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant, or thunder.
+While wearing this armor, a creature has resistance to one of the following damage types, which you choose when you infuse the item: acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant, or thunder.\\\\
 \paragraph*{Spell-Refueling Ring}\hfill\\
 \textit{Item: A Ring (requires attunement)}\\
-While wearing this ring, the creature can recover one expended spell slot as an action. The recovered slot can be of 3rd level or lower. Once used, the ring can't be used again until the next dawn.
+While wearing this ring, the creature can recover one expended spell slot as an action. The recovered slot can be of 3rd level or lower. Once used, the ring can't be used again until the next dawn.\\\\
 \paragraph*{Eyes of Minute Seeing}\hfill\\
 \textit{Item: Any spectacles or goggles}\\
 While wearing these lenses you have advantage on Intelligence (Investigation) checks that rely on sight while searching an area or studying an object within range.
-\subsubsection*{Infusing an Item}
-Whenever you finish a long rest, you can touch a nonmagical object and imbue it with one of your artificer infusions, turning it into a magic item. An infusion works on only certain kinds of objects, as specified in the infusion's description. If the item requires attunement, you can attune yourself to it the instant you infuse the item. If you decide to attune to the item later, you must do so using the normal process for attunement (see the attunement rules in the Dungeon Master's Guide).
-
-Your infusion remains in an item indefinitely, but when you die, the infusion vanishes after a number of days equal to your Intelligence modifier (minimum of 1 day). The infusion also vanishes if you replace your knowledge of the infusion.
-
-You can infuse more than one nonmagical object at the end of a long rest; the maximum number of objects appears in the Infused Items column of the Artificer table. You must touch each of the objects, and each of your infusions can be in only one object at a time. Moreover, no object can bear more than one of your infusions at a time. If you try to exceed your maximum number of infusions, the oldest infusion ends, and then the new infusion applies.
-
-If an infusion ends on an item that contains other things, like a bag of holding, its contents harmlessly appear in and around its space.
+\vfill\eject
 \subsection*{Artillerist}
 \subsubsection*{Artillerist Spells}
 Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Artillerist Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.
@@ -507,13 +533,14 @@ $\bullet$	& 5th						&Scorching Ray, Shatter			\\
 Also at 3rd level, you've learned how to create a magical cannon. Using woodcarver's tools or smith's tools, you can take an action to magically create a Small or Tiny eldritch cannon in an unoccupied space on a horizontal surface within 5 feet of you. A Small eldritch cannon occupies its space, and a Tiny one can be held in one hand. Once you create a cannon, you can't do so again until you finish a long rest or until you expend a spell slot to create one. You can have only one cannon at a time and can't create one while your cannon is present.
 
 The cannon is a magical object. Regardless of size, the cannon has an AC of 18 and a number of hit points equal to five times your artificer level. It is immune to poison damage and psychic damage. If it is forced to make an ability check or a saving throw, treat all its ability scores as 10 (+0). If the mending spell is cast on it, it regains 2d6 hit points. It disappears if it is reduced to 0 hit points or after 1 hour. You can dismiss it early as an action.
+
+When you create the cannon, you determine its appearance and whether it has legs. You also decide which type it is, choosing from the options on the Eldritch Cannons table. On each of your turns, you can take a bonus action to cause the cannon to activate if you are within 60 feet of it. As part of the same bonus action, you can direct the cannon to walk or climb up to 15 feet to an unoccupied space, provided it has legs.
 \begin{DndTable}[header=Eldritch Cannon]{lX}
 \textbf{Cannon}  	&\textbf{Activation}				\\
 Flamethrower		&The cannon exhales fire in an adjacent 15-foot cone that you designate. Each creature in that area must make a Dexterity saving throw against your spell save DC, taking 2d8 fire damage on a failed save or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being worn or carried.\\
 Force Ballista		&Make a ranged spell attack, originating from the cannon, at one creature or object within 120 feet of it. On a hit, the target takes 2d8 force damage, and if the target is a creature, it is pushed up to 5 feet away from the cannon.\\
 Protector			&The cannon emits a burst of positive energy that grants itself and each creature of your choice within 10 feet of it a number of temporary hit points equal to 1d8 + your Intelligence modifier (minimum of +1).\\
 \end{DndTable}
-When you create the cannon, you determine its appearance and whether it has legs. You also decide which type it is, choosing from the options on the Eldritch Cannons table. On each of your turns, you can take a bonus action to cause the cannon to activate if you are within 60 feet of it. As part of the same bonus action, you can direct the cannon to walk or climb up to 15 feet to an unoccupied space, provided it has legs.
 \subsubsection*{Arcane Firearm}
 At 5th level, You know how to turn a wand, staff, or rod into an arcane firearm, a conduit for your destructive spells. When you finish a long rest, you can use woodcarver's tools to carve special sigils into a wand, staff, or rod and thereby turn it into your arcane firearm. The sigils disappear from the object if you later carve them on a different item. The sigils otherwise last indefinitely.
 
@@ -632,6 +659,20 @@ In addition, unsecured objects that are completely within the area of effect are
 \subsection*{Level 2}
 
 \DndSpellHeader
+  {Arcane Lock}
+  {2nd-Level Abjuration}
+  {Action}
+  {Touch}
+  {V, S, M (gold dust worth at least 25 gp, which the spell consumes)}
+  {Until dispelled}
+
+You touch a closed door, window, gate, chest, or other entryway, and it becomes locked for the duration.
+
+You and the creatures you designate when you cast this spell can open the object normally. You can also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable until it is broken or the spell is dispelled or suppressed. Casting Knock on the object suppresses Arcane Lock for 10 minutes.
+
+While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases by 10.
+
+\DndSpellHeader
   {Enhance Ability}
   {2nd-Level Transmutation}
   {Action}
@@ -642,6 +683,22 @@ In addition, unsecured objects that are completely within the area of effect are
 You touch a creature and choose Strength, Dexterity, Intelligence, Wisdom, or Charisma. For the duration, the target has Advantage on ability checks using the chosen ability.
 
 \subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 2. You can choose a different ability for each target.
+
+\DndSpellHeader
+  {Enlarge/Reduce}
+  {2nd-Level Transmutation}
+  {Action}
+  {30 Feet}
+  {V, S, M (a pinch of powdered iron)}
+  {Concentration, Up to 1 Minute}
+
+You cause a creature or an object you can see within range to grow larger or smaller for the duration. Choose either a creature or an object that is neither worn nor carried. If the target is unwilling, it can make a Constitution saving throw. On a success, the spell has no effect.
+
+If the target is a creature, everything it is wearing and carrying changes size with it. Any item dropped by an affected creature returns to normal size at once.
+
+\paragraph*{Enlarge} The target's size doubles in all dimensions, and its weight is multiplied by eight. This growth increases its size by one category – from Medium to Large, for example. If there isn't enough room for the target to double its size, the creature or object attains the maximum possible size in the space available. Until the spell ends, the target also has advantage on Strength checks and Strength saving throws. The target's weapons also grow to match its new size. While these weapons are enlarged, the target's attack with them deal 1d4 extra damage.
+
+\paragraph*{Reduce} The target's size is halved in all dimensions, and its weight is reduced to one-eighth of normal. This reduction decreases its size by one category – from Medium to Small, for example. Until the spell ends, the target also has disadvantage on Strength checks and Strength saving throws. The target's weapons also shrink to match its new size. While these weapons are reduced, the target's attacks with them deal 1d4 less damage (this can't reduce the damage below 1).
 
 \DndSpellHeader
   {Scorching Ray}

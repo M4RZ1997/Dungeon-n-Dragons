@@ -23,7 +23,7 @@
 \Background{Lantan Ranger Corps} % Whitestone Rifle Corps
 \Race{Warforged}
 
-\Level{7}
+\Level{8}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -36,7 +36,7 @@
 \CharismaRolledScore{10}
 
 \StrengthScoreBonus{0}
-\DexterityScoreBonus{2} % Warforged +1, ASI +1
+\DexterityScoreBonus{4} % Warforged +1, ASI +3
 \ConstitutionScoreBonus{2} % Warforged +2
 \IntelligenceScoreBonus{0}
 \WisdomScoreBonus{1} % ASI +1
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{14}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{44} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{51} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d10}
@@ -135,10 +135,12 @@
 \AddClassFeature{E}{\textbf{Extra Attack}}
 \AddClassFeature{E}{\textbf{Roving}\\Climb and Swim Speed}
 
-\AddSpeciesFeature{E}{\textbf{Constructed Resilience}}
-\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a Construct.}
+\AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
 \AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
-\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Perception Proficiency\\Woodcarver's Tools Proficiency}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Perception, Woodcarver's Tools}
+\AddSpeciesFeature{E}{\textbf{Tireless}\\No Exhaustion from dehydration, malnutrition, or suffocation}
 
 \AddFeat{\textbf{Archery}\\+2 to Ranged attacks}
 
@@ -209,11 +211,13 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Serpent Scale Armor}, \textbf{Laucian's Warden Token} (Druidic Focus), \textbf{Scroll of Scrying}, Scimitar, Shortsword, 20 Arrows, Quiver, Woodcarver's Tools, a set of common clothes, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope
+	\textbf{Serpent Scale Armor}, \textbf{Laucian's Warden Token} (Druidic Focus), \textbf{Scroll of Scrying}, \textbf{Inevitable Disabling Device}\\
+	Scimitar, Shortsword, 20 Arrows, Quiver, Woodcarver's Tools, a set of common clothes, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope
 }
 
 \addAttunedMagicItem{Glimmering Moonbow}
 \addAttunedMagicItem{Ring of Mind Shielding}
+\addAttunedMagicItem{Periapt of Wound Closure}
 
 \CP{}
 \SP{}
@@ -347,26 +351,17 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 \chapter*{Features, Magic Items and Spells}
 
 \section*{Warforged Traits}
-\subsection*{Constructed Resilience}
-You were created to have remarkable fortitude, represented by the following benefits:
-\begin{itemize}
-	\item You have advantage on saving throws against being poisoned, and you have resistance to poison damage.
-	\item You don't need to eat, drink, or breathe.
-	\item You are immune to disease.
-	\item You don't need to sleep, and magic can't put you to sleep.
-\end{itemize}
-\subsection*{Sentry's Rest}
-When you take a long rest, you must spend at least six hours in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious, and you can see and hear as normal.
+\subsection*{Construct Resilience}
+You have Resistance to Poison damage. You also have Advantage on saving throws to avoid or end the Poisoned condition.
 \subsection*{Integrated Protection}
-Your body has built-in defensive layers, which can be enhanced with armor.
-\begin{itemize}
-	\item You gain a +1 bonus to Armor Class.
-	\item You can don only armor with which you have proficiency. To don armor, you must incorporate it into your body over the course of 1 hour, during which you must remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.
-	\item While you live, your armor can't be removed from your body against your will.
-\end{itemize}
+You gain a +1 bonus to your Armor Class. In addition, armor you have donned can't be removed against your will while you're alive.
+\subsection*{Sentry's Rest}
+You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 6 hours if you spend those hours in an inactive, motionless state. During this time, you appear inert but remain conscious.
 \subsection*{Specialized Design}
 \textit{Woodcarver's Tools, Perception Proficiency}\\
 You gain one skill proficiency and one tool proficiency of your choice.
+\subsection*{Tireless}
+You don't gain Exhaustion levels from dehydration, malnutrition, or suffocation.
 
 \section*{Ranger Traits}
 \subsection*{Favored Enemy}
@@ -597,8 +592,12 @@ The space can hold up to eight Medium or smaller creatures. Attacks, spells, and
 \input{\PATH magic_items/Weapons/Bows/Glimmering_Moonbow/Glimmering_Moonbow_input}
 
 \newpage
+\subsection*{Periapt of Wound Closure}
+\textit{Wondrous Item, Uncommon (requires attunement)}\\
+While you wear this pendant, you stabilize whenever you are dying at the start of your turn. In addition, whenever you roll a Hit Die to regain hit points, double the number of hit points it restores.
+
 \subsection*{Ring of Mind Shielding}
-\textit{Ring, uncommon (requires attunement)}\\
+\textit{Ring, Uncommon (requires attunement)}\\
 While wearing this ring, you are immune to magic that allows other creatures to read your thoughts, determine whether you are lying, know your alignment, or know your creature type. Creatures can telepathically communicate with you only if you allow it.
 
 You can use an action to cause the ring to become invisible until you use another action to make it visible, until you remove the ring, or until you die.

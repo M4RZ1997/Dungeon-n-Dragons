@@ -23,20 +23,20 @@
 \Background{Compleated}
 \Race{Warforged}
 
-\Level{7}
+\Level{8}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{16}
-\DexterityRolledScore{12}
+\DexterityRolledScore{13}
 \ConstitutionRolledScore{12}
 \IntelligenceRolledScore{10}
 \WisdomRolledScore{17}
 \CharismaRolledScore{16}
 
 \StrengthScoreBonus{0}
-\DexterityScoreBonus{0}
+\DexterityScoreBonus{1} % Poisoner +1
 \ConstitutionScoreBonus{2} % Warforged +2
 \IntelligenceScoreBonus{0}
 \WisdomScoreBonus{1} % ASI +1
@@ -94,7 +94,7 @@
 
 \ArmorClass{\intcalcAdd{12}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{46} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{52} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -128,15 +128,17 @@
 \AddClassFeature{B}{\textbf{Wild Shape}\\2 Uses}
 \AddClassFeature{E}{\textbf{Circle Forms}\\AC \intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}}, max CR 1, 9 temp HP}
 \AddClassFeature{L}{\textbf{Form of the Dread}\\\intcalcAdd{0}{\ProficiencyValue} Uses}
-\AddClassFeature{E}{\textbf{Eldritch Invocations}\\Beguiling Influence, Eldritch Mind}
-\AddClassFeature{E}{\textbf{Pact of the Chain}}
+\AddClassFeature{E}{\textbf{Eldritch Invocations (5)}\begin{itemize}\item Beguiling Influence\item Eldritch Mind\item Pact of Chain\item Investment of the Chain Master\item One with Shadows\end{itemize}}
 
-\AddSpeciesFeature{E}{\textbf{Constructed Resilience}}
-\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a Construct.}
+\AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
 \AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
-\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Athletics Proficiency\\Poisoner's Kit Proficiency}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Athletic's, Poisoner's Kit}
+\AddSpeciesFeature{E}{\textbf{Tireless}\\No Exhaustion from dehydration, malnutrition, or suffocation}
 
-\AddFeat{\textbf{Glistening Oil}\\Poison (DC 13 CON save) coated melee attacks}
+\AddFeat{\textbf{Glistening Oil}\\Poison (+1d6 P, DC 13 CON save) coated melee attacks}
+\AddFeat{\textbf{Poisoner}\begin{itemize}\item Potent Poison\\Poison damage cannot be resisted\item Brew Poison\begin{itemize}\item \intcalcAdd{0}{\ProficiencyValue} Doses\item DC = \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}}\end{itemize}\end{itemize}}
 
 % BACKGROUND & APPEARANCE
 
@@ -199,7 +201,8 @@
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Insignia of Claws}, Hide Armor (equipped), Scimitar, Quarterstaff (Druidic Focus), backpack, bedroll, mess kit, tinderbox, 10 torches, waterskin, 50 feet of hempen rope
+	\textbf{Insignia of Claws}, \textbf{Inevitable Disabling Device}\\
+	Hide Armor (equipped), Scimitar, Quarterstaff (Druidic Focus), backpack, bedroll, mess kit, tinderbox, 10 torches, waterskin, 50 feet of hempen rope
 }
 
 \addAttunedMagicItem{Ventilating Lungs}
@@ -218,7 +221,8 @@
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
 
 \FirstLevelSpellSlotsTotal{4}
-\SecondLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{2}
+\ThirdLevelSpellSlotsTotal{2}
 
 \addPreparedSpell{0}
 	{Eldritch Blast}
@@ -303,7 +307,7 @@
 	{V, S, DC \calculateSpellSaveDC{\calculateModifier{\WisdomScoreValue}} Wisdom}
 	{V, S}
 \addPreparedSpell{1}
-	{Find Familiar}
+	{Find Familiar*}
 	{1 Hour}
 	{10 Feet}
 	{}
@@ -358,13 +362,13 @@
 	{V, S, gives advantage}
 	{V, S, M}
 \addPreparedSpell{2}
-	{Hold Person}
+	{Invisibility*}
 	{Action}
-	{60 Feet}
+	{Self}
 	{T}
 	{}
 	{T}
-	{V, S, paralyze}
+	{V, S}
 	{V, S, M}
 \addPreparedSpell{2}
 	{Mind Spike}
@@ -402,6 +406,42 @@
 	{T}
 	{V, S, 1 Minute}
 	{V, S, M}
+\addPreparedSpell{3}
+	{Enemies Abound}
+	{Action}
+	{120 Feet}
+	{T}
+	{}
+	{}
+	{V, S, 1 Minute}
+	{V, S}
+\addPreparedSpell{3}
+	{Fear}
+	{Action}
+	{Self}
+	{T}
+	{}
+	{T}
+	{V, S, 1 Minute}
+	{V, S, M}
+\addPreparedSpell{3}
+	{Phantom Steed}
+	{1 Min}
+	{30 Feet}
+	{}
+	{T}
+	{}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{3}
+	{Speak with Dead}
+	{Action}
+	{10 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 10 Minutes}
+	{V, S, M}
 	
 \begin{document}
 
@@ -426,26 +466,17 @@
 \chapter*{Features, Magic Items and Spells}
 
 \section*{Warforged Traits}
-\subsection*{Constructed Resilience}
-You were created to have remarkable fortitude, represented by the following benefits:
-\begin{itemize}
-	\item You have advantage on saving throws against being poisoned, and you have resistance to poison damage.
-	\item You don't need to eat, drink, or breathe.
-	\item You are immune to disease.
-	\item You don't need to sleep, and magic can't put you to sleep.
-\end{itemize}
-\subsection*{Sentry's Rest}
-When you take a long rest, you must spend at least six hours in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious, and you can see and hear as normal.
+\subsection*{Construct Resilience}
+You have Resistance to Poison damage. You also have Advantage on saving throws to avoid or end the Poisoned condition.
 \subsection*{Integrated Protection}
-Your body has built-in defensive layers, which can be enhanced with armor.
-\begin{itemize}
-	\item You gain a +1 bonus to Armor Class.
-	\item You can don only armor with which you have proficiency. To don armor, you must incorporate it into your body over the course of 1 hour, during which you must remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.
-	\item While you live, your armor can't be removed from your body against your will.
-\end{itemize}
+You gain a +1 bonus to your Armor Class. In addition, armor you have donned can't be removed against your will while you're alive.
+\subsection*{Sentry's Rest}
+You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 6 hours if you spend those hours in an inactive, motionless state. During this time, you appear inert but remain conscious.
 \subsection*{Specialized Design}
-\textit{Poisoner's Kit, Athletics Proficiency}\\
+\textit{Athletics Proficiency, Poisoner's Kit}\\
 You gain one skill proficiency and one tool proficiency of your choice.
+\subsection*{Tireless}
+You don't gain Exhaustion levels from dehydration, malnutrition, or suffocation.
 
 \section*{Compleated Traits}
 \textit{"Flesh is weakness. Steel is purpose."}\\
@@ -453,6 +484,13 @@ Once, you were mortal - limited, fragile. Now, you are something more. Through t
 \subsection*{Glistening Oil}
 Whenever you hit a creature with a melee attack it will be affected by the glistening oil oozing out of your body:
 \paragraph*{Poisonous Oil} The target takes an extra 1d6 poison damage. If the target is a creature, it must succeed on a DC 13 Constitution saving throw, or is poisoned until the start of your next turn.
+
+\section*{Feats}
+\subsection*{Poisoner}
+\textit{Dexterity Score increased}\\
+You gain the following benefits.
+\paragraph*{Potent Poison} When you make a damage roll that deals Poison damage, it ignores Resistance to Poison damage.
+\paragraph*{Brew Poison} You gain proficiency with the Poisoner's Kit. With 1 hour of work using such a kit and expending 50 GP worth of materials, you can create a number of poison doses equal to your Proficiency Bonus (\textbf{\intcalcAdd{0}{\ProficiencyValue}} Doses). As a Bonus Action, you can apply a poison dose to a weapon or piece of ammunition. Once applied, the poison retains its potency for 1 minute or until you hit with the poisoned item, whichever is shorter. When a creature takes damage from the poisoned item, that creature must succeed on a Constitution saving throw (DC 8 plus the modifier of the ability increased by this feat and your Proficiency Bonus: \textbf{\intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}}}) or take 2d8 Poison damage and have the Poisoned condition until the end of your next turn.
 
 \section*{Druid Traits}
 \subsection*{Wild Shape}
@@ -500,13 +538,27 @@ At 2nd level, you gain two eldritch invocations of your choice. When you gain ce
 \subsubsection*{Beguiling Influence}
 You gain proficiency in the Deception and Persuasion skills.
 \subsubsection*{Eldritch Mind}
-You have advantage on Constitution saving throws that you make to maintain your concentration on a spell.
-\subsection*{Pact of the Chain}
-You learn the find familiar spell and can cast it as a ritual. The spell doesn't count against your number of spells known.
+You have Advantage on Constitution saving throws that you make to maintain Concentration.
+\subsubsection*{Pact of the Chain}
+You learn the Find Familiar spell and can cast it as a Magic action without expending a spell slot.
 
-When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: imp, pseudodragon, quasit, or sprite.
+When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: Imp, Pseudodragon, Quasit, Skeleton, Slaad Tadpole, Sphinx of Wonder, Sprite, or Venomous Snake.
 
-Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack with its reaction.
+Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack of its own with its Reaction.
+\subsubsection*{Investment of the Chain Master}
+When you cast Find Familiar, you infuse the summoned familiar with a measure of your eldritch power, granting the creature the following benefits.
+\paragraph*{Aerial or Aquatic} The familiar gains either a Fly Speed or Swim Speed (your choice) of 40 feet.
+\paragraph*{Quick Attack} As a Bonus Action, you can command the familiar to take the Attack action.
+\paragraph*{Necrotic or Radiant Damage} Whenever the familiar deals Bludgeoning, Piercing, or Slashing damage, you can make it deal Necrotic or Radiant damage instead.
+\paragraph*{Your Save DC} Of the familiar forces a creature to make a saving throw, it uses your spell save DC.
+\paragraph*{Resistance} When the familiar takes damage, you can take a Reaction to grant it Resistance against that damage.
+\subsubsection*{One with Shadows}
+While you're in an area of Dim Light or Darkness you can cast Invisibility on yourself without expending a spell slot.
+
+\subsection{Grave Touched}
+At 6th level, your patron's powers have a profound effect on your body and magic. You don't need to eat, drink, or breathe.
+
+In addition, once during each of your turns, when you hit a creature with an attack and roll damage against the creature, you can replace the damage type with necrotic damage. While you are using your Form of Dread, you can roll one additional damage die when determining the necrotic damage the target takes.
 
 \section*{Spells}
 \subsection*{Cantrip}
@@ -717,16 +769,14 @@ You touch a creature and bestow upon it a magical enhancement. Choose one of the
 \subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.
 
 \DndSpellHeader
-  {Hold Person}
-  {2nd-Level Enchantment}
+  {Invisibility}
+  {2nd-Level Illusion}
   {Action}
-  {60 Feet}
-  {V, S, M (a small, straight piece of iron)}
-  {Concentration, up to 1 Minute}
-
-Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration. At the end of each of its turns, the target can make another Wisdom saving throw. On a success, the spell ends on the target.
-
-\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, you can target one additional humanoid for each slot level above 2nd. The humanoids must be within 30 feet of each other when you target them.
+  {Self}
+  {V, S, M (An eyelash encased in gum arabic)}
+  {Concentration, up to 1 Hour}
+  
+You become invisible until the spell ends. Anything you are wearing or carrying is invisible as long as it is on you. The spell ends when you attack or cast a spell.
 
 \DndSpellHeader
   {Mind Spike}
@@ -785,6 +835,57 @@ The target can use its action to examine the phantasm with an Intelligence (Inve
 While a target is affected by the spell, the target treats the phantasm as if it were real. The target rationalizes any illogical outcomes from interacting with the phantasm. For example, a target attempting to walk across a phantasmal bridge that spans a chasm falls once it steps onto the bridge. If the target survives the fall, it still believes that the bridge exists and comes up with some other explanation for its fall; it was pushed, it slipped, or a strong wind might have knocked it off.
 
 An affected target is so convinced of the phantasm's reality that it can even take damage from the illusion. A phantasm created to appear as a creature can attack the target. Similarly, a phantasm created to appear as fire, a pool of acid, or lava can burn the target. Each round on your turn, the phantasm can deal 1d6 psychic damage to the target if it is in the phantasm's area or within 5 feet of the phantasm, provided that the illusion is of a creature or hazard that could logically deal damage, such as by attacking. The target perceives the damage as a type appropriate to the illusion.
+
+\subsection*{Level 3}
+
+\DndSpellHeader
+  {Enemies Abound}
+  {2nd-Level Enchantment}
+  {Action}
+  {120 Feet}
+  {V, S}
+  {Concentration, up to 1 Minute}
+
+You reach into the mind of one creature you can see and force it to make an Intelligence saving throw. A creature automatically succeeds if it is immune to being frightened. On a failed save, the target loses the ability to distinguish friend from foe, regarding all creatures it can see as enemies until the spell ends. Each time the target takes damage, it can repeat the saving throw, ending the effect on itself on a success.
+
+Whenever the affected creature chooses another creature as a target, it must choose the target at random from among the creatures it can see within range of the attack, spell, or other ability it's using. If an enemy provokes an opportunity attack from the affected creature, the creature must make that attack if it is able to.
+
+\DndSpellHeader
+  {Fear}
+  {2nd-Level Illusion}
+  {Action}
+  {Self (30-foot cone)}
+  {V, S, M (a white feather or the heart of a hen)}
+  {Concentration, up to 1 Minute}
+
+You project a phantasmal image of a creature's worst fears. Each creature in a 30-foot cone must succeed on a Wisdom saving throw or drop whatever it is holding and become frightened for the duration.
+
+While frightened by this spell, a creature must take the Dash action and move away from you by the safest available route on each of its turns, unless there is nowhere to move. If the creature ends its turn in a location where it doesn't have line of sight to you, the creature can make a Wisdom saving throw. On a successful save, the spell ends for that creature.
+
+\DndSpellHeader
+  {Phantom Steed}
+  {3rd-Level Illusion (Ritual)}
+  {1 Minute}
+  {30 Feet}
+  {V, S}
+  {1 Hour}
+
+A Large quasi-real, horselike creature appears on the ground in an unoccupied space of your choice within range. You decide the creature's appearance, but it is equipped with a saddle, bit, and bridle. Any of the equipment created by the spell vanishes in a puff of smoke if it is carried more than 10 feet away from the steed.
+
+For the duration, you or a creature you choose can ride the steed. The creature uses the statistics for a riding horse, except it has a speed of 100 feet and can travel 10 miles in an hour, or 13 miles at a fast pace. When the spell ends, the steed gradually fades, giving the rider 1 minute to dismount. The spell ends if you use an action to dismiss it or if the steed takes any damage.
+
+\DndSpellHeader
+  {Speak with Dead}
+  {3rd-Level Necromancy}
+  {Action}
+  {10 Feet}
+  {V, S, M (burning incense)}
+  {10 Minutes}
+
+You grant the semblance of life and intelligence to a corpse of your choice within range, allowing it to answer the questions you pose. The corpse must still have a mouth and can't be undead. The spell fails if the corpse was the target of this spell within the last 10 days.
+
+Until the spell ends, you can ask the corpse up to five questions. The corpse knows only what it knew in life, including the languages it knew. Answers are usually brief, cryptic, or repetitive, and the corpse is under no compulsion to offer a truthful answer if you are hostile to it or it recognizes you as an enemy. This spell doesn't return the creature's soul to its body, only its animating spirit. Thus, the corpse can't learn new information, doesn't comprehend anything that has happened since it died, and can't speculate about future events.
+
 \vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
@@ -799,7 +900,7 @@ An affected target is so convinced of the phantasm's reality that it can even ta
 \indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
 \paragraph*{Damage Roll}\hfill\\
 \underline{\textit{Armblade +1:}}\\
-1d8 + 1 + DEX-Modifier\\
+1d8 + 1 + STR-Modifier\\
 \indent Current Max: \intcalcAdd{8}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}}
 \\
 \underline{\textit{Quarterstaff (Versatile):}}\\

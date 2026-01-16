@@ -23,7 +23,7 @@
 \Background{Gate Warden}
 \Race{Warforged}
 
-\Level{7}
+\Level{8}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -36,8 +36,8 @@
 \CharismaRolledScore{16}
 
 \StrengthScoreBonus{3} % +1 Warforged, ASI +2
-\DexterityScoreBonus{0}
-\ConstitutionScoreBonus{2} % +2 Warforged
+\DexterityScoreBonus{1} % +1 Warforged
+\ConstitutionScoreBonus{2} % +1 Warforged, +1 Durable
 \IntelligenceScoreBonus{0}
 \WisdomScoreBonus{0}
 \CharismaScoreBonus{0}
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{47} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{55} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -128,12 +128,16 @@
 \AddClassFeature{E}{\textbf{Extra Attack}}
 \AddClassFeature{R}{\textbf{Countercharm}}
 
-\AddSpeciesFeature{E}{\textbf{Constructed Resilience}}
-\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+
+\AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a Construct.}
+\AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
 \AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
-\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Athletics Proficiency and Wargong Proficiency}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Athletics Proficiency, Wargong}
+\AddSpeciesFeature{E}{\textbf{Tireless}\\No Exhaustion from dehydration, malnutrition, or suffocation}
 
 \AddFeat{\textbf{Scion of the Outer Planes}\\Necrotic Resistance, Chill Touch Cantrip}
+\AddFeat{\textbf{Durable}\begin{itemize}\item Defy Death\item Speedy Recovery\end{itemize}}
 
 % BACKGROUND & APPEARANCE
 
@@ -202,7 +206,8 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Armor of Fungal Spores} (Chain Shirt), \textbf{Acheron Blade} (Longsword), \textbf{Scroll of Wall of Fire}, \textbf{Scroll of Sunburst}, 2 Handaxes, Light Crossbow, 20 Bolts, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope, ring of keys to unknown locks, black book, ink pen and quill, bottle of black ink, traveler's clothes, ring made from a chain link that, once donned, won't come off without pulling painfully hard
+	\textbf{Armor of Fungal Spores} (Chain Shirt), \textbf{Acheron Blade} (Longsword), \textbf{Scroll of Wall of Fire}, \textbf{Scroll of Sunburst}, \textbf{Inevitable Disabling Device}\\
+	2 Handaxes, Light Crossbow, 20 Bolts, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope, ring of keys to unknown locks, black book, ink pen and quill, bottle of black ink, traveler's clothes, ring made from a chain link that, once donned, won't come off without pulling painfully hard
 }
 
 \addAttunedMagicItem{Acheron Blade (Longsword)}
@@ -224,7 +229,7 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{3}
-\FourthLevelSpellSlotsTotal{1}
+\FourthLevelSpellSlotsTotal{2}
 
 \addPreparedSpell{0}
 	{Blade Ward}
@@ -361,6 +366,15 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 	{T}
 	{V, S}
 	{V, S, M}
+\addPreparedSpell{4}
+	{Raulothim's Psychic Lance}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, 7d6 Psychic}
+	{V}
 
 \begin{document}
 
@@ -383,26 +397,17 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 \chapter*{Features, Magic Items and Spells}
 
 \section*{Warforged Traits}
-\subsection*{Constructed Resilience}
-You were created to have remarkable fortitude, represented by the following benefits:
-\begin{itemize}
-	\item You have advantage on saving throws against being poisoned, and you have resistance to poison damage.
-	\item You don't need to eat, drink, or breathe.
-	\item  are immune to disease.
-	\item You don't need to sleep, and magic can't put you to sleep.
-\end{itemize}
-\subsection*{Sentry's Rest}
-When you take a long rest, you must spend at least six hours in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious, and you can see and hear as normal.
+\subsection*{Construct Resilience}
+You have Resistance to Poison damage. You also have Advantage on saving throws to avoid or end the Poisoned condition.
 \subsection*{Integrated Protection}
-Your body has built-in defensive layers, which can be enhanced with armor.
-\begin{itemize}
-	\item You gain a +1 bonus to Armor Class.
-	\item You can don only armor with which you have proficiency. To don armor, you must incorporate it into your body over the course of 1 hour, during which you must remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.
-	\item While you live, your armor can't be removed from your body against your will.
-\end{itemize}
+You gain a +1 bonus to your Armor Class. In addition, armor you have donned can't be removed against your will while you're alive.
+\subsection*{Sentry's Rest}
+You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 6 hours if you spend those hours in an inactive, motionless state. During this time, you appear inert but remain conscious.
 \subsection*{Specialized Design}
-\textit{Woodcarver's Tools, Perception Proficiency}\\
+\textit{Athletics Proficiency, Wargong Proficiency}\\
 You gain one skill proficiency and one tool proficiency of your choice.
+\subsection*{Tireless}
+You don't gain Exhaustion levels from dehydration, malnutrition, or suffocation.
 
 \section*{Feats}
 \subsection*{Scion of the Outer Planes}
@@ -417,6 +422,10 @@ $\bullet$	& Evil Outer Plane		& Necrotic				& Chill Touch		\\
 			& Lawful Outer Plane	& Force					& Guidance			\\
 			& The Outlands			& Psychic				& Mage Hand
 \end{DndTable}
+\subsection*{Durable}
+You gain the following benefits.
+\paragraph*{Defy Death} You have Advantage on Death Saving Throws.
+\paragraph*{Speedy Recovery} As a Bonus Action, you can expend one of your Hit Point Dice, roll the die, and regain a number of Hit Points equal to the roll.
 
 \section*{Bard Traits}
 \subsection*{Bardic Inspiration}
@@ -667,19 +676,33 @@ Choose up to five creatures within range that can hear you. For the duration, ea
   {V, S, M (three nut shells)}
   {Concentration, Up to 1 Minute}
   
-Each creature in a 10-foot-radius Sphere centered on a point you choose within range must succeed on a Wisdom saving throw, or that target can't take Bonus Actions or Reactions and must roll 1d10 at the start of each of its turns to determine its behavior for that turn, consulting the table below.
+Each creature in a 10-foot-radius Sphere centered on a point you choose within range must succeed on a Wisdom saving throw, or that target can't take Bonus Actions or Reactions and must roll 1d10 at the start of each of its turns to determine its behaviour for that turn, consulting the table below.
 \begin{DndTable}{lX}
 	1d10	& Behavior for the Turn \\
 	1		& The target doesn't take an action, and it uses all its movement to move. Roll 1d4 for the direction: 1, north; 2, east; 3, south; 4, west.\\
 	2-6		& The target doesn't move or take actions.\\
 	7-8		& The target doesn't move, and it takes the Attack action to make one melee attack against a random creature within reach. If none are within reach, the target takes no action.\\
-	9-10	& The target chooses its bahvior.
+	9-10	& The target chooses its behaviour.
 \end{DndTable}
 
 At the end of each of its turns, an affected target repeats the save, ending the spell on itself on a success.
 
 \subparagraph*{Using a Higher-Level Spell Slot} The Sphere's radius increases by 5 feet for each spell slot level above 4.
 
+\DndSpellHeader
+  {Raulothim's Psychic Lance}
+  {4th-Level Enchantment}
+  {Action}
+  {120 Feet}
+  {V}
+  {Instantaneous}
+  
+You unleash a shimmering lance of psychic power from your forehead at a creature that you can see within range. Alternatively, you can utter a creature's name. If the named target is within range, it becomes the spell's target even if you can't see it. If the named target isn't within range, the lance dissipates without effect.
+
+The target must make an Intelligence saving throw. On a failed save, the target takes 7d6 psychic damage and is incapacitated until the start of your next turn. On a successful save, the creature takes half as much damage and isn't incapacitated.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d6 for each slot level above 4th.
+\vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}
 \subsubsection*{Melee Weapons}

@@ -23,7 +23,7 @@
 \Background{Feylost}
 \Race{Wechselkind}
 
-\Level{7}
+\Level{8}
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -42,7 +42,7 @@
 \ConstitutionScoreBonus{2}		% Wechselkind +2
 \IntelligenceScoreBonus{0}
 \WisdomScoreBonus{1}			% Beggar (?) in the Lower Wards
-\CharismaScoreBonus{2}			% Wechselkind +1, ASI +1
+\CharismaScoreBonus{4}			% Wechselkind +1, ASI +3
 
 \calculateAbilityScores{}
 
@@ -113,7 +113,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
 
-\MaxHitPointsRolled{34} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{40} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d6}
@@ -140,18 +140,16 @@
 \addSpellStatistic{Mind Sliver}{DC}{\calculateModifier{\CharismaScoreValue}}{2d6}{Psychic, 1d4 malus on next saving throw}
 
 \AddClassFeature{B}{\textbf{Innate Sorcery}\\Unleash innate magic \textbf{twice} per Long Rest}
-\AddClassFeature{L}{\textbf{Font of Magic}\\6 Sorcery Points}
+\AddClassFeature{L}{\textbf{Font of Magic}\\8 Sorcery Points}
 \AddClassFeature{L}{\textbf{Metamagic}\\Subtle Spell, Seeking Spell}
 \AddClassFeature{R}{\textbf{Restore Balance}\\Revert effects of Advantage or Disadvantage (4 uses per Long Rest)}
-\AddClassFeature{L}{\textbf{Sorcerous Restoration}\\Restore \intcalcShr{\LevelValue} Sorcery Points once per Long Rest}
+\AddClassFeature{L}{\textbf{Sorcerous Restoration}\\Restore \intcalcShr{\LevelValue} Sorcery Points during Short Rest (Once per Long Rest)}
 \AddClassFeature{E}{\textbf{Bastion of Law}\\Use Sorcery Points to create shielding ward}
 \AddClassFeature{E}{\textbf{Sorcery Incarnate}}
 
 \AddSpeciesFeature{E}{\textbf{Artificial Form}\\Thistlenight is a construct.}
 \AddSpeciesFeature{L}{\textbf{Faerie Glamour}\\Can cast Disguise Self \textbf{once} per Long Rest.}
 \AddSpeciesFeature{E}{\textbf{Childish Agility}\\Can move through the space of any creature that is medium or larger.}
-
-\AddFeat{\textbf{Construct Compatibility}\\+ 10 to Wisdom (Perception) and Intelligence (Investigation) Checks that rely on senses (i.e. Smell, Sight) while in contact with Iedcaru (Giant, Walking Castle)}
 
 % BACKGROUND & APPEARANCE
 
@@ -163,9 +161,9 @@
 \Hair{White}
 
 \CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{12.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{8} % Picture Y-Shift (absolute value)
+	{12.2}	% Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0}		% Picture X-Shift (absolute value, no effect in vertical mode)
+	{8}		% Picture Y-Shift (absolute value)
 	{images/Thistlenight.png} %
 	{%
 		{Thistlenight's pale, oaken body and silver-gray, moonlit eyes hint at their fey origins. Their wiry frame is wrapped in tattered, smoke-stained clothing, and white, uneven hair falls around their}{face. When the glamour fades, faint thorn-like markings appear on their arms and neck, a haunting reminder of their awakening.}
@@ -237,7 +235,7 @@
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{3}
-\FourthLevelSpellSlotsTotal{1}
+\FourthLevelSpellSlotsTotal{2}
 
 \addPreparedSpell{0}
 	{Chill Touch}
@@ -457,10 +455,19 @@
 	{V, S, 1 Hour}
 	{V, S, M}
 \addPreparedSpell{4}
+	{Raulothim's Psychic Lance}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, 7d6 Psychic}
+	{V}
+\addPreparedSpell{4}
 	{Summon Construct}
 	{Action}
 	{90 Feet}
-	{}
+	{T}
 	{}
 	{T}
 	{V, S}
@@ -577,7 +584,12 @@ You can use this feature a number of times equal to your Charisma modifier (mini
 You can tap into the grand equation of existence to imbue a creature with a shimmering shield of order. As a Magic action, you can expend 1 to 5 Sorcery Points to create a magical ward around yourself or another creature you can see within 30 feet of yourself. The ward is represented by a number of d8s equal to the number of Sorcery Points spent to create it. When the warded creature takes damage, it can expend a number of those dice, roll them, and reduce the damage taken by the total rolled on those dice.
 
 The ward lasts until you finish a Long Rest or until you use this feature again.
-\subsubsection*{Sorcery Incarnate}
+
+\subsection*{Sorcerous Restoration}
+\textit{Maximum of \intcalcShr{\LevelValue} Sorcery Points}\\
+When you finish a Short Rest, you can regain expended Sorcery Points, but no more than a number equal to half your Sorcerer level (rounded down). Once you use this feature, you can't do so again until you finish a Long Rest.
+
+\subsection*{Sorcery Incarnate}
 If you have no uses of Innate Sorcery left, you can use it if you spend 2 Sorcery Points when you take the Bonus Action to activate.
 
 In addition, while your Innate Sorcery feature is active, you can use up to two of your Metamagic option on each spell you cast.
@@ -899,6 +911,20 @@ Each time the target takes damage, it makes a new Wisdom saving throw against th
 You touch a willing creature. For the duration, the target's movement is unaffected by difficult terrain, and spells and other magical effects can neither reduce the target's speed nor cause the target to be paralyzed or restrained.
 
 The target can also spend 5 feet of movement to automatically escape from nonmagical restraints, such as manacles or a creature that has it grappled. Finally, being underwater imposes no penalties on the target's movement or attacks.
+
+\DndSpellHeader
+  {Raulothim's Psychic Lance}
+  {4th-Level Enchantment}
+  {Action}
+  {120 Feet}
+  {V}
+  {Instantaneous}
+  
+You unleash a shimmering lance of psychic power from your forehead at a creature that you can see within range. Alternatively, you can utter a creature's name. If the named target is within range, it becomes the spell's target even if you can't see it. If the named target isn't within range, the lance dissipates without effect.
+
+The target must make an Intelligence saving throw. On a failed save, the target takes 7d6 psychic damage and is incapacitated until the start of your next turn. On a successful save, the creature takes half as much damage and isn't incapacitated.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d6 for each slot level above 4th.
 
 \DndSpellHeader
   {Summon Construct}
