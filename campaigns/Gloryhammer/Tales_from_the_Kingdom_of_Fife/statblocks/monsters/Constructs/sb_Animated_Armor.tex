@@ -1,0 +1,56 @@
+\begin{DndMonster}[width=0.5\textwidth]{Animated Armor\phantomsection\addcontentsline{toc}{section}{Animated Armor}\label{monster:AnimatedArmor}}
+	\DndMonsterType{Medium Construct, Unaligned}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {18},
+		initiative	= +2,
+		hit-points  = {\DndDice{6d8 + 6}},
+		speed       = {25 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 14,
+		dex = 11,
+		con = 13,
+		int = 1,
+		wis = 3,
+		cha = 1,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {DEX +4},
+%		skills					= {Athletics +2, Perception +2, Stealth +4, Survival +2},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+		damage-immunities		= {Poison, Psychic},
+		condition-immunities	= {Charmed, Deafened, Exhaustion, Frightened, Paralyzed, Petrified, Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Blindsight 60 ft., Passive Perception 6},
+%		languages				= {-},
+		challenge				= 1,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The armor makes two Slam attacks.
+	
+	\DndMonsterAttack[
+		name			= Slam,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 2},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {},
+	]
+\end{DndMonster}

@@ -24,8 +24,8 @@
 		skills					= {History +4, Insight +5, Perception +5},
 %		damage-vulnerabilities	= {Fire},
 		damage-resistances		= {Bludgeoning, Piercing, Slashing},
-		damage-immunities		= {Prone},
-%		condition-immunities	= {},
+%		damage-immunities		= {Poison},
+		condition-immunities	= {Prone},
 %		gear					= {Leather Armor, Light Crossbow, Scimitar},
 		senses					= {Truesight 30 ft., Passive Perception 15},
 		languages				= {All},
@@ -60,11 +60,11 @@
 	
 	\DndMonsterSection{Spells}
 	\begin{DndMonsterSpells}
-		\item[Innate Spellcasting] The empyrean casts one of the following spells, requiring no Material components and using Wisdom (spell save DC 13, +5 to hit with spell attacks) as the spellcasting ability:
+		\item[Innate Spellcasting] The empyrean casts one of the following spells, requiring no Material components and using Wisdom (Spell Save DC 13, +5 to hit with spell attacks) as the spellcasting ability:
 		\DndInnateSpellLevel[1]{Bless, Lesser Restoration (as an action)}
 	\end{DndMonsterSpells}
 	
 	\DndMonsterSection{Bonus Actions}
-	\DndMonsterAction{Healing Word (1/Day)}
+	\DndMonsterAction{Healing Word (1 / Day)}
 	The empyrean casts Healing Word, using the same spellcasting ability as Spellcasting.
 \end{DndMonster}

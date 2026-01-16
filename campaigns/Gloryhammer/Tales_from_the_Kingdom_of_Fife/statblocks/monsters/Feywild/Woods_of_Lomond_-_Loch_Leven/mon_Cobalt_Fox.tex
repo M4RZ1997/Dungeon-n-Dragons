@@ -11,13 +11,13 @@
 
 % Monster stat block
 \vspace*{-2.75cm}\begin{DndMonster}[width=0.5\textwidth]{Cobalt Fox\label{monster:CobaltFox}}
-	\DndMonsterType{Small Fey, chaotic good}
+	\DndMonsterType{Small Fey, Chaotic Good}
 	
 	% If you want to use commas in the key values, enclose the values in braces.
 	\DndMonsterBasics[
 		armor-class = {12},
 		hit-points  = {\DndDice{6d6 + 6}},
-		speed       = {40 ft., burrow 10 ft.},
+		speed       = {40 ft., Burrow 10 ft.},
 		initiative	= {+4},
 	]
 	
@@ -31,35 +31,28 @@
 	]
 	
 	\DndMonsterDetails[
-		saving-throws = {Dex +7, Int +5, Cha +5},
-		skills = {Perception +4, Stealth +7},
+		saving-throws = {DEX +6, INT +3, CHA +4},
+		skills = {Perception +5, Stealth +8},
 %		damage-vulnerabilities = {cold},
 %		damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
 %		damage-immunities = {cold},
-		senses = {Darksight 60ft., Passive Perception 14},
+		senses = {Darksight 60ft., Passive Perception 15},
 %		condition-immunities = {frightened, poisoned},
 		languages = {Sylvan},
 		challenge = 2,
 	]
 	
-	\DndMonsterAction{Fearsome Agility}
-	The Cobalt Fox can take the Dash Action as a Bonus Action. Also, Cobalt Foxes do not trigger opportunity attacks.    
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Agile}
+	The Cobalt Fox can take the Dash Action as a Bonus Action. It does not trigger Opportunity Attacks.    
 	
 	\DndMonsterAction{Keen Hearing and Smell}
-	The Cobalt Fox has advantage on Perception checks that rely on hearing or smell.
-	
-	\DndMonsterAction{Innate Spellcasting}
-	The Cobalt Fox can innately cast the following spells, without any components. Its spellcasting ability is Wisdom (spell save DC 13):
-	\begin{itemize}
-		\item At will: Aid, Cure Wounds
-		\item 2/day: Beacon of Hope, Blink
-		\item 1/day: Alter Self, Dispel Magic
-	\end{itemize}
+	The Cobalt Fox has Advantage on Perception checks that rely on hearing or smell.
 	
 	\DndMonsterAction{Ventriloquism}
 	The Cobalt Fox can make its bark (or any sound that it can make) seem to issue from someplace else. With respect to such voices and sounds, anyone who hears the sound can attempt a DC 12 Intelligence (Investigation) check. On success, they recognize it as illusory but still hear it.
 	
-	\DndMonsterSection{Actions}	
+	\DndMonsterSection{Actions}
 	\DndMonsterAttack[
 		name=Bite,
 		distance=melee, % valid options are in the set {both,melee,ranged},
@@ -69,7 +62,7 @@
 %		range=20/60,
 		targets=one target,
 		dmg=\DndDice{2d4 - 1},
-		dmg-type=piercing,
+		dmg-type=Piercing,
 %		plus-dmg=,
 %		plus-dmg-type=,
 %		or-dmg=,
@@ -86,7 +79,7 @@
 %		range=20/60,
 		targets=one target,
 		dmg=\DndDice{2d6 + 4},
-		dmg-type=piercing,
+		dmg-type=Piercing,
 %		plus-dmg=,
 %		plus-dmg-type=,
 %		or-dmg=,
@@ -102,6 +95,14 @@
     	targets = {one creature within 30 feet of the fox},
 		failure = {\DndDice{2d10 + 4} Radiant damage and the target is Blinded until the start of the fox's next turn},
     ]
+    
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The Cobalt Fox can innately cast the following spells, without any components. Its spellcasting ability is Wisdom (sSpell Save DC 13):
+		\DndInnateSpellLevel{Aid, Cure Wounds}
+		\DndInnateSpellLevel[2]{Beacon of Hope, Blink}
+		\DndInnateSpellLevel[1]{Alter Self, Dispel Magic}
+	\end{DndMonsterSpells}
 \end{DndMonster}
 
 \vfill\eject
@@ -140,10 +141,10 @@ If a pair of Cobalt Foxes build their lair and birth cubs, the territory gets th
 \subsection*{Lair Actions}
 On initiative count 20, any Cobalt Fox considered to be part of the territory takes a lair action to cause one of the following effect. The same effect cannot be used two rounds in a row:
 \begin{itemize}
-	\item A "fox gem" creates a burst of flickering lights targeting a creature within 10ft. of it. The target must succeed on a DC 12 Wisdom saving throw. On a failed save the target takes \DndDice{1d10} radiant damage and is blinded until the start of the fox's next turn.
+	\item A "fox gem" creates a burst of flickering lights targeting a creature within 10ft. of it. The target must succeed on a DC 12 Wisdom saving throw. On a failed save the target takes \DndDice{1d10} Radiant damage and is Blinded until the start of the fox's next turn.
 	\item A Cobalt Fox within 5ft. of a "fox gem" moves within 5ft. of another "fox gem".
-	\item The "fox gem" starts to shimmer. Any creature that isn't a Cobalt Fox has disadvantage on Wisdom and Charisma saving throws until the end of the fox's next turn.
-	\item The Zircon Fox can target \DndDice{1d8 + 1} "fox gems" it can see, teleporting to one of them and creating illusions of itself at the others. The illusions have 1 hitpoint and do not make any damage. \textbf{(Only Zircon Fox; 1/Day)}
+	\item The "fox gem" starts to shimmer. Any creature that isn't a Cobalt Fox has Disadvantage on Wisdom and Charisma saving throws until the end of the fox's next turn.
+	\item The Zircon Fox can target \DndDice{1d8 + 1} "fox gems" it can see, teleporting to one of them and creating illusions of itself at the others. The illusions have 1 Hit Point and do not make any damage. \textbf{(Only Zircon Fox; 1/Day)}
 \end{itemize}
 
 \subsection*{Regional Effects}
@@ -158,14 +159,14 @@ If all the Cobalt Foxes die or leave the area, the effects fade over the course 
 \vfill\eject
 
 % Monster stat block
-\vspace*{-130pt}\begin{DndMonster}[width=0.5\textwidth +0.5em]{Zircon Fox\label{monster:ZirconFox}}
+\vspace*{-180pt}\begin{DndMonster}[width=0.5\textwidth +0.5em]{Zircon Fox\label{monster:ZirconFox}}
 	\DndMonsterType{Small Fey, chaotic evil}
 	
 	% If you want to use commas in the key values, enclose the values in braces.
 	\DndMonsterBasics[
 		armor-class = {16},
-		hit-points  = {\DndDice{14d6 + 14}},
-		speed       = {40 ft., burrow 10 ft.},
+		hit-points  = {\DndDice{14d6 + 42}},
+		speed       = {40 ft., Burrow 10 ft.},
 		initiative	= {+8},
 	]
 	
@@ -174,35 +175,28 @@ If all the Cobalt Foxes die or leave the area, the effects fade over the course 
 		dex = 20,
 		con = 12,
 		int = 14,
-		wis = 14,
+		wis = 16,
 		cha = 8,
 	]
 	
 	\DndMonsterDetails[
-		saving-throws			= {Dex +9, Int +6},
-		skills					= {Perception +6, Stealth +9},
+		saving-throws			= {DEX +8, INT +5},
+		skills					= {Perception +6, Stealth +8},
 %		damage-vulnerabilities	= {cold},
 %		damage-resistances		= {bludgeoning, piercing, and slashing from nonmagical attacks},
 %		damage-immunities		= {cold},
-		senses					= {Darksight 60ft., Passive Perception 14},
+		senses					= {Darksight 60ft., Passive Perception 16},
 %		condition-immunities	= {frightened, poisoned},
 		languages				= {Sylvan},
 		challenge				= 6,
 		proficiency-bonus		= +3,
 	]
 	
+	\DndMonsterSection{Traits}
 	\DndMonsterAction{Fearsome Agility}
-	The Zircon Fox can take the Dash Action or an Attack Action as a Bonus Action. It does not trigger opportunity attacks.
-	
-	\DndMonsterAction{Innate Spellcasting}
-	The Zircon Fox can innately cast the following spells, without any components. Its spellcasting ability is Wisdom (spell save DC 15):
-	\begin{itemize}
-		\item At will: Bane, Blur
-		\item 3/day: Dispel Magic, Chaos Bolt
-		\item 1/day: Antilife Shell, Circle of Death
-	\end{itemize}
+	The Zircon Fox can take the Dash Action or an Attack Action as a Bonus Action. It does not trigger Opportunity Attacks.
     
-	\DndMonsterSection{Actions}	
+	\DndMonsterSection{Actions}
 	\DndMonsterAttack[
 		name=Bite,
 		distance=melee, % valid options are in the set {both,melee,ranged},
@@ -212,7 +206,7 @@ If all the Cobalt Foxes die or leave the area, the effects fade over the course 
 %		range=20/60,
 		targets=one target,
 		dmg=\DndDice{3d8 + 2},
-		dmg-type=piercing,
+		dmg-type=Piercing,
 %		plus-dmg=,
 %		plus-dmg-type=,
 %		or-dmg=,
@@ -234,19 +228,27 @@ If all the Cobalt Foxes die or leave the area, the effects fade over the course 
 %		plus-dmg-type=,
 %		or-dmg=,
 %		or-dmg-when=,
-		extra={. The target must succeed a DC 16 Constitution throw. On a fail the target bleeds},
+		extra={. The target must succeed a DC 15 Constitution throw. On a fail the target bleeds},
 	]
 	
 	\DndMonsterSavingThrowEffect[
 		name = {Achromatic Burst},
 		description = {The Zircon Fox creates an aura of darkness},
 		save_skill = {Wisdom},
-		save_dc = {16},
+		save_dc = {17},
 		targets = {one creature within 30 feet of the fox},
-		failure = {\DndDice{4d8 + 8} Psychic damage and the target is Frightened by the Zircon fox until the start of the fox's next turn},
+		failure = {\DndDice{4d8 + 6} Psychic damage and the target is Frightened by the Zircon fox until the start of the fox's next turn},
 		success = {Half as much damage},
 %		extra={}
 	]
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The Zircon Fox can innately cast the following spells, without any components. Its spellcasting ability is Wisdom (Spell Save DC 14, +6 to hit with spell attacks):
+		\DndInnateSpellLevel{Bane, Blur}
+		\DndInnateSpellLevel[3]{Dispel Magic, Chaos Bolt}
+		\DndInnateSpellLevel[1]{Antilife Shell, Circle of Death}
+	\end{DndMonsterSpells}
 \end{DndMonster}
 
 \hspace*{-2.5em}\begin{tabular}{p{0.5\columnwidth}c}

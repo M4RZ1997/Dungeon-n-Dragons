@@ -24,8 +24,8 @@
 %		skills					= {Stealth +6},
 		damage-vulnerabilities	= {Fire},
 %		damage-resistances		= {Acid, Cold, Fire, Lightning, Thunder},
-		damage-immunities		= {Poison, Charmed, Exhaustion, Frightened, Paralyzed, Petrified, Poisoned, Unconscious},
-%		condition-immunities	= {},
+		damage-immunities		= {Poison},
+		condition-immunities	= {Charmed, Exhaustion, Frightened, Paralyzed, Petrified, Poisoned, Unconscious},
 %		gear					= {Leather Armor, Light Crossbow, Scimitar},
 		senses					= {Darkvision 60 ft., Passive Perception 10},
 		languages				= {Common, Infernal},
@@ -48,7 +48,7 @@
 %		plus-dmg-type	= Fire,
 %		or-dmg			= \DndDice{1d20},
 %		or-dmg-when		= {},
-		extra			= {, and the target has the Frightened condition until the end of the scarecrow's next turn.},
+		extra			= {, and the target has the Frightened condition until the end of the scarecrow's next turn},
 	]
 	
 	\DndMonsterSavingThrowEffect[
@@ -56,6 +56,6 @@
 		save_skill	= Wisdom,
 		save_dc		= 11,
 		targets		= {one creature the scarecrow can see within 30 feet},
-		failure		= {The target has the Frightened condition until the end of the scarecrow's next turn. While Frightened, the target has the Paralyzed condition.},
+		failure		= {The target has the Frightened condition until the end of the scarecrow's next turn. While Frightened, the target has the Paralyzed condition},
 	]
 \end{DndMonster}
