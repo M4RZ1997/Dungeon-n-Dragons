@@ -127,7 +127,7 @@
 \AddClassFeature{L}{\textbf{Dread Ambusher}%
 \begin{itemize}%
 	\item Ambusher's Leap%
-	\item Dreadful Strike%
+	\item Dreadful Strike (\intcalcAdd{0}{\calculateModifier{\WisdomScoreValue}} Uses)%
 	\item Initiative Bonus%
 \end{itemize}%
 }%
@@ -207,11 +207,11 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 }
 
 % LANGUAGES
-\Languages{Common, Common Sign Language, Dwarvish, Gnomish, Undercommon}
+\Languages{Common, Dwarvish,  Elvish, Gnomish, Undercommon}
 
 % EQUIPMENT
 \Equipment{
-	\textbf{Serpent Scale Armor}, \textbf{Laucian's Warden Token} (Druidic Focus), \textbf{Scroll of Scrying}, \textbf{Inevitable Disabling Device}\\
+	\textbf{Boots of Elvenkind}, \textbf{Gloves of Thievery}, \textbf{Serpent Scale Armor}, \textbf{Laucian's Warden Token} (Druidic Focus), \textbf{Scroll of Scrying}, \textbf{Inevitable Disabling Device}\\
 	Scimitar, Shortsword, 20 Arrows, Quiver, Woodcarver's Tools, a set of common clothes, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope
 }
 
@@ -375,6 +375,11 @@ Whenever you finish a Long Rest, you can change the kinds of weapons you chose. 
 If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
 \subsubsection*{Scimitar (Nick)}
 When you make an extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.
+\subsection*{Deft Explorer}
+\textit{Perception Expertise, Dwarvish, Undercommon}\\
+Thanks to your travels, you gain the following benefits.
+\paragraph*{Expertise} Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in that skill.
+\paragraph*{Languages} You know two languages of your choice from the language tables in chapter 2.
 \subsection*{Fighting Style}
 You gain a Fighting Style feat of your choice.
 \subsubsection*{Archery}
@@ -384,7 +389,7 @@ You gain a +2 bonus to attack rolls you make with Ranged weapons.
 \subsubsection*{Dread Ambusher}
 You have mastered the art of creating fearsome ambushes, granting you the following benefits.
 \paragraph*{Ambusher's Leap} At the start of your first turn of each combat, your Speed increases by 10 feet until the end of that turn.
-\paragraph*{Dreadful Strike} When you attack a creature and hit it with a weapon, you can deal an extra 2d6 Psychic damage. You can use this benefit only once per turn, you can use it a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.
+\paragraph*{Dreadful Strike} When you attack a creature and hit it with a weapon, you can deal an extra 2d6 Psychic damage. You can use this benefit only once per turn, you can use it a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest. (\intcalcAdd{0}{\calculateModifier{\WisdomScoreValue}} Uses)
 \paragraph*{Initiative Bonus} When you roll Initiative, you can add your Wisdom modifier to the roll.
 \subsubsection*{Gloom Stalker Spells}
 When you reach a Ranger level specified in the Gloom Stalker Spells table, you thereafter always have the listed spells prepared.
@@ -592,6 +597,14 @@ The space can hold up to eight Medium or smaller creatures. Attacks, spells, and
 \input{\PATH magic_items/Weapons/Bows/Glimmering_Moonbow/Glimmering_Moonbow_input}
 
 \newpage
+\subsection*{Boots of Elvenkind}
+\textit{Wondrous Item, Uncommon}\\
+While you wear these boots, your steps make no sound, regardless of the surface you are moving across. You also have Advantage on Dexterity (Stealth) checks that rely on moving silently.
+
+\subsection*{Gloves of Thievery}
+\textit{Wondrous Item, Uncommon}\\
+These gloves are invisible when worn. While wearing them you gain a +5 bonus to Dexterity (Sleight of Hand) checks and Dexterity checks made to pick locks.
+
 \subsection*{Periapt of Wound Closure}
 \textit{Wondrous Item, Uncommon (requires attunement)}\\
 While you wear this pendant, you stabilize whenever you are dying at the start of your turn. In addition, whenever you roll a Hit Die to regain hit points, double the number of hit points it restores.
