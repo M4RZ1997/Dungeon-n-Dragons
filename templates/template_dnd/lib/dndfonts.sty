@@ -7,6 +7,12 @@
 \RequirePackage{Royal}
 \RequirePackage[auto]{contour}
 
+% Bookman and Gillius warning omition
+\DeclareFontFamily{TU}{pbk}{}
+\DeclareFontShape{TU}{pbk}{m}{n}{<->ssub * lmr/m/n}{}
+\DeclareFontFamily{TU}{GilliusADFNoTwo-LF}{}
+\DeclareFontShape{TU}{GilliusADFNoTwo-LF}{m}{n}{<->ssub * lmr/m/n}{}
+
 \bool_if:NT \l__dnd_layout_bool
   {
     \RequirePackage{bookman}
