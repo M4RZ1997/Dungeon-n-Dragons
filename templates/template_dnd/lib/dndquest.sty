@@ -82,25 +82,32 @@
 %% Monster basics
 \keys_define:nn { dnd / quest / basics }
   {
-  	location		.tl_set:N			= \l__location_tl,
-  	location		.initial:n			= Location,
-  	location		.value_required:n	= true,
+  	location	.tl_set:N			= \l__location_tl,
+  	location	.initial:n			= Location,
+  	location	.value_required:n	= true,
   	quest-giver	.tl_set:N			= \l__quest_giver_tl,
   	quest-giver	.initial:n			= NPC,
 	quest-giver	.value_required:n	= true,
   	objective	.tl_set:N			= \l__objective_tl,
   	objective	.initial:n			= Objective,
-  	objective		.value_required:n	= true,
+  	objective	.value_required:n	= true,
+  	trigger		.tl_set:N			= \l__trigger_tl,
+  	trigger		.value_required:n	= false,
   }
 
 \cs_new_protected_nopar:Npn \__dnd_quest_basics:
-  {
-      \begin {__dnd_quest_attributes}
-        \item [\locationname] \entryfont\l__location_tl
-        \item [\questgivername] \entryfont\l__quest_giver_tl
-        \item [\objectivename] \entryfont\l__objective_tl
-      \end {__dnd_quest_attributes}
-  }
+{
+	\begin {__dnd_quest_attributes}
+		\item [\locationname] \entryfont\l__location_tl
+		\item [\questgivername] \entryfont\l__quest_giver_tl
+		\item [\objectivename] \entryfont\l__objective_tl
+		\tl_if_empty:NF {\l__trigger_tl}
+		{
+			\item []
+			\item [\triggername] \entryfont\l__trigger_tl
+		}
+	\end {__dnd_quest_attributes}
+}
 
 \NewDocumentCommand {\DndQuestHookBasics} {o}
   {

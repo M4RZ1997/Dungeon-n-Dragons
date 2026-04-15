@@ -29,7 +29,7 @@
 \bool_if:NT \l__dnd_layout_bool
   {
     \RequirePackage {geometry}
-    \RequirePackage {microtype} % Improve ragged2e hyphenation and overfull boxes
+    \RequirePackage [verbose=silent] {microtype} % Improve ragged2e hyphenation and overfull boxes
     \RequirePackage {ragged2e}
     \RequirePackage [titles] {tocloft} % multi-column toc
     \RequirePackage [newparttoc] {titlesec}  % Used to adjust (sub)section, part, and table of contents formatting
@@ -56,7 +56,10 @@
     \tolerance        = 1
     \emergencystretch = \maxdimen
     \hyphenpenalty    = 10000
-    \hbadness         = 10000
+    \hfuzz            = 50pt
+    \vfuzz            = 50pt
+    \hbadness         = 99999
+    \vbadness         = 99999
 
     % Set left justification if not justified
     \bool_if:NF \l__dnd_justified_bool
