@@ -28,7 +28,6 @@
 
 \begin{document}
 	\DndSetThemeColor[PhbTan]
-	
 	\eject \pdfpagewidth=12in \pdfpageheight=12in \thispagestyle{empty}
 	\begin{tikzpicture}[remember picture, overlay]%
 		\node[opacity=1, inner sep=0pt, xshift=4.5cm, yshift=1.3cm] at (current page.center){\includegraphics[width=12.65in, keepaspectratio]{Kingdom_of_Fife_Map.png}};%
@@ -38,7 +37,9 @@
 			% Travel Routes
 			\draw[line width=3pt, blue] (70,95) -- (78,78) -- (85,75) -- (95,60);
 			\draw[line width=3pt, blue] (95,60) -- (88,63);
-			\draw[line width=3pt, red] (95,60) -- (73,58) -- (50,47) -- (63,50);
+			\draw[line width=3pt, blue] (95,60) -- (73,58) -- (50,47) -- (63,50);
+			\draw[line width=4pt, blue] (50,47) -- (40,42) -- (16,40) -- (8,43) -- (2,40);
+			\draw[line width=3pt, red] (2,40) -- (8,43) -- (16,40) -- (40,42) -- (42,53.5) -- (44,53) -- (47,63) -- (42,57) -- (41,59) -- (39,59) -- (39,56);
 			
 			% Known PoIs
 			\pgfmathsetmacro{\IndicatorSize}{15*\scaleFactor}%
@@ -57,10 +58,12 @@
 			\pgfmathsetmacro{\IndicatorSize}{13*\scaleFactor}%
 			\indicatorNumberField[10]{(82,78)}{\IndicatorSize}\indicatorAddition[?]{(82,78)}{\IndicatorSize};
 			\indicatorNumberField[10]{(88,63)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(88,63)}{\IndicatorSize};
-			\indicatorNumberField[10]{(47,63)}{\IndicatorSize}\indicatorAddition[?]{(47,63)}{\IndicatorSize};
+			\indicatorNumberField[10]{(47,63)}{\IndicatorSize}\indicatorAddition[!]{(47,63)}{\IndicatorSize};
+			\subIndicatorNumberField[10]{(39,56)}{\IndicatorSize}\indicatorAddition[!]{(39,56)}{\IndicatorSize};
 			\indicatorNumberField[10]{(55,70)}{\IndicatorSize}\indicatorAddition[?]{(55,70)}{\IndicatorSize};
 			\indicatorNumberField[10]{(2,40)}{\IndicatorSize}\indicatorAddition[$\swarrow$]{(2,40)}{\IndicatorSize};
 			\indicatorNumberField[10]{(63,50)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(63,50)}{\IndicatorSize};
+			\indicatorNumberField[10]{(13,110)}{\IndicatorSize}\indicatorAddition[?]{(13,110)}{\IndicatorSize};
 		\end{scope}
 	\end{tikzpicture}%
 	\clearpage
@@ -100,7 +103,7 @@
 	\eject \pdfpagewidth=\paperwidth \pdfpageheight=\paperheight \thispagestyle{fancy}
 	\chapter*{Points-of-Interest Map}
 	\subsection*{Larger Settlements / Cities}
-	\inTextCircled[10]{A}{10} {\entryfont The (once) great city of Dundee}\\
+	\inTextCircled[10]{A}{10} {\entryfont The (once) Great City of Dundee}\\
 	\inTextCircled[10]{B}{10} {\entryfont Citadel of Crail}\\
 	\inTextCircled[10]{C}{10} {\entryfont Mines of Methven}\\
 	\inTextCircled[10]{D}{10} {\entryfont Dunkeld}\\
@@ -112,7 +115,9 @@
 	\inTextCircled[10]{1}{10} {\entryfont River Maiden Wreckage}\\
 	\inTextCircled[10]{2}{10} {\entryfont Eagle's Peak}\\
 	\inTextCircled[10]{3}{10} {\entryfont Elven Village}\\
+	\inTextCircled[10]{3a}{10} {\entryfont Lochleven Castle ("Water Castle")}\\
 	\inTextCircled[10]{4}{10} {\entryfont Auchtermuchty}\\
 	\inTextCircled[10]{5}{10} {\entryfont Swamps of Paisley (3 days travel from Auchtertool)}\\
 	\inTextCircled[10]{6}{10} {\entryfont Ravenscraig Castle}\\
+	\inTextCircled[10]{7}{10} {\entryfont The Path to Glory}\\
 \end{document}
