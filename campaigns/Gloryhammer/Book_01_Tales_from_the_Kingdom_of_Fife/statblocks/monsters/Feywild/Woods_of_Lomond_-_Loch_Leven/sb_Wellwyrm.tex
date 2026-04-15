@@ -1,0 +1,74 @@
+\begin{DndMonster}[width=0.5\textwidth]{Wellwyrm\phantomsection\addcontentsline{toc}{subsection}{Wellwyrm}\label{monster:Wellwyrm}}
+	\DndMonsterType{Large Dragon, Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16},
+		initiative	= +3,
+		hit-points  = {\DndDice{18d10 + 54}},
+		speed       = {40 ft., Burrow 40 ft., Swim 60 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 19,
+		dex = 16,
+		con = 17,
+		int = 5,
+		wis = 14,
+		cha = 9,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+		skills					= {Athletics +8, Perception +6, Stealth +7},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Bludgeoning, Piercing},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Blindsight 10 ft., Darkvision 60 ft., Passive Perception 16},
+		languages				= {Understands Sylvan but can't speak},
+		challenge				= 9,
+		proficiency-bonus		= +4,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Amphibious}
+	The Wellwyrm can breathe air and water.
+	
+	\DndMonsterAction{Hunting Terror}
+	If the Wellwyrm hears a creature play a horn or similar Musical Instrument, it has the Frightened condition until the end of its next turn.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Wellwyrm makes one Bite attack and uses Constrict.
+	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +8,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d10 + 4},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{6d6},
+		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Constrict},	%
+%		description	= {Description},			%
+		save_skill	= {Strength},				%
+		save_dc		= {16},						%
+		targets		= {one Medium or smaller creature the Wellwyrm can see within 5 feet},%
+		failure		= {\DndDice{2d8 + 4} Bludgeoning damage. The target has the Grappled condition (escape DC 14), and it has the Restrained condition until the grapple ends. The Wellwyrm needn't spend extra movement to move during this grapple},%
+%		success		= {Success},				%
+%		extra		= {Extra}					%
+	]%
+\end{DndMonster}

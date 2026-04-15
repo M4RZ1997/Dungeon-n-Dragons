@@ -1,0 +1,89 @@
+\begin{DndMonster}[width=0.5\textwidth]{Beast of Blight\phantomsection\addcontentsline{toc}{subsection}{Beast of Blight}\label{monster:BeastOfBlight}}
+	\DndMonsterType{Gargantuan Fey, Neutral Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15},
+		initiative	= +12,
+		hit-points  = {\DndDice{10d20 + 50}},
+		speed       = {60 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 24,
+		dex = 18,
+		con = 21,
+		int = 7,
+		wis = 12,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {WIS +5, CHA +5},
+		skills					= {Arcana +6, Athletics +11, Perception +9},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+		damage-immunities		= {Necrotic, Poison},
+		condition-immunities	= {Charmed, Exhaustion, Frightened, Paralyzed, Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 120 ft, Passive Perception 19},
+		languages				= {Common, Elvish, Sylvan},
+		challenge				= 10,
+		proficiency-bonus		= +4,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Blighted Overgrowth}
+	While the Beast is Bloodied, it has Disadvantage on attack rolls, its Spew Blight action recharges at the start of its turn, and if it has at least 1 Hit Point at the start of its turn, it regains 20 Hit Points.
+
+	If it takes Fire damage, it doesn't regain Hit Points at the start of its next turn.
+	
+	\DndMonsterAction{Fungal Step}
+	The Beast ignores Difficult Terrain caused by plants or fungi.
+	
+	\DndMonsterAction{Legendary Resistance (3/Day)}
+	If the beast fails a saving throw, it can choose to succeed instead.
+	
+	\DndMonsterAction{Unraveled Longing}
+	If the Beast can see the likeness of its long-lost love at the start of its turn, the beast takes 10 Psychic damage and has Disadvantage on D20 Tests until the start of its next turn.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Beast makes two Claw attacks.
+	
+	\DndMonsterAttack[
+		name			= Claw,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +11,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d10 + 7},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {. If the target is a Large or smaller creature, it has the Grappled condition (Escape DC 17) from one of two claws. If the beast moved at least 20 feet immediately before the hit, the target takes an extra \DndDice{2d6} Poison damage},
+	]
+	
+	\DndMonsterAction{Project Image}
+	The beast casts the Project Image spell, requiring no spell components and using Wisdom as the spellcasting ability. During the spell's duration, the beast can use its Spew Blight action and Rot Stride Bonus Action as if it were in the image's space.
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Spew Blight (Recharge 5-6)},	%
+%		description	= {Description},			%
+		save_skill	= {Dexterity},				%
+		save_dc		= {17},						%
+		targets		= {each creature in a 60-foot Cone},%
+		failure		= {\DndDice{4d8} Necrotic damage, and the target has the Poisoned condition. The target repeats the saving throw at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it automatically succeeds},%
+		success		= {Half damage only},%
+%		extra		= {Extra}					%
+	]%
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Rot Stride}
+	The beast teleports to an unoccupied space within 60 feet. Either its starting or destination space must contain fungus or rotting organic matter.
+\end{DndMonster}

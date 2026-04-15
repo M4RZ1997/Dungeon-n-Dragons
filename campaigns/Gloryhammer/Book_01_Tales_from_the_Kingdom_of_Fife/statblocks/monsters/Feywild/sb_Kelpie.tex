@@ -1,0 +1,104 @@
+\begin{DndMonster}[width=0.5\textwidth]{Kelpie\phantomsection\addcontentsline{toc}{subsection}{Kelpie}\label{monster:Kelpie}}
+	\DndMonsterType{Large Fey, Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {14},
+		initiative	= +1,
+		hit-points  = {\DndDice{7d8 + 21}},
+		speed       = {30 ft., Swim 40 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 16,
+		dex = 13,
+		con = 16,
+		int = 12,
+		wis = 12,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+%		skills					= {Perception +6},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Acid, Bludgeoning, Cold, Fire, Lightning, Piercing, Slashing, Thunder},
+%		damage-immunities		= {Necrotic, Poison},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 60 ft., Passive Perception 11},
+%		condition-immunities	= {Charmed, Exhaustion, Frightened, Grappled, Paralyzed, Petrified, Poisoned, Prone, Restrained},
+		languages				= {Aquan, Common, Giant},
+		challenge				= 4,
+		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Amphibious}
+	The Kelpie can breath air and water.
+	
+	\DndMonsterAction{Shapechanger}
+	The Kelpie can appear as a magnificent horse or reveal their gaunt, waterlogged fey form.
+	
+	\DndMonsterAction{Keen Hearing and Smell}
+	The Kelpie has Advantage on Wisdom (Perception) Checks that rely on hearing or smell.
+	
+	\DndMonsterAction{Adhesive Hide}
+	Any creature that touches the Kelpie (or hits it with a melee attack within 5 feet while it is in its horse form) must succeed on a DC 14 Strength Save or become grappled (escape DC 14). While grappled this way, the creature is restrained.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Claws (Fey Form only),
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 3},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterAttack[
+		name			= Hooves (Horse Form only),
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 3},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterSavingThrowEffect[
+		name = {Luring Presence (1 / Day, Horse Form only)},
+		description = {The Kelpie focuses on one creature, flicking its mane to compel the creature to approach},
+		save_skill = {Wisdom},
+		save_dc = {15},
+		targets = {one creature within 30 ft. of the Kelpie},
+		failure = {The creature is Charmed for 1 minute and feels compelled to approach and mount the Kelpie},
+		success = {},
+		extra	= {The charmed creature can repeat the save at the end of each of its turns}
+	]
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Drowning Lead}
+	The Kelpie pulls a grappled creature up to 20 feet towards the nearest water.
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The Kelpie can innately cast the following spells, without any components. Its spellcasting ability is Wisdom (Spell Save DC 11):
+		\DndInnateSpellLevel[1]{Tidal Wave}
+	\end{DndMonsterSpells}
+\end{DndMonster}

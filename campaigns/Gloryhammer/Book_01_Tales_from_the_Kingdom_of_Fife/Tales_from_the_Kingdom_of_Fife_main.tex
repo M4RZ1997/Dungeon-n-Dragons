@@ -12,7 +12,6 @@
 
 \usepackage{\PATH templates/template_book/book_commands}
 
-
 \usepackage{\PATH templates/template_adventure/adventure_commands}
 \usepackage{\PATH templates/template_dungeon/dungeon_commands}
 \usepackage{\PATH templates/template_monster/monster_commands}
@@ -34,13 +33,14 @@
 		{height=\paperheight}%
 		{bookcover_Tales_from_the_Kingdom_of_Fife.jpg}%
 		{%
-			{Gloryhammer1}{Page \thepage}{Art}{https://casinodundee.com/art/}{Tales from the Kingdom of Fife}{GLORYHAMMER}%
+			{Gloryhammer1}{Page \thepage}{Art}{https://casinodundee.com/}{Tales from the Kingdom of Fife}{GLORYHAMMER}%
 		}%
 		{{\darkcrystalfont}{Gloryhammer}{\digitalfont}{Tales from the Kingdom of Fife}}%
 		{{\digitalfont}{The Gloryhammer - Tales from the Kingdom of Fife Campaign}}%
 		{GloryhammerIce/black}%
 	
 	\clearpage
+	\setcounter{tocdepth}{2}
 	\tableofcontents
 	
 	\DndSetThemeColor[PhbTan]
@@ -56,12 +56,24 @@
 	\input{parts/act05}
 	\input{parts/act06}
 	\input{parts/act07}
+	\input{parts/act08}
+	\input{parts/act09}
 	
 	\input{parts/p_magic_items}
 	\input{parts/p_resources}
 	
 	%https://www.reddit.com/r/Gloryhammer/comments/17srxqi/gloryhammer_dnd_guide_setting_version_1/
 	
+	
+	% Final Page
+	\bookLastPage{last_page_Gloryhammer}	% Front Cover image
+		{0cm}								% Horizontal Offset
+		{5cm}								% Vertical Offset
+		{height=\paperheight}				% dimensions of image
+		{https://casinodundee.com/}			% URL of picture
+		{Gloryhammer}						% image name
+		{Gloryhammer}						% Artist
+		{Gloryhammer}						% Additional Information displayed on last page
 	
 %	\renewcommand\labelitemi{\textbf{\textbullet}}
 \end{document}

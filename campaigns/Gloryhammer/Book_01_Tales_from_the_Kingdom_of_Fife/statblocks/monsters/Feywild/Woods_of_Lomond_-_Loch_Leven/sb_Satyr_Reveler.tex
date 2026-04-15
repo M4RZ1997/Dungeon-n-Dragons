@@ -1,0 +1,83 @@
+\begin{DndMonster}[width=0.5\textwidth]{Satyr Reveler\phantomsection\addcontentsline{toc}{subsection}{Satyr Reveler}\label{monster:SatyrReveler}}
+	\DndMonsterType{Medium Fey, Chaotic Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {13},
+		initiative	= +3,
+		hit-points  = {\DndDice{6d8 + 6}},
+		speed       = {40 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 12,
+		dex = 16,
+		con = 13,
+		int = 12,
+		wis = 10,
+		cha = 16,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+		skills					= {Acrobatics +5, Performance +7, Stealth +5},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+		gear					= {Shortbow},
+		senses					= {Passive Perception 10},
+		languages				= {Common, Sylvan},
+		challenge				= 1,
+		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Enthralling Performance}
+	If the Satyr performs for at least 1 minute, it chooses up to four Humanoids within 60 feet of it who watched or listened to the entire performance. Each target must succeed on a DC 13 Wisdom Saving Throw or be Charmed. While Charmed in this way, the target idolizes the Satyr and will take part in the Satyr's revels. The Charmed condition ends for the creature after 1 hour, if it takes any damage, if the Satyr attacks the target, or if the target witnesses the Satyr attacking or damaging any of the target's allies.
+	
+	\DndMonsterAction{Magic Resistance}
+	The Satyr has advantage on saving throws against spells and other magical effects.
+	
+	\DndMonsterAction{Sleepless Reveler}
+	Magic can't put the Satyr to sleep.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Satyr makes two Ram attacks or two Shortbow attacks.
+	
+	\DndMonsterAttack[
+		name			= Ram,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +3,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d4 + 1},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterAttack[
+		name			= Shortbow,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+%		reach			= 5,
+		range			= 80/320,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 3},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+\end{DndMonster}

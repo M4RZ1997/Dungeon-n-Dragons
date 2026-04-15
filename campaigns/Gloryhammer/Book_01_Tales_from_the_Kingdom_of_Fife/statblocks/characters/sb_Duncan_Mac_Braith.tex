@@ -1,0 +1,86 @@
+\begin{DndMonster}[width=\textwidth + 8pt]{Duncan Mac Braith}
+	\vspace*{-18pt}\begin{multicols}{2}\vspace*{9pt}
+		\DndMonsterType{Human Warlock (Lvl 4, Pact of the Archfey), Lawful Neutral}
+		
+		% If you want to use commas in the key values, enclose the values in braces.
+		\DndMonsterBasics[
+			armor-class = {10},
+			initiative	= +0,
+			hit-points  = {\DndDice{4d8 + 8}},
+			speed       = {30 ft.},
+		]
+		
+		\renewcommand{\AbilityScoreSpacer}{~}
+		\DndMonsterAbilityScores[
+			str = 8,
+			dex = 11,
+			con = 15,
+			int = 14,
+			wis = 11,
+			cha = 1,
+		]
+		
+		\DndMonsterDetails[
+			saving-throws			= {WIS +2, CHA -3},
+			skills					= {Perception +5},
+	%		damage-vulnerabilities	= {Cold},
+	%		damage-resistances		= {Necrotic},
+	%		damage-immunities		= {Poison},
+	%		condition-immunities	= {Poisoned},
+	%		gear					= {Dagger, Vial of Poison (Basic)},
+			senses					= {Darkvision 60 ft., Passive Perception 15},
+			languages				= {-},
+			challenge				= -,
+			proficiency-bonus		= +2,
+		]
+		
+		\DndMonsterSection{Traits}
+		\DndMonsterAction{Eldritch Mind}
+		
+		\DndMonsterAction{Lessons of the First One}
+		
+		\DndMonsterAction{Magical Cunning}
+		Duncan can perform an esoteric rite for 1 minute. At the end of it, he regains up to 2 Level 2 Spell Slots. Once he uses this feature, he can't do so again until he finishes a Long Rest.
+		
+		\DndMonsterAction{Monochromatism}
+		The Charisma Score of Duncan becomes 1 and he has Disadvantage on all Charisma-based Ability Checks.
+		
+		\DndMonsterAction{Pact of the Tome}
+		
+		\DndMonsterSection{Actions}
+		\DndMonsterAction{Multiattack}
+		The Owlbear makes two Rend attacks.
+		
+		\DndMonsterAttack[
+			name			= Rend,
+			distance		= melee,	% valid options are in the set {both,melee,ranged}
+	%		type			= weapon,	% valid options are in the set {weapon,spell}
+			mod				= +7,
+			reach			= 5,
+	%		range			= 20/60,
+			targets			= one target,
+			dmg				= \DndDice{2d8 + 5},
+			dmg-type		= Slashing,
+	%		plus-dmg		= \DndDice{1d6},
+	%		plus-dmg-type	= Poison,
+	%		or-dmg			= \DndDice{1d20},
+	%		or-dmg-when		= { if used with two hands},
+	%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+		]
+		
+		\begin{DndMonsterSpells}
+			\item[Spellcasting] Duncan can cast the following spells using Charisma as the spellcasting ability (Spell Save DC 5, -3 to hit with spell attacks):
+			\DndMonsterSpellLevel[0]{Cantrip}
+			\DndMonsterSpellLevel[1][0]{Faerie Fire, Sleep}
+			\DndMonsterSpellLevel[2][2]{Calm Emotions, Misty Step, Phantasmal Force}
+		\end{DndMonsterSpells}
+		
+		\DndMonsterSection{Bonus Actions}
+		\DndMonsterAction{Steps of the Fey}
+		Duncan can cast Misty Step without expending a spell slot once per Long Rest. In addition, whenever he casts the spell, he can choose one additional effect:
+		\begin{itemize}
+			\item \textbf{Refreshing Step.} Immediately after he teleports, he or one creature he can see within 10 feet of himself gains 1d10 Temporary Hit Points.
+			\item \textbf{Taunting Step.} Creatures within 5 feet of the space he left must succeed on a DC 5 Wisdom saving throw or have Disadvantage on attack rolls against creatures other than himself until the start of his next turn.
+		\end{itemize}
+	\end{multicols}
+\end{DndMonster}

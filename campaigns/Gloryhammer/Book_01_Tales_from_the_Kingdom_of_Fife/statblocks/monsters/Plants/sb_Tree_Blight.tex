@@ -1,0 +1,79 @@
+\begin{DndMonster}[width=0.5\textwidth]{Tree Blight\phantomsection\addcontentsline{toc}{subsection}{Tree Blight}\label{monster:TreeBlight}}
+	\DndMonsterType{Huge Plant, Neutral Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15},
+		initiative	= 0,
+		hit-points  = {\DndDice{10d12 + 50}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 23,
+		dex = 10,
+		con = 20,
+		int = 6,
+		wis = 10,
+		cha = 3,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+%		skills					= {Stealth +1},
+%		damage-vulnerabilities	= {Fire},
+%		damage-resistances		= {Necrotic},
+		damage-immunities		= {Deafened},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Blindsight 60 ft, Passive Perception 10},
+		languages				= {Understands Common and Druidic but can't speak},
+		challenge				= 7,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The blight makes two Branch attacks and uses Grasping Root.
+	
+	\DndMonsterAttack[
+		name			= Branch,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +9,
+		reach			= 15,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{3d6 + 6},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {},
+	]
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Grasping Root},	%
+%		description	= {Description},	%
+		save_skill	= {Strength},		%
+		save_dc		= {17},				%
+		targets		= {one Large or smaller creature the blight can see within 15 feet},%
+		failure		= {The target is pulled up to 10 feet straight toward the blight and has the Grappled condition (Escape DC 16) from one of six roots},%
+%		success		= {Success},%
+		extra		= {Until the grapple ends, the target takes \DndDice{2d6 + 6} Bludgeoning damage at the start of each of its turns}%
+	]%
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterSavingThrowEffect[%
+		name		= {Gnash},	%
+%		description	= {Description},	%
+		save_skill	= {Dexterity},		%
+		save_dc		= {17},				%
+		targets		= {one creature Grappled by the blight},%
+		failure		= {\DndDice{3d8 + 6} Piercing damage},%
+		success		= {Half damage},%
+%		extra		= {}%
+	]%
+\end{DndMonster}

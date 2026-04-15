@@ -1,0 +1,67 @@
+\begin{DndMonster}[width=0.5\textwidth]{Blood Leech\phantomsection\addcontentsline{toc}{subsection}{Blood Leech}\label{monster:BloodLeech}}
+	\DndMonsterType{Tiny Monstrosity, Unaligned}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {10},
+		initiative	= +0,
+		hit-points  = {\DndDice{8d4}},
+		speed       = {20 ft., Climb 20 ft., Swim 30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 13,
+		dex = 10,
+		con = 10,
+		int = 10,
+		wis = 12,
+		cha = 5,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {CON +3, WIS +2},
+%		skills					= {Perception +6},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Acid, Bludgeoning, Cold, Fire, Lightning, Piercing, Slashing, Thunder},
+%		damage-immunities		= {Necrotic, Poison},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Blindsight 30 ft., Tremorsense 60 ft., Passive Perception 11},
+%		condition-immunities	= {Charmed, Exhaustion, Frightened, Grappled, Paralyzed, Petrified, Poisoned, Prone, Restrained},
+%		languages				= {-},
+		challenge				= 1,
+		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Aquatic Camouflage}
+	The leech has Advantage on Dexterity (Stealth) checks made to hide in aquatic terrain.
+	
+	\DndMonsterAction{Blood Bags}
+	The leech has three blood bags in its body. When encountered, roll 1d3 to determine how many blood bags are filled with blood. The rest are empty.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Attach,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +3,
+		reach			= 0,
+%		range			= 20/60,
+		targets			= one target,
+%		dmg				= {},
+%		dmg-type		= ,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= {},
+		extra			= {The leech attaches to the target. While attached, the leech doesn't attack, and moves with the target, using none of the leech's movement. The leech can detach itself using 5 feet of movement, and detaches immediately if its blood bags are filled or the target dies.\\A creature within 5 feet can take an action to detach the leech with a successful DC 13 Wisdom (Medicine) check.\\Failure: The leech is still detached, but the target has the Bleeding condition (2d4).\\Failure by 5 or More: The leech isn't detached and the target takes \DndDice{2d4 + 3} Piercing damage},
+	]
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Blood Drain}
+	The leech can use this Bonus Action only when it is attached to a creature. The attached creature loses \DndDice{3d6} Hit Points due to blood loss, and the blood leech fills one of its empty blood bags with some of the target's blood.
+	
+	\DndMonsterAction{Blood Transfusion}
+	The leech can use this Bonus Action only when it is attached to a creature and has at least one filled blood bag. The leech regains \DndDice{3d6} Hit Points, and it empties one of its filled blood bags.
+\end{DndMonster}

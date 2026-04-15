@@ -1,0 +1,64 @@
+\begin{DndMonster}[width=0.5\textwidth]{Bullywug Warrior\phantomsection\addcontentsline{toc}{subsection}{Bullywug Warrior}\label{monster:BullywugWarrior}}
+	\DndMonsterType{Medium Fey, Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15},
+		initiative	= +2,
+		hit-points  = {\DndDice{2d8 + 2}},
+		speed       = {30 ft., Swim 30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 12,
+		dex = 14,
+		con = 13,
+		int = 7,
+		wis = 10,
+		cha = 7,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+		skills					= {Stealth +4},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Passive Perception 10},
+		languages				= {Bullywug, Common},
+		challenge				= 1/4,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Amphibious}
+	The Bullywug can breathe air and water.
+	
+	\DndMonsterAction{Speak with Frogs and Toads}
+	The Bullywug can communicate simple concepts to frogs and toads when it speaks in Bullywug.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Insectile Rapier,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{1d4},
+		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Leap}
+	The Bullywug can jump up to 30 feet by spending 10 feet of movement.
+\end{DndMonster}

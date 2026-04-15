@@ -1,20 +1,30 @@
 \makeatletter
-\NewDocumentCommand{\toclessPart}{ m }{%
+\NewDocumentCommand{\toclessPart}{ O{} m }{%
 	\begingroup
 		% Disable \addcontentsline and related internal writing
-		\let\addcontentsline\@gobblethree
-		\let\@writefile\@gobbletwo
-		\part*{#1}
+		\let\origaddcontentsline\addcontentsline%
+		\renewcommand{\addcontentsline}[3]{%
+			\ifthenelse{\equal{#1}{}}%
+				{}%
+				{\phantomsection\origaddcontentsline{toc}{section}{#1}}%
+		}%
+		\part*{#2}%
 	\endgroup
 }%
 \makeatother
 
 \chapter*{Monster Statblocks}\phantomsection\addcontentsline{toc}{chapter}{Monster Statblocks}
+\pdfbookmark[1]{}{dummy-section}
+
+\input{statblocks/monsters/sb_Blood_Leech}
+\vfill\eject
 \input{statblocks/monsters/sb_Grung}
 \vfill\eject
 \input{statblocks/monsters/sb_Grung_Wildling}
 \vfill\eject
 \input{statblocks/monsters/sb_Grung_Elite_Warrior}
+\vfill\eject
+\input{statblocks/monsters/sb_Otyugh_Sewer_Plague}
 \vfill\eject
 \input{statblocks/monsters/sb_Owlbear_Cub}
 \input{statblocks/monsters/sb_Owlbear}
@@ -22,8 +32,13 @@
 \input{statblocks/monsters/sb_Bulette_Pup}
 \input{statblocks/monsters/sb_Bulette}
 
-\toclessPart{Constructs}
+\toclessPart[Aberrations]{Aberrations}
+\input{statblocks/monsters/Aberrations/sb_Gauth}
+
+\toclessPart[Constructs]{Constructs}
 \input{statblocks/monsters/Constructs/sb_Animated_Armor}
+\vfill\eject
+\input{statblocks/monsters/Constructs/sb_Festival_Dragon}
 \chapter*{Modrons}
 \input{statblocks/monsters/Constructs/sb_Monodrone}
 \input{statblocks/monsters/Constructs/sb_Duodrone}
@@ -33,7 +48,7 @@
 \vfill\eject
 \input{statblocks/monsters/Constructs/sb_Scarecrow.tex}
 
-\toclessPart{Crimson Paw Bandits}
+\toclessPart[Crimson Paw Bandits]{Crimson Paw Bandits}
 \input{statblocks/monsters/Crimson_Paw_Bandits/sb_Bandit}
 \input{statblocks/monsters/Crimson_Paw_Bandits/sb_Bandit_Scout}
 \vfill\eject
@@ -44,28 +59,83 @@
 \input{statblocks/monsters/Crimson_Paw_Bandits/sb_Mastiff}
 \input{statblocks/monsters/Crimson_Paw_Bandits/sb_Shadow_Mastiff}
 
-\toclessPart{Elementals}
+\toclessPart[Elementals]{Elementals}
 \input{statblocks/monsters/Elementals/sb_Eagle_s_Peak_Guardian}
 
+\toclessPart[Feywild Creatures]{Feywild Creatures}
+\input{statblocks/monsters/Feywild/sb_Duergar}
+\vfill\eject
+\input{statblocks/monsters/Feywild/sb_Kelpie}
+\vfill\eject
+\input{statblocks/monsters/Feywild/sb_Spriggan}
 \toclessPart{\makebox[\textwidth][c]{Feywild Creatures}\protect\newline\makebox[\textwidth][c]{-}\protect\newline \makebox[\textwidth][c]{Woods of Lomond / Loch Leven}}
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Beast_of_Blight.tex}
+\vfill\eject
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Bullywug_Warrior.tex}
+\vfill\eject
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Bullywug_Bog_Sage.tex}
+\vfill\eject
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Centaur_Trooper.tex}
+\vfill\eject
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Centaur_Warden.tex}
+\clearpage
 \input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/mon_Cobalt_Fox.tex}
-\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/mon_Hypnomoth.tex}
+\clearpage
+\chapter*{Hags}
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Annis_Hag.tex}
+\vfill\eject
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Bheur_Hag.tex}
+\vfill\eject
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Centipede_Hag.tex}
+\vfill\eject
+\section*{Hag Covens}
+{\entryfont When hags must work together, they form covens, in spite of their selfish natures. A coven is made up of hags of any type, all of whom are equals within the group. However, each of the hags continues to desire more personal power.
 
-\toclessPart{Fiends}
+A coven consists of three hags so that any arguments between two hags can be settled by the third. If more than three hags ever come together, as might happen if two covens come into conflict, the result is usually chaos.}
+
+\subsection*{Shared Spellcasting}
+{\entryfont While all three members of a hag coven are within 30 feet of one another, they can each cast the following spells from the wizard's spell list but must share the spell slots among themselves:
+\begin{itemize}
+	\item[] \textbf{1st level (4 slots):} Identify, Ray of Sickness
+	\item[] \textbf{2nd level (3 slots):} Hold Person, Locate Object
+	\item[] \textbf{3rd level (3 slots):} Bestow Curse, Counterspell, Lightning Bolt
+	\item[] \textbf{4th level (3 slots):} Phantasmal Killer, Polymorph
+	\item[] \textbf{5th level (2 slots):} Contact other Plane, Scrying
+	\item[] \textbf{6th level (1 slot):} Eyebite
+\end{itemize}
+\noindent For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The Spell Save DC is 12 + the hag's Intelligence modifier, and the spell attack bonus is 4 + the hag's Intelligence modifier.}
+
+\subsection*{Hag Eye}
+{\entryfont A hag coven can craft a magic item called a hag eye, which is made from a real eye coated in varnish and often fitted to a pendant or other wearable item. The hag eye is usually entrusted to a minion for safekeeping and transport. A hag in the coven can take an action to see what the hag eye sees if the hag eye is on the same plane of existence. A hag eye has AC 10, 1 Hit Point, and Darkvision with a radius of 60 feet. If it is destroyed, each coven member takes \DndDice{3d10} Psychic damage and is blinded for 24 hours.
+
+A hag coven can have only one hag eye at a time, and creating a new one requires all three members of the coven to perform a ritual. The ritual takes 1 hour, and the hags can't perform it while blinded. During the ritual, if the hags take any action other than performing the ritual, they must start over.}
+\clearpage
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/mon_Hypnomoth.tex}
+\clearpage
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Incarnation_of_Transcience.tex}
+\vfill\eject
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Satyr_Reveler.tex}
+\vfill\eject
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Wellwyrm.tex}
+\vfill\eject
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Worg.tex}
+\input{statblocks/monsters/Feywild/Woods_of_Lomond_-_Loch_Leven/sb_Dire_Worg.tex}
+
+\toclessPart[Fiends]{Fiends}
 \input{statblocks/monsters/Fiends/sb_Cambion.tex}
 \vfill\eject
 \input{statblocks/monsters/Fiends/sb_Empyrean_Iota.tex}
 \vfill\eject
 \input{statblocks/monsters/Fiends/sb_Nightmare.tex}
 \clearpage
-\chapter*{Summonable Demons}
+\chapter*{Summonable Demons}\phantomsection\label{cha:SummonableDemons}
 \input{statblocks/monsters/Fiends/sb_Vrock}
 \vfill\eject
 \input{statblocks/monsters/Fiends/sb_Maurezhi}
 \vfill\eject
 \input{statblocks/monsters/Fiends/sb_Hezrou}
 
-\toclessPart{Legendary Creatures}
+\toclessPart[Legendary Creatures]{Legendary Creatures}
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 	\node[anchor=south east] at (current page.south east) {%
 		\begin{minipage}{1\paperwidth}%%
@@ -84,16 +154,26 @@
 \vfill\eject
 \input{statblocks/monsters/Legendary_Creatures/sb_Young_Remorhaz.tex}
 
-\toclessPart{Undead}
+\toclessPart[Plants]{Plants}
+\input{statblocks/monsters/plants/sb_Twig_Blight}
+\input{statblocks/monsters/plants/sb_Needle_Blight}
+\vfill\eject
+\input{statblocks/monsters/plants/sb_Vine_Blight}
+\input{statblocks/monsters/plants/sb_Tree_Blight}
+
+\toclessPart[Undead]{Undead}
 \input{statblocks/monsters/Undead/sb_Dreamer}
 \vfill\eject
 \input{statblocks/monsters/Undead/sb_Ghost_of_Captain_Yarrface}
 \vfill\eject
 \input{statblocks/monsters/Undead/sb_Shadow}
+\vfill\eject
+\input{statblocks/monsters/Undead/sb_Sluagh}
 \input{statblocks/monsters/Undead/sb_Will_o_Wisp.tex}
+\vfill\eject
 \input{statblocks/monsters/Undead/sb_Wight}
 
-\chapter*{Zargothrax' Army}
+\chapter*{Zargothrax' Army}\phantomsection\addcontentsline{toc}{section}{Zargothrax' Army}
 \input{statblocks/monsters/Undead/sb_Corrupted_Unicorn}
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
 	\node[anchor=south east] at (current page.south east) {%
@@ -109,3 +189,4 @@
 \input{statblocks/monsters/Undead/sb_Bone_Naga}
 
 \part*{Test Part}
+\input{statblocks/sb_blank}

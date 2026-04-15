@@ -1,0 +1,91 @@
+\begin{DndMonster}[width=0.5\textwidth]{Sluagh\phantomsection\addcontentsline{toc}{subsection}{Sluagh}\label{monster:Sluagh}}
+	\DndMonsterType{Large Swarm of Medium Undead, Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {14},
+		initiative	= +3,
+		hit-points  = {\DndDice{16d10 + 48}},
+		speed       = {0 ft., Fly 60 ft. (Hover)},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 16,
+		dex = 16,
+		con = 16,
+		int = 8,
+		wis = 14,
+		cha = 15,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+%		skills					= {Perception +5},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Acid, Fire, Lightning, Thunder, Bludgeoning, Piercing, and Slashing from nonmagical attacks that aren't silvered},
+		damage-immunities		= {Cold, Necrotic, Poison},
+		condition-immunities	= {Charmed, Exhaustion, Frightened, Grappled, Paralyzed, Petrified, Poisoned, Prone, Restrained},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 60 ft., Passive Perception 12},
+		languages				= {The languages it knew in life},
+		challenge				= 6,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Engulfing Terror}
+	A creature that occupies the same space as the swarm has Disadvantage on Strength Saving Throws and takes \DndDice{1d10} Necrotic damage at the start of each of its turns.
+	
+	\DndMonsterAction{Flyby}
+	The Sluagh doesn't provoke Opportunity Attacks when it flies out of an enemy's reach.
+	
+	\DndMonsterAction{Incorporeal Movement}
+	The Sluagh can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) Force damage if it ends its turn inside an object.
+	
+	\DndMonsterAction{Swarm}
+	The swarm can occupy another creature's space and vice versa, and the swarm can move through an opening large enough for a Medium creature. The swarm can't regain Hit Points or gain Temporary Hit Points.
+	
+	\DndMonsterAction{Sunlight Sensitivity}
+	While in sunlight, the Sluagh has Disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight.
+	
+	\DndMonsterAction{Undead Nature}
+	The Sluagh doesn't require air, food, drink, or sleep.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Life Drain,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{4d8 + 3},
+		dmg-type		= Necrotic,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+		or-dmg			= \DndDice{2d8 + 3},
+		or-dmg-when		= {if the swarm is Bloodied},
+		extra			= {. The target must succeed on a DC 14 Constitution saving throw or its Hit Point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0},
+	]
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Many-Handed Grasp},	%
+		description	= {The Sluagh descend as a screaming host of lost souls, each spirit grasping at the living, until their victim is swallowed by the mass and borne away against their will},%
+		save_skill	= {Strength},			%
+		save_dc		= {14},					%
+		targets		= {one target that occupies the same space as the swarm},%
+		failure		= {The target is Grappled and can be moved freely by the swarm},				%
+%		success		= {Success},			%
+%		extra		= {Extra}				%
+	]%
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Lift into the Black Sky}
+	The Sluagh swarm carries a creature it has grappled upward in a spiralling mass of shrieking spirits. The swarm flies up to 40 feet vertically, dragging the creature with it.
+
+	At the peak of this movement, the swarm releases a terrifying, soul-rending howl and drops the creature.
+	
+	The creature takes \DndDice{3d6} Psychic damage and \DndDice{1d6} Bludgeoning damage for every 10 feet fallen.
+\end{DndMonster}

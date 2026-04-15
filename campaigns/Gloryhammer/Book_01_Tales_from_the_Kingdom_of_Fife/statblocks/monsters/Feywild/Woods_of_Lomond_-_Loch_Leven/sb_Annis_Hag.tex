@@ -1,0 +1,96 @@
+\begin{DndMonster}[width=0.5\textwidth]{Annis Hag\phantomsection\addcontentsline{toc}{subsection}{Annis Hag}\label{monster:AnnisHag}}
+	\DndMonsterType{Large Fey, Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {17},
+		initiative	= +1,
+		hit-points  = {\DndDice{10d10 + 20}},
+		speed       = {40 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 21,
+		dex = 12,
+		con = 14,
+		int = 13,
+		wis = 14,
+		cha = 15,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {CON +5},
+		skills					= {Deception +5, Perception +5},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Cold; Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 60 ft., Passive Perception 15},
+		languages				= {Common, Giant, Sylvan},
+		challenge				= 6,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Annis Hag makes three attacks. One with her Bite and two with her Claws.
+	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{3d6 + 5},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterAttack[
+		name			= Claw,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{3d6 + 5},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterAttack[
+		name			= Crushing Hug,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{9d6 + 5},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {, and the target is Grappled (Escape DC 15) if it is a Large or smaller creature. Until the grapple ends, the target takes \DndDice{9d6 + 5} Bludgeoning damage at the start of each of the Hag's turns. The Hag can't make attacks while grappling a creature in this way},
+	]
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The Hag's Innate Spellcasting ability is Charisma (Spell Save DC 13). She can innately cast the following spells:
+		\DndInnateSpellLevel[3]{Disguise Self (including the form of a Medium humanoid), Fog Cloud}
+	\end{DndMonsterSpells}
+\end{DndMonster}

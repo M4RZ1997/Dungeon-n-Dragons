@@ -1,0 +1,82 @@
+\begin{DndMonster}[width=0.5\textwidth]{Duergar\phantomsection\addcontentsline{toc}{subsection}{Duergar}\label{monster:Duergar}}
+	\DndMonsterType{Small Fey, Chaotic Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {17 (Hide Armor)},
+		initiative	= +1,
+		hit-points  = {\DndDice{16d6 + 64}},
+		speed       = {25 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 20,
+		dex = 12,
+		con = 18,
+		int = 9,
+		wis = 16,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {CON +7, WIS +6},
+		skills					= {Deception +4, Perception +6, Survival +6},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Poison, Psychic},
+%		damage-immunities		= {Poison},
+		condition-immunities	= {Charmed (while in Dim Light or Darkness)},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 120 ft., Passive Perception 16},
+		languages				= {Common, Dwarvish},
+		challenge				= 7,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Fey Ancestry}
+	The Duergar has Advantage on saving throws against being charmed, and magic can't put it to sleep.
+	
+	\DndMonsterAction{Illusory Ambusher}
+	While in Dim Light or Darkness, the Duergar has Advantage on attack rolls against creatures that haven't acted yet in combat.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Duergar makes two attacks using its Stonebreaker Maul.
+	
+	\DndMonsterAttack[
+		name			= Stonebreaker Maul,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 5},
+		dmg-type		= Bludgeoning,
+		plus-dmg		= \DndDice{2d6},
+		plus-dmg-type	= Psychic,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {, if the target is in Dim Light or Darkness},
+	]
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The Duergar's Innate Spellcasting ability is Wisdom (Spell Save DC 14). It can innately cast the following spells, requiring no material components:
+		\DndInnateSpellLevel{Dancing Lights, Ghost Light, Minor Illusion}
+		\DndInnateSpellLevel[3]{Blur, Mysterious Presence (Self only)}
+		\DndInnateSpellLevel[1]{Hallucinatory Terrain, Mirage Arcane}
+	\end{DndMonsterSpells}
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Fade into Gloom (Recharge 5-6)}
+	The Duergar becomes Invisible until the start of its next turn or until it attacks.
+	
+	\DndMonsterSection{Reactions}
+	\DndMonsterReaction[%
+		name		= {Illusory Shift},	%
+		trigger		= {The Duergar is hit by an attack},	%
+		response	= {Until the Duergar's next turn any subsequent attack targeting the Duergar is made with Disadvantage}	%
+	]%
+\end{DndMonster}

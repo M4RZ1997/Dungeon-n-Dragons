@@ -1,0 +1,74 @@
+\begin{DndMonster}[width=0.5\textwidth]{Bullywug Bog Sage\phantomsection\addcontentsline{toc}{subsection}{Bullywug Bog Sage}\label{monster:BullywugBogSage}}
+	\DndMonsterType{Medium Fey, Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16},
+		initiative	= +3,
+		hit-points  = {\DndDice{8d8 + 16}},
+		speed       = {30 ft., Swim 30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 8,
+		dex = 16,
+		con = 14,
+		int = 10,
+		wis = 16,
+		cha = 12,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {WIS +5, CHA +3},
+		skills					= {Nature +4, Stealth +5},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+		gear					= {Component Pouch},
+		senses					= {Passive Perception 13},
+		languages				= {Bullywug, Common},
+		challenge				= 4,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Amphibious}
+	The Bullywug can breathe air and water.
+	
+	\DndMonsterAction{Speak with Frogs and Toads}
+	The Bullywug can communicate simple concepts to frogs and toads when it speaks in Bullywug.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Bullywug makes two Bog Staff attacks. It can replace any attack with a use of Spellcasting to cast Ray of Sickness.
+	
+	\DndMonsterAttack[
+		name			= Bog Staff,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 3},
+		dmg-type		= Bludgeoning,
+		plus-dmg		= \DndDice{3d6},
+		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Spellcasting] The Bullywug can cast the following spells using Wisdom as the spellcasting ability (spell save DC 13, +5 to hit with spell attacks):
+		\DndInnateSpellLevel{Dancing Lights, Druidcraft, Ray of Sickness}
+		\DndInnateSpellLevel[1]{Speak with Plants, Vitriolic Sphere}
+	\end{DndMonsterSpells}
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Leap}
+	The Bullywug can jump up to 30 feet by spending 10 feet of movement.
+\end{DndMonster}

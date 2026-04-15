@@ -1,0 +1,91 @@
+\begin{DndMonster}[width=0.5\textwidth]{Centaur Warden\phantomsection\addcontentsline{toc}{subsection}{Centaur Warden}\label{monster:CentaurWarden}}
+	\DndMonsterType{Large Fey, Neutral Good}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16},
+		initiative	= +2,
+		hit-points  = {\DndDice{14d10 + 28}},
+		speed       = {50 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 18,
+		dex = 14,
+		con = 14,
+		int = 9,
+		wis = 18,
+		cha = 11,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {CON +5, WIS +7},
+		skills					= {Athletics +7, Nature +5, Perception +7},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Breastplate, Longbow, Pike},
+		senses					= {Passive Perception 17},
+		languages				= {Druidic, Elvish, Sylvan},
+		challenge				= 7,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Centaur makes two attacks, using Forest Staff or Sun Ray in any combination.
+	
+	\DndMonsterAttack[
+		name			= Forest Staff,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +7,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 4},
+		dmg-type		= Bludgeoning,
+		plus-dmg		= \DndDice{4d6},
+		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterAttack[
+		name			= Sun Ray,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +7,
+%		reach			= 10,
+		range			= 90,
+		targets			= one target,
+		dmg				= \DndDice{3d6 + 4},
+		dmg-type		= Radiant,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {, and the target has the Blinded condition until the start of the centaur's next turn},
+	]
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Spellcasting] The Centaur can cast the following spells using Wisdom as the spellcasting ability (Spell Save DC 15):
+		\DndInnateSpellLevel{Druidcraft, Speak with Animals}
+	\end{DndMonsterSpells}
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterSavingThrowEffect[%
+		name		= {Entangling Trail (Recharge 5-6)},%
+		description	= {The Centaur moves up to its Speed without provoking Opportunity Attacks},%
+		save_skill	= {Strength},				%
+		save_dc		= {15},						%
+		targets		= {each creature within 5 feet of the centaur as it moves},%
+		failure		= {\DndDice{2d6 + 4} Bludgeoning damage, and the target has the Restrained condition until the end of its next turn},%
+%		success		= {Success},				%
+%		extra		= {Extra}					%
+	]%
+\end{DndMonster}

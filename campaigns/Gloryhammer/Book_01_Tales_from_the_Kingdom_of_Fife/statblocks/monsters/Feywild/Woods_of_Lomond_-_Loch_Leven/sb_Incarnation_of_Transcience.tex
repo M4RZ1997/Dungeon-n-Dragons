@@ -1,0 +1,95 @@
+\begin{DndMonster}[width=0.5\textwidth]{Incarnaton of Transcience\phantomsection\addcontentsline{toc}{subsection}{Incarnaton of Transcience}\label{monster:IncarnationOfTranscience}}
+	\DndMonsterType{Huge Fey, Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16},
+		initiative	= +8,
+		hit-points  = {\DndDice{15d12 + 45}},
+		speed       = {40 ft., Swim 40 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 21,
+		dex = 20,
+		con = 17,
+		int = 10,
+		wis = 14,
+		cha = 16,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {DEX +8, CON +6},
+%		skills					= {Perception +5},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+		condition-immunities	= {Grappled, Paralyzed, Petrified, Prone, Restrained},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 60 ft, Passive Perception 12},
+		languages				= {Sylvan, Telepathy 120 ft.},
+		challenge				= 7,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Ephemeral Movement}
+	The Incarnation can move through other creatures and objects as if they were Difficult Terrain, and its movement doesn't provoke Opportunity Attacks. It takes \DndDice{1d10} Force damage if it ends its turn inside an object.
+	
+	\DndMonsterAction{Magic Resistance}
+	The Incarnation has Advantage on saving throws against spells and other magical effects.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Incarnation makes three attacks, using Bite or Miasmic Globule in any combination.
+	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 5},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterAttack[
+		name			= Miasmic Globule,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +8,
+%		reach			= 5,
+		range			= 60/120,
+		targets			= one target,
+		dmg				= \DndDice{6d4},
+		dmg-type		= Acid,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {, and the target's Speed is reduced by 10 feet until the end of the Incarnation's next turn},
+	]
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Spectral Stampede},	%
+		description	= {The Incarnation moves up to 80 feet in a straight line without provoking Opportunity Attacks and can move through the spaces of creatures},%
+		save_skill	= {Dexterity},				%
+		save_dc		= {16},						%
+		targets		= {each creature whose space the Incarnation entered},%
+		failure		= {\DndDice{4d8} Force damage. If the target is the Incarnation's size or smaller, it has the Prone condition},%
+		success		= {Half damage only},%
+%		extra		= {Extra}					%
+	]%
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Shape-Shift}
+	The Incarnation changes its size to Medium, Large, or Huge.
+\end{DndMonster}

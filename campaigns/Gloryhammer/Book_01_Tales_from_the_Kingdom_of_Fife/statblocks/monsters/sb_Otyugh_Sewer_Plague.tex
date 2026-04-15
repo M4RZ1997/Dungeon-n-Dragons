@@ -1,0 +1,84 @@
+\begin{DndMonster}[width=0.5\textwidth]{Otyugh (Sewer Plague)\phantomsection\addcontentsline{toc}{subsection}{Otyugh (Sewer Plague)}\label{monster:OtyughSewerPlague}}
+	\DndMonsterType{Large Aberration, Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {14},
+		initiative	= +0,
+		hit-points  = {\DndDice{12d10 + 48}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 16,
+		dex = 11,
+		con = 19,
+		int = 6,
+		wis = 13,
+		cha = 6,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {CON +7},
+%		skills					= {Perception +5},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 120 ft., Passive Perception 11},
+		languages				= {Otyugh, Telepathy 120 ft.},
+		challenge				= 5,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Otyugh makes one Bite attack and two Tentacle attacks.
+	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 3},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {. The target must succeed on a DC 15 Constitution Saving Throw against disease or become infected by Sewer Plague until the disease is cured},
+	]
+	
+	\DndMonsterAttack[
+		name			= Tentacle,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 3},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {. If the target is Medium or smaller, it has the Grappled condition (Escape DC 13) from one of the two tentacles},
+	]
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Tentacle Slam},	%
+%		description	= {Description},	%
+		save_skill	= {Constitution},	%
+		save_dc		= {14},				%
+		targets		= {each creature Grappled by the Otyugh},%
+		failure		= {\DndDice{3d8 + 3} Bludgeoning damage, and the target has the Stunned condition until the start of the Otyugh's next turn},%
+		success		= {Half damage only},%
+%		extra		= {Extra}%
+	]%
+\end{DndMonster}

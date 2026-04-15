@@ -49,6 +49,23 @@
 		Ser Proletius can attack twice whenever he takes the Attack Action.
 		
 		\DndMonsterAttack[
+			name			= Flail,
+			distance		= melee, % valid options are in the set {both,melee,ranged},
+%			type			= weapon, %valid options are in the set {weapon,spell}
+			mod				= +9,
+			reach			= 5,
+%			range			= 30/120,
+			targets			= one target,
+			dmg				= \DndDice{1d8 + 5},
+			dmg-type		= Bludgeoning,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+%			or-dmg			= \DndDice{1d20},
+%			or-dmg-when		= {},
+%			extra			= {},
+		]
+		
+		\DndMonsterAttack[
 			name			= Longsword,
 			distance		= melee,	% valid options are in the set {both,melee,ranged}
 %			type			= weapon,	% valid options are in the set {weapon,spell}
@@ -63,6 +80,23 @@
 			or-dmg			= \DndDice{1d10 + 5},
 			or-dmg-when		= {when used with two hands},
 			extra			= {. The creature hit with this attack has Disadvantage on its next attack roll before the start of Ser Proletius' next turn},
+		]
+		
+		\DndMonsterAttack[
+			name			= Lance,
+			distance		= melee, % valid options are in the set {both,melee,ranged},
+%			type			= weapon, %valid options are in the set {weapon,spell}
+			mod				= +9,
+			reach			= 5,
+%			range			= 30/120,
+			targets			= one target,
+			dmg				= \DndDice{1d10 + 5},
+			dmg-type		= Piercing,
+%			plus-dmg		= \DndDice{1d6},
+%			plus-dmg-type	= Poison,
+%			or-dmg			= \DndDice{1d20},
+%			or-dmg-when		= {},
+%			extra			= {},
 		]
 		
 		\DndMonsterAttack[
@@ -81,7 +115,7 @@
 %			or-dmg-when		= {},
 			extra			= {. A creature hit with this attack has its speed reduced by 10 feet, up to a maximum reduction of 10 feet},
 		]
-		\hfill\\\\\\
+		
 		\DndMonsterSection{Spells}
 		\begin{DndMonsterSpells}
 			\item[Spellcasting] Ser Proletius is a 10th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, +7 to hit with spell attacks). Ser Proletius has the following paladin spells prepared:
@@ -91,7 +125,7 @@
 			\DndMonsterSpellLevel[3][2]{Aura of Vitality, Crusader's Mantle, Revivify, Spirit Guardians}
 		\end{DndMonsterSpells}
 		
-		\DndMonsterSection{Bonus Action}
+		\DndMonsterSection{Bonus Actions}
 		\DndMonsterAction{Lay on Hands}
 		Ser Proletius can touch a creature and draw power from the pool of healing (50 points) to restore a number of Hit Points to that creature.
 		
@@ -106,7 +140,7 @@
 		\DndMonsterAction{Turn the Tide}
 		Ser Proletius can use a Channel Divinity charge to bolster injured creatures. Each creature within 30 feet regains \DndDice{1d6 + 3} Hit Points if it has no more than half of its Hit Points.
 		
-		\DndMonsterSection{Reaction}
+		\DndMonsterSection{Reactions}
 		\DndMonsterReaction[%
 			name = {Interception},
 			trigger = {Ser Proletius sees a creature hit another creature within 5 feet of him with an attack roll.},

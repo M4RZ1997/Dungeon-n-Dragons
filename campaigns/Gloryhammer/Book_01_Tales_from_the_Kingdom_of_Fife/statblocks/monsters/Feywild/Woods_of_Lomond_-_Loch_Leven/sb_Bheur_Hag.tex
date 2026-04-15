@@ -1,0 +1,79 @@
+\begin{DndMonster}[width=0.5\textwidth]{Bheur Hag\phantomsection\addcontentsline{toc}{subsection}{Bheur Hag}\label{monster:BheurHag}}
+	\DndMonsterType{Medium Fey, Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {17},
+		initiative	= +3,
+		hit-points  = {\DndDice{14d8 + 28}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 13,
+		dex = 16,
+		con = 14,
+		int = 12,
+		wis = 13,
+		cha = 16,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+		skills					= {Nature +4, Perception +4, Stealth +6, Survival +4},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+		damage-immunities		= {Cold},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 60 ft., Passive Perception 14},
+		languages				= {Auran, Common, Giant},
+		challenge				= 7,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Graystaff Magic}
+	The Hag carries a Graystaff, a length of gray wood that is a focus for her inner power. She can ride the staff as if it were a Broom of Flying. While holding the staff, she can cast additional spells with her Innate Spellcasting Trait (these spells are marked with an asterisk). If the staff is lost or destroyed, the hag must craft another, which takes a year and a day. Only a Bheur Hag can use a Graystaff.
+	
+	\DndMonsterAction{Ice Walk}
+	The Hag can move across and climb icy surfaces without needing to make an Ability Check. Additionally, Difficult Terrain composed of ice or snow doesn't cost her extra moment.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Slam,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 1},
+		dmg-type		= Bludgeoning,
+		plus-dmg		= \DndDice{1d6},
+		plus-dmg-type	= Cold,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Maddening Feast},	%
+		description	= {The Hag feasts on the corpse of one enemy within 5 feet of her that died within the past minute},%
+		save_skill	= {Wisdom},				%
+		save_dc		= {15},					%
+		targets		= {each creature of the hag's choice within 60 feet that can see her},%
+		failure		= {The target is Frightened of the Bheur Hag for 1 minute},%
+%		success		= {Success},				%
+		extra		= {While Frightened in this way, a creature is Incapacitated, can't understand what others say, can't read, and speaks only in gibberish; the DM controls the creature's movement, which is erratic. A creature can repeat the Saving Throw at the end of each of its turns, ending the effect on itself on a success. If a creature's Saving Throw is successful or the effect ends for it, the creature is immune to the Hag's Maddening Feast for the next 24 hours}%
+	]%
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The Hag's Innate Spellcasting ability is Charisma (Spell Save DC 14, +6 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+		\DndInnateSpellLevel{Hold Person*, Ray of Frost}
+		\DndInnateSpellLevel[3]{Cone of Cold*, Ice Storm*, Wall of Ice*}
+		\DndInnateSpellLevel[1]{Control Weather}
+	\end{DndMonsterSpells}
+\end{DndMonster}

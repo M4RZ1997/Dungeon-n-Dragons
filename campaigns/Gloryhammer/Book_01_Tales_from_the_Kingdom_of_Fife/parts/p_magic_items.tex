@@ -7,9 +7,13 @@
 	{test}% URL
 	{test}%	Image-Name
 	{test}%	Artist
+	
+\pdfbookmark[0]{}{dummy-chapter}
 
-\input{magic_items/mi_Knife_of_Evil}
 \input{magic_items/mi_Amulet_of_Justice}
+\input{magic_items/mi_Knife_of_Evil}
+
+\chapter*{Heart Pure of Steel}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Heart Pure of Steel}\label{mi:HeartPureOfSteel}
 
 \chapter*{Artifacts of Inverness}\stepcounter{chapter}\phantomsection\addcontentsline{toc}{chapter}{Artifacts of Inverness} % Vestiges of Divergence, Arms of the Betrayers, Relics of the Red Solstice
 \section*{Awaken the Artifact}
@@ -22,4 +26,32 @@
 \chapter*{Homebrew}\stepcounter{chapter}\phantomsection\addcontentsline{toc}{chapter}{Homebrew}
 \section*{Heroic Inspiration Cog}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Heroic Inspiration Cog}\label{mi:HeroicInspirationCog}
 \indent\textit{Wondrous Item, uncommon}\\
-This item can only be used by a construct. When you use an action to integrate the cog into your mechanical body, you gain an Heroic Inspiration. Once this property has been used, it can't be used again, and the cog becomes nonmagical.
+{\entryfont This item can only be used by a construct. When you use an action to integrate the cog into your mechanical body, you gain an Heroic Inspiration. Once this property has been used, it can't be used again, and the cog becomes nonmagical.}
+\section*{Key to Wondrous Place}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Key to a Wondrous Place}\label{mi:WondrousPlaceKey}
+
+\chapter*{Magic Items}\stepcounter{chapter}\phantomsection\addcontentsline{toc}{chapter}{Magic Items}
+\section*{Cast-Off Armour}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Cast-Off Armour}\label{mi:CastOffArmour}
+
+\textit{Armour (light, medium, or heavy), common}\\
+You can doff this armour as an action.
+
+\section*{\hspace*{-0.1em}Overgrown Barkshield}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Overgrown Barkshield}\label{mi:OvergrownBarkshield}
+
+\indent\textit{Shield, uncommon (requires attunement)}\\
+{\entryfont This crude shield made of bark and wood teems with life as if it were still part of a tree. The smell of sap and various fragrant flowers perfumes the air around you.
+
+\paragraph*{Bark Armour} As an action, you can place the shield on your torso and speak the command word, causing the wood and vines to wrap around your figure. For one hour, or until you end this effect as an action, you are unable to hold a shield and you gain the following benefits:
+\begin{itemize}
+	\item You gain 1d8 temporary hit points.
+	\item You gain the benefits of the barkskin spell (no concentration required).
+	\item You have advantage on saving throws made to resist being poisoned.
+\end{itemize}
+
+When this effect ends, the barkshield falls from its place on your torso, fading to a lifeless shade of grey. This property can't be used again until you finish a long rest when the shield blooms with life once more.
+
+\paragraph*{Vines and Thorns} While attuned to this shield, you can use an action to animate one of the shield's thorny vines and make a melee weapon attack (+5 to hit, reach 30 ft.) against one target. On a hit, the target takes 2d8 piercing damage, and, if the target is a Large or smaller creature, or an object that weighs less than 500 pounds, you pull it up to 10 feet closer to you.}
+
+\section*{Shield of Expression}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Shield of Expression}\label{mi:ShieldOfExpression}
+
+\textit{Shield, common}\\
+The front of this shield is shaped in the likeness of a face. While bearing the shield, you can use a bonus action to alter the face's expression.

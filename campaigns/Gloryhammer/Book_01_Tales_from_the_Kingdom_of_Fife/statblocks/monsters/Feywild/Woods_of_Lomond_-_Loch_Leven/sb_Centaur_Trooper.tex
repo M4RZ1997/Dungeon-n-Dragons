@@ -1,0 +1,85 @@
+\begin{DndMonster}[width=0.5\textwidth]{Centaur Trooper\phantomsection\addcontentsline{toc}{subsection}{Centaur Trooper}\label{monster:CentaurTrooper}}
+	\DndMonsterType{Large Fey, Neutral Good}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16},
+		initiative	= +2,
+		hit-points  = {\DndDice{6d10 + 12}},
+		speed       = {50 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 18,
+		dex = 14,
+		con = 14,
+		int = 9,
+		wis = 13,
+		cha = 11,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+		skills					= {Athletics +6, Perception +3},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+		gear					= {Breastplate, Longbow, Pike},
+		senses					= {Passive Perception 13},
+		languages				= {Elvish, Sylvan},
+		challenge				= 2,
+%		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Centaur makes two attacks, using Pike or Longbow in any combination.
+	
+	\DndMonsterAttack[
+		name			= Pike,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d10 + 4},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterAttack[
+		name			= Longbow,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +4,
+%		reach			= 10,
+		range			= 150/600,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterSavingThrowEffect[%
+		name		= {Trampling Charge (Recharge 5-6)},%
+		description	= {The Centaur moves up to its Speed without provoking Opportunity Attacks and can move through the spaces of Medium or smaller creatures},%
+		save_skill	= {Strength},				%
+		save_dc		= {14},						%
+		targets		= {each creature whose space the Centaur entered},%
+		failure		= {\DndDice{1d6 + 4} Bludgeoning damage, and the target has the Prone condition},%
+%		success		= {Success},				%
+%		extra		= {Extra}					%
+	]%
+\end{DndMonster}

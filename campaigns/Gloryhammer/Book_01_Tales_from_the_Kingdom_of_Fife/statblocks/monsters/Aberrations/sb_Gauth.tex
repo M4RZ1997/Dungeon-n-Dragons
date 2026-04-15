@@ -1,0 +1,78 @@
+\begin{DndMonster}[width=0.5\textwidth]{Gauth\phantomsection\addcontentsline{toc}{subsection}{Gauth}\label{monster:Gauth}}
+	\DndMonsterType{Medium Aberration, Lawful Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {15},
+		initiative	= +2,
+		hit-points  = {\DndDice{9d8 + 27}},
+		speed       = {0 ft., Fly 20 ft. (Hover)},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 10,
+		dex = 14,
+		con = 16,
+		int = 15,
+		wis = 15,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+		skills					= {Perception +5},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+		condition-immunities	= {Prone},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 120 ft., Passive Perception 15},
+		languages				= {Deep Speech, Undercommon},
+		challenge				= 6,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Death Throes}
+	When the Gauth dies, the magical energy within it explodes, and each creature within 10 feet of it must make a DC 14 Dexterity Saving Throw, taking \DndDice{3d8} Force damage on a failed save, or half as much damage on a successful one.
+	
+	\DndMonsterAction{Stunning Gaze}
+	When a creature that can see the Gauth's central eye starts its turn within 30 feet of the Gauth, the Gauth can force it to make a DC 14 Wisdom Saving Throw if the Gauth isn't incapacitated and can see the creature. A creature that fails the save is Stunned until the start of its next turn, when it can avert its eyes again. If the creature looks at the Gauth in the meantime, it must immediately make the save.
+	
+	\DndMonsterSection{Actions}	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +3,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterAction{Eye Rays}
+	The Gauth shoots three of the following magical eye rays at random (roll three d6s, and reroll duplicates), targeting one to three creatures it can see within 120 feet of it:
+	\begin{itemize}
+		\item[\textbf{1:}] \textbf{Devour Magic Ray.} Dexterity Saving Throw: DC 14.\\
+		Failure: One of its magic items lose all magical properties until the start of the gauth's next turn. If the object is a charged item, it also loses 1d4 charges. Determine the affected item randomly, ignoring single-use items such as potions and scrolls.
+		\item[\textbf{2:}] \textbf{Enervation Ray.} Constitution Saving Throw: DC 14.\\
+		Failure: \DndDice{4d8} Necrotic damage.\\
+		Success: Half damage.
+		\item[\textbf{3:}] \textbf{Fire Ray.} Dexterity Saving Throw: DC 14.\\
+		Failure: \DndDice{4d10} Fire damage.
+		\item[\textbf{4:}] \textbf{Paralyzing Ray.} Constitution Saving Throw: DC 14.\\
+		Failure: The target has the Paralyzed condition and repeats the save at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it succeeds automatically.
+		\item[\textbf{5:}] \textbf{Pushing Ray.} Strength Saving Throw: DC 14.\\
+		Failure: The target is pushed up to 15 feet away from the Gauth and has its Speed halved until the start of the Gauth's next turn.
+		\item[\textbf{6:}] \textbf{Sleep Ray.} Wisdom Saving Throw: DC 14 (the target succeeds automatically if it is a Construct or an Undead).\\
+		Failure: The target has the Unconscious condition for 1 minute. The condition ends if the target takes damage or a creature within 5 feet of it takes an action to wake it.
+	\end{itemize}
+\end{DndMonster}

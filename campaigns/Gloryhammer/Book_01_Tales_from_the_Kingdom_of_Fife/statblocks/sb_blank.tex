@@ -1,0 +1,94 @@
+\begin{DndMonster}[width=0.5\textwidth]{Blank\phantomsection\addcontentsline{toc}{subsection}{Blank}\label{monster:Blank}}
+	\DndMonsterType{Large Monstrosity, Unaligned}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {10},
+		initiative	= +0,
+		hit-points  = {\DndDice{1d20 + 1}},
+		speed       = {40 ft., Climb 40 ft., Swim 30 ft., Fly 60 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 10,
+		dex = 10,
+		con = 10,
+		int = 10,
+		wis = 10,
+		cha = 10,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+		skills					= {Perception +5},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 60 ft., Passive Perception 15},
+		languages				= {-},
+		challenge				= 3,
+		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Trait I}
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Owlbear makes two Rend attacks.
+	
+	\DndMonsterAttack[
+		name			= Rend,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +7,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 5},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Saving Throw Effect},	%
+		description	= {Description},			%
+		save_skill	= {Dexterity},				%
+		save_dc		= {10},						%
+		targets		= {one target},				%
+		failure		= {Fail},					%
+		success		= {Success},				%
+		extra		= {Extra}					%
+	]%
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The Blanks's Innate Spellcasting ability is Charisma (Spell Save DC 10). It can innately cast the following spells, requiring no material components:
+		\DndInnateSpellLevel{At Will Spell}
+		\DndInnateSpellLevel[1]{Once per Day Spell}
+	\end{DndMonsterSpells}
+	
+	\begin{DndMonsterSpells}
+		\item[Spellcasting] The Blank can cast the following spells using Wisdom as the spellcasting ability (Spell Save DC 10, +2 to hit with spell attacks):
+		\DndMonsterSpellLevel[0]{Cantrip}
+		\DndMonsterSpellLevel[1][4]{1st Level, 4 Slots}
+		\DndMonsterSpellLevel[2][3]{2nd Level, 3 Slots}
+	\end{DndMonsterSpells}
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Trait I}
+	
+	\DndMonsterSection{Reactions}
+	\DndMonsterReaction[%
+		name		= {Reaction},	%
+		trigger		= {Trigger},	%
+		response	= {Response}	%
+	]%
+\end{DndMonster}

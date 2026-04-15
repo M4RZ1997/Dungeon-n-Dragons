@@ -1,0 +1,105 @@
+\begin{DndMonster}[width=0.5\textwidth]{Spriggan\phantomsection\addcontentsline{toc}{subsection}{Spriggan}\label{monster:Spriggan}}
+	\DndMonsterType{Small or Large Fey, Chaotic Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16 (Small) or 13 (Large)},
+		initiative	= +3,
+		hit-points  = {\DndDice{11d6 + 11} (Small) or \DndDice{11d10 + 44} (Large)},
+		speed       = {25 ft. (Small) or 40 ft. (Large)},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 16,
+		dex = 16,
+		con = 12,
+		int = 9,
+		wis = 16,
+		cha = 8,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {CON +4 (+7 in Large Form), WIS +6},
+		skills					= {Stealth +6 (Small Form only)},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 60 ft, Passive Perception 13},
+		languages				= {Common, Giant, Gnome},
+		challenge				= 6,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Nimble Escape (Small Form only)}
+	The Spriggan can take the Disengage or Hide action as a Bonus Action on each of its turns.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Spriggan can make two Dagger or Stone Sword attacks on each of its turns.
+	
+	\DndMonsterAttack[
+		name			= Boulder,
+		distance		= ranged,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= {+6 or +9 (Large Form)},
+%		reach			= 5,
+		range			= 60/240,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 3},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+		or-dmg			= \DndDice{4d8 + 6},
+		or-dmg-when		= {if the Spriggan is in its Large Form},
+		extra			= {. If the target is Medium or smaller, it has the prone condition},
+	]
+	
+	\DndMonsterAttack[
+		name			= Dagger (Small Form only),
+		distance		= both,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d4 + 3},
+		dmg-type		= Piercing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {},
+	]
+	
+	\DndMonsterAttack[
+		name			= Stone Sword (Large Form only),
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +9,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{3d10 + 6},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {. This attack can only be used if the Spriggan used Stone Shape to create a Stone Sword},
+	]
+	
+	\DndMonsterSection{Spells}
+	\begin{DndMonsterSpells}
+		\item[Innate Spellcasting] The Spriggan's Innate Spellcasting ability is Wisdom (Spell Save DC 14). It can innately cast the following spells, requiring no material components:
+		\DndInnateSpellLevel{Control Flames, Cause Fear}
+		\DndInnateSpellLevel[3]{Meld into Stone, Shatter, Stone Shape}
+	\end{DndMonsterSpells}
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Spriggan's Growth}
+	The Spriggan can change size from Small to Large, or reverse, at will. While Large its Strength Score becomes 22, its Dexterity Score 13, and its Constitution Score 18.
+\end{DndMonster}

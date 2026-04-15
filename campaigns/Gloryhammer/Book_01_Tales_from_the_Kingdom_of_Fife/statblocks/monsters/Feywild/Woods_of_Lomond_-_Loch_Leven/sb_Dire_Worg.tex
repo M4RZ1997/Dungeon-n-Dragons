@@ -1,0 +1,75 @@
+\begin{DndMonster}[width=0.5\textwidth]{Dire Worg\phantomsection\addcontentsline{toc}{subsection}{Dire Worg}\label{monster:DireWorg}}
+	\DndMonsterType{Large Fey, Neutral Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {16},
+		initiative	= +2,
+		hit-points  = {\DndDice{14d12 + 56}},
+		speed       = {50 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 22,
+		dex = 14,
+		con = 18,
+		int = 7,
+		wis = 16,
+		cha = 8,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {DEX +6, WIS +7},
+		skills					= {Perception +11},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+%		condition-immunities	= {Poisoned},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 120 ft., Passive Perception 21},
+		languages				= {Goblin, Sylvan, Worg},
+		challenge				= 10,
+		proficiency-bonus		= +4,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Magic Resistance}
+	The Worg has Advantage on saving throws against spells and other magical effects.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Worg makes three Bite attacks.
+	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +10,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d8 + 6},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{2d6},
+		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {, and the target has the Poisoned condition until the start of the Worg's next turn. While Poisoned, the target can't regain Hit Points},
+	]
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Dreadful Howl},	%
+%		description	= {Description},		%
+		save_skill	= {Wisdom},				%
+		save_dc		= {16},						%
+		targets		= {each creature within 30 feet that isn't a worg},%
+		failure		= {\DndDice{8d8} Psychic damage, and the target has the Frightened condition until the start of the worg's next turn},%
+		success		= {Half damage only},%
+%		extra		= {Extra}					%
+	]%
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterAction{Warp Step}
+	The Worg teleports, along with a willing creature of its choice within 5 feet of it, up to 30 feet to an unoccupied space it can see.
+\end{DndMonster}
