@@ -1,0 +1,492 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{Tuinere Bevara}
+
+\Class{Monster Hunter}
+\Subclass{Devourer Guild}
+\Background{Ice Fisher}
+\Race{Cnidaran (Nematocyst)}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{3} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{10}
+\DexterityRolledScore{15}
+\ConstitutionRolledScore{12}
+\IntelligenceRolledScore{14}
+\WisdomRolledScore{12}
+\CharismaRolledScore{12}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{1}			% Ice Fisher +1
+\ConstitutionScoreBonus{2}		% Ice Fisher +2
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{P}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{P}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{P}		% Ice Fisher
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{P}			% Monster Hunter
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{P}	% Ice Fisher
+\InsightProficiency{}
+\MedicineProficiency{P}			% Monster Hunter
+\PerceptionProficiency{P}		% Monster Hunter
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{\ProficiencyValue}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+\MaxHitPointsRolled{25} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d10}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
+
+\WeaponsProficiency{Simple and Martial Weapons}
+\ToolsProficiency{Alchemist's Supplies, Cook's Utensils}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Rapier}{Tuinere}{DEX}{P}{0}{1d8 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Finesse}
+\addWeaponStatistic{Longbow}{Tuinere}{DEX}{P}{0}{1d8 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Heavy, Two-Handed, Ranged 150/600 ft.}
+\addWeaponStatistic{Nematocyst}{Tuinere}{DEX}{P}{0}{1d4 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Finesse}
+\addWeaponStatistic{Reaction (STR)}{Tuinere}{STR}{P}{2}{+\intcalcAdd{2}{\calculateModifier{\StrengthScoreValue}}}{Opportunist Feat}
+\addWeaponStatistic{Reaction (DEX)}{Tuinere}{DEX}{P}{2}{+\intcalcAdd{2}{\calculateModifier{\DexterityScoreValue}}}{Opportunist Feat}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
+\AddClassFeature{E}{\textbf{Monster Grimoire}\\Aberration, Plant}
+\AddClassFeature{E}{\textbf{Weapon Mastery}\\Longbow, Rapier}
+\AddClassFeature{E}{\textbf{Fighting Style}\\Opportunist}
+\AddClassFeature{R}{\textbf{Studied Response}}
+\AddClassFeature{E}{\textbf{Alchemical Gastronomy}}
+\AddClassFeature{E}{\textbf{Transmuting Metabolism}\begin{itemize}
+	\item Salvaging Portions
+	\item Consuming Portions
+\end{itemize}}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Amphibious}\\Tuinere can breath air and water and has a Swim Speed equal to its Movement Speed}
+\AddSpeciesFeature{A}{\textbf{Nematocyst}\\Unarmed Strike variant that is a Finesse Weapon (1d4 Piercing)}
+\AddSpeciesFeature{B}{\textbf{Neurotoxin}\\Coat weapon or Nematocyst in paralyzing poison (Uses: \intcalcAdd{0}{\ProficiencyValue})}
+\AddSpeciesFeature{E}{\textbf{Toxic Adaptation}\\Resistance against Poison damage and Advantage against Poisoned condition}
+% FEATS
+\AddFeat{\textbf{Alert}\begin{itemize}
+	\item "Initiative Proficiency"
+	\item Swap Initiative roll with willing creature
+\end{itemize}}
+\AddFeat{\textbf{Opportunist}\\+2 to Attack and Damage Rolls if part of Reaction}
+
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Age{}
+\Height{}
+\Weight{}
+\Eyes{}
+\Skin{}
+\Hair{}
+
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{11.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Character_Portrait.jpg} %
+	{%
+		{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis}{mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas.}
+	}%
+\Characterbackground{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+}
+\AlliesAndOrganizations{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi\linebreak
+}{
+	tristique.
+}
+\OrganizationName{DnD Organization}
+\OrganizationSymbol{images/Organisation.png}
+\AdditionalFeaturesAndTraits{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+}
+\Treasure{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+}
+\Alignment{True Neutral}
+
+\Ideals{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+}
+
+\Bonds{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+}
+
+\Flaws{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish, Draconic, Deep Speech, Undercommon, Thieves' Cant}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Alchemist's Tools, Mason's Tools, Carpenter's Tools, Thieves' Tools, Tinker's Tools
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Magic Item I}
+\addAttunedMagicItem{Magic Item II}
+\addAttunedMagicItem{Magic Item III}
+\addAttunedMagicItem{Magic Item IV}
+%% Gold
+\CP{10000}
+\SP{9}
+\EP{1}
+\GP{9000}
+\PP{100}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{None}
+\SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+
+% SPELL SLOTS
+%\FirstLevelSpellSlotsTotal{4}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+% SPELLCASTING PRE5E24 PAGE
+%\renderoldspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features and Spells}
+
+\section*{Cnidaran Features}
+\subsection*{Speed}
+Your base Speed is 30 feet and you have a Swim Speed equal to your Speed.
+\subsection*{Amphibious}
+You can breathe air and water.
+\subsection*{Nematocyst}
+You have a long, barbed appendage, a natural weapon which you can use to make Unarmed Strikes. If you hit with this Finesse Weapon, you can deal Piercing damage equal to 1d4 + your Strength or Dexterity modifier (your choice), instead of the Bludgeoning damage normal for an Unarmed Strike.
+\subsection*{Neurotoxin}
+\textbf{DC: \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\ConstitutionScoreValue}}{\ProficiencyValue}}, Uses: \intcalcAdd{0}{\ProficiencyValue}}\\
+As a Bonus Action, you can secrete a toxin and apply it to one weapon or piece of ammunition, which lasts for 1 hour. The first time you hit a creature with this weapon or ammunition, the creature must succeed on a Constitution Saving Throw (DC equals 8 + your Constitution modifier + your proficiency bonus) or be Paralyzed until the start of its next turn. Alternatively, you can use a Bonus Action to inject the toxin when you hit a creature with your Nematocyst. You can use this feature a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.
+\subsection*{Toxic Adaptation}
+You have Advantage on Saving Throws against being Poisoned and you have Resistance to Poison damage.
+
+\section*{Feats}
+\subsection*{Alert}
+You gain the following benefits.
+\subsubsection*{Initiative Proficiency}
+When you roll Initiative, you can add your Proficiency Bonus to the roll.
+\subsubsection*{Initiative Swap}
+Immediately after you roll Initiative, you can swap your Initiative with the Initiative of one willing ally in the same combat. You can't make this swap if you or the ally has the Incapacitated condition.
+\subsection*{Opportunist}
+You gain the following benefits.
+\subsubsection*{Exploit Weakness}
+Whenever you make an attack as part of a Reaction, you gain a +2 bonus to the Attack and Damage rolls.
+
+
+\section*{Monster Hunter Features}
+\subsection*{Monster Grimoire}
+\textbf{Aberration, Plant}\\
+You create or inherit a repository of knowledge known as a Monster Grimoire. Each Monster Hunter carries a grimoire, a manual on dangerous creatures. A Monster Hunter's grimoire is an object entirely unique to each hunter. It may be a leather tome recovered from a dusty library with notes made in the margins, a set of blood-stained scrolls inherited from a previous hunter, or a precious stone with a communing spirit held within.
+
+If a Monster Hunter ever loses a grimoire, the hunter has retained enough knowledge to not suffer immediate drawbacks. However, the hunter can't add to the grimoire until it is restored and therefore can't take another Monster Hunter level until a lost grimoire has been replaced. A grimoire can be recreated by spending 8 hours and 50 GP worth of materials such as books, scrolls, and ink.
+
+Choose two types of creatures that you are specialized in hunting from the following list: Aberrations, Beasts, Celestials, Constructs, Dragons, Elementals, Fey, Fiends, Giants, Monstrosities, Oozes, Plants, or Undead.
+
+You add your Proficiency Bonus to Intelligence and Wisdom checks you make that relate to the creature types in your grimoire. For example, if Undead are in your grimoire, you add your Proficiency Bonus to an Intelligence (History) check to recall lore about an Undead creature you're investigating or a Wisdom (Medicine) check to identify claw marks left on a corpse by an Undead creature. If you are already proficient in a skill when asked to make an Intelligence or Wisdom ability check relating to the monster types in your grimoire, you add double your Proficiency Bonus instead.
+
+When you gain this feature, you also learn one language based on the chart below. (You can add languages to this chart based on your own campaign world.)
+
+\begin{DndTable}[header=Monster Type Language]{llX}
+				& Monster Type	& Language						\\
+	\textbullet	& Aberration	& Deep Speech or Undercommon	\\
+				& Beast			& Sylvan						\\
+				& Celestial		& Celestial						\\
+				& Construct		& Draconic						\\
+				& Dragon		& Draconic						\\
+				& Elemental		& Primordial					\\
+				& Fey			& Sylvan						\\
+				& Fiend			& Abyssal or Infernal			\\
+				& Giant			& Giant							\\
+				& Monstrosity	& Deep Speech					\\
+				& Ooze			& Deep Speech or Undercommon	\\
+	\textbullet	& Plant			& Sylvan						\\
+				& Undead		& Abyssal or Infernal			\\
+\end{DndTable}
+\subsection*{Weapon Mastery}
+\textbf{Longbow, Rapier}\\
+Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Longswords. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.
+
+When you reach certain Monster Hunter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Monster Hunter Features table.
+\subsubsection*{Longbow (Slow)}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+\subsubsection*{Rapier (Vex)}
+If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+\subsection*{Fighting Style}
+\textbf{Opportunist}\\
+You gain a Fighting Style feat of your choice.
+\subsection*{Studied Response}
+You have learned the most effective way to slay a monster is to strike its most vulnerable area at the right moment. Too early, and your attack glances away. Too late, and the monster may eviscerate you.
+
+When a creature you can see within 60 feet of you targets you or another creature with a melee or ranged attack, you can take a Reaction before the attack roll to make one attack with a weapon or an Unarmed Strike against that creature.
+
+If the attack misses, you regain the use of your Reaction.
+\subsection*{Devourer Guild}
+\textit{Gain Power by Consuming Monster Flesh}\\
+Folk in Etharis don't always speak highly of Monster Hunters, and many consider them to be just as depraved and inhuman as the evils they vanquish. Many of the appalling tales about Monster Hunters can be attributed, directly or indirectly, to the Devourer Guild, who are accused of being monstrous cannibals.
+
+The truth is barely any better. Devourers have spent their days consuming the flesh and blood of the monsters they slay, and, over time, their metabolism has changed to tolerate this disgusting practice. Devourers adopt mutations shortly after consuming their prey.
+\subsubsection*{Alchemical Gastronomy}
+You gain proficiency with Alchemist's Supplies and Cook's Utensils.
+\subsubsection*{Transmuting Metabolism}
+You gain the ability to consume monster remains, which causes your body to adopt powerful and frightening mutations. These appear in the "Mutations" section later in the subclass's description.
+\paragraph*{Salvaging Portions} As a Utilize action, you can harvest a single portion from the physical remains of a creature. Only one portion can be harvested from each creature. Record the monster's creature type. A harvested portion lasts until you finish a Long Rest, at which point it loses its potency.
+\paragraph*{Consuming Portions} As a Bonus Action, you can consume a portion. After you consume the portion, you choose a mutation to gain, depending on the creature's type. You can gain the benefits of consumed portions a number of times up to 1 plus your Intelligence modifier (minimum of 1). When you finish a Long Rest, you regain the ability to safely consume portions.
+
+You can benefit from multiple portions simultaneously, but you can't gain the same mutation more than once at the same time.
+\subsubsection*{Mutations}
+The mutations are presented here in alphabetical order, with required creature types shown in brackets after the mutation's name.
+\paragraph*{Acid Blood (Aberration, Ooze, Plant)} For 1 minute, your blood becomes acidic. Each time a creature hits you with an attack while within 5 feet of you, it takes 2d6 Acid damage.
+\paragraph*{Acumen (Celestial, Fiend, Fey)} For 1 hour, you have Advantage on Wisdom (Insight) checks. Additionally, choose either Intimidation or Persuasion. You have Advantage on ability checks using the chosen skill.
+\paragraph*{Awareness (All)} For 10 minutes, you know the location of creatures that are the same type as the creature you consumed within 60 feet of you that are not behind Total Cover.
+\paragraph*{Flight (Celestial, Dragon, Elemental)} For 10 minutes, you grow feathery, feathery, or spectral wings from your back. You gain a Fly Speed equal to your Speed. You can't benefit from this mutation while wearing Heavy Armor.
+\paragraph*{Infused (Dragon, Elemental, Ooze)} Choose one of the following damage types: Acid, Cold, Fire, Lightning, Poison, or Thunder. For 10 minutes, whenever you hit with an attack, you can cause it to deal the chosen type rather than its normal damage type.
+\paragraph*{Invisibility (Fey, Fiend, Undead)} For 10 minutes, you have the Invisible condition. This effect ends early if you dismiss it (no action required), or you attack or cast a spell.
+\paragraph*{Might (Beast, Construct, Giant)} For 1 minute, you have Advantage on Strength checks and saving throws. You also have Advantage on attack rolls using Strength, and you deal 1d6 extra damage to targets you hit with a Strength-based attack. The damage is the same type dealt by the attack.
+\paragraph*{Natural Weapons (Beast, Dragon, Monstrosity)} For 1 hour, you gain natural weapons. You can roll 1d6 in place of the normal damage of your Unarmed Strike. This damage can be Piercing or Slashing. You choose each time you make an attack. You can also make an Unarmed Strike as a Bonus Action. You can use your Dexterity modifier instead of your Strength modifier for the attack and damage rolls of your Unarmed Strikes.
+\paragraph*{Regeneration (Beast, Giant, Monstrosity)} You regain Hit Points equal to 2d8 plus your Monster Hunter level.
+\paragraph*{Resistance (Construct, Elemental, Undead)} For 1 minute, you have Resistance to Bludgeoning, Piercing, and Slashing damage.
+\paragraph*{Telepathy (Aberration, Fiend, Plant)} For 1 hour, you can speak telepathically to any creature you can see within 60 feet of yourself. Your telepathic utterances are in a language you know, and the creature understands you only if it knows that language. Additionally, you have Resistance to Psychic damage.
+\vfill\eject
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Mace:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Rapier (Finesse):}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Quarterstaff (Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Mace:}}\\
+1d6 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Rapier (Finesse):}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\\
+\underline{\textit{Handaxe (Throwable):}}\\
+1d6 + STR-Modifier\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Quarterstaff (Versatile):}}\\
+1d6 (1d8) + STR-Modifier\\
+\indent Current Max (one-handed): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Shortbow:}}\\
+1d6 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}}
+\end{document}
