@@ -23,7 +23,7 @@
 \Background{Compleated}
 \Race{Warforged}
 
-\Level{8}
+\Level{9}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -94,7 +94,7 @@
 
 \ArmorClass{\intcalcAdd{12}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{52} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{58} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -129,6 +129,7 @@
 \AddClassFeature{E}{\textbf{Circle Forms}\\AC \intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}}, max CR 1, 9 temp HP}
 \AddClassFeature{L}{\textbf{Form of the Dread}\\\intcalcAdd{0}{\ProficiencyValue} Uses}
 \AddClassFeature{E}{\textbf{Eldritch Invocations (5)}\begin{itemize}\item Beguiling Influence\item Eldritch Mind\item Pact of Chain\item Investment of the Chain Master\item One with Shadows\end{itemize}}
+\AddClassFeature{L}{\textbf{Grave Touched}\\Don't need to eat, drink, or breathe\\Rolled Damage can become Necrotic and an additional damage die while in Form of Dread}
 
 \AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a Construct.}
 \AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
@@ -139,6 +140,7 @@
 
 \AddFeat{\textbf{Glistening Oil}\\Poison (+1d6 P, DC 13 CON save) coated melee attacks}
 \AddFeat{\textbf{Poisoner}\begin{itemize}\item Potent Poison\\Poison damage cannot be resisted\item Brew Poison\begin{itemize}\item \intcalcAdd{0}{\ProficiencyValue} Doses\item DC = \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}}\end{itemize}\end{itemize}}
+\AddFeat{\textbf{Iedcaru's Scanning}}
 
 % BACKGROUND & APPEARANCE
 
@@ -209,9 +211,9 @@
 \addAttunedMagicItem{Armblade +1}
 
 \CP{}
-\SP{}
+\SP{5}
 \EP{}
-\GP{9}
+\GP{1459}
 \PP{}
 
 % SPELLS
@@ -434,6 +436,15 @@
 	{V, S, 1 Hour}
 	{V, S, M}
 \addPreparedSpell{3}
+	{Scarlet Dawn}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{3}
 	{Speak with Dead}
 	{Action}
 	{10 Feet}
@@ -491,6 +502,8 @@ Whenever you hit a creature with a melee attack it will be affected by the glist
 You gain the following benefits.
 \paragraph*{Potent Poison} When you make a damage roll that deals Poison damage, it ignores Resistance to Poison damage.
 \paragraph*{Brew Poison} You gain proficiency with the Poisoner's Kit. With 1 hour of work using such a kit and expending 50 GP worth of materials, you can create a number of poison doses equal to your Proficiency Bonus (\textbf{\intcalcAdd{0}{\ProficiencyValue}} Doses). As a Bonus Action, you can apply a poison dose to a weapon or piece of ammunition. Once applied, the poison retains its potency for 1 minute or until you hit with the poisoned item, whichever is shorter. When a creature takes damage from the poisoned item, that creature must succeed on a Constitution saving throw (DC 8 plus the modifier of the ability increased by this feat and your Proficiency Bonus: \textbf{\intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}}}) or take 2d8 Poison damage and have the Poisoned condition until the end of your next turn.
+\subsection*{Iedcaru's Scanning}
+While in physical contact with the walking castle Iedcaru you get a +10 bonus to all checks that rely on senses (i.e. Perception (Hearing), Investigation (Sight)).
 
 \section*{Druid Traits}
 \subsection*{Wild Shape}
@@ -873,6 +886,20 @@ While frightened by this spell, a creature must take the Dash action and move aw
 A Large quasi-real, horselike creature appears on the ground in an unoccupied space of your choice within range. You decide the creature's appearance, but it is equipped with a saddle, bit, and bridle. Any of the equipment created by the spell vanishes in a puff of smoke if it is carried more than 10 feet away from the steed.
 
 For the duration, you or a creature you choose can ride the steed. The creature uses the statistics for a riding horse, except it has a speed of 100 feet and can travel 10 miles in an hour, or 13 miles at a fast pace. When the spell ends, the steed gradually fades, giving the rider 1 minute to dismount. The spell ends if you use an action to dismiss it or if the steed takes any damage.
+
+\DndSpellHeader
+  {Scarlet Dawn}
+  {3rd-Level Evocation}
+  {Action}
+  {120 Feet}
+  {V, S}
+  {Instantaneous}
+
+Crimson light shines down in a 20-foot-radius, 60-foot-high Cylinder centered on a point within range. Each creature in that area that isn't a Construct or Undead must make a Constitution saving throw, taking 4d10 Necrotic damage on a failed save or half as much damage on a successful one. Constructs and Undead in the area regain 4d10 Hit Points.
+
+If any of this spell's area overlaps with an area of Darkness created by a spell of level 3 or lower, that other spell is dispelled.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d10 and the level of spell that can be dispelled increases by 1 for each spell slot level above 3.
 
 \DndSpellHeader
   {Speak with Dead}

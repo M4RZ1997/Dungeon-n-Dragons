@@ -23,7 +23,7 @@
 \Background{Lantan Ranger Corps} % Whitestone Rifle Corps
 \Race{Warforged}
 
-\Level{8}
+\Level{9}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -59,7 +59,7 @@
 %% DEXTERITY SKILLS
 \AcrobaticsProficiency{P}
 \SleightOfHandProficiency{}
-\StealthProficiency{P}
+\StealthProficiency{E}
 
 %% INTELLIGENCE SKILLS
 \ArcanaProficiency{}
@@ -73,7 +73,7 @@
 \InsightProficiency{P}
 \MedicineProficiency{}
 \PerceptionProficiency{E}
-\SurvivalProficiency{P}
+\SurvivalProficiency{E}
 
 %% CHARISMA SKILLS
 \DeceptionProficiency{}
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{14}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{51} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{61} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d10}
@@ -134,6 +134,7 @@
 \AddClassFeature{E}{\textbf{Umbral Sight}\\Darkvision 60 feet}
 \AddClassFeature{E}{\textbf{Extra Attack}}
 \AddClassFeature{E}{\textbf{Roving}\\Climb and Swim Speed}
+\AddClassFeature{E}{\textbf{Expertise}\\Stealth, Surviving}
 
 \AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a Construct.}
 \AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
@@ -143,6 +144,7 @@
 \AddSpeciesFeature{E}{\textbf{Tireless}\\No Exhaustion from dehydration, malnutrition, or suffocation}
 
 \AddFeat{\textbf{Archery}\\+2 to Ranged attacks}
+\AddFeat{\textbf{Iedcaru's Scanning}}
 
 % BACKGROUND & APPEARANCE
 
@@ -220,9 +222,9 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 \addAttunedMagicItem{Periapt of Wound Closure}
 
 \CP{}
-\SP{}
+\SP{5}
 \EP{}
-\GP{17}
+\GP{1459}
 \PP{}
 
 % SPELLS
@@ -233,6 +235,7 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
+\ThirdLevelSpellSlotsTotal{2}
 
 \addPreparedSpell{1}
 	{Absorb Elements}
@@ -268,7 +271,7 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 	{T}
 	{}
 	{}
-	{V, 2x free/LR}
+	{V, 3x free/LR}
 	{V}
 \addPreparedSpell{1}
 	{Longstrider}
@@ -325,6 +328,24 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 	{T}
 	{V, S}
 	{V, S, M}
+\addPreparedSpell{3}
+	{Lightning Arrow}
+	{Bonus Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{3}
+	{Scarlet Dawn}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
 
 \begin{document}
 
@@ -362,6 +383,10 @@ You don't need to sleep, and magic can't put you to sleep. You can finish a Long
 You gain one skill proficiency and one tool proficiency of your choice.
 \subsection*{Tireless}
 You don't gain Exhaustion levels from dehydration, malnutrition, or suffocation.
+
+\section*{Feats}
+\subsection*{Iedcaru's Scanning}
+While in physical contact with the walking castle Iedcaru you get a +10 bonus to all checks that rely on senses (i.e. Perception (Hearing), Investigation (Sight)).
 
 \section*{Ranger Traits}
 \subsection*{Favored Enemy}
@@ -412,6 +437,9 @@ You have honed your ability to resist mind-altering powers. You gain proficiency
 You can attack twice instead of once whenever you take the Attack action on your turn.
 \subsection*{Roving}
 Your Speed increases by 10 feet while you aren't wearing Heavy armor. You also have a Climb Speed and a Swim Speed equal to your Speed.
+\subsection*{Expertise}
+\textbf{Stealth and Survival Expertise}\\
+Choose two of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills.
 
 \section*{Spells}
 \subsection*{Level 1}
@@ -549,6 +577,36 @@ This spell merely reveals that a trap is present. You don't learn the location o
 You touch a rope. One end of it hovers upward until the rope hangs perpendicular to the ground or the rope reaches the ceiling. At the rope's upper end, an Invisible 3-foot-by-5-foot portal opens to an extra-dimensional space that lasts until the spell ends. That space can be reached by climbing the rope, which can be pulled into or dropped out of it.
 
 The space can hold up to eight Medium or smaller creatures. Attacks, spells, and other effects can't pass into or out of the space, but creatures inside it can see through the portal. Anything inside the space drops out when the spell ends.
+
+\subsection*{Level 3}
+
+\DndSpellHeader
+  {Lightning Arrow}
+  {2nd-Level Transmutation}
+  {Bonus Action, which you take immediately after hitting or missing a target with a ranged attack using a weapon}
+  {Self}
+  {V, S}
+  {Instantaneous}
+
+As your attack hits or misses the target, the weapon or ammunition you're using transforms into a lightning bolt. Instead of taking any damage or other effects from the attack, the target takes 4d8 Lightning damage on a hit or half as much damage on a miss. Each creature within 10 feet of the target then makes a Dexterity saving throw, taking 2d8 Lightning damage on a failed save or half as much damage on a successful one.
+
+The weapon or ammunition then returns to its normal form.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage for both effects of the spell increases by 1d8 for each spell slot level above 3.
+
+\DndSpellHeader
+  {Scarlet Dawn}
+  {2nd-Level Evocation}
+  {Action}
+  {120 Feet}
+  {V, S}
+  {Instantaneous}
+
+Crimson light shines down in a 20-foot-radius, 60-foot-high Cylinder centered on a point within range. Each creature in that area that isn't a Construct or Undead must make a Constitution saving throw, taking 4d10 Necrotic damage on a failed save or half as much damage on a successful one. Constructs and Undead in the area regain 4d10 Hit Points.
+
+If any of this spell's area overlaps with an area of Darkness created by a spell of level 3 or lower, that other spell is dispelled.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d10 and the level of spell that can be dispelled increases by 1 for each spell slot level above 3.
 
 \vfill\eject
 \section*{Miscellaneous}

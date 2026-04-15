@@ -23,7 +23,7 @@
 \Background{Gate Warden}
 \Race{Warforged}
 
-\Level{8}
+\Level{9}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -73,11 +73,11 @@
 \InsightProficiency{}
 \MedicineProficiency{}
 \PerceptionProficiency{E}
-\SurvivalProficiency{P}
+\SurvivalProficiency{E}
 
 %% CHARISMA SKILLS
 \DeceptionProficiency{}
-\IntimidationProficiency{P}
+\IntimidationProficiency{E}
 \PerformanceProficiency{P}
 \PersuasionProficiency{E}
 
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
-\MaxHitPointsRolled{55} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{61} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -138,6 +138,7 @@
 
 \AddFeat{\textbf{Scion of the Outer Planes}\\Necrotic Resistance, Chill Touch Cantrip}
 \AddFeat{\textbf{Durable}\begin{itemize}\item Defy Death\item Speedy Recovery\end{itemize}}
+\AddFeat{\textbf{Iedcaru's Scanning}}
 
 % BACKGROUND & APPEARANCE
 
@@ -215,9 +216,9 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 \addAttunedMagicItem{Doss Lute}
 
 \CP{}
-\SP{}
+\SP{5}
 \EP{}
-\GP{14}
+\GP{1459}
 \PP{}
 
 % SPELLS
@@ -229,7 +230,8 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{3}
-\FourthLevelSpellSlotsTotal{2}
+\FourthLevelSpellSlotsTotal{3}
+\FifthLevelSpellSlotsTotal{1}
 
 \addPreparedSpell{0}
 	{Blade Ward}
@@ -367,6 +369,15 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 	{V, S}
 	{V, S, M}
 \addPreparedSpell{4}
+	{Freedom of Movement}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{4}
 	{Raulothim's Psychic Lance}
 	{Action}
 	{120 Feet}
@@ -375,6 +386,15 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 	{}
 	{V, 7d6 Psychic}
 	{V}
+\addPreparedSpell{5}
+	{Teleportation Circle}
+	{1 Min}
+	{10 Feet}
+	{}
+	{}
+	{T}
+	{V}
+	{V, M}
 
 \begin{document}
 
@@ -426,6 +446,8 @@ $\bullet$	& Evil Outer Plane		& Necrotic				& Chill Touch		\\
 You gain the following benefits.
 \paragraph*{Defy Death} You have Advantage on Death Saving Throws.
 \paragraph*{Speedy Recovery} As a Bonus Action, you can expend one of your Hit Point Dice, roll the die, and regain a number of Hit Points equal to the roll.
+\subsection*{Iedcaru's Scanning}
+While in physical contact with the walking castle Iedcaru you get a +10 bonus to all checks that rely on senses (i.e. Perception (Hearing), Investigation (Sight)).
 
 \section*{Bard Traits}
 \subsection*{Bardic Inspiration}
@@ -440,7 +462,7 @@ You can confer a Bardic Inspiration die a number of times equal to your Charisma
 Your Bardic Inspiration die changes when you reach certain Bard levels, as shown in the Bardic Die column of the Bardic Features table. The becomes a \textbf{d8 at level 5}, a d10 at level 10, and a d12 at level 15.
 
 \subsection*{Expertise}
-\textbf{Perception, Persuasion}\\
+\textbf{Intimidation, Perception, Persuasion, Survival}\\
 You gain Expertise (see the rules glossary) in two of your skill proficiencies of your choice. Performance and Persuasion are recommended if you have proficiency in them.
 
 At Bard level 9, you gain Expertise in two more of your skill proficiencies of your choice.
@@ -690,6 +712,20 @@ At the end of each of its turns, an affected target repeats the save, ending the
 \subparagraph*{Using a Higher-Level Spell Slot} The Sphere's radius increases by 5 feet for each spell slot level above 4.
 
 \DndSpellHeader
+  {Freedom of Movement}
+  {4th-Level Abjuration}
+  {Action}
+  {Touch}
+  {V, S, M (a leather strap)}
+  {1 Hour}
+  
+You touch a willing creature. For the duration, the target's movement is unaffected by Difficult Terrain, and spells and other magical effects can neither reduce the target's Speed nor cause the target to have the Paralyzed or Restrained conditions. The target also has a Swim Speed equal to its Speed.
+
+In addition, the target can spend 5 feet of movement to automatically escape from nonmagical restraints, such as manacles or a creature imposing the Grappled condition on it.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 4.
+
+\DndSpellHeader
   {Raulothim's Psychic Lance}
   {4th-Level Enchantment}
   {Action}
@@ -702,6 +738,24 @@ You unleash a shimmering lance of psychic power from your forehead at a creature
 The target must make an Intelligence saving throw. On a failed save, the target takes 7d6 psychic damage and is incapacitated until the start of your next turn. On a successful save, the creature takes half as much damage and isn't incapacitated.
 
 \subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 5th level or higher, the damage increases by 1d6 for each slot level above 4th.
+
+\subsection*{Level 5}
+
+\DndSpellHeader
+  {Teleportation Circle}
+  {5th-Level Conjuration}
+  {1 Minute}
+  {10 Feet}
+  {V, M (rare inks worth 50+ GP, which the spell consumes)}
+  {1 Round}
+  
+As you cast the spell, you draw a 5-foot-radius circle on the ground inscribed with sigils that link your location to a permanent teleportation circle of your choice whose sigil sequence you know and that is on the same plane of existence as you. A shimmering portal opens within the circle you drew and remains open until the end of your next turn. Any creature that enters the portal instantly appears within 5 feet of the destination circle or in the nearest unoccupied space if that space is occupied.
+
+Many major temples, guildhalls, and other important places have permanent teleportation circles. Each circle includes a unique sigil sequence - a string of runes arranged in a particular pattern.
+
+When you first gain the ability to cast this spell, you learn the sigil sequences for two destinations on the Material Plane, determined by the DM. You might learn additional sigil sequences during your adventures. You can commit a new sigil sequence to memory after studying it for 1 minute.
+
+You can create a permanent teleportation circle by casting this spell in the same location every day for 365 days.
 \vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}

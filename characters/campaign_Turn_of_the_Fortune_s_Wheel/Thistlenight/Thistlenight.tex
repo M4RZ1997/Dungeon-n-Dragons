@@ -23,7 +23,7 @@
 \Background{Feylost}
 \Race{Wechselkind}
 
-\Level{8}
+\Level{9}
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -113,7 +113,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
 
-\MaxHitPointsRolled{40} % Without Constitution Bonus, is added automatically
+\MaxHitPointsRolled{45} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d6}
@@ -169,6 +169,7 @@
 \AddSpeciesFeature{L}{\textbf{Faerie Glamour}\\Minor Illusion Cantrip\\Disguise Self once per Long Rest}
 
 \AddFeat{\textbf{Feywild Connection}\\Friendly Fey are inclined to help you in the Feywild}
+\AddFeat{\textbf{Iedcaru's Scanning}}
 
 % BACKGROUND & APPEARANCE
 
@@ -243,7 +244,7 @@
 \CP{}
 \SP{5}
 \EP{}
-\GP{799}
+\GP{1459}
 \PP{}
 
 % SPELLS
@@ -254,7 +255,8 @@
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{3}
-\FourthLevelSpellSlotsTotal{2}
+\FourthLevelSpellSlotsTotal{3}
+\FifthLevelSpellSlotsTotal{1}
 
 \addPreparedSpell{0}
 	{Chill Touch}
@@ -465,6 +467,15 @@
 	{V, S}
 	
 \addPreparedSpell{4}
+	{Buried Alive}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S}
+\addPreparedSpell{4}
 	{Dominate Beast}
 	{Action}
 	{60 Feet}
@@ -495,6 +506,16 @@
 	{Summon Construct}
 	{Action}
 	{90 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+	
+\addPreparedSpell{5}
+	{Mortality}
+	{Action}
+	{120 Feet}
 	{T}
 	{}
 	{T}
@@ -579,6 +600,10 @@ Whenever you're sound asleep or in a deep trance during a long rest, a spirit of
 	8	& Unicorn		\\
 \end{DndTable}
 
+\section*{Feats}
+\subsection*{Iedcaru's Scanning}
+While in physical contact with the walking castle Iedcaru you get a +10 bonus to all checks that rely on senses (i.e. Perception (Hearing), Investigation (Sight)).
+
 \section*{Sorcerer Traits}
 \subsection*{Innate Sorcery}
 An event in your past left an indelible mark on you, infusing you with simmering magic. As a Bonus Action, you can unleash that magic for 1 minute, during which you gain the following benefits:
@@ -614,7 +639,6 @@ Because your magic flows from within, you can alter your spells to suit your nee
 You can use only one Metamagic option on a spell when you cast it unless otherwise noted in one of those options.
 
 Whenever you gain a Sorcerer level, you can replace one of your Metamagic options with one you don't know. You gain two more options at Sorcerer level 10 and two more at Sorcerer level 17.
-\vfill\eject
 \subsubsection*{Seeking Spell}
 \textit{Cost: 1 Sorcery Point}\\
 If you make an attack roll for a spell and miss, you can spend 1 Sorcery Point to reroll the d20, and you must use the new roll.
@@ -748,7 +772,7 @@ If a creature takes a Study action to examine the sound or image, the creature c
 
 \paragraph*{Image} If you create an image of an object - such as a chair, muddy footprints, or a small chest—it must be no larger than a 5-foot Cube. The image can't create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, since things can pass through it.
 
-\subsection*{1st Level}
+\subsection*{Level 1}
 
 \DndSpellHeader
   {Alarm}
@@ -838,7 +862,7 @@ You create a shard of ice and fling it at one creature within range. Make a rang
 
 Until the spell ends, one willing creature you touch is protected against creatures that are Aberrations, Celestials, Elementals, Fey, Fiends, or Undead. The protection grants several benefits. Creatures of those types have Disadvantage on attack rolls against the target. The target also can't be possessed by or gain the Charmed or Frightened conditions from them. If the target is already possessed, Charmed, or Frightened by such a creature, the target has Advantage on any new saving throw against the relevant effect.
 
-\subsection*{2nd Level}
+\subsection*{Level 2}
 
 \DndSpellHeader
   {Aid}
@@ -904,7 +928,7 @@ While a target is affected by the spell, the target treats the phantasm as if it
 
 An affected target is so convinced of the phantasm's reality that it can even take damage from the illusion. A phantasm created to appear as a creature can attack the target. Similarly, a phantasm created to appear as fire, a pool of acid, or lava can burn the target. Each round on your turn, the phantasm can deal 1d6 psychic damage to the target if it is in the phantasm's area or within 5 feet of the phantasm, provided that the illusion is of a creature or hazard that could logically deal damage, such as by attacking. The target perceives the damage as a type appropriate to the illusion.
 
-\subsection*{3rd Level}
+\subsection*{Level 3}
 
 \DndSpellHeader
   {Antagonize}
@@ -966,7 +990,19 @@ Until the spell ends, you can make the attack again on each of your turns as a M
 
 \subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 3.
 
-\subsection*{4th Level}
+\subsection*{Level 4}
+
+\DndSpellHeader
+  {Buried Alive}
+  {4th-Level Transmutation}
+  {Action}
+  {60 Feet}
+  {V, S, M (a pinch of grave dirt)}
+  {Instantaneous}
+
+You send your enemies to their graves even if they aren't dead yet. A creature that you can see within range that is standing on the ground must make a Strength saving throw. On a failed save, the ground opens and swallows the target, burying it up to 10 feet deep. While buried, the target has Total Cover, has the Restrained and Blinded conditions, and can't breathe. On a successful save, the target has the Prone condition, and its Speed is 0 until the end of its next turn. A buried creature can dig out of the grave by using its action to make a DC 15 Strength (Athletics) check. On a success, it digs 5 feet closer to the surface. If it succeeds by 5 or more, it reaches the surface. When the creature reaches the surface, it exits the ground with the Prone condition.
+
+The target automatically succeeds on its saving throw if it's standing on any thickness of stone or metal, or at least 2 inches of wood.
 
 \DndSpellHeader
   {Dominate Beast}
@@ -1094,6 +1130,22 @@ The creature is an ally to you and your companions. In combat, the creature shar
 	\textbf{Trigger:} The spirit takes damage from a creature.\\
 	\textbf{Response:} The spirit makes a Slam attack against that creature if possible, or the spirit moves up to half its Speed toward that creaturte without provoking Opportunity Attacks.	
 \end{DndMonster}
+
+\subsection*{Level 5}
+
+\DndSpellHeader
+  {Mortality}
+  {5th-Level Transmutation}
+  {Action}
+  {120 Feet}
+  {V, S, M (the skull of a humanoid encrusted in gems worth 200+ GP)}
+  {Concentration, up to 1 Minute}
+
+As part of casting this spell, you must expend five Hit Point Dice or the spell automatically fails. Roll the Hit Point Dice expended, then choose an Aberration, Celestial, Elemental, Fey, or Fiend within range and condemn it to a taste of mortality. The creature must succeed on a Charisma saving throw or its Hit Point maximum and current Hit Points are reduced by the amount rolled on the Hit Point Dice expended to cast the spell.
+
+For the duration of the spell, a creature that fails the saving throw loses all damage Immunities and Resistances, its creature type changes to Humanoid, and it takes an additional 1d4 Necrotic damage each time it takes damage.
+
+If a creature affected by this spell is reduced to 0 Hit Points, these changes become permanent and the creature dies. This final effect of the spell can only be reversed if the creature is restored to life and targeted by a Remove Curse spell or similar magic.
   
 \vfill\eject
 \section*{Miscellaneous}

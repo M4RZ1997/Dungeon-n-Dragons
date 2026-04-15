@@ -23,7 +23,7 @@
 \Background{Far Traveler}
 \Race{Autognome}
 
-\Level{8}
+\Level{9}
 
 % ABILITY SCORES
 % (correct scores, no modifiers are automatically applied)
@@ -95,7 +95,7 @@
 %\EquipShield
 \ArmorClass{\intcalcAdd{12}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}} % +1 Enhanced Defense
 
-\MaxHitPointsRolled{37} % Without Constitution Bonus, is added automatically (33 Rolled -1 Malus throughout campaign)
+\MaxHitPointsRolled{43} % Without Constitution Bonus, is added automatically (44 Rolled -1 Malus throughout campaign)
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
@@ -135,7 +135,8 @@
 }%
 \AddClassFeature{L}{\textbf{Eldritch Cannon}\\Once per day or use of spell slot}
 \AddClassFeature{E}{\textbf{Arcane Firearm}\\Additional d8 damage to spell damage}
-\AddClassFeature{R}{\textbf{Flash of Genius}\\Add \calculateModifier{\IntelligenceScoreValue} to your or allies' Ability Check or Saving Throw (\intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}} Uses)}
+\AddClassFeature{R}{\textbf{Flash of Genius}\\Add \calculateModifier{\IntelligenceScoreValue} to your or allies' Ability Check or Saving Throw (\intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}} Uses)\\}
+\AddClassFeature{R}{\textbf{Explosive Cannon}\\More potent Eldritch Cannon can explode on damage taken}
 
 \AddSpeciesFeature{E}{\textbf{Armored Casing}\\Natural AC = \intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
 \AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to Attack Roll, Ability Check, or Saving Throw (\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses)}}
@@ -143,6 +144,8 @@
 \AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\Resistance against Poison Damage\\Advantage vs. Poisoned/Paralyzed}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
 \AddSpeciesFeature{E}{\textbf{Specialized Design}\\Carpenter's and Woodcarver's Tools}
+
+\AddFeat{\textbf{Iedcaru's Scanning}}
 
 % BACKGROUND & APPEARANCE
 
@@ -214,9 +217,9 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 \addAttunedMagicItem{Cube of Force}
 
 \CP{}
-\SP{}
+\SP{5}
 \EP{}
-\GP{620}
+\GP{1459}
 \PP{}
 
 % SPELLS
@@ -227,6 +230,7 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
+\ThirdLevelSpellSlotsTotal{2}
 
 \addPreparedSpell{0}
 	{Mending}
@@ -363,6 +367,24 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 	{}
 	{V, S, CON save}
 	{V, S}
+\addPreparedSpell{3}
+	{Intellect Fortress}
+	{Action}
+	{30 Feet}
+	{T}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{3}
+	{Tiny Servant}
+	{1 Min}
+	{Touch}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
 
 \begin{document}
 
@@ -394,6 +416,11 @@ If the Mending spell is cast on you, you can spend a Hit Die, roll it, and regai
 You have resistance to poison damage and immunity to disease, and you have advantage on saving throws against being paralyzed or poisoned. You don't need to eat, drink, or breathe.
 \subsection*{Sentry's Rest}
 When you take a long rest, you spend at least 6 hours in an inactive, motionless state, instead of sleeping. In this state, you appear inert, but you remain conscious.
+
+\section*{Feats}
+\subsection*{Iedcaru's Scanning}
+While in physical contact with the walking castle Iedcaru you get a +10 bonus to all checks that rely on senses (i.e. Perception (Hearing), Investigation (Sight)).
+
 
 \section*{Artificer Traits}
 \subsection*{Magical Tinkering}
@@ -445,7 +472,6 @@ The homunculus is friendly to you and your companions, and it obeys your command
 In combat, the homunculus shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the Dodge action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are incapacitated, the homunculus can take any action of its choice, not just Dodge.
 
 The homunculus regains 2d6 hit points if the mending spell is cast on it. If you or the homunculus dies, it vanishes, leaving its heart in its space.
-\vfill\eject
 \begin{DndMonster}[width=0.5\textwidth]{Homunculus Servant}
     \DndMonsterType{Tiny Construct}
 
@@ -506,7 +532,7 @@ The homunculus regains 2d6 hit points if the mending spell is cast on it. If you
 \end{DndMonster}
 \vspace*{-\baselineskip}\hfill\\
 \begin{tikzpicture}[remember picture, overlay]
-	\node[opacity=1,inner sep=0pt, xshift=-2cm, yshift=-2.25cm] at (current page.north east){\includegraphics[width=0.175\paperwidth, keepaspectratio]{images/Homunculus_Servant.png}};
+	\node[opacity=1,inner sep=0pt, xshift=-2cm, yshift=-6cm] at (current page.north east){\includegraphics[width=0.175\paperwidth, keepaspectratio]{images/Homunculus_Servant.png}};
 \end{tikzpicture}
 \paragraph*{Resistant Armor}\hfill\\
 \textit{Item: A Suit or Armor (requires attunement)}\\
@@ -517,7 +543,6 @@ While wearing this ring, the creature can recover one expended spell slot as an 
 \paragraph*{Eyes of Minute Seeing}\hfill\\
 \textit{Item: Any spectacles or goggles}\\
 While wearing these lenses you have advantage on Intelligence (Investigation) checks that rely on sight while searching an area or studying an object within range.
-\vfill\eject
 \subsection*{Artillerist}
 \subsubsection*{Artillerist Spells}
 Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Artillerist Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.
@@ -545,6 +570,10 @@ Protector			&The cannon emits a burst of positive energy that grants itself and 
 At 5th level, You know how to turn a wand, staff, or rod into an arcane firearm, a conduit for your destructive spells. When you finish a long rest, you can use woodcarver's tools to carve special sigils into a wand, staff, or rod and thereby turn it into your arcane firearm. The sigils disappear from the object if you later carve them on a different item. The sigils otherwise last indefinitely.
 
 You can use your arcane firearm as a spellcasting focus for your artificer spells. When you cast an artificer spell through the firearm, roll a d8, and you gain a bonus to one of the spell's damage rolls equal to the number rolled.
+\subsubsection*{Explosive Cannon}
+Every Eldritch Cannon you create is now more destructive. You gain the following benefits.
+\paragraph*{Detonate} When your cannon takes damage, you can take a Reaction to command the cannon to detonate if you are within 60 feet of it. Doing so destroys the cannon and forces each creature within 20 feet of it to make a Dexterity saving throw against your spell save DC, taking 3d10 Force damage on a failed save or half as much damage on a successful one.
+\paragraph*{Firepower} The cannon's damage rolls and the number of Temporary Hit Points granted by Protector increase by 1d8.
 \subsection*{The Right Tool for the Job}
 At 3rd level, you've learned how to produce exactly the tool you need: with thieves' tools or artisan's tools in hand, you can magically create one set of artisan's tools in an unoccupied space within 5 feet of you. This creation requires 1 hour of uninterrupted work, which can coincide with a short or long rest. Though the product of magic, the tools are nonmagical, and they vanish when you use this feature again.
 \subsection*{Tool Expertise}
@@ -747,6 +776,36 @@ A nonmagical object that isn't being worn or carried also takes the damage if it
 You magically twist space around another creature you can see within range. The target must succeed on a Constitution saving throw (the target can choose to fail), or the target is teleported to an unoccupied space of your choice that you can see within range. The chosen space must be on a surface or in a liquid that can support the target without the target having to squeeze.
 
 \subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, the range of the spell increases by 30 feet for each slot level above 2nd.
+
+\subsection*{Level 3}
+
+\DndSpellHeader
+  {Intellect Fortress}
+  {3rd-Level Abjuration}
+  {Action}
+  {30 Feet}
+  {V}
+  {Concentration, up to 1 Hour}
+
+For the duration, you or one willing creature you can see within range has resistance to psychic damage, as well as advantage on Intelligence, Wisdom, and Charisma saving throws.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd. The creatures must be within 30 feet of each other when you target them.
+
+\DndSpellHeader
+  {Tiny Servant}
+  {3rd-Level Transmutation}
+  {1 Minute}
+  {Touch}
+  {V, S}
+  {8 Hours}
+
+You touch one Tiny, nonmagical object that isn't attached to another object or a surface and isn't being carried by another creature. The target animates and sprouts little arms and legs, becoming a creature under your control until the spell ends or the creature drops to 0 hit points. See the stat block for its statistics.
+
+As a bonus action, you can mentally command the creature if it is within 120 feet of you. (If you control multiple creatures with this spell, you can command any or all of them at the same time, issuing the same command to each one.) You decide what action the creature will take and where it will move during its next turn, or you can issue a simple, general command, such as to fetch a key, stand watch, or stack some books. If you issue no commands, the servant does nothing other than defend itself against hostile creatures. Once given an order, the servant continues to follow that order until its task is complete.
+
+When the creature drops to 0 hit points, it reverts to its original form, and any remaining damage carries over to that form.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 4th level or higher, you can animate two additional objects for each slot level above 3rd.
 
 \vfill\eject
 \section*{Miscellaneous}
