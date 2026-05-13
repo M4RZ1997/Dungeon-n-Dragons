@@ -1,0 +1,48 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  MAIN HEADER  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% CIRCLE
+\fill[fill=outline-color] (13.25,18.0) circle (3.75pt);
+
+% BACKGROUND
+\fill[fill=white] (8.5,87.75) -- ++(0,-59) arc[start angle=90, end angle=83, radius=15.5] -- (10.5,26) arc[start angle=90, end angle=0, radius=10.75] -- ++(2.5,0) arc[start angle=7, end angle=0, radius=15.5] -- (24,13.25) -- ++(236,0) -- ++(0,69) -- ++(-4.5,5.5) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.5pt, color=outline-color] (10, 87.75) -- ++(-1.5,0) -- ++(0,-59) arc[start angle=90, end angle=0, radius=15.5] -- ++(236,0) -- ++(0,1.5);
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (10.5,87.3) -- ++(0,-61.3) arc[start angle=90, end angle=0, radius=10.75] -- ++(238.3,0) -- ++(0,67.05) -- ++(-3.5,4) -- ++(5,1) -- cycle;
+
+% ORNAMENT
+\draw[line width=0.6pt, color=outline-color] (12.5,26) .. controls ++(0,0) and ++(-9.5,-1) .. ++(9.5,15)  .. controls ++(0,0) and ++(-0.5,-41.75) .. ++(-9.5,46.75);
+
+% INPUT LINES
+%% Character Name
+\draw[line width=0.75pt, color=lightgray!80] (21,34.5) -- ++(238,0);
+%% Background
+\draw[line width=0.75pt, color=lightgray!80] (21,55.5) -- ++(110,0);
+%% Class
+\draw[line width=0.75pt, color=lightgray!80] (137,55.5) -- ++(122,0);
+%% Species
+\draw[line width=0.75pt, color=lightgray!80] (21,76.5) -- ++(110,0);
+%% Subclass
+\draw[line width=0.75pt, color=lightgray!80] (137,76.5) -- ++(122,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# LEVEL-EGG #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% BACKGROUND
+\fill[fill=white] (279,51) ellipse (30 and 35);
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (279,51) ellipse (30 and 35);
+
+% ORNAMENT
+\draw[line width=0.6pt, color=outline-color] (254.75,72) -- (254.75,62) .. controls (254.75,62) and (254.75,55) .. (259.75,47) .. controls (259.75,47) and (264.75,39) .. (256.75,27);
+\draw[line width=0.6pt, color=outline-color] (254.75,62) .. controls (254.75,62) and (254.75,30) .. (273,17.5) -- (279,23.5) -- (285,17.5) .. controls (303.25,30) and (303.25,62) .. (303.25,62);
+\draw[line width=0.6pt, color=outline-color] (303.25,72) -- (303.25,62) .. controls (303.25,62) and (303.25,55) .. (298.25,47) .. controls (298.25,47) and (293.25,39) .. (301.25,27);
+
+% INPUT LINES
+%% Level
+\draw[line width=0.75pt, color=lightgray!80] (266.5,50) -- ++(25,0);
+%% XP
+\draw[line width=0.75pt, color=lightgray!80] (261.5,72) -- ++(35,0);

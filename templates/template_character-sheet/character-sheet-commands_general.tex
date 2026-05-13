@@ -139,6 +139,22 @@
 	\CharismaScore{\intcalcAdd{\CharismaRolledScoreValue}{\CharismaScoreBonusValue}}
 }%
 
+\newcommand{\calculateScoreModifiersAndSavingThrows}{%
+	\StrengthModifier{\calculateModifier{\StrengthScoreValue}}
+	\DexterityModifier{\calculateModifier{\DexterityScoreValue}}
+	\ConstitutionModifier{\calculateModifier{\ConstitutionScoreValue}}
+	\IntelligenceModifier{\calculateModifier{\IntelligenceScoreValue}}
+	\WisdomModifier{\calculateModifier{\WisdomScoreValue}}
+	\CharismaModifier{\calculateModifier{\CharismaScoreValue}}
+	
+	\StrengthSavingThrowModifier{\calculateSavingThrow{Strength}}
+	\DexteritySavingThrowModifier{\calculateSavingThrow{Dexterity}}
+	\ConstitutionSavingThrowModifier{\calculateSavingThrow{Constitution}}
+	\IntelligenceSavingThrowModifier{\calculateSavingThrow{Intelligence}}
+	\WisdomSavingThrowModifier{\calculateSavingThrow{Wisdom}}
+	\CharismaSavingThrowModifier{\calculateSavingThrow{Charisma}}
+}
+
 % ABILITY MODIFIERS BONUS
 \newcommand{\StrengthModifierBonusValue}{}
 \newcommand{\DexterityModifierBonusValue}{}
@@ -169,13 +185,13 @@
 \newcommand{\WisdomModifier}[1]{\renewcommand{\WisdomModifierValue}{#1}}
 \newcommand{\CharismaModifier}[1]{\renewcommand{\CharismaModifierValue}{#1}}
 
-\newcommand{\calculateModifier}[1]{
-	\ifnum #1<10
-		-\intcalcShr{\intcalcSub{11}{#1}}
-	\else
-		+\intcalcShr{\intcalcSub{#1}{10}}
-	\fi
-}
+\newcommand{\calculateModifier}[1]{%
+	\ifnum #1<10%
+		-\intcalcShr{\intcalcSub{11}{#1}}%
+	\else%
+		+\intcalcShr{\intcalcSub{#1}{10}}%
+	\fi%
+}%
 
 % SAVING THROWS
 \newcommand{\StrengthSavingThrowModifierValue}{}
@@ -209,6 +225,7 @@
 
 % JACK OF ALL TRADES
 \newcommand{\JackOfAllTradesValue}{0}
+\newcommand{\JackOfAllTrades}[1]{\renewcommand{\JackOfAllTradesValue}{#1}}
 
 % CALCULATIONS
 \newcommand{\calculateSavingThrow}[1]{%
@@ -314,6 +331,104 @@
 \newcommand{\SleightOfHandSkillModifier}[1]{\renewcommand{\SleightOfHandSkillModifierValue}{#1}}
 \newcommand{\StealthSkillModifier}[1]{\renewcommand{\StealthSkillModifierValue}{#1}}
 \newcommand{\SurvivalSkillModifier}[1]{\renewcommand{\SurvivalSkillModifierValue}{#1}}
+
+\newcommand{\calculateAllSkillModifiers}{%
+	%% STRENGTH
+	\AthleticsSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\AthleticsSkillModifierBonusValue}{\StrengthModifierValue}}%
+		{\StrengthModifierBonusValue}%
+		{\AthleticsProficiencyValue}%
+	}%
+	%% DEXTERITY
+	\AcrobaticsSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\AcrobaticsSkillModifierBonusValue}{\DexterityModifierValue}}%
+		{\DexterityModifierBonusValue}%
+		{\AcrobaticsProficiencyValue}%
+	}%
+	\SleightOfHandSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\SleightOfHandSkillModifierBonusValue}{\DexterityModifierValue}}%
+		{\DexterityModifierBonusValue}%
+		{\SleightOfHandProficiencyValue}%
+	}%
+	\StealthSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\StealthSkillModifierBonusValue}{\DexterityModifierValue}}%
+		{\DexterityModifierBonusValue}%
+		{\StealthProficiencyValue}%
+	}%
+	%% INTELLIGENCE
+	\ArcanaSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\ArcanaSkillModifierBonusValue}{\IntelligenceModifierValue}}%
+		{\IntelligenceModifierBonusValue}%
+		{\ArcanaProficiencyValue}%
+	}%
+	\HistorySkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\HistorySkillModifierBonusValue}{\IntelligenceModifierValue}}%
+		{\IntelligenceModifierBonusValue}%
+		{\HistoryProficiencyValue}%
+	}%
+	\InvestigationSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\InvestigationSkillModifierBonusValue}{\IntelligenceModifierValue}}%
+		{\IntelligenceModifierBonusValue}%
+		{\InvestigationProficiencyValue}%
+	}%
+	\NatureSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\NatureSkillModifierBonusValue}{\IntelligenceModifierValue}}%
+		{\IntelligenceModifierBonusValue}%
+		{\NatureProficiencyValue}%
+	}%
+	\ReligionSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\ReligionSkillModifierBonusValue}{\IntelligenceModifierValue}}%
+		{\IntelligenceModifierBonusValue}%
+		{\ReligionProficiencyValue}%
+	}%
+	%% WISDOM
+	\AnimalHandlingSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\AnimalHandlingSkillModifierBonusValue}{\WisdomModifierValue}}%
+		{\WisdomModifierBonusValue}%
+		{\AnimalHandlingProficiencyValue}%
+	}%
+	\InsightSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\InsightSkillModifierBonusValue}{\WisdomModifierValue}}%
+		{\WisdomModifierBonusValue}%
+		{\InsightProficiencyValue}%
+	}%
+	\MedicineSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\MedicineSkillModifierBonusValue}{\WisdomModifierValue}}%
+		{\WisdomModifierBonusValue}%
+		{\MedicineProficiencyValue}%
+	}%
+	\PerceptionSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\PerceptionSkillModifierBonusValue}{\WisdomModifierValue}}%
+		{\WisdomModifierBonusValue}%
+		{\PerceptionProficiencyValue}%
+	}%
+	\SurvivalSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\SurvivalSkillModifierBonusValue}{\WisdomModifierValue}}%
+		{\WisdomModifierBonusValue}%
+		{\SurvivalProficiencyValue}%
+	}%
+	%% CHARISMA
+	\DeceptionSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\DeceptionSkillModifierBonusValue}{\CharismaModifierValue}}%
+		{\CharismaModifierBonusValue}%
+		{\DeceptionProficiencyValue}%
+	}%
+	\IntimidationSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\IntimidationSkillModifierBonusValue}{\CharismaModifierValue}}%
+		{\CharismaModifierBonusValue}%
+		{\IntimidationProficiencyValue}%
+	}%
+	\PerformanceSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\PerformanceSkillModifierBonusValue}{\CharismaModifierValue}}%
+		{\CharismaModifierBonusValue}%
+		{\PerformanceProficiencyValue}%
+	}%
+	\PersuasionSkillModifier{\calculateSkillModifier%
+		{\intcalcAdd{\PersuasionSkillModifierBonusValue}{\CharismaModifierValue}}%
+		{\CharismaModifierBonusValue}%
+		{\PersuasionProficiencyValue}%
+	}%
+}%
 
 % BATTLE STATS
 \newcommand{\ArmorClassValue}{}
@@ -519,10 +634,10 @@
 	\renewcommand{\caXShift}{#3}%
 	\renewcommand{\caYShift}{#4}%
 	\renewcommand{\CharacterAppearancePictureValue}{#5}%
-	\ifthenelse{\equal{#1}{horizontal}}{%
-		\renewcommand{\CharacterAppearanceDescriptionValue}{#6}%
-	}{%
+	\ifthenelse{\equal{#1}{vertical}}{%
 		\setSplitDescription#6
+	}{%
+		\renewcommand{\CharacterAppearanceDescriptionValue}{#6}%
 	}%
 }%
 \newcommand{\Characterbackground}[1]{\renewcommand{\CharacterbackgroundValue}{#1}}\newcommand{\AlliesAndOrganizations}[2]{%
@@ -546,6 +661,16 @@
 \newcommand{\SpellSaveDCModifier}[1]{\renewcommand{\SpellSaveDCModifyValue}{#1}}
 \newcommand{\SpellAttackModifier}[1]{\renewcommand{\SpellAttackModifyValue}{#1}}
 
+\newcommand{\SpellcastingAbilityNameValue}{}
+\newcommand{\SpellcastingModifierValue}{}
+\newcommand{\SpellSaveDifficultyClassValue}{}
+\newcommand{\SpellAttackBonusValue}{}
+
+\newcommand{\SpellcastingAbilityName}[1]{\renewcommand{\SpellcastingAbilityNameValue}{#1}}
+\newcommand{\SpellcastingModifier}[1]{\renewcommand{\SpellcastingModifierValue}{#1}}
+\newcommand{\SpellSaveDifficultyClass}[1]{\renewcommand{\SpellSaveDifficultyClassValue}{#1}}
+\newcommand{\SpellAttackBonus}[1]{\renewcommand{\SpellAttackBonusValue}{#1}}
+
 \newcommand{\calculateSpellSaveDC}[1]{%
 	\intcalcAdd{8}{\intcalcAdd{#1}{\intcalcAdd{\ProficiencyValue}{\SpellSaveDCModifyValue}}}%
 }
@@ -554,6 +679,50 @@
 	\ifnum \intcalcAdd{#1}{\intcalcAdd{\SpellAttackModifyValue}{\ProficiencyValue}}>0 +\fi%
 	\intcalcAdd{#1}{\intcalcAdd{\SpellAttackModifyValue}{\ProficiencyValue}}%
 }
+
+\ExplSyntaxOn
+\NewDocumentCommand{\CalculateSpellStatistics}{}{%
+	\str_case_e:nnF { \SpellcastingAbilityValue }
+	{
+		{STR}{%
+			\SpellcastingAbilityName{Strength}%
+			\SpellcastingModifier{\StrengthModifierValue}%
+			\SpellSaveDifficultyClass{\calculateSpellSaveDC{\StrengthModifierValue}}%
+			\SpellAttackBonus{\calculateSpellAttack{\StrengthModifierValue}}%
+		}%
+		{DEX}{%
+			\SpellcastingAbilityName{Dexterity}%
+			\SpellcastingModifier{\DexterityModifierValue}%
+			\SpellSaveDifficultyClass{\calculateSpellSaveDC{\DexterityModifierValue}}%
+			\SpellAttackBonus{\calculateSpellAttack{\DexterityModifierValue}}%
+		}%
+		{CON}{%
+			\SpellcastingAbilityName{Constitution}%
+			\SpellcastingModifier{\ConstitutionModifierValue}%
+			\SpellSaveDifficultyClass{\calculateSpellSaveDC{\ConstitutionModifierValue}}%
+			\SpellAttackBonus{\calculateSpellAttack{\ConstitutionModifierValue}}%
+		}%
+		{INT}{%
+			\SpellcastingAbilityName{Intelligence}%
+			\SpellcastingModifier{\IntelligenceModifierValue}%
+			\SpellSaveDifficultyClass{\calculateSpellSaveDC{\IntelligenceModifierValue}}%
+			\SpellAttackBonus{\calculateSpellAttack{\IntelligenceModifierValue}}%
+		}%
+		{WIS}{%
+			\SpellcastingAbilityName{Wisdom}%
+			\SpellcastingModifier{\WisdomModifierValue}%
+			\SpellSaveDifficultyClass{\calculateSpellSaveDC{\WisdomModifierValue}}%
+			\SpellAttackBonus{\calculateSpellAttack{\WisdomModifierValue}}%
+		}%
+		{CHA}{%
+			\SpellcastingAbilityName{Charisma}%
+			\SpellcastingModifier{\CharismaModifierValue}%
+			\SpellSaveDifficultyClass{\calculateSpellSaveDC{\CharismaModifierValue}}%
+			\SpellAttackBonus{\calculateSpellAttack{\CharismaModifierValue}}%
+		}%
+	}
+}%
+\ExplSyntaxOff
 
 
 % TOTAL SPELL SLOTS
@@ -576,6 +745,9 @@
 \newcommand{\SeventhLevelSpellSlotsTotal}[1]{\renewcommand{\SeventhLevelSpellSlotsTotalValue}{#1}}
 \newcommand{\EighthLevelSpellSlotsTotal}[1]{\renewcommand{\EighthLevelSpellSlotsTotalValue}{#1}}
 \newcommand{\NinthLevelSpellSlotsTotal}[1]{\renewcommand{\NinthLevelSpellSlotsTotalValue}{#1}}
+
+% COUNTER FOR SPELL STUFF
+\newcounter{spellHelper}
 
 % CANTRIPS
 \newcommand{\CantripSlotAValue}{}

@@ -1,0 +1,303 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCY BONUS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (ProficiencyBonusRefPoint) at (12.25,117);
+
+% CIRCLE
+\fill[fill=outline-color] (ProficiencyBonusRefPoint) circle (3pt);
+
+% BACKGROUND
+\fill[fill=white] (ProficiencyBonusRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(84.5,0) -- ++(0,60) -- ++(-5.5,6.5) -- ++(-80.5,0) -- ++(-5.5,-6.5) -- cycle;
+
+% OUTLINE
+\draw[line width=1pt, color=outline-color] (ProficiencyBonusRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(84.5,0) -- ++(0,60) -- ++(-5,5.8) -- ++(3.5,0.7) -- ++(-88.5,0) -- ++(3.5,-0.7) -- ++(-5,-5.8) -- cycle;
+\draw[line width=1pt, color=outline-color] (ProficiencyBonusRefPoint) ++(27,16) -- ++(0,35) arc[start angle=-90, end angle=0, radius=7] -- ++(19.5,0) arc[start angle=180, end angle=270, radius=7] -- ++(0,-35);
+
+% ORNAMENT
+\draw[line width=0.75pt, color=outline-color] (ProficiencyBonusRefPoint) ++(6,64.5) -- ++(0,-41);
+\draw[line width=0.75pt, color=outline-color] (ProficiencyBonusRefPoint) ++(11,64.5) -- ++(0,-15) arc[start angle=0, end angle=-50, radius=36];
+\draw[line width=0.4pt, color=outline-color] (ProficiencyBonusRefPoint) ++(27,25) -- ++(-5,0) arc[start angle=-40, end angle=-70, radius=30];
+\draw[line width=0.4pt, color=outline-color] (ProficiencyBonusRefPoint) ++(27,41.5) arc[start angle=25, end angle=-10, radius=43];
+\draw[line width=0.4pt, color=outline-color] (ProficiencyBonusRefPoint) ++(60.5,41.5) arc[start angle=155, end angle=190, radius=43];
+\draw[line width=0.4pt, color=outline-color] (ProficiencyBonusRefPoint) ++(60.5,25) -- ++(5,0) arc[start angle=220, end angle=250, radius=30];
+\draw[line width=0.75pt, color=outline-color] (ProficiencyBonusRefPoint) ++(76.5,64.5) -- ++(0,-15) arc[start angle=180, end angle=230, radius=36];
+\draw[line width=0.75pt, color=outline-color] (ProficiencyBonusRefPoint) ++(81.5,64.5) -- ++(0,-41);
+
+% DIVIDER
+\draw[line width=1.2pt, color=black] (ProficiencyBonusRefPoint) ++(3,16) -- ++(81.5,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  STRENGTH STAT BLOCK  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (StrengthRefPoint) at (56,195.25);
+
+% BACKGROUND
+\fill[fill=white] (StrengthRefPoint) -- ++(-32,0) -- ++(0,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,3) -- ++(-1.5,0) -- ++(0,86.5) -- ++(1.5,1.5) -- ++(0,2) -- ++(5,5) -- ++(81.5,0) -- ++(5,-5) -- ++(0,-2) -- ++(1.5,-1.5) -- ++(0,-86.5) -- ++(-1.5,0) -- ++(0,-3) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0) -- ++(0,-2) -- cycle;
+
+% BIG OUTLINE
+%% Score
+\draw[line width=1pt, color=outline-color] (StrengthRefPoint) ++(-32,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,56.25) -- ++(91.5,0) -- ++(0,-56.25) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0);
+%% Saving Throw
+\draw[line width=1pt, color=outline-color] (StrengthRefPoint) ++(-45.75,63) -- ++(0,21) -- ++(91.5,0) -- ++(0,-21);
+%% Abilities
+\draw[line width=1pt, color=outline-color] (StrengthRefPoint) ++(-45.75,84) -- ++(0,16.5) -- ++(4,3.8) -- ++(-3.5,0.7) -- ++(90.5,0) -- ++(-3.5,-0.7) -- ++(4,-3.8) -- ++(0,-16.5);
+
+% MIDDLE OUTLINE
+\draw[line width=0.75pt, color=outline-color] (StrengthRefPoint) -- ++(-32,0) arc[start angle=00, end angle=33, radius=85] arc[start angle=160, end angle=146.5, radius=80];
+\draw[line width=0.75pt, color=outline-color] (StrengthRefPoint) -- ++(32,0) arc[start angle=180, end angle=147, radius=85] arc[start angle=20, end angle=33.5, radius=80];
+
+% SMALL OUTLINE
+\draw[line width=0.4pt, color=outline-color] (StrengthRefPoint) ++(-32.5,2) arc[start angle=34, end angle=90, radius=18] -- ++(0,86) -- ++(9,9);
+\draw[line width=0.4pt, color=outline-color] (StrengthRefPoint) ++(32.5,2) arc[start angle=146, end angle=90, radius=18] -- ++(0,86) -- ++(-9,9);
+
+% ORNAMENT
+\draw[line width=0.75pt, color=gray!50] (StrengthRefPoint) ++(-23,48) arc[start angle=-10, end angle=-42.5, radius=35];
+\draw[line width=0.75pt, color=gray!50] (StrengthRefPoint) ++(-16.5,50.5) -- ++(3,-5.5) -- ++(3,5.5);
+\draw[line width=0.75pt, color=gray!50] (StrengthRefPoint) ++(-4,48) arc[start angle=190, end angle=222.5, radius=35];
+
+% SCORE FIELD
+\draw[line width=0.75pt, color=outline-color] (StrengthRefPoint) ++(-13.5,32.25) circle (18.25);
+\draw[line width=0.75pt, color=outline-color] (StrengthRefPoint) ++(-3,47) -- ++(39,0) -- ++(-4,-21) -- ++(-28,0);
+\draw[line width=0.75pt, color=outline-color] (StrengthRefPoint) ++(34,47) -- ++(-4,-21);
+\draw[line width=0.75pt, color=outline-color] (StrengthRefPoint) ++(1,22) -- ++(22,0) arc[start angle=180, end angle=90, radius=4];
+
+% INPUT LINES
+\draw[line width=0.75pt, color=lightgray!80] (StrengthRefPoint) ++(-30,76.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (StrengthRefPoint) ++(-30,96.75) -- ++(16,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DEXTERITY  STAT BLOCK #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (DexterityRefPoint) at (56,313);
+
+% BACKGROUND
+\fill[fill=white] (DexterityRefPoint) -- ++(-32,0) -- ++(0,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,3) -- ++(-1.5,0) -- ++(0,115) -- ++(1.5,1.5) -- ++(0,2) -- ++(5,5) -- ++(81.5,0) -- ++(5,-5) -- ++(0,-2) -- ++(1.5,-1.5) -- ++(0,-115) -- ++(-1.5,0) -- ++(0,-3) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0) -- ++(0,-2) -- cycle;
+
+% BIG OUTLINE
+%% Score
+\draw[line width=1pt, color=outline-color] (DexterityRefPoint) ++(-32,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,56.25) -- ++(91.5,0) -- ++(0,-56.25) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0);
+%% Saving Throw
+\draw[line width=1pt, color=outline-color] (DexterityRefPoint) ++(-45.75,63) -- ++(0,21) -- ++(91.5,0) -- ++(0,-21);
+%% Abilities
+\draw[line width=1pt, color=outline-color] (DexterityRefPoint) ++(-45.75,84) -- ++(0,45) -- ++(4,3.8) -- ++(-3.5,0.7) -- ++(90.5,0) -- ++(-3.5,-0.7) -- ++(4,-3.8) -- ++(0,-45);
+
+% MIDDLE OUTLINE
+\draw[line width=0.75pt, color=outline-color] (DexterityRefPoint) -- ++(-32,0) arc[start angle=00, end angle=33, radius=85] arc[start angle=160, end angle=146.5, radius=80];
+\draw[line width=0.75pt, color=outline-color] (DexterityRefPoint) -- ++(32,0) arc[start angle=180, end angle=147, radius=85] arc[start angle=20, end angle=33.5, radius=80];
+
+% SMALL OUTLINE
+\draw[line width=0.4pt, color=outline-color] (DexterityRefPoint) ++(-32.5,2) arc[start angle=34, end angle=90, radius=18] -- ++(0,114.5) -- ++(9,9);
+\draw[line width=0.4pt, color=outline-color] (DexterityRefPoint) ++(32.5,2) arc[start angle=146, end angle=90, radius=18] -- ++(0,114.5) -- ++(-9,9);
+
+% ORNAMENT
+\draw[line width=0.75pt, color=gray!50] (DexterityRefPoint) ++(-23,48) arc[start angle=-10, end angle=-42.5, radius=35];
+\draw[line width=0.75pt, color=gray!50] (DexterityRefPoint) ++(-16.5,50.5) -- ++(3,-5.5) -- ++(3,5.5);
+\draw[line width=0.75pt, color=gray!50] (DexterityRefPoint) ++(-4,48) arc[start angle=190, end angle=222.5, radius=35];
+
+% SCORE FIELD
+\draw[line width=0.75pt, color=outline-color] (DexterityRefPoint) ++(-13.5,32.25) circle (18.25);
+\draw[line width=0.75pt, color=outline-color] (DexterityRefPoint) ++(-3,47) -- ++(39,0) -- ++(-4,-21) -- ++(-28,0);
+\draw[line width=0.75pt, color=outline-color] (DexterityRefPoint) ++(34,47) -- ++(-4,-21);
+\draw[line width=0.75pt, color=outline-color] (DexterityRefPoint) ++(1,22) -- ++(22,0) arc[start angle=180, end angle=90, radius=4];
+
+% INPUT LINES
+\draw[line width=0.75pt, color=lightgray!80] (DexterityRefPoint) ++(-30,76.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (DexterityRefPoint) ++(-30,96.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (DexterityRefPoint) ++(-30,111.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (DexterityRefPoint) ++(-30,126.75) -- ++(16,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CONSTITUTION STAT BLOCK  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (ConstitutionRefPoint) at (56,459);
+
+% BACKGROUND
+\fill[fill=white] (ConstitutionRefPoint) -- ++(-32,0) -- ++(0,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,3) -- ++(-1.5,0) -- ++(0,66.5) -- ++(1.5,1.5) -- ++(0,2) -- ++(5,5) -- ++(81.5,0) -- ++(5,-5) -- ++(0,-2) -- ++(1.5,-1.5) -- ++(0,-66.5) -- ++(-1.5,0) -- ++(0,-3) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0) -- ++(0,-2) -- cycle;
+
+% BIG OUTLINE
+%% Score
+\draw[line width=1pt, color=outline-color] (ConstitutionRefPoint) ++(-32,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,56.25) -- ++(91.5,0) -- ++(0,-56.25) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0);
+%% Saving Throw
+\draw[line width=1pt, color=outline-color] (ConstitutionRefPoint) ++(-45.75,63) -- ++(0,17.5) -- ++(4,3.8) -- ++(-3.5,0.7) -- ++(90.5,0) -- ++(-3.5,-0.7) -- ++(4,-3.8) -- ++(0,-17.5);
+
+% MIDDLE OUTLINE
+\draw[line width=0.75pt, color=outline-color] (ConstitutionRefPoint) -- ++(-32,0) arc[start angle=00, end angle=33, radius=85] arc[start angle=160, end angle=146.5, radius=80];
+\draw[line width=0.75pt, color=outline-color] (ConstitutionRefPoint) -- ++(32,0) arc[start angle=180, end angle=147, radius=85] arc[start angle=20, end angle=33.5, radius=80];
+
+% SMALL OUTLINE
+\draw[line width=0.4pt, color=outline-color] (ConstitutionRefPoint) ++(-32.5,2) arc[start angle=34, end angle=90, radius=18] -- ++(0,66) -- ++(9,9);
+\draw[line width=0.4pt, color=outline-color] (ConstitutionRefPoint) ++(32.5,2) arc[start angle=146, end angle=90, radius=18] -- ++(0,66) -- ++(-9,9);
+
+% ORNAMENT
+\draw[line width=0.75pt, color=gray!50] (ConstitutionRefPoint) ++(-23,48) arc[start angle=-10, end angle=-42.5, radius=35];
+\draw[line width=0.75pt, color=gray!50] (ConstitutionRefPoint) ++(-16.5,50.5) -- ++(3,-5.5) -- ++(3,5.5);
+\draw[line width=0.75pt, color=gray!50] (ConstitutionRefPoint) ++(-4,48) arc[start angle=190, end angle=222.5, radius=35];
+
+% SCORE FIELD
+\draw[line width=0.75pt, color=outline-color] (ConstitutionRefPoint) ++(-13.5,32.25) circle (18.25);
+\draw[line width=0.75pt, color=outline-color] (ConstitutionRefPoint) ++(-3,47) -- ++(39,0) -- ++(-4,-21) -- ++(-28,0);
+\draw[line width=0.75pt, color=outline-color] (ConstitutionRefPoint) ++(34,47) -- ++(-4,-21);
+\draw[line width=0.75pt, color=outline-color] (ConstitutionRefPoint) ++(1,22) -- ++(22,0) arc[start angle=180, end angle=90, radius=4];
+
+% INPUT LINES
+\draw[line width=0.75pt, color=lightgray!80] (ConstitutionRefPoint) ++(-30,76.75) -- ++(16,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  INTELLIGENCE STAT BLOCK  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (IntelligenceRefPoint) at (165,115);
+
+% BACKGROUND
+\fill[fill=white] (IntelligenceRefPoint) -- ++(-32,0) -- ++(0,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,3) -- ++(-1.5,0) -- ++(0,144) -- ++(1.5,1.5) -- ++(0,2) -- ++(5,5) -- ++(81.5,0) -- ++(5,-5) -- ++(0,-2) -- ++(1.5,-1.5) -- ++(0,-144) -- ++(-1.5,0) -- ++(0,-3) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0) -- ++(0,-2) -- cycle;
+
+% BIG OUTLINE
+%% Score
+\draw[line width=1pt, color=outline-color] (IntelligenceRefPoint) ++(-32,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,56.25) -- ++(91.5,0) -- ++(0,-56.25) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0);
+%% Saving Throw
+\draw[line width=1pt, color=outline-color] (IntelligenceRefPoint) ++(-45.75,63) -- ++(0,21) -- ++(91.5,0) -- ++(0,-21);
+%% Abilities
+\draw[line width=1pt, color=outline-color] (IntelligenceRefPoint) ++(-45.75,84) -- ++(0,74) -- ++(4,3.8) -- ++(-3.5,0.7) -- ++(90.5,0) -- ++(-3.5,-0.7) -- ++(4,-3.8) -- ++(0,-74);
+
+% MIDDLE OUTLINE
+\draw[line width=0.75pt, color=outline-color] (IntelligenceRefPoint) -- ++(-32,0) arc[start angle=00, end angle=33, radius=85] arc[start angle=160, end angle=146.5, radius=80];
+\draw[line width=0.75pt, color=outline-color] (IntelligenceRefPoint) -- ++(32,0) arc[start angle=180, end angle=147, radius=85] arc[start angle=20, end angle=33.5, radius=80];
+
+% SMALL OUTLINE
+\draw[line width=0.4pt, color=outline-color] (IntelligenceRefPoint) ++(-32.5,2) arc[start angle=34, end angle=90, radius=18] -- ++(0,143.5) -- ++(9,9);
+\draw[line width=0.4pt, color=outline-color] (IntelligenceRefPoint) ++(32.5,2) arc[start angle=146, end angle=90, radius=18] -- ++(0,143.5) -- ++(-9,9);
+
+% ORNAMENT
+\draw[line width=0.75pt, color=gray!50] (IntelligenceRefPoint) ++(-23,48) arc[start angle=-10, end angle=-42.5, radius=35];
+\draw[line width=0.75pt, color=gray!50] (IntelligenceRefPoint) ++(-16.5,50.5) -- ++(3,-5.5) -- ++(3,5.5);
+\draw[line width=0.75pt, color=gray!50] (IntelligenceRefPoint) ++(-4,48) arc[start angle=190, end angle=222.5, radius=35];
+
+% SCORE FIELD
+\draw[line width=0.75pt, color=outline-color] (IntelligenceRefPoint) ++(-13.5,32.25) circle (18.25);
+\draw[line width=0.75pt, color=outline-color] (IntelligenceRefPoint) ++(-3,47) -- ++(39,0) -- ++(-4,-21) -- ++(-28,0);
+\draw[line width=0.75pt, color=outline-color] (IntelligenceRefPoint) ++(34,47) -- ++(-4,-21);
+\draw[line width=0.75pt, color=outline-color] (IntelligenceRefPoint) ++(1,22) -- ++(22,0) arc[start angle=180, end angle=90, radius=4];
+
+% INPUT LINES
+\draw[line width=0.75pt, color=lightgray!80] (IntelligenceRefPoint) ++(-30,76.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (IntelligenceRefPoint) ++(-30,96.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (IntelligenceRefPoint) ++(-30,111.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (IntelligenceRefPoint) ++(-30,126.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (IntelligenceRefPoint) ++(-30,141.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (IntelligenceRefPoint) ++(-30,156.75) -- ++(16,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  WISDOM STAT BLOCK  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (WisdomRefPoint) at (165,292);
+
+% BACKGROUND
+\fill[fill=white] (WisdomRefPoint) -- ++(-32,0) -- ++(0,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,3) -- ++(-1.5,0) -- ++(0,144) -- ++(1.5,1.5) -- ++(0,2) -- ++(5,5) -- ++(81.5,0) -- ++(5,-5) -- ++(0,-2) -- ++(1.5,-1.5) -- ++(0,-144) -- ++(-1.5,0) -- ++(0,-3) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0) -- ++(0,-2) -- cycle;
+
+% BIG OUTLINE
+%% Score
+\draw[line width=1pt, color=outline-color] (WisdomRefPoint) ++(-32,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,56.25) -- ++(91.5,0) -- ++(0,-56.25) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0);
+%% Saving Throw
+\draw[line width=1pt, color=outline-color] (WisdomRefPoint) ++(-45.75,63) -- ++(0,21) -- ++(91.5,0) -- ++(0,-21);
+%% Abilities
+\draw[line width=1pt, color=outline-color] (WisdomRefPoint) ++(-45.75,84) -- ++(0,74) -- ++(4,3.8) -- ++(-3.5,0.7) -- ++(90.5,0) -- ++(-3.5,-0.7) -- ++(4,-3.8) -- ++(0,-74);
+
+% MIDDLE OUTLINE
+\draw[line width=0.75pt, color=outline-color] (WisdomRefPoint) -- ++(-32,0) arc[start angle=00, end angle=33, radius=85] arc[start angle=160, end angle=146.5, radius=80];
+\draw[line width=0.75pt, color=outline-color] (WisdomRefPoint) -- ++(32,0) arc[start angle=180, end angle=147, radius=85] arc[start angle=20, end angle=33.5, radius=80];
+
+% SMALL OUTLINE
+\draw[line width=0.4pt, color=outline-color] (WisdomRefPoint) ++(-32.5,2) arc[start angle=34, end angle=90, radius=18] -- ++(0,143.5) -- ++(9,9);
+\draw[line width=0.4pt, color=outline-color] (WisdomRefPoint) ++(32.5,2) arc[start angle=146, end angle=90, radius=18] -- ++(0,143.5) -- ++(-9,9);
+
+% ORNAMENT
+\draw[line width=0.75pt, color=gray!50] (WisdomRefPoint) ++(-23,48) arc[start angle=-10, end angle=-42.5, radius=35];
+\draw[line width=0.75pt, color=gray!50] (WisdomRefPoint) ++(-16.5,50.5) -- ++(3,-5.5) -- ++(3,5.5);
+\draw[line width=0.75pt, color=gray!50] (WisdomRefPoint) ++(-4,48) arc[start angle=190, end angle=222.5, radius=35];
+
+% SCORE FIELD
+\draw[line width=0.75pt, color=outline-color] (WisdomRefPoint) ++(-13.5,32.25) circle (18.25);
+\draw[line width=0.75pt, color=outline-color] (WisdomRefPoint) ++(-3,47) -- ++(39,0) -- ++(-4,-21) -- ++(-28,0);
+\draw[line width=0.75pt, color=outline-color] (WisdomRefPoint) ++(34,47) -- ++(-4,-21);
+\draw[line width=0.75pt, color=outline-color] (WisdomRefPoint) ++(1,22) -- ++(22,0) arc[start angle=180, end angle=90, radius=4];
+
+% INPUT LINES
+\draw[line width=0.75pt, color=lightgray!80] (WisdomRefPoint) ++(-30,76.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (WisdomRefPoint) ++(-30,96.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (WisdomRefPoint) ++(-30,111.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (WisdomRefPoint) ++(-30,126.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (WisdomRefPoint) ++(-30,141.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (WisdomRefPoint) ++(-30,156.75) -- ++(16,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARISMA STAT BLOCK  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (CharismaRefPoint) at (165,468);
+
+% BACKGROUND
+\fill[fill=white] (CharismaRefPoint) -- ++(-32,0) -- ++(0,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,3) -- ++(-1.5,0) -- ++(0,130) -- ++(1.5,1.5) -- ++(0,2) -- ++(5,5) -- ++(81.5,0) -- ++(5,-5) -- ++(0,-2) -- ++(1.5,-1.5) -- ++(0,-130) -- ++(-1.5,0) -- ++(0,-3) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0) -- ++(0,-2) -- cycle;
+
+% BIG OUTLINE
+%% Score
+\draw[line width=1pt, color=outline-color] (CharismaRefPoint) ++(-32,2) -- ++(-9,0) arc[start angle=0, end angle=90, radius=4.75] -- ++(0,56.25) -- ++(91.5,0) -- ++(0,-56.25) arc[start angle=90, end angle=180, radius=4.75] -- ++(-9,0);
+%% Saving Throw
+\draw[line width=1pt, color=outline-color] (CharismaRefPoint) ++(-45.75,63) -- ++(0,21) -- ++(91.5,0) -- ++(0,-21);
+%% Abilities
+\draw[line width=1pt, color=outline-color] (CharismaRefPoint) ++(-45.75,84) -- ++(0,60) -- ++(4,3.8) -- ++(-3.5,0.7) -- ++(90.5,0) -- ++(-3.5,-0.7) -- ++(4,-3.8) -- ++(0,-60);
+
+% MIDDLE OUTLINE
+\draw[line width=0.75pt, color=outline-color] (CharismaRefPoint) -- ++(-32,0) arc[start angle=00, end angle=33, radius=85] arc[start angle=160, end angle=146.5, radius=80];
+\draw[line width=0.75pt, color=outline-color] (CharismaRefPoint) -- ++(32,0) arc[start angle=180, end angle=147, radius=85] arc[start angle=20, end angle=33.5, radius=80];
+
+% SMALL OUTLINE
+\draw[line width=0.4pt, color=outline-color] (CharismaRefPoint) ++(-32.5,2) arc[start angle=34, end angle=90, radius=18] -- ++(0,129.5) -- ++(9,9);
+\draw[line width=0.4pt, color=outline-color] (CharismaRefPoint) ++(32.5,2) arc[start angle=146, end angle=90, radius=18] -- ++(0,129.5) -- ++(-9,9);
+
+% ORNAMENT
+\draw[line width=0.75pt, color=gray!50] (CharismaRefPoint) ++(-23,48) arc[start angle=-10, end angle=-42.5, radius=35];
+\draw[line width=0.75pt, color=gray!50] (CharismaRefPoint) ++(-16.5,50.5) -- ++(3,-5.5) -- ++(3,5.5);
+\draw[line width=0.75pt, color=gray!50] (CharismaRefPoint) ++(-4,48) arc[start angle=190, end angle=222.5, radius=35];
+
+% SCORE FIELD
+\draw[line width=0.75pt, color=outline-color] (CharismaRefPoint) ++(-13.5,32.25) circle (18.25);
+\draw[line width=0.75pt, color=outline-color] (CharismaRefPoint) ++(-3,47) -- ++(39,0) -- ++(-4,-21) -- ++(-28,0);
+\draw[line width=0.75pt, color=outline-color] (CharismaRefPoint) ++(34,47) -- ++(-4,-21);
+\draw[line width=0.75pt, color=outline-color] (CharismaRefPoint) ++(1,22) -- ++(22,0) arc[start angle=180, end angle=90, radius=4];
+
+% INPUT LINES
+\draw[line width=0.75pt, color=lightgray!80] (CharismaRefPoint) ++(-30,76.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (CharismaRefPoint) ++(-30,96.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (CharismaRefPoint) ++(-30,111.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (CharismaRefPoint) ++(-30,126.75) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (CharismaRefPoint) ++(-30,141.75) -- ++(16,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  HEROIC  INSPIRATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% CIRCLE
+\fill[fill=outline-color] (12.25,560) circle (3pt);
+
+% BACKGROUND
+\fill[fill=white] (10.25,565) arc[start angle=90, end angle=0, radius=7] -- ++(84.5,0) -- ++(0,30) .. controls ++(0,0) and ++(45.75,0) .. ++(-45.75,28.5) .. controls ++(0,0) and ++(0,28.5) .. ++(-45.75,-28.5) -- cycle;
+
+% OUTLINE
+\draw[line width=1pt, color=outline-color] (10.25,565) arc[start angle=90, end angle=0, radius=7] -- ++(84.5,0) -- ++(0,30) .. controls ++(0,0) and ++(45.75,0) .. ++(-45.75,28.5) .. controls ++(0,0) and ++(0,28.5) .. ++(-45.75,-28.5) -- cycle;
+
+% HEROIC INSPIRATION STAR
+\fill[color=outline-color] (56,589) -- ++(2,8) -- ++(8,2) -- ++(-8,2) -- ++(-2,8) -- ++(-2,-8) -- ++(-8,-2) -- ++(8,-2) -- cycle;
+\filldraw[line width=0.8pt, color=black, fill=white] (61,594) .. controls (59.5,599) .. (61,604) .. controls (56,602.5) .. (51,604) .. controls (52.5,599) .. (51,594) .. controls (56,595.5) .. (61,594) -- cycle;
+
+% ORNAMENT
+\draw[line width=0.75, color=outline-color] (10.25,584) .. controls ++(0,0) and ++(-7.5,-5) .. ++(10.5,14) .. controls ++(0,0) and ++(0,-8) .. ++(7.5,13.5);
+\draw[line width=0.75, color=outline-color] (101.75,584) .. controls ++(0,0) and ++(7.5,-5) .. ++(-10.5,14) .. controls ++(0,0) and ++(0,-8) .. ++(-7.5,13.5);
+\begin{scope}
+	\clip[draw=none] (15.25,584) rectangle ++(81.5,33);
+	\draw[line width=1, color=outline-color] (56,597) circle (19.25);
+	\draw[line width=0.75, color=outline-color] (41.5,584) -- ++(0,26);
+	\draw[line width=0.75, color=outline-color] (70.5,584) -- ++(0,26);
+	\draw[line width=0.75, color=outline-color] (41.5,600) arc[start angle=-10, end angle=-90, radius=19];
+	\draw[line width=0.75, color=outline-color] (70.5,600) arc[start angle=190, end angle=270, radius=19];
+\end{scope}
+
+
+% DIVIDER
+\draw[line width=1.2pt, color=black] (15.25,584) -- ++(81.5,0);

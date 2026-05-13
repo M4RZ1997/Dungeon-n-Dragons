@@ -1,0 +1,55 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node[inner sep=0pt] at (152.5,75) {\LARGE\entryfont\CharacterNameValue};
+
+\node[anchor=west, inner sep=0pt] at (266,59) {\Large\entryfont\AgeValue};
+\node[anchor=west, inner sep=0pt] at (379,59) {\Large\entryfont\HeightValue};
+\node[anchor=west, inner sep=0pt] at (476,59) {\Large\entryfont\WeightValue};
+\node[anchor=west, inner sep=0pt] at (266,85) {\Large\entryfont\EyesValue};
+\node[anchor=west, inner sep=0pt] at (379,85) {\Large\entryfont\SkinValue};
+\node[anchor=west, inner sep=0pt] at (476,85) {\Large\entryfont\HairValue};
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER  APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node at (0,0) {\parbox{150pt}{\justify{}}};
+\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{none}}{%
+	\node[anchor=north west, inner sep=0pt] at (36,130) {\parbox{162.5pt}{\entryfont\justify\CharacterAppearanceDescriptionValue}};
+}{%
+	\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{vertical}}{%
+		\node[anchor=north west, inner sep=0pt] at (122,130) {\parbox{76.5pt}{\entryfont\justify\CharacterAppearanceDescriptionValue\linebreak}};
+		\node at (0,0) {\parbox{150pt}{\justify{}}};
+		\pgfmathsetmacro{\vpos}{130 + \CharacterAppearanceTextOffset * \baselineskip}
+		\node[anchor=north west, inner sep=0pt] at (36,\vpos) {\parbox{162.5pt}{\entryfont\justify\CharacterAppearanceSecondDescriptionValue}};
+	}{%
+		\pgfmathsetmacro{\vpos}{130 + \CharacterAppearanceTextOffset * \baselineskip}
+		\node[anchor=north west, inner sep=0pt] at (36,\vpos) {\parbox{162.5pt}{\entryfont\justify\CharacterAppearanceDescriptionValue}};
+	}%
+}
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ALLIES & ORGANIZATION #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% TEXT
+\node at (0,0) {\parbox{150pt}{\justify{}}};
+\node[anchor=north west, inner sep=0pt] at (225,130) {\parbox{197pt}{\entryfont\justify\AlliesAndOrganizationsValue}};
+\node at (0,0) {\parbox{150pt}{\justify{}}};
+\pgfmathsetmacro{\vpos}{130 + 14 * \baselineskip}
+\node[anchor=north west, inner sep=0pt] at (225,\vpos) {\parbox{353pt}{\entryfont\justify\AlliesAndOrganizationsSecondValue}};
+% SYMBOL
+\node[anchor=west, inner sep=0pt] at (437,154.5) {\entryfont\textbf{\OrganizationNameValue}};
+\node[inner sep=0pt] at (505,220.25) {\includegraphics[width=137pt, height=100pt, keepaspectratio]{\OrganizationSymbolValue}};
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  ADDITIONAL FEATURE & TRAITS  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node at (0,0) {\parbox{150pt}{\justify{}}};
+\node[anchor=north west, inner sep=0pt] at (36,385.5) {\parbox{162.5pt}{\entryfont\justify\AdditionalFeaturesAndTraitsValue}};
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER  BACKGROUND #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node at (0,0) {\parbox{150pt}{\justify{}}};
+\node[anchor=north west, inner sep=0pt] at (225,375) {\parbox{353pt}{\entryfont\justify\CharacterbackgroundValue}};
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# TREASURES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node at (0,0) {\parbox{150pt}{\justify{}}};
+\node[anchor=north west, inner sep=0pt] at (225,604) {\parbox{353pt}{\entryfont\justify\TreasureValue}};

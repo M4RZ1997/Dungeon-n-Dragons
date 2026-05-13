@@ -1,0 +1,172 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  ARMOR-CLASS  SHIELD  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% BACKGROUND
+\fill[fill=white] (318.75,15) -- ++(0,48) .. controls ++(0,0) and ++(-19.25,-13.8) .. ++(26.25,24.3) .. controls ++(19.25,-13.8) and ++(0,0) .. ++(26.25,-24.3) -- ++(0,-48) -- cycle;
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (315,15) -- ++(60,0);
+\draw[line width=1.4pt, color=outline-color] (318.75,15) -- ++(0,48) .. controls ++(0,0) and ++(-19.25,-13.8) .. ++(26.25,24.3) % Controls #1 relative to Point A, #2 relative to Point B
+.. controls ++(19.25,-13.8) and ++(0,0) .. ++(26.25,-24.3) -- ++(0,-48);
+
+% ORNAMENT
+\begin{scope}
+	\draw[clip, draw=none] (318.75,67) rectangle ++(52.5,-17);
+	\draw[line width=0.75, color=outline-color] (345,40) ellipse (27.5 and 32.5);
+\end{scope}
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# HIT POINTS // DEATH SAVES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% CIRCLE
+\fill[fill=outline-color] (601,18) circle (3.75pt);
+
+% BACKGROUND
+\fill[fill=white] (605.75,87.75) -- ++(0,-59) arc[start angle=90, end angle=97, radius=15.5] -- (603.75,26) arc[start angle=90, end angle=180, radius=10.75] -- ++(-2.5,0) arc[start angle=173, end angle=180, radius=15.5] -- (590.25,13.25) -- ++(-209.5,0) -- ++(0,74.5) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.5pt, color=outline-color] (604.25, 87.75) -- ++(1.5,0) -- ++(0,-59) arc[start angle=90, end angle=180, radius=15.5] -- ++(-209.5,0) -- ++(0,1.5);
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (603.75,87.3) -- ++(0,-61.3) arc[start angle=90, end angle=180, radius=10.75] -- ++(-211.8,0) -- ++(0,72.05) -- cycle;
+
+% ORNAMENT
+\draw[line width=0.6pt, color=outline-color] (601.75,26) .. controls ++(0,0) and ++(9.5,-1) .. ++(-9.5,15)  .. controls ++(0,0) and ++(0.5,-41.75) .. ++(9.5,46.75);
+
+% DIVIDER
+\draw[line width=1.4pt, color=outline-color] (549,15.25) -- ++(0,72.05);
+\draw[line width=1.4pt, color=outline-color] (497.5,15.25) -- ++(0,72.05);
+\draw[line width=1pt, color=outline-color, line cap=round] (438.5,29) -- ++(0,54);
+
+% INPUT LINES
+%% Hit Points
+\draw[line width=0.75pt, color=lightgray!80] (384,76) -- ++(50,0);
+\draw[line width=0.75pt, color=lightgray!80] (441.5,53) -- ++(53,0);
+\draw[line width=0.75pt, color=lightgray!80] (441.5,76) -- ++(53,0);
+%% Hit Dice
+\draw[line width=0.75pt, color=lightgray!80] (504,53) -- ++(38,0);
+\draw[line width=0.75pt, color=lightgray!80] (504,76) -- ++(38,0);
+%% Death Saves
+\draw[line width=0.75pt, color=lightgray!80] (554,49) -- ++(41,0);
+\draw[line width=0.75pt, color=lightgray!80] (554,72) -- ++(41,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# INTIATIVE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (InitiativeRefPoint) at (230.25,117);
+
+% CIRCLE
+\fill[fill=outline-color] (InitiativeRefPoint) circle (3pt);
+
+% BACKGROUND
+\fill[fill=white] (InitiativeRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(74.5,0) -- ++(0,35) -- ++(-5.5,6.5) -- ++(-70.5,0) -- ++(-5.5,-6.5) -- cycle;
+
+% OUTLINE
+\draw[line width=1pt, color=outline-color] (InitiativeRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(74.5,0) -- ++(0,35) -- ++(-5,5.8) -- ++(3.5,0.7) -- ++(-78.5,0) -- ++(3.5,-0.7) -- ++(-5,-5.8) -- cycle;
+
+% ORNAMENT
+\draw[line width=0.75pt, color=outline-color] (InitiativeRefPoint) ++(6,39.5) -- ++(0,-19) arc[start angle=90, end angle=180, radius=8];
+\draw[line width=0.75pt, color=outline-color] (InitiativeRefPoint) ++(-2,24.5) arc[start angle=180, end angle=90, radius=15];
+\draw[line width=0.75pt, color=outline-color] (InitiativeRefPoint) ++(22.5,39.5) .. controls ++(0,0) and ++(5,5) .. ++(-4.5,-10.5) .. controls ++(0,0) and ++(0,10) .. ++(-5,-15);
+\draw[line width=0.75pt, color=outline-color] (InitiativeRefPoint) ++(21,39.5) arc[start angle=127, end angle=238, radius=15.5];
+\draw[line width=0.75pt, color=outline-color] (InitiativeRefPoint) ++(56.5,39.5) arc[start angle=53, end angle=-58, radius=15.5];
+\draw[line width=0.75pt, color=outline-color] (InitiativeRefPoint) ++(55,39.5) .. controls ++(0,0) and ++(-5,5) .. ++(4.5,-10.5) .. controls ++(0,0) and ++(0,10) .. ++(5,-15);
+\draw[line width=0.75pt, color=outline-color] (InitiativeRefPoint) ++(79.5,24.5) arc[start angle=0, end angle=90, radius=15];
+\draw[line width=0.75pt, color=outline-color] (InitiativeRefPoint) ++(71.5,39.5) -- ++(0,-19) arc[start angle=90, end angle=0, radius=8];
+
+% DIVIDER
+\draw[line width=1pt, color=black] (InitiativeRefPoint) ++(3,14) -- ++(71.5,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPEED #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (SpeedRefPoint) at (325.75,117);
+
+% CIRCLE
+\fill[fill=outline-color] (SpeedRefPoint) circle (3pt);
+
+% BACKGROUND
+\fill[fill=white] (SpeedRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(74.5,0) -- ++(0,35) -- ++(-5.5,6.5) -- ++(-70.5,0) -- ++(-5.5,-6.5) -- cycle;
+
+% OUTLINE
+\draw[line width=1pt, color=outline-color] (SpeedRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(74.5,0) -- ++(0,35) -- ++(-5,5.8) -- ++(3.5,0.7) -- ++(-78.5,0) -- ++(3.5,-0.7) -- ++(-5,-5.8) -- cycle;
+
+% ORNAMENT
+\draw[line width=0.75pt, color=outline-color] (SpeedRefPoint) ++(6,39.5) -- ++(0,-19) arc[start angle=90, end angle=180, radius=8];
+\draw[line width=0.75pt, color=outline-color] (SpeedRefPoint) ++(-2,24.5) arc[start angle=180, end angle=90, radius=15];
+\draw[line width=0.75pt, color=outline-color] (SpeedRefPoint) ++(22.5,39.5) .. controls ++(0,0) and ++(5,5) .. ++(-4.5,-10.5) .. controls ++(0,0) and ++(0,10) .. ++(-5,-15);
+\draw[line width=0.75pt, color=outline-color] (SpeedRefPoint) ++(21,39.5) arc[start angle=127, end angle=238, radius=15.5];
+\draw[line width=0.75pt, color=outline-color] (SpeedRefPoint) ++(56.5,39.5) arc[start angle=53, end angle=-58, radius=15.5];
+\draw[line width=0.75pt, color=outline-color] (SpeedRefPoint) ++(55,39.5) .. controls ++(0,0) and ++(-5,5) .. ++(4.5,-10.5) .. controls ++(0,0) and ++(0,10) .. ++(5,-15);
+\draw[line width=0.75pt, color=outline-color] (SpeedRefPoint) ++(79.5,24.5) arc[start angle=0, end angle=90, radius=15];
+\draw[line width=0.75pt, color=outline-color] (SpeedRefPoint) ++(71.5,39.5) -- ++(0,-19) arc[start angle=90, end angle=0, radius=8];
+
+% DIVIDER
+\draw[line width=1pt, color=black] (SpeedRefPoint) ++(3,14) -- ++(71.5,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SIZE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (SizeRefPoint) at (421.25,117);
+
+% CIRCLE
+\fill[fill=outline-color] (SizeRefPoint) circle (3pt);
+
+% BACKGROUND
+\fill[fill=white] (SizeRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(74.5,0) -- ++(0,35) -- ++(-5.5,6.5) -- ++(-70.5,0) -- ++(-5.5,-6.5) -- cycle;
+
+% OUTLINE
+\draw[line width=1pt, color=outline-color] (SizeRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(74.5,0) -- ++(0,35) -- ++(-5,5.8) -- ++(3.5,0.7) -- ++(-78.5,0) -- ++(3.5,-0.7) -- ++(-5,-5.8) -- cycle;
+
+% ORNAMENT
+\draw[line width=0.75pt, color=outline-color] (SizeRefPoint) ++(6,39.5) -- ++(0,-19) arc[start angle=90, end angle=180, radius=8];
+\draw[line width=0.75pt, color=outline-color] (SizeRefPoint) ++(-2,24.5) arc[start angle=180, end angle=90, radius=15];
+\draw[line width=0.75pt, color=outline-color] (SizeRefPoint) ++(22.5,39.5) .. controls ++(0,0) and ++(5,5) .. ++(-4.5,-10.5) .. controls ++(0,0) and ++(0,10) .. ++(-5,-15);
+\draw[line width=0.75pt, color=outline-color] (SizeRefPoint) ++(21,39.5) arc[start angle=127, end angle=238, radius=15.5];
+\draw[line width=0.75pt, color=outline-color] (SizeRefPoint) ++(56.5,39.5) arc[start angle=53, end angle=-58, radius=15.5];
+\draw[line width=0.75pt, color=outline-color] (SizeRefPoint) ++(55,39.5) .. controls ++(0,0) and ++(-5,5) .. ++(4.5,-10.5) .. controls ++(0,0) and ++(0,10) .. ++(5,-15);
+\draw[line width=0.75pt, color=outline-color] (SizeRefPoint) ++(79.5,24.5) arc[start angle=0, end angle=90, radius=15];
+\draw[line width=0.75pt, color=outline-color] (SizeRefPoint) ++(71.5,39.5) -- ++(0,-19) arc[start angle=90, end angle=0, radius=8];
+
+% DIVIDER
+\draw[line width=1pt, color=black] (SizeRefPoint) ++(3,14) -- ++(71.5,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  PASSIVE  PERCEPTION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (PassivePerceptionRefPoint) at (514.25,117);
+
+% CIRCLE
+\fill[fill=outline-color] (PassivePerceptionRefPoint) circle (3pt);
+
+% BACKGROUND
+\fill[fill=white] (PassivePerceptionRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(84.5,0) -- ++(0,35) -- ++(-5.5,6.5) -- ++(-80.5,0) -- ++(-5.5,-6.5) -- cycle;
+
+% OUTLINE
+\draw[line width=1pt, color=outline-color] (PassivePerceptionRefPoint) ++(-2,5) arc[start angle=90, end angle=0, radius=7] -- ++(84.5,0) -- ++(0,35) -- ++(-5,5.8) -- ++(3.5,0.7) -- ++(-88.5,0) -- ++(3.5,-0.7) -- ++(-5,-5.8) -- cycle;
+
+% ORNAMENT
+\draw[line width=0.75pt, color=outline-color] (PassivePerceptionRefPoint) ++(6,39.5) -- ++(0,-19) arc[start angle=90, end angle=180, radius=8];
+\draw[line width=0.75pt, color=outline-color] (PassivePerceptionRefPoint) ++(-2,24.5) arc[start angle=180, end angle=90, radius=15];
+\draw[line width=0.75pt, color=outline-color] (PassivePerceptionRefPoint) ++(22.5,39.5) .. controls ++(0,0) and ++(5,5) .. ++(-4.5,-10.5) .. controls ++(0,0) and ++(0,10) .. ++(-5,-15);
+\draw[line width=0.75pt, color=outline-color] (PassivePerceptionRefPoint) ++(21,39.5) arc[start angle=127, end angle=238, radius=15.5];
+\draw[line width=0.75pt, color=outline-color] (PassivePerceptionRefPoint) ++(66.5,39.5) arc[start angle=53, end angle=-58, radius=15.5];
+\draw[line width=0.75pt, color=outline-color] (PassivePerceptionRefPoint) ++(65,39.5) .. controls ++(0,0) and ++(-5,5) .. ++(4.5,-10.5) .. controls ++(0,0) and ++(0,10) .. ++(5,-15);
+\draw[line width=0.75pt, color=outline-color] (PassivePerceptionRefPoint) ++(89.5,24.5) arc[start angle=0, end angle=90, radius=15];
+\draw[line width=0.75pt, color=outline-color] (PassivePerceptionRefPoint) ++(81.5,39.5) -- ++(0,-19) arc[start angle=90, end angle=0, radius=8];
+
+% DIVIDER
+\draw[line width=1pt, color=black] (PassivePerceptionRefPoint) ++(2,14) -- ++(83.5,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS & DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% BACKGROUND
+\fill[fill=white] (605.75,323.45) -- ++(0,-156.9) -- ++(-372.3,0) -- ++(-5.45,5.45) -- ++(0,146) -- ++(5.45,5.45) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.5pt, color=outline-color] (604.25,323.45) -- ++(1.5,0) -- ++(0,-156.9) -- ++(-1.5,0) ++(-367.3,0.45) -- ++(-8.5,8.5) -- ++(0,139) -- ++(8.5,8.5);
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (603.75,323) -- ++(0,-156) -- ++(-370.75,0) -- ++(-5,5) -- ++(0,146) -- ++(5,5) -- cycle;
+
+% DIVIDER
+\draw[line width=1.2pt, color=black] (233.5,185) -- ++(364.75,0);

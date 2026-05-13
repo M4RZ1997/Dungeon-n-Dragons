@@ -1,27 +1,40 @@
 \newgeometry{left=-0.6cm,right=0cm,top=0cm,bottom=0cm}
 \newpage
+\thispagestyle{empty}%
 
-%\hspace*{-9mm}
-\makebox[\paperwidth][s]{
-	%\newpage
-	\thispagestyle{empty}
-	\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}
-	\begin{pspicture}(816,1056)
-	{
-		%\psframe[fillstyle=solid,fillcolor=blue!20,linewidth=3pt,linecolor=black](0,0)(816,1056)
+\ifthenelse{\equal{\BACKEND}{TikZ}}{%
+	\begin{pageTikZ}%
+		\input{\ePATH character-sheet/tikz/header.tex}%
+		\input{\ePATH character-sheet/tikz/battle-stats.tex}%
+		\input{\ePATH character-sheet/tikz/ornament.tex}%
+		\input{\ePATH character-sheet/tikz/stats.tex}%
+		\input{\ePATH character-sheet/tikz/training.tex}%
+		\input{\ePATH character-sheet/tikz/traits.tex}%
 		
-		\input{\ePATH character-sheet/battle-stats.tex}
-		\input{\ePATH character-sheet/header.tex}
-		\input{\ePATH character-sheet/ornament.tex}
-		\input{\ePATH character-sheet/stats.tex}
-		\input{\ePATH character-sheet/proficiency-markers.tex}
-		\input{\ePATH character-sheet/traits.tex}
-		\input{\ePATH character-sheet/training.tex}
-		
-		\input{\ePATH character-sheet/template-text.tex}
-		\input{\ePATH character-sheet/player-input.tex}
+		\input{\ePATH character-sheet/tikz/template-text.tex}%
+		\input{\ePATH character-sheet/tikz/player-input.tex}%
+	\end{pageTikZ}%
+}{%
+	\ifthenelse{\equal{\BACKEND}{PostScript}}{%
+		\makebox[\paperwidth][s]{%
+			\hspace*{2mm}%
+			\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}%
+			\begin{pspicture}(816,1056)%
+			{%
+				\input{\ePATH character-sheet/postscript/battle-stats.tex}%
+				\input{\ePATH character-sheet/postscript/header.tex}%
+				\input{\ePATH character-sheet/postscript/ornament.tex}%
+				\input{\ePATH character-sheet/postscript/stats.tex}%
+				\input{\ePATH character-sheet/postscript/proficiency-markers.tex}%
+				\input{\ePATH character-sheet/postscript/traits.tex}%
+				\input{\ePATH character-sheet/postscript/training.tex}%
+						
+				\input{\ePATH character-sheet/postscript/template-text.tex}%
+				\input{\ePATH character-sheet/postscript/player-input.tex}%
+			}%
+			\end{pspicture}%
+		}%
+	}{\PackageWarning{Display Commands}{Backend "\BACKEND " unknown.}}%
+}%
 
-	}
-	\end{pspicture}
-}
 \restoregeometry
