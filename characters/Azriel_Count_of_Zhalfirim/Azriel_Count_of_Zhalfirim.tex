@@ -7,24 +7,30 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=pre5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% Headline
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Azriel, Count of Zhalfirim}
 
 \Class{Ranger}
-\Level{3}
+\Subclass{Swarmkeeper}
 \Background{Noble}
-\PlayerName{M4RZ}
 \Race{Vampire}
-\Alignment{Lawful Evil}
-\XP{}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
 
-% Ability scores (correct scores, no modifiers are automatically applied)
+\Level{3} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{9}
 \DexterityRolledScore{13}
@@ -33,6 +39,7 @@
 \WisdomRolledScore{12}
 \CharismaRolledScore{15}
 
+% SCORE MODIFIERS (ASI, Background and Race Boni)
 \StrengthScoreBonus{1} % Vampire-Race +1
 \DexterityScoreBonus{1} % Vampire-Race +1
 \ConstitutionScoreBonus{1} % Vampire-Race +1
@@ -42,7 +49,17 @@
 
 \calculateAbilityScores{}
 
-% Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{P}
 \DexterityProficiency{P}
 \ConstitutionProficiency{}
@@ -50,139 +67,149 @@
 \WisdomProficiency{}
 \CharismaProficiency{}
 
-\AcrobaticsProficiency{}
-\AnimalHandlingProficiency{}
-\ArcanaProficiency{}
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
 \AthleticsProficiency{}
-\DeceptionProficiency{}
-\HistoryProficiency{P}
-\InsightProficiency{P}
-\IntimidationProficiency{}
-\InvestigationProficiency{P}
-\MedicineProficiency{}
-\NatureProficiency{}
-\PerceptionProficiency{P}
-\PerformanceProficiency{}
-\PersuasionProficiency{P}
-\ReligionProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
 \SleightOfHandProficiency{}
 \StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{P}
+\InvestigationProficiency{P}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{P}
 \SurvivalProficiency{}
 
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{0}
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{E}
 
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION (Displays any Alphanumerical Input)
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
-% Armor Class is not automatically calculated
-\ArmorClass{15}
-\InitiativeModifier{0}
-\Speed{30ft}
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{14}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
 \MaxHitPointsRolled{19} % Without Constitution Bonus, is added automatically
-\CurrentHitPoints{}
+\CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d10}
 \HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
 
-\CP{}
-\SP{}
-\EP{}
-\GP{225}
-\PP{}
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
 
-% Weapon Arsenal
-\addWeaponStatistic{Rapier}{AzrielCountofZhalfirim}{DEX}{P}{0}{1d6 p}
-\addWeaponStatistic{Crossbow}{AzrielCountofZhalfirim}{DEX}{P}{0}{1d8 p}
-\addWeaponStatistic{Claws}{AzrielCountofZhalfirim}{DEX}{P}{0}{1d6 s}
-
-\AttacksAdditional{
-	\textbf{Bite}\\
-	\indent 1d6 + \intcalcAdd{\calculateModifier{\ConstitutionScoreValue}}{0} necrotic damage\\
-	\textbf{Rapier of Life Stealing}\\
-	Crossbow (80/320), 20 Crossbow Bolts
-}
-
-\OtherProficienciesLanguages{
-\textbf{Languages:}\\Common, Abyssal, Dwarvish\\
-\textbf{Armor:}\\Light Armor, Medium Armor, Shields\\
-\textbf{Weapons:}\\Simple Weapons, Martial Weapons\\
-\textbf{Tools:}\\Playing Card Set
-}
-
-\Equipment{
-	\textbf{Cloak of the Underdark, Crypt Ring}\\
-	Scale Mail
-}
-\Clutter{
-	a Backpack, a Bedrool, a Mess Kit, a Tinderbox, 10 Torches, 12 Days of Rations, a Waterskin, 50 ft Hempen Rope, a set of fine clothes, a scroll of pedigree
-}
-
-\PersonalityTraits{
-	\textbf{Calculating:} Azriel possesses a sharp and strategic mind, carefully considering his actions and weighing their consequences.
-}
-
-\Ideals{
-	\textbf{Family Legacy:} Azriel's strongest bond lies with the memory of his family and their lost honor, driving his quest for vengeance.
-}
-
-\Bonds{
-	\textbf{Justice:} Azriel seeks to right the wrongs inflicted upon him and restore justice, both for himself and the innocent.
-}
-
-\Flaws{
-	\textbf{Dark Desire - Wrath}\\Seeks vengeance against any and all that have wronged them in the most brutal and cruelest fashion.
-}
-
-\FeaturesTraits{
-\textbf{Vampiric Weakness}
-\begin{itemize}
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Playing Card Set}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Rapier}{Azriel}{DEX}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} p}{Finesse, Vex}
+\addWeaponStatistic{Light Crossbow}{Azriel}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{Range 80/320, Loading, Two-Handed, Slow}
+\addWeaponStatistic{Bite}{Azriel}{STR}{P}{0}{1d6 p}{\calculateModifier{\ConstitutionScoreValue} Necrotic}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+\addWeaponStatistic{Claws}{Azriel}{DEX}{P}{0}{1d4 \calculateModifier{\DexterityScoreValue} p}{Unarmed Strike Variant}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
+\AddClassFeature{B}{\textbf{Favored Enemy} (\intcalcAdd{0}{\ProficiencyValue} Uses)}
+\AddClassFeature{Q}{\textbf{Weapon Mastery}\\Rapier (Vex), Light Crossbow (Slow)}
+\AddClassFeature{Q}{\textbf{Deft Explorer}\\Persuasion Expertise, Abyssal, Dwarvish}
+\AddClassFeature{Q}{\textbf{Fighting Style}\\Dueling}
+\AddClassFeature{Q}{\textbf{Swarmkeeper}\begin{itemize}
+	\item Gathered Swarm
+	\item Swarmkeeper Magic
+\end{itemize}}
+% SPECIES TRAITS
+\AddSpeciesFeature{Q}{\textbf{Undead}}
+\AddSpeciesFeature{Q}{\textbf{Unholy Blood}\\Healing Potions have no effect}
+\AddSpeciesFeature{Q}{\textbf{Blood Connoisseur}\\Disease Immunity, Needs Ration of Blood to stay alive}
+\AddSpeciesFeature{Q}{\textbf{Superior Darkvision}}
+\AddSpeciesFeature{Q}{\textbf{Vampire Fangs \& Talons}}
+\AddSpeciesFeature{Q}{\textbf{Misty Escape}}
+\AddSpeciesFeature{Q}{\textbf{Vampiric Weakness}\begin{itemize}
 	\item Forbiddance
 	\item Running Water
 	\item Stake to the Heart
 	\item Sunlight Hypersensitivity
-\end{itemize}
-\textbf{Vampiric Traits (True Vampire)}
-\begin{itemize}
-	\item Undead
-	\item Unholy Body
-	\item Blood Connoisseur
-	\item Superior Darkvision
-	\item Vampire Fangs \& Talons
-	\item Misty Escape
-\end{itemize}
-\textbf{Feats}
-\begin{itemize}
-	\item Shapechanger (Bat)
-	\item Position of Privilege
-\end{itemize}
-\textbf{Ranger (Swarmkeeper)}
-\begin{itemize}
-	\item Favored Enemy
-	\begin{itemize}
-		\item Aberration
-	\end{itemize}
-	\item Favored Terrain
-	\begin{itemize}
-		\item Grassland
-	\end{itemize}
-	\item Fighting Style
-	\begin{itemize}
-		\item Dueling
-	\end{itemize}
-	\item Gathered Swarm
-	\item Swarmkeeper Magic
-	\item Primal Awareness
-\end{itemize}
-}
-
-% Appearance
-
+\end{itemize}}
+% FEATS
+\AddFeat{\textbf{Shapechanger (Bat)}\\Can polymorph into a Bat}
+\AddFeat{\textbf{Position of Privilege}}
+\AddFeat{\textbf{Dueling (Fighting Style)}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Age{43 (90)}
 \Height{6'4}
 \Weight{180lbs}
@@ -192,12 +219,12 @@
 
 % background
 \CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{11.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{9} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
 	{0} % Picture Y-Shift (absolute value)
 	{images/Azriel_appearance.png} %
 	{%
-		{Standing at an imposing height, Azriel, Count of Zhalfirim exudes an aura of undeniable allure and danger. His skin is flawlessly pale, hinting at an eternal existence untouched by the}{sun's rays. Jet-black, sleek hair cascades down his back, framing a face of sharp, chiseled features. Azriel's eyes, intense and mesmerizing, glow with a piercing crimson hue, reflecting the insatiable thirst for blood.}
+		{Standing at an imposing height, Azriel, Count of Zhalfirim exudes an aura of undeniable allure and danger. His skin is flawlessly pale, hinting at an}{eternal existence untouched by the sun's rays. Jet-black, sleek hair cascades down his back, framing a face of sharp, chiseled features. Azriel's eyes, intense and mesmerizing, glow with a piercing crimson hue, reflecting the insatiable thirst for blood.}
 	}%
 \AdditionalFeaturesAndTraits{
 	Azriel's eyes, once vibrant and full of life, have been forever transformed by his vampiric nature. They gleam with an intense, mesmerizing crimson hue, piercing through the darkness with an alluring and magnetic presence. When he locks gazes with others, they feel a strange pull, as if drawn into an enchanting trance.\\
@@ -212,9 +239,9 @@
 	Azriel's campaign of revenge took him through treacherous lands, navigating dangerous alliances and unearthing long-buried secrets. Along the way, he discovered that Lord Malachi had struck deals with other dark forces, jeopardizing the entire realm. Determined to protect innocent lives, Azriel expanded his vendetta to become a guardian of the realm, purging it of darkness and corruption.
 }
 \AlliesAndOrganizations{
-	Once a prosperous realm ruled by the esteemed House Zhalfirim, the County of Zhalfirim flourished under the benevolent leadership of Count Azriel. The castle stood as a symbol of grandeur, while the lands thrived with fertile fields and bustling markets. Festivals and celebrations brought joy to the people, and Zhalfirim became renowned for its artisans and scholars. However, shadows crept in as Lord Malachi plotted a coup, accusing House Zhalfirim of crimes. Betrayed and shattered, Zhalfirim fell into darkness. But Count Azriel, driven by vengeance, embraced his transformation into a vampire, determined to restore\linebreak
+	Once a prosperous realm ruled by the esteemed House Zhalfirim, the County of Zhalfirim flourished under the benevolent leadership of Count Azriel. The castle stood as a symbol of grandeur, while the lands thrived with fertile fields and bustling markets. Festivals and celebrations brought joy to the people, and Zhalfirim became renowned for its artisans and scholars. However, shadows crept in as Lord Malachi plotted a coup, accusing House Zhalfirim of crimes. Betrayed and shattered, Zhalfirim fell into darkness. But Count Azriel, driven by vengeance, embraced his transformation\linebreak
 }{
-	his family's honor and reclaim Zhalfirim's prosperity. The stage was set for a battle between light and darkness, shaping the county's fate.
+	into a vampire, determined to restore his family's honor and reclaim Zhalfirim's prosperity. The stage was set for a battle between light and darkness, shaping the county's fate.
 }
 \OrganizationName{The County of Zhalfirim}
 \OrganizationSymbol{images/Zhalfirim_emblem.jpg}
@@ -222,21 +249,125 @@
 	\textbf{1. The Zhalfirim Family Crest:} A meticulously crafted pendant bearing the emblem of House Zhalfirim. Fashioned from the purest silver, the crest features the regal lion rampant on one side, while the reverse showcases the serene landscape of Zhalfirim. The crest acts as a symbol of Azriel's ancestral lineage and serves as a reminder of the honor and heritage he strives to reclaim.\\
 	\textbf{2. The Crypt Ring:} A delicate ring, its band forged from a rare black metal that seems to shimmer with a faint ethereal glow. Nestled within the band is a small, perfectly polished splinter of Azriel's coffinlike structure - the very vessel that held him during his transformation into a vampire. The ring acts as a conduit for his connection to the darkness, granting him a subtle link to his past and serving as a reminder of the sacrifice he made to embark on his path of revenge. When worn, the ring pulses with a faint, otherworldly energy, a constant reminder of his eternal nature and his unyielding determination to reclaim his lost glory.
 }
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	\textbf{Calculating.} Azriel possesses a sharp and strategic mind, carefully considering his actions and weighing their consequences.
+}
+\Alignment{Lawful Evil}
 
-% Magic
+\Ideals{
+	\textbf{Family Legacy.} Azriel's strongest bond lies with the memory of his family and their lost honor, driving his quest for vengeance.
+}
 
+\Bonds{
+	\textbf{Justice.} Azriel seeks to right the wrongs inflicted upon him and restore justice, both for himself and the innocent.
+}
+
+\Flaws{
+	\textbf{Dark Desire - Wrath.} Seeks vengeance against any and all that have wronged him in the most brutal and cruelest fashion.
+}
+
+% LANGUAGES
+\Languages{Common, Abyssal, Dwarvish}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Scale Mail, 20 Crossbow Bolts\\
+	backpack, bedroll, mess kit, tinderbox, 10 torches, 12 days of rations, waterskin, 50 ft. hempen rope, set of fine clothes, scroll of pedigree
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Cloak of the Underdark}
+\addAttunedMagicItem{Crypt Ring}
+\addAttunedMagicItem{Rapier of Life Stealing}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{225}
+\PP{}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \SpellcastingClass{Ranger}
 \SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
-\CantripSlotA{Faerie Fire (V)}
-\CantripSlotB{Mage Hand (V, S)}
-
+% SPELL SLOTS
 \FirstLevelSpellSlotsTotal{2}
-\FirstLevelSpellSlotA{Detect Poison and Disease (V, S)}
-\FirstLevelSpellSlotB{Fog Cloud (V, S)}
-\FirstLevelSpellSlotC{Speak with Animals (V, S)}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+\addPreparedSpell{0}
+	{Faerie Fire}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{}
+	{V}
+\addPreparedSpell{0}
+	{Mage Hand}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{1 Minute}
+	{V, S}
+
+\addPreparedSpell{1}
+	{\small Detect Poison and Disease}
+	{Action}
+	{Self}
+	{T}
+	{T}
+	{}
+	{}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Fog Cloud}
+	{Action}
+	{120 Feet}
+	{T}
+	{}
+	{}
+	{}
+	{V, S}
+\addPreparedSpell{1}
+	{Speak with Animals}
+	{Action}
+	{Self}
+	{}
+	{T}
+	{}
+	{10 Minutes}
+	{V, S}
 
 \begin{document}
 
@@ -296,74 +427,6 @@ While in mist form, you can't take any actions, speak, or manipulate objects. Yo
 
 While you have 0 hit points in mist form, you can't revert to your vampire form. If you do not reach your coffinlike structure within 2 hours, you are destroyed. Once in your coffinlike structure, you revert to your vampire form. You are then paralyzed until you regain at least 1 hit point. After spending 1 hour in your coffinlike structure with 0 hit points, you regain 1 hit point.
 
-\section*{Ranger}
-\subsection*{Favored Enemy}
-You have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.
-
-Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies.
-
-You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.
-
-When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all.
-
-You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.
-
-\subsection*{Natural Explorer}
-You are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you're proficient in.
-
-While traveling for an hour or more in your favored terrain, you gain the following benefits:
-\begin{itemize}
-	\item Difficult terrain doesn't slow your group's travel.
-	\item Your group can't become lost except by magical means.
-	\item Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger.
-	\item If you are traveling alone, you can move stealthily at a normal pace.
-	\item When you forage, you find twice as much food as you normally would.
-	\item While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.
-\end{itemize}
-You choose additional favored terrain types at 6th and 10th level.
-
-\subsection*{Fighting Style}
-You adopt a particular style of fighting as your specialty. Choose one of the following options.
-
-You can't take a Fighting Style option more than once, even if you later get to choose again.
-
-\subsubsection*{Dueling}
-When you are wielding a melee or martial weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.
-
-\subsection*{Ranger Archetypes}
-\subsubsection*{Swarmkeeper}
-\paragraph*{Gathered Swarm}
-At 3rd level, a swarm of intangible nature spirits has bonded itself to you and can assist you in battle. Until you die, the swarm remains in your space, crawling on you or flying and skittering around you within your space. Because of your vampiric nature these nature spirits have taken the form of bats.\\
-Once on each of your turns, you can cause the swarm to assist you in one of the following ways, immediately after you hit a creature with an attack:
-\begin{itemize}
-	\item The attack's target takes \DndDice{1d6} piercing damage from the swarm.
-	\item The attack's target must succeed on a Strength saving throw against your spell save DC or be moved by the swarm up to 15 feet horizontally in a direction of your choice.
-	\item You are moved by the swarm 5 feet horizontally in a direction of your choice.
-\end{itemize}
-\paragraph*{Swarmkeeper Magic}
-Also at 3rd level, you learn the Mage Hand cantrip if you don't already know it. When you cast it, the hand takes the form of your swarming nature spirits.\\
-You also learn an additional spell of 1st level or higher when you reach certain levels in this class, as shown in the Swarmkeeper Spells table. Each spell counts as a ranger spell for you, but it doesn't count against the number of ranger spells you know.
-\begin{DndTable}[header=Swarmkeeper Spells]{lXX}
-			& Ranger Level 	& Spell						\\
-$\bullet$ 	& 3rd 			& Faerie Fire, Mage Hand		\\
-			& 5th 			& Web						\\
-			& 9th 			& Gaseous Form				\\
-			& 13th 			& Arcane Eye					\\
-			& 17th 			& Insect Plague				\\
-\end{DndTable}
-
-\subsection*{Primal Awareness}
-You can focus your awareness through the interconnections of nature learning additional spells when you reach certain levels in this class, as shown in the Primal Awareness Spells table. These spells don't count against the number of ranger spells you know.
-\begin{DndTable}[header=Primal Awareness Spells]{lXX}
-			& Ranger Level 	& Spell						\\
-$\bullet$ 	& 3rd 			& Speak with Animals		\\
-			& 5th 			& Beast Sense				\\
-			& 9th 			& Speak with Plants			\\
-			& 13th 			& Locate Creature			\\
-			& 17th 			& Commune with Nature		\\
-\end{DndTable}
-Once per long rest, you can cast each of these spells once without expending a spell slot.
-
 \section*{Feats}
 \subsection*{Shapechanger (Bat)}
 Vampires are known for their ability to shift from form to form. You gain the shapechanger tag and if you are not in sunlight or running water, you can use your action to polymorph into a Tiny bat[1] or a Medium cloud of mist for 1 minute, or back into your true form.
@@ -372,6 +435,57 @@ While in bat form you can't speak, your walking speed is 5 feet, and you have a 
 Once you transform this way you cannot do so again until you complete a short or long rest.
 \subsection*{Position of Privilege}
 Thanks to your noble birth, people are inclined to think the best of you. You are welcome in high society, and people assume you have the right to be wherever you are. The common folk make every effort to accommodate you and avoid your displeasure, and other people of high birth treat you as a member of the same social sphere. You can secure an audience with a local noble if you need to.
+\subsection*{Dueling}
+When you're holding a Melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.
+
+\section*{Ranger}
+\subsection*{Favored Enemy}
+\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses}
+You always have the Hunter's Mark spell prepared. You can cast it twice without expending a spell slot, and you regain all expended uses of this ability when you finish a Long Rest.
+
+The number of times you can cast the spell without a spell slot increases when you reach certain Ranger levels, as shown in the Favored Enemy column of the Ranger Features table.
+\subsection*{Weapon Mastery}
+\textbf{Rapier (Vex), Light Crossbow (Slow)}\\
+Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords.
+
+Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Longswords.
+\subsubsection*{Vex}
+If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+\subsubsection*{Slow}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+\subsection*{Deft Explorer}
+\textbf{Persuasion Expertise, Abyssal and Dwarvish language}\\
+Thanks to your travels, you gain the following benefits.
+\paragraph*{Expertise} Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in that skill.
+\paragraph*{Languages} You know two languages of your choice from the language tables in chapter 2.
+\subsection*{Fighting Style}
+\textbf{Dueling}\\
+You adopt a particular style of fighting as your specialty. Choose one of the following options.
+
+You can't take a Fighting Style option more than once, even if you later get to choose again.
+\subsection*{Swarmkeeper}
+Feeling a deep connection to the environment around them, some rangers reach out through their magical connection to the world and bond with a swarm of nature spirits. The swarm becomes a potent force in battle, as well as helpful company for the ranger. Some Swarmkeepers are outcasts or hermits, keeping to themselves and their attendant swarms rather than dealing with the discomfort of others. Other Swarmkeepers enjoy building vibrant communities that work for the mutual benefit of all those they consider part of their swarm.
+\subsubsection*{Gathered Swarm}
+A swarm of intangible nature spirits has bonded itself to you and can assist you in battle. While you're alive, the swarm remains in your space, crawling on you or flying and skittering around you within your space. Because of your vampiric nature these nature spirits have taken the form of bats.
+
+Once on each of your turns, you can cause the swarm to assist you in one of the following ways, immediately after you hit a creature with an attack:
+\begin{itemize}
+	\item The attack's target takes \DndDice{1d6} piercing damage from the swarm.
+	\item The attack's target must succeed on a Strength saving throw against your spell save DC or be moved by the swarm up to 15 feet horizontally in a direction of your choice.
+	\item You are moved by the swarm 5 feet horizontally in a direction of your choice.
+\end{itemize}
+\subsubsection*{Swarmkeeper Magic}
+You learn the mage hand cantrip if you don't already know it. When you cast it, the hand takes the form of your swarming nature spirits.
+
+You also learn an additional spell of 1st level or higher when you reach certain levels in this class, as shown in the Swarmkeeper Spells table. Each spell counts as a ranger spell for you, but it doesn't count against the number of ranger spells you know.
+\begin{DndTable}[header=Swarmkeeper Spells]{lXX}
+			& Ranger Level 	& Spell			\\
+$\bullet$ 	& 3rd 			& Faerie Fire	\\
+			& 5th 			& Web			\\
+			& 9th 			& Gaseous Form	\\
+			& 13th 			& Arcane Eye	\\
+			& 17th 			& Insect Plague	\\
+\end{DndTable}
 
 \section*{Spells}
 \subsection*{Cantrip}
@@ -379,26 +493,28 @@ Thanks to your noble birth, people are inclined to think the best of you. You ar
 \DndSpellHeader
   {Faerie Fire}
   {1st-Level Evocation}
-  {1 Action}
+  {Action}
   {60 feet}
   {V}
-  {Concentration, up to 1 minute}
+  {Concentration, up to 1 Minute}
 
-Each object in a 20-foot cube within range is outlined in blue, green, or violet light (your choice). Any creature in the area when the spell is cast is also outlined in light if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed dim light in a 10-foot radius.
+Objects in a 20-foot Cube within range are outlined in blue, green, or violet light (your choice). Each creature in the Cube is also outlined if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed Dim Light in a 10-foot radius and can't benefit from the Invisible condition.
 
-Any attack roll against an affected creature or object has advantage if the attacker can see it, and the affected creature or object can't benefit from being invisible.
+Attack rolls against an affected creature or object have Advantage if the attacker can see it.
 
 \DndSpellHeader
   {Mage Hand}
   {Conjuration Cnatrip}
-  {1 Action}
+  {Action}
   {30 feet}
   {V, S}
-  {1 minute}
+  {1 Minute}
 
-A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is more than 30 feet away from you or if you cast this spell again.
+A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.
 
-You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it.
+When you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial.
+
+As a Magic action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.
 
 The hand can't attack, activate magic items, or carry more than 10 pounds.
 
@@ -406,37 +522,39 @@ The hand can't attack, activate magic items, or carry more than 10 pounds.
 
 \DndSpellHeader
   {Detect Poison and Disease}
-  {1st-Level Divination (Ritual)}
-  {1 Action}
+  {1st-Level Divination}
+  {Action or Ritual}
   {Self}
-  {V, S}
-  {Concentration, up to 10 minutes}
+  {V, S, M (a yew leaf)}
+  {Concentration, up to 10 Minutes}
 
-For the duration, you can sense the presence and location of poisons, poisonous creatures, and diseases within 30 feet of you. You also identify the kind of poison, poisonous creature, or disease in each case.
+For the duration, you sense the location of poisons, poisonous or venomous creatures, and magical contagions within 30 feet of yourself. You sense the kind of poison, creature, or contagion in each case.
 
-The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.
+The spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead.
 
 \DndSpellHeader
   {Fog Cloud}
   {1st-Level Conjuration}
-  {1 Action}
+  {Action}
   {120 feet}
   {V, S}
-  {Concentration, up to 1 hour}
+  {Concentration, up to 1 Hour}
 
-You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners, and its area is heavily obscured. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it.
+You create a 20-foot-radius Sphere of fog centered on a point within range. The Sphere is Heavily Obscured. It lasts for the duration or until a strong wind (such as one created by Gust of Wind) disperses it.
 
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the radius of the fog increases by 20 feet for each slot level above 1st.
+\subparagraph*{Using a Higher-Level Spell Slot} The fog's radius increases by 20 feet for each spell slot level above 1.
 
 \DndSpellHeader
   {Speak with Animals}
-  {1st-Level Divination (Ritual)}
-  {1 Action}
+  {1st-Level Divination}
+  {Action or Ritual}
   {Self}
   {V, S}
-  {10 minutes}
+  {10 Minutes}
 
-You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the DM's discretion.
+For the duration, you can comprehend and verbally communicate with Beasts, and you can use any of the Influence action's skill options with them.
+
+Most Beasts have little to say about topics that don't pertain to survival or companionship, but at minimum, a Beast can give you information about nearby locations and monsters, including whatever it has perceived within the past day.
 \vfill\eject
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}

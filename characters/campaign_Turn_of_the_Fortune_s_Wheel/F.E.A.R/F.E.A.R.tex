@@ -7,26 +7,30 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% CHARACTER STATS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Fauna-Enhanced Automaton of Ruin}
 
 \Class{Druid}
-\MultiClassMainLevel{3}
-\MultiClass{Warlock}
 \Subclass{Circle of the Moon}
 \Background{Compleated}
 \Race{Warforged}
+%% Multiclass
+\MultiClassMainLevel{3}
+\MultiClass{Warlock}
 
-\Level{9}
-
-% ABILITY SCORES
-% (correct scores, no modifiers are automatically applied)
+\Level{9} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{16}
 \DexterityRolledScore{13}
@@ -35,6 +39,7 @@
 \WisdomRolledScore{17}
 \CharismaRolledScore{16}
 
+% SCORE MODIFIERS (ASI, Background and Race Boni)
 \StrengthScoreBonus{0}
 \DexterityScoreBonus{1} % Poisoner +1
 \ConstitutionScoreBonus{2} % Warforged +2
@@ -44,8 +49,17 @@
 
 \calculateAbilityScores{}
 
-% PROFICIENCIES AND EXPERTIES
-%% SAVING THROWS
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{}
 \DexterityProficiency{}
 \ConstitutionProficiency{}
@@ -53,6 +67,20 @@
 \WisdomProficiency{P}
 \CharismaProficiency{}
 
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
 %% STRENGTH SKILLS
 \AthleticsProficiency{P}
 
@@ -89,23 +117,41 @@
 \WisdomModifierBonus{0}
 \CharismaModifierBonus{0}
 
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION (Displays any Alphanumerical Input)
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
 \ArmorClass{\intcalcAdd{12}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
+% HIT POINTS
 \MaxHitPointsRolled{58} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
-\MultiClassHitDice{d8}
 \HitDiceSpent{0}
+%% Multiclass
+\MultiClassHitDice{d8}
 \MultiClassHitDiceSpent{0}
 
-\InitiativeModifier{0}
-\Speed{30}
-\Size{Medium}
-
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
 \LightArmor{P}
 \MediumArmor{P}
 \HeavyArmor{}
@@ -113,37 +159,59 @@
 
 \WeaponsProficiency{Simple Weapons, Martial Weapons}
 \ToolsProficiency{Herbalism Kit, Poisoner's Kit}
-
-\addWeaponStatistic{Quarterstaff}{F.E.A.R}{STR}{P}{0}{1d6 b}{versatile (1d8)}
-\addWeaponStatistic{Armblade}{F.E.A.R}{STR}{P}{+1}{1d8 s}{heavy}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Quarterstaff}{F.E.A.R}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} b}{versatile (1d8)}
+\addWeaponStatistic{Armblade}{F.E.A.R}{STR}{P}{+1}{1d8 \calculateModifier{\StrengthScoreValue} s}{heavy}
+% UNARMED STRIKE
 \addWeaponStatistic{Unarmed Strike}{F.E.A.R}{STR}{P}{+1}{\intcalcAdd{2}{\calculateModifier{\StrengthScoreValue}} b}{}
-
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
 \addSpellStatistic{Eldritch Blast}{ATK}{\calculateModifier{\CharismaScoreValue}}{1d10 F}{2 Beams}
 \addSpellStatistic{Frostbite}{DC}{\calculateModifier{\WisdomScoreValue}}{2d6 C}{Target has disadvantage on next weapon attack}
 \addSpellStatistic{Infestation}{DC}{\calculateModifier{\WisdomScoreValue}}{2d6 P}{Target must run away}
 \addSpellStatistic{Primal Savagery}{ATK}{\calculateModifier{\WisdomScoreValue}}{2d10 A}{}
 \addSpellStatistic{Starry Wisp}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d8 R}{Target glows and cannot be invisible}
 \addSpellStatistic{Toll the Dead}{DC}{\calculateModifier{\CharismaScoreValue}}{2d8 N}{or 2d12 N if target is missing health}
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
 \AddClassFeature{B}{\textbf{Wild Shape}\\2 Uses}
 \AddClassFeature{E}{\textbf{Circle Forms}\\AC \intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}}, max CR 1, 9 temp HP}
 \AddClassFeature{L}{\textbf{Form of the Dread}\\\intcalcAdd{0}{\ProficiencyValue} Uses}
 \AddClassFeature{E}{\textbf{Eldritch Invocations (5)}\begin{itemize}\item Beguiling Influence\item Eldritch Mind\item Pact of Chain\item Investment of the Chain Master\item One with Shadows\end{itemize}}
 \AddClassFeature{L}{\textbf{Grave Touched}\\Don't need to eat, drink, or breathe\\Rolled Damage can become Necrotic and an additional damage die while in Form of Dread}
-
+% SPECIES TRAITS
 \AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a Construct.}
 \AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
 \AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
 \AddSpeciesFeature{E}{\textbf{Specialized Design}\\Athletic's, Poisoner's Kit}
 \AddSpeciesFeature{E}{\textbf{Tireless}\\No Exhaustion from dehydration, malnutrition, or suffocation}
-
+% FEATS
 \AddFeat{\textbf{Glistening Oil}\\Poison (+1d6 P, DC 13 CON save) coated melee attacks}
 \AddFeat{\textbf{Poisoner}\begin{itemize}\item Potent Poison\\Poison damage cannot be resisted\item Brew Poison\begin{itemize}\item \intcalcAdd{0}{\ProficiencyValue} Doses\item DC = \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}}\end{itemize}\end{itemize}}
 \AddFeat{\textbf{Iedcaru's Scanning}}
-
-% BACKGROUND & APPEARANCE
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Age{Unknown}
 \Height{7 Feet}
 \Weight{330lbs}
@@ -152,9 +220,9 @@
 \Hair{}
 
 \CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{11.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{0} % Picture Y-Shift (absolute value)
+	{11} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{-15} % Picture Y-Shift (absolute value)
 	{images/F.E.A.R.png} %
 	{%
 		{A warped fusion of flesh and metal, F.E.A.R is a nightmarish druid, his half-metal skull fused with torn, weeping flesh. His twisted frame pulses with unnatural energy, jagged plating and}{chitinous tendrils twitching from his back. Glowing, flickering eyes pierce the darkness, and his distorted voice carries an eerie hum. Every step leaves clawed imprints, and his presence alone evokes primal terror - as if nature itself recoils from what he has become.}
@@ -179,8 +247,11 @@
 	\textbf{2. The Still-Beating Seed:} A small, gnarled seed, encased in a thin layer of tarnished silver. When held, it pulses faintly, as if mimicking a heartbeat. No matter how long it is carried, it never dries out, never sprouts, and never decays. Sometimes, in utter silence, it makes a soft, rhythmic sound, like something breathing.\\
 	\textbf{3. The Unfinished Inscription:} Carved into his own metal plating, just beneath his chest, is a line of unknown script, but it is incomplete. The letters are faint, unfinished, or intentionally erased - perhaps by him, or by whatever force warped his form. When he stares at it too long, he feels a pull, though what it means is lost to him.
 }
-
-% PERSONALITY TRAITS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	\textbf{Revulsion Toward Himself} Every movement, every reflection, every flicker of unnatural energy within him is a reminder of what he has become. He was a druid, a protector of nature - now, he is everything he once fought against.
 }
@@ -200,32 +271,55 @@
 
 % LANGUAGES
 \Languages{Common, Elvish, Abyssal, Primordial}
-
-% EQUIPMENT
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Equipment{
 	\textbf{Insignia of Claws}, \textbf{Inevitable Disabling Device}\\
 	Hide Armor (equipped), Scimitar, Quarterstaff (Druidic Focus), backpack, bedroll, mess kit, tinderbox, 10 torches, waterskin, 50 feet of hempen rope
 }
-
+%% Attuned Magic Items (Max 3, every other is ignored)
 \addAttunedMagicItem{Ventilating Lungs}
 \addAttunedMagicItem{Armblade +1}
-
+%% Gold
 \CP{}
 \SP{5}
 \EP{}
 \GP{1459}
 \PP{}
-
-% SPELLS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
 \SpellcastingClass{Druid/Warlock}
 \SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
+% SPELL SLOTS
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{2}
 \ThirdLevelSpellSlotsTotal{2}
 
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
 \addPreparedSpell{0}
 	{Eldritch Blast}
 	{Action}

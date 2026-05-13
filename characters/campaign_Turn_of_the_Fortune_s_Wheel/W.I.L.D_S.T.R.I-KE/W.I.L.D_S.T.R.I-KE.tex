@@ -7,26 +7,30 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% CHARACTER STATS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{W.I.L.D/S.T.R.I-KE}
 
 \Class{Ranger}
-\MultiClassMainLevel{}
-\MultiClass{}
 \Subclass{Gloom Stalker}
 \Background{Lantan Ranger Corps} % Whitestone Rifle Corps
 \Race{Warforged}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
 
-\Level{9}
-
-% ABILITY SCORES
-% (correct scores, no modifiers are automatically applied)
+\Level{9} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{14}
 \DexterityRolledScore{16}
@@ -44,8 +48,17 @@
 
 \calculateAbilityScores{}
 
-% PROFICIENCIES AND EXPERTIES
-%% SAVING THROWS
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{P}
 \DexterityProficiency{P}
 \ConstitutionProficiency{}
@@ -53,6 +66,20 @@
 \WisdomProficiency{P} % Iron Mind (Gloom Stalker Feature)
 \CharismaProficiency{}
 
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
 %% STRENGTH SKILLS
 \AthleticsProficiency{P}
 
@@ -81,32 +108,41 @@
 \PerformanceProficiency{}
 \PersuasionProficiency{}
 
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{0}
-
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION (Displays any Alphanumerical Input)
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{\calculateModifier{\WisdomScoreValue}}
+
+% SPEED
+\Speed{40}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
 %\EquipShield
 \ArmorClass{\intcalcAdd{14}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
+% HIT POINTS
 \MaxHitPointsRolled{61} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d10}
-\MultiClassHitDice{}
 \HitDiceSpent{0}
-\MultiClassHitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
 
-\InitiativeModifier{\calculateModifier{\WisdomScoreValue}}
-\Speed{40}
-\Size{Medium}
-
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
 \LightArmor{P}
 \MediumArmor{P}
 \HeavyArmor{}
@@ -114,13 +150,37 @@
 
 \WeaponsProficiency{Simple Weapons, Martial Weapons}
 \ToolsProficiency{Woodcarver's Tools}
-
-\addWeaponStatistic{Moonbow}{W.I.L.D/S.T.R.I-KE}{DEX}{P}{+3}{1d8 p}{+1d6 R, ranged (150/600), heavy, two-handed}
-\addWeaponStatistic{Scimitar}{W.I.L.D/S.T.R.I-KE}{DEX}{P}{0}{1d6 s}{finesse, light}
-\addWeaponStatistic{Shortsword}{W.I.L.D/S.T.R.I-KE}{DEX}{P}{0}{1d6 p}{finesse, light}
-\addWeaponStatistic{Spear}{W.I.L.D/S.T.R.I-KE}{STR}{P}{0}{1d6 p}{thrown (20/60), versatile (1d8)}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Moonbow}{W.I.L.D/S.T.R.I-KE}{DEX}{P}{+3}{1d8 \calculateModifier{\DexterityScoreValue} p}{+1d6 R, ranged (150/600), heavy, two-handed}
+\addWeaponStatistic{Scimitar}{W.I.L.D/S.T.R.I-KE}{DEX}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} s}{finesse, light}
+\addWeaponStatistic{Shortsword}{W.I.L.D/S.T.R.I-KE}{DEX}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} p}{finesse, light}
+\addWeaponStatistic{Spear}{W.I.L.D/S.T.R.I-KE}{STR}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} p}{thrown (20/60), versatile (1d8)}
+% UNARMED STRIKE
 \addWeaponStatistic{Unarmed Strike}{W.I.L.D/S.T.R.I-KE}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
-
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
 \AddClassFeature{L}{\textbf{Favored Enemy}\\Free Hunter's Mark (3 per Long Rest)}%
 \AddClassFeature{E}{\textbf{Weapon Mastery}\\Longbow, Scimitar}%
 \AddClassFeature{E}{\textbf{Deft Explorer}\\Perception Expertise, 2 Languages}%
@@ -135,19 +195,19 @@
 \AddClassFeature{E}{\textbf{Extra Attack}}
 \AddClassFeature{E}{\textbf{Roving}\\Climb and Swim Speed}
 \AddClassFeature{E}{\textbf{Expertise}\\Stealth, Surviving}
-
+% SPECIES TRAITS
 \AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a Construct.}
 \AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
 \AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
 \AddSpeciesFeature{E}{\textbf{Specialized Design}\\Perception, Woodcarver's Tools}
 \AddSpeciesFeature{E}{\textbf{Tireless}\\No Exhaustion from dehydration, malnutrition, or suffocation}
-
+% FEATS
 \AddFeat{\textbf{Archery}\\+2 to Ranged attacks}
 \AddFeat{\textbf{Iedcaru's Scanning}}
-
-% BACKGROUND & APPEARANCE
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Age{35}
 \Height{6'5''}
 \Weight{305lbs}
@@ -156,9 +216,9 @@
 \Hair{}
 
 \CharacterAppearance{horizontal} % (vertical/horizontal/none)
-	{-2.35} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{-15} % Picture Y-Shift (absolute value)
+	{7.75} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
 	{images/W.I.L.D_S.T.R.I-KE.png} %
 	{%
 		{W.I.L.D/S.T.R.I-KE resembles a mechanical wood elf, with a lithe, angular frame combining sleek metallic plating and intricately carved wooden components. His head is aerodynamic and elven in shape, with a glowing blue visor in place of eyes. Etched with runic patterns, his body blends technology and nature seamlessly, giving him the appearance of an otherworldly archer.}
@@ -173,9 +233,9 @@
 \AlliesAndOrganizations{
 	The "Lantan Ranger Corps" is an elite division of Lantan's defence forces, specializing in reconnaissance, intelligence gathering, and precision strikes. Originally comprised of highly trained humans and gnomes, the Corps initially relied on rigorous military academies to prepare recruits for survival, stealth, and combat. However, as their organic forces proved limited in large-scale operations, the Corps gradually transitioned to using advanced constructs, a hallmark of Lantanna innovation.
 
-Blending traditional woodcraft with cutting-edge technology, the Corps operates autonomously in hostile\linebreak
+Blending traditional woodcraft with cutting-edge technology, the Corps operates autonomously in hostile or uncharted territories.\linebreak
 }{
-	or uncharted territories. Their tools, often enhanced with magical and mechanical upgrades, enable them to excel in diverse environments. Renowned for their silent efficiency and precision, the Lantan Ranger Corps embodies their motto: "Silent Step, Unseen Strike."
+	Their tools, often enhanced with magical and mechanical upgrades, enable them to excel in diverse environments. Renowned for their silent efficiency and precision, the Lantan Ranger Corps embodies their motto: "Silent Step, Unseen Strike."
 }
 \OrganizationName{Lantan Ranger Corps}
 \OrganizationSymbol{images/Lantan_Ranger_Corps.png}
@@ -189,8 +249,11 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 	\textbf{2. Worn Ranger Corps Insignia:} A small, tarnished badge bearing the sigil of the Lantan Ranger Corps. Scratches and wear tell the story of countless missions, a symbol of duty and honor.\\
 	\textbf{3. Splinter of the Elderwood:} A thin, polished splinter from a legendary tree said to have once been a sanctuary for wood elf heroes. It's small enough to be carried within a hidden compartment.
 }
-
-% PERSONALITY TRAITS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	\textbf{Mission-Focused} My purpose is defined by the mission at hand. I prioritize objectives above all else, disregarding personal needs, emotional entanglements, or external distractions. Success is the only acceptable outcome, and everything else is secondary.
 }
@@ -210,33 +273,57 @@ Blending traditional woodcraft with cutting-edge technology, the Corps operates 
 
 % LANGUAGES
 \Languages{Common, Dwarvish,  Elvish, Gnomish, Undercommon}
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 % EQUIPMENT
 \Equipment{
 	\textbf{Boots of Elvenkind}, \textbf{Gloves of Thievery}, \textbf{Serpent Scale Armor}, \textbf{Laucian's Warden Token} (Druidic Focus), \textbf{Scroll of Scrying}, \textbf{Inevitable Disabling Device}\\
 	Scimitar, Shortsword, 20 Arrows, Quiver, Woodcarver's Tools, a set of common clothes, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope
 }
-
+%% Attuned Magic Items (Max 3, every other is ignored)
 \addAttunedMagicItem{Glimmering Moonbow}
 \addAttunedMagicItem{Ring of Mind Shielding}
 \addAttunedMagicItem{Periapt of Wound Closure}
-
+%% Gold
 \CP{}
 \SP{5}
 \EP{}
 \GP{1459}
 \PP{}
-
-% SPELLS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
 \SpellcastingClass{Ranger}
 \SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
+% SPELL SLOTS
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{2}
 
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
 \addPreparedSpell{1}
 	{Absorb Elements}
 	{Reaction}

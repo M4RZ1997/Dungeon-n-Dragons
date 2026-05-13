@@ -7,7 +7,7 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
@@ -75,6 +75,8 @@
 \WisdomSavingThrowBonus{0}
 \CharismaSavingThrowBonus{0}
 
+\calculateScoreModifiersAndSavingThrows{}
+
 % SKILL PROFICIENCY
 % \SkillProficiency[#1]{#2}
 %%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
@@ -106,6 +108,8 @@
 \IntimidationProficiency{}
 \PerformanceProficiency{}
 \PersuasionProficiency{}
+
+\calculateAllSkillModifiers{}
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -206,8 +210,8 @@
 
 \CharacterAppearance{vertical} % (vertical/horizontal/none)
 	{9} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{-10} % Picture Y-Shift (absolute value)
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
 	{images/A.R.T.I.F.I.C.E.R-Q.png} %
 	{%
 		{A.R.T.I.F.I.C.E.R-Q\linebreak is a figure of awe in the artificer circles, his metal chassis adorned with symbols of arcane knowledge and mechanical prowess. His eyes,}{ever-shifting in hue, seem to scan the horizon for both danger and opportunity.}
@@ -290,6 +294,8 @@ Now, with his loyal constructs by his side, he travels in search of challenges w
 \SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
 % SPELL SLOTS
 \FirstLevelSpellSlotsTotal{2}

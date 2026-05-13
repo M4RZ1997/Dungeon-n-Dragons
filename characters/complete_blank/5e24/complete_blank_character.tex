@@ -1,0 +1,77 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+\begin{document}
+
+% CHARACTER PAGE
+\newgeometry{left=-0.6cm,right=0cm,top=0cm,bottom=0cm}
+\newpage
+\thispagestyle{empty}
+
+\begin{pageTikZ}%
+	\input{\ePATH character-sheet/tikz/header.tex}%
+	\input{\ePATH character-sheet/tikz/battle-stats.tex}%
+	\input{\ePATH character-sheet/tikz/ornament.tex}%
+	\input{\ePATH character-sheet/tikz/stats.tex}%
+	\input{\ePATH character-sheet/tikz/training.tex}%
+	\input{\ePATH character-sheet/tikz/traits.tex}%
+	
+	\input{\ePATH character-sheet/tikz/template-text.tex}%
+\end{pageTikZ}%
+\restoregeometry
+
+% BACKSTORY PAGE
+\newgeometry{left=-0.6cm,right=0cm,top=0cm,bottom=0cm}
+\newpage
+\thispagestyle{empty}
+
+\begin{pageTikZ}%
+	\input{\PATH templates/template_character-sheet/background-sheet/tikz/header.tex}%
+	\input{\PATH templates/template_character-sheet/background-sheet/tikz/outlines.tex}%
+	
+	\input{\PATH templates/template_character-sheet/background-sheet/tikz/template-text.tex}%
+\end{pageTikZ}%
+\restoregeometry
+
+% SPELLCASTING PAGE
+\newgeometry{left=-0.6cm,right=0cm,top=0cm,bottom=0cm}
+\newpage
+\thispagestyle{empty}
+
+\begin{pageTikZ}
+	\input{\ePATH spell-sheet/tikz/header.tex}%
+	\input{\ePATH spell-sheet/tikz/spells.tex}%
+	\input{\ePATH spell-sheet/tikz/character-traits.tex}%
+	\input{\ePATH spell-sheet/tikz/equipment.tex}%
+	
+	\input{\ePATH spell-sheet/tikz/template-text.tex}%
+	\input{\ePATH spell-sheet/tikz/player-input.tex}%
+\end{pageTikZ}
+\restoregeometry
+
+% OLD SPELLCASTING PAGE
+\newgeometry{left=-0.6cm,right=0cm,top=0cm,bottom=0cm}
+\newpage
+\thispagestyle{empty}
+
+\begin{pageTikZ}
+	\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/tikz/header.tex}
+	\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/tikz/spell-table.tex}
+	
+	\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/tikz/template-text.tex}
+\end{pageTikZ}
+\restoregeometry
+
+\end{document}

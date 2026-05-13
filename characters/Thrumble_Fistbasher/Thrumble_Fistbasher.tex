@@ -7,42 +7,59 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=pre5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% Headline
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Thrumble Fistbasher}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
 
 \Class{Barbarian}
-\Level{3}
+\Subclass{Path of the Totem Warrior}
 \Background{Primitive Tribe}
-\PlayerName{M4RZ}
 \Race{Halfling}
-\Alignment{Chaotic Good}
-\XP{}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
 
-% Ability scores (correct scores, no modifiers are automatically applied)
+\Level{3} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthRolledScore{15}
-\DexterityRolledScore{12}
+\StrengthRolledScore{16}
+\DexterityRolledScore{11}
 \ConstitutionRolledScore{15}
 \IntelligenceRolledScore{6}
 \WisdomRolledScore{10}
 \CharismaRolledScore{12}
 
-\StrengthScoreBonus{0}
-\DexterityScoreBonus{2} % Halfling-Race +2
-\ConstitutionScoreBonus{1} % Stout Halfling +1
+\StrengthScoreBonus{2}
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{1}
 \IntelligenceScoreBonus{0}
 \WisdomScoreBonus{0}
 \CharismaScoreBonus{0}
 
 \calculateAbilityScores{}
 
-% Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{P}
 \DexterityProficiency{}
 \ConstitutionProficiency{P}
@@ -50,83 +67,197 @@
 \WisdomProficiency{}
 \CharismaProficiency{}
 
-\AcrobaticsProficiency{}
-\AnimalHandlingProficiency{}
-\ArcanaProficiency{}
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
 \AthleticsProficiency{P}
-\DeceptionProficiency{}
-\HistoryProficiency{}
-\InsightProficiency{}
-\IntimidationProficiency{P}
-\InvestigationProficiency{}
-\MedicineProficiency{}
-\NatureProficiency{E}
-\PerceptionProficiency{P}
-\PerformanceProficiency{}
-\PersuasionProficiency{}
-\ReligionProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
 \SleightOfHandProficiency{}
 \StealthProficiency{}
-\SurvivalProficiency{E}
 
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{0}
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{P}
+\ReligionProficiency{}
 
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{}
+\PerceptionProficiency{P}
+\SurvivalProficiency{P}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{P}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{25}
+
+% SIZE
+\Size{Small}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
-% Armor Class is not automatically calculated
-\ArmorClass{15}
-\InitiativeModifier{0}
-\Speed{25ft}
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{10}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}}
+
+% HIT POINTS
 \MaxHitPointsRolled{22} % Without Constitution Bonus, is added automatically
-\CurrentHitPoints{}
+\CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d12}
 \HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
 
-\CP{1}
-\SP{}
-\EP{}
-\GP{}
-\PP{}
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{P}
+\Shields{P}
 
-% Weapon Arsenal
-\addWeaponStatistic{Atlatl}{ThrumbleFistbasher}{STR}{P}{0}{1d4 p}
-\addWeaponStatistic{Flint Knives}{ThrumbleFistbasher}{STR}{P}{0}{1d4 p}
-\addWeaponStatistic{Greataxe}{ThrumbleFistbasher}{STR}{P}{0}{1d12 s}
-\addWeaponStatistic{Spear}{ThrumbleFistbasher}{STR}{P}{0}{1d6 p}
-\addWeaponStatistic{Unarmed Strike}{ThrumbleFistbasher}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
-
-\AttacksAdditional{
-	\textbf{Greataxe}\\
-	\textbf{Atlatl (Javelin)}\\
-	\textbf{2 Flint Knives}\\
-	\textbf{15 flint-tipped Spears}
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Knapping Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Greataxe}{ThrumbleFistbasher}{STR}{P}{0}{1d12 \calculateModifier{\StrengthScoreValue} s}{Heavy, Two-Handed, Cleave}
+\addWeaponStatistic{Atlatl}{ThrumbleFistbasher}{STR}{P}{0}{1d8 \calculateModifier{\StrengthScoreValue} p}{Exotic, Finesse, Loading, Two-Handed}
+\addWeaponStatistic{Flint Knives}{ThrumbleFistbasher}{STR}{P}{0}{1d4 \calculateModifier{\StrengthScoreValue} p}{Finesse, Light, Thrown (20/60), Nick}
+\addWeaponStatistic{Flint Tipped Spear}{ThrumbleFistbasher}{DEX}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} p}{Thrown (20/60), Versatile (1d8), Sap}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{B}{\textbf{Rage}\\3 Uses, +2 Rage Damage}
+\AddClassFeature{Q}{\textbf{Unarmored Defense}\\Base DC \intcalcAdd{10}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}}
+\AddClassFeature{Q}{\textbf{Weapon Mastery}\\Greataxe, Spear}
+\AddClassFeature{Q}{\textbf{Danger Sense}\\Advantage on Dexterity Saving Throws}
+\AddClassFeature{Q}{\textbf{Reckless Attack}}
+\AddClassFeature{Q}{\textbf{Spirit Seeker}\\Beast Sense, Speak with Animals as Ritual}
+\AddClassFeature{Q}{\textbf{Totem Spirit (Bear)}\\Resistance to all damage except Psychic}
+\AddClassFeature{Q}{\textbf{Primal Knowledge}\\Perception Proficiency}
+% SPECIES TRAITS
+\AddSpeciesFeature{Q}{\textbf{Brave}\\Advantage against Frightened condition}
+\AddSpeciesFeature{Q}{\textbf{Halfling Nimbleness}}
+\AddSpeciesFeature{Q}{\textbf{Luck}\\Reroll any 1 on a D20 Test}
+\AddSpeciesFeature{A}{\textbf{Naturally Stealthy}\\Hide behind larger creatures}
+% FEATS
+\AddFeat{\textbf{Tension Sense}\\Sense unnatural circumstances (rural environment only)}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{25}
+\Height{2'8''}
+\Weight{42lbs}
+\Eyes{Green}
+\Skin{Rugged}
+\Hair{Chestnut}
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{10} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Thrumble_appearance.png} %
+	{%
+		{\hspace*{-2em}Thrumble Fistbasher, a Halfling Barbarian from a primitive tribe, is a wild and energetic figure with untamed chestnut hair and vibrant green eyes. His attire of furs,}{leather, and feathers reflects his deep connection to nature. Armed with flint-tipped spears and knives, Thrumble moves with a feral grace, radiating warmth, protectiveness, and surprising wisdom. He embodies the untamed spirit of the wilderness, leaving a lasting impression on all who encounter him.}
+	}%
+	
+% ORGANIZATION & ALLIES
+\OrganizationName{The Wildheart Guardians}
+\OrganizationSymbol{images/Wildheart_Guardians.png}
+\AlliesAndOrganizations{
+	The Wildheart Guardians is an esteemed organization dedicated to preserving the delicate balance between civilization and the natural world. Comprised of skilled individuals from diverse backgrounds, the Guardians strive to protect and advocate for the welfare of the wilderness and its inhabitants.\\
+	At the core of their mission is a profound respect for nature's beauty, wisdom, and intrinsic value. The Guardians are staunch defenders of endangered species, fragile ecosystems, and vanishing habitats. They actively engage in efforts to prevent further destruction, restore damaged lands, and\linebreak
+}{
+	promote sustainable practices.
 }
 
-\OtherProficienciesLanguages{
-\textbf{Languages:}\\Very rare Halfling Tribe language, (5000 Words) Common, illiterate\\
-\textbf{Armor:}\\Light Armor, Medium Armor, Shields\\
-\textbf{Weapons:}\\Simple Weapons, Martial Weapons\\
-\textbf{Tools:}\\Knapping Tool
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Thrumble possesses a wealth of knowledge about his tribe's traditions, rituals, and legends. This knowledge includes expertise in survival skills, foraging, tracking, and understanding the natural world. His tribal upbringing grants them insight and wisdom that others may lack.\\
+	Thrumble's lack of exposure to the complexities of modern society can lead him to be brutally honest and straightforward in his interactions. He may unintentionally speak his mind or ask blunt questions, often without understanding the potential social implications. His naivety and genuine nature can be endearing and refreshing, providing a refreshing perspective in a world filled with pretense.\\
+	Thrumble bears tribal markings on his body, representing significant milestones or achievements in his tribe. These markings may take the form of intricate tattoos, scarification, or decorative paint. Each mark tells a story, and Thrumble carries his tribe's history and culture with pride.
 }
 
-\Equipment{
-	 ~
-}
-\Clutter{
-	a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days or rations, waterskin, 50ft. hempen rope, Knapping Tools
+% BACKGROUND
+\Characterbackground{
+	Thrumble Fistbasher hails from a remote and isolated primitive tribe nestled deep within the untamed wilderness. Born into a world untouched by modern civilization, Thrumble grew up surrounded by the raw beauty and harsh realities of the natural world. From a young age, they displayed an insatiable curiosity and a unique perspective, asking questions that no one else thought to ponder.
+	
+	One fateful day, an unexpected event disrupted their tranquil existence. A group of explorers stumbled upon the tribe's hidden enclave, bringing with them the wonders and complexities of the outside world. Intrigued and filled with a sense of adventure, Thrumble volunteered to venture beyond the tribe's boundaries to explore this newfound realm.
+	
+	With each interaction and experience, Thrumble's understanding of the world expanded. They embraced their role as a bridge between the primitive ways of their tribe and the complexities of modern society. Along the way, they joined a group of like-minded adventurers, sharing their unique insights.
 }
 
+% TREASURES
+\Treasure{
+	\textbf{1. Shimmering Quartz Crystal:} A crystal that Thrumble discovered in a hidden cave. When exposed to sunlight, it refracts the light into a mesmerizing display of colorful patterns. This crystal possesses natural healing properties, allowing Thrumble to channel its energy.\\
+	\textbf{2. Enchanted Feather:} A pristine white feather gifted to Thrumble by an ancient and wise owl. This feather grants the ability to cast Feather Fall once per day, allowing Thrumble and their allies to gracefully descend from great heights without harm.\\
+	\textbf{3. Tribal Totem Carving:} A meticulously carved wooden totem that represents Thrumble's tribe and their connection to nature. The totem is adorned with feathers, shells, and symbols of the elements. This totem serves as a symbol of Thrumble's heritage and can be used in rituals or as a focus for his spiritual abilities.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	\textbf{Curiosity Unbounded:} Thrumble is endlessly curious, always seeking to understand the world beyond their tribe's boundaries. Their insatiable thirst for knowledge leads them to ask questions others overlook.
 }
+\Alignment{Chaotic Good}
 
 \Ideals{
 	\textbf{Freedom of Spirit:} Thrumble treasures personal freedom, valuing the ability to forge their own path without societal constraints.
@@ -140,87 +271,85 @@
 	\textbf{Impulsive Nature:} Thrumble's impulsiveness can lead to risky actions and hasty decisions, endangering themselves and their companions.
 }
 
-\FeaturesTraits{
-\textbf{Halfling Traits (Stout)}
-\begin{itemize}
-	\item Lucky
-	\item Brave
-	\item Halfling Nimbleness
-	\item Stout Resilience
-\end{itemize}
-\textbf{Grappler}\\
-\textbf{Primitive Tribe}
-\begin{itemize}
-	\item Tension Sense
-\end{itemize}
-\textbf{Barbarian Traits}
-\begin{itemize}
-	\item Rage
-	\item Unarmored Defense
-	\item Reckless Attack
-	\item Danger Sense
-	\item Path of the Totem Warrior
-	\begin{itemize}
-		\item Spirit Seeker
-		\item Totem Spirit
-	\end{itemize}
-\end{itemize}
+% LANGUAGES
+\Languages{Very rare Halfling Tribe language, (5000 Words) Elvish, illiterate}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Greataxe, Atlatl (10 Flint Tipped Javelins), 2 Flint Knives, Flint Tipped Spear\\
+	weary backpack, bedroll, waterskin, Knapping Tools
 }
-
-% Appearance
-
-\Age{25}
-\Height{2'8''}
-\Weight{42lbs}
-\Eyes{Green}
-\Skin{Rugged}
-\Hair{Chestnut}
-
-% background
-\CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{10} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{-5} % Picture Y-Shift (absolute value)
-	{images/Thrumble_appearance.png} %
-	{%
-		{\hspace*{-2em}Thrumble Fistbasher, a Halfling Barbarian from a primitive tribe, is a wild and energetic figure with untamed chestnut hair and vibrant green eyes. His attire of furs, leather, and}{feathers reflects his deep connection to nature. Armed with flint-tipped spears and knives, Thrumble moves with a feral grace, radiating warmth, protectiveness, and surprising wisdom. He embodies the untamed spirit of the wilderness, leaving a lasting impression on all who encounter him.}
-	}%
-\AdditionalFeaturesAndTraits{
-	Thrumble possesses a wealth of knowledge about his tribe's traditions, rituals, and legends. This knowledge includes expertise in survival skills, foraging, tracking, and understanding the natural world. His tribal upbringing grants them insight and wisdom that others may lack.\\
-	Thrumble's lack of exposure to the complexities of modern society can lead him to be brutally honest and straightforward in his interactions. He may unintentionally speak his mind or ask blunt questions, often without understanding the potential social implications. His naivety and genuine nature can be endearing and refreshing, providing a refreshing perspective in a world filled with pretense.\\
-	Thrumble bears tribal markings on his body, representing significant milestones or achievements in his tribe. These markings may take the form of intricate tattoos, scarification, or decorative paint. Each mark tells a story, and Thrumble carries his tribe's history and culture with pride.
-}
-\AlliesAndOrganizations{
-	The Wildheart Guardians is an esteemed organization dedicated to preserving the delicate balance between civilization and the natural world. Comprised of skilled individuals from diverse backgrounds, the Guardians strive to protect and advocate for the welfare of the wilderness and its inhabitants.\\
-	At the core of their mission is a profound respect for nature's beauty, wisdom, and intrinsic value. The Guardians are staunch defenders of endangered species, fragile ecosystems, and vanishing habitats. They actively engage in efforts to prevent further destruction, restore damaged lands, and\linebreak
-}{
-	promote sustainable practices.
-}
-\OrganizationName{The Wildheart Guardians}
-\OrganizationSymbol{images/Wildheart_Guardians.png}
-\Characterbackground{
-	Thrumble Fistbasher hails from a remote and isolated primitive tribe nestled deep within the untamed wilderness. Born into a world untouched by modern civilization, Thrumble grew up surrounded by the raw beauty and harsh realities of the natural world. From a young age, they displayed an insatiable curiosity and a unique perspective, asking questions that no one else thought to ponder.
-	
-	One fateful day, an unexpected event disrupted their tranquil existence. A group of explorers stumbled upon the tribe's hidden enclave, bringing with them the wonders and complexities of the outside world. Intrigued and filled with a sense of adventure, Thrumble volunteered to venture beyond the tribe's boundaries to explore this newfound realm.
-	
-	With each interaction and experience, Thrumble's understanding of the world expanded. They embraced their role as a bridge between the primitive ways of their tribe and the complexities of modern society. Along the way, they joined a group of like-minded adventurers, sharing their unique insights.
-}
-\Treasure{
-	\textbf{1. Shimmering Quartz Crystal:} A crystal that Thrumble discovered in a hidden cave. When exposed to sunlight, it refracts the light into a mesmerizing display of colorful patterns. This crystal possesses natural healing properties, allowing Thrumble to channel its energy.\\
-	\textbf{2. Enchanted Feather:} A pristine white feather gifted to Thrumble by an ancient and wise owl. This feather grants the ability to cast Feather Fall once per day, allowing Thrumble and their allies to gracefully descend from great heights without harm.\\
-	\textbf{3. Tribal Totem Carving:} A meticulously carved wooden totem that represents Thrumble's tribe and their connection to nature. The totem is adorned with feathers, shells, and symbols of the elements. This totem serves as a symbol of Thrumble's heritage and can be used in rituals or as a focus for his spiritual abilities.
-}
-
-% Magic
-
+%% Attuned Magic Items (Max 3, every other is ignored)
+%\addAttunedMagicItem{Magic Item I}
+%% Gold
+\CP{1}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
 \SpellcastingClass{}
 \SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
-\CantripSlotA{Beast Sense (as ritual)}
-\CantripSlotB{Speak with Animals (as ritual)}
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{3}
+\ThirdLevelSpellSlotsTotal{3}
+\FourthLevelSpellSlotsTotal{3}
+\FifthLevelSpellSlotsTotal{3}
+\SixthLevelSpellSlotsTotal{2}
+\SeventhLevelSpellSlotsTotal{2}
+\EighthLevelSpellSlotsTotal{1}
+\NinthLevelSpellSlotsTotal{1}
 
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{1}
+	{Speak with Animals}
+	{Ritual}
+	{Self}
+	{}
+	{T}
+	{}
+	{10 Minutes}
+	{V, S}
+\addPreparedSpell{2}
+	{Beast Sense}
+	{Ritual}
+	{Touch}
+	{T}
+	{T}
+	{}
+	{}
+	{S}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \begin{document}
 
 \newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
@@ -243,59 +372,61 @@
 \chapter*{Features, Magic Items and Spells}
 
 \section*{Halfling Traits}
-\subsection*{Lucky}
-When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll.
 \subsection*{Brave}
-You have advantage on saving throws against being frightened.
+You have Advantage on saving throws you make to avoid or end the Frightened condition.
 \subsection*{Halfling Nimbleness}
-You can move through the space of any creature that is of a size larger than yours.
-\subsection*{Stout Resilience}
-You have advantage on saving throws against poison, and you have resistance against poison damage.
+You can move through the space of any creature that is a size larger than you, but you can't stop in the same space.
+\subsection*{Luck}
+When you roll a 1 on the d20 of a D20 Test, you can reroll the die, and you must use the new roll.
+\subsection*{Naturally Stealthy}
+You can take the Hide action even when you are obscured only by a creature that is at least one size larger than you.
 
 \section*{Feats}
-\subsection*{Grappler}
-\paragraph*{Prerequisite} Strength 13 or higher\\
-You've developed the skills necessary to hold your own in close--quarters grappling. You gain the following benefits:
-\begin{itemize}
-	\item You have advantage on attack rolls against a creature you are grappling.
-	\item You can use your action to try to pin a creature grappled by you. To do so, make another grapple check. If you succeed, you and the creature are both restrained until the grapple ends.
-\end{itemize}
-
-\section*{Primitive Tribe}
-You come from a primitive tribe that has had no interaction with 'modern' civilization. Nearly everything is new to you. Things that everyone else takes for granted are fascinating to you at least at first. You ask dumb questions though sometimes these questions are actually very smart because you ask about things that no one else questions. You generally do things the wrong way (for example putting on armor) until someone shows you how to do them. However you are also attuned to things of nature that other people don't notice.
-\subsection*{Languages}
-You learn 100 new words per month. You may also learn to read and write in six months.
 \subsection*{Tension Sense}
 You are attuned to the sounds of the creatures in the natural environment around you. You can tell when there is danger, or something unnatural going on, because you can sense the tension in the environment around you.
-
-Tension sense does not work in a city, castle, town, dungeon, or open ocean (but it does work in a village or isolated tower).
+\begin{itemize}
+	\item Tension sense does not work in a city, castle, town, dungeon, or open ocean (but it does work in a village or isolated tower).
+\end{itemize}
 
 \section*{Barbarian Traits}
 \subsection*{Rage}
-\newcommand{\RageModifier}{2}
-\textbf{Rages: 2}\\
-In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.
+\newcommand{\RageModifier}{+2}\textbf{3 Uses, Rage Damage: \RageModifier}\\
+You can imbue yourself with a primal power called Rage, a force that grants you extraordinary might and resilience. You can enter it as a Bonus Action if you aren't wearing Heavy armor.
 
-While raging, you gain the following benefits if you aren't wearing heavy armor:
+You can enter your Rage the number of times shown for your Barbarian level in the Rages column of the Barbarian Features table. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.
 
+While active, your Rage follows the rules below.
+
+\paragraph*{Damage Resistance} You have Resistance to Bludgeoning, Piercing, and Slashing damage.
+
+\paragraph*{Rage Damage} When you make an attack using Strength - with either a weapon or an Unarmed Strike—and deal damage to the target, you gain a bonus to the damage that increases as you gain levels as a Barbarian, as shown in the Rage Damage column of the Barbarian Features table.
+
+\paragraph*{Strength Advantage} You have Advantage on Strength checks and Strength saving throws.
+
+\paragraph*{No Concentration or Spells} You can't maintain Concentration, and you can't cast spells.
+
+\paragraph*{Duration} The Rage lasts until the end of your next turn, and it ends early if you don Heavy armor or have the Incapacitated condition. If your Rage is still active on your next turn, you can extend the Rage for another round by doing one of the following:
 \begin{itemize}
-	\item You have advantage on Strength checks and Strength saving throws.
-	\item When you make a melee weapon attack using Strength, you gain a +\RageModifier ~bonus to the damage roll. This bonus increases as you level.
-	\item You have resistance to bludgeoning, piercing, and slashing damage.
+	\item Make an attack roll against an enemy.
+	\item Force an enemy to make a saving throw.
+	\item Take a Bonus Action to extend your Rage.
 \end{itemize}
-
-If you are able to cast spells, you can't cast them or concentrate on them while raging.
-
-Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.
-
-Once you have raged the maximum number of times for your barbarian level, you must finish a long rest before you can rage again.
+Each time the Rage is extended, it lasts until the end of your next turn. You can maintain a Rage for up to 10 minutes.
 \subsection*{Unarmored Defense}
-While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.\\
-\textbf{Armor Class: \intcalcAdd{10}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}}
-\subsection*{Reckless Attack}
-Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.
+While you aren't wearing any armor, your base Armor Class equals 10 plus your Dexterity and Constitution modifiers. You can use a Shield and still gain this benefit.
+\subsection*{Weapon Mastery}
+\textbf{Greataxe, Spear}\\
+Your training with weapons allows you to use the mastery properties of two kinds of Simple or Martial Melee weapons of your choice, such as Greataxes and Handaxes. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.
+
+When you reach certain Barbarian levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Barbarian Features table.
+\subsubsection*{Cleave (Greataxe)}
+If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit, the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless that modifier is negative. You can make this extra attack only once per turn.
+\subsubsection*{Sap (Atlatl, Spear)}
+If you hit a creature with this weapon, that creature has Disadvantage on its next attack roll before the start of your next turn.
 \subsection*{Danger Sense}
-At 2nd level, you gain an uncanny sense of when things nearby aren't as they should be, giving you an edge when you dodge away from danger. You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can't be blinded, deafened, or incapacitated.
+You gain an uncanny sense of when things aren't as they should be, giving you an edge when you dodge perils. You have Advantage on Dexterity saving throws unless you have the Incapacitated condition.
+\subsection*{Reckless Attack}
+You can throw aside all concern for defense to attack with increased ferocity. When you make your first attack roll on your turn, you can decide to attack recklessly. Doing so gives you Advantage on attack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage during that time.
 \subsection*{Path of the Totem Warrior}
 The Path of the Totem Warrior is a spiritual journey, as the barbarian accepts a spirit animal as guide, protector, and inspiration. In battle, your totem spirit fills you with supernatural might, adding magical fuel to your barbarian rage.
 
@@ -309,42 +440,40 @@ At 3rd level, when you adopt this path, you choose a totem spirit and gain its f
 Your totem animal might be an animal related to those listed here but more appropriate to your homeland. For example, you could choose a hawk or vulture in place of an eagle.
 
 \paragraph*{Bear} While raging, you have resistance to all damage except psychic damage. The spirit of the bear makes you tough enough to stand up to any punishment.
+\subsection*{Primal Knowledge}
+\textbf{Perception Proficiency}\\
+You gain proficiency in another skill of your choice from the skill list available to Barbarians at level 1.
+
+In addition, while your Rage is active, you can channel primal power when you attempt certain tasks; whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability: Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your agility, bearing, and senses.
 
 \section*{Spells}
 The barbarian can only cast spells as rituals. The ritual version of a spell takes 10 minutes longer to cast than normal. It also doesn't expend a spell slot, which means the ritual version of a spell can't be cast at a higher level.
+\DndSpellHeader{Speak with Animals}
+	{1st-Level Divination (Ritual)}
+	{Action}
+	{Self}
+	{V, S}
+	{10 Minutes}
 
-\subsection*{Cantrip}
+You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the DM's discretion.
 
-\DndSpellHeader
-  {Beast Sense}
-  {2nd Level Divination (Ritual)}
-  {1 Action}
-  {Touch}
-  {S}
-  {Concentration, up to 1 hour}
+\DndSpellHeader{Beast Sense}
+	{2nd-Level Divination (Ritual)}
+	{Action}
+	{Touch}
+	{S}
+	{Concentration, up to 1 Hour}
 
-You touch a willing beast. For the duration of the spell, you can use your action to see through the beast’s eyes and hear what it hears, and continue to do so until you use your action to return to your normal senses.
-
-\DndSpellHeader
-  {Speak with Animals}
-  {1st Level Divination (Ritual)}
-  {1 Action}
-  {Self}
-  {V, S}
-  {10 minutes}
-
-You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the GM’s discretion.
+You touch a willing beast. For the duration of the spell, you can use your action to see through the beast's eyes and hear what it hears, and continue to do so until you use your action to return to your normal senses. While perceiving through the beast's senses, you gain the benefits of any special senses possessed by that creature, though you are blinded and deafened to your own surroundings.
 
 \section*{Miscellaneous}
 \subsection*{Atlatl (Ranged, Exotic)}
-\textbf{Javelin, Range (90/240)}\\
 The atlatl is a tool that uses leverage to achieve greater velocity in projectile-throwing. It may consist of a shaft with a cup or a spur at the end that supports and propels the butt of the ammunition. It is held in one hand, gripped near the end farthest from the cup. The projectile is thrown by the action of the upper arm and wrist. The throwing arm together with the atlatl acts as a lever.
 
 The atlatl will use either darts, javelins, or spears as ammunition. The atlatl will be designed to work with only one of these, and cannot be used with the other types of ammunition.
 
 The effect of using an atlatl is that the short range is tripled, the long range is doubled, and damage is increased. Also, different to other ranged weapon, the user will use the Strength modifier for to-hit rolls and damage rolls.
-
-\section*{Miscellaneous}
+\vfill\eject
 \subsection*{Attack and Damage Rolls}
 \subsubsection*{Melee Weapons}
 \paragraph*{Attack Roll}\hfill\\

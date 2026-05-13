@@ -7,44 +7,60 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=pre5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% Headline
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Garen, the Eldritch Knight}
+\PlayerName{M4RZ}
 
 \Class{Fighter}
+\Subclass{}
+\Background{Soldier}
+\Race{Mountain Dwarf}
+%% Multiclass
 \MultiClassMainLevel{2}
 \MultiClass{Warlock}
-\Level{3}
-\Background{Soldier}
-\PlayerName{M4RZ}
-\Race{Mountain Dwarf}
-\Alignment{Lawful Neutral}
-\XP{}
 
-% Ability scores (correct scores, no modifiers are automatically applied)
+\Level{3} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
-\StrengthRolledScore{15}
+\StrengthRolledScore{12}
 \DexterityRolledScore{12}
 \ConstitutionRolledScore{12}
-\IntelligenceRolledScore{12}
+\IntelligenceRolledScore{15}
 \WisdomRolledScore{8}
 \CharismaRolledScore{14}
 
-\StrengthScoreBonus{2} % Mountain Dwarf +2
-\DexterityScoreBonus{2} % Mountain Dwarf +2
-\ConstitutionScoreBonus{0}
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{2}		% Soldier +2
+\ConstitutionScoreBonus{2}	% Soldier +1, Dwarf +1
 \IntelligenceScoreBonus{0}
 \WisdomScoreBonus{0}
 \CharismaScoreBonus{0}
 
 \calculateAbilityScores{}
 
-% Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{P}
 \DexterityProficiency{}
 \ConstitutionProficiency{P}
@@ -52,84 +68,190 @@
 \WisdomProficiency{}
 \CharismaProficiency{}
 
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{P}		% Soldier
+
+%% DEXTERITY SKILLS
 \AcrobaticsProficiency{}
-\AnimalHandlingProficiency{}
-\ArcanaProficiency{}
-\AthleticsProficiency{P}
-\DeceptionProficiency{}
-\HistoryProficiency{}
-\InsightProficiency{}
-\IntimidationProficiency{P}
-\InvestigationProficiency{}
-\MedicineProficiency{}
-\NatureProficiency{}
-\PerceptionProficiency{P}
-\PerformanceProficiency{}
-\PersuasionProficiency{}
-\ReligionProficiency{}
 \SleightOfHandProficiency{}
 \StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{}
+\PerceptionProficiency{P}
 \SurvivalProficiency{P}
 
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{0}
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{P}		% Soldier
+\PerformanceProficiency{}
+\PersuasionProficiency{}
 
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION (Displays any Alphanumerical Input)
 \Inspiration{}
-\Proficiency{+2}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{25}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
-% Armor Class is not automatically calculated
-\ArmorClass{17}
-\InitiativeModifier{0}
-\Speed{25ft}
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{14}{\intcalcAdd{\intcalcMin{2}{\calculateModifier{\DexterityScoreValue}}}{\intcalcAdd{1}{2}}}} % 14 + DEX (max 2) + 1 (Defense Fighting Style) + 2 (Shield)
+
+% HIT POINTS
 \MaxHitPointsRolled{23} % Without Constitution Bonus, is added automatically
-\CurrentHitPoints{}
+\CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d10}
-\MultiClassHitDice{d8}
 \HitDiceSpent{0}
+%% Multiclass
+\MultiClassHitDice{d8}
 \MultiClassHitDiceSpent{0}
 
-\CP{}
-\SP{}
-\EP{}
-\GP{140}
-\PP{}
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{P}
+\Shields{P}
 
-% Weapon Arsenal
-\addWeaponStatistic{Morning Star}{GarentheEldritchKnight}{STR}{P}{0}{1d8 p}
-\addWeaponStatistic{Morning Star}{GarentheEldritchKnightV}{STR}{P}{0}{1d10 p (v)}
-\addWeaponStatistic{Handaxe}{GarentheEldritchKnight}{STR}{P}{0}{1d6 s}
-\addWeaponStatistic{Unarmed Strike}{GarentheEldritchKnight}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Smith's Tools, Dice Set}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Pact Weapon}{GarentheEldritchKnight}{CHA}{P}{0}{\calculateModifier{\CharismaScoreValue}}{Necrotic, Psychic, Radiant or normal damage}
+\addWeaponStatistic{Morning Star}{GarentheEldritchKnight}{STR}{P}{0}{1d8 \calculateModifier{\StrengthScoreValue} p}{Versatile (1d10), Sap}
+\addWeaponStatistic{Handaxe}{GarentheEldritchKnight}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} s}{Light, Vex}
+\addWeaponStatistic{Shortbow}{GarentheEldritchKnight}{DEX}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} p}{Range 80/320, Two-Handed, Vex}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Eldritch Blast}{ATK}{\calculateModifier{\CharismaScoreValue}}{1d10}{Force, 1 Beam}
+\addSpellStatistic{True Strike}{ATK}{\calculateModifier{\CharismaScoreValue}}{varies}{Weapon damage or Radiant}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
+\AddClassFeature{Q}{\textbf{Fighting Style}\\Defense}
+\AddClassFeature{B}{\textbf{Second Wind}\\Heal 1d10 + \intcalcAdd{0}{\MultiClassLevelValue} Hit Points (2 Uses)}
+\AddClassFeature{Q}{\textbf{Weapon Mastery}\\ Morning Star, Shortbow, Handaxe}
+\AddClassFeature{L}{\textbf{Action Surge}\\Additional Action (Once per Long Rest)}
+\AddClassFeature{L}{\textbf{Tactical Mind}\\Use Second Wind to add 1d10 to any Ability Check}
+\AddClassFeature{Q}{\textbf{Eldritch Invocation}\\Pact of the Blade}
+% SPECIES TRAITS
+\AddSpeciesFeature{Q}{\textbf{Darkvision}}
+\AddSpeciesFeature{Q}{\textbf{Dwarven Resilience}\\Advantage against Poison; Poison Resistance}
+\AddSpeciesFeature{Q}{\textbf{Dwarven Combat Training}}
+\AddSpeciesFeature{Q}{\textbf{Stonecunning}\\Expertise in History Checks regarding Stonework}
+% FEATS
+\AddFeat{\textbf{Savage Attacker}\\Roll weapon damage die twice}
+\AddFeat{\textbf{Defense}\\+1 Bonus to Armor Class}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Age{120}
+\Height{5'}
+\Weight{220lbs}
+\Eyes{Fiery Amber}
+\Skin{Tanned Olive}
+\Hair{Dark Brown}
 
-\AttacksAdditional{
-	\textbf{Soulreaper's Morning Star}\\
-	2 Handaxes (20/60)
+% background
+
+\CharacterAppearance{horizontal} % (vertical/horizontal/none)
+	{7} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Garen_Eldritch_Knight.png} %
+	{%
+		Garen, the Mountain Dwarf, stands tall and imposing in black armor that glows with a mysterious purple hue. His determined eyes flicker with an otherworldly light, hinting at the magical powers he wields. Despite his fearsome appearance, his noble heart is dedicated to protecting the innocent and upholding his Dwarven heritage.
+	}%
+\OrganizationName{Sunhammer Legion}
+\OrganizationSymbol{images/Sunhammer_Legion.png}
+\AlliesAndOrganizations{
+	The Sunhammer Legion is a renowned military organization among the Mountain Dwarfs, celebrated for its unyielding dedication to defending their homeland and the ancient mountains they call home. Under thire banner, the Mountain Dwarfs stand united, ready to face any threat that dares to challenge the sanctity of their homeland. Whether it be monstrous invaders, ancient evils, or any foe that threatens the mountains they cherish, the Sunhammer Legion stands firm, their spirits as unyielding as the mountains themselves.\\
+	Within the Mountain Dwarf society,\linebreak
+	}{
+	being part of the Sunhammer Legion is an esteemed honor, and those who join its ranks are considered the elite protectors of the realm. Their discipline and fearlessness in battle are legendary, and they are respected by allies and feared by enemies alike.
 }
-
-\OtherProficienciesLanguages{
-\textbf{Languages:}\\Common\\
-\textbf{Armor:}\\All Armor, Shields\\
-\textbf{Weapons:}\\Simple Weapons, Martial Weapons\\
-\textbf{Tools:}\\Dice Set
+\AdditionalFeaturesAndTraits{
+	Raised among seasoned Dwarven warriors, Garen has been steeped in the wisdom passed down through generations. He possesses a deep understanding of Dwarven lore, ancient history, and the sacred traditions that guide his people.\\
+	Through an enigmatic pact, Garen summoned a weapon imbued with eldritch power. This weapon, whether a revered relic or an ancient artifact, has become an extension of his identity, and he wields it with the grace and precision of a master.\\
+	A true leader on the battlefield, Garen's presence inspires courage in those who fight alongside him. His unwavering commitment to protecting others grants his allies an inner strength that helps them stand firm against fear and adversity.\\
+	The bonds forged in the crucible of battle are sacred to Garen. His loyalty to his comrades in the Sunhammer Legion runs deep, and he will stop at nothing to protect them, even if it means enduring pain or danger in their stead.
 }
-
-\Equipment{
-	\textbf{Shardbound Shield}\\
-	Scale Mail
+\Characterbackground{
+	Garen was born and raised in the heart of the mountainous kingdom. From a young age, he was taught the ways of war and craftsmanship, following in the footsteps of his ancestors. \\
+	As Garen matured, his prowess in battle caught the attention of the military commanders. Recognizing his potential as a scout, he was tasked with venturing into dangerous territories to gather vital information.\\
+	During one fateful scouting mission, Garen and his companions stumbled upon an ancient dungeon, forgotten by time. Venturing inside, they discovered a hidden chamber housing a mysterious morning star. Drawn to the weapon's dark allure, Garen reached out and touched it, initiating a powerful connection with an ancient force.\\
+	From that moment, Garen's life changed forever. He found himself wielding not only the strength of his Mountain Dwarf heritage but also the eldritch might of The Hexblade. Embracing his newfound magical abilities, he became an Eldritch Knight, blending martial skill with Warlock magic.
 }
-\Clutter{
-	backpack, crowbar, hammer, 10 pitons, 10 torches, tinderbox, 10 days of rations, waterskin, 50ft. hempen rope, set of bone dice, set of common clothes
+\Treasure{
+	\textbf{1. Shardbound Shield:} A magnificent shield, bound by a mystical shard infused with elemental powers. Gifted to Garen by a grateful Earth Elemental after rescuing its kin from encroaching darkness, the Shardbound Shield provides unparalleled protection.\\
+	\textbf{2. Gauntlets of the Forge:} Masterfully crafted gauntlets that radiate warmth and power. Forged by Garen himself during his early days as a blacksmith, they symbolize his journey from a skilled craftsman to a formidable warrior. The Gauntlets of the Forge amplify his strength, enhancing his strikes and granting him greater control over the weapons he wields.\\
+	\textbf{3. Chain of Eternity:} A finely-crafted, silver chain necklace adorned with intricate Dwarven symbols. Passed down to Garen by a wise elder, the Chain of Eternity is said to protect its wearer from malevolent forces.
 }
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	\textbf{Pragmatic and Resolute:} Garen is unwavering in the face of challenges, never backing down from a fight or a duty. He approaches problems with a practical mindset, focusing on solutions that work best in the given situation.
 }
+\Alignment{Lawful Neutral}
 
 \Ideals{
 	\textbf{Protection:} Garen's primary goal is to protect his homeland and those he cares about, even at great personal risk.
@@ -143,86 +265,94 @@
 	\textbf{Stubborn:} Garen's strong will can lead to stubbornness, making it challenging for him to accept alternative viewpoints.
 }
 
-\FeaturesTraits{
-\textbf{Mountain Dwarf Traits}
-\begin{itemize}
-	\item Darkvision
-	\item Dwarven Resilience
-	\item Dwarven Combat Training
-	\item Dwarven Armor Training
-	\item Stonecunning
-\end{itemize}
-\textbf{Soldier}\\
-\textbf{Fighter Traits}
-\begin{itemize}
-	\item Fighting Style
-	\item Second Wind
-	\item Action Surge
-\end{itemize}
-\textbf{Warlock Traits}
-\begin{itemize}
-	\item Otherworldly Patron (The Hexblade)
-\end{itemize}
+% LANGUAGES
+\Languages{Common, Dwarvish}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Sclae Mail\\
+	backpack, crowbar, hammer, 10 pitons, 10 torches, tinderbox, 10 days of rations, waterskin, 50 ft. hempen rope, set of bone dice, set of common clothes
 }
-
-% Appearance
-
-\Age{120}
-\Height{5'}
-\Weight{220lbs}
-\Eyes{Fiery Amber}
-\Skin{Tanned Olive}
-\Hair{Dark Brown}
-
-% background
-
-\CharacterAppearance{horizontal} % (vertical/horizontal/none)
-	{-3} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{-20} % Picture Y-Shift (absolute value)
-	{images/Garen_Eldritch_Knight.png} %
-	{%
-		Garen, the Mountain Dwarf, stands tall and imposing in black armor that glows with a mysterious purple hue. His determined eyes flicker with an otherworldly light, hinting at the magical powers he wields. Despite his fearsome appearance, his noble heart is dedicated to protecting the innocent and upholding his Dwarven heritage.
-	}%
-\AdditionalFeaturesAndTraits{
-	Raised among seasoned Dwarven warriors, Garen has been steeped in the wisdom passed down through generations. He possesses a deep understanding of Dwarven lore, ancient history, and the sacred traditions that guide his people.\\
-	Through an enigmatic pact, Garen summoned a weapon imbued with eldritch power. This weapon, whether a revered relic or an ancient artifact, has become an extension of his identity, and he wields it with the grace and precision of a master.\\
-	A true leader on the battlefield, Garen's presence inspires courage in those who fight alongside him. His unwavering commitment to protecting others grants his allies an inner strength that helps them stand firm against fear and adversity.\\
-	The bonds forged in the crucible of battle are sacred to Garen. His loyalty to his comrades in the Sunhammer Legion runs deep, and he will stop at nothing to protect them, even if it means enduring pain or danger in their stead.
-}
-\Characterbackground{
-	Garen was born and raised in the heart of the mountainous kingdom. From a young age, he was taught the ways of war and craftsmanship, following in the footsteps of his ancestors. \\
-	As Garen matured, his prowess in battle caught the attention of the military commanders. Recognizing his potential as a scout, he was tasked with venturing into dangerous territories to gather vital information.\\
-	During one fateful scouting mission, Garen and his companions stumbled upon an ancient dungeon, forgotten by time. Venturing inside, they discovered a hidden chamber housing a mysterious morning star. Drawn to the weapon's dark allure, Garen reached out and touched it, initiating a powerful connection with an ancient force.\\
-	From that moment, Garen's life changed forever. He found himself wielding not only the strength of his Mountain Dwarf heritage but also the eldritch might of The Hexblade. Embracing his newfound magical abilities, he became an Eldritch Knight, blending martial skill with Warlock magic.
-}
-\AlliesAndOrganizations{
-	The Sunhammer Legion is a renowned military organization among the Mountain Dwarfs, celebrated for its unyielding dedication to defending their homeland and the ancient mountains they call home. Under thire banner, the Mountain Dwarfs stand united, ready to face any threat that dares to challenge the sanctity of their homeland. Whether it be monstrous invaders, ancient evils, or any foe that threatens the mountains they cherish, the Sunhammer Legion stands firm, their spirits as unyielding as the mountains themselves.\\
-	Within the Mountain Dwarf society,\linebreak
-	}{
-	being part of the Sunhammer Legion is an esteemed honor, and those who join its ranks are considered the elite protectors of the realm. Their discipline and fearlessness in battle are legendary, and they are respected by allies and feared by enemies alike.
-}
-\OrganizationName{Sunhammer Legion}
-\OrganizationSymbol{images/Sunhammer_Legion.png}
-\Treasure{
-	\textbf{1. Shardbound Shield:} A magnificent shield, bound by a mystical shard infused with elemental powers. Gifted to Garen by a grateful Earth Elemental after rescuing its kin from encroaching darkness, the Shardbound Shield provides unparalleled protection.\\
-	\textbf{2. Gauntlets of the Forge:} Masterfully crafted gauntlets that radiate warmth and power. Forged by Garen himself during his early days as a blacksmith, they symbolize his journey from a skilled craftsman to a formidable warrior. The Gauntlets of the Forge amplify his strength, enhancing his strikes and granting him greater control over the weapons he wields.\\
-	\textbf{3. Chain of Eternity:} A finely-crafted, silver chain necklace adorned with intricate Dwarven symbols. Passed down to Garen by a wise elder, the Chain of Eternity is said to protect its wearer from malevolent forces.
-}
-
-% Magic
-
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Soulreaper's Morningstar}
+\addAttunedMagicItem{Shardbound Shield}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{140}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
 \SpellcastingClass{Warlock}
 \SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{1} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{1} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
-\CantripSlotA{Eldritch Blast (V, S)}
-\CantripSlotB{True Strike (S)}
-
+% SPELL SLOTS
 \FirstLevelSpellSlotsTotal{1}
-\FirstLevelSpellSlotA{Arms of Hadar (V, S)}
-\FirstLevelSpellSlotB{Hellish Rebuke (V, S)}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+\addPreparedSpell{0}
+	{Eldritch Blast}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{1d10 Force}
+	{V, S}
+\addPreparedSpell{0}
+	{True Strike}
+	{Action}
+	{Self}
+	{}
+	{}
+	{T}
+	{}
+	{S, M}
+	
+\addPreparedSpell{1}
+	{Arms of Hadar}
+	{Action}
+	{Self}
+	{}
+	{}
+	{}
+	{}
+	{V, S}
+\addPreparedSpell{1}
+	{Hellish Rebuke}
+	{Reaction}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{2d10 Fire}
+	{V, S}
 
 \begin{document}
 
@@ -238,21 +368,6 @@
 
 % SPELLCASTING PAGE
 \renderspellsheet
-
-\SpellcastingClass{Eldritch Knight}
-\SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
-\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
-\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
-
-\CantripSlotA{}
-\CantripSlotB{}
-
-\FirstLevelSpellSlotsTotal{1}
-\FirstLevelSpellSlotA{}
-\FirstLevelSpellSlotB{}
-
-\renderspellsheet
-
 
 \restoregeometry
 \twocolumn
@@ -271,43 +386,61 @@ You have proficiency with light and medium armor
 \subsection*{Stonecunning}
 Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead your normal proficiency bonus.
 
-\section*{Fighter Traits}
-\subsection*{Fighting Style (Defense)}
-While you are wearing armor, you gain a +1 bonus to AC.
-\subsection*{Second Wind}
-You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.
-\subsection*{Action Surge}
-Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action.
+\section*{Feats}
+\subsection*{Savage Attacker}
+You've trained to deal particularly damaging strikes. Once per turn when you hit a target with a weapon, you can roll the weapon's damage dice twice and use either roll against the target.
+\subsection*{Defense (Fighting Style)}
+While you're wearing Light, Medium, or Heavy armor, you gain a +1 bonus to Armor Class.
 
-Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.
+\section*{Fighter Traits}
+\subsection*{Fighting Style}
+\textbf{Defense}\\
+You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended.
+
+Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.
+\subsection*{Second Wind}
+\textbf{2 Uses, Regain 1d10 + \intcalcAdd{0}{\MultiClassLevelValue}}\\
+You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your Fighter level.
+
+You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.
+
+When you reach certain Fighter levels, you gain more uses of this feature, as shown in the Second Wind column of the Fighter Features table.
+\subsection*{Weapon Mastery}
+Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.
+
+When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table.
+\subsubsection*{Sap (Morning Star)}
+If you hit a creature with this weapon, that creature has Disadvantage on its next attack roll before the start of your next turn.
+\subsubsection*{Vex (Handaxe / Shortbow)}
+If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+\subsection*{Action Surge}
+You can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action, except the Magic action.
+
+Once you use this feature, you can't do so again until you finish a Short or Long Rest. Starting at level 17, you can use it twice before a rest but only once on a turn.
+\subsection*{Tactical Mind}
+You have a mind for tactics on and off the battlefield. When you fail an ability check, you can expend a use of your Second Wind to push yourself toward success. Rather than regaining Hit Points, you roll 1d10 and add the number rolled to the ability check, potentially turning it into a success. If the check still fails, this use of Second Wind isn't expended.
 
 \section*{Warlock Traits}
-\subsection*{Otherworldly Patron (The Hexblade)}
-\subsubsection*{Expanded Spell List}
-The Hexblade lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.
-\begin{DndTable}[header=Law Domain Spells]{lX}
-\textbf{Spell Level}  	&\textbf{Spells}						\\
-1st						&Shield, Wrathful Smite					\\
-2nd						&Blur, Branding Smite					\\
-3rd						&Blink, Elemental Weapon				\\
-4th						&Phantasmal Killer, Staggering Smite	\\
-5th						&Banishing Smite, Cone of Cold			\\
-\end{DndTable}
-\subsubsection*{Hexblade's Curse}
-Starting at 1st level, you gain the ability to place a baleful curse on someone. As a bonus action, choose one creature you can see within 30 feet of you. The target is cursed for 1 minute. The curse ends early if the target dies, you die, or you are incapacitated. Until the curse ends, you gain the following benefits:
-\begin{itemize}
-	\item You gain a bonus to damage rolls against the cursed target. The bonus equals your proficiency bonus.
-	\item Any attack roll you make against the cursed target is a critical hit on a roll of 19 or 20 on the d20.
-	\item If the cursed target dies, you regain hit points equal to your warlock level + your Charisma modifier (minimum of 1 hit point).
-\end{itemize}
-You can't use this feature again until you finish a short or long rest.
-\subsubsection*{Hex Warrior}
-At 1st level, you acquire the training necessary to effectively arm yourself for battle. You gain proficiency with medium armor, shields, and martial weapons.
+\subsection*{Eldritch Invocations}
+\textbf{Pact of the Blade}\\
+You have unearthed Eldritch Invocations, pieces of forbidden knowledge that imbue you with an abiding magical ability or other lessons. You gain one invocation of your choice, such as Pact of the Tome. Invocations are described in the "Eldritch Invocation Options" section later in this class's description.
 
-The influence of your patron also allows you to mystically channel your will through a particular weapon. Whenever you finish a long rest, you can touch one weapon that you are proficient with and that lacks the two-handed property. When you attack with that weapon, you can use your Charisma modifier, instead of Strength or Dexterity, for the attack and damage rolls. This benefit lasts until you finish a long rest. If you later gain the Pact of the Blade feature, this benefit extends to every pact weapon you conjure with that feature, no matter the weapon's type.
+\paragraph*{Prerequisites} If an invocation has a prerequisite, you must meet it to learn that invocation. For example, if an invocation requires you to be a level 5+ Warlock, you can select the invocation once you reach Warlock level 5.
 
-\section*{Spells}
-\subsection*{Cantrip (Warlock)}
+\paragraph*{Replacing and Gaining Invocations} Whenever you gain a Warlock level, you can replace one of your invocations with another one for which you qualify. You can't replace an invocation if it's a prerequisite for another invocation that you have.
+
+When you gain certain Warlock levels, you gain more invocations of your choice, as shown in the Invocations column of the Warlock Features table.
+
+You can't pick the same invocation more than once unless its description says otherwise.
+\subsubsection*{Pact of the Blade}
+As a Bonus Action, you can conjure a pact weapon in your hand - a Simple or Martial Melee weapon of your choice with which you bond - or create a bond with a magic weapon you touch; you can't bond with a magic weapon if someone else is attuned to it or another Warlock is bonded with it. Until the bond ends, you have proficiency with the weapon, and you can use it as a Spellcasting Focus.
+
+Whenever you attack with the bonded weapon, you can use your Charisma modifier for the attack and damage rolls instead of using Strength or Dexterity; and you can cause the weapon to deal Necrotic, Psychic, or Radiant damage or its normal damage type.
+
+Your bond with the weapon ends if you use this feature's Bonus Action again, if the weapon is more than 5 feet away from you for 1 minute or more, or if you die. A conjured weapon disappears when the bond ends.
+
+\section*{Warlock Spells}
+\subsection*{Cantrip}
 
 \DndSpellHeader
   {Eldritch Blast}
@@ -331,7 +464,7 @@ The spell creates more than one beam when you reach higher levels: two beams at 
 
 You point a finger at a target in range. Your magic grants you a brief insight into the target's defenses. On your next turn, you gain advantage on your first attack roll against the target, provided that this spell hasn't ended.
 
-\subsection*{Level 1 (Warlock)}
+\subsection*{Level 1}
 
 \DndSpellHeader
   {Arms of Hadar}

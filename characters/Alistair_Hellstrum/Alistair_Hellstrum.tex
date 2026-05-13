@@ -7,26 +7,31 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=pre5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% Headline
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Alistair Hellstrum}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
 
 \Class{Bard}
+\Subclass{\small College of Whispers / Archfey}
+\Background{Courtier}
+\Race{Tiefling}
+%% Multiclass
 \MultiClassMainLevel{5}
 \MultiClass{Warlock}
-\Level{6}
-\Background{Courtier}
-\PlayerName{M4RZ}
-\Race{Tiefling}
-\Alignment{Chaotic Good (Neutral)}
-\XP{}
 
-% Ability scores (correct scores, no modifiers are automatically applied)
+\Level{6} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{10}
 \DexterityRolledScore{13}
@@ -36,15 +41,25 @@
 \CharismaRolledScore{15}
 
 \StrengthScoreBonus{0}
-\DexterityScoreBonus{1} % ASI +1
+\DexterityScoreBonus{1}		% ASI +1
 \ConstitutionScoreBonus{0}
-\IntelligenceScoreBonus{1} % Tiefling-Race +1
+\IntelligenceScoreBonus{1}	% Tiefling-Race +1
 \WisdomScoreBonus{0}
-\CharismaScoreBonus{3} % Tiefling-Race +2, ASI +1
+\CharismaScoreBonus{3}		% Tiefling-Race +2, ASI +1
 
 \calculateAbilityScores{}
 
-% Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{1} % Enchanted Locket of Lysandra Stage I
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{}
 \DexterityProficiency{P}
 \ConstitutionProficiency{}
@@ -52,89 +67,208 @@
 \WisdomProficiency{}
 \CharismaProficiency{P}
 
-\AcrobaticsProficiency{P}
-\AnimalHandlingProficiency{}
-\ArcanaProficiency{P}
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
 \AthleticsProficiency{}
-\DeceptionProficiency{P}
-\HistoryProficiency{P}
-\InsightProficiency{P}
-\IntimidationProficiency{P}
-\InvestigationProficiency{}
-\MedicineProficiency{}
-\NatureProficiency{}
-\PerceptionProficiency{}
-\PerformanceProficiency{E}
-\PersuasionProficiency{E}
-\ReligionProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{P}
 \SleightOfHandProficiency{}
 \StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{P}
+\HistoryProficiency{P}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{}
 \SurvivalProficiency{}
 
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{1} % Enchanted Locket of Lysandra Stage I
+%% CHARISMA SKILLS
+\DeceptionProficiency{P}
+\IntimidationProficiency{P}
+\PerformanceProficiency{E}
+\PersuasionProficiency{E}
 
+\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{1}
 
-% Armor Class is not automatically calculated
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
 \ArmorClass{\intcalcAdd{11}{\calculateModifier{\DexterityScoreValue}}}
-\InitiativeModifier{0}
-\Speed{30ft}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
 \MaxHitPointsRolled{34} % Without Constitution Bonus, is added automatically
-\CurrentHitPoints{}
+\CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
 \HitDiceSpent{0}
+%% Multiclass
+\MultiClassHitDice{d8}
+\MultiClassHitDiceSpent{0}
 
-\CP{}
-\SP{}
-\EP{}
-\GP{355}
-\PP{}
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{}
+\HeavyArmor{}
+\Shields{}
 
-% Weapon Arsenal
-\addWeaponStatistic{Rapier}{AlistairHellstrum}{DEX}{P}{0}{1d8 p}
-\addWeaponStatistic{Dagger}{AlistairHellstrum}{DEX}{P}{0}{1d4 p}
-\addWeaponStatistic{Unarmed Strike}{AlistairHellstrum}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
+\WeaponsProficiency{Simple Weapons, Hand Crossbows, Longswords, Rapiers, Shortswords}
+\ToolsProficiency{Bagpipe, Lure, Violin}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Rapier}{AlistairHellstrum}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{Finesse}
+\addWeaponStatistic{Dagger}{AlistairHellstrum}{DEX}{P}{0}{1d4 \calculateModifier{\DexterityScoreValue} p}{Thrown (20/60), Finesse, Light}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{AlistairHellstrum}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Eldritch Blast}{ATK}{\calculateModifier{\CharismaScoreValue}}{1d10 \calculateModifier{\CharismaScoreValue}}{Force, 2 Beams}
+\addSpellStatistic{Mind Sliver}{DC}{\calculateModifier{\CharismaScoreValue}}{2d6}{Psychic, Subtract 1d4 from next Saving Throw}
+\addSpellStatistic{Mind Sliver}{DC}{\calculateModifier{\CharismaScoreValue}}{2d4}{Psychic, Disadvantage on next Attack Roll}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{Q}{\textbf{Bard Traits}}
+\AddClassFeature{B}{\textbf{Bardic Inspiration}\\Die: d8, \intcalcAdd{0}{\calculateModifier{\CharismaScoreValue}} Uses}
+\AddClassFeature{Q}{\textbf{Jack of All Trades}\\Half Proficiency to all Skills not proficient with}
+\AddClassFeature{Q}{\textbf{Song of Rest}}
+\AddClassFeature{L}{\textbf{Psychic Blades}\\+2d6 Psychic damage}
+\AddClassFeature{L}{\textbf{Words of Terror}\\Once per Short or Long Rest}
+\AddClassFeature{Q}{\textbf{Expertise}\\Performance and Persuasion Expertise}
+\AddClassFeature{Q}{\textbf{Font of Inspiration}}
+\AddClassFeature{Q}{\textbf{Warlock Traits}}
+\AddClassFeature{Q}{\textbf{Archfey Expanded Spell List}\\Faerie Fire, Sleep}
+\AddClassFeature{A}{\textbf{Fey Presence}}
+% SPECIES TRAITS
+\AddSpeciesFeature{Q}{\textbf{Darkvision}}
+\AddSpeciesFeature{Q}{\textbf{Hellish Resistance}\\Resistance to Fire damage}
+\AddSpeciesFeature{Q}{\textbf{Infernal Legacy}\\Thaumaturgy, Hellish Rebuke, and Darkness learned}
+% FEATS
+\AddFeat{\textbf{Eloquent Performer}\\Advantage on Performance Checks made to impress or engage a crowd}
+\AddFeat{\textbf{Eldritch Adept}\\Agonizing Blast}
+\AddFeat{\textbf{Charm of the Monarch}\\Fly Speed, +5 Bonus to Charisma-based Ability Checks}
+\AddFeat{\textbf{Compulsion (Locket)}\\+1 Bonus to Charisma-based Ability Checks}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{34}
+\Height{6'1}
+\Weight{150lbs}
+\Eyes{Golden-Amber}
+\Skin{Burgundy}
+\Hair{Black}
 
-\AttacksAdditional{
-	\textbf{Weapons:}
-	\begin{itemize}
-		\item Rapier
-		\item Dagger
-	\end{itemize}
-	\textbf{Psychic Blades} (\DndDice{2d6})\\
-	\textbf{Eldritch Blast} (2 Beams,\calculateModifier{\CharismaScoreValue} damage)\\
-	\textbf{Mind Sliver} (\DndDice{2d6})\\
-	\textbf{Vicious Mockery} (\DndDice{2d4})\\
-	\textbf{Fey Presence}
+% background
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{11} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{1} % Picture Y-Shift (absolute value)
+	{images/Alistair_appearance.png} %
+	{%
+		{Alistair Hellstrum stands at an average height with a lean and agile build. His skin has a rich, deep burgundy hue, a testament to his infernal heritage as a Tiefling. His eyes}{are a striking shade of golden amber, shimmering with a mischievous glint and an air of confidence. Alistair's dark, wavy hair cascades down to his shoulders, accentuating his charismatic and somewhat untamed demeanor.}
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Bard College of Whispers}
+\OrganizationSymbol{images/Bard_College_of_Lore.png}
+\AlliesAndOrganizations{
+	Most folk are happy to welcome a bard into their midst. Bards of the College of Whispers use this to their advantage. They appear to be like any other bard, sharing news, singing songs, and telling tales to the audiences they gather. In truth, the College of Whispers teaches its students that they are wolves among sheep. These bards use their knowledge and magic to uncover secrets and turn them against others through extortion and threats.
+
+	Many other bards hate the College of Whispers, viewing it as a parasite that uses the bards' reputation to acquire wealth and power. For this reason, these bards rarely\linebreak
+}{
+	reveal their true nature unless they must. They typically claim to follow some other college, or keep their true nature secret in order to better infiltrate and exploit royal courts and other settings of power.
 }
 
-\OtherProficienciesLanguages{
-\textbf{Languages:}\\Common, Infernal\\
-\textbf{Armor:}\\Light Armor\\
-\textbf{Weapons:}\\Simple Weapons, Hand Crossbows, Longswords, Rapiers, Shortswords\\
-\textbf{Tools:}\\Bagpipe, Lure, Violin
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Alistair is not only a skilled musician but also a versatile performer. He excels in various forms of artistic expression, including acting, storytelling, and dancing. His performances are captivating and immersive, captivating audiences with their richness and variety.\\
+	Alistair has a talent for languages and has devoted time to learning and mastering multiple tongues. In addition to Common and Infernal, he may be fluent in Elvish, Dwarvish, or other languages he has encountered during his travels.\\
+	Alistair has developed impressive negotiation skills over the years. He can find common ground and resolve conflicts through diplomacy and tact. His silver tongue, combined with his ability to read people, gives him an advantage in navigating delicate social and political situations.\\
+	Alistair has a keen interest in the arcane arts and has studied magical theory and lore. Though not a full-fledged spellcaster, he possesses a solid understanding of magic and can identify magical items, comprehend magical writings, and recognize spells being cast.
 }
 
-\Equipment{
-	\textbf{Fochlucan Bandore}, \textbf{Eliwick's blank sheet of paper}, \textbf{Ring of the Feywild Dryads}, \textbf{Enchanted Locket of Lysandra} \\
-	Leather Armor\\
-	1 ruby (medium), 1 sapphire (medium), 2 silvered pine cones, Beetle in a Sweet, Cat Eye, Candy
-}
-\Clutter{
-	 a backpack, a bedroll, 2 costumes, 5 candles, 5 days of ration, a waterskin, a disguise kit
+% BACKGROUND
+\Characterbackground{
+	Alistair Hellstrum's journey began in a bustling port city, where he was born to a humble family. From a young age, Alistair showed a natural inclination towards music and performance. He would often spend his days enchanting passersby with his melodious voice and captivating tunes, earning him a few copper coins to help support his family.
+	
+	However, life in the city was not without its challenges. Alistair's Tiefling heritage made him a target of prejudice and mistrust from some of the city's residents. Determined to rise above the discrimination, Alistair honed his talents, pouring his heart and soul into his music. His enchanting performances became a beacon of hope and inspiration for others who faced similar struggles.
+	
+	With his silver tongue, mesmerizing melodies, and unwavering spirit, Alistair Hellstrum, the Tiefling Bard, carries the torch of hope and harmony wherever his journey takes him.
 }
 
+% TREASURES
+\Treasure{
+	\textbf{1. Ancient Manuscript:} Alistair possesses a weathered and meticulously preserved manuscript filled with ancient songs, stories, and forgotten lore. The pages are yellowed with age, and delicate illustrations adorn its margins. This precious relic is a treasure trove of inspiration, containing forgotten melodies, tales of legendary heroes, and cryptic clues that hint at hidden places of power.\\
+	\textbf{2. Curious Relic (The Enchanted Locket of Lysandra):} Alistair possesses a peculiar relic, a seemingly ordinary, unadorned silver locket on a delicate chain. To the casual observer, it looks like an ordinary piece of jewelry with no special significance. However, upon closer inspection, faint, ever-shifting patterns of light dance across its surface, hinting at its magical nature.\\
+	Unbeknownst to Alistair it kindles an insatiable fascination with the Fewild, which becomes stronger the more he interacts with the Feywild and its creatures.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	\textbf{Charismatic:} Alistair possesses a natural charm and magnetic personality that draws people to him. He has a way with words and a captivating presence that allows him to easily connect with others.
 }
+\Alignment{Chaotic Good (Neutral)}
 
 \Ideals{
 	\textbf{Musical Legacy:} Alistair is deeply connected to his musical heritage. He carries the weight of his family's musical lineage and strives to honor their legacy through his performances.
@@ -148,143 +282,311 @@
 	\textbf{Impulsive:} Alistair's passionate nature sometimes leads him to act on impulse, without considering the potential consequences.
 }
 
-\FeaturesTraits{
-\textbf{Tiefling Traits}
-\begin{itemize}
-	\item Darkvision
-	\item Hellish Resistance
-	\item Infernal Legacy
-\end{itemize}
-\textbf{Court Functionary}
-\begin{itemize}
-	\item Eloquent Performer
-\end{itemize}
-\textbf{Eldritch Adept}
-\begin{itemize}
-	\item Agonizing Blast
-\end{itemize}
-\textbf{Bard}
-\begin{itemize}
-	\item Bardic Inspiration
-	\item Jack-of-All-Trades
-	\item Song of Rest
-	\item Bard College of Whispers
-	\begin{itemize}
-		\item Psychic Blades
-		\item Words of Terror
-	\end{itemize}
-	\item Font of Inspiration
-\end{itemize}
-\textbf{Warlock}
-\begin{itemize}
-	\item Otherworldly Patron (The Archfey)
-	\item Eldritch Invocations
-	\begin{itemize}
-		\item Agonizing Blast
-	\end{itemize}
-\end{itemize}
-\textbf{Charm of the Monarch}\\
-\textbf{Compulsion (Locket)}
-\begin{itemize}
-	\item CHA-Checks +1
-\end{itemize}
+% LANGUAGES
+\Languages{Common, Infernal}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Rapier, 2 Dagers, \textbf{Eliwick's blank sheet of paper}\\
+	Leather Armor, Disguise Kit\\
+	1 ruby (medium), 1 sapphire (medium), 2 silvered pine cones, Beetle in a Sweet, Cat Eye, Candy\\
+	a backpack, a bedroll, 2 costumes, 5 candles, 5 days of ration, a waterskin
 }
-
-% Appearance
-
-\Age{34}
-\Height{6'1}
-\Weight{150lbs}
-\Eyes{Golden-Amber}
-\Skin{Burgundy}
-\Hair{Black}
-
-% background
-\CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{11.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{3} % Picture Y-Shift (absolute value)
-	{images/Alistair_appearance.png} %
-	{%
-		{Alistair Hellstrum stands at an average height with a lean and agile build. His skin has a rich, deep burgundy hue, a testament to his infernal heritage as a Tiefling. His eyes}{are a striking shade of golden amber, shimmering with a mischievous glint and an air of confidence. Alistair's dark, wavy hair cascades down to his shoulders, accentuating his charismatic and somewhat untamed demeanor.}
-	}%
-\AdditionalFeaturesAndTraits{
-	Alistair is not only a skilled musician but also a versatile performer. He excels in various forms of artistic expression, including acting, storytelling, and dancing. His performances are captivating and immersive, captivating audiences with their richness and variety.\\
-	Alistair has a talent for languages and has devoted time to learning and mastering multiple tongues. In addition to Common and Infernal, he may be fluent in Elvish, Dwarvish, or other languages he has encountered during his travels.\\
-	Alistair has developed impressive negotiation skills over the years. He can find common ground and resolve conflicts through diplomacy and tact. His silver tongue, combined with his ability to read people, gives him an advantage in navigating delicate social and political situations.\\
-	Alistair has a keen interest in the arcane arts and has studied magical theory and lore. Though not a full-fledged spellcaster, he possesses a solid understanding of magic and can identify magical items, comprehend magical writings, and recognize spells being cast.
-}
-\AlliesAndOrganizations{
-	Most folk are happy to welcome a bard into their midst. Bards of the College of Whispers use this to their advantage. They appear to be like any other bard, sharing news, singing songs, and telling tales to the audiences they gather. In truth, the College of Whispers teaches its students that they are wolves among sheep. These bards use their knowledge and magic to uncover secrets and turn them against others through extortion and threats.
-
-	Many other bards hate the College of Whispers, viewing it as a parasite that uses the bards' reputation to acquire wealth and power. For this reason, these bards rarely\linebreak
-}{
-	reveal their true nature unless they must. They typically claim to follow some other college, or keep their true nature secret in order to better infiltrate and exploit royal courts and other settings of power.
-}
-\OrganizationName{Bard College of Whispers}
-\OrganizationSymbol{images/Bard_College_of_Lore.png}
-\Characterbackground{
-	Alistair Hellstrum's journey began in a bustling port city, where he was born to a humble family. From a young age, Alistair showed a natural inclination towards music and performance. He would often spend his days enchanting passersby with his melodious voice and captivating tunes, earning him a few copper coins to help support his family.
-	
-	However, life in the city was not without its challenges. Alistair's Tiefling heritage made him a target of prejudice and mistrust from some of the city's residents. Determined to rise above the discrimination, Alistair honed his talents, pouring his heart and soul into his music. His enchanting performances became a beacon of hope and inspiration for others who faced similar struggles.
-	
-	With his silver tongue, mesmerizing melodies, and unwavering spirit, Alistair Hellstrum, the Tiefling Bard, carries the torch of hope and harmony wherever his journey takes him.
-}
-\Treasure{
-	\textbf{1. Ancient Manuscript:} Alistair possesses a weathered and meticulously preserved manuscript filled with ancient songs, stories, and forgotten lore. The pages are yellowed with age, and delicate illustrations adorn its margins. This precious relic is a treasure trove of inspiration, containing forgotten melodies, tales of legendary heroes, and cryptic clues that hint at hidden places of power.\\
-	\textbf{2. Curious Relic (The Enchanted Locket of Lysandra):} Alistair possesses a peculiar relic, a seemingly ordinary, unadorned silver locket on a delicate chain. To the casual observer, it looks like an ordinary piece of jewelry with no special significance. However, upon closer inspection, faint, ever-shifting patterns of light dance across its surface, hinting at its magical nature.\\
-	Unbeknownst to Alistair it kindles an insatiable fascination with the Fewild, which becomes stronger the more he interacts with the Feywild and its creatures.
-}
-
-% Magic
-
-\SpellcastingClass{Bard/Warlock}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Enchanted Locket of Lysandra}
+\addAttunedMagicItem{Fochlucan Bandore}
+\addAttunedMagicItem{Ring of the Feywild Dryads}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{355}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Bard / Warlock}
 \SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{\CharismaModifierBonusValue} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{\CharismaModifierBonusValue} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
-
-\CantripSlotA{Eldritch Blast (V, S)}
-\CantripSlotB{Mage Hand (V, S)}
-\CantripSlotC{Mind Sliver (V)}
-\CantripSlotD{Prestidigitation (V, S)}
-\CantripSlotE{Vicious Mockery (V)}
-
-\CantripSlotG{Shillelagh (V, S, M) (once per day)}
-\CantripSlotH{Thaumaturgy (V) (once per day)}
-
-\FirstLevelSpellSlotsTotal{5} % 4 Bard + 1 Warlock
-\FirstLevelSpellSlotA{Armor of Agathys (V, S, M)}
-\FirstLevelSpellSlotB{Charm Person (V, S)}
-\FirstLevelSpellSlotC{Dissonant Whispers (V)}
-\FirstLevelSpellSlotD{Feather Fall (V, M)}
-\FirstLevelSpellSlotE{Healing Word (V)}
-\FirstLevelSpellSlotF{Hex (V, S, M)}
-
-\FirstLevelSpellSlotH{Once per Day:}
-\FirstLevelSpellSlotI{Entangle (V, S)}
-\FirstLevelSpellSlotJ{Faerie Fire (V)}
-\FirstLevelSpellSlotK{Hellish Rebuke (V, S)}
-\FirstLevelSpellSlotL{Protection from Evil and Good (V, S)}
-\FirstLevelSpellSlotM{Speak With Animals (V, S)}
-
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{5}
 \SecondLevelSpellSlotsTotal{3}
-\SecondLevelSpellSlotA{Invisibility (V, S, M)}
-\SecondLevelSpellSlotB{Shatter (V, S, M)}
-\SecondLevelSpellSlotC{Suggestion (V, M)}
-
-\SecondLevelSpellSlotJ{Once per Day:}
-\SecondLevelSpellSlotK{Darkness (V, M)}
-\SecondLevelSpellSlotL{Invisibility (V, S, M)}
-\SecondLevelSpellSlotM{Levitate (V, S, M)}
-
 \ThirdLevelSpellSlotsTotal{2}
-\ThirdLevelSpellSlotA{Counterspell (S)}
-\ThirdLevelSpellSlotB{Summon Fey (V, S, M)}
-\ThirdLevelSpellSlotK{Once per Day:}
-\ThirdLevelSpellSlotL{Fly (V, S, M)}
-\ThirdLevelSpellSlotM{Meld into Trees (V, S)}
 
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Eldritch Blast}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{\small 1d10 \calculateModifier{\CharismaScoreValue} Force, 2 Beams}
+	{V, S}
+\addPreparedSpell{0}
+	{Mage Hand}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{1 Minute}
+	{V, S}
+\addPreparedSpell{0}
+	{Mind Sliver}
+	{Action}
+	{10 Feet}
+	{}
+	{}
+	{}
+	{1 Round}
+	{V}
+\addPreparedSpell{0}
+	{Prestidigation}
+	{Action}
+	{10 Feet}
+	{}
+	{}
+	{}
+	{1 Hour}
+	{V, S}
+\addPreparedSpell{0}
+	{Shillelagh}
+	{Bonus Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{1 Minute, Once / Day}
+	{V, S}
+\addPreparedSpell{0}
+	{Thaumaturgy}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{1 Minute, Once / LR}
+	{V}
+\addPreparedSpell{0}
+	{Vicious Mockery}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{2s4 Psychic}
+	{V}
+
+\addPreparedSpell{1}
+	{Armor of Agathys}
+	{Action}
+	{Self}
+	{}
+	{}
+	{T}
+	{1 Hour}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Charm Person}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{1 Hour}
+	{V, S}
+\addPreparedSpell{1}
+	{Dissonant Whispers}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{3d6 Psychic}
+	{V}
+\addPreparedSpell{1}
+	{Entangle}
+	{Action}
+	{90 Feet}
+	{T}
+	{}
+	{}
+	{Once per Day}
+	{V, S}
+\addPreparedSpell{1}
+	{Faerie Fire}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{Once per Day}
+	{V}
+\addPreparedSpell{1}
+	{Feather Fall}
+	{Reaction}
+	{60 Feet}
+	{}
+	{}
+	{T}
+	{\footnotesize 1 Minute, no Fall Damage}
+	{V, M}
+\addPreparedSpell{1}
+	{Healing Word}
+	{Bonus Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{Heal 1d4 \SpellcastingModifierValue~HP}
+	{V}
+\addPreparedSpell{1}
+	{Hellish Rebuke}
+	{Reaction}
+	{60 Feet}
+	{}
+	{}
+	{Once per LR}
+	{2d10 Fire}
+	{V, S}
+\addPreparedSpell{1}
+	{Hex}
+	{Bonus Action}
+	{90 Feet}
+	{T}
+	{}
+	{T}
+	{}
+	{V, S, M}
+\addPreparedSpell{1}
+	{\footnotesize Protection from Good and Evil}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{T}
+	{Once per Day}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Speak with Animals}
+	{Action}
+	{Self}
+	{}
+	{T}
+	{}
+	{Once per Day}
+	{V, S}
+
+\addPreparedSpell{2}
+	{Darkness}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{T}
+	{Once per LR}
+	{V, M}
+\addPreparedSpell{2}
+	{Invisibility}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{T}
+	{Once per Day}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Levitate}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{T}
+	{Once per Day}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Shatter}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{T}
+	{3d8 Thunder}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Suggestion}
+	{Action}
+	{30 Feet}
+	{T}
+	{}
+	{T}
+	{}
+	{V, M}
+
+\addPreparedSpell{3}
+	{Counterspell}
+	{Reaction}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{}
+	{S}
+\addPreparedSpell{3}
+	{Summon Fey}
+	{Action}
+	{90 Feet}
+	{T}
+	{}
+	{T}
+	{}
+	{V, S, M}
+\addPreparedSpell{3}
+	{Fly}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{T}
+	{Once per Day}
+	{V, S, M}
+\addPreparedSpell{3}
+	{Meld into Trees}
+	{Action}
+	{Touch}
+	{}
+	{T}
+	{}
+	{Once per Day}
+	{V, S}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \begin{document}
 
 \newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
@@ -357,16 +659,17 @@ You have resistance to fire damage.
 \subsection*{Infernal Legacy}
 You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Hellish Rebuke spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Darkness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.
 
-\section*{Court Functionary}
-Your knowledge of how bureaucracies function lets you gain access to the records and inner workings of any noble court or government you encounter. You know who the movers and shakers are, whom to go to for the favors you seek, and what the current intrigues of interest in the group are.
+\section*{Feats}
 \subsection*{Eloquent Performer}
 When you use the Performance skill to entertain, inspire, or captivate an audience, your performance is exceptionally compelling. You have advantage on Performance checks made to impress or engage a crowd.
-
 \section*{Eldritch Adept}
 \textbf{Agonizing Blast}\\
 Studying occult lore, you learn one Eldritch Invocation option of your choice from the warlock class. Your spellcasting ability for the invocation is Intelligence, Wisdom, or Charisma (choose when you select this feat). If the invocation has a prerequisite of any kind, you can choose that invocation only if you’re a warlock who meets the prerequisite.
 
 Whenever you gain a level, you can replace the invocation with another one from the warlock class.
+\subsection*{Charm of the Monarch}
+You can sprout a pair of beautiful butterfly wings, you gain flying speed equal to your walking speed, and you gain a +5 bonus on all Charisma-based ability checks. These effects last for 1 hour. After you use this charm two times, it vanishes from you.\\
+\textbf{(Usages: 1)}
 
 \section*{Bard Traits}
 \subsection*{Bardic Inspiration}
@@ -433,11 +736,6 @@ At 2nd level, you gain two eldritch invocations of your choice. When you gain ce
 Additionally, when you gain a level in this class, you can choose one of the invocations you know and replace it with another invocation that you could learn at that level.
 \subsubsection*{Agonizing Blast}
 When you cast eldritch blast, add your Charisma modifier to the damage it deals on a hit.
-
-\section*{Other Traits}
-\subsection*{Charm of the Monarch}
-You can sprout a pair of beautiful butterfly wings, you gain flying speed equal to your walking speed, and you gain a +5 bonus on all Charisma-based ability checks. These effects last for 1 hour. After you use this charm two times, it vanishes from you.\\
-\textbf{(Usages: 1)}
 
 \section*{Spells}
 \subsection*{Cantrip}

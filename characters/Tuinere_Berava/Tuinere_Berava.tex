@@ -7,7 +7,7 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
@@ -17,6 +17,7 @@
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Tuinere Bevara}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
 
 \Class{Monster Hunter}
 \Subclass{Devourer Guild}
@@ -75,6 +76,8 @@
 \WisdomSavingThrowBonus{0}
 \CharismaSavingThrowBonus{0}
 
+\calculateScoreModifiersAndSavingThrows{}
+
 % SKILL PROFICIENCY
 % \SkillProficiency[#1]{#2}
 %%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
@@ -106,6 +109,8 @@
 \IntimidationProficiency{}
 \PerformanceProficiency{}
 \PersuasionProficiency{}
+
+\calculateAllSkillModifiers{}
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -125,7 +130,7 @@
 \PassivePerceptionModifier{0}
 
 % ARMOR CLASS (\Equip Shield does not adjust AC-Value)
-\EquipShield
+%\EquipShield
 \ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
 
 % HIT POINTS
@@ -159,9 +164,9 @@
 %%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
 %%	#6 = Damage + Damage Type
 %%	#7 = Notes
-\addWeaponStatistic{Rapier}{Tuinere}{DEX}{P}{0}{1d8 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Finesse}
-\addWeaponStatistic{Longbow}{Tuinere}{DEX}{P}{0}{1d8 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Heavy, Two-Handed, Ranged 150/600 ft.}
-\addWeaponStatistic{Nematocyst}{Tuinere}{DEX}{P}{0}{1d4 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Finesse}
+\addWeaponStatistic{Rapier}{Tuinere}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{Finesse, Vex}
+\addWeaponStatistic{Longbow}{Tuinere}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{Ranged (150/600), Heavy, Two-Handed, Slow}
+\addWeaponStatistic{Nematocyst}{Tuinere}{DEX}{P}{0}{1d4 \calculateModifier{\DexterityScoreValue} p}{Finesse}
 \addWeaponStatistic{Reaction (STR)}{Tuinere}{STR}{P}{2}{+\intcalcAdd{2}{\calculateModifier{\StrengthScoreValue}}}{Opportunist Feat}
 \addWeaponStatistic{Reaction (DEX)}{Tuinere}{DEX}{P}{2}{+\intcalcAdd{2}{\calculateModifier{\DexterityScoreValue}}}{Opportunist Feat}
 % UNARMED STRIKE
@@ -204,38 +209,45 @@
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
 \Age{}
 \Height{}
 \Weight{}
 \Eyes{}
 \Skin{}
 \Hair{}
-
 \CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{11.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{11} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
 	{0} % Picture Y-Shift (absolute value)
 	{images/Character_Portrait.jpg} %
 	{%
 		{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis}{mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas.}
 	}%
-\Characterbackground{
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
-}
-\AlliesAndOrganizations{
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi\linebreak
-}{
-	tristique.
-}
+
+% ORGANIZATION & ALLIES
 \OrganizationName{DnD Organization}
 \OrganizationSymbol{images/Organisation.png}
+\AlliesAndOrganizations{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum\linebreak
+}{
+	vitae sapien pellentesque habitant morbi tristique.
+}
+
+
 \AdditionalFeaturesAndTraits{
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
 }
-\Treasure{
+
+% BACKGROUND
+\Characterbackground{
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
 }
 
+% TREASURES
+\Treasure{
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Dictumst quisque sagittis purus sit. Mattis nunc sed blandit libero volutpat sed cras ornare. Blandit cursus risus at ultrices mi tempus imperdiet. Et netus et malesuada fames ac turpis egestas maecenas. Nibh cras pulvinar mattis nunc sed blandit. Varius vel pharetra vel turpis nunc eget lorem dolor. Tellus orci ac auctor augue. Nulla aliquet enim tortor at auctor urna nunc id cursus. A condimentum vitae sapien pellentesque habitant morbi tristique. Viverra suspendisse potenti nullam ac tortor. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Nisl condimentum id venenatis a. Dui nunc mattis enim ut tellus elementum sagittis.
+}
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -260,7 +272,6 @@
 
 % LANGUAGES
 \Languages{Common, Elvish, Draconic, Deep Speech, Undercommon, Thieves' Cant}
-
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -278,7 +289,6 @@
 \EP{1}
 \GP{9000}
 \PP{100}
-
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -287,6 +297,8 @@
 \SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
 % SPELL SLOTS
 %\FirstLevelSpellSlotsTotal{4}
@@ -308,7 +320,18 @@
 %%	#2 = Spell Prepared {True, False}
 %%	#3 = Spell Name
 %%	#4 = Spell Components {V, S, M}
-
+%\addPreparedSpell{0}
+%	{Conjure Minor Elemental}
+%	{Action}
+%	{120 Feet}
+%	{T}
+%	{}
+%	{T}
+%	{Evocation Boost}
+%	{V, S, M}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \begin{document}
 
 \newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
@@ -393,9 +416,9 @@ When you gain this feature, you also learn one language based on the chart below
 Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Longswords. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.
 
 When you reach certain Monster Hunter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Monster Hunter Features table.
-\subsubsection*{Longbow (Slow)}
+\subsubsection*{Slow (Longbow)}
 If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
-\subsubsection*{Rapier (Vex)}
+\subsubsection*{Vex (Rapier)}
 If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
 \subsection*{Fighting Style}
 \textbf{Opportunist}\\

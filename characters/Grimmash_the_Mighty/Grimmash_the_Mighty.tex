@@ -7,24 +7,31 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=pre5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% Headline
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Grimmash the Mighty}
+\PlayerName{M4RZ}
 
 \Class{Barbarian}
-\Level{3}
+\Subclass{Path of Wild Magic}
 \Background{Tribal Outcast}
-\PlayerName{M4RZ}
 \Race{Orc}
-\Alignment{Chaotic Neutral}
-\XP{}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
 
-% Ability scores (correct scores, no modifiers are automatically applied)
+\Level{3} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{15}
 \DexterityRolledScore{12}
@@ -33,16 +40,26 @@
 \WisdomRolledScore{9}
 \CharismaRolledScore{13}
 
-\StrengthScoreBonus{2} % Orc Race +2
+\StrengthScoreBonus{2}		% Orc Race +2
 \DexterityScoreBonus{0}
-\ConstitutionScoreBonus{1} % Orc Race + 1
+\ConstitutionScoreBonus{1}	% Orc Race + 1
 \IntelligenceScoreBonus{0}
 \WisdomScoreBonus{0}
 \CharismaScoreBonus{0}
 
 \calculateAbilityScores{}
 
-% Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{P}
 \DexterityProficiency{}
 \ConstitutionProficiency{P}
@@ -50,83 +67,191 @@
 \WisdomProficiency{}
 \CharismaProficiency{}
 
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{P}		% Primal Knowledge
+
+%% DEXTERITY SKILLS
 \AcrobaticsProficiency{}
-\AnimalHandlingProficiency{}
-\ArcanaProficiency{}
-\AthleticsProficiency{P}
-\DeceptionProficiency{}
-\HistoryProficiency{}
-\InsightProficiency{}
-\IntimidationProficiency{P}
-\InvestigationProficiency{}
-\MedicineProficiency{}
-\NatureProficiency{P}
-\PerceptionProficiency{P}
-\PerformanceProficiency{}
-\PersuasionProficiency{}
-\ReligionProficiency{}
 \SleightOfHandProficiency{}
 \StealthProficiency{}
-\SurvivalProficiency{P}
 
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{0}
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{P}			% Barbarian
+\ReligionProficiency{}
 
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{}
+\PerceptionProficiency{P}		% Barbarian
+\SurvivalProficiency{P}			% Orc
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{P}		% Orc
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION (Displays any Alphanumerical Input)
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
-% Armor Class is not automatically calculated
-\ArmorClass{14}
-\InitiativeModifier{0}
-\Speed{30ft}
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{10}{\intcalcAdd{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}{2}}}
+
+% HIT POINTS
 \MaxHitPointsRolled{23} % Without Constitution Bonus, is added automatically
-\CurrentHitPoints{}
+\CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d12}
 \HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
 
-\CP{}
-\SP{}
-\EP{}
-\GP{60}
-\PP{}
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
 
-% Weapon Arsenal
-\addWeaponStatistic{Arcane Sunder}{GrimmashtheMighty}{STR}{P}{0}{1d12 s}
-\addWeaponStatistic{Handaxe}{GrimmashtheMighty}{STR}{P}{0}{1d6 s}
-\addWeaponStatistic{Javelin}{GrimmashtheMighty}{STR}{P}{0}{1d6 p}
-\addWeaponStatistic{Stones}{GrimmashtheMighty}{STR}{P}{0}{1d4 b}
-\addWeaponStatistic{Unarmed Strike}{GrimmashtheMighty}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
+\WeaponsProficiency{Simple Wapons, Martial Weapons}
+\ToolsProficiency{Lute}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Arcane Sunder}{GrimmashtheMighty}{STR}{P}{0}{1d8 \calculateModifier{\StrengthScoreValue} s}{Versatile (1d10), Topple}
+\addWeaponStatistic{Handaxe}{GrimmashtheMighty}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} s}{Thrown (20/60)}
+\addWeaponStatistic{Javelin}{GrimmashtheMighty}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} p}{Light, Thrown (30/120), Slow}
+\addWeaponStatistic{Stones}{GrimmashtheMighty}{STR}{P}{0}{1d4 \calculateModifier{\StrengthScoreValue}  b}{}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{GrimmashtheMighty}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
+\AddClassFeature{B}{\textbf{Rage}\\3 Uses}
+\AddClassFeature{Q}{\textbf{Unarmored Defense}\\Armor Class: \intcalcAdd{10}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}}
+\AddClassFeature{Q}{\textbf{Weapon Mastery}\\Battle Axe, Javelin}
+\AddClassFeature{Q}{\textbf{Danger Sense}\\Advantage on Dexterity Saving Throws}
+\AddClassFeature{Q}{\textbf{Reckless Attack}}
+\AddClassFeature{Q}{\textbf{Path of Wild Magic}\begin{itemize}
+	\item Magic Awareness
+	\item Wild Surge
+\end{itemize}}
+\AddClassFeature{Q}{\textbf{Primal Knowledge}\\Athletics Proficiency}
+% SPECIES TRAITS
+\AddSpeciesFeature{Q}{\textbf{Darkvision}}
+\AddSpeciesFeature{B}{\textbf{Aggressive}\\Move nearer towards hostile creature}
+\AddSpeciesFeature{Q}{\textbf{Primal Intuition}\\Intimidation, Survival Proficiency}
+\AddSpeciesFeature{Q}{\textbf{Powerful Build}\\Count as one size larger}
+% FEATS
+\AddFeat{\textbf{Magical Brawler}\begin{itemize}
+	\item Spell Strike
+	\item Arcane Resilience
+\end{itemize}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Age{23}
+\Height{6'5''}
+\Weight{250lbs}
+\Eyes{Glacial Blue}
+\Skin{Pale Frost}
+\Hair{Blue}
 
-\AttacksAdditional{
-	\textbf{Arcane Sunder},\\
-	2 Handaxes, (20/60)\\
-	4 Javelins, (30/120)\\
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{9} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{-4} % Picture Y-Shift (absolute value)
+	{images/Grimmash_appearance.png} %
+	{%
+		{Grimmash is a formidable frost orc with a towering presence. His pale blue skin reflects his icy origins, and his wild blue hair cascades down}{past his broad shoulders. Tribal tattoos adorn his rugged face, while his intense glacial blue eyes reveal a spark of mischief. With his tusks jutting from his lower jaw and scars marking his battle-worn body, he dresses in a mix of practical and flamboyant attire. He wields a massive greataxe, channeling his delusional belief in magic into each swing. }
+	}%
+\OrganizationName{The Savage Vanguard}
+\OrganizationSymbol{images/Savage_Vanguard.png}
+\AlliesAndOrganizations{
+	The Savage Vanguard is an illustrious organization renowned for its ferocious warriors, embodying the essence of primal might and unyielding battle frenzy. Comprising a brotherhood of barbarians and berserkers from diverse backgrounds, the Savage Vanguard is revered for their unmatched combat skills and unwavering dedication to the art of war.\\
+	Within their ranks, the Savage Vanguard values raw strength, indomitable spirit, and a relentless pursuit of victory. They are a force to be reckoned with, feared by their enemies and respected by allies for their unwavering loyalty and unrelenting ferocity\linebreak
+}{
+	on the battlefield.
 }
-
-\OtherProficienciesLanguages{
-\textbf{Languages:}\\Common, Orcish, Misinterpreted Spell Language\\
-\textbf{Armor:}\\Light Armor, Medium Armor, Shields\\
-\textbf{Weapons:}\\Simple Weapons, Martial Weapons\\
-\textbf{Tools:}\\Lute
+\AdditionalFeaturesAndTraits{
+	Grimmash believes his physical actions are the result of his "wizardry." When he casts "magic missile," he throws small enchanted objects like rocks, which he calls "magic stones". Grimmash is especially proud when he can throw a wizard while casting "magic missile" as this represents the most powerful form of his spell.\\
+	Grimmash sees his rage as channeling elemental forces. When he flies into a rage, he believes he is tapping into the powers of fire, lightning, or other elements, which fuel his enhanced physical abilities.\\
+	Despite his delusion, Grimmash is not malicious. He genuinely believes he is a wizard and possesses magical powers. He may even attempt to teach others his "spells," which often results in unintentional hilarity.\\
+	Grimmash's fascination with magic makes him childlike in many ways. He is easily impressed by actual spellcasters and may seek their approval, hoping to learn more about "real" magic.
 }
-
-\Equipment{
-	\textbf{Shield of Reflecting Spells}\\
-	a pouch with \textbf{"Magic Stones"}, \textbf{The Mighty Discord (Lute),} \textbf{Cursed Bracelet of Wild Magic}
+\Characterbackground{
+	Grimmash, an orc born in a snow mountain tribe, yearned for magic despite his kin's focus on physical strength. Mocked for his aspirations and eventually exiled from his tribe, he wandered around the wilds. During his travels he stumbled across a vast tomb. While exploring it he found scripture and tomes that seemed to him to be of ancient spellcasting descent. Convinced he found a very special spellbook, he embraced the delusion of being a wizard.\\
+	Grimmash's ultimate goal is to uncover the ultimate spell—the one that will solidify his claim as the greatest "wizard" the world has ever known. He roams far and wide, seeking out ancient artifacts, enchanted items, and renowned spellcasters, hoping to learn from them and expand his understanding of magic. He yearns for the recognition and respect he believes he deserves, convinced that one day, his name will be uttered with awe and reverence throughout the realms.
 }
-\Clutter{
-	Hunting Trap, an antler shed, a set of traveler's clothes, a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, waterskin, 50ft hempen rope
+\Treasure{
+	\textbf{The Amulet of Teleportation:} Grimmash believes that wearing this amulet allows him to instantly teleport to different locations. In reality, it's a mere decorative piece, but he often activates it with a flourish, pretending to vanish and reappear while his companions humorously watch him move around on foot.\\
+	\textbf{The Spellbook of Misguided Spells:} Grimmash acquired an old, tattered spellbook while exploring an ancient tomb. Unaware of its true purpose, he cherishes it as his personal grimoire. The book contains nonsensical scribbles, but Grimmash interprets them as his "wizard spells," despite their complete ineffectiveness.\\
+	\textbf{The Crystal Orb of Divination:} Grimmash possesses a polished crystal orb that he uses for divination purposes. Though he has no true understanding of divination magic, he gazes into the orb and pretends to discern hidden truths and glimpses of the future, offering guidance to his fellow adventurers.
 }
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	\textbf{Delusional Confidence:} Grimmash is utterly convinced of his wizardry, often boasting about his magical abilities to anyone who will listen. He believes he is the most powerful "wizard" in the land.
 }
+\Alignment{Chaotic Neutral}
 
 \Ideals{
 	\textbf{Determination:} Grimmash perseveres through challenges and setbacks, driven by his delusional desire to prove himself as a powerful wizard.
@@ -140,101 +265,73 @@
 	\textbf{Gullibility:} Grimmash's belief in his own magic makes him easily deceived, falling for tricks and false promises, leading to unpredictable situations.
 }
 
-\FeaturesTraits{
-\textbf{Orcish Trait}
-\begin{itemize}
-	\item Darkvision
-	\item Aggressive
-	\item Primal Intuition
-	\item Powerful Build
-\end{itemize}
-\textbf{Feats}
-\begin{itemize}
-	\item Magical Brawler
-\end{itemize}
-\textbf{Tribal Outcast}
-\begin{itemize}
-	\item Echoes of the Past
-\end{itemize}
-\textbf{Barbarian Traits}
-\begin{itemize}
-	\item Rage
-	\item Unarmored Defense
-	\item Reckless Attack
-	\item Danger Sense
-	\item Path of the Berserker
-	\begin{itemize}
-		\item Frenzy
-	\end{itemize}
-\end{itemize}
+% LANGUAGES
+\Languages{Common, Orcish, Misinterpreted Spell Language}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	\textbf{Arcane Sunder (Battleaxe)}, \textbf{Shield of Reflecting Spells}, a pouch with \textbf{"Magic Stones"}, \textbf{The Mighty Discord} (Lute)\\
+	2 Handaxes, 4 Javelins\\
+	hunting trap, antler shed, set of traveler's clothes, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 ft. hempen rope
 }
-
-% Appearance
-
-\Age{23}
-\Height{6'5''}
-\Weight{250lbs}
-\Eyes{Glacial Blue}
-\Skin{Pale Frost}
-\Hair{Blue}
-
-% background
-\CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{9.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{-17} % Picture Y-Shift (absolute value)
-	{images/Grimmash_appearance.png} %
-	{%
-		{Grimmash is a formidable frost orc with a towering presence. His pale blue skin reflects his icy origins, and his wild blue hair cascades down}{past his broad shoulders. Tribal tattoos adorn his rugged face, while his intense glacial blue eyes reveal a spark of mischief. With his tusks jutting from his lower jaw and scars marking his battle-worn body, he dresses in a mix of practical and flamboyant attire. He wields a massive greataxe, channeling his delusional belief in magic into each swing. }
-	}%
-%\CharacterAppearance{}{
-%	\hspace*{-1.65em}\begin{tabular}{p{90pt}p{80pt}}
-%		\begin{tabular}{p{90pt}}\vspace*{-1.75em}\includegraphics[width=90pt, height=140pt, keepaspectratio]{images/Grimmash_appearance.png}\end{tabular}
-%		&
-%		\hspace*{-1.6em}\begin{tabular}{p{83pt}}Grimmash is a formidable frost orc with a towering presence. His pale blue skin reflects his icy origins, and his wild blue hair cascades down past his broad shoulders. Tribal tattoos adorn ~~~~~~~~~~~~~~\end{tabular}
-%	\end{tabular}\\\vspace*{-1.6em}\hfill\\
-%	his rugged face, while his intense glacial blue eyes reveal a spark of mischief. With his tusks jutting from his lower jaw and scars marking his battle-worn body, he dresses in a mix of practical and flamboyant attire. He wields a massive greataxe, channeling his delusional belief in magic into each swing. 
-%}{}{}{}
-\AdditionalFeaturesAndTraits{
-	Grimmash believes his physical actions are the result of his "wizardry." When he casts "magic missile," he throws small enchanted objects like rocks, which he calls "magic stones". Grimmash is especially proud when he can throw a wizard while casting "magic missile" as this represents the most powerful form of his spell.\\
-	Grimmash sees his rage as channeling elemental forces. When he flies into a rage, he believes he is tapping into the powers of fire, lightning, or other elements, which fuel his enhanced physical abilities.\\
-	Despite his delusion, Grimmash is not malicious. He genuinely believes he is a wizard and possesses magical powers. He may even attempt to teach others his "spells," which often results in unintentional hilarity.\\
-	Grimmash's fascination with magic makes him childlike in many ways. He is easily impressed by actual spellcasters and may seek their approval, hoping to learn more about "real" magic.
-}
-\AlliesAndOrganizations{
-	The Savage Vanguard is an illustrious organization renowned for its ferocious warriors, embodying the essence of primal might and unyielding battle frenzy. Comprising a brotherhood of barbarians and berserkers from diverse backgrounds, the Savage Vanguard is revered for their unmatched combat skills and unwavering dedication to the art of war.\\
-	Within their ranks, the Savage Vanguard values raw strength, indomitable spirit, and a relentless pursuit of victory. They are a force to be reckoned with, feared by their enemies and respected by allies for their unwavering loyalty and unrelenting ferocity\linebreak
-}{
-	on the battlefield.
-}
-\OrganizationName{The Savage Vanguard}
-\OrganizationSymbol{images/Savage_Vanguard.png}
-\Characterbackground{
-	Grimmash, an orc born in a snow mountain tribe, yearned for magic despite his kin's focus on physical strength. Mocked for his aspirations and eventually exiled from his tribe, he wandered around the wilds. During his travels he stumbled across a vast tomb. While exploring it he found scripture and tomes that seemed to him to be of ancient spellcasting descent. Convinced he found a very special spellbook, he embraced the delusion of being a wizard.\\
-	Grimmash's ultimate goal is to uncover the ultimate spell—the one that will solidify his claim as the greatest "wizard" the world has ever known. He roams far and wide, seeking out ancient artifacts, enchanted items, and renowned spellcasters, hoping to learn from them and expand his understanding of magic. He yearns for the recognition and respect he believes he deserves, convinced that one day, his name will be uttered with awe and reverence throughout the realms.
-}
-\Treasure{
-	\textbf{The Amulet of Teleportation:} Grimmash believes that wearing this amulet allows him to instantly teleport to different locations. In reality, it's a mere decorative piece, but he often activates it with a flourish, pretending to vanish and reappear while his companions humorously watch him move around on foot.\\
-	\textbf{The Spellbook of Misguided Spells:} Grimmash acquired an old, tattered spellbook while exploring an ancient tomb. Unaware of its true purpose, he cherishes it as his personal grimoire. The book contains nonsensical scribbles, but Grimmash interprets them as his "wizard spells," despite their complete ineffectiveness.\\
-	\textbf{The Crystal Orb of Divination:} Grimmash possesses a polished crystal orb that he uses for divination purposes. Though he has no true understanding of divination magic, he gazes into the orb and pretends to discern hidden truths and glimpses of the future, offering guidance to his fellow adventurers.
-}
-
-% Magic
-
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Cursed Bracelet of Wild Magic}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{60}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
 \SpellcastingClass{}
 \SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
-%\CantripSlotA{Cantrip A}
+% SPELL SLOTS
+%\FirstLevelSpellSlotsTotal{4}
+%\SecondLevelSpellSlotsTotal{3}
+%\ThirdLevelSpellSlotsTotal{3}
+%\FourthLevelSpellSlotsTotal{3}
+%\FifthLevelSpellSlotsTotal{3}
+%\SixthLevelSpellSlotsTotal{2}
+%\SeventhLevelSpellSlotsTotal{2}
+%\EighthLevelSpellSlotsTotal{1}
+%\NinthLevelSpellSlotsTotal{1}
 
-%\FirstLevelSpellSlotsTotal{1}
-%\FirstLevelSpellSlotA{Spell 1.A}
-%\FirstLevelSpellSlotB{Spell 1.B}
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
 
-%\SecondLevelSpellSlotsTotal{2}
-%\SecondLevelSpellSlotA{Spell 2.A}
-%\SecondLevelSpellSlotB{Spell 2.B}
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%\addPreparedSpell{0}
+%	{Conjure Minor Elemental}
+%	{Action}
+%	{120 Feet}
+%	{T}
+%	{}
+%	{T}
+%	{Evocation Boost}
+%	{V, S, M}
 
 \begin{document}
 
@@ -249,7 +346,7 @@
 \renderbackgroundsheet
 
 % SPELLCASTING PAGE
-% \renderspellsheet
+\renderspellsheet
 
 \newgeometry{left=1cm,right=1cm,top=1cm}
 \chapter*{Wild Magic Surge Table}
@@ -297,6 +394,11 @@ You have proficiency in two of the following skills of your choice: Animal Handl
 \subsection*{Powerful Build}
 You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
 
+\section*{Tribal Outcast}
+You were once part of a family or clan, perhaps commoners with their own way of life. However, they exiled you, forcing you to live alone and survive by yourself. You never fully trusted anyone again, despite the fact you still hold the memories of your loved ones dear to you.
+\subsection*{Echoes of the Past}
+You may have been forced to leave your previous life, but it hasn't left you. You have knowledge about the ways people treat one another and therefore have been gifted with skills revolving around a quick-witted nature. You can talk someone into giving you a hot meal and a warm bed for the evening.
+
 \section*{Feats}
 \subsection*{Magical Brawler}
 \paragraph*{Prerequisite} Orc race, Strength 13 or higher\\
@@ -306,45 +408,76 @@ When you make a melee weapon attack, you can choose to infuse it with your magic
 \subsubsection*{Arcane Resilience}
 Your belief in your magical shield enhances your resilience. While raging, you gain a +2 bonus to your AC.
 
-\section*{Tribal Outcast}
-You were once part of a family or clan, perhaps commoners with their own way of life. However, they exiled you, forcing you to live alone and survive by yourself. You never fully trusted anyone again, despite the fact you still hold the memories of your loved ones dear to you.
-\subsection*{Echoes of the Past}
-You may have been forced to leave your previous life, but it hasn't left you. You have knowledge about the ways people treat one another and therefore have been gifted with skills revolving around a quick-witted nature. You can talk someone into giving you a hot meal and a warm bed for the evening.
-
 \section*{Barbarian Traits}
 \subsection*{Rage}
-\newcommand{\RageModifier}{2}
-\textbf{Rages: 2}\\
-In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.
+\newcommand{\RageModifier}{2}\textbf{Rages: 2}\\
+You can imbue yourself with a primal power called Rage, a force that grants you extraordinary might and resilience. You can enter it as a Bonus Action if you aren't wearing Heavy armor.
 
-While raging, you gain the following benefits if you aren't wearing heavy armor:
+You can enter your Rage the number of times shown for your Barbarian level in the Rages column of the Barbarian Features table. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.
 
+While active, your Rage follows the rules below.
+
+\paragraph*{Damage Resistance} You have Resistance to Bludgeoning, Piercing, and Slashing damage.
+
+\paragraph*{Rage Damage} When you make an attack using Strength—with either a weapon or an Unarmed Strike—and deal damage to the target, you gain a bonus to the damage that increases as you gain levels as a Barbarian, as shown in the Rage Damage column of the Barbarian Features table.
+
+\paragraph*{Strength Advantage} You have Advantage on Strength checks and Strength saving throws.
+
+\paragraph*{No Concentration or Spells} You can't maintain Concentration, and you can't cast spells.
+
+\paragraph*{Duration} The Rage lasts until the end of your next turn, and it ends early if you don Heavy armor or have the Incapacitated condition. If your Rage is still active on your next turn, you can extend the Rage for another round by doing one of the following:
 \begin{itemize}
-	\item You have advantage on Strength checks and Strength saving throws.
-	\item When you make a melee weapon attack using Strength, you gain a +\RageModifier ~bonus to the damage roll. This bonus increases as you level.
-	\item You have resistance to bludgeoning, piercing, and slashing damage.
+	\item Make an attack roll against an enemy.
+	\item Force an enemy to make a saving throw.
+	\item Take a Bonus Action to extend your Rage.
 \end{itemize}
 
-If you are able to cast spells, you can't cast them or concentrate on them while raging.
-
-Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.
-
-Once you have raged the maximum number of times for your barbarian level, you must finish a long rest before you can rage again.
+Each time the Rage is extended, it lasts until the end of your next turn. You can maintain a Rage for up to 10 minutes.
 \subsection*{Unarmored Defense}
-While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.\\
+While you aren't wearing any armor, your base Armor Class equals 10 plus your Dexterity and Constitution modifiers. You can use a Shield and still gain this benefit.\\
 \textbf{Armor Class: \intcalcAdd{10}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}}
-\subsection*{Reckless Attack}
-Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.
+\subsection*{Weapon Mastery}
+Your training with weapons allows you to use the mastery properties of two kinds of Simple or Martial Melee weapons of your choice, such as Greataxes and Handaxes. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.
+
+When you reach certain Barbarian levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Barbarian Features table.
+\subsubsection*{Topple (Battleaxe)}
+If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.
+\subsubsection*{Slow (Javelin)}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
 \subsection*{Danger Sense}
-At 2nd level, you gain an uncanny sense of when things nearby aren't as they should be, giving you an edge when you dodge away from danger. You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can't be blinded, deafened, or incapacitated.
-\subsection*{Path of the Berserker}
-For some barbarians, rage is a means to an end – that end being violence. The Path of the Berserker is a path of untrammeled fury, slick with blood. As you enter the berserker's rage, you thrill in the chaos of battle, heedless of your own health or well-being.
-\subsubsection*{Frenzy}
-Starting when you choose this path at 3rd level, you can go into a frenzy when you rage. If you do so, for the duration of your rage you can make a single melee weapon attack as a bonus action on each of your turns after this one. When your rage ends, you suffer one level of exhaustion.
+You gain an uncanny sense of when things aren't as they should be, giving you an edge when you dodge perils. You have Advantage on Dexterity saving throws unless you have the Incapacitated condition.
+\subsection*{Reckless Attack}
+You can throw aside all concern for defense to attack with increased ferocity. When you make your first attack roll on your turn, you can decide to attack recklessly. Doing so gives you Advantage on attack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage during that time.
+\subsection*{Path of Wild Magic}
+Many places in the multiverse abound with beauty, intense emotion, and rampant magic; the Feywild, the Upper Planes, and other realms of supernatural power radiate with such forces and can profoundly influence people. As folk of deep feeling, barbarians are especially susceptible to these wild influences, with some barbarians being transformed by the magic. These magic-suffused barbarians walk the Path of Wild Magic. Elf, tiefling, aasimar, and genasi barbarians often seek this path, eager to manifest the otherworldly magic of their ancestors.
+\subsubsection*{Wild Surge}
+The magical energy roiling inside you sometimes erupts from you. When you enter your rage, roll on the Wild Magic table to determine the magical effect produced.
+
+If the effect requires a saving throw, the DC equals 8 + your proficiency bonus + your Constitution modifier.
+\begin{DndTable}[header=Wild Magic]{lX}
+	d8	& Magical Effect	\\
+	1	& Shadowy tendrils lash around you. Each creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d12 necrotic damage. You also gain 1d12 temporary hit points.\\
+	2	& You teleport up to 30 feet to an unoccupied space you can see. Until your rage ends, you can use this effect again on each of your turns as a bonus action.\\
+	3	& An intangible spirit, which looks like a flumph or a pixie (your choice), appears within 5 feet of one creature of your choice that you can see within 30 feet of you. At the end of the current turn, the spirit explodes, and each creature within 5 feet of it must succeed on a Dexterity saving throw or take 1d6 force damage. Until your rage ends, you can use this effect again, summoning another spirit, on each of your turns as a bonus action.\\
+	4	& Magic infuses one weapon of your choice that you are holding. Until your rage ends, the weapon's damage type changes to force, and it gains the light and thrown properties, with a normal range of 20 feet and a long range of 60 feet. If the weapon leaves your hand, the weapon reappears in your hand at the end of the current turn.\\
+	5	& Whenever a creature hits you with an attack roll before your rage ends, that creature takes 1d6 force damage, as magic lashes out in retribution.\\
+	6	& Until your rage ends, you are surrounded by multi colored, protective lights; you gain a +1 bonus to AC, and while within 10 feet of you, your allies gain the same bonus.\\
+	7	& Flowers and vines temporarily grow around you. Until your rage ends, the ground within 15 feet of you is difficult terrain for your enemies.\\
+	8	& A bolt of light shoots from your chest. Another creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d6 radiant damage and be blinded until the start of your next turn. Until your rage ends, you can use this effect again on each of your turns as a bonus action.
+\end{DndTable}
+\subsubsection*{Magic Awareness}
+As an action, you can open your awareness to the presence of concentrated magic. Until the end of your next turn, you know the location of any spell or magic item within 60 feet of you that isn't behind total cover. When you sense a spell, you learn which school of magic it belongs to.
+
+You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+\subsection*{Primal Knowledge}
+\textbf{Athletics Proficiency}\\
+You gain proficiency in another skill of your choice from the skill list available to Barbarians at level 1.
+
+In addition, while your Rage is active, you can channel primal power when you attempt certain tasks; whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability: Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your agility, bearing, and senses.
 
 \section*{"Magical" Items}
 \subsection*{Arcane Sunder}
-\textit{"wondrous item", common}\\
+\textit{Battleaxe, common}\\
 A staff-like weapon that combines\\
 the appearance of a magical staff\\
 with the functionality of a melee\\
@@ -356,11 +489,11 @@ The staff's core is a solid piece of\\
 wood, intricately carved and adorned\\
 with arcane symbols and runes to give it the appearance of a magical artifact. The upper portion of the staff has a bladed tip, similar to a greataxe, allowing Grimmash to deliver powerful strikes in combat. The staff's length and reach provides him with versatility, allowing him to keep enemies at bay or deliver devastating blows up close.
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt]%
-		\node[xshift=-40pt,yshift=-20pt] (picture) at (current page.center) {\includegraphics[width=0.4\columnwidth, height=375pt, keepaspectratio]{images/Arcane_Sunder.png}};%
+		\node[xshift=-40pt,yshift=85pt] (picture) at (current page.center) {\includegraphics[width=0.4\columnwidth, height=375pt, keepaspectratio]{images/Arcane_Sunder.png}};%
 \end{tikzpicture}%
 
 \subsection*{Shield of Reflecting Spells}
-\textit{"wondrous item", common}\\
+\textit{Shield, common}\\
 Grimmash possesses a sturdy\\
 shield that he firmly believes\\
 can reflect magical spells.\\
@@ -371,7 +504,7 @@ extra protection against spell-\\
 casting foes, bolstering his\\
 confidence in battle.
 \begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt]%
-		\node[xshift=-50pt,yshift=-280pt] (picture) at (current page.center) {\includegraphics[width=0.5\columnwidth, height=280pt, keepaspectratio]{images/Shield_of_Reflecting_Spells.png}};%
+		\node[xshift=-50pt,yshift=220pt] (picture) at (current page.south) {\includegraphics[width=0.5\columnwidth, height=280pt, keepaspectratio]{images/Shield_of_Reflecting_Spells.png}};%
 \end{tikzpicture}%
 
 \subsection*{The Mighty Discord (Lute)}

@@ -7,26 +7,30 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% CHARACTER STATS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{B.A.R.D-F}
 
 \Class{Bard}
-\MultiClassMainLevel{}
-\MultiClass{}
 \Subclass{College of Valor}
 \Background{Gate Warden}
 \Race{Warforged}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
 
-\Level{9}
-
-% ABILITY SCORES
-% (correct scores, no modifiers are automatically applied)
+\Level{9} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{15}
 \DexterityRolledScore{15}
@@ -35,6 +39,7 @@
 \WisdomRolledScore{11}
 \CharismaRolledScore{16}
 
+% SCORE MODIFIERS (ASI, Background and Race Boni)
 \StrengthScoreBonus{3} % +1 Warforged, ASI +2
 \DexterityScoreBonus{1} % +1 Warforged
 \ConstitutionScoreBonus{2} % +1 Warforged, +1 Durable
@@ -44,8 +49,17 @@
 
 \calculateAbilityScores{}
 
-% PROFICIENCIES AND EXPERTIES
-%% SAVING THROWS
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{}
 \DexterityProficiency{P}
 \ConstitutionProficiency{}
@@ -53,6 +67,20 @@
 \WisdomProficiency{}
 \CharismaProficiency{P}
 
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
 %% STRENGTH SKILLS
 \AthleticsProficiency{P}
 
@@ -89,24 +117,41 @@
 \WisdomModifierBonus{0}
 \CharismaModifierBonus{0}
 
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION (Displays any Alphanumerical Input)
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
 
+% HIT POINTS
 \MaxHitPointsRolled{61} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
-\MultiClassHitDice{}
 \HitDiceSpent{0}
-\MultiClassHitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
 
-\InitiativeModifier{0}
-\Speed{30}
-\Size{Medium}
-
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
 \LightArmor{P}
 \MediumArmor{P}
 \HeavyArmor{}
@@ -114,34 +159,56 @@
 
 \WeaponsProficiency{Simple Weapons, Martial Weapons}
 \ToolsProficiency{Glaur, Horn, Lute, Wargong}
-
-\addWeaponStatistic{Acheron Blade}{B.A.R.D-F}{STR}{P}{1}{1d8 s}{versatile (1d10)}
-\addWeaponStatistic{Light Crossbow}{B.A.R.D-F}{DEX}{P}{0}{1d8 p}{ranged (80/320), loading, two-handed}
-\addWeaponStatistic{Handaxe}{B.A.R.D-F}{STR}{P}{0}{1d6 s}{thrown (20/60), light}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Acheron Blade}{B.A.R.D-F}{STR}{P}{1}{1d8 \calculateModifier{\StrengthScoreValue} s}{versatile (1d10)}
+\addWeaponStatistic{Light Crossbow}{B.A.R.D-F}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{ranged (80/320), loading, two-handed}
+\addWeaponStatistic{Handaxe}{B.A.R.D-F}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} s}{thrown (20/60), light}
+% UNARMED STRIKE
 \addWeaponStatistic{Unarmed Strike}{B.A.R.D-F}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
 \addSpellStatistic{Chill Touch}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d10}{Necrotic, can't regain Hit Points}
 \addSpellStatistic{Vicious Mockery}{DC}{\calculateModifier{\CharismaScoreValue}}{2d6}{Psychic, Disadvantage next attack, WIS save}
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
 \AddClassFeature{B}{\textbf{Bardic Inspiration}(\intcalcAdd{0}{\calculateModifier{\CharismaScoreValue}}/SR)\\Inspiration Die: d8}
 \AddClassFeature{E}{\textbf{Combat Inspiration}}
 \AddClassFeature{E}{\textbf{Font of Inspiration}}
 \AddClassFeature{E}{\textbf{Extra Attack}}
 \AddClassFeature{R}{\textbf{Countercharm}}
-
-
+% SPECIES TRAITS
 \AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a Construct.}
 \AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
 \AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
 \AddSpeciesFeature{E}{\textbf{Specialized Design}\\Athletics Proficiency, Wargong}
 \AddSpeciesFeature{E}{\textbf{Tireless}\\No Exhaustion from dehydration, malnutrition, or suffocation}
-
+% FEATS
 \AddFeat{\textbf{Scion of the Outer Planes}\\Necrotic Resistance, Chill Touch Cantrip}
 \AddFeat{\textbf{Durable}\begin{itemize}\item Defy Death\item Speedy Recovery\end{itemize}}
 \AddFeat{\textbf{Iedcaru's Scanning}}
-
-% BACKGROUND & APPEARANCE
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Age{6}
 \Height{6 Feet}
 \Weight{278lbs}
@@ -151,8 +218,8 @@
 
 \CharacterAppearance{vertical} % (vertical/horizontal/none)
 	{7} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{-30} % Picture Y-Shift (absolute value)
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
 	{images/B.A.R.D-F.png} %
 	{%
 		{B.A.R.D-F is a formidable construct, built with precision and strength to guard the gate between Mechanus and the}{Nine Hells. His metallic frame is forged from polished steel and reinforced with dark bronze, designed to withstand relentless assaults. His glowing blue eyes are steady and vigilant, scanning for any signs of intrusion. Durable joints and reinforced plating ensure resilience in battle, while his integrated weaponry hints at deadly efficiency. A faint hum emanates from his core, a reminder of the immense power contained within.}
@@ -183,8 +250,11 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 	\textbf{2. Harmonic Tuning Fork} A tuning fork engraved with intricate patterns that seem to shimmer in the light. It was gifted to him by a bard in Sigil who admired his abilities.\\
 	\textbf{3. Scroll of Unfinished Verse} A crumpled parchment covered in half-written lyrics and cryptic symbols. The words rearrange slightly whenever it's read, as if searching for the perfect rhyme.
 }
-
-% PERSONALITY TRAITS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	\textbf{Self-Deprecating Humour} B.A.R.D-F often jokes about his "failure" status, making quips about his small frame or lack of combat prowess to put others at ease. Though his humour is endearing, it hides a deeper insecurity about his worth.
 }
@@ -204,35 +274,58 @@ Social interaction remains a challenge for him. His formal greetings, such as "S
 
 % LANGUAGES
 \Languages{Abyssal, Common, Dwarvish, Infernal}
-
-% EQUIPMENT
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Equipment{
 	\textbf{Armor of Fungal Spores} (Chain Shirt), \textbf{Acheron Blade} (Longsword), \textbf{Scroll of Wall of Fire}, \textbf{Scroll of Sunburst}, \textbf{Inevitable Disabling Device}\\
 	2 Handaxes, Light Crossbow, 20 Bolts, backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, waterskin, 50 feet of hempen rope, ring of keys to unknown locks, black book, ink pen and quill, bottle of black ink, traveler's clothes, ring made from a chain link that, once donned, won't come off without pulling painfully hard
 }
-
+%% Attuned Magic Items (Max 3, every other is ignored)
 \addAttunedMagicItem{Acheron Blade (Longsword)}
 \addAttunedMagicItem{Ring of Resistance (Fire)}
 \addAttunedMagicItem{Doss Lute}
-
+%% Gold
 \CP{}
 \SP{5}
 \EP{}
 \GP{1459}
 \PP{}
-
-% SPELLS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
 \SpellcastingClass{Bard}
 \SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
+% SPELL SLOTS
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{3}
 \FourthLevelSpellSlotsTotal{3}
 \FifthLevelSpellSlotsTotal{1}
 
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
 \addPreparedSpell{0}
 	{Blade Ward}
 	{Action}

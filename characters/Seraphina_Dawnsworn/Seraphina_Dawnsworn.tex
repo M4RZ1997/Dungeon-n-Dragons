@@ -7,24 +7,31 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=pre5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% Headline
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Seraphina Dawnsworn}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
 
 \Class{Cleric}
-\Level{2}
-\Background{\hspace*{-2em}Judge's Apprentice}
-\PlayerName{M4RZ}
+\Subclass{Order Domain}
+\Background{Courtier}
 \Race{Aasimar}
-\Alignment{Lawful Good}
-\XP{}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
 
-% Ability scores (correct scores, no modifiers are automatically applied)
+\Level{2} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{9}
 \DexterityRolledScore{10}
@@ -36,13 +43,23 @@
 \StrengthScoreBonus{0}
 \DexterityScoreBonus{0}
 \ConstitutionScoreBonus{0}
-\IntelligenceScoreBonus{1} % Aasimar-Race +1
-\WisdomScoreBonus{2} % Aasimar-Race +2
+\IntelligenceScoreBonus{1}	% Courtier +1
+\WisdomScoreBonus{2}		% Courtier +2
 \CharismaScoreBonus{0}
 
 \calculateAbilityScores{}
 
-% Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{}
 \DexterityProficiency{}
 \ConstitutionProficiency{}
@@ -50,82 +67,201 @@
 \WisdomProficiency{P}
 \CharismaProficiency{P}
 
-\AcrobaticsProficiency{}
-\AnimalHandlingProficiency{}
-\ArcanaProficiency{}
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
 \AthleticsProficiency{}
-\DeceptionProficiency{}
-\HistoryProficiency{P}
-\InsightProficiency{P}
-\IntimidationProficiency{}
-\InvestigationProficiency{P}
-\MedicineProficiency{P}
-\NatureProficiency{}
-\PerceptionProficiency{}
-\PerformanceProficiency{}
-\PersuasionProficiency{P}
-\ReligionProficiency{P}
-\SleightOfHandProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{P}									% Skilled Feat
 \StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency[\calculateModifier{\WisdomScoreValue}]{P}	% Skilled Feat
+\HistoryProficiency{P}											% Cleric Class
+\InvestigationProficiency{P}									% Skilled Feat
+\NatureProficiency{}
+\ReligionProficiency[\calculateModifier{\WisdomScoreValue}]{P}	% Cleric Class
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}			% Courtier Background
+\MedicineProficiency{}
+\PerceptionProficiency{}
 \SurvivalProficiency{}
 
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{0}
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{P}		% Courtier Background
 
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
-% Armor Class is not automatically calculated
-\ArmorClass{12}
-\InitiativeModifier{0}
-\Speed{30ft}
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{13}{\intcalcAdd{\intcalcMin{2}{\calculateModifier{\DexterityScoreValue}}}{2}}}
+
+% HIT POINTS
 \MaxHitPointsRolled{12} % Without Constitution Bonus, is added automatically
-\CurrentHitPoints{}
+\CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
 \HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
 
-\CP{}
-\SP{}
-\EP{}
-\GP{160}
-\PP{}
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
 
-% Weapon Arsenal
-\addWeaponStatistic{Mace}{SeraphinaDawnsworn}{STR}{P}{0}{1d6 b}
-\addWeaponStatistic{Crossbow}{SeraphinaDawnsworn}{DEX}{P}{0}{1d8 p}
-\addWeaponStatistic{Unarmed Strike}{SeraphinaDawnsworn}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
+\WeaponsProficiency{Simple Weapons}
+\ToolsProficiency{Calligrapher's Supplies}	% Courtier Background
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Radiant Justice Mace}{SeraphinaDawnsworn}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} b}{Versatile (1d8)}
+\addWeaponStatistic{Light Crossbow}{SeraphinaDawnsworn}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{Ranged (80/320), Loading, Two-Handed}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Holy Word}{ATK}{\calculateModifier{\WisdomScoreValue}}{1d8}{Radiant, if Fey, Fiend, or Undead Speed reduce by 10 ft. and no Reaction}
+\addSpellStatistic{Sacred Flame}{DC}{\calculateModifier{\WisdomScoreValue}}{1d8}{Radiant, Dexterity Saving Throw, no benefits from Half or Three-Quarters Cover}
+\addSpellStatistic{Word of Radiance}{DC}{\calculateModifier{\WisdomScoreValue}}{1d6}{Radiant, 5-foot Emanation, Constitution Saving Throw}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{Q}{\textbf{Divine Order (Thaumaturge)}\\Guidance Cantrip, \calculateModifier{\WisdomScoreValue} Bonus to Arcana and Religion}
+\AddClassFeature{L}{\textbf{Channel Divinity}\begin{itemize}
+	\item[\CustomItemLabel{A}] Divine Spark
+	\item[\CustomItemLabel{A}] Turn Undead
+\end{itemize}}
+% SPECIES TRAITS
+\AddSpeciesFeature{Q}{\textbf{Celestial Resistance}\\Resistance to Necrotic and Radiant damage}
+\AddSpeciesFeature{Q}{\textbf{Darkvision}}
+\AddSpeciesFeature{A}{\textbf{Healing Hands}\\Heal \intcalcAdd{0}{\ProficiencyValue}d4, once / LR}
+\AddSpeciesFeature{Q}{\textbf{Light Bearer}\\Light Cantrip learned}
+\AddSpeciesFeature{B}{\textbf{Celestial Revelation}\\Requires Level 3}
+% FEATS
+\AddFeat{\textbf{Skilled}\\Arcana, Investigation, Sleight of Hand Proficiency}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{32}
+\Height{5'10}
+\Weight{140 lbs}
+\Eyes{Celestial Blue}
+\Skin{Porcelain}
+\Hair{Red Crimson}
+\CharacterAppearance{horizontal} % (vertical/horizontal/none)
+	{10.5} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{-15} % Picture Y-Shift (absolute value)
+	{images/Seraphina_Dawnsworn.png} %
+	{%
+		Seraphina Dawnsworn, an Aasimar Cleric, has red hair, celestial blue eyes, and elegant white angelic wings. Her porcelain skin glows faintly, reflecting her divine heritage. Her presence exudes celestial authority and compassion, inspiring respect and admiration.
+	}%
 
-\AttacksAdditional{
-	\textbf{Radiant Justice Mace}\\
-	Crossbow, 30 Bolts
+% ORGANIZATION & ALLIES
+\OrganizationName{Law Divine Order}
+\OrganizationSymbol{images/Law_Divine_Order.png}
+\AlliesAndOrganizations{
+	The Law Divine Order is an ancient and sacred organization, forged in the celestial splendor of the multiverse. Comprised of celestial beings and devoted servants of cosmic justice, they serve as the vigilant enforcers of order and righteousness across diverse realms.
+	
+	Embracing the principles of impartiality and compassion, the Law Divine Order stands as the law's hand, ensuring justice is served and disputes are settled with wisdom and fairness. Their emissaries, known as Fatebinders, are chosen or appointed from various backgrounds, united by their unwavering commitment to upholding the\linebreak
+}{
+	sacred contract that binds them.
 }
 
-\OtherProficienciesLanguages{
-\textbf{Languages:}\\Common, Celestial, Abyssal\\
-\textbf{Armor:}\\Light Armor, Medium Armor, Shields\\
-\textbf{Weapons:}\\Simple Weapons\\
-\textbf{Tools:}\\Calligrapher's Supplies
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Seraphina's celestial lineage grants her innate knowledge and understanding of the multiverse. She has a natural affinity for discerning the cosmic significance of events and interpreting the signs sent by celestial entities. This insight allows her to occasionally receive visions or prophetic dreams, guiding her on her journey and uncovering hidden truths.\\
+	Seraphina emits a gentle aura of celestial light, which comforts those around her and dispels darkness and fear. The aura is an extension of her innate goodness and reflects her role as a bringer of justice and hope.\\
+	Seraphina possesses a profound empathy for all living beings, allowing her to sense their emotions and intentions. This innate connection grants her insight into the motivations and feelings of others, making her an exceptional mediator and diplomat.\\
+	Seraphina's presence exudes an aura of divine serenity, bringing a sense of calm to those around her. In moments of turmoil or distress, her soothing presence grants advantage on Wisdom (Insight) checks when attempting to understand and calm agitated individuals.
 }
 
-\Equipment{
-	Scale Mail, \textbf{Radiant Defender Shield}
-}
-\Clutter{
-	Backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, a waterskin, holy water, calligrapher's supplies
+% BACKGROUND
+\Characterbackground{
+	In the radiant splendor of the celestial realm, Seraphina Dawnsworn was born amidst the whispers of the celestial beings who served as guardians of justice and order. As an Aasimar born into the line of Fatebinders, her destiny was intricately woven with the cosmic tapestry of the multiverse.
+	
+	Her true journey began when she was chosen as an apprentice to a wise and venerable judge of the celestial courts. Under her mentor's guidance, Seraphina immersed herself in the complexities of cosmic law, traversing the myriad planes and witnessing the diverse cultures and civilizations that populated the multiverse.
+	
+	One fateful day, as she meditated in the Radiant Citadel's inner sanctum, she was chosen by the divine forces to become a Fatebinder, a cosmic agent of justice bound by a celestial contract. Whether it was fate or her own noble actions that led her to this path, Seraphina accepted the calling with humility and determination.
 }
 
+% TREASURES
+\Treasure{
+	\textbf{1. Celestial Medallion:} A radiant medallion bestowed upon Seraphina during her initiation as a Fatebinder. The medallion glows softly with celestial light and grants her a sense of purpose and confidence in her cosmic duties.\\
+	\textbf{2. Ancestral Amulet:} An amulet passed down through her celestial lineage. The amulet holds a small fragment of a star, symbolizing her celestial heritage and serving as a focus for her divine spells.\\
+	\textbf{3. Celestial Quill and Scroll:} A divine quill and scroll set, gifted to Seraphina by an elder celestial being. When she writes with the quill, the scroll records her words in celestial script, preserving her wisdom and experiences for future generations.\\
+	\textbf{4. Halo of Guidance:} A radiant halo that appears above Seraphina's head when she is in moments of deep contemplation or decision-making. The halo provides a sense of reassurance and guidance, allowing her to reroll one ability check or saving throw per long rest.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	\textbf{Compassionate and Empathetic:} Seraphina is highly empathetic, genuinely concerned for others' well-being. She listens with an open heart, offering comfort and understanding, and seeks peaceful conflict resolutions.
 }
+\Alignment{Lawful Good}
 
 \Ideals{
-	\textbf{Cosmic Justive} Seraphina believes in the cosmic order and upholds justice, respecting and enforcing the laws and principles of existence, even in challenging situations.
+	\textbf{Cosmic Justice} Seraphina believes in the cosmic order and upholds justice, respecting and enforcing the laws and principles of existence, even in challenging situations.
 }
 
 \Bonds{
@@ -136,94 +272,148 @@
 	\textbf{Self-Doubt:} Despite her celestial lineage and training, Seraphina sometimes doubts her abilities and decisions, leading to moments of hesitation and indecisiveness.
 }
 
-\FeaturesTraits{
-\textbf{Aasimar Traits}
-\begin{itemize}
-	\item Darkvision
-	\item Celestial Resistance
-	\item Healing Hands
-	\item Light Bearer
-	\item Radiant Soul
-\end{itemize}
-\textbf{Judge's Apprentice}
-\begin{itemize}
-	\item Legal Acumen
-\end{itemize}
-\textbf{Cleric}
-\begin{itemize}
-	\item Divine Domain (Law)
-	\item Channel Divinity
-\end{itemize}
+% LANGUAGES
+\Languages{Common, Celestial, Abyssal}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Light Crossbow, 30 Crossbow Bolts, Chain Shirt\\
+	backpack, blanket, 10 candles, tinderbox, alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, waterskin, holy water, calligrapher's supplies
 }
-
-% Appearance
-
-\Age{32}
-\Height{5'10}
-\Weight{140 lbs}
-\Eyes{Celestial Blue}
-\Skin{Porcelain}
-\Hair{Red Crimson}
-
-% background
-\CharacterAppearance{horizontal} % (vertical/horizontal/none)
-	{1} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{10} % Picture Y-Shift (absolute value)
-	{images/Seraphina_Dawnsworn.png} %
-	{%
-		Seraphina Dawnsworn, an Aasimar Cleric, has red hair, celestial blue eyes, and elegant white angelic wings. Her porcelain skin glows faintly, reflecting her divine heritage. Her presence exudes celestial authority and compassion, inspiring respect and admiration.
-	}%
-\AdditionalFeaturesAndTraits{
-	Seraphina's celestial lineage grants her innate knowledge and understanding of the multiverse. She has a natural affinity for discerning the cosmic significance of events and interpreting the signs sent by celestial entities. This insight allows her to occasionally receive visions or prophetic dreams, guiding her on her journey and uncovering hidden truths.\\
-	Seraphina emits a gentle aura of celestial light, which comforts those around her and dispels darkness and fear. The aura is an extension of her innate goodness and reflects her role as a bringer of justice and hope.\\
-	Seraphina possesses a profound empathy for all living beings, allowing her to sense their emotions and intentions. This innate connection grants her insight into the motivations and feelings of others, making her an exceptional mediator and diplomat.\\
-	Seraphina's presence exudes an aura of divine serenity, bringing a sense of calm to those around her. In moments of turmoil or distress, her soothing presence grants advantage on Wisdom (Insight) checks when attempting to understand and calm agitated individuals.
-}
-\AlliesAndOrganizations{
-	The Law Divine Order is an ancient and sacred organization, forged in the celestial splendor of the multiverse. Comprised of celestial beings and devoted servants of cosmic justice, they serve as the vigilant enforcers of order and righteousness across diverse realms.
-	
-	Embracing the principles of impartiality and compassion, the Law Divine Order stands as the law's hand, ensuring justice is served and disputes are settled with wisdom and fairness. Their emissaries, known as Fatebinders, are chosen or appointed from various backgrounds, united by their unwavering commitment to upholding the\linebreak
-}{
-	sacred contract that binds them.
-}
-\OrganizationName{Law Divine Order}
-\OrganizationSymbol{images/Law_Divine_Order.png}
-\Characterbackground{
-	In the radiant splendor of the celestial realm, Seraphina Dawnsworn was born amidst the whispers of the celestial beings who served as guardians of justice and order. As an Aasimar born into the line of Fatebinders, her destiny was intricately woven with the cosmic tapestry of the multiverse.
-	
-	Her true journey began when she was chosen as an apprentice to a wise and venerable judge of the celestial courts. Under her mentor's guidance, Seraphina immersed herself in the complexities of cosmic law, traversing the myriad planes and witnessing the diverse cultures and civilizations that populated the multiverse.
-	
-	One fateful day, as she meditated in the Radiant Citadel's inner sanctum, she was chosen by the divine forces to become a Fatebinder, a cosmic agent of justice bound by a celestial contract. Whether it was fate or her own noble actions that led her to this path, Seraphina accepted the calling with humility and determination.
-}
-\Treasure{
-	\textbf{1. Celestial Medallion:} A radiant medallion bestowed upon Seraphina during her initiation as a Fatebinder. The medallion glows softly with celestial light and grants her a sense of purpose and confidence in her cosmic duties.\\
-	\textbf{2. Ancestral Amulet:} An amulet passed down through her celestial lineage. The amulet holds a small fragment of a star, symbolizing her celestial heritage and serving as a focus for her divine spells.\\
-	\textbf{3. Celestial Quill and Scroll:} A divine quill and scroll set, gifted to Seraphina by an elder celestial being. When she writes with the quill, the scroll records her words in celestial script, preserving her wisdom and experiences for future generations.\\
-	\textbf{4. Halo of Guidance:} A radiant halo that appears above Seraphina's head when she is in moments of deep contemplation or decision-making. The halo provides a sense of reassurance and guidance, allowing her to reroll one ability check or saving throw per long rest.
-}
-
-% Magic
-
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Radiant Justice Mace}
+\addAttunedMagicItem{Radiant Justice Shield}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{160}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
 \SpellcastingClass{Cleric}
 \SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
-\CantripSlotA{Light (V, M)}
-\CantripSlotB{Sacred Flame (V, S)}
-\CantripSlotC{Guidance (V, S)}
-\CantripSlotD{Mending (V, S, M)}
-\CantripSlotD{Friends (S, M)}
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{3}
 
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
 
-\FirstLevelSpellSlotsTotal{2}
-\FirstLevelSpellSlotA{Bless (V, S, M)}
-\FirstLevelSpellSlotB{Cure Wounds (V, S)}
-\FirstLevelSpellSlotC{Guiding Bolt (V, S)}
-\FirstLevelSpellSlotD{Shield of Faith (V, S, M)}
-\FirstLevelSpellSlotE{Command (V)}
-\FirstLevelSpellSlotF{Protection from Good and Evil (V, S, M)}
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Guidance}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{}
+	{\small +1d4 to Ability Checks}
+	{V, S}
+\addPreparedSpell{0}
+	{Holy Word}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{T}
+	{1d8 Radiant}
+	{V, S}
+\addPreparedSpell{0}
+	{Light}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{1 Hour}
+	{V, M}
+\addPreparedSpell{0}
+	{Sacred Flame}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{1d8 Radiant}
+	{V, S}
+\addPreparedSpell{0}
+	{Word of Radiance}
+	{Action}
+	{Self}
+	{}
+	{}
+	{T}
+	{1d6 Radiant}
+	{V, M}
+	
+\addPreparedSpell{1}
+	{Bless}
+	{Action}
+	{30 Feet}
+	{T}
+	{}
+	{T}
+	{\small +1d4 to Attack or Save}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Ceremony}
+	{1 Hour}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Cure Wounds}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{}
+	{Heal 2d8 + \intcalcAdd{0}{\SpellcastingModifierValue}}
+	{V, S}
+\addPreparedSpell{1}
+	{Guiding Bolt}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{4d6 Radiant}
+	{V, S}
+\addPreparedSpell{1}
+	{Intaglio}
+	{Action}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{\small Duplicate Text/Image}
+	{V, S}
 
 \begin{document}
 
@@ -245,180 +435,170 @@
 \twocolumn
 
 \chapter*{Features, Magic Items and Spells}
-
 \section*{Aasimar Traits}
-\subsection*{Darkvision}
-Blessed with a radiant soul, your vision can easily cut through darkness. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.
 \subsection*{Celestial Resistance}
-You have resistance to necrotic damage and radiant damage.
+You have Resistance to Necrotic damage and Radiant damage.
+\subsection*{Darkvision}
+You have Darkvision with a range of 60 feet.\\
 \subsection*{Healing Hands}
-As an action, you can touch a creature and cause it to regain a number of hit points equal to your level. Once you use this trait, you can't use it again until you finish a long rest.
+\textbf{Heal \intcalcAdd{0}{\ProficiencyValue}d4s}\\
+As a Magic action, you touch a creature and roll a number of d4s equal to your Proficiency Bonus. The creature regains a number of Hit Points equal to the total rolled. Once you use this trait, you can't use it again until you finish a Long Rest.
 \subsection*{Light Bearer}
-You know the Light cantrip.
+You know the Light Cantrip. Charisma is your spellcasting ability for it.
 \subsection*{Celestial Revelation}
-When you reach 3rd level, choose one of the revelation options below. Thereafter, you can use a bonus action to unleash the celestial energy within yourself, gaining the benefits of that revelation. Your transformation lasts for 1 minute or until you end it as a bonus action. Once you transform using your revelation below, you can't use it again until you finish a long rest:
-\subsubsection*{Radiant Soul}
-Two luminous, spectral wings sprout from your back temporarily. Until the transformation ends, you have a flying speed equal to your walking speed, and once on each of your turns, you can deal extra radiant damage to one target when you deal damage to it with an attack or a spell. The extra damage equals your proficiency bonus.
+When you reach character level 3, you can transform as a Bonus Action using one of the options below (choose the option each time you transform). The transformation lasts for 1 minute or until you end it (no action required). Once you transform, you can't do so again until you finish a Long Rest.
 
-\section*{Judge's Apprentice}
-\subsection*{Legal Acumen}
-As a Judge's Apprentice, you have spent significant time learning the intricacies of cosmic law and the legal systems of various planes. You gain a +2 bonus to all Intelligence (Investigation) checks related to legal matters, understanding contracts, and interpreting local laws and customs. In addition, your insight into the human condition and motivations grants you a +2 bonus to Wisdom (Insight) checks when dealing with individuals entangled in legal disputes.
+Once on each of your turns before the transformation ends, you can deal extra damage to one target when you deal damage to it with an attack or a spell. The extra damage equals your Proficiency Bonus, and the extra damage's type is either Necrotic for Necrotic Shroud or Radiant for Heavenly Wings and Inner Radiance.
 
-\section*{Cleric}
-\subsection*{Divine Domain (Law)}
-As a cleric of law you are charged with upholding your god's divine mandates. Whether its bringing in suspects for questioning or passing judgement right there on the streets, the Law domain cleric seeks out violators of divine justice and seeks to punish them. You are bound by this same code and must adhere to it. You know the will of your god and their laws and concepts of justice. As such many Law domain Clerics are hired by local governments to act as law enforcement or even bounty hunters.
-\subsubsection*{Expanded Spell List}
-\begin{DndTable}[header=Law Domain Spells]{llX}
-			& \textbf{Cleric Level}  	&\textbf{Spells}						\\
-$\bullet$	& 1st						&Command, Protection from Evil and Good	\\
-			& 3rd						&Arcane Lock, Zone of Truth				\\
-			& 5th						&Beacon of Hope, Counterspell			\\
-			& 7th						&Banishment, Private Sanctum			\\
-			& 9th						&Dominate Person, Geas					\\
-\end{DndTable}
-\subsubsection*{A Lawful Friend}
-When you choose this domain at 1st level, you gain the Friends cantrip if you don't already know it. You also gain proficiency in the History and Persuasion skills, and one additional language of your choice.
-\subsubsection*{Channel Divinity: Bringer of Law}
-Starting at 2nd level you can use your Channel Divinity to cast one of the spells from the expanded spell list of this subclass that you have access to based on your level. Casting one of these spells using Bringer of Law does not consume a spell slot, but is done at their base spell level only. Spells cast using Bringer of Law cannot be dispelled with counterspell or dispel magic, but are still subject to effects that prevent the use of magic, such as antimagic field.
+Here are the transformation options:
 
+\paragraph*{Heavenly Wings} Two spectral wings sprout from your back temporarily. Until the transformation ends, you have a Fly Speed equal to your Speed.
+
+\paragraph*{Inner Radiance} Searing light temporarily radiates from your eyes and mouth. For the duration, you shed Bright Light in a 10-foot radius and Dim Light for an additional 10 feet, and at the end of each of your turns, each creature within 10 feet of you takes Radiant damage equal to your Proficiency Bonus.
+
+\paragraph*{Necrotic Shroud} Your eyes briefly become pools of darkness, and flightless wings sprout from your back temporarily. Creatures other than your allies within 10 feet of you must succeed on a Charisma saving throw (DC 8 plus your Charisma modifier and Proficiency Bonus) or have the Frightened condition until the end of your next turn.
+
+\section*{Feats}
+\subsection*{Skilled}
+\textbf{Arcana, Investigation, Sleight of Hand Proficiency}\\
+You gain proficiency in any combination of three skills or tools of your choice.
+
+\section*{Cleric Traits}
+\subsection*{Divine Order (Thaumaturge)}
+\textbf{Guidance Cantrip}\\
+You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana or Religion) checks. The bonus equals your Wisdom modifier (minimum of +1).
 \subsection*{Channel Divinity}
-At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.
+\textbf{2 Uses per Long Rest}\\
+You can channel divine energy directly from the Outer Planes to fuel magical effects. You start with two such effects: Divine Spark and Turn Undead, each of which is described below. Each time you use this class's Channel Divinity, choose which Channel Divinity effect from this class to create. You gain additional effect options at higher Cleric levels.
 
-When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.
+You can use this class's Channel Divinity twice. You regain one of its expended uses when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. You gain additional uses when you reach certain Cleric levels, as shown in the Channel Divinity column of the Cleric Features table.
 
-Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.
+If a Channel Divinity effect requires a saving throw, the DC equals the spell save DC from this class's Spellcasting feature.
 
-Beginning at 6th level, you can use your Channel Divinity twice between rest, and beginning at 18th level, you can it three times between rests. When you finish a short or long rest, you regain your expended uses.
-\subsubsection*{Channel Divinity: Turn Undead}
-As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.
+\paragraph*{Divine Spark} As a Magic action, you point your Holy Symbol at another creature you can see within 30 feet of yourself and focus divine energy at it. Roll 1d8 and add your Wisdom modifier. You either restore Hit Points to the creature equal to that total or force the creature to make a Constitution saving throw. On a failed save, the creature takes Necrotic or Radiant damage (your choice) equal to that total. On a successful save, the creature takes half as much damage (round down).
 
-A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can only use the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action.
+You roll an additional d8 when you reach Cleric levels 7 (2d8), 13 (3d8), and 18 (4d8).
+
+\paragraph*{Turn Undead} As a Magic action, you present your Holy Symbol and censure Undead creatures. Each Undead of your choice within 30 feet of you must make a Wisdom saving throw. If the creature fails its save, it has the Frightened and Incapacitated conditions for 1 minute. For that duration, it tries to move as far from you as it can on its turns. This effect ends early on the creature if it takes any damage, if you have the Incapacitated condition, or if you die.
 
 \section*{Spells}
 \subsection*{Cantrips}
+\DndSpellHeader{Guidance}
+	{Divination Cantrip}
+	{Action}
+	{Touch}
+	{V, S}
+	{Conncetration, up to 1 Minute}
 
-\DndSpellHeader
-  {Light}
-  {Evocation Cantrip}
-  {1 Action}
-  {Touch}
-  {V, M (a firefly or phosphorescent moos)}
-  {1 hour}
+You touch a willing creature and choose a skill. Until the spell ends, the creature adds 1d4 to any ability check using the chosen skill.
 
-You touch one object that is no larger than 10 feet in any dimension. Until the spell ends, the object sheds bright light in a 20-foot radius and dim light for an additional 20 feet. The light can be colored as you like. Completely covering the object with something opaque blocks the light. The spell ends if you cast it again or dismiss it as an action.\\
-If you target an object held or worn by a hostile creature, that creature must succeed on a Dexterity saving throw to avoid the spell.
+\DndSpellHeader{Holy Word}
+	{Evocation Cantrip}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{Instantaneous}
 
-\DndSpellHeader
-  {Sacred Flame}
-  {Evocation Cantrip}
-  {1 Action}
-  {60 feet}
-  {V,S}
-  {Instantaneous}
-  
-Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 radiant damage. The target gains no benefit from cover for this saving throw.
-  
-\DndSpellHeader
-  {Guidance}
-  {Divination Cantrip}
-  {1 Action}
-  {Touch}
-  {V, S}
-  {Concentration, Up to 1 minute}
-  
-You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends.
+You whisper a divine word under your breath, careful not to speak loudly, for such celestial power isn't for the unworthy. Make a ranged spell attack against a target within range. On a hit, the target takes 1d8 Radiant damage. If the target is Fey, Fiend, or Undead, its Speed is reduced by 10 feet and it can't take Reactions until the end of its next turn.
 
-\DndSpellHeader
-  {Mending}
-  {Transmutation Cantrip}
-  {1 Minute}
-  {Touch}
-  {V, S, M (2 Lodestones)}
-  {Instantaneous}
-  
-This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage.\\
-This spell can physically repair a magic item or construct, but the spell can't restore magic to such an object.
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).
 
-\DndSpellHeader
-  {Friends}
-  {Cantrip Enchantment}
-  {1 Action}
-  {Self}
-  {S, M (a small amount of make-up applied to the face as this spell is cast)}
-  {Concentration, Up to 1 minute}
-  
-For the duration, you have advantage on all Charisma checks directed at one creature of your choice that isn't hostile toward you. When the spell ends, the creature realizes that you used magic to influence its mood and becomes hostile toward you. A creature prone to violence might attack you. Another creature might seek retribution in other ways (at the DM's discretion), depending on the nature of your interaction with it.
+\DndSpellHeader{Light}
+	{Evocation Cantrip}
+	{Action}
+	{Touch}
+	{V, M (a firefly or phosphorescent moss)}
+	{1 Hour}
+
+You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The light can be colored as you like.
+
+Covering the object with something opaque blocks the light. The spell ends if you cast it again.
+
+\DndSpellHeader{Sacred Flame}
+	{Evocation Cantrip}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{Instantaneous}
+
+Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 Radiant damage. The target gains no benefit from Half Cover or Three-Quarters Cover for this save.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).
+
+\DndSpellHeader{Word of Radiance}
+	{Evocation Cantrip}
+	{Action}
+	{Self}
+	{V, M (a sunburst token)}
+	{Instantaneous}
+
+Burning radiance erupts from you in a 5-foot Emanation. Each creature of your choice that you can see in it must succeed on a Constitution saving throw or take 1d6 Radiant damage.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6).
 
 \subsection*{Level 1}
+\DndSpellHeader{Bless}
+	{1st-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V, S, M (a Holy Symbol worth 5+ GP)}
+	{Concentration}
 
-\DndSpellHeader
-  {Bless}
-  {1st Level Enchantment}
-  {1 Action}
-  {30 feet}
-  {V, S, M (A sprinkling of holy water)}
-  {Concentration, Up to 1 minute}
-  
-You bless up to three creatures of your choice within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target can roll a d4 and add the number rolled to the attack roll or saving throw.
+You bless up to three creatures within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target adds 1d4 to the attack roll or save.
 
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 1.
 
-\DndSpellHeader
-  {Cure Wounds}
-  {1st Level Evocation}
-  {1 Action}
-  {Touch}
-  {V, S}
-  {Instantaneous}
-  
-A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs.
+\DndSpellHeader{Ceremony}
+	{1st-Level Abjuration (Ritual)}
+	{1 Hour or Ritual}
+	{Touch}
+	{V, S, M (25 gp worth of powdered silver, which the spell consumes)}
+	{Instantaneous}
 
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the Healing increases by 1d8 for each slot level above 1st.
+You perform a special religious ceremony that is infused with magic. When you cast the spell, choose one of the following rites, the target of which must be within 10 feet of you throughout the casting.
 
-\DndSpellHeader
-  {Guiding Bolt}
-  {1st Level Evocation}
-  {1 Action}
-  {120 feet}
-  {V, S}
-  {1 Round}
-  
-A flash of light streaks toward a creature of your choice within range. Make a ranged spell attack against the target. On a hit, the target takes 4d6 radiant damage, and the next attack roll made against this target before the end of your next turn has advantage, thanks to the mystical dim light glittering on the target until then.
+\paragraph*{Atonement} You touch one willing creature whose alignment has changed, and you make a DC 20 Wisdom (Insight) check. On a successful check, you restore the target to its original alignment.
 
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st.
+\paragraph*{Bless Water} You touch one vial of water and cause it to become holy water.
 
-\DndSpellHeader
-  {Shield of Faith}
-  {1st Level Abjuration}
-  {1 Bonus Action}
-  {60 feet}
-  {V, S, M (A small parchment with a bit of holy text written on it)}
-  {Concentration, Up to 10 minutes}
-  
-A shimmering field appears and surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration.
+\paragraph*{Coming of Age} You touch one humanoid who is a young adult. For the next 24 hours, whenever the target makes an ability check, it can roll a d4 and add the number rolled to the ability check. A creature can benefit from this rite only once.
 
-\DndSpellHeader
-  {Command}
-  {1st Level Enchantment}
-  {1 Action}
-  {60 feet}
-  {V}
-  {1 Round}
-  
-You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. The spell has no effect if the target is undead, if it doesn’t understand your language, or if your command is directly harmful to it. Some typical commands and their effects follow. You might issue a command other than one described here. If you do so, the GM determines how the target behaves. If the target can’t follow your command, the spell ends. Approach. The target moves toward you by the shortest and most direct route, ending its turn if it moves within 5 feet of you. Drop. The target drops whatever it is holding and then ends its turn. Flee. The target spends its turn moving away from you by the fastest available means. Grovel. The target falls prone and then ends its turn. Halt. The target doesn’t move and takes no actions. A flying creature stays aloft, provided that it is able to do so. If it must move to stay aloft, it flies the minimum distance needed to remain in the air.
+\paragraph*{Dedication} You touch one humanoid who wishes to be dedicated to your god's service. For the next 24 hours, whenever the target makes a saving throw, it can roll a d4 and add the number rolled to the save. A creature can benefit from this rite only once.
 
-\subparagraph*{At Higher Levels} When you cast this spell using a spell slot of 2nd level or higher, you can affect one additional creature for each slot level above 1st. The creatures must be within 30 feet of each other when you target them.
+\paragraph*{Funeral Rite} You touch one corpse, and for the next 7 days, the target can't become undead by any means short of a wish spell.
 
-\DndSpellHeader
-  {Protection from Evil and Good}
-  {1st Level Abjuration}
-  {1 Action}
-  {Touch}
-  {V, S, M (Holy water or powdered silver and iron, which the spell consumes)}
-  {Concentration, Up to 10 minutes}
-  
-Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.\\
-The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can’t be charmed, frightened, or possessed by them. If the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect.
+\paragraph*{Wedding} You touch adult humanoids willing to be bonded together in marriage. For the next 7 days, each target gains a +2 bonus to AC while they are within 30 feet of each other. A creature can benefit from this rite again only if widowed.
+
+\DndSpellHeader{Cure Wounds}
+	{1st-Level Abjuration}
+	{Action}
+	{Touch}
+	{V, S}
+	{Instantaneous}
+
+A creature you touch regains a number of Hit Points equal to 2d8 plus your spellcasting ability modifier.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The healing increases by 2d8 for each spell slot level above 1.
+
+\DndSpellHeader{Guiding Bolt}
+	{1st-Level Evocation}
+	{Action}
+	{120 Feet}
+	{V, S}
+	{1 Round}
+
+You hurl a bolt of light toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 4d6 Radiant damage, and the next attack roll made against it before the end of your next turn has Advantage.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 1.
+
+\DndSpellHeader{Intaglio}
+	{1st-Level Transmutation (Ritual)}
+	{Action or Ritual}
+	{Touch}
+	{V, S, M (a quill or a vial of ink)}
+	{Concentration, up to 1 Hour}
+
+You create a duplicate of a text or image. During the spell's duration, you can take a Magic action to trace your hand over any non-magical text or image on a surface within range. You copy the text or image onto a new medium that you provide, such as another book or parchement. This spell copies a single page with each Magic action. When copying a spellbook, you can do so using the same method as you would replace a spellbook, except the time and GP requirements are both halved.
 
 \section*{Miscellaneous}
 \subsection*{Attack and Damage Rolls}

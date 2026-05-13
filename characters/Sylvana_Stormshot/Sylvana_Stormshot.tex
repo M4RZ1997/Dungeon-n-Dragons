@@ -7,24 +7,31 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=pre5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% Headline
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Sylvana Stormshot}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
 
 \Class{Fighter}
-\Level{3}
+\Subclass{Arcane Archer}
 \Background{Wildspacer}
-\PlayerName{M4RZ}
 \Race{Owlin}
-\Alignment{Lawful Evil}
-\XP{}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
 
-% Ability scores (correct scores, no modifiers are automatically applied)
+\Level{3} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{12}
 \DexterityRolledScore{15}
@@ -34,22 +41,25 @@
 \CharismaRolledScore{10}
 
 \StrengthScoreBonus{0}
-\DexterityScoreBonus{2} % Owlin-Race +2
+\DexterityScoreBonus{2}		% Owlin-Race +2
 \ConstitutionScoreBonus{0}
-\IntelligenceScoreBonus{1} % Owlin-Race +1
+\IntelligenceScoreBonus{1}	% Owlin-Race +1
 \WisdomScoreBonus{0}
 \CharismaScoreBonus{0}
 
 \calculateAbilityScores{}
 
-\StrengthScore{12}
-\DexterityScore{17}
-\ConstitutionScore{14}
-\IntelligenceScore{14}
-\WisdomScore{12}
-\CharismaScore{10}
-
-% Proficiencies (Proficient = 'P', Expertise = 'E', otherwise = '')
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{P}
 \DexterityProficiency{}
 \ConstitutionProficiency{P}
@@ -57,86 +67,199 @@
 \WisdomProficiency{}
 \CharismaProficiency{}
 
-\AcrobaticsProficiency{P}
-\AnimalHandlingProficiency{}
-\ArcanaProficiency{P}
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
 \AthleticsProficiency{P}
-\DeceptionProficiency{}
-\HistoryProficiency{}
-\InsightProficiency{}
-\IntimidationProficiency{}
-\InvestigationProficiency{}
-\MedicineProficiency{}
-\NatureProficiency{}
-\PerceptionProficiency{P}
-\PerformanceProficiency{}
-\PersuasionProficiency{}
-\ReligionProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{P}
 \SleightOfHandProficiency{}
 \StealthProficiency{P}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{P}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{}
+\PerceptionProficiency{P}
 \SurvivalProficiency{P}
 
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{0}
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
 
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
-% Armor Class is not automatically calculated
-\ArmorClass{14}
-\InitiativeModifier{0}
-\Speed{30}
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{11}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+\ToughFeat{1}
 \MaxHitPointsRolled{27} % Without Constitution Bonus, is added automatically
-\CurrentHitPoints{}
+\CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d10}
 \HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
 
-\CP{}
-\SP{}
-\EP{}
-\GP{140}
-\PP{}
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{P}
+\Shields{P}
 
-% Weapon Arsenal
-\addWeaponStatistic{Longbow}{SylvanaStormshot}{DEX}{P}{2}{1d8 p}
-\addWeaponStatistic{Rapier}{SylvanaStormshot}{DEX}{P}{0}{1d8 s}
-\addWeaponStatistic{Handaxe}{SylvanaStormshot}{STR}{P}{0}{1d6 s}
-\addWeaponStatistic{Unarmed Strike}{SylvanaStormshot}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Navigator's Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Longbow}{SylvanaStormshot}{DEX}{P}{+2}{1d6 \calculateModifier{\DexterityScoreValue} b}{Ranged (150/600), Heavy, Two-Handed, Slow}
+\addWeaponStatistic{Rapier}{SylvanaStormshot}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{Finesse, Vex}
+\addWeaponStatistic{Handaxe}{SylvanaStormshot}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} s}{Light, Thrown (20/60), Vex}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{SylvanaStormshot}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Banishing Arrow}{DC}{\calculateModifier{\IntelligenceScoreValue}}{0}{Charisma Saving Throw, Banished for 1 Turn}
+\addSpellStatistic{Shadow Arrow}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d6}{Psychic damage, Wisdom Saving Throw, cannot see farther than 5 feet until your next turn}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{Q}{\textbf{Fighting Style}\\Archery}
+\AddClassFeature{B}{\textbf{Second Wind}\\Heal 1d10 + \intcalcAdd{0}{\LevelValue}}
+\AddClassFeature{Q}{\textbf{Weapon Mastery}\\Longbow, Rapier, Handaxe}
+\AddClassFeature{L}{\textbf{Action Surge}\\Additional Action, once /SR}
+\AddClassFeature{L}{\textbf{Tactical Mind}\\Add 1d10 to Ability Check}
+\AddClassFeature{Q}{\textbf{Arcane Archer Lore}\\Arcana Proficiency, Druidcraft Cantrip}
+\AddClassFeature{Q}{\textbf{Arcane Shot}\\Banishing Arrow, Shadow Arrow}
+% SPECIES TRAITS
+\AddSpeciesFeature{Q}{\textbf{Darkvision}}
+\AddSpeciesFeature{Q}{\textbf{Flight}\\Gain Flying Speed if not wearing medium or heavy armor}
+\AddSpeciesFeature{Q}{\textbf{Silent Feathers}\\Stealth Proficiency}
+% FEATS
+\AddFeat{\textbf{Tough}\\Increased Hit Points Maximum}
+\AddFeat{\textbf{Archery}\\+2 Bonus to Ranged Attacks}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{54}
+\Height{5'8''}
+\Weight{120 lbs}
+\Eyes{Gray}
+\Skin{Beig-Feathered Owlin}
+\Hair{}
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{9} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{-5} % Picture Y-Shift (absolute value)
+	{images/Sylvana_Stormshot(2).png} %
+	{%
+		{\hspace*{-0.25em}Sylvana Stormshot is a graceful Owlin with beige feathers that provide excellent forest camouflage. Her forest-green eyes reflect keen perception, and}{she's often seen in a flowing blue kimono adorned with nature-inspired patterns. She carries an air of quiet confidence, embodying the harmony of natural beauty and arcane power.}
+	}%
 
-\AttacksAdditional{
-	\textbf{Longbow} (150/600), 20 Arrows\\
-	\textbf{Arcane Shot}
-	\begin{itemize}
-		\item Banishing Arrow
-		\item Shadow Arrow
-	\end{itemize}
-	\textbf{Rapier}\\
-	\textbf{2 Handaxes} (20/60)
+% ORGANIZATION & ALLIES
+\OrganizationName{Sylvan Warden}
+\OrganizationSymbol{images/Sylvan_Warden.png}
+\AlliesAndOrganizations{
+	The Sylvan Wardens are a secretive and ancient order of guardians sworn to protect the sanctity of the natural world. Nestled deep within the heart of the ancient forest that Sylvana calls home, this organization has existed for generations. Its members, drawn from various woodland races including Owlin, Elves, and Fey creatures, share a deep bond with nature and are entrusted with the sacred task of safeguarding the forest and its inhabitants.\\
+	\textbf{Alliances and Diplomacy:}\\
+	The Sylvan Wardens maintain peaceful relationships with the fey creatures\linebreak
+}{
+	of the forest, local elven communities, and druidic circles. They occasionally form alliances with neighboring human settlements that respect nature's balance.
 }
 
-\OtherProficienciesLanguages{
-\textbf{Languages:}\\Common, Sylvan\\
-\textbf{Armor:}\\All armor, Shields\\
-\textbf{Weapons:}\\Simple Weapons, Martial Weapons\\
-\textbf{Tools:}\\Navigator's Tools
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Sylvana's presence seems to harmonize with the natural world around her. When she walks through the forest, the birds sing more melodiously, and the leaves rustle in harmony. Her affinity with nature often leaves those she encounters with a sense of tranquility and wonder.\\
+	Sylvana's feathers are imbued with a natural resilience. They shimmer with an iridescent sheen, and they help protect her from harsh weather conditions, keeping her warm in the cold and cool in the heat. Her feathers also shed water effortlessly, allowing her to stay dry even in heavy rain.\\
+	Sylvana's deep connection to the forest grants her unique insights into its secrets. She can discern the age of trees, identify rare herbs, and navigate through the thickest undergrowth with ease. Her understanding of the forest's history and the creatures that dwell within it is unparalleled.\\
+	Sylvana's eyes have a keen and piercing quality. They can spot the subtlest movements in the foliage and discern even the faintest sounds. Her gaze is intense yet captivating, revealing her thoughtful and observant nature.
 }
 
-\Equipment{
-	Shield, Leather Armor
-}
-\Clutter{
-	backpack, crowbar, hammer, 10 pitons, 10 torches, 10 days of rations, a waterskin, 2x 50 feet of hempen rope, belaying pin (club), set of traveler's clothes, grappling hook
+% BACKGROUND
+\Characterbackground{
+	Sylvana Stormshot was born into a peaceful Owlin community nestled deep within an ancient forest. From a young age, her affinity for archery was evident, and she honed her skills as a hunter and protector of her woodland home.
+	
+	\paragraph*{Traumatic Event} Sylvana's life took a dark turn when a malevolent Beholder, known as Xerathax the Eye Tyrant, descended upon the forest. Xerathax's presence corrupted the once-vibrant flora and fauna, transforming them into grotesque aberrations. The Beholder's relentless pursuit of magical knowledge and power threatened not only Sylvana's home but the entire region.
+
+	During a harrowing confrontation with Xerathax, Sylvana's village came under attack. The Beholder's anti-magic eye nullified the abilities of the Owlin's fellow warriors, leaving them defenseless. Sylvana's beloved mentor, an elder Owlin archer named Thalindra, sacrificed herself to protect her from Xerathax's devastating eye rays. Her sacrifice allowed Sylvana to escape the encounter, but she was left traumatized by the loss of her mentor and the devastation of her home.
 }
 
+% TREASURES
+\Treasure{
+	\textbf{1. Thalindra's Feathered Quill:} This delicate quill, crafted from one of Thalindra's own feathers, serves as both a symbol of Sylvana's mentor and a tool for writing and sketching in her journal. It holds sentimental value, carrying memories of their time together and the knowledge Thalindra imparted.\\\\
+	\textbf{2. Handwoven Dreamcatcher:} A meticulously handwoven dreamcatcher made from natural materials found in her forest. Sylvana believes that it helps protect her dreams from dark influences and connects her with the dream realm, where she often gains insights and guidance from the spirits of the forest.\\\\
+	\textbf{3. Bound Herbal Grimoire:} A meticulously hand-bound grimoire containing a wealth of knowledge about rare herbs, magical plants, and their properties. It serves as both a guide to her herbalism and a repository of the forest's secrets.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	Sylvana tends to be a quiet and introspective individual. She often takes moments to observe the world around her, appreciating the beauty of nature and reflecting on her experiences.
 }
+\Alignment{Lawful Evil}
 
 \Ideals{
 	Sylvana believes in protecting the delicate balance of the forest, its creatures, and the magic that sustains it.
@@ -150,103 +273,68 @@
 	Sylvana's pursuit of vengeance against Xerathax can sometimes blind her to other priorities or lead her into reckless situations.
 }
 
-\FeaturesTraits{
-\textbf{Owlin Traits}
-\begin{itemize}
-	\item Darkvision
-	\item Flight
-	\item Silent Feathers
-\end{itemize}
-\textbf{Sharpshooter}\\
-\textbf{Wildspacer}
-\begin{itemize}
-	\item Close Encounter
-	\item Wildspace Adaptation
-\end{itemize}
-\textbf{Fighter Traits}
-\begin{itemize}
-	\item Fighting Style
-	\item Second Wind
-	\item Action Surge
-	\item Arcane Archer
-	\begin{itemize}
-		\item Arcane Archer Lore
-		\item Arcane Shot
-	\end{itemize}
-\end{itemize}
+% LANGUAGES
+\Languages{Common, Sylvan}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Longbow, Rapier, Handaxe, Leather Armor\\∟
+	backpack, crowbar, hammer, 10 pitons, 10 torches, 10 days of rations, waterskin, 2x 50 ft. of hempen rope, belaying pin (club), set of traveler's clothes, grappling hook
 }
+%% Attuned Magic Items (Max 3, every other is ignored)
+%\addAttunedMagicItem{Magic Item I}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{140}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{}
+\SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
-% Appearance
+% SPELL SLOTS
+%\FirstLevelSpellSlotsTotal{4}
 
-\Age{54}
-\Height{5'8''}
-\Weight{120lbs}
-\Eyes{Gray}
-\Skin{Beige-Feathered Owlin}
-\Hair{}
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
 
-% background
-\CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{9.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{-12} % Picture Y-Shift (absolute value)
-	{images/Sylvana_Stormshot(2).png} %
-	{%
-		{\hspace*{-0.25em}Sylvana Stormshot is a graceful Owlin with beige feathers that provide excellent forest camouflage. Her forest-green eyes reflect keen perception, and}{she's often seen in a flowing blue kimono adorned with nature-inspired patterns. She carries an air of quiet confidence, embodying the harmony of natural beauty and arcane power.}
-	}%
-%\CharacterAppearance{}{
-%	\hspace*{-1.65em}\begin{tabular}{p{100pt}p{70pt}}
-%		\begin{tabular}{p{80pt}}\vspace*{-1.25em}\includegraphics[width=120pt, height=140pt, keepaspectratio]{images/Sylvana_Stormshot(2).png}\end{tabular}
-%		&
-%		\hspace*{-1.6em}\begin{tabular}{>{\raggedleft}p{72pt}}Sylvana Stormshot is a graceful Owlin with beige feathers that provide excellent forest camouflage. Her forest-green eyes reflect keen perception, and\linebreak \end{tabular}
-%	\end{tabular}\\\vspace*{-1.6em}\hfill\\
-%	she's often seen in a flowing blue kimono adorned with nature-inspired patterns. She carries an air of quiet confidence, embodying the harmony of natural beauty and arcane power.
-%}{}{}{}
-\AdditionalFeaturesAndTraits{
-	Sylvana's presence seems to harmonize with the natural world around her. When she walks through the forest, the birds sing more melodiously, and the leaves rustle in harmony. Her affinity with nature often leaves those she encounters with a sense of tranquility and wonder.\\
-	Sylvana's feathers are imbued with a natural resilience. They shimmer with an iridescent sheen, and they help protect her from harsh weather conditions, keeping her warm in the cold and cool in the heat. Her feathers also shed water effortlessly, allowing her to stay dry even in heavy rain.\\
-	Sylvana's deep connection to the forest grants her unique insights into its secrets. She can discern the age of trees, identify rare herbs, and navigate through the thickest undergrowth with ease. Her understanding of the forest's history and the creatures that dwell within it is unparalleled.\\
-	Sylvana's eyes have a keen and piercing quality. They can spot the subtlest movements in the foliage and discern even the faintest sounds. Her gaze is intense yet captivating, revealing her thoughtful and observant nature.
-}
-\AlliesAndOrganizations{
-	The Sylvan Wardens are a secretive and ancient order of guardians sworn to protect the sanctity of the natural world. Nestled deep within the heart of the ancient forest that Sylvana calls home, this organization has existed for generations. Its members, drawn from various woodland races including Owlin, Elves, and Fey creatures, share a deep bond with nature and are entrusted with the sacred task of safeguarding the forest and its inhabitants.\\
-	\textbf{Alliances and Diplomacy:}\\
-	The Sylvan Wardens maintain peaceful relationships with the fey creatures of the forest, local elven communities,\linebreak
-}{
-	and druidic circles. They occasionally form alliances with neighboring human settlements that respect nature's balance.
-}
-\OrganizationName{Sylvan Warden}
-\OrganizationSymbol{images/Sylvan_Warden.png}
-\Characterbackground{
-	Sylvana Stormshot was born into a peaceful Owlin community nestled deep within an ancient forest. From a young age, her affinity for archery was evident, and she honed her skills as a hunter and protector of her woodland home.
-	
-	\paragraph*{Traumatic Event} Sylvana's life took a dark turn when a malevolent Beholder, known as Xerathax the Eye Tyrant, descended upon the forest. Xerathax's presence corrupted the once-vibrant flora and fauna, transforming them into grotesque aberrations. The Beholder's relentless pursuit of magical knowledge and power threatened not only Sylvana's home but the entire region.
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
 
-	During a harrowing confrontation with Xerathax, Sylvana's village came under attack. The Beholder's anti-magic eye nullified the abilities of the Owlin's fellow warriors, leaving them defenseless. Sylvana's beloved mentor, an elder Owlin archer named Thalindra, sacrificed herself to protect her from Xerathax's devastating eye rays. Her sacrifice allowed Sylvana to escape the encounter, but she was left traumatized by the loss of her mentor and the devastation of her home.
-}
-\Treasure{
-	\textbf{1. Thalindra's Feathered Quill:} This delicate quill, crafted from one of Thalindra's own feathers, serves as both a symbol of Sylvana's mentor and a tool for writing and sketching in her journal. It holds sentimental value, carrying memories of their time together and the knowledge Thalindra imparted.\\\\
-	\textbf{2. Handwoven Dreamcatcher:} A meticulously handwoven dreamcatcher made from natural materials found in her forest. Sylvana believes that it helps protect her dreams from dark influences and connects her with the dream realm, where she often gains insights and guidance from the spirits of the forest.\\\\
-	\textbf{3. Bound Herbal Grimoire:} A meticulously hand-bound grimoire containing a wealth of knowledge about rare herbs, magical plants, and their properties. It serves as both a guide to her herbalism and a repository of the forest's secrets.
-}
-
-% Magic
-
-%\SpellcastingClass{}
-%\SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
-%\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
-%\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
-%
-%\CantripSlotA{Cantrip A}
-%
-%\FirstLevelSpellSlotsTotal{1}
-%\FirstLevelSpellSlotA{Spell 1.A}
-%\FirstLevelSpellSlotB{Spell 1.B}
-%
-%\SecondLevelSpellSlotsTotal{2}
-%\SecondLevelSpellSlotA{Spell 2.A}
-%\SecondLevelSpellSlotB{Spell 2.B}
-
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+%\addPreparedSpell{0}
+%	{Conjure Minor Elemental}
+%	{Action}
+%	{120 Feet}
+%	{T}
+%	{}
+%	{T}
+%	{Evocation Boost}
+%	{V, S, M}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \begin{document}
 
 \newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
@@ -281,13 +369,11 @@ Thanks to your wings, you have a flying speed equal to your walking speed. You c
 \subsection*{Silent Feathers}
 You have proficiency in the Stealth skill.
 
-\section*{Sharpshooter}
-You have mastered ranged weapons and can make shots that others find impossible. You gain the following benefits:
-\begin{itemize}
-	\item Attacking at long range doesn't impose disadvantage on your ranged weapon attack rolls.
-	\item Your ranged weapon attacks ignore half and three-quarters cover.
-	\item Before you make an attack with a ranged weapon that you are proficient with, you can choose to take a -5 penalty to the attack roll. If that attack hits, you add +10 to the attack's damage.
-\end{itemize}
+\section*{Feats}
+\subsection*{Tough}
+Your Hit Point maximum increases by an amount equal to twice your character level when you gain this feat. Whenever you gain a character level thereafter, your Hit Point maximum increases by an additional 2 Hit Points.
+\subsection*{Archery (Fighting Style)}
+You gain a +2 bonus to attack rolls you make with Ranged weapons.
 
 \section*{Wildspacer}
 You were raised in the void of Wildspace - home to asteroid miners, moon farmers, and other hardy folk. Perhaps you grew up in a far-flung settlement such as the Rock of Bral, or you spent your early years on the crew of a spelljamming ship, performing helpful chores such as swabbing the deck, loading and offloading cargo, and scraping barnacles off the hull.
@@ -309,40 +395,46 @@ $\bullet$	& 1					&Beholder			\\
 			& 10				&Void Scavver		\\
 \end{DndTable}
 \subsection*{Wildspace Adaptation}
-You gain the Tough feat. In addition, you learned how to adapt to zero gravity. Being weightless doesn’t give you disadvantage on any of your melee attack rolls.
-\paragraph*{Tough}
-Your hit point maximum increases by an amount equal to twice your level when you gain this feat. Whenever you gain a level thereafter, your hit point maximum increases by an additional 2 hit points.
+You gain the Tough feat. In addition, you learned how to adapt to zero gravity. Being weightless doesn't give you Disadvantage on any of your melee attack rolls.
 
 \section*{Fighter Traits}
-Fighters share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat. They are well acquainted with death, both meting it out and staring it defiantly in the face.
 \subsection*{Fighting Style}
-You adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.
-\paragraph*{Archery}
-You gain a +2 bonus to attack rolls you make with ranged weapons.
+\textbf{Archery}\\
+You have honed your martial prowess and gain a Fighting Style feat of your choice.
 \subsection*{Second Wind}
-You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level.
+\textbf{Heal 1d10 + \intcalcAdd{0}{\LevelValue}}\\
+You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your Fighter level.
 
-Once you use this feature, you must finish a short or long rest before you can use it again.
+You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.
+
+When you reach certain Fighter levels, you gain more uses of this feature, as shown in the Second Wind column of the Fighter Features table.
+\subsection*{Weapon Mastery}
+Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.
+
+When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table.
+\subsubsection*{Slow (Longbow)}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+\subsubsection*{Vex (Rapier / Handaxe)}
+If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
 \subsection*{Action Surge}
-Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action.
+You can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action, except the Magic action.
 
-Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.
-\subsection*{Arcane Archer}
-\paragraph*{Arcane Archer Lore}
+Once you use this feature, you can't do so again until you finish a Short or Long Rest. Starting at level 17, you can use it twice before a rest but only once on a turn.
+\subsection*{Tactical Mind}
+You have a mind for tactics on and off the battlefield. When you fail an ability check, you can expend a use of your Second Wind to push yourself toward success. Rather than regaining Hit Points, you roll 1d10 and add the number rolled to the ability check, potentially turning it into a success. If the check still fails, this use of Second Wind isn't expended.
+\subsection*{Arcane Archer Lore}
 At 3rd level, you learn magical theory or some of the secrets of nature – typical for practitioners of of this elven martial tradition. You choose to gain proficiency in either the Arcana or the Nature skill, and you choose to learn either the Prestidigitation or Druidcraft cantrip.
-\paragraph*{Arcane Shot}
+\subsection*{Arcane Shot}
 At 3rd level, you learn to unleash special magical effects with some of your shots. When you gain this feature, you learn two Arcane Shot options of your choice (see "Arcane Shot Options" below).
 
 Once per turn when you fire an arrow from a shortbow or longbow as part of the Attack action, you can apply one of your Arcane Shot options to that arrow. You decide to use the option when the arrow hits, unless the option doesn’t involve an attack roll. You have two uses of this ability, and you regain all expended uses of it when you finish a short or long rest.
 
 You gain an additional Arcane Shot option of your choice when you reach certain levels in this class: 7th, 10th, 15th, and 18th level. Each option also improves when you become an 18th-level fighter.
-\subsection*{Arcane Shot Options}
+\subsubsection*{Arcane Shot Options}
 The Arcane Shot feature lets you choose options for it at certain levels. The options are presented here in alphabetical order. They are all magical effects, and each one is associated with one of the schools of magic.
 
 If an option requires a saving throw, your Arcane Shot save DC equals 8 + your proficiency bonus + your Intelligence modifier.\\\\
 \textbf{Save DC: \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\IntelligenceScoreValue}}}}
-
-\eject
 
 \paragraph{Banishing Arrow} You use abjuration magic to try to temporarily banish your target to a harmless location in the Feywild. The creature hit by the arrow must also succeed on a Charisma saving throw or be banished. While banished in this way, its speed is 0, and it is incapacitated. At the end of its next turn, the target reappears in the space it vacated or in the nearest unoccupied space if that space is occupied.
 
@@ -364,13 +456,11 @@ The necrotic damage increases to 4d6 when you reach 18th level in this class.
 
 The poison damage and slashing damage both increase to 4d6 when you reach 18th level in this class.
 
-\eject
-
-\paragraph{Piercing Arrow} You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don’t make an attack roll for the attack. Instead, the arrow fires forward in a line, which is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a creature takes damage as if it were hit by the arrow, plus an extra 1d6 piercing damage. On a successful save, a target takes half as much damage.
+\paragraph{Piercing Arrow} You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don't make an attack roll for the attack. Instead, the arrow fires forward in a line, which is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a creature takes damage as if it were hit by the arrow, plus an extra 1d6 piercing damage. On a successful save, a target takes half as much damage.
 
 The piercing damage increases to 2d6 when you reach 18th level in this class.
 
-\paragraph{Seeking Arrow} Using divination magic, you grant your arrow the ability to seek out your target, allowing the arrow to curve and twist its path in search of its prey. When you use this option, you don’t make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon’s range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. On a failed save, it takes damage as if it were hit by the arrow, plus an extra 1d6 force damage, and you learn the target’s current location. On a successful save, the target takes half as much damage, and you don’t learn its location.
+\paragraph{Seeking Arrow} Using divination magic, you grant your arrow the ability to seek out your target, allowing the arrow to curve and twist its path in search of its prey. When you use this option, you don’t make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon's range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. On a failed save, it takes damage as if it were hit by the arrow, plus an extra 1d6 force damage, and you learn the target's current location. On a successful save, the target takes half as much damage, and you don't learn its location.
 
 The force damage increases to 2d6 when you reach 18th level in this class.
 

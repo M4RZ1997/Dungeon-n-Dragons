@@ -7,26 +7,30 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% CHARACTER STATS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{A.R.T.I.F.I.C.E.R-$\beta$}
 
 \Class{Artificer}
-\MultiClassMainLevel{}
-\MultiClass{}
 \Subclass{Artillerist}
 \Background{Far Traveler}
 \Race{Autognome}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
 
-\Level{9}
-
-% ABILITY SCORES
-% (correct scores, no modifiers are automatically applied)
+\Level{9} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
 % Modifiers, Saving Throws and Skills are calculated automatically
 \StrengthRolledScore{14}
 \DexterityRolledScore{14}
@@ -35,6 +39,7 @@
 \WisdomRolledScore{10}
 \CharismaRolledScore{12}
 
+% SCORE MODIFIERS (ASI, Background and Race Boni)
 \StrengthScoreBonus{0}
 \DexterityScoreBonus{0}
 \ConstitutionScoreBonus{2} % Autognome +1, ASI +1
@@ -44,8 +49,17 @@
 
 \calculateAbilityScores{}
 
-% PROFICIENCIES AND EXPERTIES
-%% SAVING THROWS
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
 \StrengthProficiency{}
 \DexterityProficiency{}
 \ConstitutionProficiency{P}
@@ -53,6 +67,20 @@
 \WisdomProficiency{}
 \CharismaProficiency{}
 
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
 %% STRENGTH SKILLS
 \AthleticsProficiency{}
 
@@ -81,32 +109,41 @@
 \PerformanceProficiency{}
 \PersuasionProficiency{}
 
-% ABILITY MODIFIERS BONUS
-\StrengthModifierBonus{0}
-\DexterityModifierBonus{0}
-\ConstitutionModifierBonus{0}
-\IntelligenceModifierBonus{0}
-\WisdomModifierBonus{0}
-\CharismaModifierBonus{0}
-
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION (Displays any Alphanumerical Input)
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
 %\EquipShield
 \ArmorClass{\intcalcAdd{12}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}} % +1 Enhanced Defense
 
+% HIT POINTS
 \MaxHitPointsRolled{43} % Without Constitution Bonus, is added automatically (44 Rolled -1 Malus throughout campaign)
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d8}
-\MultiClassHitDice{}
 \HitDiceSpent{0}
-\MultiClassHitDiceSpent{}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
 
-\InitiativeModifier{0}
-\Speed{30}
-\Size{Medium}
-
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
 \LightArmor{P}
 \MediumArmor{P}
 \HeavyArmor{}
@@ -114,13 +151,36 @@
 
 \WeaponsProficiency{Simple Weapons}
 \ToolsProficiency{Alchemist's Supplies, Carpenter's Tools, Smith's Tools, Thieves' Tools, Tinker's Tools, Woodcarver's Tools, Dice Set}
-
-\addWeaponStatistic{Quarterstaff}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{1d6 b}{versatile (1d8)}
-\addWeaponStatistic{Handaxe}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{1d6 s}{thrown, light}
-\addWeaponStatistic{Light Crossbow}{A.R.T.I.F.I.C.E.R-Beta}{DEX}{P}{0}{1d8 p}{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Quarterstaff}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} b}{versatile (1d8)}
+\addWeaponStatistic{Handaxe}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} s}{thrown, light}
+\addWeaponStatistic{Light Crossbow}{A.R.T.I.F.I.C.E.R-Beta}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{}
+% UNARMED STRIKE
 \addWeaponStatistic{Unarmed Strike}{A.R.T.I.F.I.C.E.R-Beta}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
 \addSpellStatistic{Fire Bolt}{ATK}{\calculateModifier{\IntelligenceScoreValue}}{1d10}{Fire}
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
 \AddClassFeature{E}{\textbf{Magical Tinkering}}
 \AddClassFeature{L}{\textbf{Infuse Item}%
 	\begin{itemize}%
@@ -137,18 +197,18 @@
 \AddClassFeature{E}{\textbf{Arcane Firearm}\\Additional d8 damage to spell damage}
 \AddClassFeature{R}{\textbf{Flash of Genius}\\Add \calculateModifier{\IntelligenceScoreValue} to your or allies' Ability Check or Saving Throw (\intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}} Uses)\\}
 \AddClassFeature{R}{\textbf{Explosive Cannon}\\More potent Eldritch Cannon can explode on damage taken}
-
+% SPECIES TRAITS
 \AddSpeciesFeature{E}{\textbf{Armored Casing}\\Natural AC = \intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
 \AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to Attack Roll, Ability Check, or Saving Throw (\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses)}}
 \AddSpeciesFeature{E}{\textbf{Healing Machine}\\Mending regenerates Hit Die + CON modifier HP; healing spells affect you}
 \AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\Resistance against Poison Damage\\Advantage vs. Poisoned/Paralyzed}
 \AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
 \AddSpeciesFeature{E}{\textbf{Specialized Design}\\Carpenter's and Woodcarver's Tools}
-
+% FEATS
 \AddFeat{\textbf{Iedcaru's Scanning}}
-
-% BACKGROUND & APPEARANCE
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Age{350}
 \Height{3'2''}
 \Weight{210lbs}
@@ -157,9 +217,9 @@
 \Hair{}
 
 \CharacterAppearance{horizontal} % (vertical/horizontal/none)
-	{-2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
-	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{-15} % Picture Y-Shift (absolute value)
+	{7.5} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
 	{images/A.R.T.I.F.I.C.E.R-Beta.png} %
 	{%
 		{A.R.T.I.F.I.C.E.R-$\beta$ is a hulking, weathered autognome with mismatched plates, exposed gears, and a single glowing ocular lens. Rust streaks its crude frame, but its toolbelt and alchemical vials reveal its role as a master craftsman. Despite its rugged design, $\beta$ exudes intelligence and purpose, embodying its legacy as an artificer and weapon shopkeeper.}
@@ -174,8 +234,8 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 \AlliesAndOrganizations{
 	The Artificer Guild of Lantan is a prestigious and enigmatic organization dedicated to the fusion of magic and engineering, embodying the inventive spirit of the island nation. Renowned across Faerûn, the guild operates from their intricate headquarters, the High Holy Crafthouse of Inspiration, the heart of Gond's church in the Realms. Its members, a mix of brilliant gnomes and humans, strive to push the boundaries of artifice, crafting magical constructs, experimental devices, and enchanted tools.
 
-	The guild's primary goals include advancing the knowledge of magical and mechanical innovation, preserving\linebreak
-}{Lantan's unique technological heritage, and influencing the wider world through their creations. Their relentless pursuit of progress sometimes raises ethical questions, as their experiments occasionally blur the line between invention and peril.}
+	The guild's primary goals include advancing the knowledge of magical\linebreak
+}{and mechanical innovation, preserving Lantan's unique technological heritage, and influencing the wider world through their creations. Their relentless pursuit of progress sometimes raises ethical questions, as their experiments occasionally blur the line between invention and peril.}
 \OrganizationName{Artificer Guild of Lantan}
 \OrganizationSymbol{images/Artificer_Guild_of_Lantan.png}
 \AdditionalFeaturesAndTraits{
@@ -186,8 +246,11 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 	\textbf{2. Blueprint of Dreams:} A large, rolled blueprint of an unfinished construct designed by G.E. Petto. The design is incomplete, and $\beta$ has been trying for years to decipher its purpose. He believes it might hold the secret to something extraordinary but refuses to let anyone else see it.\\
 	\textbf{3. Animated Gear Wall:} A decorative yet functional wall in his workshop covered in interconnected gears, each inscribed with Lantanna runes. These gears spin in mesmerizing patterns, powered by ambient magic, and serve as both a piece of art and a reminder of his mechanical nature.
 }
-
-% PERSONALITY TRAITS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	He has a habit of salvaging interesting components from the things he encounters, storing them in hidden compartments in his frame. His workshop is filled with odd bits of scrap that only he seems to understand the purpose of.
 }
@@ -207,31 +270,55 @@ Eventually, $\beta$ found his way to Sigil, the City of Doors, and settled in th
 
 % LANGUAGES
 \Languages{Common, Elvish, Dwarven}
-
-% EQUIPMENT
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Equipment{
 	\textbf{Robe of Useful Items}, \textbf{Eyes of Minute Seeing}, \textbf{Inevitable Disabling Device}, \textbf{Potion of Gaseous Form}\\Opal Gem (100gp), Light Crossbow, 20 Bolts, Handaxe, Quarterstaff, Thieves' Tools, Dice Set, small Lantanna piece of jewellery (10gp), traveler's clothes
 }
-
+%% Attuned Magic Items (Max 3, every other is ignored)
 \addAttunedMagicItem{All-Purpose Tool (+2)}
 \addAttunedMagicItem{Cube of Force}
 
+%% Gold
 \CP{}
 \SP{5}
 \EP{}
 \GP{1459}
 \PP{}
-
-% SPELLS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
 \SpellcastingClass{Artificer}
 \SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{2} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{2} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
+% SPELL SLOTS
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{2}
 
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
 \addPreparedSpell{0}
 	{Mending}
 	{1 Min}

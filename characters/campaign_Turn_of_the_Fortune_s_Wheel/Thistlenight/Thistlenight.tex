@@ -7,23 +7,26 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
 \setlength\evensidemargin{\oddsidemargin}
 
-% CHARACTER STATS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \CharacterName{Thistlenight}
 
 \Class{Sorcerer}
-\MultiClassMainLevel{}
-\MultiClass{}
 \Subclass{Clockwork Sorcery}
 \Background{Feylost}
 \Race{Wechselkind}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
 
-\Level{9}
+\Level{9} % Automatically sets XP and Proficiency Bonus
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -72,6 +75,8 @@
 \WisdomSavingThrowBonus{0}
 \CharismaSavingThrowBonus{0}
 
+\calculateScoreModifiersAndSavingThrows{}
+
 % SKILL PROFICIENCY
 % \SkillProficiency[#1]{#2}
 %%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
@@ -103,28 +108,42 @@
 \IntimidationProficiency{P}
 \PerformanceProficiency{}
 \PersuasionProficiency{}
+
+\calculateAllSkillModifiers{}
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
-% HEROIC INSPIRATION
+% HEROIC INSPIRATION (Displays any Alphanumerical Input)
 \Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{25}
+
+% SIZE
+\Size{Small}
+
+% PASSIVE PERCEPTION
 \PassivePerceptionModifier{0}
 
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
 %\EquipShield
 \ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
 
+% HIT POINTS
 \MaxHitPointsRolled{45} % Without Constitution Bonus, is added automatically
 \CurrentHitPoints{\MaxHitPointsValue}
 \TemporaryHitPoints{}
 \HitDice{d6}
-\MultiClassHitDice{}
 \HitDiceSpent{0}
-\MultiClassHitDiceSpent{}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
 
-\InitiativeModifier{0}
-\Speed{25}
-\Size{Small}
-
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
 \LightArmor{}
 \MediumArmor{}
 \HeavyArmor{}
@@ -132,13 +151,37 @@
 
 \WeaponsProficiency{Simple Weapons}
 \ToolsProficiency{Glaur (Musical Instrument)}
-
-\addWeaponStatistic{Light Crossbow}{Thistlenight}{DEX}{P}{0}{1d8 p}{ranged (80/320), loading, two-handed}
-\addWeaponStatistic{Dagger}{Thistlenight}{DEX}{P}{0}{1d4 p}{finesse, light, thrown}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Light Crossbow}{Thistlenight}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{ranged (80/320), loading, two-handed}
+\addWeaponStatistic{Dagger}{Thistlenight}{DEX}{P}{0}{1d4 \calculateModifier{\DexterityScoreValue} p}{finesse, light, thrown}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Thistlenight}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
 \addSpellStatistic{Chill Touch}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d10}{Necrotic, target can't regain hit points}
 \addSpellStatistic{Infestation}{DC}{\calculateModifier{\CharismaScoreValue}}{2d6}{Poison, must move if able, CON save}
 \addSpellStatistic{Mind Sliver}{DC}{\calculateModifier{\CharismaScoreValue}}{2d6}{Psychic, 1d4 malus on next saving throw}
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% CLASS FEATURE
 \AddClassFeature{B}{\textbf{Innate Sorcery}\\Unleash innate magic \textbf{twice} per Long Rest}
 \AddClassFeature{L}{\textbf{Font of Magic}\\8 Sorcery Points}
 \AddClassFeature{L}{\textbf{Metamagic}\\Subtle Spell, Seeking Spell}
@@ -146,33 +189,22 @@
 \AddClassFeature{L}{\textbf{Sorcerous Restoration}\\Restore \intcalcShr{\LevelValue} Sorcery Points during Short Rest (Once per Long Rest)}
 \AddClassFeature{E}{\textbf{Bastion of Law}\\Use Sorcery Points to create shielding ward}
 \AddClassFeature{E}{\textbf{Sorcery Incarnate}}
-
+% SPECIES TRAITS
 \AddSpeciesFeature{E}{%
 	\textbf{Artificial Form}\\Healing spell affected Construct.%
 	\begin{itemize}%
-		\renewcommand{\labelitemii}{%
-			\rput(0,5){%
-				\pscustom[linestyle=none,fillstyle=solid,fillcolor=grey_text_color]{%
-					\moveto(3.5,3.5)
-					\lineto(3.5,-3.5)
-					\lineto(-3.5,-3.5)
-					\lineto(-3.5,3.5)
-					\closepath
-				}%
-			}%
-		}%
-		\item \textbf{Self Repair (\intcalcAdd{0}{\ProficiencyValue} Uses)}\\Mending restores Hit Die + CON
+		\item[\CustomItemLabel{L}] \textbf{Self Repair (\intcalcAdd{0}{\ProficiencyValue} Uses)}\\Mending restores Hit Die + CON
 	\end{itemize}%
 }
 \AddSpeciesFeature{E}{\textbf{Magical Fortification}\\Resilient against Magical Effects}
 \AddSpeciesFeature{E}{\textbf{Childish Agility}\\Can move through the space of any creature that is Medium or larger and hide if half covered by those.\\Acrobatics Proficiency}
 \AddSpeciesFeature{L}{\textbf{Faerie Glamour}\\Minor Illusion Cantrip\\Disguise Self once per Long Rest}
-
+% FEATS
 \AddFeat{\textbf{Feywild Connection}\\Friendly Fey are inclined to help you in the Feywild}
 \AddFeat{\textbf{Iedcaru's Scanning}}
-
-% BACKGROUND & APPEARANCE
-
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Age{15 (since swap)}
 \Height{2'9''}
 \Weight{50 lbs}
@@ -181,9 +213,9 @@
 \Hair{White}
 
 \CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{12.2}	% Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{12}	% Main-Text Offset (Steps of 15.75 [equal to line-height])
 	{0}		% Picture X-Shift (absolute value, no effect in vertical mode)
-	{8}		% Picture Y-Shift (absolute value)
+	{-5}		% Picture Y-Shift (absolute value)
 	{images/Thistlenight.png} %
 	{%
 		{Thistlenight's pale, oaken body and silver-gray, moonlit eyes hint at their fey origins. Their wiry frame is wrapped in tattered, smoke-stained clothing, and white, uneven hair falls around their}{face. When the glamour fades, faint thorn-like markings appear on their arms and neck, a haunting reminder of their awakening.}
@@ -210,8 +242,11 @@
 	\textbf{2. 8-Inch Glass Ant Figurine:} This delicate glass ant, eerily lifelike, catches light in faint rainbow hues. A small crack mars one of its legs, yet its weight feels oddly grounding in Thistlenight's hand.\\
 	\textbf{3. Silver Fork with Bent Tines:} A tarnished silver fork with its outer tines bent sideways, bearing a faint, nearly illegible engraving. Its imperfections make it oddly compelling, and Thistlenight keeps it as an inexplicable token of resilience.
 }
-
-% PERSONALITY TRAITS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \PersonalityTraits{
 	Thistlenight reads people with uncanny precision, trusting no one fully. They exude an unnerving calm, their soft voice both soothing and unsettling. A pragmatic survivor, they manipulate and deceive when needed but avoid unnecessary cruelty.
 }
@@ -231,33 +266,56 @@
 
 % LANGUAGES
 \Languages{Common, Sylvan, Elvish}
-
-% EQUIPMENT
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
 \Equipment{
 	\textbf{Elven Chain}, \textbf{Magical Wood Polish}, \textbf{Amber Necklace} (Arcane Focus), 2 \textbf{Magical Mechanical Gear}\\Scroll of Entangle, Potion of Invisibility, Flask of Holy Water, 2 Daggers, Spear, Light Crossbow, 20 bolts, Gloon (spooky Glaur), set of traveler's clothes, candlestick whose candlelight looks like a tiny dancing fairy made of fire, 8-inch-long glass ant figurine, silver fork with the outer tines bent sideways, backpack, crowbar, hammer, 10 pitons, tinderbox, 10 days of rations, waterskin, 50 feet of hempen rope
 }
-
+%% Attuned Magic Items (Max 3, every other is ignored)
 \addAttunedMagicItem{Amulet of Proof Against Detection}
 \addAttunedMagicItem{Stone of Good Luck}
 \addAttunedMagicItem{Rod of Retribution}
-
+%% Gold
 \CP{}
 \SP{5}
 \EP{}
 \GP{1459}
 \PP{}
-
-% SPELLS
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
 \SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
+% SPELL SLOTS
 \FirstLevelSpellSlotsTotal{4}
 \SecondLevelSpellSlotsTotal{3}
 \ThirdLevelSpellSlotsTotal{3}
 \FourthLevelSpellSlotsTotal{3}
 \FifthLevelSpellSlotsTotal{1}
 
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
 \addPreparedSpell{0}
 	{Chill Touch}
 	{Action}

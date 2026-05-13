@@ -7,7 +7,7 @@
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
 
-\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
 \usepackage{\PATH templates/template_magic-item/magic-items_commands}
 
 \setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
@@ -27,6 +27,12 @@
 \MultiClass{Ranger}
 
 \Level{17} % Automatically sets XP and Proficiency Bonus
+% Multiclass Levels for this Character
+\def\ArtificerLevel{5}
+\def\BardLevel{2}
+\def\DruidLevel{6}
+\def\RangerLevel{3}
+\def\SorcererLevel{1}
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -75,6 +81,8 @@
 \WisdomSavingThrowBonus{0}
 \CharismaSavingThrowBonus{0}
 
+\calculateScoreModifiersAndSavingThrows{}
+
 % SKILL PROFICIENCY
 % \SkillProficiency[#1]{#2}
 %%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
@@ -106,6 +114,8 @@
 \IntimidationProficiency{P}		% Rashemi Wanderer BG
 \PerformanceProficiency{}
 \PersuasionProficiency{}
+
+\calculateAllSkillModifiers{}
 % --------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
@@ -233,40 +243,13 @@
 \Hair{}
 
 \CharacterAppearance{vertical} % (vertical/horizontal/none)
-	{14.2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{14} % Main-Text Offset (Steps of 15.75 [equal to line-height])
 	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
-	{30} % Picture Y-Shift (absolute value)
+	{2} % Picture Y-Shift (absolute value)
 	{images/P.4_T.C.H-W.R.K.png} %
 	{%
-		{A tall, patchwork construct of brass, steel, and living wood, with a glowing core in its chest. One arm is precise and mechanical, the other overgrown with vines. Its smooth, mask-like face has shifting, multicoloured eyes, and faint arcane}{light leaks from cracks in its frame.}
+		{A tall, patchwork construct of brass, steel, and living wood, with a glowing core in its chest. One arm is precise and mechanical, the other overgrown with vines. Its smooth, mask-like face has shifting, multicoloured eyes, and faint}{arcane light leaks from cracks in its frame.}
 	}%
-\Characterbackground{
-	\footnotesize Centuries ago, in Lantan, the artificer G.E. Petto pursued a singular ambition: the creation of a self-sufficient, evolving construct.
-
-	His greatest success was A.R.T.I.F.I.C.E.R-$\beta$ - a prototype capable of independent learning, self-repair, and iterative improvement. It was a marvel of logic and design... yet incomplete. It could think, but not feel. It could calculate, but not understand.
-
-	Recognizing this flaw, Petto devised a radical solution. Instead of altering the core, he designed auxiliary constructs, each embodying a missing aspect of sentience - instinct, expression, perception, and primal adaptation. These designs were never meant to stand alone, but to function as modular extensions, capable of one day integrating with the original core.
-
-	Fearing the implications of his own work - especially as some designs leaned toward combat and infiltration - Petto concealed the project. His notes were fragmented, encoded, and ultimately lost.
-
-	Over the centuries, these designs resurfaced in altered forms. The Foundry unknowingly produced five distinct construct lineages, each derived from Petto's hidden schematics. They operated independently, unaware that they were incomplete pieces of a greater whole.
-
-	Each carried a convergence-compatible core. Only when all components are brought together does the truth emerge: They were never separate creations. They were always meant to become one. And when that convergence is achieved, Petto's final vision awakens:
-\begin{center}
-	\textbf{P.4:T.C.H–W.R.K\\
-	Project 4: Thaumaturgic Convergence Hub – Warded Recombination Kernel}
-\end{center}
-A being not built - but assembled.
-}
-\AlliesAndOrganizations{
-	Located in Lantan, the G.E. Petto Automaton Foundry is the single most influential artificer institution in the region, and arguably one of the most advanced centres of construct engineering in the known world.
-
-	Founded roughly four centuries ago by the visionary artificer G.E. Petto, the Foundry began as a modest workshop dedicated to crafting mechanical servants. Eventually, the reliability and ingenuity of Petto's designs quickly drove overwhelming demand, forcing rapid expansion from a personal workspace into a full-scale industrial complex.\linebreak
-}{
-	Over time, the Foundry evolved beyond utility constructs. Through iterative innovation and increasingly sophisticated arcane integration, it began producing specialized automatons for reconnaissance, infiltration, and eventually combat.
-}
-\OrganizationName{G.E. Petto Automaton Foundry}
-\OrganizationSymbol{images/G.E._Petto_Automaton_Foundry.png}
 \AdditionalFeaturesAndTraits{
 	The different parts of P.4:T.C.H-W.R.K clearly originate from different design philosophies:
 	\begin{itemize}
@@ -284,6 +267,33 @@ A being not built - but assembled.
 		\end{itemize}
 		\item \textbf{Back / Spine (Sorcerer Conduit)}\\Cracked plating revealing unstable arcane energy - faint flickers, like lightning trapped under glass.
 	\end{itemize}
+}
+\OrganizationName{G.E. Petto Automaton Foundry}
+\OrganizationSymbol{images/G.E._Petto_Automaton_Foundry.png}
+\AlliesAndOrganizations{
+	Located in Lantan, the G.E. Petto Automaton Foundry is the single most influential artificer institution in the region, and arguably one of the most advanced centres of construct engineering in the known world.
+
+	Founded roughly four centuries ago by the visionary artificer G.E. Petto, the Foundry began as a modest workshop dedicated to crafting mechanical servants. Eventually, the reliability and ingenuity of Petto's designs quickly drove overwhelming demand, forcing rapid expansion from a personal workspace into a full-scale industrial complex. Over time, the Foundry evolved beyond\linebreak
+}{
+	utility constructs. Through iterative innovation and increasingly sophisticated arcane integration, it began producing specialized automatons for reconnaissance, infiltration, and eventually combat.
+}
+\Characterbackground{
+	\footnotesize Centuries ago, in Lantan, the artificer G.E. Petto pursued a singular ambition: the creation of a self-sufficient, evolving construct.
+
+	His greatest success was A.R.T.I.F.I.C.E.R-$\beta$ - a prototype capable of independent learning, self-repair, and iterative improvement. It was a marvel of logic and design... yet incomplete. It could think, but not feel. It could calculate, but not understand.
+
+	Recognizing this flaw, Petto devised a radical solution. Instead of altering the core, he designed auxiliary constructs, each embodying a missing aspect of sentience - instinct, expression, perception, and primal adaptation. These designs were never meant to stand alone, but to function as modular extensions, capable of one day integrating with the original core.
+
+	Fearing the implications of his own work - especially as some designs leaned toward combat and infiltration - Petto concealed the project. His notes were fragmented, encoded, and ultimately lost.
+
+	Over the centuries, these designs resurfaced in altered forms. The Foundry unknowingly produced five distinct construct lineages, each derived from Petto's hidden schematics. They operated independently, unaware that they were incomplete pieces of a greater whole.
+
+	Each carried a convergence-compatible core. Only when all components are brought together does the truth emerge: They were never separate creations. They were always meant to become one. And when that convergence is achieved, Petto's final vision awakens:
+\begin{center}
+	\textbf{P.4:T.C.H–W.R.K\\
+	Project 4: Thaumaturgic Convergence Hub – Warded Recombination Kernel}
+\end{center}
+A being not built - but assembled.
 }
 \Treasure{
 	\ 
@@ -338,6 +348,8 @@ A being not built - but assembled.
 \SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
 \SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
 \SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
 
 % SPELL SLOTS
 \FirstLevelSpellSlotsTotal{4}
@@ -1945,6 +1957,417 @@ The spell ends if the target is ever outside the spell's range or if it has Tota
 \underline{\textit{Unarmed Strike:}}\\
 1 + STR-Modifier\\
 \indent Current Max: \intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}}
+
+
+\part*{Wild-Shape Options}
+\subsection*{Ape}
+\begin{DndMonster}[width=0.5\textwidth]{Ape}
+	\DndMonsterType{Medium Beast, Unaligned}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \DruidLevel~temp HP},
+		speed		= {30 ft., Climb 30 ft.},
+		initiative	= +2,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 16,
+		dex = 14,
+		con = 14,
+		int = 18,
+		wis = 15,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+		skills					= {Athletics +9},
+%		damage-vulnerabilities	= {},
+%		damage-resistances		= {},
+%		damage-immunities		= {},
+%		condition-immunities	= {},
+		senses					= {Passive Perception 24},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The ape makes two Fist attacks.
+	
+	\DndMonsterAttack[
+		name			= Fist,
+		distance		= melee,
+%		type			= weapon,
+		mod				= +9,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d4 + 3},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+%		or-dmg			= ,
+%		or-dmg-when		= ,
+%		extra			= {, },
+	]
+	\DndMonsterAttack[
+		name			= Rock,
+		distance		= ranged,
+%		type			= weapon,
+		mod				= +9,
+%		reach			= 5,
+		range			= 25/50,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 3},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+%		or-dmg			= ,
+%		or-dmg-when		= ,
+%		extra			= {, },
+	]
+\end{DndMonster}
+\vfill\eject
+\subsection*{Jaculi}
+\begin{DndMonster}[width=0.5\textwidth]{Jaculi}
+	\DndMonsterType{Large Beast, Unaligned}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \DruidLevel~temp HP},
+		speed		= {30 ft., Climb 20 ft.},
+		initiative	= +2,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 15,
+		dex = 14,
+		con = 11,
+		int = 18,
+		wis = 15,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+		skills					= {Athletics +9, Stealth +8},
+%		damage-vulnerabilities	= {},
+%		damage-resistances		= {},
+%		damage-immunities		= {},
+%		condition-immunities	= {},
+		senses					= {Blindsight 30ft., Passive Perception 24},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterAction{Camouflage}
+	The Jaculi has advantage on Dexterity (Stealth) checks made to hide.
+	
+	\DndMonsterAction{Keen Smell}
+	The Jaculi has advantage on Wisdom (Perception) checks that rely on smell.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,
+%		type			= weapon,
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+%		or-dmg			= ,
+%		or-dmg-when		= ,
+%		extra			= {, },
+	]
+	
+	\DndMonsterAction{Spring}
+	The Jaculi springs up to 30 feet in a straight line and makes a bite attack against a target within its reach. This attack has advantage if the Jaculi springs at least 10 feet. If the attack hits, the bite deals an extra \DndDice{2d6} piercing damage.
+\end{DndMonster}
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+	\node[anchor=south west] at (current page.south west) {%
+		\begin{minipage}{\paperwidth}%%
+        	\includegraphics[width=\paperwidth]{images/Ape_Jaculi.png}%
+      	\end{minipage}%
+	};%
+\end{tikzpicture}%
+\clearpage
+\subsection*{Black Bear}
+\begin{DndMonster}[width=0.5\textwidth]{Black Bear}
+	\DndMonsterType{Medium Beast, Unaligned}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \DruidLevel~temp HP},
+		speed		= {30 ft., Climb 30 ft., Swim 30 ft.},
+		initiative	= +0,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 15,
+		dex = 10,
+		con = 14,
+		int = 18,
+		wis = 15,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+%		skills					= {},
+%		damage-vulnerabilities	= {},
+%		damage-resistances		= {},
+%		damage-immunities		= {},
+%		condition-immunities	= {},
+		senses					= {Darkvision 60ft., Passive Perception 24},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterAction{Keen Smell}
+	The bear has advantage on Wisdom (Perception) checks that rely on smell.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Bear makes two attacks: one with its bite and one with its claws.
+	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,
+%		type			= weapon,
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+%		or-dmg			= ,
+%		or-dmg-when		= ,
+%		extra			= {, },
+	]
+	
+	\DndMonsterAttack[
+		name			= Claws,
+		distance		= melee,
+%		type			= weapon,
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d4 + 2},
+		dmg-type		= Slashing,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+%		or-dmg			= ,
+%		or-dmg-when		= ,
+%		extra			= {, },
+	]
+\end{DndMonster}
+\vfill\eject
+\subsection*{Crocodile}
+\begin{DndMonster}[width=0.5\textwidth]{Crocodile}
+	\DndMonsterType{Large Beast, Unaligned}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \DruidLevel~temp HP},
+		speed		= {20 ft., Swim 30 ft.},
+		initiative	= +0,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 15,
+		dex = 10,
+		con = 13,
+		int = 18,
+		wis = 15,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+		skills					= {Stealth +6},
+%		damage-vulnerabilities	= {},
+%		damage-resistances		= {},
+%		damage-immunities		= {},
+%		condition-immunities	= {},
+		senses					= {Passive Perception 24},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterAction{Hold Breath}
+	The Crocodile can hold its breath for 1 hour.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,
+%		type			= weapon,
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+%		or-dmg			= ,
+%		or-dmg-when		= ,
+		extra			= {. If the target is a Medium or smaller creature, it has the Grappled condition (escape DC 16). While Grappled, the target has the Restrained condition},
+	]
+\end{DndMonster}
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+	\node[anchor=south west] at (current page.south west) {%
+		\begin{minipage}{\paperwidth}%%
+        	\includegraphics[width=\paperwidth]{images/Black-Bear_Crocodile.png}%
+      	\end{minipage}%
+	};%
+\end{tikzpicture}%
+\clearpage
+\subsection*{Giant Sea Eel}
+\begin{DndMonster}[width=0.5\textwidth]{Giant Sea Eel}
+	\DndMonsterType{Large Beast, Unaligned}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \DruidLevel~temp HP},
+		speed		= {0 ft., Swim 40 ft.},
+		initiative	= +2,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 11,
+		dex = 14,
+		con = 12,
+		int = 18,
+		wis = 15,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+		skills					= {Stealth +8},
+%		damage-vulnerabilities	= {},
+%		damage-resistances		= {},
+%		damage-immunities		= {},
+%		condition-immunities	= {},
+		senses					= {Darkvision 60ft., Passive Perception 24},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterAction{Water Breathing}
+	The eel can breathe only underwater.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,
+%		type			= weapon,
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d10 + 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+%		or-dmg			= ,
+%		or-dmg-when		= ,
+%		extra			= {. },
+	]
+\end{DndMonster}
+\vfill\eject
+\subsection*{Reef Shark}
+\begin{DndMonster}[width=0.5\textwidth]{Reef Shark}
+	\DndMonsterType{Medium Beast, Unaligned}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{13}{\intcalcAdd{1}{\calculateModifier{\WisdomScoreValue}}} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \DruidLevel~temp HP},
+		speed		= {0 ft., Swim 40 ft.},
+		initiative	= +2,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 14,
+		dex = 15,
+		con = 13,
+		int = 18,
+		wis = 15,
+		cha = 13,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+%		skills					= {},
+%		damage-vulnerabilities	= {},
+%		damage-resistances		= {},
+%		damage-immunities		= {},
+%		condition-immunities	= {},
+		senses					= {Blindsight 30 ft., Passive Perception 24},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterAction{Pack Tactics}
+	The shark has Advantage on an attack roll against a creature if at least one of the shark's allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.
+	
+	\DndMonsterAction{Water Breathing}
+	The shark can breathe only underwater.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,
+%		type			= weapon,
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d4 + 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+%		or-dmg			= ,
+%		or-dmg-when		= ,
+%		extra			= {. },
+	]
+\end{DndMonster}
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+	\node[anchor=south west] at (current page.south west) {%
+		\begin{minipage}{\paperwidth}%%
+        	\includegraphics[width=\paperwidth]{images/Reef-Shark_Giant-Sea-Eel.png}%
+      	\end{minipage}%
+	};%
+\end{tikzpicture}%
+
 
 \part*{Magic Items}
 
