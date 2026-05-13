@@ -1,0 +1,50 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  MAIN HEADER  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\draw[line width=0.75, color=outline-color] (148.55,15) -- (405.2,15);
+\draw[line width=0.75, color=outline-color] (148.55,50) -- (405.2,50);
+
+\draw[line width=0.75, color=outline-color] (148.55,50) .. controls ++(0,0) and ++(-2,34) .. ++(13,-35);
+\draw[line width=0.75, color=outline-color] (154.55,50) .. controls ++(0,0) and ++(6,5) .. ++(-6,-10) .. controls ++(0,0) and ++(0,20) .. ++(6,-25);
+\draw[line width=0.75, color=outline-color] (405.2,50) .. controls ++(0,0) and ++(2,34) .. ++(-13,-35);
+\draw[line width=0.75, color=outline-color] (399.2,50) .. controls ++(0,0) and ++(-6,5) .. ++(6,-10) .. controls ++(0,0) and ++(0,20) .. ++(-6,-25);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLCASTING  INFORMATION #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% CIRCLE
+\fill[fill=outline-color] (13.25,18.0) circle (3.75pt);
+
+% BACKGROUND
+\fill[fill=white] (8.5,135.75) -- ++(0,-107) arc[start angle=90, end angle=83, radius=15.5] -- (10.5,26) arc[start angle=90, end angle=0, radius=10.75] -- ++(2.5,0) arc[start angle=7, end angle=0, radius=15.5] -- (24,13.25) -- ++(116,0) -- ++(0,117.5) -- ++(-5,5) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.5pt, color=outline-color] (10, 135.75) -- ++(-1.5,0) -- ++(0,-107) arc[start angle=90, end angle=0, radius=15.5] -- ++(116,0) -- ++(0,1.5);
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (10.5,135.3) -- ++(0,-109.3) arc[start angle=90, end angle=0, radius=10.75] -- ++(118.3,0) -- ++(0,115.05) -- ++(-5,5) -- cycle;
+
+% ORNAMENT
+\draw[line width=0.6pt, color=outline-color] (131.05,135.3) -- ++(8.5,-8.5);
+\draw[line width=0.6pt, color=outline-color] (10.5, 87.75) .. controls ++(0,0) and ++(-10,5) .. ++(10,-45) .. controls ++(0,0) and ++(0,15) .. ++(-8,-16.75);
+
+% INPUT LINES
+\draw[line width=0.75pt, color=lightgray!80] (23,38) -- ++(112,0);
+
+% TABULAR
+\draw[line width=0.75pt, color=outline-color] (15.3,50.3) -- ++(124.25,0);
+\draw[line width=0.75pt, color=outline-color] (10.5,78.6) -- ++(129.05,0);
+\draw[line width=0.75pt, color=outline-color] (10.5,106.9) -- ++(129.05,0);
+\draw[line width=0.75pt, color=outline-color] (46.5,50.3) -- ++(0,85);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  ORNAMENTAL  DND  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node[anchor=north west, inner sep=0pt] at (-2,-1) {%
+	\makebox[\paperwidth][s]{%
+		\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}%
+		\begin{pspicture}(816,1056)%
+		{%
+			\input{\ePATH spell-sheet/tikz/DnD-lettering.tex}%
+		}%
+		\end{pspicture}
+	}%
+};%

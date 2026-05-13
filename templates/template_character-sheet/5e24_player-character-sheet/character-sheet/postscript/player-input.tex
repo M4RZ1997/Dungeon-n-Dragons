@@ -27,31 +27,19 @@
 \rput[cc](249.04,382.915){\large \entryfont \CharismaScoreValue}
 
 % ABILITY MODIFIERS
-\StrengthModifier{\calculateModifier{\StrengthScoreValue}}
 \rput[cc](59.58,752.64){\LARGE \entryfont \StrengthModifierValue}
-\DexterityModifier{\calculateModifier{\DexterityScoreValue}}
 \rput[cc](59.58,595.91){\LARGE \entryfont \DexterityModifierValue}
-\ConstitutionModifier{\calculateModifier{\ConstitutionScoreValue}}
 \rput[cc](59.58,400.97){\LARGE \entryfont \ConstitutionModifierValue}
-\IntelligenceModifier{\calculateModifier{\IntelligenceScoreValue}}
 \rput[cc](204.63,860.01){\LARGE \entryfont \IntelligenceModifierValue}
-\WisdomModifier{\calculateModifier{\WisdomScoreValue}}
 \rput[cc](204.63,624.3375){\LARGE \entryfont \WisdomModifierValue}
-\CharismaModifier{\calculateModifier{\CharismaScoreValue}}
 \rput[cc](204.63,388.665){\LARGE \entryfont \CharismaModifierValue}
 
 % SAVING THROWS
-\StrengthSavingThrowModifier{\calculateSavingThrow{Strength}}
-\rput[cc](48.46,697.80){\footnotesize \entryfont \StrengthSavingThrowModifierValue}%
-\DexteritySavingThrowModifier{\calculateSavingThrow{Dexterity}}
+\rput[cc](48.46,697.80){\footnotesize \entryfont \StrengthSavingThrowModifierValue}
 \rput[cc](48.46,541.07){\footnotesize \entryfont \DexteritySavingThrowModifierValue}
-\ConstitutionSavingThrowModifier{\calculateSavingThrow{Constitution}}
 \rput[cc](48.46,346.13){\footnotesize \entryfont \ConstitutionSavingThrowModifierValue}
-\IntelligenceSavingThrowModifier{\calculateSavingThrow{Intelligence}}
 \rput[cc](193.51,805.17){\footnotesize \entryfont \IntelligenceSavingThrowModifierValue}
-\WisdomSavingThrowModifier{\calculateSavingThrow{Wisdom}}
 \rput[cc](193.51,569.4975){\footnotesize \entryfont \WisdomSavingThrowModifierValue}
-\CharismaSavingThrowModifier{\calculateSavingThrow{Charisma}}
 \rput[cc](193.51,333.825){\footnotesize \entryfont \CharismaSavingThrowModifierValue}
 
 % Jack of all Trades Check
@@ -64,117 +52,27 @@
 
 % SKILL MODIFIERS
 %% STRENGTH
-\AthleticsSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\AthleticsSkillModifierBonusValue}{\StrengthModifierValue}}%
-	{\StrengthModifierBonusValue}%
-	{\AthleticsProficiencyValue}%
-}%
 \rput[cc](48.46,671.115){\footnotesize \entryfont \AthleticsSkillModifierValue}
 %% DEXTERITY
-\AcrobaticsSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\AcrobaticsSkillModifierBonusValue}{\DexterityModifierValue}}%
-	{\DexterityModifierBonusValue}%
-	{\AcrobaticsProficiencyValue}%
-}%
 \rput[cc](48.46,514.385){\footnotesize \entryfont \AcrobaticsSkillModifierValue}
-\SleightOfHandSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\SleightOfHandSkillModifierBonusValue}{\DexterityModifierValue}}%
-	{\DexterityModifierBonusValue}%
-	{\SleightOfHandProficiencyValue}%
-}%
 \rput[cc](48.46,494.635){\footnotesize \entryfont \SleightOfHandSkillModifierValue}
-\StealthSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\StealthSkillModifierBonusValue}{\DexterityModifierValue}}%
-	{\DexterityModifierBonusValue}%
-	{\StealthProficiencyValue}%
-}%
 \rput[cc](48.46,474.885){\footnotesize \entryfont \StealthSkillModifierValue}
 %% INTELLIGENCE
-\ArcanaSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\ArcanaSkillModifierBonusValue}{\IntelligenceModifierValue}}%
-	{\IntelligenceModifierBonusValue}%
-	{\ArcanaProficiencyValue}%
-}%
 \rput[cc](193.51,778.485){\footnotesize \entryfont \ArcanaSkillModifierValue}
-\HistorySkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\HistorySkillModifierBonusValue}{\IntelligenceModifierValue}}%
-	{\IntelligenceModifierBonusValue}%
-	{\HistoryProficiencyValue}%
-}%
 \rput[cc](193.51,758.735){\footnotesize \entryfont \HistorySkillModifierValue}
-\InvestigationSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\InvestigationSkillModifierBonusValue}{\IntelligenceModifierValue}}%
-	{\IntelligenceModifierBonusValue}%
-	{\InvestigationProficiencyValue}%
-}%
 \rput[cc](193.51,738.985){\footnotesize \entryfont \InvestigationSkillModifierValue}
-\NatureSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\NatureSkillModifierBonusValue}{\IntelligenceModifierValue}}%
-	{\IntelligenceModifierBonusValue}%
-	{\NatureProficiencyValue}%
-}%
 \rput[cc](193.51,719.235){\footnotesize \entryfont \NatureSkillModifierValue}
-\ReligionSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\ReligionSkillModifierBonusValue}{\IntelligenceModifierValue}}%
-	{\IntelligenceModifierBonusValue}%
-	{\ReligionProficiencyValue}%
-}%
 \rput[cc](193.51,699.485){\footnotesize \entryfont \ReligionSkillModifierValue}
 %% WISDOM
-\AnimalHandlingSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\AnimalHandlingSkillModifierBonusValue}{\WisdomModifierValue}}%
-	{\WisdomModifierBonusValue}%
-	{\AnimalHandlingProficiencyValue}%
-}%
 \rput[cc](193.51,542.8125){\footnotesize \entryfont \AnimalHandlingSkillModifierValue}
-\InsightSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\InsightSkillModifierBonusValue}{\WisdomModifierValue}}%
-	{\WisdomModifierBonusValue}%
-	{\InsightProficiencyValue}%
-}%
 \rput[cc](193.51,523.0625){\footnotesize \entryfont \InsightSkillModifierValue}
-\MedicineSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\MedicineSkillModifierBonusValue}{\WisdomModifierValue}}%
-	{\WisdomModifierBonusValue}%
-	{\MedicineProficiencyValue}%
-}%
 \rput[cc](193.51,503.3125){\footnotesize \entryfont \MedicineSkillModifierValue}
-\PerceptionSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\PerceptionSkillModifierBonusValue}{\WisdomModifierValue}}%
-	{\WisdomModifierBonusValue}%
-	{\PerceptionProficiencyValue}%
-}%
 \rput[cc](193.51,483.5625){\footnotesize \entryfont \PerceptionSkillModifierValue}
-\SurvivalSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\SurvivalSkillModifierBonusValue}{\WisdomModifierValue}}%
-	{\WisdomModifierBonusValue}%
-	{\SurvivalProficiencyValue}%
-}%
 \rput[cc](193.51,463.8125){\footnotesize \entryfont \SurvivalSkillModifierValue}
 %% CHARISMA
-\DeceptionSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\DeceptionSkillModifierBonusValue}{\CharismaModifierValue}}%
-	{\CharismaModifierBonusValue}%
-	{\DeceptionProficiencyValue}%
-}%
 \rput[cc](193.51,307.1395){\footnotesize \entryfont \DeceptionSkillModifierValue}
-\IntimidationSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\IntimidationSkillModifierBonusValue}{\CharismaModifierValue}}%
-	{\CharismaModifierBonusValue}%
-	{\IntimidationProficiencyValue}%
-}%
 \rput[cc](193.51,287.3895){\footnotesize \entryfont \IntimidationSkillModifierValue}
-\PerformanceSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\PerformanceSkillModifierBonusValue}{\CharismaModifierValue}}%
-	{\CharismaModifierBonusValue}%
-	{\PerformanceProficiencyValue}%
-}%
 \rput[cc](193.51,267.6395){\footnotesize \entryfont \PerformanceSkillModifierValue}
-\PersuasionSkillModifier{\calculateSkillModifier%
-	{\intcalcAdd{\PersuasionSkillModifierBonusValue}{\CharismaModifierValue}}%
-	{\CharismaModifierBonusValue}%
-	{\PersuasionProficiencyValue}%
-}%
 \rput[cc](193.51,247.8895){\footnotesize \entryfont \PersuasionSkillModifierValue}
 
 % HIT POINTS

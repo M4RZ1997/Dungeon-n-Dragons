@@ -10,10 +10,12 @@
 % ################################################################################################# %
 % ------------------------------------ Edition-Specific  PATHS ------------------------------------ %
 \newcommand{\ePATH}{}
+\newcommand{\BACKEND}{PostScript}
+
 \ExplSyntaxOn
 \keys_define:nn { character-sheet / options }
 {
-	edition .code:n =
+	edition .code:n				=
 	{
 		\str_if_eq:nnTF {#1} {pre5e24}
 			{ \renewcommand{\ePATH}{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/} }
@@ -23,8 +25,19 @@
 				{ \msg_error:nnx {character-sheet} {invalid-edition} {#1} }
 			}
 	},
-	edition .value_required:n = true,
-	edition .default:n = pre5e24
+	edition .value_required:n	= true,
+	edition .default:n			= pre5e24,
+	backend .code:n				=
+	{
+		\str_if_eq:nnTF {#1} {tikz}
+			{ \renewcommand{\BACKEND}{TikZ} }
+			{
+				\str_if_eq:nnTF {#1} {postscript}
+					{ \renewcommand{\BACKEND}{PostScript} }
+				{ \msg_error:nnx {character-sheet} {invalid-backend} {#1} }
+			}
+	},
+	backend .default:n			= postscript
 }
 
 \ProcessKeysOptions { character-sheet / options }

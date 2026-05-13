@@ -1,0 +1,31 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  ORNAMENT  LINES  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% LEFT SMALL LINE
+\draw[line width=0.4pt, color=black] (10,99) -- ++(0,11) arc[start angle=90, end angle=-90, radius=5.5];
+\draw[line width=0.4pt, color=black] (15,103) -- ++(105,0) arc[start angle=165, end angle=100, radius=4.5];
+\draw[line width=0.4pt, color=black] (20.5,106.5) arc[start angle=190, end angle=240, radius=5];
+\draw[line width=0.4pt, color=black] (230.3,106.5) -- ++(0,-10) arc[start angle=5, end angle=70, radius=12];
+% LEFT BIG LINE
+\draw[line width=1pt, color=black] (15,106.5) -- ++(215.5,0);
+
+% RIGHT SMALL LINE
+\draw[line width=0.4pt, color=black] (604,99) -- ++(0,11) arc[start angle=90, end angle=270, radius=5.5];
+\draw[line width=0.4pt, color=black] (599,103) -- ++(-105,0) arc[start angle=15, end angle=80, radius=4.5];
+\draw[line width=0.4pt, color=black] (593.5,106.5) arc[start angle=-10, end angle=-60, radius=5];
+\draw[line width=0.4pt, color=black] (383.7,106.5) -- ++(0,-10) arc[start angle=175, end angle=110, radius=12];
+% RIGHT BIG LINE
+\draw[line width=1pt, color=black] (599,106.5) -- ++(-215.5,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  ORNAMENTAL  DND  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node[anchor=north west, inner sep=0pt] at (-2,-1) {%
+	\makebox[\paperwidth][s]{%
+		\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}%
+		\begin{pspicture}(816,1056)%
+		{%
+			\input{\ePATH character-sheet/tikz/DnD-lettering.tex}%
+		}%
+		\end{pspicture}
+	}%
+};%

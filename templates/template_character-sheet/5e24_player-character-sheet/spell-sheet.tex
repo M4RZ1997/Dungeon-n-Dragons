@@ -1,24 +1,37 @@
 \newgeometry{left=-0.6cm,right=0cm,top=0cm,bottom=0cm}
 \newpage
+\thispagestyle{empty}%
 
-%\hspace*{-9mm}
-\makebox[\paperwidth][s]{
-	%\newpage
-	\thispagestyle{empty}
-	\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}
-	\begin{pspicture}(816,1056)
-	{
-		%\psframe[fillstyle=solid,fillcolor=blue!20,linewidth=3pt,linecolor=black](0,0)(816,1056)
+\ifthenelse{\equal{\BACKEND}{TikZ}}{%
+	\begin{pageTikZ}
+		\input{\ePATH spell-sheet/tikz/header.tex}%
+		\input{\ePATH spell-sheet/tikz/spells.tex}%
+		\input{\ePATH spell-sheet/tikz/character-traits.tex}%
+		\input{\ePATH spell-sheet/tikz/equipment.tex}%
 		
-		\input{\ePATH spell-sheet/header.tex}
-		\input{\ePATH spell-sheet/spellcasting-information.tex}
-		\input{\ePATH spell-sheet/spell-slots.tex}
-		\input{\ePATH spell-sheet/spell-entries.tex}
-		\input{\ePATH spell-sheet/character-traits.tex}
-		\input{\ePATH spell-sheet/equipment.tex}
-		\input{\ePATH spell-sheet/template-text.tex}
-		\input{\ePATH spell-sheet/player-input.tex}
-	}
-	\end{pspicture}
-}
+		\input{\ePATH spell-sheet/tikz/template-text.tex}%
+		\input{\ePATH spell-sheet/tikz/player-input.tex}%
+	\end{pageTikZ}
+}{%
+	\ifthenelse{\equal{\BACKEND}{PostScript}}{%
+		\makebox[\paperwidth][s]{%
+			\hspace*{2mm}%
+			\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}%
+			\begin{pspicture}(816,1056)%
+			{%
+				\input{\ePATH spell-sheet/postscript/header.tex}
+				\input{\ePATH spell-sheet/postscript/spellcasting-information.tex}
+				\input{\ePATH spell-sheet/postscript/spell-slots.tex}
+				\input{\ePATH spell-sheet/postscript/spell-entries.tex}
+				\input{\ePATH spell-sheet/postscript/character-traits.tex}
+				\input{\ePATH spell-sheet/postscript/equipment.tex}
+				
+				\input{\ePATH spell-sheet/postscript/template-text.tex}
+				\input{\ePATH spell-sheet/postscript/player-input.tex}
+			}%
+			\end{pspicture}%
+		}%
+	}{\PackageWarning{Display Commands}{Backend "\BACKEND " unknown.}}%
+}%
+
 \restoregeometry

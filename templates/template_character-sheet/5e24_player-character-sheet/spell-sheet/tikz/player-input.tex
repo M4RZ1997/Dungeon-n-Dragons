@@ -1,0 +1,186 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLCASTING  INFORMATION #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node[anchor=west, inner sep=0pt] at (25,30) {\Large\entryfont\SpellcastingAbilityNameValue};
+\node[inner sep=0pt] at (28.5,64.45) {\large\entryfont\SpellcastingModifierValue};
+\node[inner sep=0pt] at (28.5,92.75) {\large\entryfont\SpellSaveDifficultyClassValue};
+\node[inner sep=0pt] at (28.5,121.4) {\large\entryfont\SpellAttackBonusValue};
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL SLOTS  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node[inner sep=0pt] at (190,99) {\entryfont\FirstLevelSpellSlotsTotalValue};
+\IndicationStar{(205,99)}{white}
+\IndicationStar{(215,99)}{white}
+\IndicationStar{(225,99)}{white}
+\IndicationStar{(235,99)}{white}
+\node[inner sep=0pt] at (190,112) {\entryfont\SecondLevelSpellSlotsTotalValue};
+\IndicationStar{(205,112)}{white}
+\IndicationStar{(215,112)}{white}
+\IndicationStar{(225,112)}{white}
+\node[inner sep=0pt] at (190,125) {\entryfont\ThirdLevelSpellSlotsTotalValue};
+\IndicationStar{(205,125)}{white}
+\IndicationStar{(215,125)}{white}
+\IndicationStar{(225,125)}{white}
+\node[inner sep=0pt] at (280,99) {\entryfont\FourthLevelSpellSlotsTotalValue};
+\IndicationStar{(295,99)}{white}
+\IndicationStar{(305,99)}{white}
+\IndicationStar{(315,99)}{white}
+\node[inner sep=0pt] at (280,112) {\entryfont\FifthLevelSpellSlotsTotalValue};
+\IndicationStar{(295,112)}{white}
+\IndicationStar{(305,112)}{white}
+\IndicationStar{(315,112)}{white}
+\node[inner sep=0pt] at (280,125) {\entryfont\SixthLevelSpellSlotsTotalValue};
+\IndicationStar{(295,125)}{white}
+\IndicationStar{(305,125)}{white}
+\node[inner sep=0pt] at (360,99) {\entryfont\SeventhLevelSpellSlotsTotalValue};
+\IndicationStar{(375,99)}{white}
+\IndicationStar{(385,99)}{white}
+\node[inner sep=0pt] at (360,112) {\entryfont\EighthLevelSpellSlotsTotalValue};
+\IndicationStar{(375,112)}{white}
+\node[inner sep=0pt] at (360,125) {\entryfont\NinthLevelSpellSlotsTotalValue};
+\IndicationStar{(375,125)}{white}
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CANTRIPS && PREPARED SPELLS  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% CONCENTRATION, RITUAL & REQUIRED MATERIAL
+\foreach \x/\y in {0/A, 1/B, 2/C, 3/D, 4/E, 5/F, 6/G, 7/H, 8/I, 9/J, 10/K, 11/L, 12/M, 13/N, 14/O, 15/P, 16/Q, 17/R, 18/S, 19/T, 20/U, 21/V, 22/W, 23/X, 24/Y, 25/AA, 26/AB, 27/AC, 28/AD, 29/AE, 30/AF}
+{
+	\pgfmathsetmacro{\vpos}{202.5 + \x * 18.75}
+	% INFORMATION
+	\node[inner sep=0pt] at (27,\vpos) {\entryfont\csname Spell\y LevelValue\endcsname};
+	\node[anchor=west, inner sep=0pt] at (42,\vpos) {\entryfont\csname Spell\y NameValue\endcsname};
+	\node[inner sep=0pt] at (170.5,\vpos) {\entryfont\csname Spell\y CastingTimeValue\endcsname};
+	\node[inner sep=0pt] at (211.5,\vpos) {\entryfont\csname Spell\y RangeValue\endcsname};
+	% CONCENTRATION, RITUAL & REQUIRED MATERIAL
+	\IndicationStar{(247, \vpos)}{spell\y Concentration}
+	\IndicationStar{(269, \vpos)}{spell\y Ritual}
+	\IndicationStar{(291, \vpos)}{spell\y Material}
+	
+	\node[anchor=west, inner sep=0pt] at (311,\vpos) {\entryfont\csname Spell\y NotesValue\endcsname};
+}
+
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node at (0,0) {\parbox[t][0pt][t]{0pt}{\justify}};
+%% PERSONALITY TRAITS
+\node[anchor=north west, inner sep=0pt] at (419,35) {\parbox{180pt}{\entryfont\justify\footnotesize%
+	\begingroup%
+		\begingroup%
+		\setbox0=\vbox{%
+			\PersonalityTraitsValue%
+		}%
+		\hbox{%
+			\vtop{\hsize=180pt\parindent=0pt%
+				\vsplit0 to 60pt%
+			}%
+			\setbox1=\vbox{\unvbox0}%
+		}%
+		\endgroup%
+		\parbox[t][0pt][t]{0pt}{\justify}
+	\endgroup%
+}};%
+\node[anchor=west, inner sep=0pt] at (466,97) {\footnotesize\entryfont\AlignmentValue};
+% IDEALS
+\node[anchor=north west, inner sep=0pt] at (419,133.5) {\parbox{180pt}{\entryfont\justify\footnotesize%
+	\begingroup%
+		\begingroup%
+		\setbox0=\vbox{%
+			\IdealsValue%
+		}%
+		\hbox{%
+			\vtop{\hsize=180pt\parindent=0pt%
+				\vsplit0 to 40pt%
+			}%
+			\setbox1=\vbox{\unvbox0}%
+		}%
+		\endgroup%
+		\parbox[t][0pt][t]{0pt}{\justify}
+	\endgroup%
+}};%
+%% BONDS
+\node[anchor=north west, inner sep=0pt] at (419,203) {\parbox{180pt}{\entryfont\justify\footnotesize%
+	\begingroup%
+		\begingroup%
+		\setbox0=\vbox{%
+			\BondsValue%
+		}%
+		\hbox{%
+			\vtop{\hsize=180pt\parindent=0pt%
+				\vsplit0 to 40pt%
+			}%
+			\setbox1=\vbox{\unvbox0}%
+		}%
+		\endgroup%
+		\parbox[t][0pt][t]{0pt}{\justify}
+	\endgroup%
+}};%
+% FLAWS
+\node[anchor=north west, inner sep=0pt] at (419,272.5) {\parbox{180pt}{\entryfont\justify\footnotesize%
+	\begingroup%
+		\begingroup%
+		\setbox0=\vbox{%
+			\FlawsValue%
+		}%
+		\hbox{%
+			\vtop{\hsize=180pt\parindent=0pt%
+				\vsplit0 to 40pt%
+			}%
+			\setbox1=\vbox{\unvbox0}%
+		}%
+		\endgroup%
+		\parbox[t][0pt][t]{0pt}{\justify}
+	\endgroup%
+}};%
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# LANGUAGES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node[anchor=north west, inner sep=0pt] at (419,342) {\parbox{180pt}{\entryfont\justify\footnotesize%
+	\begingroup%
+		\begingroup%
+		\setbox0=\vbox{%
+			\LanguagesValue%
+		}%
+		\hbox{%
+			\vtop{\hsize=180pt\parindent=0pt%
+				\vsplit0 to 40pt%
+			}%
+			\setbox1=\vbox{\unvbox0}%
+		}%
+		\endgroup%
+		\parbox[t][0pt][t]{0pt}{\justify}
+	\endgroup%
+}};%
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% EQUIPMENT
+\node[anchor=north west, inner sep=0pt] at (419,413.5) {\parbox{180pt}{\entryfont\justify\footnotesize%
+	\begingroup%
+		\begingroup%
+		\setbox0=\vbox{%
+			\EquipmentValue%
+		}%
+		\hbox{%
+			\vtop{\hsize=180pt\parindent=0pt%
+				\vsplit0 to 190pt%
+			}%
+			\setbox1=\vbox{\unvbox0}%
+		}%
+		\endgroup%
+		\parbox[t][0pt][t]{0pt}{\justify\strut}
+	\endgroup%
+}};
+% ATTUNED MAGIC ITEMS
+\IndicationStar{(427,620)}{attunementSlotA}%
+\node[anchor=west, inner sep=0pt] at (435,620) {\entryfont\AttunementAValue};
+\IndicationStar{(427,640)}{attunementSlotB}%
+\node[anchor=west, inner sep=0pt] at (435,640) {\entryfont\AttunementBValue};
+\IndicationStar{(427,660)}{attunementSlotC}%
+\node[anchor=west, inner sep=0pt] at (435,660) {\entryfont\AttunementCValue};
+% COINS
+\node[inner sep=0pt] at (436.975,729.5) {\large\entryfont\CPValue};
+\node[inner sep=0pt] at (472.975,729.5) {\large\entryfont\SPValue};
+\node[inner sep=0pt] at (508.975,729.5) {\large\entryfont\EPValue};
+\node[inner sep=0pt] at (544.975,729.5) {\large\entryfont\GPValue};
+\node[inner sep=0pt] at (580.975,729.5) {\large\entryfont\PPValue};

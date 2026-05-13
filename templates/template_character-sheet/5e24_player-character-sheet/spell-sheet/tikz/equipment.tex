@@ -1,0 +1,69 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (LanguagesRefPoint) at (603.75,392.5);
+
+% BACKGROUND
+\fill[fill=white] (LanguagesRefPoint) ++(2,-0.45) -- ++(0,278.9) -- ++(-185.6,0) -- ++(-5.45,-5.45) -- ++(0,-268) -- ++(5.45,-5.45) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.5pt, color=outline-color] (LanguagesRefPoint) ++(0.5,-0.45) -- ++(1.5,0) -- ++(0,278.9) -- ++(-1.5,0) ++(-181.05,-0.45) -- ++(-8.5,-8.5) -- ++(0,-261) -- ++(8.5,-8.5);
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (LanguagesRefPoint) -- ++(0,278) -- ++(-184.05,0) -- ++(-5,-5) -- ++(0,-268) -- ++(5,-5) -- cycle;
+
+% DIVIDER
+\draw[line width=1.2pt, color=black] (LanguagesRefPoint) ++ (-2.5,18) -- ++(-184.05,0);
+
+% INPUT LINES
+\draw[line width=0.75pt, color=lightgray!80] (421,625) -- ++(176.45,0);
+\draw[line width=0.75pt, color=lightgray!80] (421,645) -- ++(176.45,0);
+\draw[line width=0.75pt, color=lightgray!80] (421,665) -- ++(176.45,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# COINS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (BottomRightRefPoint) at (601,755.75);
+
+% CIRCLE
+\fill[fill=outline-color] (BottomRightRefPoint) circle (3.75pt);
+
+% BACKGROUND
+\fill[fill=white] (BottomRightRefPoint) ++(4.75,-76.75) -- ++(0,66) arc[start angle=-90, end angle=-97, radius=15.5] -- (603.75,747.75) arc[start angle=-90, end angle=-180, radius=10.75] -- ++(-2.5,0) arc[start angle=-187, end angle=-180, radius=15.5] -- (590.25,760.5) -- ++(-176.5,0) -- ++(0,-76.25) -- ++(5,-5) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.5pt, color=outline-color] (BottomRightRefPoint) ++(3.25,-76.95) -- ++(1.5,0) -- ++(0,66) arc[start angle=-90, end angle=-180, radius=15.5] -- ++(-176.5,0) -- ++(0,-1.5) ++(0,-70.75) -- ++(8.5,-8.5);
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (BottomRightRefPoint) ++(2.75,-8) arc[start angle=-90, end angle=-180, radius=10.75] -- ++(-178.8,0) -- ++(0,-74.25) -- ++(5,-5) -- ++(184.55,0) -- cycle;
+
+% DIVIDER
+\draw[line width=1.2pt, color=black] (BottomRightRefPoint) ++ (0.25,-58.5) -- ++(-184.05,0);
+
+% COIN SLOTS
+%% CP
+\draw[line width=0.4pt, color=black] (434.975,719) -- ++(2,-2.5) -- ++(2,2.5);
+\draw[line width=0.4pt, color=black] (434.975,740) -- ++(2,2.5) -- ++(2,-2.5);
+\draw[line width=0.75pt, color=outline-color] (436.975,719) -- ++(15,0) -- ++(0,18) arc[start angle=-90, end angle=-180, radius=3] -- ++(-24,0) arc[start angle=0, end angle=-90, radius=3] -- ++(0,-18) -- cycle;
+\draw[line width=0.4pt, color=black] (421.975,719.3) -- ++(30,0);
+%% SP
+\draw[line width=0.4pt, color=black] (470.975,719) -- ++(2,-2.5) -- ++(2,2.5);
+\draw[line width=0.4pt, color=black] (470.975,740) -- ++(2,2.5) -- ++(2,-2.5);
+\draw[line width=0.75pt, color=outline-color] (472.975,719) -- ++(15,0) -- ++(0,18) arc[start angle=-90, end angle=-180, radius=3] -- ++(-24,0) arc[start angle=0, end angle=-90, radius=3] -- ++(0,-18) -- cycle;
+\draw[line width=0.4pt, color=black] (457.975,719.3) -- ++(30,0);
+%% EP
+\draw[line width=0.4pt, color=black] (506.975,719) -- ++(2,-2.5) -- ++(2,2.5);
+\draw[line width=0.4pt, color=black] (506.975,740) -- ++(2,2.5) -- ++(2,-2.5);
+\draw[line width=0.75pt, color=outline-color] (508.975,719) -- ++(15,0) -- ++(0,18) arc[start angle=-90, end angle=-180, radius=3] -- ++(-24,0) arc[start angle=0, end angle=-90, radius=3] -- ++(0,-18) -- cycle;
+\draw[line width=0.4pt, color=black] (493.975,719.3) -- ++(30,0);
+%% GP
+\draw[line width=0.4pt, color=black] (542.975,719) -- ++(2,-2.5) -- ++(2,2.5);
+\draw[line width=0.4pt, color=black] (542.975,740) -- ++(2,2.5) -- ++(2,-2.5);
+\draw[line width=0.75pt, color=outline-color] (544.975,719) -- ++(15,0) -- ++(0,18) arc[start angle=-90, end angle=-180, radius=3] -- ++(-24,0) arc[start angle=0, end angle=-90, radius=3] -- ++(0,-18) -- cycle;
+\draw[line width=0.4pt, color=black] (529.975,719.3) -- ++(30,0);
+%% PP
+\draw[line width=0.4pt, color=black] (578.975,719) -- ++(2,-2.5) -- ++(2,2.5);
+\draw[line width=0.4pt, color=black] (578.975,740) -- ++(2,2.5) -- ++(2,-2.5);
+\draw[line width=0.75pt, color=outline-color] (580.975,719) -- ++(15,0) -- ++(0,18) arc[start angle=-90, end angle=-180, radius=3] -- ++(-24,0) arc[start angle=0, end angle=-90, radius=3] -- ++(0,-18) -- cycle;
+\draw[line width=0.4pt, color=black] (565.975,719.3) -- ++(30,0);

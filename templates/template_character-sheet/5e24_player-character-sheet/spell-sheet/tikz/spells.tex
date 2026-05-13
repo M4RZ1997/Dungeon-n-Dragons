@@ -1,0 +1,74 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL SLOTS  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (SpellSlotRefPoint) at (150.5,135.3);
+
+% BACKGROUND
+\fill[fill=white] (SpellSlotRefPoint) ++(-2,0.45) -- ++(0,-76.4) -- ++(248.6,0) -- ++(5.45,5.45) -- ++(0,65) -- ++(-5.45,5.45) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.5pt, color=outline-color] (SpellSlotRefPoint) ++(-0.5,0.45) -- ++(-1.5,0) -- ++(0,-76.4) -- ++(1.5,0) ++(244.05,0.45) -- ++(8.5,8.5) -- ++(0,58.9) -- ++(-8.5,8.5);
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (SpellSlotRefPoint) -- ++(0,-75.5) -- ++(247.05,0) -- ++(5,5) -- ++(0,65.5) -- ++(-5,5) -- cycle;
+
+% DIVIDER
+\draw[line width=1.2pt, color=black] (SpellSlotRefPoint) ++ (2.5,-58) -- ++(247.05,0);
+
+\draw[line width=0.75pt, color=black] (243,80) -- ++(0,52);
+\draw[line width=0.75pt, color=black] (324,80) -- ++(0,52);
+
+% INPUT LINES
+\draw[line width=0.75pt, color=lightgray!80] (182,104) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (182,117) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (182,130) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (272,104) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (272,117) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (272,130) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (352,104) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (352,117) -- ++(16,0);
+\draw[line width=0.75pt, color=lightgray!80] (352,130) -- ++(16,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CANTRIPS && PREPARED SPELLS  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% COORDINATE
+\coordinate (SpellInformationRefPoint) at (10.5,776.5);
+
+% BACKGROUND
+\fill[fill=white] (SpellInformationRefPoint) ++(-2,0.45) -- ++(0,-630.4) -- ++(388.6,0) -- ++(5.45,5.45) -- ++(0,619.5) -- ++(-5.45,5.45) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.5pt, color=outline-color] (SpellInformationRefPoint) ++(-0.5,0.45) -- ++(-1.5,0) -- ++(0,-630.4) -- ++(1.5,0) ++(384.05,0.45) -- ++(8.5,8.5) -- ++(0,612.5) -- ++(-8.5,8.5);
+
+% OUTLINE
+\draw[line width=1.4pt, color=outline-color] (SpellInformationRefPoint) -- ++(0,-629.5) -- ++(387.05,0) -- ++(5,5) -- ++(0,619.5) -- ++(-5,5) -- cycle;
+
+% DIVIDER
+\draw[line width=1.2pt, color=black] (SpellInformationRefPoint) ++ (2.5,-606.5) -- ++(387.05,0);
+
+\draw[line width=0.75pt, color=lightgray!80] (39,173) -- ++(0,598);
+\draw[line width=0.75pt, color=lightgray!80] (153,173) -- ++(0,598);
+\draw[line width=0.75pt, color=lightgray!80] (188,173) -- ++(0,598);
+\draw[line width=0.75pt, color=lightgray!80] (235,173) -- ++(0,598);
+\draw[line width=0.75pt, color=lightgray!80] (308,173) -- ++(0,598);
+
+% INPUT LINES
+\foreach \x in {0,...,30}
+{
+	\pgfmathsetmacro{\vpos}{207.5 + \x * 18.75}
+	\draw[line width=0.75pt, color=lightgray!80] (17,\vpos) -- ++(20,0);
+	\draw[line width=0.75pt, color=lightgray!80] (41,\vpos) -- ++(110,0);
+	\draw[line width=0.75pt, color=lightgray!80] (155,\vpos) -- ++(31,0);
+	\draw[line width=0.75pt, color=lightgray!80] (190,\vpos) -- ++(43,0);
+	
+	\draw[line width=0.75pt, color=lightgray!80] (310,\vpos) -- ++(86,0);
+}
+%% Concentration, Ritual & Required Material
+\foreach \x in {0,...,30}
+{
+	\pgfmathsetmacro{\vpos}{202.5 + \x * 18.75}
+	\draw[line width=0.75pt, color=lightgray!80] (241,\vpos) -- ++(12,0);
+	\draw[line width=0.75pt, color=lightgray!80] (263,\vpos) -- ++(12,0);
+	\draw[line width=0.75pt, color=lightgray!80] (285,\vpos) -- ++(12,0);
+}

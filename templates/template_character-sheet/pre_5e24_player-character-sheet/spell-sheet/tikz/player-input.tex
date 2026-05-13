@@ -1,0 +1,179 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELL  HEADER #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\node[inner sep=0pt] at (152.5,75) {\LARGE\entryfont\SpellcastingClassValue};
+\node[inner sep=0pt] at (314,68.5) {\LARGE\entryfont\SpellcastingAbilityValue};
+\node[inner sep=0pt] at (419,68.5) {\LARGE\entryfont\SpellSaveDifficultyClassValue};
+\node[inner sep=0pt] at (524,68.5) {\LARGE\entryfont\SpellAttackBonusValue};
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL-TABLE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+\NewDocumentCommand{\PreparedSpellMarker}{ mm }
+{%
+	\filldraw[line width=0.8pt, color=black, fill=#2] #1 circle (3);
+}%
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><><><><>  CANTRIPS  <><><><><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,8}
+{
+	%% Names
+	\pgfmathsetmacro{\vpos}{166 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (32,\vpos) {\footnotesize\entryfont\csname CantripSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><>  1ST LEVEL SPELL SLOT  <><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELL SLOT
+\node[inner sep=0pt] at (67.75,324) {\LARGE\entryfont\FirstLevelSpellSlotsTotalValue};
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,13}
+{
+	\pgfmathsetmacro{\vpos}{338.5 + 14 * \y}
+	%% Prepared Marker
+	\PreparedSpellMarker{(35,\vpos)}{level1prepared\y}
+	%% Names
+	\pgfmathsetmacro{\vpos}{333.5 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (42,\vpos) {\footnotesize\entryfont\csname FirstLevelSpellSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><>  2ND LEVEL SPELL SLOT  <><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELL SLOT
+\node[inner sep=0pt] at (67.75,553) {\LARGE\entryfont\SecondLevelSpellSlotsTotalValue};
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,13}
+{
+	\pgfmathsetmacro{\vpos}{567.5 + 14 * \y}
+	%% Prepared Marker
+	\PreparedSpellMarker{(35,\vpos)}{level2prepared\y}
+	%% Names
+	\pgfmathsetmacro{\vpos}{562.5 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (42,\vpos) {\footnotesize\entryfont\csname SecondLevelSpellSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><>  3RD LEVEL SPELL SLOT  <><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELL SLOT
+\node[inner sep=0pt] at (258.75,156.5) {\LARGE\entryfont\ThirdLevelSpellSlotsTotalValue};
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,13}
+{
+	\pgfmathsetmacro{\vpos}{171 + 14 * \y}
+	%% Prepared Marker
+	\PreparedSpellMarker{(226,\vpos)}{level3prepared\y}
+	%% Names
+	\pgfmathsetmacro{\vpos}{166 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (233,\vpos) {\footnotesize\entryfont\csname ThirdLevelSpellSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><>  4TH LEVEL SPELL SLOT  <><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELL SLOT
+\node[inner sep=0pt] at (258.75,382) {\LARGE\entryfont\FourthLevelSpellSlotsTotalValue};
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,13}
+{
+	\pgfmathsetmacro{\vpos}{396.5 + 14 * \y}
+	%% Prepared Marker
+	\PreparedSpellMarker{(226,\vpos)}{level4prepared\y}
+	%% Names
+	\pgfmathsetmacro{\vpos}{389.5 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (233,\vpos) {\footnotesize\entryfont\csname FourthLevelSpellSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><>  5TH LEVEL SPELL SLOT  <><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELL SLOT
+\node[inner sep=0pt] at (258.75,609) {\LARGE\entryfont\FifthLevelSpellSlotsTotalValue};
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,9}
+{
+	\pgfmathsetmacro{\vpos}{623.5 + 14 * \y}
+	%% Prepared Marker
+	\PreparedSpellMarker{(226,\vpos)}{level5prepared\y}
+	%% Names
+	\pgfmathsetmacro{\vpos}{616.5 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (233,\vpos) {\footnotesize\entryfont\csname FifthLevelSpellSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><>  6TH LEVEL SPELL SLOT  <><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELL SLOT
+\node[inner sep=0pt] at (449.75,156.5) {\LARGE\entryfont\SixthLevelSpellSlotsTotalValue};
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,9}
+{
+	\pgfmathsetmacro{\vpos}{171 + 14 * \y}
+	%% Prepared Marker
+	\PreparedSpellMarker{(417,\vpos)}{level6prepared\y}
+	%% Names
+	\pgfmathsetmacro{\vpos}{164 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (424,\vpos) {\footnotesize\entryfont\csname SixthLevelSpellSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><>  7TH LEVEL SPELL SLOT  <><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELL SLOT
+\node[inner sep=0pt] at (449.75,326.5) {\LARGE\entryfont\SeventhLevelSpellSlotsTotalValue};
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,9}
+{
+	\pgfmathsetmacro{\vpos}{341 + 14 * \y}
+	%% Prepared Marker
+	\PreparedSpellMarker{(417,\vpos)}{level7prepared\y}
+	%% Names
+	\pgfmathsetmacro{\vpos}{334 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (424,\vpos) {\footnotesize\entryfont\csname SeventhLevelSpellSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><>  8TH LEVEL SPELL SLOT  <><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELL SLOT
+\node[inner sep=0pt] at (449.75,496.5) {\LARGE\entryfont\EighthLevelSpellSlotsTotalValue};
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,7}
+{
+	\pgfmathsetmacro{\vpos}{511 + 14 * \y}
+	%% Prepared Marker
+	\PreparedSpellMarker{(417,\vpos)}{level8prepared\y}
+	%% Names
+	\pgfmathsetmacro{\vpos}{504 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (424,\vpos) {\footnotesize\entryfont\csname EighthLevelSpellSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><>  9TH LEVEL SPELL SLOT  <><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% SPELL SLOT
+\node[inner sep=0pt] at (449.75,636.5) {\LARGE\entryfont\NinthLevelSpellSlotsTotalValue};
+% SPELLS
+\setcounter{spellHelper}{1}
+\foreach \y in {1,...,7}
+{
+	\pgfmathsetmacro{\vpos}{651 + 14 * \y}
+	%% Prepared Marker
+	\PreparedSpellMarker{(417,\vpos)}{level9prepared\y}
+	%% Names
+	\pgfmathsetmacro{\vpos}{644 + 14 * \y}
+	\node[anchor=north west, inner sep=0pt] at (424,\vpos) {\footnotesize\entryfont\csname NinthLevelSpellSlot\Alph{spellHelper}Value\endcsname};
+	\stepcounter{spellHelper}
+}

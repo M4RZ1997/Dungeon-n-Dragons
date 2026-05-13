@@ -2,27 +2,135 @@
 \newcommand{\renderoldspellsheet}{%
 	\newgeometry{left=-0.6cm,right=0cm,top=0cm,bottom=0cm}
 	\newpage
+	\thispagestyle{empty}
 	
-	%\hspace*{-9mm}
-	\makebox[\paperwidth][s]{
-		%\newpage
-		\thispagestyle{empty}
-		\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}
-		\begin{pspicture}(816,1056)
-		{
-			%\psframe[fillstyle=solid,fillcolor=blue!20,linewidth=3pt,linecolor=black](0,0)(816,1056)
+	\ifthenelse{\equal{\BACKEND}{TikZ}}{%
+		\begin{pageTikZ}
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/tikz/header.tex}
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/tikz/spell-table.tex}
 			
-			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/header.tex}
-			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/outlines.tex}
-			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/spell-level-headers.tex}
-			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/player-input.tex}
-			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/spell-slots.tex}
-			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/template-text.tex}
-		}
-		\end{pspicture}
-	}
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/tikz/template-text.tex}
+			\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/tikz/player-input.tex}
+		\end{pageTikZ}
+	}{%
+		\ifthenelse{\equal{\BACKEND}{PostScript}}{%
+			\makebox[\paperwidth][s]{
+				\psset{xunit=0.75pt,yunit=0.75pt,runit=0.75pt}
+				\hspace*{2mm}%
+				\begin{pspicture}(816,1056)
+				{
+					\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/postscript/header.tex}
+					\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/postscript/outlines.tex}
+					\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/postscript/spell-level-headers.tex}
+					\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/postscript/spell-slots.tex}
+					
+					\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/postscript/template-text.tex}
+					\input{\PATH templates/template_character-sheet/pre_5e24_player-character-sheet/spell-sheet/postscript/player-input.tex}
+				}
+				\end{pspicture}
+			}
+		}{\PackageWarning{Display Commands}{Backend "\BACKEND " unknown.}}%
+	}%
+	
 	\restoregeometry
 }%
+
+% CUSTOM ITEM LABEL
+%\newcommand{\CustomItemLabel}[1]{%
+%	\ifthenelse{\equal{\BACKEND}{TikZ}}{%
+%		\TikZCustomLabel{#1}
+%	}{%
+%		\ifthenelse{\equal{\BACKEND}{PostScript}}{%
+%			\PostScriptCustomLabel{#1}%
+%		}{\PackageWarning{Display Commands}{Backend "\BACKEND " unknown.}}%
+%	}%
+%}%
+
+\ExplSyntaxOn
+\NewDocumentCommand{\CustomItemLabel}{ m }{%
+	\str_case:VnF { \BACKEND }
+	{%
+		{PostScript}{\PostScriptCustomLabel{#1}}
+		{TikZ}{\TikZCustomLabel{#1}}
+	}%
+	{\PackageWarning{Display Commands}{Backend "\BACKEND " unknown.}}
+}%
+
+
+\NewDocumentCommand{\PostScriptCustomLabel}{ m }{%
+	\str_case:nnF { #1 }
+	{%
+		{A}{%
+			\rput(0,5){%
+				\pscustom[linestyle=none, fillstyle=solid, fillcolor=black]{%
+					\pscircle(0,0){3.5}%
+				}%
+			}%
+		}%
+		{B}{%
+			\rput(0,5){%
+				\pscustom[linestyle=none, fillstyle=solid, fillcolor=black]{%
+					\moveto(0,3.5)
+					\lineto(3.5,-3.5)
+					\lineto(-3.5,-3.5)
+					\closepath
+				}%
+			}%
+		}%
+		{R}{%
+			\rput(0,5){%
+				\pscustom[linestyle=none, fillstyle=solid, fillcolor=black]{%
+					\moveto(0,3.5)
+					\lineto(3.5,0)
+					\lineto(0,-3.5)
+					\lineto(-3.5,0)
+					\closepath
+				}%
+			}%
+		}%
+		{L}{%
+			\rput(0,5){%
+				\pscustom[linestyle=none, fillstyle=solid, fillcolor=black]{%
+					\moveto(3.5,3.5)
+					\lineto(3.5,-3.5)
+					\lineto(-3.5,-3.5)
+					\lineto(-3.5,3.5)
+					\closepath
+				}%
+			}%
+		}%
+	}%
+	{\textbullet}%
+}%
+
+
+\NewDocumentCommand{\TikZCustomLabel}{ m }{%
+	\str_case:nnF { #1 }
+	{%
+		{A}{%
+			\begin{tikzpicture}%
+				\fill[black] (0,0) circle (3);%
+			\end{tikzpicture}%
+		}%
+		{B}{%
+			\begin{tikzpicture}%
+				\fill[black] (0,0) ++(0,-3) -- ++(3,6) -- ++(-6,0) -- cycle;%
+			\end{tikzpicture}%
+		}%
+		{R}{%
+			\begin{tikzpicture}%
+				\fill[black] (0,0) ++(0,-3) -- ++(3,3) -- ++(-3,3) -- ++(-3,-3) -- cycle;%
+			\end{tikzpicture}%
+		}%
+		{L}{%
+			\begin{tikzpicture}%
+				\fill[black] (0,0) ++(3,-3) -- ++(0,6) -- ++(-6,0) -- ++(0,-6) -- cycle;%
+			\end{tikzpicture}%
+		}%
+	}%
+	{\textbullet}%
+}
+\ExplSyntaxOff
 
 % STAR COLOR CHANGES
 %% SHIELD USAGE
@@ -118,62 +226,6 @@
 	}%
 }%
 
-% CUSTOM ITEM LABEL
-\newcommand{\CustomItemLabel}[1]{%
-	\ifthenelse{\equal{#1}{A}}{%
-		\renewcommand{\labelitemi}{%
-		    \rput(0,5){%
-		        \pscustom[linestyle=none,fillstyle=solid,fillcolor=grey_text_color]{%
-		            \pscircle(0,0){3.5}%
-		        }%
-		    }%
-		}%
-	}{%
-		\ifthenelse{\equal{#1}{B}}{%
-			\renewcommand{\labelitemi}{%
-			    \rput(0,5){%
-			        \pscustom[linestyle=none,fillstyle=solid,fillcolor=grey_text_color]{%
-			            \moveto(0,3.5)
-						\lineto(3.5,-3.5)
-						\lineto(-3.5,-3.5)
-						\closepath
-			        }%
-			    }%
-			}%
-		}{%
-			\ifthenelse{\equal{#1}{R}}{%
-				\renewcommand{\labelitemi}{%
-				    \rput(0,5){%
-				        \pscustom[linestyle=none,fillstyle=solid,fillcolor=grey_text_color]{%
-				            \moveto(0,3.5)
-							\lineto(3.5,0)
-							\lineto(0,-3.5)
-							\lineto(-3.5,0)
-							\closepath
-				        }%
-				    }%
-				}%
-			}{%
-				\ifthenelse{\equal{#1}{L}}{%
-					\renewcommand{\labelitemi}{%
-					    \rput(0,5){%
-					        \pscustom[linestyle=none,fillstyle=solid,fillcolor=grey_text_color]{%
-					            \moveto(3.5,3.5)
-								\lineto(3.5,-3.5)
-								\lineto(-3.5,-3.5)
-								\lineto(-3.5,3.5)
-								\closepath
-					        }%
-					    }%
-					}%
-				}{%
-					\renewcommand{\labelitemi}{\textbf{\textbullet}}
-				}%
-			}%
-		}%
-	}%
-}%
-
 % CLASS FEATURES
 \newcommand\ClassFeatures{}
 
@@ -182,7 +234,7 @@
 	\g@addto@macro\ClassFeatures{\item[]\hspace*{-\leftmargin}\textbf{#1}}
 }%
 \newcommand{\AddClassFeature}[2]{%
-	\g@addto@macro\ClassFeatures{\CustomItemLabel{#1}\item #2}
+	\g@addto@macro\ClassFeatures{\renewcommand{\labelitemi}{\textbf{\CustomItemLabel{#1}}}\item #2}
 }%
 \makeatother
 
@@ -191,7 +243,7 @@
 
 \makeatletter
 \newcommand{\AddSpeciesFeature}[2]{%
-	\g@addto@macro\SpeciesFeatures{\CustomItemLabel{#1}\item #2}
+	\g@addto@macro\SpeciesFeatures{\renewcommand{\labelitemi}{\textbf{\CustomItemLabel{#1}}}\item #2}
 }%
 \makeatother
 
@@ -501,34 +553,58 @@
 	}{}%
 }%
 
-\newcommand{\setCastingTime}[2]{%
-	\ifthenelse{\equal{#1}{Bonus Action}}{%
-		\expandafter\renewcommand\csname Spell#2CastingTimeValue\endcsname{
+\ExplSyntaxOn
+\NewDocumentCommand{\PostScriptCastingTimeSymbol}{ m }{%
+	\str_case:nnF { #1 }
+	{%
+		{Bonus~Action}{%
+			\rput(0,0){%
+				\pscustom[linestyle=none,fillstyle=solid,fillcolor=black]{%
+					\moveto(0,5)%
+					\lineto(5,-5)%
+					\lineto(-5,-5)%
+					\closepath%
+				}%
+			}%
+		}%
+		{Reaction}{%
 			\rput(0,0){%
 				\pscustom[linestyle=none,fillstyle=solid,fillcolor=black]{%
 					\moveto(0,5)
-					\lineto(5,-5)
-					\lineto(-5,-5)
+					\lineto(5,0)
+					\lineto(0,-5)
+					\lineto(-5,0)
 					\closepath
 				}%
 			}%
 		}%
-	}{%
-		\ifthenelse{\equal{#1}{Reaction}}{%
-			\expandafter\renewcommand\csname Spell#2CastingTimeValue\endcsname{
-				\rput(0,0){%
-					\pscustom[linestyle=none,fillstyle=solid,fillcolor=black]{%
-						\moveto(0,5)
-						\lineto(5,0)
-						\lineto(0,-5)
-						\lineto(-5,0)
-						\closepath
-					}%
-				}%
-			}%
-		}{%
-			\expandafter\renewcommand\csname Spell#2CastingTimeValue\endcsname{#1}%
+	}{#1}%
+}%
+
+\NewDocumentCommand{\TikZCastingTimeSymbol}{ m }{%
+	\str_case:nnF { #1 }
+	{%
+		{Bonus~Action}{%
+			\begin{tikzpicture}%
+				\fill[black] (0,0) ++(0,-5) -- ++(5,10) -- ++(-10,0) -- cycle;
+			\end{tikzpicture}%
 		}%
+		{Reaction}{%
+			\begin{tikzpicture}%
+				\fill[black] (0,0) ++(0,-5) -- ++(5,5) -- ++(-5,5) -- ++(-5,-5) -- cycle;
+			\end{tikzpicture}%
+		}%
+	}{#1}%
+}%
+\ExplSyntaxOff
+
+\newcommand{\setCastingTime}[2]{%
+	\ifthenelse{\equal{\BACKEND}{TikZ}}{%
+		\expandafter\renewcommand\csname Spell#2CastingTimeValue\endcsname{\TikZCastingTimeSymbol{#1}}%
+	}{%
+		\ifthenelse{\equal{\BACKEND}{PostScript}}{%
+			\expandafter\renewcommand\csname Spell#2CastingTimeValue\endcsname{\PostScriptCastingTimeSymbol{#1}}%
+		}{\PackageWarning{Display Commands}{Backend "\BACKEND " unknown.}}%
 	}%
 }%
 
@@ -565,3 +641,14 @@
 		\AddSpell{#1}{True}{#2}{#9}
 	\fi%
 }
+
+\NewDocumentCommand{\IndicationStar}{ mm }
+{%
+	\filldraw[line width=1pt, color=black, fill=#2] #1 ++(0,-4) -- ++(-1,0) arc[start angle=0, end angle=90, radius=3] -- ++(0,2) arc[start angle=-90, end angle=0, radius=3] -- ++(2,0) arc[start angle=-180, end angle=-90, radius=3] -- ++(0,-2) arc[start angle=90, end angle=180, radius=3] -- cycle;%
+}%
+
+\NewDocumentCommand{\ProficiencyMarker}{ mmm }
+{%
+	\filldraw[line width=0.3pt, color=black, fill=#2] #1 circle (3);
+	\fill[#3] #1 ++(1.5,0) arc[start angle=0, end angle=180, radius=1.5] .. controls ++(0,-0.75) and ++(-0.75,0) .. ++(1.5,0) .. controls ++(0.75,0) and ++(0,-0.75) .. ++(1.5,0) -- cycle;
+}%

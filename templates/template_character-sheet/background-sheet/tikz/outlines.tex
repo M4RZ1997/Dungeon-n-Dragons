@@ -1,0 +1,145 @@
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER  APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% POSSIBLE IMAGE
+\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{none} \OR \equal{\CharacterAppearancePictureOrientation}{}}{}{%
+	\begin{scope}
+		\clip (41,125.5) arc[start angle=-90, end angle=-140, radius=13] -- (30.75,130.5) -- ++(0,228) arc[start angle=140, end angle=90, radius=13] -- (41,363.5) -- ++(152.5,0) arc[start angle=90, end angle=40, radius=13] -- (203.75,358.5) -- ++(0,-228) arc[start angle=-40, end angle=-90, radius=13] -- (193.5,125.5) -- cycle;
+		\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{horizontal}}{%
+			\pgfmathsetmacro{\vpos}{125.5 + \caYShift}
+			\pgfmathsetmacro{\hpos}{117.25 + \caXShift}
+			\node[anchor=north, inner sep=0pt] at (\hpos, \vpos) {\includegraphics[width=173pt, keepaspectratio]{\CharacterAppearancePictureValue}};
+		}{%
+			\pgfmathsetmacro{\vpos}{125.5 + \caYShift}
+			\pgfmathsetmacro{\hpos}{74 + \caXShift}
+			\node[anchor=north, inner sep=0pt] at (\hpos, \vpos) {\includegraphics[width=86.5pt, height=170pt, keepaspectratio]{\CharacterAppearancePictureValue}};
+		}%
+	\end{scope}
+}
+
+% BIG OUTLINE
+\draw[line width=1.2pt, outline-color] (28,130) -- ++(4.5,-4.5) -- ++(169.5,0) -- ++(4.5,4.5) -- ++(0,229) -- ++(-4.5,4.5) -- ++(-169.5,0) -- ++(-4.5,-4.5) -- cycle;
+\draw[line width=1.2pt, outline-color] (42,125.5) .. controls ++(0,0) and ++(0,4) .. ++(2.5,-7) -- ++(145.5,0) .. controls ++(0,4) and ++(0,0) .. ++(2.5,7);
+\draw[line width=1.2pt, outline-color] (42,363.5) .. controls ++(0,0) and ++(0,-4) .. ++(2.5,7) -- ++(145.5,0) .. controls ++(0,-4) and ++(0,0) .. ++(2.5,-7);
+
+% SMALL OUTLINE
+%% Upper Ornament
+\draw[line width=0.75pt, outline-color] (44,121) -- ++(47,0);
+\draw[line width=0.75pt, outline-color] (52,121) arc[start angle=-90, end angle=-150, radius=9];
+\fill[outline-color] (91.25,121) circle (1);
+
+\begin{scope}
+	\clip (82,125.5) -- ++(70.5,0) -- ++(0,-12) -- ++(-70.5,0) -- cycle;
+	\draw[line width=0.75pt, outline-color] (117.25,180.5) circle (65);
+\end{scope}
+\draw[line width=0.75pt, outline-color] (86,123.5) -- ++(62.5,0);
+
+\fill[outline-color] (143.25,121) circle (1);
+\draw[line width=0.75pt, outline-color] (182.5,121) arc[start angle=-90, end angle=-30, radius=9];
+\draw[line width=0.75pt, outline-color] (190.5,121) -- ++(-47,0);
+
+%% Inner Ornament
+\draw[line width=0.75pt, outline-color] (41,125.5) arc[start angle=-90, end angle=-180, radius=13];
+\draw[line width=0.75pt, outline-color] (193.5,125.5) arc[start angle=-90, end angle=0, radius=13];
+\draw[line width=0.75pt, outline-color] (41,363.5) arc[start angle=90, end angle=180, radius=13];
+\draw[line width=0.75pt, outline-color] (193.5,363.5) arc[start angle=90, end angle=0, radius=13];
+
+\draw[line width=0.75pt, outline-color] (30.75,130.5) -- ++(0,228);
+\draw[line width=0.75pt, outline-color] (203.75,130.5) -- ++(0,228);
+
+%% Lower Ornament
+\draw[line width=0.75pt, outline-color] (44,368) -- ++(47,0);
+\draw[line width=0.75pt, outline-color] (52,368) arc[start angle=90, end angle=150, radius=9];
+\fill[outline-color] (91.25,368) circle (1);
+
+\begin{scope}
+	\clip (82,363.5) -- ++(70.5,0) -- ++(0,12) -- ++(-70.5,0) -- cycle;
+	\draw[line width=0.75pt, outline-color] (117.25,308.5) circle (65);
+\end{scope}
+\draw[line width=0.75pt, outline-color] (86,365.5) -- ++(62.5,0);
+
+\fill[outline-color] (143.25,368) circle (1);
+\draw[line width=0.75pt, outline-color] (182.5,368) arc[start angle=90, end angle=30, radius=9];
+\draw[line width=0.75pt, outline-color] (190.5,368) -- ++(-47,0);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ALLIES & ORGANIZATION #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% BIG OUTLINE
+\draw[line width=1.2pt, outline-color] (217,130) -- ++(4.5,-4.5) -- ++(360,0) -- ++(4.5,4.5) -- ++(0,229) -- ++(-4.5,4.5) -- ++(-360,0) -- ++(-4.5,-4.5) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.75pt, outline-color] (230,125.5) arc[start angle=-90, end angle=-180, radius=13];
+\draw[line width=0.75pt, outline-color] (573,125.5) arc[start angle=-90, end angle=0, radius=13];
+\draw[line width=0.75pt, outline-color] (230,363.5) arc[start angle=90, end angle=180, radius=13];
+\draw[line width=0.75pt, outline-color] (573,363.5) arc[start angle=90, end angle=0, radius=13];
+
+\draw[line width=0.75pt, outline-color] (219.75,130.5) -- ++(0,228);
+\draw[line width=0.75pt, outline-color] (583.25,130.5) -- ++(0,228);
+% ---------------------------------------------------------------- %
+% <><><><><><><><><><><><><> SYMBOL <><><><><><><><><><><><><><><> %
+% ---------------------------------------------------------------- %
+% BACKGROUND & OUTLINE
+\filldraw[fill=white, line width=1.2pt, draw=outline-color] (580,135) -- ++(0,147) -- ++(-150,0) -- ++(0,-147) -- cycle;
+
+% UPPER ORNAMENT
+\draw[line width=1.2pt, draw=outline-color] (580,139) .. controls ++(0,0) and ++(2,5) .. ++(-7,-8) -- ++(-136,0) .. controls ++(-2,5) and ++(0,0) .. ++(-7,8);
+\draw[line width=0.75pt, draw=outline-color] (574,132.5) -- ++(-138,0);
+\begin{scope}
+	\clip (540,132.5) -- ++(0,10) -- ++(-80,0) -- ++(0,-10) -- cycle;
+	\draw[line width=0.75pt, outline-color] (505,37.5) circle (100);
+\end{scope}
+\fill[outline-color] (505,137.5) circle (1.5);
+
+% LOWER ORNAMENT
+\draw[line width=1.2pt, outline-color] (580,278) .. controls ++(0,0) and ++(2,-5) .. ++(-7,8) -- ++(-136,0) .. controls ++(-2,-5) and ++(0,0) .. ++(-7,-8);
+\draw[line width=0.75pt, outline-color] (574,284.5) -- ++(-138,0);
+\begin{scope}
+	\clip (540,284.5) -- ++(0,-10) -- ++(-80,0) -- ++(0,10) -- cycle;
+	\draw[line width=0.75pt, outline-color] (505,379.5) circle (100);
+\end{scope}
+\fill[outline-color] (505,279.5) circle (1.5);
+
+% INPUT FIELD
+\fill[background-grey-color] (576,146) -- ++(0,13) -- ++(-2,2) -- ++(-140,0) -- ++(0,-13) -- ++(2,-2);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ADDITIONAL FEATURES && TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% BIG OUTLINE
+\draw[line width=1.2pt, outline-color] (28,385.5) -- ++(4.5,-4.5) -- ++(169.5,0) -- ++(4.5,4.5) -- ++(0,377) -- ++(-4.5,4.5) -- ++(-169.5,0) -- ++(-4.5,-4.5) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.75pt, outline-color] (41,381) arc[start angle=-90, end angle=-180, radius=13];
+\draw[line width=0.75pt, outline-color] (193.5,381) arc[start angle=-90, end angle=0, radius=13];
+\draw[line width=0.75pt, outline-color] (41,767) arc[start angle=90, end angle=180, radius=13];
+\draw[line width=0.75pt, outline-color] (193.5,767) arc[start angle=90, end angle=0, radius=13];
+
+\draw[line width=0.75pt, outline-color] (30.75,386) -- ++(0,376);
+\draw[line width=0.75pt, outline-color] (203.75,386) -- ++(0,376);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER  BACKGROUND #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% BIG OUTLINE
+\draw[line width=1.2pt, outline-color] (217,375) -- ++(4.5,-4.5) -- ++(360,0) -- ++(4.5,4.5) -- ++(0,212.5) -- ++(-4.5,4.5) -- ++(-360,0) -- ++(-4.5,-4.5) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.75pt, outline-color] (230,370.5) arc[start angle=-90, end angle=-180, radius=13];
+\draw[line width=0.75pt, outline-color] (573,370.5) arc[start angle=-90, end angle=0, radius=13];
+\draw[line width=0.75pt, outline-color] (230,592) arc[start angle=90, end angle=180, radius=13];
+\draw[line width=0.75pt, outline-color] (573,592) arc[start angle=90, end angle=0, radius=13];
+
+\draw[line width=0.75pt, outline-color] (219.75,375.5) -- ++(0,211.5);
+\draw[line width=0.75pt, outline-color] (583.25,375.5) -- ++(0,211.5);
+% ----------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# TREASURES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% ----------------------------------------------------------------------------------------------------------------- %
+% BIG OUTLINE
+\draw[line width=1.2pt, outline-color] (217,604) -- ++(4.5,-4.5) -- ++(360,0) -- ++(4.5,4.5) -- ++(0,158.5) -- ++(-4.5,4.5) -- ++(-360,0) -- ++(-4.5,-4.5) -- cycle;
+
+% SMALL OUTLINE
+\draw[line width=0.75pt, outline-color] (230,599.5) arc[start angle=-90, end angle=-180, radius=13];
+\draw[line width=0.75pt, outline-color] (573,599.5) arc[start angle=-90, end angle=0, radius=13];
+\draw[line width=0.75pt, outline-color] (230,767) arc[start angle=90, end angle=180, radius=13];
+\draw[line width=0.75pt, outline-color] (573,767) arc[start angle=90, end angle=0, radius=13];
+
+\draw[line width=0.75pt, outline-color] (219.75,604.5) -- ++(0,157.5);
+\draw[line width=0.75pt, outline-color] (583.25,604.5) -- ++(0,157.5);
