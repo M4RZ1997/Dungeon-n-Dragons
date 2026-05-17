@@ -35,16 +35,26 @@
 		% 0 - 110
 		\begin{scope}[scale=0.25, xshift=-4cm, yshift=-110cm]			
 			% Travel Routes
-			\draw[line width=3pt, blue] (70,95) -- (78,78) -- (85,75) -- (95,60);
+			%% September 14th 992 A.D
+			\draw[line width=3pt, purple] (70,95) -- (78,78);
+			%% September 15th 992 A.D
+			\draw[line width=3pt, blue] (78,78) -- (85,75) -- (95,60); 
 			\draw[line width=3pt, blue] (95,60) -- (88,63);
+			%% September 17th 992 A.D
 			\draw[line width=3pt, blue] (95,60) -- (73,58) -- (50,47) -- (63,50);
+			%% September 18th 992 A.D
 			\draw[line width=4pt, blue] (50,47) -- (40,42) -- (16,40) -- (8,43) -- (2,40);
-			\draw[line width=3pt, red] (2,40) -- (8,43) -- (16,40) -- (40,42) -- (42,53.5) -- (44,53) -- (47,63) -- (42,57) -- (41,59) -- (39,59) -- (39,56);
+			%% September 19th 992 A.D
+			\draw[line width=3pt, blue] (2,40) -- (8,43) -- (16,40) -- (40,42) -- (42,53.5) -- (44,53) -- (47,63);
+			%% September 20th 992 A.D
+			\draw[line width=3pt, red] (47,63) -- (42,57) -- (41,59) -- (39,59) -- (39,56);
+			%% September 21st 992 A.D
+			\draw[line width=3pt, red] (47,63) -- (55,70);
 			
 			% Known PoIs
 			\pgfmathsetmacro{\IndicatorSize}{15*\scaleFactor}%
 			\indicatorAlphField[10]{(70,95)}{\IndicatorSize}; % Dundee
-			\indicatorAlphField[10]{(95,60)}{\IndicatorSize}; % Citadel of Crail
+			\indicatorAlphField[10]{(95,60)}{\IndicatorSize}\indicatorAddition[!]{(95,60)}{\IndicatorSize}; % Citadel of Crail
 			\indicatorAlphField[10]{(5,80)}{\IndicatorSize}; % Mines of Methven
 			\indicatorAlphField[10]{(18,106)}{\IndicatorSize}; % Dunkeld
 			\indicatorAlphField[10]{(50,47)}{\IndicatorSize}\indicatorAddition[!]{(50,47)}{\IndicatorSize}; % Auchtertool
@@ -59,8 +69,8 @@
 			\indicatorNumberField[10]{(82,78)}{\IndicatorSize}\indicatorAddition[?]{(82,78)}{\IndicatorSize};
 			\indicatorNumberField[10]{(88,63)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(88,63)}{\IndicatorSize};
 			\indicatorNumberField[10]{(47,63)}{\IndicatorSize}\indicatorAddition[!]{(47,63)}{\IndicatorSize};
-			\subIndicatorNumberField[10]{(39,56)}{\IndicatorSize}\indicatorAddition[!]{(39,56)}{\IndicatorSize};
-			\indicatorNumberField[10]{(55,70)}{\IndicatorSize}\indicatorAddition[?]{(55,70)}{\IndicatorSize};
+			\subIndicatorNumberField[10]{(39,56)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(39,56)}{\IndicatorSize};
+			\indicatorNumberField[10]{(55,70)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(55,70)}{\IndicatorSize};
 			\indicatorNumberField[10]{(2,40)}{\IndicatorSize}\indicatorAddition[$\swarrow$]{(2,40)}{\IndicatorSize};
 			\indicatorNumberField[10]{(63,50)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(63,50)}{\IndicatorSize};
 			\indicatorNumberField[10]{(13,110)}{\IndicatorSize}\indicatorAddition[?]{(13,110)}{\IndicatorSize};
