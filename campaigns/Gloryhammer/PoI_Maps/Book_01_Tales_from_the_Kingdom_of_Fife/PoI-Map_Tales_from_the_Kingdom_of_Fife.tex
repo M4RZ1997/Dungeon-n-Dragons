@@ -33,23 +33,29 @@
 		\node[opacity=1, inner sep=0pt, xshift=4.5cm, yshift=1.3cm] at (current page.center){\includegraphics[width=12.65in, keepaspectratio]{Kingdom_of_Fife_Map.png}};%
 		
 		% 0 - 110
-		\begin{scope}[scale=0.25, xshift=-4cm, yshift=-110cm]			
+		\begin{scope}[scale=0.25, xshift=-4cm, yshift=-110cm]	
+			% Wall of Force
+			\draw[line width=2pt, black] (102,117) arc[start angle=0, end angle=-180, radius=40];
+					
 			% Travel Routes
 			%% September 14th 992 A.D
 			\draw[line width=3pt, purple] (70,95) -- (78,78);
 			%% September 15th 992 A.D
-			\draw[line width=3pt, blue] (78,78) -- (85,75) -- (95,60); 
-			\draw[line width=3pt, blue] (95,60) -- (88,63);
+			\draw[line width=5pt, purple] (78,78) -- (85,75) -- (95,60); 
+			\draw[line width=3pt, purple] (95,60) -- (88,63);
 			%% September 17th 992 A.D
 			\draw[line width=3pt, blue] (95,60) -- (73,58) -- (50,47) -- (63,50);
 			%% September 18th 992 A.D
-			\draw[line width=4pt, blue] (50,47) -- (40,42) -- (16,40) -- (8,43) -- (2,40);
+			\draw[line width=5pt, blue] (50,47) -- (40,42) -- (16,40) -- (8,43) -- (2,40);
 			%% September 19th 992 A.D
 			\draw[line width=3pt, blue] (2,40) -- (8,43) -- (16,40) -- (40,42) -- (42,53.5) -- (44,53) -- (47,63);
 			%% September 20th 992 A.D
-			\draw[line width=3pt, red] (47,63) -- (42,57) -- (41,59) -- (39,59) -- (39,56);
+			\draw[line width=3pt, blue] (47,63) -- (42,57) -- (41,59) -- (39,59) -- (39,56);
 			%% September 21st 992 A.D
 			\draw[line width=3pt, red] (47,63) -- (55,70);
+			%% September 22nd 992 A.D
+			\draw[line width=3pt, red] (55,70) -- (64,66) -- (78,78) -- (85,75) -- (95,60);
+			\draw[line width=3pt, red, dash pattern={on 10pt off 4pt on 2pt off 4pt}] (95,60) -- (5,80) -- (18,106);
 			
 			% Known PoIs
 			\pgfmathsetmacro{\IndicatorSize}{15*\scaleFactor}%
@@ -66,7 +72,7 @@
 			
 			% Possible PoIs / Rumors
 			\pgfmathsetmacro{\IndicatorSize}{13*\scaleFactor}%
-			\indicatorNumberField[10]{(82,78)}{\IndicatorSize}\indicatorAddition[?]{(82,78)}{\IndicatorSize};
+			\indicatorNumberField[10]{(82,78)}{\IndicatorSize}\indicatorAddition[$\times$]{(82,78)}{\IndicatorSize};
 			\indicatorNumberField[10]{(88,63)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(88,63)}{\IndicatorSize};
 			\indicatorNumberField[10]{(47,63)}{\IndicatorSize}\indicatorAddition[!]{(47,63)}{\IndicatorSize};
 			\subIndicatorNumberField[10]{(39,56)}{\IndicatorSize}\indicatorAddition[$\checkmark$]{(39,56)}{\IndicatorSize};
@@ -92,6 +98,7 @@
 			\indicatorAlphField[10]{(66,28)}{\IndicatorSize}; % Mines of Methven
 			\indicatorAlphField[10]{(72,33)}{\IndicatorSize}; % Dunkeld
 			\indicatorAlphField[10]{(74,22)}{\IndicatorSize}; % Auchtertool
+			\indicatorAlphField[10]{(77,100)}{\IndicatorSize}; % Kingdom of Unst
 			
 			% Home Cities
 			\pgfmathsetmacro{\IndicatorSize}{10*\scaleFactor}%
@@ -107,6 +114,8 @@
 			\stepcounter{indicatorNumber}%\indicatorNumberField[10]{(47,63)}{\IndicatorSize};
 			\stepcounter{indicatorNumber}%\indicatorNumberField[10]{(55,70)}{\IndicatorSize};
 			\indicatorNumberField[10]{(58,13)}{\IndicatorSize};
+			\stepcounter{indicatorNumber}
+			\indicatorNumberField[10]{(69,40)}{\IndicatorSize}\indicatorAddition[?]{(69,40)}{\IndicatorSize};
 		\end{scope}
 	\end{tikzpicture}%
 	\clearpage
@@ -117,7 +126,8 @@
 	\inTextCircled[10]{B}{10} {\entryfont Citadel of Crail}\\
 	\inTextCircled[10]{C}{10} {\entryfont Mines of Methven}\\
 	\inTextCircled[10]{D}{10} {\entryfont Dunkeld}\\
-	\inTextCircled[10]{E}{10} {\entryfont Auchtertool}
+	\inTextCircled[10]{E}{10} {\entryfont Auchtertool}\\
+	\inTextCircled[10]{F}{10} {\entryfont Kingdom of Unst}
 	\subsubsection*{Home Cities}
 	\inTextCircled[10]{a}{10} {\entryfont Aberdeen (3 days travel from Dundee)}\\
 	\inTextCircled[10]{b}{10} {\entryfont Sylvani Elves Village}\\
@@ -129,5 +139,5 @@
 	\inTextCircled[10]{4}{10} {\entryfont Auchtermuchty}\\
 	\inTextCircled[10]{5}{10} {\entryfont Swamps of Paisley (3 days travel from Auchtertool)}\\
 	\inTextCircled[10]{6}{10} {\entryfont Ravenscraig Castle}\\
-	\inTextCircled[10]{7}{10} {\entryfont The Path to Glory}\\
+	\inTextCircled[10]{7}{10} {\entryfont The Path to Glory / Temple of the Ancients}\\
 \end{document}
