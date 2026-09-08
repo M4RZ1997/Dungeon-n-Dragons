@@ -1,0 +1,86 @@
+% ------------------------------------------------------------------------------------------------- %
+%							env_bloodied_note.sty  	Marcel Zauder 14/08/2026						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------- Variables // Packages ------------------------------------- %
+\newcommand{\bloodiedfont}{\entryfont}
+\newcommand{\bloodiedfontsize}{11pt}
+
+\newcommand{\bloodiedpaperimage}{\PATH templates/utilities/images/letters-and-notes/note_parchment_bloodied}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------- Leather-Bound Journal ------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Option Processing #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\ExplSyntaxOn
+\keys_define:nn { bloodiednote }
+{
+	font .code:n =
+	{
+		\renewcommand{\bloodiedfont}{#1}
+	},
+	
+	fontsize .code:n =
+	{
+		\renewcommand{\bloodiedfontsize}{#1}
+	},
+}
+\ExplSyntaxOff
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Bloodied Note Environment #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\ExplSyntaxOn
+\NewDocumentEnvironment{BloodiedNote}{ O{} +b }
+{
+	\begingroup
+	
+	% Reset defaults for every note
+	\renewcommand{\bloodiedfont}{\entryfont}
+	\renewcommand{\bloodiedfontsize}{11pt}
+	
+	% Read options
+	\keys_set:nn { bloodiednote } { #1 }
+	
+	\par
+	
+	\noindent
+	\begin{center}
+		\begin{tikzpicture}
+            
+            % ---------------------------------------------------------------
+			% Background Image
+			% ---------------------------------------------------------------
+			
+			\node[inner~sep=0pt] (paper) at (0,0)
+            {
+                \includegraphics[width=0.9\linewidth]{\bloodiedpaperimage}
+            };
+            
+			% ---------------------------------------------------------------
+			% Text Area
+			% ---------------------------------------------------------------
+			\node[
+				anchor=north~west,
+				text~width=0.65\linewidth,
+				align=left,
+				inner~sep=0pt,
+				rotate=-10
+			]
+			at ([xshift=-0.225\linewidth,yshift=0.175\linewidth]paper.center)
+			{
+				\bloodiedfont
+				\fontsize{\bloodiedfontsize}{1.2\bloodiedfontsize}\selectfont
+				
+				#2
+			};
+		\end{tikzpicture}
+	\end{center}
+	
+	\par
+	
+	\endgroup
+}
+{}
+
+\ExplSyntaxOff

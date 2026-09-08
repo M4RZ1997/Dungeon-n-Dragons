@@ -1,0 +1,186 @@
+% ------------------------------------------------------------------------------------------------- %
+%						env_leather_bound_journal.sty  	Marcel Zauder 14/08/2026					%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------- Variables // Packages ------------------------------------- %
+%% JOURNAL CONFIGURATION
+\newif\ifjournalbloodied
+\journalbloodiedfalse
+
+\newcommand{\journalfont}{\entryfont}
+\newcommand{\journalfontsize}{11pt}
+
+\newlength{\journalwidth}
+\setlength{\journalwidth}{0.9\textheight}
+
+\newlength{\journaltextlength}
+\setlength{\journaltextlength}{.35\journalwidth}
+
+\newcommand{\leftsiderotation}{1}
+\newlength{\leftsidexoffset}
+\setlength{\leftsidexoffset}{.095\journalwidth}
+\newlength{\leftsideyoffset}
+\setlength{\leftsideyoffset}{.080\journalwidth}
+
+\newcommand{\rightsiderotation}{2}
+\newlength{\rightsidexoffset}
+\setlength{\rightsidexoffset}{.500\journalwidth}
+\newlength{\rightsideyoffset}
+\setlength{\rightsideyoffset}{.050\journalwidth}
+
+%%% Rotating Journal based on page number
+\newcommand{\journalrotation}{%
+	\ifodd\value{page}
+		90%
+	\else
+		-90%
+	\fi
+}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------- Leather-Bound Journal ------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Option Processing #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\ExplSyntaxOn
+\keys_define:nn { journal }
+{
+	bloodied .code:n =
+	{
+		\journalbloodiedtrue
+		\renewcommand{\leftsiderotation}{-2}
+		\renewcommand{\rightsiderotation}{0}
+		\setlength{\journaltextlength}{.330\journalwidth}
+		\setlength{\leftsidexoffset}{.135\journalwidth}
+		\setlength{\leftsideyoffset}{.065\journalwidth}
+		\setlength{\rightsidexoffset}{.535\journalwidth}
+		\setlength{\rightsideyoffset}{.065\journalwidth}
+	},
+	
+	font .code:n =
+	{
+		\renewcommand{\journalfont}{#1}
+	},
+	
+	fontsize .code:n =
+	{
+		\renewcommand{\journalfontsize}{#1}
+	},
+}
+
+% Storage for left/right page content
+\tl_new:N \l_journal_left_tl
+\tl_new:N \l_journal_right_tl
+
+% Split at \JournalPageBreak
+\cs_new_protected:Npn \journal_split:n #1
+{
+	\seq_set_split:Nnn \l_tmpa_seq
+		{ \JournalPageBreak }
+		{ #1 }
+	
+	\tl_set:Nx \l_journal_left_tl
+		{ \seq_item:Nn \l_tmpa_seq {1} }
+	
+	\int_compare:nNnTF
+		{ \seq_count:N \l_tmpa_seq } > {1}
+		{
+			\tl_set:Nx \l_journal_right_tl
+				{ \seq_item:Nn \l_tmpa_seq {2} }
+		}
+		{
+			\tl_clear:N \l_journal_right_tl
+		}
+}
+\ExplSyntaxOff
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Journal Environment  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\ExplSyntaxOn
+\NewDocumentEnvironment{LeatherBoundJournal}{O{} +b}
+{
+	\begingroup
+	
+	% Reset options
+	\journalbloodiedfalse
+	\renewcommand{\journalfont}{\entryfont}
+	\renewcommand{\journalfontsize}{11pt}
+	\renewcommand{\leftsiderotation}{1}
+	\renewcommand{\rightsiderotation}{2}
+	\setlength{\journaltextlength}{.35\journalwidth}
+	\setlength{\leftsidexoffset}{.095\journalwidth}
+	\setlength{\leftsideyoffset}{.080\journalwidth}
+	\setlength{\rightsidexoffset}{.500\journalwidth}
+	\setlength{\rightsideyoffset}{.050\journalwidth}
+	
+	\keys_set:nn { journal } { #1 }
+	\journal_split:n { #2 }
+	
+	\begin{center}
+		\rotatebox{\journalrotation}{%
+			\begin{tikzpicture}
+				
+				% ---------------------------------------------------------------
+				% Background Image
+				% ---------------------------------------------------------------
+				
+				\ifjournalbloodied
+					\node[inner~sep=0pt] (journal) at (0,0)
+					{
+						\includegraphics[width=\journalwidth]
+							{\PATH templates/utilities/images/journals/leather-bound_journal_bloodied.png}
+					};
+				\else
+					\node[inner~sep=0pt] (journal) at (0,0)
+					{
+						\includegraphics[width=\journalwidth]
+							{\PATH templates/utilities/images/journals/leather-bound_journal.png}
+					};
+				\fi
+				
+				% ---------------------------------------------------------------
+				% Left Page
+				% ---------------------------------------------------------------
+				
+				\node[
+					anchor=north~west,
+					text~width=\journaltextlength,
+					align=left,
+					inner~sep=0pt,
+					rotate=\leftsiderotation
+				]
+				at ([xshift=\leftsidexoffset,yshift=-\leftsideyoffset] journal.north~west)
+				{
+					\journalfont
+					\fontsize{\journalfontsize}{1.2\journalfontsize}\selectfont
+					
+					\tl_use:N \l_journal_left_tl
+				};
+				
+				% ---------------------------------------------------------------
+				% Right Page
+				% ---------------------------------------------------------------
+				
+				\node[
+					anchor=north~west,
+					text~width=\journaltextlength,
+					align=left,
+					inner~sep=0pt,
+					rotate=\rightsiderotation
+				]
+				at ([xshift=\rightsidexoffset,yshift=-\rightsideyoffset] journal.north~west)
+				{
+					\journalfont
+					\fontsize{\journalfontsize}{1.2\journalfontsize}\selectfont
+					
+					\tl_use:N \l_journal_right_tl
+				};
+			
+			\end{tikzpicture}
+		}
+	\end{center}
+	
+	\endgroup
+}
+{}
+\ExplSyntaxOff
