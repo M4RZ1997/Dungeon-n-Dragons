@@ -12,7 +12,9 @@
 % ----------------------------------------------------------------------------------------------------------------- %
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  INPUT BOXES  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % ----------------------------------------------------------------------------------------------------------------- %
-\node[inner sep=0pt] at (117.25,357) {\scriptsize\textbf{\textsf{CHARACTER APPEARANCE}}};
+\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{full-size}}{}{%
+	\node[inner sep=0pt] at (117.25,357) {\scriptsize\textbf{\textsf{CHARACTER APPEARANCE}}};
+}
 \node[inner sep=0pt] at (117.25,760.5) {\scriptsize\textbf{\textsf{ADDITIONAL FEATURES \& TRAITS}}};
 
 \node[inner sep=0pt] at (401.5,357) {\scriptsize\textbf{\textsf{ALLIES \& ORGANIZATIONS}}};
