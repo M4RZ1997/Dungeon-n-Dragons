@@ -177,6 +177,18 @@
 % ################################################################################################## %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  New Commands  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 %                                                                                                    %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Auto-Shadowfy  Stream-Line #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\ShadowfyStream}{ O{} mmmmm }{%
+	\def\help{#1}\ifthenelse{\equal{\help}{}}{\def\lowercasefontsize{\fpeval{0.75 * #5}}}{\def\lowercasefontsize{\fpeval{#1 * #5}}}
+	\def\primarycolor{#2}
+	\def\secondarycolor{#3}
+	\def\shadowfyfont{#4}
+	\def\uppercasefontsize{#5}
+	\streamLetterShadowfier{#6}
+}%
+
+% -------------------------------------------------------------------------------------------------- %
+%                                                                                                    %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Auto-Shadowfy  Book Title Name #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
 \newcommand{\shadowfyBookTitleName}[1]{%
 	\def\uppercasefontsize{40}
