@@ -1,0 +1,373 @@
+% ------------------------------------------------------------------------------------------------- %
+%							reference_panel.tex  	Marcel Zauder 24/08/2026						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Colours  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\definecolor{referencepanelred}{HTML}{72251F}
+\definecolor{referencepanelgold}{HTML}{B49A5A}
+\definecolor{referencepanelbackground}{HTML}{F2E9D5}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Lengths  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newlength{\PanelHeaderContentWidth}
+\setlength{\PanelHeaderContentWidth}{0.64\linewidth}
+
+\newlength{\PanelWideContentWidth}
+\setlength{\PanelWideContentWidth}{0.72\linewidth}%
+
+\newlength{\SplitPanelTopClearance}
+\setlength{\SplitPanelTopClearance}{4pt}
+% ------------------------------------------------------------------------
+% Offsets
+% ------------------------------------------------------------------------
+\newlength{\SplitPanelBottomClearance}
+\setlength{\SplitPanelBottomClearance}{11pt}
+
+\newlength{\SplitPanelSideClearance}
+\setlength{\SplitPanelSideClearance}{10pt}
+
+\newlength{\SplitPanelTitleDrop}
+\setlength{\SplitPanelTitleDrop}{15pt}
+
+\newlength{\SplitPanelCornerRadius}
+\setlength{\SplitPanelCornerRadius}{4pt}
+% ------------------------------------------------------------------------
+% Outline Presets
+% ------------------------------------------------------------------------
+\tikzset{
+    split panel frame bezel/.style={
+        draw=black,
+        line width=3pt,
+        line join=round,
+        line cap=round,
+    },
+    split panel frame gold/.style={
+        draw=referencepanelgold,
+        line width=1.5pt,
+        line join=round,
+        line cap=round,
+    },
+}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------------- Entries -------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% <><><><><><><><><><><><><><><><><><>  Standard  Panel Entry  <><><><><><><><><><><><><><><><><><> %
+\NewDocumentCommand{\PanelEntry}{m +m}{%
+	\par
+	\noindent
+	{\color{titlered}\bfseries\scshape\DndContour{#1}}%
+	\par
+	\vspace{0.5pt}%
+	{\footnotesize #2}%
+	\par
+	\vspace{6pt}%
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% <><><><><><><><><><><><><><><><><><> Highlighted Panel Entry <><><><><><><><><><><><><><><><><><> %
+\NewDocumentCommand{\PanelHighlight}{m +m}{%
+	\par
+	\noindent
+	{\color{titlered}\bfseries\scshape\DndContour{#1}}%
+	\par
+	\vspace{0.5pt}%
+	{\footnotesize\itshape #2}%
+	\par
+	\vspace{6pt}%
+}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------- Split Reference Panel ------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Outline  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\SplitReferencePanelFrame}{}{%
+    \OrnamentalOutlinePaths
+    % ------------------------------------------------------------
+    % Black bezels of the circular nodes
+    % ------------------------------------------------------------
+    \fill[black]
+        ([xshift=34pt]splitnorthwest)
+        circle[radius=2pt];
+
+    \fill[black]
+        ([xshift=-34pt]splitnortheast)
+        circle[radius=2pt];
+
+    \fill[black]
+        ([xshift=34pt]splitsouthwest)
+        circle[radius=2pt];
+
+    \fill[black]
+        ([xshift=-34pt]splitsoutheast)
+        circle[radius=2pt];
+    % ------------------------------------------------------------
+    % Black frame bezel
+    % ------------------------------------------------------------
+    \draw[
+        split panel frame bezel,
+        use path=split ornament 1
+    ];
+
+    \draw[
+        split panel frame bezel,
+        use path=split ornament 2
+    ];
+    % ------------------------------------------------------------
+    % Gold frame line
+    % ------------------------------------------------------------
+    \draw[
+        split panel frame gold,
+        use path=split ornament 1
+    ];
+
+    \draw[
+        split panel frame gold,
+        use path=split ornament 2
+    ];
+    % ------------------------------------------------------------
+    % Gold centres of the circular nodes
+    % ------------------------------------------------------------
+    \fill[referencepanelgold]
+        ([xshift=34pt]splitnorthwest)
+        circle[radius=1.1pt];
+
+    \fill[referencepanelgold]
+        ([xshift=-34pt]splitnortheast)
+        circle[radius=1.1pt];
+
+    \fill[referencepanelgold]
+        ([xshift=34pt]splitsouthwest)
+        circle[radius=1.1pt];
+
+    \fill[referencepanelgold]
+        ([xshift=-34pt]splitsoutheast)
+        circle[radius=1.1pt];
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Panel  Header Title  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\PanelHeaderTitle}{m}{%
+	\makebox[\linewidth][c]{%
+		% Fixed ornament on the left
+		\rlap{%
+			\hspace{-7pt}%
+			\OrnamentFireSpittingDragon[1]%
+		}%
+		
+		% Title
+		\hfill
+		\parbox{\PanelHeaderContentWidth}{%
+           \centering\DndContour[black]{\strut #1}%
+        }%
+		\hfill
+        
+		% Fixed ornament on the right
+		\llap{%
+			\OrnamentFireSpittingDragon[-1]%
+			\hspace{-7pt}%
+		}%
+	}%
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Layout  Options  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+%                                                                                                   %
+% <><><><><><><><><><><><><><><><><><><>  Two-Column Option  <><><><><><><><><><><><><><><><><><><> %
+\NewDocumentEnvironment{PanelColumns}{+b}{%
+	\noindent
+	\begin{tabularx}{\linewidth}{%
+		@{}%
+		>{\raggedright\arraybackslash}X%
+		!{\hspace{8pt}{\color{referencepanelgold}\vrule width 0.6pt}\hspace{8pt}}%
+		>{\raggedright\arraybackslash}X%
+		@{}%
+	}
+		#1
+	\end{tabularx}%
+	\par
+}{}
+% ------------------------------------------------------------------------------------------------- %
+%                                                                                                   %
+% <><><><><><><><><><><><><><><><><><><>  Panel-Wide Option  <><><><><><><><><><><><><><><><><><><> %
+\NewDocumentCommand{\PanelWideHighlight}{m +m}{%
+	\vspace{2pt}%
+	\begin{tcolorbox}[
+		enhanced,
+		colback=referencepanelbackground,
+		frame hidden,
+		boxrule=0pt,
+		sharp corners,
+		left=6pt,
+		right=6pt,
+		top=5pt,
+		bottom=5pt,
+		before skip=2pt,
+		after skip=0pt,
+		underlay={%
+			% --------------------------------------------------------------
+			% Important positions:
+			%   15% = end of left fade
+			%   85% = beginning of right fade
+			% --------------------------------------------------------------
+			\coordinate (fadeleftbottom) at
+				($(interior.south west)!0.2!(interior.south east)$);
+			\coordinate (fadelefttop) at
+				($(interior.north west)!0.2!(interior.north east)$);
+		
+			\coordinate (faderightbottom) at
+				($(interior.south west)!0.8!(interior.south east)$);
+			\coordinate (faderighttop) at
+				($(interior.north west)!0.8!(interior.north east)$);
+			% --------------------------------------------------------------
+			% Left fade:
+			% normal panel background -> highlighted background
+			% --------------------------------------------------------------
+			\path[
+				shade,
+				left color=referencepanelbackground,
+				right color=referencepanelgold!18!referencepanelbackground
+			]
+				(interior.south west)
+				rectangle
+				(fadelefttop);
+			% --------------------------------------------------------------
+			% Constant highlighted middle area
+			% --------------------------------------------------------------
+			\fill[
+				referencepanelgold!18!referencepanelbackground
+			]
+				(fadeleftbottom)
+				rectangle
+				(faderighttop);
+			% --------------------------------------------------------------
+			% Right fade:
+			% highlighted background -> normal panel background
+			% --------------------------------------------------------------
+			\path[
+				shade,
+				left color=referencepanelgold!18!referencepanelbackground,
+				right color=referencepanelbackground
+			]
+				(faderightbottom)
+				rectangle
+				(interior.north east);
+		},
+		finish={%
+			% Splitter Line
+			\draw[referencepanelgold, line width=0.6pt] (frame.north west) -- (frame.north east);
+			
+		    % Left ornament
+		    \node[anchor=west] at (frame.west) {%
+		        \OrnamentVerticalWyvern[1]%
+		    };
+		
+		    % Right ornament
+		    \node[anchor=east] at (frame.east) {%
+		        \OrnamentVerticalWyvern[-1]%
+		    };
+		},
+	]
+		\centering
+		{\color{titlered}\bfseries\scshape\DndContour{#1}}\par
+		\vspace{4pt}%
+		\parbox{\PanelWideContentWidth}{%
+			\centering
+			{\footnotesize\itshape #2}%
+		}
+	\end{tcolorbox}%
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Split-Panel Environment  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewTColorBox{SplitReferencePanel}{O{} m}{%
+	enhanced,
+	% ------------------------------------------------------------------
+	% Outer box
+	% ------------------------------------------------------------------
+	width=\linewidth,
+	% No Background tcolorbox
+	sharp corners,
+	colback=white,
+	opacityback=0,
+	colbacktitle=white,
+	opacitybacktitle=0,
+    frame hidden,
+	boxrule=0pt,
+	boxsep=0pt,
+	% Give the ornamental frame sufficient breathing room
+    left=\SplitPanelSideClearance,
+	right=\SplitPanelSideClearance,
+	top=\SplitPanelTopClearance,
+	bottom=\SplitPanelBottomClearance,
+	before skip=6pt,
+    after skip=8pt,
+	% ------------------------------------------------------------------
+	% Title
+	% ------------------------------------------------------------------
+	title={\PanelHeaderTitle{#2}},
+	enhanced jigsaw,
+	coltitle=white,
+	fonttitle=\Large\bfseries\scshape,
+	toptitle=\SplitPanelTitleDrop,
+	bottomtitle=4pt,
+	center title,
+	titlerule=1.2pt,
+	% ------------------------------------------------------------------
+	% Separator between columns
+	% ------------------------------------------------------------------
+	segmentation style={
+		solid,
+		draw=referencepanelgold,
+		line width=0.5pt
+	},
+	% ------------------------------------------------------------------
+	% Paint Custom Background
+	% ------------------------------------------------------------------
+	underlay={%
+		\OrnamentalOutlinePaths
+	
+	    \begin{scope}
+	        \clip[use path=split ornament 1];
+	
+	        % Main panel background
+	        \fill[referencepanelbackground]
+	            (frame.south west)
+	            rectangle
+	            (frame.north east);
+	
+	        % Header background
+	        \fill[referencepanelred]
+	            (frame.north west)
+	            rectangle
+	            (frame.north east |- title.south);
+	    \end{scope}
+	},
+	% ------------------------------------------------------------------
+	% Finish for Outline
+	% ------------------------------------------------------------------
+	finish={%
+        \SplitReferencePanelFrame
+        % Header/body separator
+	    \draw[
+	        black, line width=2.2pt
+	    ]
+	        ([xshift=3pt]frame.west |- title.south)
+	        --
+	        ([xshift=-3pt]frame.east |- title.south);
+	
+	    \draw[
+	        referencepanelgold, line width=1pt
+	    ]
+	        ([xshift=2pt]frame.west |- title.south)
+	        --
+	        ([xshift=-2pt]frame.east |- title.south);
+    },
+	% ------------------------------------------------------------------
+	% Additional user options
+	% ------------------------------------------------------------------
+	#1
+}
