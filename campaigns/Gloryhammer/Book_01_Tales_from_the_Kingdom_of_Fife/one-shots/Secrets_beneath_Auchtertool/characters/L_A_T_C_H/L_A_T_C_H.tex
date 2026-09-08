@@ -1,0 +1,691 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{L.A.T.C.H. (Silas)}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Rogue}
+\Subclass{Arcane Trickster}
+\Background{Criminal}
+\Race{Threadborn}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{5} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{6}
+\DexterityRolledScore{15}
+\ConstitutionRolledScore{12}
+\IntelligenceRolledScore{15}
+\WisdomRolledScore{13}
+\CharismaRolledScore{10}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{3}			% +2 Criminal Background, +1 Fairy Trickster Feat
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{1}		% +1 Criminal Background
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{P}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{P}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{E}
+\StealthProficiency{E}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{P}
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{P}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{P}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{\ProficiencyValue}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
+\ArmorClass{\intcalcAdd{11}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{26} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{}
+\HeavyArmor{}
+\Shields{}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons (with Light or Finesse property)}
+\ToolsProficiency{Thieves' Tools, Tinker's Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Ghost Key}{L.A.T.C.H}{DEX}{P}{1}{1d4 + \intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}} p}{Finesse, Light, Thrown (20/60), Nick}
+\addWeaponStatistic{Dagger}{L.A.T.C.H}{DEX}{P}{0}{1d4 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Finesse, Light, Thrown (20/60), Nick}
+\addWeaponStatistic{Shortbow}{L.A.T.C.H}{DEX}{P}{0}{1d6 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Ranged (80/320), Two Handed, Vex}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Magnetobolt}{BOTH}{\calculateModifier{\IntelligenceScoreValue}}{2d6 Force}{Knock Prone, STR save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{Q}{\textbf{Expertise}\\Sleight of Hand, Stealth}
+\AddClassFeature{Q}{\textbf{Sneak Attack}\\Additional Damage: 3d6}
+\AddClassFeature{Q}{\textbf{Thieves' Cant}}
+\AddClassFeature{Q}{\textbf{Weapon Mastery}\\Daggers, Shortbow}
+\AddClassFeature{B}{\textbf{Cunning Action}\\Dash, Disengage, Hide}
+\AddClassFeature{Q}{\textbf{Arcane Trickster}\begin{itemize}
+	\item Spellcasting
+	\item Mage Hand Legerdemain
+\end{itemize}}
+\AddClassFeature{B}{\textbf{Steady Aim}\\Give yourself Advantage if you don't move this turn}
+\AddClassFeature{Q}{\textbf{Cunning Strike}\begin{itemize}
+	\item Poison (Cost 1d6, DC: \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}})
+	\item Trip (Cost 1d6, DC: \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}})
+	\item Withdraw (Cost: 1d6)
+\end{itemize}}
+\AddClassFeature{R}{\textbf{Uncanny Dodge}\\Half incoming damage from an attack you can see}
+% SPECIES TRAITS
+\AddSpeciesFeature{Q}{\textbf{Ball Jointed}\\Can Squeeze through narrow paths}
+\AddSpeciesFeature{Q}{\textbf{Innocent Mind}\\Resistance to Psychic damage}
+\AddSpeciesFeature{Q}{\textbf{Sewn Nature}\\Don't require air, food, or drink}
+\AddSpeciesFeature{L}{\textbf{Soothing Heart}\\Can cast Guidance, Sanctuary, and Calm Emotions once per Long Rest}
+\AddSpeciesFeature{R}{\textbf{You've Got a Friend}\\Cast Guidance with visibility range of 30 feet (\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses / LR})}
+% FEATS
+\AddFeat{\textbf{Alert}\begin{itemize}
+	\item Initiative Proficiency
+	\item Initiative Swap
+\end{itemize}}
+\AddFeat{\textbf{Fairy Trickster}\begin{itemize}
+	\item DEX Ability Score Increase
+	\item Faerie Trod Trotter
+	\item[\CustomItemLabel{L}] Flustering Strike (DC: \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}}, \intcalcAdd{0}{\ProficiencyValue} Uses / LR)
+\end{itemize}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{Unknown}
+\Height{6'2''}
+\Weight{185 lbs}
+\Eyes{Electric-Blue}
+\Skin{Brass}
+\Hair{}
+\CharacterAppearance{full-size} % (vertical/horizontal/full-size/none) !Full-Size will distort image to fit entire field!
+	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/L_A_T_C_H.png} %
+	{}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Auchtertool Deepworks Corps}
+\OrganizationSymbol{images/Auchtertool_Deepworks_Corps.png}
+\AlliesAndOrganizations{
+	The Auchtertool Deepworks Corps is a specialized branch of the city's Artificer Guild tasked with exploring dangerous subterranean environments, recovering buried machinery, and investigating ruins or structures unsuitable for ordinary workers. Its expeditions are composed primarily of purpose-built constructs, each selected for a particular function such as excavation, surveying, arcane analysis, maintenance, or security. Deepworks teams are expected to operate independently in unstable and poorly understood environments, often far beyond the immediate reach of Auchtertool's artificers.\linebreak
+}{
+	Following the discovery of the passage beneath the central plaza, the Corps was entrusted with assembling a suitably equipped expedition to investigate what lay below.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	L.A.T.C.H. is built around a remarkably slender Threadborn frame of fine cables, ball-jointed limbs, and tightly interwoven mechanical tendons, granting him a level of flexibility and articulation uncommon even among Auchtertool's constructs. Numerous concealed compartments are hidden throughout his chassis, containing lockpicks, slender tools, signal styluses, and other implements suited to infiltration and quiet theft. His hands are especially delicate and precise, allowing him to manipulate mechanisms with exceptional control. Though not originally built by the Foundries, later modifications added arcane components such as an Illusion Focus and other improvised systems that support deception, disguise, and covert movement.
+}
+
+% BACKGROUND
+\Characterbackground{
+	Created by \textbf{REDACTED} in \textbf{ACCESS DENIED} for the purpose of ... retrieval ... access ... \textbf{REDACTED} ... do not open the ... \textbf{MISSING}. There was a workshop, perhaps. Or a cellar. Someone said Silas. Someone always said Silas.
+
+	... transport manifests ... three locks ... \textbf{ACCESS DENIED} ... blue lantern ... run when the bells ... \textbf{MISSING} ... payment never received ... west road ... no, not west ...
+	
+	Following his capture, Auchtertool's artificers attempted to erase the construct's existing memories and overwrite his former directives. Believing the procedure successful, they redesignated him L.A.T.C.H. — Lock Acquisition, Trespass \& Covert Handling and reassigned his considerable talents to Auchtertool's covert forces.
+
+	Since then, L.A.T.C.H. has served as an infiltration and access specialist, employing his exceptional agility, lockwork expertise, and arcane trickery during covert operations. His new directives function reliably, yet remnants of the failed erasure occasionally surface as sensations, reflexes, or emotions without context.
+
+	Most persistent is his dislike of the designation L.A.T.C.H. He cannot explain why it feels wrong. He only knows that when he thinks of himself, another word comes first.
+
+	\textbf{Silas.}
+}
+
+% TREASURES
+\Treasure{
+	\ 
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	I instinctively notice locks, hidden compartments, weak points, and unattended valuables, often before I consciously realize I am looking for them. I dislike being told who I am supposed to be. Even harmless references to my designation can make me unexpectedly defensive.
+}
+\Alignment{Chaotic Good}
+
+\Ideals{
+	\textbf{Identity.} A name, purpose, or past should belong to the one who carries it - not to whoever happens to write it into their instructions.
+}
+
+\Bonds{
+	Silas has few memories he can truly call his own. The name Silas is the one fragment that survived, and he clings to it as proof that something of his former self remains.
+}
+
+\Flaws{
+	Old instincts sometimes surface without explanation. Silas may conceal information, pocket something interesting, or bypass a restriction simply because some forgotten part of him insists that he should.
+}
+
+% LANGUAGES
+\Languages{Common, Thieves' Cant}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Dagger, Shortbow, 20 Arrows, Leather Armor\\
+	Thieves' Tools, Tinker's Tools\\
+	Backpack, Ball Bearings, Bell, 10 Candles, Crowbar, Hooded Lantern, 7 flasks of Oil, Rope, Tinderbox, Waterskin
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Ghost Key}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Rogue}
+\SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{3}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Guidance}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+\addPreparedSpell{0}
+	{Mage Hand}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S, 1 Minute}
+	{V, S}
+\addPreparedSpell{0}
+	{Magnetobolt}
+	{Action}
+	{90 Feet}
+	{}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+\addPreparedSpell{0}
+	{Smokescreen}
+	{Action}
+	{Self}
+	{T}
+	{}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+	
+\addPreparedSpell{1}
+	{Charm Person}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S, 1 Hour}
+	{V, S}
+\addPreparedSpell{1}
+	{Ghost Light}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Illusory Script}
+	{1 Min}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{V, S, 10 Days}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Sanctuary}
+	{Bonus Action}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 1 Minute}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Witch Bolt}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+	
+\addPreparedSpell{2}
+	{Calm Emotions}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Threadborn Traits}
+\subsection*{Ball-Jointed}
+You can move through a space as narrow as 1 foot wide as if it were Difficult Terrain.
+\subsection*{Innocent Mind}
+You have Resistance to Psychic damage.
+\subsection*{Sewn Nature}
+You don't require air, food, or drink.
+\subsection*{Soothing Heart}
+You know the Guidance Cantrip, the Sanctuary spell, and the Calm Emotions spell and have those spells always prepared. You can cast each spell once without a spell slot. When you cast Calm Emotions in this way, it can target creatures of any type. You regain the ability to cast them using this trait when you finish a Long Rest. You can also cast either spell using any spell slots you have of the appropriate level. \textbf{Intelligence} is your spellcasting ability for the spells you cast with this trait.
+\subsection*{You've Got a Friend}
+\textbf{Uses: \intcalcAdd{0}{\ProficiencyValue}}\\
+When a creature you can see within 30 feet of yourself fails an ability check using a skill, you can take a Reaction to cast Guidance on the creature, ignoring the spell's normal range. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.
+
+\section*{Feats}
+\subsection*{Alert}
+You gain the following benefits.
+
+\paragraph*{Initiative Proficiency} When you roll Initiative, you can add your Proficiency Bonus to the roll.
+
+\paragraph*{Initiative Swap} Immediately after you roll Initiative, you can swap your Initiative with the Initiative of one willing ally in the same combat. You can't make this swap if you or the ally has the Incapacitated condition.
+\subsection*{Fairy Trickster}
+\textbf{Ability Score Increase: Dexterity, DC: \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}}}\\
+You gain the following benefits.
+
+\paragraph*{Ability Score Increase} Increase your Dexterity or Charisma by 1, to a maximum of 20.
+
+\paragraph*{Faerie Trod Trotter} When you take the Disengage action on your turn, Difficult Terrain doesn't cost you extra movement for the rest of that turn.
+
+\paragraph*{Flustering Strike} When you hit a creature with an attack roll, you can attempt to fluster the target. The target must succeed on a Wisdom saving throw (DC 8 plus the ability modifier of the score increased by this feat and your Proficiency Bonus) or have Disadvantage on saving throws until the end of your next turn.
+
+You can use this benefit a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.
+
+\section*{Rogue Traits}
+\subsection*{Expertise}
+\textbf{Sleight of Hand, Stealth}\\
+You gain Expertise in two of your skill proficiencies of your choice. Sleight of Hand and Stealth are recommended if you have proficiency in them.
+
+At Rogue level 6, you gain Expertise in two more of your skill proficiencies of your choice.
+\subsection*{Sneak Attack}
+You know how to strike subtly and exploit a foe's distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack roll if you have Advantage on the roll and the attack uses a Finesse or a Ranged weapon. The extra damage's type is the same as the weapon's type.
+
+You don't need Advantage on the attack roll if at least one of your allies is within 5 feet of the target, the ally doesn't have the Incapacitated condition, and you don't have Disadvantage on the attack roll.
+
+The extra damage increases as you gain Rogue levels, as shown in the Sneak Attack column of the Rogue Features table.
+\subsection*{Thieves' Cant}
+You picked up various languages in the communities where you plied your roguish talents. You know Thieves' Cant and one other language of your choice, which you choose from the language tables in chapter 2.
+\subsection*{Weapon Mastery}
+Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Daggers and Shortbows.
+
+Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Shortswords.
+\subsubsection*{Nick (Dagger)}
+When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.
+\subsubsection*{Vex (Shortbow)}
+If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+\subsection*{Cunning Action}
+Your quick thinking and agility allow you to move and act quickly. On your turn, you can take one of the following actions as a Bonus Action: Dash, Disengage, or Hide.
+\subsection*{Arcane Trckster}
+\subsubsection*{Mage Hand Legerdemain}
+When you cast Mage Hand, you can cast it as a Bonus Action, and you can make the spectral hand Invisible. You can control the hand as a Bonus Action, and through it, you can make Dexterity (Sleight of Hand) checks.
+\subsection*{Steady Aim}
+As a Bonus Action, you give yourself Advantage on your next attack roll on the current turn. You can use this feature only if you haven't moved during this turn, and after you use it, your Speed is 0 until the end of the current turn.
+\subsection*{Cunning Strike}
+\textbf{DC: \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\DexterityScoreValue}}}}\\
+You've developed cunning ways to use your Sneak Attack. When you deal Sneak Attack damage, you can add one of the following Cunning Strike effects. Each effect has a die cost, which is the number of Sneak Attack damage dice you must forgo to add the effect. You remove the die before rolling, and the effect occurs immediately after the attack's damage is dealt. For example, if you add the Poison effect, remove 1d6 from the Sneak Attack's damage before rolling.
+
+If a Cunning Strike effect requires a saving throw, the DC equals 8 plus your Dexterity modifier and Proficiency Bonus.
+
+\paragraph*{Poison (Cost: 1d6)} You add a toxin to your strike, forcing the target to make a Constitution saving throw. On a failed save, the target has the Poisoned condition for 1 minute. At the end of each of its turns, the Poisoned target repeats the save, ending the effect on itself on a success.
+
+To use this effect, you must have a Poisoner's Kit on your person.
+
+\paragraph*{Trip (Cost: 1d6)} If the target is Large or smaller, it must succeed on a Dexterity saving throw or have the Prone condition.
+
+\paragraph*{Withdraw (Cost: 1d6)} Immediately after the attack, you move up to half your Speed without provoking Opportunity Attacks.
+\subsection*{Uncanny Dodge}
+When an attacker that you can see hits you with an attack roll, you can take a Reaction to halve the attack's damage against you (round down).
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader{Guidance}
+	{Divination Cantrip}
+	{Action}
+	{Touch}
+	{V, S}
+	{Concentration, up to 1 Minute}
+
+You touch a willing creature and choose a skill. Until the spell ends, the creature adds 1d4 to any ability check using the chosen skill.
+
+\DndSpellHeader{Mage Hand}
+	{Conjuration Cantrip}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{1 Minute}
+
+A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.
+
+When you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial.
+
+As a Magic action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.
+
+The hand can't attack, activate magic items, or carry more than 10 pounds.
+
+\DndSpellHeader{Magnetobolt}
+	{Evocation Cantrip}
+	{Action}
+	{90 Feet}
+	{V, S}
+	{Instantaneous}
+
+A near-invisible pulse of arcanomagnetic energy shoots towards a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d6 force damage and must succeed on a Strength saving throw or be knocked prone. A creature made of ferrous metal or wearing ferrous armour has disadvantage on this saving throw.
+
+\subparagraph*{Cantrip Upgrade} This spell's damage increases by 1d6 when you reach \textbf{5th level 2d6}, 11th level 3d6, and 17th level 4d6
+
+\DndSpellHeader{Smokescreen}
+	{Conjuration Cantrip}
+	{Action}
+	{Self (5-foot-radius cylinder)}
+	{V, S, M (a puffball mushroom)}
+	{Concentration, up to 1 Round}
+
+You spew a thick cloud of dense black smoke that forms a 5-foot-diameter, 10-foot-high cylinder centred on you that lasts until the start of your next turn The smoke heavily obscures its area When you cast the spell, you can choose whether the cloud remains in the location where you cast it or moves with you, centred on you
+
+When you reach higher levels, the size of the cloud you can create with this spell increases When you reach 5th level, the cloud has a maximum diameter of 15 feet and a height of 20 feet; at 11th level this increases to 25 feet and 30 feet; and at 17th level this increases to 35 feet and 40 feet You choose how big the cloud is in each dimension up to this maximum each time that you cast it.
+
+\subsection*{Level 1}
+
+\DndSpellHeader{Charm Person}
+	{1st-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{1 Hour}
+
+One Humanoid you can see within range makes a Wisdom saving throw. It does so with Advantage if you or your allies are fighting it. On a failed save, the target has the Charmed condition until the spell ends or until you or your allies damage it. The Charmed creature is Friendly to you. When the spell ends, the target knows it was Charmed by you.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 1.
+
+\DndSpellHeader{Ghost Light}
+	{1st-Level Evocation}
+	{Action}
+	{Touch}
+	{V, S, M (a clear marble)}
+	{1 Hour}
+
+You touch one object that is no larger than 10 feet in any dimension and specify any number of creatures you can see within 10 feet. Until the spell ends, the object sheds silvery Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. This light is only visible to the creatures you specified during the casting of the spell; all other creatures perceive the area affected by the light as they regularly would.
+
+\DndSpellHeader{Illusory Script}
+	{1st-Level Illusion}
+	{1 Minute or Ritual}
+	{Touch}
+	{S, M (ink worth 10+ GP, which the spell consumes)}
+	{10 Days}
+
+You write on parchment, paper, or another suitable material and imbue it with an illusion that lasts for the duration. To you and any creatures you designate when you cast the spell, the writing appears normal, seems to be written in your hand, and conveys whatever meaning you intended when you wrote the text. To all others, the writing appears as if it were written in an unknown or magical script that is unintelligible. Alternatively, the illusion can alter the meaning, handwriting, and language of the text, though the language must be one you know.
+
+If the spell is dispelled, the original script and the illusion both disappear.
+
+A creature that has Truesight can read the hidden message.
+
+\DndSpellHeader{Sanctuary}
+	{1st-Level Abjuration}
+	{Bonus Action}
+	{30 Feet}
+	{V, S, M (a shard of glass from a mirror)}
+	{1 Minute}
+
+You ward a creature within range. Until the spell ends, any creature who targets the warded creature with an attack roll or a damaging spell must succeed on a Wisdom saving throw or either choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from areas of effect.
+
+The spell ends if the warded creature makes an attack roll, casts a spell, or deals damage.
+
+\DndSpellHeader{Witch Bolt}
+	{1st-Level Evocation}
+	{Action}
+	{60 Feet}
+	{V, S, M (a twig struck by lightning)}
+	{Concentration, up to 1 Minute}
+
+A beam of crackling energy lances toward a creature within range, forming a sustained arc of lightning between you and the target. Make a ranged spell attack against it. On a hit, the target takes 2d12 Lightning damage.
+
+On each of your subsequent turns, you can take a Bonus Action to deal 1d12 Lightning damage to the target automatically, even if the first attack missed.
+
+The spell ends if the target is ever outside the spell's range or if it has Total Cover from you.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The initial damage increases by 1d12 for each spell slot level above 1.
+
+\subsection*{Level 2}
+
+\DndSpellHeader{Calm Emotions}
+	{1st-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{Concentration, up to 1 Minute}
+
+Each Humanoid in a 20-foot-radius Sphere centered on a point you choose within range must succeed on a Charisma saving throw or be affected by one of the following effects (choose for each creature):
+\begin{itemize}
+	\item The creature has Immunity to the Charmed and Frightened conditions until the spell ends. If the creature was already Charmed or Frightened, those conditions are suppressed for the duration.
+	\item The creature becomes Indifferent about creatures of your choice that it's Hostile toward. This indifference ends if the target takes damage or witnesses its allies taking damage. When the spell ends, the creature's attitude returns to normal.
+\end{itemize}
+
+\part*{Magic Items}
+
+\subsection*{Ghostkey}
+\textit{Weapon (Dagger), Rare (requires Attunement)}\\
+\textbf{Damage:} 1d4 Piercing\\
+\textbf{Properties:} Finesse, Light, Thrown (20/60 ft.)\\
+\textbf{Weapon Mastery:} Vex\\
+\textbf{Charges:} 3
+
+Ghostkey is a slender stiletto forged from dark, unfamiliar metal. Fine geometric grooves run along the blade like the teeth of countless overlapping keys, subtly shifting whenever the weapon is turned in the light. It was found among Silas's possessions after his capture, though neither its maker nor its original purpose could be identified. Silas remembers nothing of the weapon, yet handling it feels strangely familiar.
+
+You gain a +1 bonus to attack and damage rolls made with this magic weapon. It returns to your hand immediately after you use it to make a ranged attack roll.
+
+Ghostkey has 3 charges and regains all expended charges when you finish a Long Rest.\\
+\paragraph*{Open the Way} As an Action, you can press Ghostkey against a nonmagical lock, latch, manacle, or similar mechanism and expend 1 charge. The mechanism immediately opens without producing any sound. If the mechanism is magical, you instead gain Advantage on the next Dexterity check using Thieves' Tools made to open it.
+\paragraph*{Find the Seam} When you deal Sneak Attack damage to a creature using Ghostkey, you can expend 1 charge to exploit a weakness in its defenses. Until the start of your next turn, the creature cannot take Reactions and its AC is reduced by 1.
+
+\end{document}

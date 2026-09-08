@@ -1,0 +1,453 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{A.E.G.I.S-3}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Fighter}
+\Subclass{Living Crucible}
+\Background{Soldier}
+\Race{Warforged}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{5} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{13}
+\DexterityRolledScore{15}
+\ConstitutionRolledScore{13}
+\IntelligenceRolledScore{8}
+\WisdomRolledScore{12}
+\CharismaRolledScore{10}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{1}		% +1 ASI
+\DexterityScoreBonus{3}		% +2 Soldier Background, +1 ASI
+\ConstitutionScoreBonus{1}	% +1 Soldier Background
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{P}
+\DexterityProficiency{}
+\ConstitutionProficiency{P}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{P}		% Soldier Background
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{P}		% Warforged Race
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}			% Fighter Class
+\MedicineProficiency{}
+\PerceptionProficiency{}
+\SurvivalProficiency{P}			% Fighter Class
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{P}		% Soldier Background
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
+\ArmorClass{\intcalcAdd{13}{\intcalcAdd{1}{\intcalcMin{2}{\calculateModifier{\DexterityScoreValue}}}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{31} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d10}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{P}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Alchemist's Supplies (Expertise), Dice Set, Drum}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Intervention Sabre}{A.E.G.I.S-3}{DEX}{P}{1}{1d8 + \intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}} s}{Finesse, Swift}
+\addWeaponStatistic{Javelin}{A.E.G.I.S-3}{STR}{P}{0}{1d6 + \intcalcAdd{0}{\calculateModifier{\StrengthScoreValue}} p}{Thrown (30/120), Slow}
+\addWeaponStatistic{Shortbow}{A.E.G.I.S-3}{DEX}{P}{0}{1d6 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Ranged (80/320), Two-Handed, Vex}
+\addWeaponStatistic{Spear}{A.E.G.I.S-3}{STR}{P}{0}{1d6 + \intcalcAdd{0}{\calculateModifier{\StrengthScoreValue}} p}{Thrown (20/60), Versatile (1d8), Sap}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{Q}{\textbf{Fighting Style}\\Mobile Combatant}
+\AddClassFeature{B}{\textbf{Second Wind}\\Heal 1d10 + \intcalcAdd{0}{\LevelValue} Hit Points (3 Uses)}
+\AddClassFeature{Q}{\textbf{Weapon Mastery}\\Spear, Javelin, Sabre, Shortbow}
+\AddClassFeature{L}{\textbf{Action Surge}\\Additional Action (Once per Long Rest)}
+\AddClassFeature{L}{\textbf{Tactical Mind}\\Use Second Wind to add 1d10 to any Ability Check}
+\AddClassFeature{Q}{\textbf{Living Crucible}\begin{itemize}
+	\item[\CustomItemLabel{B}] Compound Creator\begin{itemize}
+		\item Fleshnit Phosphate
+		\item Spellshine Ointment
+		\item Tenmen Tincture
+	\end{itemize}
+	\item Student of Alchemy
+\end{itemize}}
+\AddClassFeature{Q}{\textbf{Extra Attack}}
+\AddClassFeature{Q}{\textbf{Tactical Shift}}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\You are a Construct.}
+\AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
+\AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Acrobatics Proficiency, Drum}
+\AddSpeciesFeature{E}{\textbf{Tireless}\\No Exhaustion from dehydration, malnutrition, or suffocation}
+% FEATS
+\AddFeat{\textbf{Savage Attacker}\\Roll damage die twice and choose one}
+\AddFeat{\textbf{Mobile Combatant}\\Slippery}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{1 Year}
+\Height{6'6''}
+\Weight{908lbs}
+\Eyes{Blue}
+\Skin{Steel}
+\Hair{}
+\CharacterAppearance{full-size} % (vertical/horizontal/full-size/none)
+	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/A_E_G_I_S-3.png} %
+	{}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Auchtertool Deepworks Corps}
+\OrganizationSymbol{images/Auchtertool_Deepworks_Corps.png}
+\AlliesAndOrganizations{
+	The Auchtertool Deepworks Corps is a specialized branch of the city's Artificer Guild tasked with exploring dangerous subterranean environments, recovering buried machinery, and investigating ruins or structures unsuitable for ordinary workers. Its expeditions are composed primarily of purpose-built constructs, each selected for a particular function such as excavation, surveying, arcane analysis, maintenance, or security. Deepworks teams are expected to operate independently in unstable and poorly understood environments, often far beyond the immediate reach of Auchtertool's artificers.\linebreak
+}{
+	Following the discovery of the passage beneath the central plaza, the Corps was entrusted with assembling a suitably equipped expedition to investigate what lay below.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	A.E.G.I.S-3 is built around a tall, agile warforged frame designed for rapid interception rather than brute-force defense. Reinforced armor plating protects its core systems without sacrificing mobility, while servo-assisted joints allow it to reposition quickly and react to threats with unusual precision. Integrated into its back is a compact Alchemical Crucible System, containing three sealed reservoirs for Spellshine Ointment, Tenmen Tincture, and Fleshknit Phosphate. Fine injector lines run beneath the armor and distribute each compound directly through the chassis when activated. These substances can temporarily harden its plating, enhance its physical response, or accelerate repairs to damaged components. Its entire construction reflects a military design philosophy centered on speed, controlled aggression, and protecting allies before a threat can reach them.
+}
+
+% BACKGROUND
+\Characterbackground{
+	A.E.G.I.S-3 was created as part of Auchtertool's Alchemically Enhanced Guardian \& Intervention Sentinel program, a military initiative intended to combine warforged durability with rapid-response battlefield tactics and experimental alchemical augmentation. Unlike heavier security constructs, A.E.G.I.S.-3 was designed to intercept threats quickly, protect vulnerable personnel, and remain effective during prolonged engagements through the use of its integrated Crucible System.
+
+	Its abilities were tested under genuine combat conditions when A.E.G.I.S.-3 was deployed alongside the Questlords of Inverness during the struggle against the forces of the Dread-Witch Queen of Cellardyke. The engagement provided valuable field data and proved the effectiveness of both its combat protocols and alchemical systems.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Clockwork Songbird:} A tiny damaged mechanical bird recovered by A.E.G.I.S-3. Its song occasionally skips notes, but A.E.G.I.S.-3 refuses to have it replaced.\\\\
+	\textbf{Fragment of Witchglass:} A jagged piece of dark, violet glass taken from a shattered weapon used by the Dread-Witch Queen’s forces. A.E.G.I.S-3 keeps it as a reminder of threats already overcome.\\\\
+	\textbf{Unfinished Deck of Playing Cards:} A battered deck collected during downtime with soldiers and artificers. Several cards are missing, others bear handwritten rules, names, and scores from games played between deployments.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	I constantly assess entrances, exits, cover, and potential threats, even during otherwise peaceful conversations. I have developed a surprisingly competitive streak since fighting alongside living soldiers and enjoy turning drills, games, and friendly contests into serious competitions.
+}
+\Alignment{Lawful Good}
+
+\Ideals{
+	\textbf{Protection.} Victory means little if those you were assigned to protect do not survive to see it.
+}
+
+\Bonds{
+	Fighting beside the Questlords of Inverness taught A.E.G.I.S-3 that comrades are more than assigned personnel. Those who stand beside it in danger quickly earn its unwavering protection.
+}
+
+\Flaws{
+	A.E.G.I.S-3 struggles to accept retreat while others remain in danger. Once it identifies someone as requiring protection, convincing it to abandon that position becomes exceedingly difficult.
+}
+
+% LANGUAGES
+\Languages{Common}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Chain Shirt, 8 Javelins, Spear, Shortbow, 20 Arrows\\
+	Alchemist's Tools, Dice Set, Drum, Healer's Kit\\
+	Backpack, Caltrops, Crowbar, 2 flasks of Oil, Rope, Tinderbox, 10 Torches, Waterskin
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Intervention Sabre}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{}
+\SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Warforged Traits}
+\subsection*{Construct Resilience}
+You have Resistance to Poison damage. You also have Advantage on saving throws to avoid or end the Poisoned condition.
+\subsection*{Integrated Protection}
+You gain a +1 bonus to your Armor Class. In addition, armor you have donned can't be removed against your will while you're alive.
+\subsection*{Sentry's Rest}
+You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 6 hours if you spend those hours in an inactive, motionless state. During this time, you appear inert but remain conscious.
+\subsection*{Specialized Design}
+\textit{Acrobatics Proficiency, Drum Proficiency}\\
+You gain one skill proficiency and one tool proficiency of your choice.
+\subsection*{Tireless}
+You don't gain Exhaustion levels from dehydration, malnutrition, or suffocation.
+
+\section*{Feats}
+\subsection*{Savage Attacker}
+You've trained to deal particularly damaging strikes. Once per turn when you hit a target with a weapon, you can roll the weapon's damage dice twice and use either roll against the target.
+\subsection*{Mobile Combatant}
+You gain the following benefits.
+
+\paragraph*{Slippery} When you take the Attack action, your Speed increases by 10 feet and Opportunity Attacks have Disadvantage against you until the end of your turn.
+
+\section*{Fighter Traits}
+\subsection*{Fighting Style}
+\textbf{Mobile Combatant}\\
+You have honed your martial prowess and gain a Fighting Style feat of your choice. Defense is recommended.
+
+Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.
+\subsection*{Second Wind}
+\textbf{Heal: 1d10 + \intcalcAdd{0}{\LevelValue}, 3 Uses}\\
+You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your Fighter level.
+
+You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.
+
+When you reach certain Fighter levels, you gain more uses of this feature, as shown in the Second Wind column of the Fighter Features table.
+\subsection*{Weapon Mastery}
+\textbf{4 Weapon Masteries Known}\\
+Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.
+
+When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table.
+\subsubsection*{Sap (Spear)}
+If you hit a creature with this weapon, that creature has Disadvantage on its next attack roll before the start of your next turn.
+\subsubsection*{Slow (Javelin)}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+\subsubsection*{Swift (Sabre)}
+Swift weapons help you recover quickly from missed attacks. When you miss with a Swift weapon, you have Advantage on the first attack roll you make with the weapon against the same target before the end of your next turn. If that attack hits, it also deals an extra 1d4 damage of the weapon's normal damage type.
+\subsubsection*{Vex (Shortbow)}
+If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+\subsection*{Action Surge}
+You can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action, except the Magic action.
+
+Once you use this feature, you can't do so again until you finish a Short or Long Rest. Starting at level 17, you can use it twice before a rest but only once on a turn.
+\subsection*{Tactical Mind}
+You have a mind for tactics on and off the battlefield. When you fail an ability check, you can expend a use of your Second Wind to push yourself toward success. Rather than regaining Hit Points, you roll 1d10 and add the number rolled to the ability check, potentially turning it into a success. If the check still fails, this use of Second Wind isn't expended.\\
+\subsection*{Living Crucible}
+\subsubsection*{Compound Creator}
+You learn to create alchemical compounds toxic to others but empowering to you.
+
+\paragraph*{Compounds} You learn three compounds of your choice from the "Compound Options" section below. You learn two additional compounds of your choice when you reach Fighter levels 7, 10, and 15. Each time you learn new compounds, you can also replace one compound you know with a different one.
+\subparagraph*{Fleshknit Phosphate} For 1 minute, you regain Hit Points equal to your Proficiency Bonus at the start of each of your turns if you have at least 1 Hit Point.
+\subparagraph*{Spellshine Ointment} For 1 minute, you have Resistance to Force, Necrotic, Psychic, and Radiant damage.
+\subparagraph*{Tenmen Tincture} For 1 hour, you count as one size larger when determining your carrying capacity, and when you attack with a Melee weapon whose mastery property you can use, you can replace that property with the Topple property for that attack.
+\paragraph*{Creating} Whenever you finish a Long Rest while holding Alchemist's Supplies, you can use that tool to magically produce any number of compounds. The compound appears in a vial, and the vial vanishes when the compound is consumed or poured out. If any compound remains when you finish a Long Rest, the compound and its vial vanish.
+\paragraph*{Consuming} As a Bonus Action, you can consume one compound. You can consume a number of compounds up to one plus your Constitution modifier (minimum of one). Once you reach this limit, you cannot benefit from more compounds until you finish a Long Rest.
+
+You can benefit from multiple compounds at the same time, but consuming multiple vials of the same compound provides no additional effects.
+
+Only you can benefit from your compounds. Any other creature that consumes a compound must succeed on a Constitution saving throw (DC 8 plus your Intelligence modifier plus Proficiency Bonus) or have the Poisoned condition for 1 minute.
+\subsubsection*{Student of Alchemy}
+Your long nights of vigilance have left your senses attuned to signs of danger, granting you the following benefits.
+
+You gain Alchemist's Supplies, and you have proficiency with it. In addition, your Proficiency Bonus is doubled for ability checks with Alchemist's Supplies.\\
+\subsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn.
+\subsection*{Tactical Shift}
+Whenever you activate your Second Wind with a Bonus Action, you can move up to half your Speed without provoking Opportunity Attacks.
+
+\part*{Magic Items}
+\subsection*{Intervention Sabre}
+\textit{Weapon (Sabre), Rare (requires Attunement by a Warforged)}\\
+\textbf{Damage:} 1d8 Slashing\\
+\textbf{Properties:} Finesse\\
+\textbf{Weapon Mastery:} Swift\\
+You gain a +1 bonus to attack and damage rolls made with this magic weapon.\\
+\paragraph*{Threat Designation} When you hit a creature with the Intervention Sabre, you can designate it as a threat until the start of your next turn. While designated, the creature has Disadvantage on attack rolls against creatures other than you.\\
+\paragraph*{Intervention Protocol} When a creature designated by the sabre makes an attack against another creature, you can use your Reaction to move up to half your Speed toward it without provoking Opportunity Attacks. If you end this movement within reach of the designated creature, you can make one attack against it with the Intervention Sabre as part of the same Reaction.
+
+\end{document}

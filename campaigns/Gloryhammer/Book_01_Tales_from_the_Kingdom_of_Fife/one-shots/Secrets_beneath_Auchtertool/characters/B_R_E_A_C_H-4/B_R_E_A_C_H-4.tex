@@ -1,0 +1,456 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{B.R.E.A.C.H-4}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Barbarian}
+\Subclass{Path of the Experiment}
+\Background{Experiment}
+\Race{Autognome}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{5} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{16}
+\DexterityRolledScore{13}
+\ConstitutionRolledScore{14}
+\IntelligenceRolledScore{10}
+\WisdomRolledScore{9}
+\CharismaRolledScore{12}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{2}		% +2 Experiment Background
+\DexterityScoreBonus{1}		% +1 ASI
+\ConstitutionScoreBonus{2}	% +1 Experiment Background, +1 ASI
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{P}
+\DexterityProficiency{}
+\ConstitutionProficiency{P}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{P}		% Barbarian Class
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{P}			% Experiment Background
+\PerceptionProficiency{P}		% Barbarian Class
+\SurvivalProficiency{P}			% Primal Knowledge
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{P}		% Experiment Background
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{40}
+
+% SIZE
+\Size{Small}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
+\ArmorClass{\intcalcAdd{13}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{37} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d12}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Alchemist's Supplies, Carpenter's Tools, Mason's Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Drill Arm}{B.R.E.A.C.H-4}{STR}{P}{+1}{1d10 + \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} p}{Heavy, Special, Graze}
+\addWeaponStatistic{Drill Arm (Momentum 1)}{B.R.E.A.C.H-4}{STR}{P}{+2}{1d10 + \intcalcAdd{2}{\calculateModifier{\StrengthScoreValue}} p}{Heavy, Special, Graze}
+\addWeaponStatistic{Drill Arm (Momentum 2)}{B.R.E.A.C.H-4}{STR}{P}{+3}{1d10 + \intcalcAdd{3}{\calculateModifier{\StrengthScoreValue}} p}{Heavy, Special, Graze}
+\addWeaponStatistic{Drill Arm (Momentum 3)}{B.R.E.A.C.H-4}{STR}{P}{+4}{1d10 + \intcalcAdd{4}{\calculateModifier{\StrengthScoreValue}} p}{Heavy, Special, Graze}
+\addWeaponStatistic{Bearded Axe}{B.R.E.A.C.H-4}{STR}{P}{0}{1d10 + \intcalcAdd{0}{\calculateModifier{\StrengthScoreValue}} s}{Heavy, Cleave}
+\addWeaponStatistic{Javelin}{B.R.E.A.C.H-4}{STR}{P}{0}{1d6 + \intcalcAdd{0}{\calculateModifier{\StrengthScoreValue}} p}{Thrown (30/120), Slow}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{B.R.E.A.C.H-4}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{B}{\textbf{Rage}\\3 Uses, +2 Rage Damage}
+\AddClassFeature{Q}{\textbf{Weapon Mastery}\\Drill Arm, Javelin, Bearded Axe}
+\AddClassFeature{Q}{\textbf{Danger Sense}\\Advantage on Dexterity Saving Throws}
+\AddClassFeature{Q}{\textbf{Reckless Attack}}
+\AddClassFeature{Q}{\textbf{Path of the Experiment}\begin{itemize}
+	\item Alchemical Experiments
+	\item[\CustomItemLabel{B}] Volatile Serum
+\end{itemize}}
+\AddClassFeature{Q}{\textbf{Primal Knowledge}\\Survival Proficiency}
+% SPECIES TRAITS
+\AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to Attack Roll, Ability Check, or Saving Throw (\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses)}}
+\AddSpeciesFeature{E}{\textbf{Healing Machine}\\Mending regenerates Hit Die + CON modifier HP; healing spells affect you}
+\AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\Resistance against Poison Damage\\Advantage vs. Poisoned/Paralyzed}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Carpenter's and Mason's Tools}
+% FEATS
+\AddFeat{\textbf{Altered Armor Casing}\\AC: \intcalcAdd{13}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{6 years}
+\Height{4'3''}
+\Weight{1'240 lbs}
+\Eyes{Cyan}
+\Skin{Iron}
+\Hair{}
+\CharacterAppearance{full-size} % (vertical/horizontal/full-size/none)
+	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/B_R_E_A_C_H-4.png} %
+	{}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Auchtertool Deepworks Corps}
+\OrganizationSymbol{images/Auchtertool_Deepworks_Corps.png}
+\AlliesAndOrganizations{
+	The Auchtertool Deepworks Corps is a specialized branch of the city's Artificer Guild tasked with exploring dangerous subterranean environments, recovering buried machinery, and investigating ruins or structures unsuitable for ordinary workers. Its expeditions are composed primarily of purpose-built constructs, each selected for a particular function such as excavation, surveying, arcane analysis, maintenance, or security. Deepworks teams are expected to operate independently in unstable and poorly understood environments, often far beyond the immediate reach of Auchtertool's artificers.\linebreak
+}{
+	Following the discovery of the passage beneath the central plaza, the Corps was entrusted with assembling a suitably equipped expedition to investigate what lay below.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	B.R.E.A.C.H-4 is built around a compact but extraordinarily dense reinforced chassis, allowing the excavation construct to withstand impacts that would cripple lighter machines. Its right arm terminates in a powerful drill originally designed for boring through stone and collapsed masonry, while its broad feet and low centre of gravity keep it stable on uneven ground. Mounted across its upper back is an array of Alchemical Injectors - reinforced glass reservoirs held within brass-and-iron frames, each containing a different experimental compound. When activated, these fluids are forced directly into B.R.E.A.C.H-4's internal mechanisms, temporarily altering its performance. Some accelerate its actuators to violent speeds, others trigger hidden expansion assemblies that enlarge the entire chassis, while restorative compounds circulate through damaged machinery and seal fractures from within.
+}
+
+% BACKGROUND
+\Characterbackground{
+	B.R.E.A.C.H-4 was constructed in the foundries of Auchtertool as the fourth prototype of the Boulder Removal, Excavation \& Automated Clearance Heavyframe series. Designed for work in mines, collapsed tunnels, and unstable construction sites, the compact construct combines immense physical strength with a reinforced chassis capable of enduring falling stone, crushing pressure, and the considerable recoil of its integrated drill.
+
+	Unlike earlier B.R.E.A.C.H. models, Unit 4 was selected for a series of experimental modifications intended to improve the versatility of Auchtertool's industrial constructs. Its internal machinery was fitted with an array of Alchemical Injectors, allowing specially prepared compounds to temporarily alter its performance far beyond normal operating limits. Although the system has proven remarkably effective, its long-term reliability remains the subject of ongoing study.
+
+	With Auchtertool now preparing its machines for war, B.R.E.A.C.H.-4 has been reassigned from ordinary excavation duties to increasingly hazardous operations. When a forgotten passage was discovered beneath the central plaza, few constructs were better suited to clearing unstable tunnels and forcing a path through whatever might await below.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Prototype Identification Plate:} A scratched brass plate bearing B.R.E.A.C.H-4's original designation, production number, and activation date. Removed during an early refit, it is carefully polished and kept as a record of its beginnings.\\\\
+	\textbf{Foreman's Brass Token:} A small token once belonging to the artificer who supervised B.R.E.A.C.H-4's first assignments. It was gifted after both survived a dangerous tunnel collapse and has been kept ever since.\\\\
+	\textbf{Polished Stone Fragment:} A piece of dark stone taken from the first tunnel B.R.E.A.C.H-4 helped excavate. One side has been polished smooth over the years, serving as a simple reminder of its earliest work.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	I approach every obstacle as an engineering problem: assess it, find the weakest point, and keep applying force until it yields. I take great pride in being useful. Downtime makes me restless, and I am usually searching for something that needs lifting, repairing, clearing, or breaking.
+}
+\Alignment{Lawful Good}
+
+\Ideals{
+	\textbf{Persistence.} No obstacle is truly impassable. Given enough time, effort, and properly applied force, a way forward can always be found.
+}
+
+\Bonds{
+	The Deepworks Corps gave him a purpose beyond excavation. It considers every expedition member part of its assigned crew and refuses to abandon them while it remains operational.
+}
+
+\Flaws{
+	He has excessive confidence in its reinforced construction and frequently underestimates danger, assuming that most hazards can be overcome through persistence or greater force.
+}
+
+% LANGUAGES
+\Languages{Common, Gnomish}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Bearded Axe, 12 Javelins\\
+	Alchemist's Supplies, Carpenter's Tools, Mason's Tools\\
+	Backpack, Bedroll, 2 flasks of Oil, Rope, Tinderbox, 10 Torches, Waterskin
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Drill Arm}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{}
+\SpellcastingAbility{None} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Autognome Traits}
+\subsection*{Built for Success}
+You can add a d4 to one attack roll, ability check, or saving throw you make, and you can do so after seeing the d20 roll but before the effects of the roll are resolved. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+\subsection*{Healing Machine}
+If the Mending spell is cast on you, you can spend a Hit Die, roll it, and regain a number of hit points equal to the roll plus your Constitution modifier (minimum of 1 hit point). In addition, your creator designed you to benefit from several spells that preserve life but that normally don't affect Constructs: Cure Wounds, Healing Word, Mass Cure Wounds, Mass Healing Word, and Spare the Dying.
+\subsection*{Mechanical Nature}
+You have resistance to poison damage and immunity to disease, and you have advantage on saving throws against being paralyzed or poisoned. You don't need to eat, drink, or breathe.
+\subsection*{Sentry's Rest}
+When you take a long rest, you spend at least 6 hours in an inactive, motionless state, instead of sleeping. In this state, you appear inert, but you remain conscious.
+
+\section*{Feats}
+\subsection*{Altered Armored Casing (DM)}
+\textbf{Base AC: \intcalcAdd{13}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}}\\
+You are encased in  durable material which has been enhanced with science even further. While you aren't wearing armor, your base Armor Class is 13 + your Dexterity modifier + Constitution modifier.\\
+\textit{(Experiment Background (Altered) + Autognome (Armored Casing) + Barbarian (Unarmored Defense))}
+
+\section*{Barbarian Traits}
+\subsection*{Rage}
+\textbf{Rages: 3, Rage Damage: +2}\\
+You can imbue yourself with a primal power called Rage, a force that grants you extraordinary might and resilience. You can enter it as a Bonus Action if you aren't wearing Heavy armor.
+
+You can enter your Rage the number of times shown for your Barbarian level in the Rages column of the Barbarian Features table. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.
+
+While active, your Rage follows the rules below.
+
+\paragraph*{Damage Resistance} You have Resistance to Bludgeoning, Piercing, and Slashing damage.
+
+\paragraph*{Rage Damage} When you make an attack using Strength - with either a weapon or an Unarmed Strike - and deal damage to the target, you gain a bonus to the damage that increases as you gain levels as a Barbarian, as shown in the Rage Damage column of the Barbarian Features table.
+
+\paragraph*{Strength Advantage} You have Advantage on Strength checks and Strength saving throws.
+
+\paragraph*{No Concentration or Spells} You can't maintain Concentration, and you can't cast spells.
+
+\paragraph*{Duration} The Rage lasts until the end of your next turn, and it ends early if you don Heavy armor or have the Incapacitated condition. If your Rage is still active on your next turn, you can extend the Rage for another round by doing one of the following:
+\begin{itemize}
+	\item Make an attack roll against an enemy.
+	\item Force an enemy to make a saving throw.
+	\item Take a Bonus Action to extend your Rage.
+\end{itemize}
+
+Each time the Rage is extended, it lasts until the end of your next turn. You can maintain a Rage for up to 10 minutes.
+\subsection*{Weapon Mastery}
+Your training with weapons allows you to use the mastery properties of two kinds of Simple or Martial Melee weapons of your choice, such as Greataxes and Handaxes. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.
+
+When you reach certain Barbarian levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Barbarian Features table.
+\subsubsection*{Graze (Drill Arm)}
+If your attack roll with this weapon misses a creature, you can deal damage to that creature equal to the ability modifier you used to make the attack roll. This damage is the same type dealt by the weapon, and the damage can be increased only by increasing the ability modifier.
+\subsubsection*{Slow (Javelin)}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+\subsubsection*{Cleave (Ferocity, Bearded Axe)}
+If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit, the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless that modifier is negative. You can make this extra attack only once per turn.
+\subsection*{Danger Sense}
+You gain an uncanny sense of when things aren't as they should be, giving you an edge when you dodge perils. You have Advantage on Dexterity saving throws unless you have the Incapacitated condition.
+\subsection*{Reckless Attack}
+You can throw aside all concern for defense to attack with increased ferocity. When you make your first attack roll on your turn, you can decide to attack recklessly. Doing so gives you Advantage on attack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage during that time.
+\subsection*{Path of the Experiment}
+\subsubsection*{Alchemical Experiments}
+You gain a set of Alchemist's Supplies, and you have proficiency with it. Additionally, you can use Alchemist's Supplies instead of an Herbalism Kit to craft Potions of Healing.
+\subsubsection*{Volatile Serum}
+You have an implanted series of syringes and reservoirs that hold alchemical serums and deploy them into your body. When you enter your Rage, choose one of your serums to inject and gain its benefits.
+
+The chosen serum lasts for the duration of your Rage, or until you choose a new serum as a Bonus Action. You have the following serum options.
+
+\paragraph*{Ferocity} This serum throws you into an energized frenzy. You ignore Difficult Terrain, and when you hit with a Melee weapon or Unarmed Strike, you can activate the Cleave mastery property in addition to a different mastery property you're using.
+
+\paragraph*{Monstrosity} The serum expands your body to monstrous proportions and can change your appearance in cosmetic ways, such as by altering facial features, skin tone, and hair length or color. Your reach increases by 5 feet, and once per turn when you miss with an attack roll that relies on Strength, you can add your Rage Damage bonus to the total, potentially causing the attack to hit. If you are smaller than Large, you become Large, along with anything you are wearing or carrying. If there isn't enough room to accommodate the size change, your size doesn't change.
+
+\paragraph*{Reconstruction} The serum dulls pain and forces wounds to rapidly knit. Upon activation and at the start of each of your turns, you can expend and roll a Hit Points Die. You regain a number of Hit Points equal to the number rolled plus your Constitution modifier (minimum of 1 Hit Point). You gain any excess beyond your Hit Point maximum as Temporary Hit Points.
+
+If you take Acid or Fire damage, this serum doesn't function at the start of your next turn.
+\subsection*{Primal Knowledge}
+\textbf{Survival Proficiency}\\
+You gain proficiency in another skill of your choice from the skill list available to Barbarians at level 1.
+
+In addition, while your Rage is active, you can channel primal power when you attempt certain tasks; whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability: Acrobatics, Intimidation, Perception, Stealth, or Survival. When you use this ability, your Strength represents primal power coursing through you, honing your agility, bearing, and senses.
+\subsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn.
+\subsection*{Primal Knowledge}
+Your speed increases by 10 feet while you aren't wearing Heavy armor.
+
+\part*{Magic Items}
+\subsection*{Drill Arm}
+\textit{Weapon (integrated Martial Melee Weapon), Rare (requires Attunement by a Construct)}\\
+\textbf{Damage:} 1d10 Piercing\\
+\textbf{Weapon Mastery:} Graze\\
+This massive rotary drill was developed for heavy excavation, allowing its wielder to tear through compact earth, collapsed passages, and even solid masonry. Reinforced gears and high-pressure actuators allow the drill to continuously build rotational speed while striking, making prolonged engagement increasingly dangerous.\\\\
+While attuned to the Drill Arm, it replaces one of your arms. That arm cannot be used to hold or manipulate objects or perform any other function requiring a hand.\\\\
+You gain a +1 bonus to attack and damage rolls made with this magic weapon.\\
+\paragraph*{Rotary Momentum} The Drill Arm builds rotational force as it remains engaged in combat. Whenever you hit a creature with the Drill Arm, its Momentum increases by 1, to a maximum of 3. Whenever you miss with an attack using the Drill Arm, its Momentum decreases by 1. You gain an additional bonus to attack and damage rolls made with the Drill Arm equal to its current Momentum. If you make no attacks with the Drill Arm during your turn, its Momentum immediately returns to 0.\\
+\paragraph*{Excavation Drill} While the Drill Arm is attached, you gain a Burrow Speed equal to half your Speed through nonmagical earth, sand, clay, rubble, and similarly loose material.
+
+Outside combat, the Drill Arm can also slowly bore through nonmagical stone and masonry. Given sufficient time, it can create passages through such material, with the required time determined by the DM based on its thickness and construction.
+
+\end{document}

@@ -1,0 +1,675 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{S.C.O.U.T-1}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Ranger}
+\Subclass{Gloom Stalker}
+\Background{Night Stalker}
+\Race{Harvestborn}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{5} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{9}
+\DexterityRolledScore{14}
+\ConstitutionRolledScore{14}
+\IntelligenceRolledScore{8}
+\WisdomRolledScore{16}
+\CharismaRolledScore{12}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{1}		% +1 Night Stalker
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{4}		% +2 Night Stalker, +2 ASI
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{P}
+\DexterityProficiency{P}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{P}			% Night Stalker
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{P}			% Night Stalker
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}			% Ranger Class
+\MedicineProficiency{}
+\PerceptionProficiency{E}		% Ranger Class, Deft Explorer
+\SurvivalProficiency{P}			% Ranger Class
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{\calculateModifier{\WisdomScoreValue}}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
+\ArmorClass{\intcalcAdd{12}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{26} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d10}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Leatherworker's Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Parallax Crossbow}{S.C.O.U.T-1}{DEX}{P}{1}{1d6 + \intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}} p}{Ranged (80/320), Light, Loading, Slow}
+\addWeaponStatistic{Scythe}{S.C.O.U.T-1}{STR}{P}{0}{1d10 \intcalcAdd{0}{\calculateModifier{\StrengthScoreValue}} s}{Reach, Two-Handed, Cleave}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{L}{\textbf{Favored Enemy}\\Free Hunter's Mark (3 per Long Rest)}%
+\AddClassFeature{E}{\textbf{Weapon Mastery}\\Light Crossbow, Scythe}%
+\AddClassFeature{E}{\textbf{Deft Explorer}\\Perception Expertise, 2 Languages}%
+\AddClassFeature{L}{\textbf{Dread Ambusher}%
+\begin{itemize}%
+	\item Ambusher's Leap%
+	\item Dreadful Strike (\intcalcAdd{0}{\calculateModifier{\WisdomScoreValue}} Uses)%
+	\item Initiative Bonus%
+\end{itemize}%
+}%
+\AddClassFeature{E}{\textbf{Umbral Sight}\\Darkvision 60 feet}
+\AddClassFeature{E}{\textbf{Extra Attack}}
+% SPECIES TRAITS
+\AddSpeciesFeature{L}{\textbf{Culling} (\intcalcAdd{0}{\ProficiencyValue} Uses / LR)\\Deal additional 1d12 Necrotic damage to Bloodied creatures}
+\AddSpeciesFeature{B}{\textbf{Gift of the Green} (\intcalcAdd{0}{\ProficiencyValue} Uses / LR)\\Creature within 30 feet regains Hit Dice + \intcalcAdd{0}{\ProficiencyValue} HP}
+\AddSpeciesFeature{Q}{\textbf{Jack-O-Lantern}\\Know Dancing Lights Cantrip}
+\AddSpeciesFeature{Q}{\textbf{Scarecrow Nature}\\Don't require air, food, or drink}
+\AddSpeciesFeature{Q}{\textbf{Watchful Rest}\\Don't need to sleep and Magic can't put you to sleep; 4 Hour Long Rest}
+% FEATS
+\AddFeat{\textbf{Hunter of Hunters}\begin{itemize}
+	\item[\CustomItemLabel{B}] Dead Aim
+	\item Studied Quarry
+\end{itemize}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{15 Years}
+\Height{6'6''}
+\Weight{190 lbs}
+\Eyes{Yellow}
+\Skin{Wood}
+\Hair{}
+\CharacterAppearance{full-size} % (vertical/horizontal/full-size/none) !Full-Size will distort image to fit entire field!
+	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/S_C_O_U_T-1.png} %
+	{}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Auchtertool Deepworks Corps}
+\OrganizationSymbol{images/Auchtertool_Deepworks_Corps.png}
+\AlliesAndOrganizations{
+	The Auchtertool Deepworks Corps is a specialized branch of the city's Artificer Guild tasked with exploring dangerous subterranean environments, recovering buried machinery, and investigating ruins or structures unsuitable for ordinary workers. Its expeditions are composed primarily of purpose-built constructs, each selected for a particular function such as excavation, surveying, arcane analysis, maintenance, or security. Deepworks teams are expected to operate independently in unstable and poorly understood environments, often far beyond the immediate reach of Auchtertool's artificers.\linebreak
+}{
+	Following the discovery of the passage beneath the central plaza, the Corps was entrusted with assembling a suitably equipped expedition to investigate what lay below.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	S.C.O.U.T-1 still bears many signs of its original life as an agricultural construct. Its weathered frame is patched with mismatched metal plates, old mounting points, and remnants of straw and cloth once used to give it the appearance of a field scarecrow. Over decades of field service, these simple components were gradually replaced or supplemented by improvised reconnaissance equipment. Its head now houses an extensive sensory array capable of tracking movement, heat, sound, and subtle environmental changes with remarkable precision. Retractable under-forearm crossbows have been fitted beneath both arms, allowing the hands to remain fully functional while providing immediate ranged support. Numerous pouches, climbing hooks, survey tools, and camouflage materials hang from its frame, while a dark, weathered cloak helps break up its silhouette. Almost every modification appears hand-fitted rather than factory-made, giving S.C.O.U.T-1 the unmistakable appearance of a machine that has been continually adapted rather than replaced.
+}
+
+% BACKGROUND
+\Characterbackground{
+	Originally designated FC-17, S.C.O.U.T-1 was among the first generation of constructs built in Auchtertool roughly two decades ago. Created as a simple agricultural machine, FC-17 spent its earliest years tending fields, hauling equipment, and standing watch over crops. As newer and more sophisticated farming constructs gradually replaced the ageing model, its durable frame was spared from dismantling and instead repurposed for reconnaissance.
+
+	Over the following years, FC-17 was repeatedly modified with improved sensors, stealth equipment, surveying tools, and concealed weaponry until little remained of its original purpose beyond the weathered scarecrow-like frame. Reclassified as S.C.O.U.T-1, it became one of Auchtertool's most experienced surveillance units, serving in covert missions and long-range reconnaissance throughout the region. Among its most significant successes was helping locate the Dread-Witch Queen of Cellardyke's hidden refuge within Ravenscraig Castle, providing crucial intelligence for the campaign against her forces.
+
+	Though technologically outdated by modern Auchtertool standards, S.C.O.U.T-1 remains in active service because few newer constructs can match the field experience it has accumulated over years of observation, infiltration, and survival.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Old Harvest Charm:} A small bundle of dried grain bound with faded twine, once tied to FC-17 by a farmer for good fortune during harvest season. S.C.O.U.T-1 never removed it.\\\\
+	\textbf{Surveyor's Brass Compass:} A battered, manually calibrated compass carried during countless reconnaissance missions. Its casing is dented and scratched, but S.C.O.U.T-1 still trusts it more than newer digital instruments.\\\\
+	\textbf{Box of Survey Tokens:} A worn tin containing dozens of tiny numbered brass markers from past expeditions. Each corresponds to a route, observation post, hidden passage, or location S.C.O.U.T-1 once surveyed.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	I rarely speak unless I have something useful to report, preferring to observe an area thoroughly before drawing attention to myself. I trust experience over specifications. Newer constructs may possess better instruments, but I have learned that the smallest irregularity is often the most important clue.
+}
+\Alignment{Neutral Good}
+
+\Ideals{
+	\textbf{Awareness.} Most dangers announce themselves long before they strike. Survival depends on noticing the signs others overlook.
+}
+
+\Bonds{
+	Auchtertool has changed enormously since FC-17 first entered service, yet S.C.O.U.T-1 still considers its fields, tunnels, roads, and people worth watching over.
+}
+
+\Flaws{
+	S.C.O.U.T-1 is slow to trust unfamiliar methods or newer technology, often relying on old habits and personal experience even when a modern solution might be more efficient.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish, Gnomish}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Scythe, Studded Leather Armor\\
+	Leatherworker's Tools, Druidic Focus\\
+	Backpack, Bedroll, 2 flasks of Oil, Rope, Tinderbox, 10 Torches, Waterskin
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Parallax Crossbows}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Ranger}
+\SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{2}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Dancing Lights}
+	{Action}
+	{120 Feet}
+	{T}
+	{}
+	{T}
+	{Magical Torch}
+	{V, S, M}
+	
+\addPreparedSpell{1}
+	{Acrid Orb}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Chameleon Skin}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Disguise Self}
+	{Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S, 1 Hour}
+	{V, S}
+\addPreparedSpell{1}
+	{Hail of Thorns}
+	{Bonus Action}
+	{Self}
+	{}
+	{}
+	{}
+	{Verbal}
+	{V}
+\addPreparedSpell{1}
+	{Hunter's Mark}
+	{Bonus Action}
+	{90 Feet}
+	{T}
+	{}
+	{}
+	{V, 3 times free / LR}
+	{V}
+\addPreparedSpell{1}
+	{Shroud Blood}
+	{Action}
+	{30 Feet}
+	{T}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+	
+\addPreparedSpell{2}
+	{Cordon of Arrows}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 8 Hour}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Find Traps}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+\addPreparedSpell{2}
+	{Rope Trick}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Harvestborn Traits}
+\subsection*{Culling}
+When you damage a Bloodied creature, you can deal an extra 1d12 Necrotic damage to it. You can use this trait a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.
+\subsection*{Gift of the Green}
+As a Bonus Action, you can touch the ground and choose a creature also touching the ground within 30 feet of yourself. That creature can expend and roll one Hit Points Die, and it regains a number of Hit Points equal to the number rolled plus your Proficiency Bonus. You can use this trait a number of times equal to your Proficiency Bonus. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.
+\subsection*{Jack-O-Lantern}
+You know the Dancing Lights cantrip. Intelligence, Wisdom, or Charisma is your spellcasting ability for it (choose the ability when you select this species).
+\subsection*{Scarecrow Nature}
+You don't require air, food, or drink.
+\subsection*{Watchful Rest}
+You don't need to sleep, and magic can't put you to sleep. Moreover, you can finish a Long Rest in 4 hours if you spend those hours in an inactive, motionless state, during which you retain consciousness.\\
+
+\section*{Feats}
+\subsection*{Hunter of Hunters}
+You are adept at hunting monstrous prey, granting you the following benefits.
+\paragraph*{Dead Aim} As a Bonus Action, you can scrutinize a creature to spot its vulnerable points. The next time you deal damage to the creature before the start of your next turn, you ignore the creature's damage Resistances, if any.
+\paragraph*{Studied Quarry} You have Advantage on ability checks made to recall information about a creature.
+
+\section*{Ranger Traits}
+\subsection*{Favored Enemy}
+\textbf{3 Uses per Long Rest}\\
+You always have the \textit{Hunter's Mark} spell prepared. You can cast it twice without expending a spell slot, and you regain all expended uses of this ability when you finish a Long Rest.
+\subsection*{Weapon Mastery}
+Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords.
+
+Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Longswords
+\subsubsection*{Light Crossbow (Slow)}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+\subsubsection*{Scythe (Cleave)}
+If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit, the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless that modifier is negative. You can make this extra attack only once per turn.
+\subsection*{Deft Explorer}
+\textit{Perception Expertise, Dwarvish, Undercommon}\\
+Thanks to your travels, you gain the following benefits.
+\paragraph*{Expertise} Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in that skill.
+\paragraph*{Languages} You know two languages of your choice from the language tables in chapter 2.
+\subsection*{Fighting Style}
+You gain a Fighting Style feat of your choice.
+\subsubsection*{Archery}
+You gain a +2 bonus to attack rolls you make with Ranged weapons.
+\subsection*{Gloom Stalker}
+\textit{Draw on Shadow Magic to Fight Your Foes}
+\subsubsection*{Dread Ambusher}
+You have mastered the art of creating fearsome ambushes, granting you the following benefits.
+\paragraph*{Ambusher's Leap} At the start of your first turn of each combat, your Speed increases by 10 feet until the end of that turn.
+\paragraph*{Dreadful Strike} When you attack a creature and hit it with a weapon, you can deal an extra 2d6 Psychic damage. You can use this benefit only once per turn, you can use it a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest. (\intcalcAdd{0}{\calculateModifier{\WisdomScoreValue}} Uses)
+\paragraph*{Initiative Bonus} When you roll Initiative, you can add your Wisdom modifier to the roll.
+\subsubsection*{Gloom Stalker Spells}
+When you reach a Ranger level specified in the Gloom Stalker Spells table, you thereafter always have the listed spells prepared.
+\begin{DndTable}[header=Gloom Stalker Spells]{llX}
+			& \textbf{Ranger Level}  &\textbf{Spells}			\\
+$\bullet$	& 3rd						&Disguise Self			\\
+$\bullet$	& 5th						&Rope Trick				\\
+			& 9th						&Fear					\\
+			& 13th						&Greater Invisibility	\\
+			& 17th						&Seeming				\\
+\end{DndTable}
+\subsubsection*{Umbral Sight}
+You gain Darkvision with a range of 60 feet. If you already have Darkvision when you gain this feature, its range increases by 60 feet.
+
+You are also adept at evading creatures that rely on Darkvision. While entirely in Darkness, you have the Invisible condition to any creature that relies on Darkvision to see you in that darkness.
+\subsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn.
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader{Dancing Lights}
+	{Illusion Cantrip}
+	{Action}
+	{120 Feet}
+	{V, S, M (a bit of phosphorus)}
+	{Concentration, up to 1 Minute}
+
+You create up to four torch-size lights within range, making them appear as torches, lanterns, or glowing orbs that hover for the duration. Alternatively, you combine the four lights into one glowing Medium form that is vaguely humanlike. Whichever form you choose, each light sheds Dim Light in a 10-foot radius.
+
+As a Bonus Action, you can move the lights up to 60 feet to a space within range. A light must be within 20 feet of another light created by this spell, and a light vanishes if it exceeds the spell's range.
+
+\subsection*{Level 1}
+
+\DndSpellHeader{Acrid Orb}
+	{1st-Level Evocation}
+	{Action}
+	{60 Feet}
+	{V, S, M (a vial of stomach acid and a pinch of sulfate)}
+	{Instantaneous}
+
+You create an orb of acid gel and fling it at one creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2d6 acid damage. Whether the attack hits or misses, the orb explodes. The target and each creature within 5 feet of it must succeed on a Dexterity saving throw or take 2d6 acid damage.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the exploding acid damage increases by 1d6 for each slot level above 1st.
+
+\DndSpellHeader{Chameleon Skin}
+	{1st-Level Biomancy}
+	{Action}
+	{Touch}
+	{V, S, M (red, yellow, and blue pigment)}
+	{Concentration, up to 10 Minutes}
+
+You imbue a creature you touch with pigment so that its skin, and anything it wears or carries, slowly shifts hues to match its surroundings For the duration, the target can take the Hide action as a bonus action on each of its turns, even when only lightly obscured
+
+If the target did not move during its last turn, creatures have disadvantage on any Wisdom (Perception) checks made to see the target Creatures who do not rely on sight, such as those with tremorsense, are immune to this effect.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.
+
+\DndSpellHeader{Chameleon Skin}
+	{1st-Level Biomancy}
+	{Action}
+	{Touch}
+	{V, S, M (red, yellow, and blue pigment)}
+	{Concentration, up to 10 Minutes}
+
+You imbue a creature you touch with pigment so that its skin, and anything it wears or carries, slowly shifts hues to match its surroundings For the duration, the target can take the Hide action as a bonus action on each of its turns, even when only lightly obscured
+
+If the target did not move during its last turn, creatures have disadvantage on any Wisdom (Perception) checks made to see the target Creatures who do not rely on sight, such as those with Tremorsense, are immune to this effect.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.
+
+\DndSpellHeader{Disguise Self}
+	{1st-Level Illusion}
+	{Action}
+	{Self}
+	{V, S}
+	{1 Hour}
+
+You make yourself - including your clothing, armor, weapons, and other belongings on your person - look different until the spell ends. You can seem 1 foot shorter or taller and can appear heavier or lighter. You must adopt a form that has the same basic arrangement of limbs as you have. Otherwise, the extent of the illusion is up to you.
+
+The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing.
+
+To discern that you are disguised, a creature must take the Study action to inspect your appearance and succeed on an Intelligence (Investigation) check against your spell save DC.
+
+\DndSpellHeader{Hail of Thorns}
+	{1st-Level Conjuration}
+	{Bonus Action, which you take immediately after hitting a creature with a Ranged weapon}
+	{Self}
+	{V}
+	{Instantaneous}
+
+As you hit the creature, this spell creates a rain of thorns that sprouts from your Ranged weapon or ammunition. The target of the attack and each creature within 5 feet of it make a Dexterity saving throw, taking 1d10 Piercing damage on a failed save or half as much damage on a successful one.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d10 for each spell slot level above 1.
+
+\DndSpellHeader{Hunter's Mark}
+	{1st-Level Divination}
+	{Bonus Action}
+	{90 Feet}
+	{V}
+	{Concentration, up to 1 Hour}
+
+You magically mark one creature you can see within range as your quarry. Until the spell ends, you deal an extra 1d6 Force damage to the target whenever you hit it with an attack roll. You also have Advantage on any Wisdom (Perception or Survival) check you make to find it.
+
+If the target drops to 0 Hit Points before this spell ends, you can take a Bonus Action to move the mark to a new creature you can see within range.
+
+\subparagraph*{Using a Higher-Level Spell Slot} Your Concentration can last longer with a spell slot of level 3-4 (up to 8 hours) or 5+ (up to 24 hours).
+
+\DndSpellHeader{Shroud Blood}
+	{1st-Level Illusion (Sangromancy)}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{Concentration, up to 10 Minutes}
+
+As part of casting this spell, you must expend one Hit Point Die or the spell automatically fails. You can choose yourself or a willing creature within 30 feet of yourself to have Advantage on Dexterity (Stealth) checks. When the target loses the Invisible condition, it can take a Reaction to gain the Invisible condition for a number of rounds equal to the number of Hit Point Dice expended to cast the spell. The target loses the Invisible condition immediately after it makes an attack roll, deals damage, or casts a spell.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target an additional creature for each spell slot level above 1.
+
+\subsection*{Level 2}
+
+\DndSpellHeader{Cordon of Arrows}
+	{1st-Level Transmutation}
+	{Action}
+	{Touch}
+	{V, S, M (four or more arrows or bolts)}
+	{8 Hours}
+
+You touch up to four nonmagical Arrows or Bolts and plant them in the ground in your space. Until the spell ends, the ammunition can't be physically uprooted, and whenever a creature other than you enters a space within 30 feet of the ammunition for the first time on a turn or ends its turn there, one piece of ammunition flies up to strike it. The creature must succeed on a Dexterity saving throw or take 2d4 Piercing damage. The piece of ammunition is then destroyed. The spell ends when none of the ammunition remains planted in the ground.
+
+When you cast this spell, you can designate any creatures you choose, and the spell ignores them.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The amount of ammunition that can be affected increases by two for each spell slot level above 2.
+
+\DndSpellHeader{Find Traps}
+	{1st-Level Divination}
+	{Action}
+	{120 Feet}
+	{V, S}
+	{Instantaneous}
+
+You sense any trap within range that is within line of sight. A trap, for the purpose of this spell, includes any object or mechanism that was created to cause damage or other danger. Thus, the spell would sense the Alarm or Glyph of Warding spell or a mechanical pit trap, but it wouldn't reveal a natural weakness in the floor, an unstable ceiling, or a hidden sinkhole.
+
+This spell reveals that a trap is present but not its location. You do learn the general nature of the danger posed by a trap you sense.
+
+\DndSpellHeader{Rope Trick}
+	{1st-Level Transmutation}
+	{Action}
+	{Touch}
+	{V, S, M (a segment of rope)}
+	{1 Hour}
+
+You touch a rope. One end of it hovers upward until the rope hangs perpendicular to the ground or the rope reaches a ceiling. At the rope's upper end, an Invisible 3-foot-by-5-foot portal opens to an extradimensional space that lasts until the spell ends. That space can be reached by climbing the rope, which can be pulled into or dropped out of it.
+
+The space can hold up to eight Medium or smaller creatures. Attacks, spells, and other effects can't pass into or out of the space, but creatures inside it can see through the portal. Anything inside the space drops out when the spell ends.
+
+\part*{Magic Items}
+\subsection*{Parallax Crossbows}
+\textit{Weapon (Pair of Integrated Crossbows), Rare (requires Attunement by a Construct)}\\
+\textbf{Damage:} 1d6 Piercing\\
+\textbf{Range:} 80/320 ft.\\
+\textbf{Properties:} Light, Loading\\
+\textbf{Weapon Mastery:} Slow\\
+The Parallax Crossbows are a matched pair of compact ranged weapons designed for reconnaissance constructs. Each crossbow is mounted beneath one forearm, leaving the wielder's hands completely free. Sophisticated targeting mechanisms link the two weapons together, allowing information gathered from one shot to guide the next and progressively narrow down a target's position.
+
+While attuned to the Parallax Crossbows, you gain a +1 bonus to attack and damage rolls made with them. The pair counts as a single magic item for the purpose of Attunement.\\
+\paragraph*{Integrated Loading System} Each crossbow contains its own internal ammunition feed and automatically loads its next bolt after being fired. You do not require a free hand to load either weapon. Each crossbow retains the Loading property and can therefore be fired only once as part of the same Action, Bonus Action, or Reaction. A creature with Extra Attack can consequently fire each crossbow once during the same Attack action.\\
+\paragraph*{Triangulation Protocol} When you hit a creature with either Parallax Crossbow, that creature becomes Surveyed until the start of your next turn. Only one creature can be Surveyed at a time; surveying another creature ends the effect on the previous target.
+
+While a creature is Surveyed, all attacks you make against it with either Parallax Crossbow ignore Half Cover and Three-Quarters Cover and deal an additional 1d6 Piercing damage on a hit. You also always know the creature's location while it is within 120 feet of you, it cannot become Hidden from you, and being Invisible does not impose Disadvantage on your attack rolls against it.
+
+\end{document}

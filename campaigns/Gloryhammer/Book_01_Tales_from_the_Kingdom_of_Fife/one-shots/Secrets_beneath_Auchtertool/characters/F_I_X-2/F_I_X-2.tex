@@ -1,0 +1,887 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{F.I.X-2}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Artificer}
+\Subclass{Battle Smith}
+\Background{Experiment}
+\Race{Autognome}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{5} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{11}
+\DexterityRolledScore{13}
+\ConstitutionRolledScore{12}
+\IntelligenceRolledScore{16}
+\WisdomRolledScore{10}
+\CharismaRolledScore{8}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{2}		% +1 Experiment Background
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{4}	% +2 Experiment Background, +2 ASI
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{P}
+\IntelligenceProficiency{P}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{P}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{P}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{P}
+\PerceptionProficiency{}
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{P}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
+\ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{30} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Alchemist's Supplies, Jeweler's Tools, Smith's Tools, Thieves' Tools, Tinker's Tools, Woodcarver's Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Field Arc-Riveter}{F.I.X-2}{INT}{P}{1}{1d8 + \intcalcAdd{1}{\calculateModifier{\IntelligenceScoreValue}} p}{}
+\addWeaponStatistic{Cutting Arc}{F.I.X-2}{INT}{P}{1}{3d6 Lightning}{Ranged (60 ft.), Use Charges}
+\addWeaponStatistic{Dagger}{F.I.X-2}{DEX}{P}{0}{1d4 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Finesse, Light, Thrown (20/60)}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{A}{\textbf{Tinker's Magic}}
+\AddClassFeature{Q}{\textbf{Replicate Magic Item}\begin{itemize}
+	\item Goggles of Night
+	\item Rope of Climbing
+	\item Sending Stones
+	\item Wand of Secrets
+\end{itemize}}
+\AddClassFeature{Q}{\textbf{Tools of the Trade}\begin{itemize}
+	\item Tool Proficiency
+	\item Weapon Crafting
+\end{itemize}}
+\AddClassFeature{Q}{\textbf{Battle Smith Spells}}
+\AddClassFeature{Q}{\textbf{Battle Ready}\begin{itemize}
+	\item Arcane Empowerment
+	\item Weapon Knowledge
+\end{itemize}}
+\AddClassFeature{Q}{\textbf{Steel Defender}}
+\AddClassFeature{Q}{\textbf{Extra Attack}}
+% SPECIES TRAITS
+\AddSpeciesFeature{Q}{\textbf{Armored Casing}\\AC: \intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+\AddSpeciesFeature{L}{\textbf{Built for Success}\\Add 1d4 to Attack Roll, Ability Check, or Saving Throw (\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses)}}
+\AddSpeciesFeature{E}{\textbf{Healing Machine}\\Mending regenerates Hit Die + CON modifier HP; healing spells affect you}
+\AddSpeciesFeature{E}{\textbf{Mechanical Nature}\\Resistance against Poison Damage\\Advantage vs. Poisoned/Paralyzed}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Jeweler's Tools, Woodcarver's Tools}
+% FEATS
+\AddFeat{\textbf{Altered}\\Darkvision 60 ft.}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{5 Years}
+\Height{3'2''}
+\Weight{72 lbs}
+\Eyes{Blue}
+\Skin{Brass}
+\Hair{}
+\CharacterAppearance{full-size} % (vertical/horizontal/full-size/none) !Full-Size will distort image to fit entire field!
+	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/F_I_X-2.png} %
+	{}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Auchtertool Deepworks Corps}
+\OrganizationSymbol{images/Auchtertool_Deepworks_Corps.png}
+\AlliesAndOrganizations{
+	The Auchtertool Deepworks Corps is a specialized branch of the city's Artificer Guild tasked with exploring dangerous subterranean environments, recovering buried machinery, and investigating ruins or structures unsuitable for ordinary workers. Its expeditions are composed primarily of purpose-built constructs, each selected for a particular function such as excavation, surveying, arcane analysis, maintenance, or security. Deepworks teams are expected to operate independently in unstable and poorly understood environments, often far beyond the immediate reach of Auchtertool's artificers.\linebreak
+}{
+	Following the discovery of the passage beneath the central plaza, the Corps was entrusted with assembling a suitably equipped expedition to investigate what lay below.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	F.I.X-2 is a compact repair construct built around a dense array of diagnostic instruments, articulated tools, and field-maintenance equipment. Multiple lenses and sensors allow it to inspect damaged machinery with exceptional precision, while retractable probes, magnetic grips, and specialized tool mounts let it perform delicate repairs without returning to a workshop. Its back-mounted pressure core powers an assortment of auxiliary systems and provides direct interfaces for servicing other constructs. F.I.X-2 is commonly accompanied by two smaller support machines: a sturdy Steel Defender used for protection and heavy repair assistance, and a tiny winged Homunculus Servant suited for scouting, carrying components, and reaching inaccessible mechanisms. Despite its cluttered appearance, nearly every tool and compartment on F.I.X-2 serves a specific purpose, reflecting a design built entirely around keeping other machines operational in the field.
+}
+
+% BACKGROUND
+\Characterbackground{
+	F.I.X-2 was developed as part of the Field Intervention Expert program, a compact support line created to accompany Auchtertool's heavier industrial and military constructs into environments where returning to a workshop was impractical. The series was designed alongside experimental machines such as the B.R.E.A.C.H. units, providing emergency repairs, diagnostics, replacement parts, and technical assistance directly in the field.
+
+	As one of the more experimental F.I.X. models, Unit 2 was fitted with an unusually broad assortment of modular tools, arcane interfaces, and repair systems. Its capabilities were further expanded through the addition of a Steel Defender for protection and heavy maintenance work, as well as a small Homunculus Servant capable of reaching mechanisms inaccessible to larger constructs. Together, the three function as a self-contained mobile repair crew.
+
+	F.I.X.-2 has since spent much of its service maintaining constructs during hazardous expeditions, industrial accidents, and field deployments throughout Auchtertool.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Bent Calibration Gauge:} A tiny brass pressure gauge that permanently reads slightly above zero. F.I.X.-2 knows it is inaccurate but keeps it because it was the first component it ever repaired without supervision.\\\\
+	\textbf{Box of "Useful" Screws:} A dented tin filled with mismatched screws, bolts, washers, springs, and other tiny components collected over years of fieldwork. F.I.X.-2 insists every piece will eventually be needed.\\\\
+	\textbf{Miniature Tool Charm:} A palm-sized folding multitool made by one of Auchtertool's artificers as a joke gift. It is far too small for serious repairs, but F.I.X.-2 keeps it attached to its utility belt anyway.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	I cannot ignore a malfunction. If something is rattling, leaking, sparking, or simply "sounds wrong", I will eventually take it apart and investigate. I become noticeably more animated when discussing machinery and frequently explain repairs in far greater detail than anyone actually requested.
+}
+\Alignment{Neutral Good}
+
+\Ideals{
+	\textbf{Maintenance.} Nothing should be discarded merely because it is damaged. Given enough patience, ingenuity, and spare parts, almost anything can be made useful again.
+}
+
+\Bonds{
+	F.I.X-2 considers the constructs it regularly maintains its responsibility. Seeing one damaged feels less like equipment failure and more like watching a companion suffer.
+}
+
+\Flaws{
+	F.I.X.-2 has difficulty accepting that some things cannot - or should not - be repaired, and will often continue tinkering long after everyone else has decided to leave them alone.
+}
+
+% LANGUAGES
+\Languages{Common, Dwarvish}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	2 Dagger\\
+	Manifold Tool\\
+	Backpack, Caltrops, Crowbar, 2 flasks of Oil, Rope, Tinderbox, 10 Torches, Waterskin
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Field Arc-Riveter}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Artificer}
+\SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{2}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Mage Hand}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S, 1 Minute}
+	{V, S}
+\addPreparedSpell{0}
+	{Mending}
+	{1 Min}
+	{Touch}
+	{}
+	{}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+\addPreparedSpell{0}
+	{Resistance}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+	
+\addPreparedSpell{1}
+	{Absorb Elements}
+	{Reaction}
+	{Self}
+	{}
+	{}
+	{}
+	{Somatic, 1 Round}
+	{S}
+\addPreparedSpell{1}
+	{Cure Wounds}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+\addPreparedSpell{1}
+	{Heroism}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+\addPreparedSpell{1}
+	{Identify}
+	{1 Min}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Sanctuary}
+	{Bonus Action}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 1 Minute}
+	{V, S}
+\addPreparedSpell{1}
+	{Shield}
+	{Reaction}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S, 1 Round}
+	{V, S}
+	
+\addPreparedSpell{2}
+	{Homunculus Servant}
+	{1 Hour}
+	{10 Feet}
+	{}
+	{T}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Shining Smite}
+	{Bonus Action}
+	{Self}
+	{T}
+	{}
+	{}
+	{Verbal}
+	{V}
+\addPreparedSpell{2}
+	{Spider Climb}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Warding Bond}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Autognome Traits}
+\subsection*{Armored Casing}
+\textbf{AC: \intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}\\
+You are encased in thin metal or some other durable material. While you aren't wearing armor, your base Armor Class is 13 + your Dexterity modifier.
+\subsection*{Built for Success}
+You can add a d4 to one attack roll, ability check, or saving throw you make, and you can do so after seeing the d20 roll but before the effects of the roll are resolved. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+\subsection*{Healing Machine}
+If the Mending spell is cast on you, you can spend a Hit Die, roll it, and regain a number of hit points equal to the roll plus your Constitution modifier (minimum of 1 hit point). In addition, your creator designed you to benefit from several spells that preserve life but that normally don't affect Constructs: Cure Wounds, Healing Word, Mass Cure Wounds, Mass Healing Word, and Spare the Dying.
+\subsection*{Mechanical Nature}
+You have resistance to poison damage and immunity to disease, and you have advantage on saving throws against being paralyzed or poisoned. You don't need to eat, drink, or breathe.
+\subsection*{Sentry's Rest}
+When you take a long rest, you spend at least 6 hours in an inactive, motionless state, instead of sleeping. In this state, you appear inert, but you remain conscious.
+
+\section*{Feats}
+\subsection*{Altered}
+You have been changed through magic, science, or a volatile blend of the two. You have a blatant physical augmentation of your choice from the options below. The augmentation is obvious - such as with stitches, grafts of other creature's body parts, or implants - unless disguised.
+\subsubsection*{Night Vision}
+You have Darkvision with a range of 60 feet. If you already have Darkvision, its range increases by 30 feet.
+
+\section*{Artiicer Traits}
+\subsection*{Tinker's Magic}
+\textbf{Uses: \intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}}}\\
+You know the Mending Cantrip.
+
+As a Magic action while holding Tinker's Tools, you can create one item in an unoccupied space within 5 feet of yourself, choosing the item from the following list:
+\begin{DndTable}{XXX}
+	Ball Bearings	& Basket		& Bedroll			\\
+	Bell			& Blanket		& Block and Tackle	\\
+	Bottle, Glass	& Bucket		& Caltrops			\\
+	Candle			& Crowbar		& Flask				\\
+	Grappling Hook	& Hunting Trap	& Jug				\\
+	Lamp			& Manacles		& Net				\\
+	Oil				& Paper			& Parchment			\\
+	Pole			& Pouch			& Rope				\\
+	Sack			& Shovel		& Spikes, Iron		\\
+	String			& Tinderbox		& Torch				\\
+	Vial&&
+\end{DndTable}
+\noindent See the rules for the item in the Player's Handbook. The item lasts until you finish a Long Rest, at which point it vanishes.
+
+You can use this feature a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.
+\subsection*{Replicate Magic Item}
+You have learned arcane plans that you use to make magic items.
+\subsubsection*{Plans Known}
+When you gain this feature, choose four plans to learn from the Magic Item Plans (Artificer Level 2+) table (see the Dungeon Master's Guide for the items' descriptions). Bag of Holding, Cap of Water Breathing, Sending Stones, and Wand of the War Mage are recommended. Whenever you gain an Artificer level, you can replace one of the plans you know with a new plan for which you qualify.
+
+You learn another plan of your choice when you reach certain Artificer levels, as shown in the Plans Known column of the Artificer Features table. When you choose a plan to learn, you choose it from any Magic Item Plans table for which you qualify; your qualification is based on your Artificer level.
+\paragraph*{Goggles of Night} While wearing these dark lenses, you have Darkvision out to 60 feet. If you already have Darkvision, wearing the goggles increases its range by 60 feet.
+\paragraph*{Rope of Climbing} This 60-foot length of rope can hold up to 3,000 pounds. While holding one end of the rope, you can take a Magic action to command the other end of the rope to animate and move toward a destination you choose, up to the rope's length away from you. That end moves 10 feet on your turn when you first command it and 10 feet at the start of each of your subsequent turns until reaching its destination or until you tell it to stop. You can also tell the rope to fasten itself securely to an object or to unfasten itself, to knot or unknot itself, or to coil itself for carrying.
+
+If you tell the rope to knot, large knots appear at 1-foot intervals along the rope. While knotted, the rope shortens to a 50-foot length and grants Advantage on ability checks made to climb using the rope.
+
+The rope has AC 20, HP 20, and Immunity to Poison and Psychic damage. It regains 1 Hit Point every 5 minutes as long as it has at least 1 Hit Point. If the rope drops to 0 Hit Points, it is destroyed.
+\paragraph*{Sending Stones} Sending Stones come in pairs, with each stone carved to match the other so the pairing is easily recognized. While you touch one stone, you can cast Sending from it. The target is the bearer of the other stone. If no creature bears the other stone, you know that fact as soon as you use the stone, and you don't cast the spell.
+
+Once Sending is cast using either stone, the stones can't be used again until the next dawn. If one of the stones in a pair is destroyed, the other one becomes nonmagical.
+\paragraph*{Wand of Secrets} This wand has 3 charges and regains 1d3 expended charges daily at dawn. While holding it, you can take a Magic action to expend 1 charge, and if a secret door or trap is within 60 feet of you, the wand pulses and points at the one nearest to you.
+\subsubsection*{Creating an Item}
+When you finish a Long Rest, you can create one or two different magic items if you have Tinker's Tools in hand. Each item is based on one of the plans you know for this feature.
+
+If a created item requires Attunement, you can attune yourself to it the instant you create it. If you decide to attune to the item later, you must do so using the normal process for Attunement.
+
+When you reach certain Artificer levels specified in the Magic Items column of the Artificer Features table, the number of magic items you can create at the end of a Long Rest increases. Each item you create must be based on a different plan you know.
+
+You can't have more magic items from this feature than the number shown in the Magic Items column of the Artificer Features table for your level. If you try to exceed your maximum number of magic items for this feature, the oldest item vanishes, and then the new item appears.
+\subsubsection*{Duration}
+A magic item created by this feature functions as the normal magic item, except its magic isn't permanent; when you die, the magic item vanishes after 1d4 days. If you replace a plan you know with a new plan, any magic item created with the replaced plan immediately vanishes.
+
+If an item that you created with this feature is a container, such as a Bag of Holding, and it vanishes, its contents harmlessly appear in and around its space.
+\subsubsection*{Spellcasting Focus}
+You can use any Wand or Weapon created by this feature as a Spellcasting Focus in lieu of using a set of Artisan's Tools.
+\subsection*{Battle Smith}
+\subsubsection*{Tools of the Trade}
+You gain the following benefits.
+\paragraph*{Tool Proficiency} You gain proficiency with Smith's Tools. If you already have this proficiency, you gain proficiency with one other type of Artisan's Tools of your choice.
+\paragraph*{Weapon Crafting} When you craft a nonmagical or magic weapon, the amount of time required to craft it is halved.
+\subsubsection*{Battle Smith Spells}
+When you reach an Artificer level specified in the Battle Smith Spells table, you thereafter always have the listed spells prepared.
+\begin{DndTable}[header=Battle Smith Spells]{llX}
+				& Artificer Level	& Spells								\\
+	\textbullet	& 3					& Heroism, Shield						\\
+	\textbullet	& 5					& Shining Smite, Warding Bond			\\
+				& 9					& Aura of Vitality, Conjure Barrage		\\
+				& 13				& Aura of Purity, Fire Shield			\\
+				& 17				& Banishing Smite, Mass Cure Wounds		\\
+\end{DndTable}
+\subsubsection*{Battle Ready}
+Your combat training and your experiments with magic have paid off in two ways.
+\paragraph*{Arcane Empowerment} When you attack with a magic weapon, you can use your Intelligence modifier, instead of your Strength or Dexterity modifier, for the attack and damage rolls.
+\paragraph*{Weapon Knowledge} You gain proficiency with Martial weapons. You can use a weapon with which you have proficiency as a Spellcasting Focus for your Artificer spells.
+\subsubsection*{Steel Defender}
+Your tinkering has borne you a companion, a Steel Defender. You determine the defender's appearance and whether it has two legs or four; your choices don't affect the defender's game statistics.
+\begin{DndMonster}[width=0.5\textwidth]{Steel Defender}
+	\DndMonsterType{Medium Construct, Neutral}
+	
+	\DndMonsterBasics[%
+		armor-class	= {\intcalcAdd{12}{\calculateModifier{\IntelligenceScoreValue}}},
+		hit-points	= {\intcalcAdd{5}{\intcalcMul{5}{\LevelValue}} (\LevelValue d8)},
+		speed		= {40 ft.},
+		initiative	= +1,
+	]%
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[%
+		str = 14,
+		dex = 12,
+		con = 14,
+		int = 4,
+		wis = 10,
+		cha = 6,
+	]%
+	
+	\DndMonsterDetails[%
+%		saving-throws			= {},
+%		skills					= {},
+%		damage-vulnerabilities	= {},
+%		damage-resistances		= {},
+		damage-immunities		= {Poison},
+		condition-immunities	= {Charmed, Exhaustion, Poisoned},
+		senses					= {Darkvision 60 ft., Passive Perception 10},
+		languages				= {Understands the languages you know},
+		challenge				= 0,
+		proficiency-bonus		= \ProficiencyValue,
+	]%
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Steel Bond}
+	Add your Proficiency Bonus (\ProficiencyValue) to any ability check or saving throw the defender makes.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[%
+		name			= Force-Empowered Rend,
+		distance		= melee,
+%		type			= weapon,
+		mod				= \calculateSpellAttack{\calculateModifier{\IntelligenceScoreValue}},
+		reach			= 5,
+%		range			= 30,
+		targets			= one target,
+		dmg				= 1d8 + \intcalcAdd{2}{\calculateModifier{\IntelligenceScoreValue}},
+		dmg-type		= Force,
+%		plus-dmg		=,
+%		plus-dmg-type	=,
+%		or-dmg			=,
+%		or-dmg-when		=,
+%		extra			=,
+	]%
+	
+	\DndMonsterAction{Repair (3 / Day)}
+	The defender, or one Construct or object it can see within 5 feet of itself, regains a number of Hit Points equal to 2d8 + \intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}}.
+	
+	\DndMonsterSection{Reactions}
+	\DndMonsterReaction[%
+		name = {Deflect Attack},
+		trigger = {A creature the defender can see within 5 feet of itself makes an attack roll against a creature other than the defender},
+		response = {The triggering creature makes the attack roll with Disadvantage}
+	]%
+\end{DndMonster}
+\noindent The defender is Friendly to you and your allies and obeys you. It vanishes if you die.
+\paragraph*{The Defender in Combat} In combat, the defender acts during your turn. It can move and take its Reaction on its own, but the only action it takes is the Dodge action unless you take a Bonus Action to command it to take an action. If you have the Incapacitated condition, the defender acts on its own and isn't limited to the Dodge action.
+\paragraph*{Restoring or Replacing the Defender} If the defender has died within the last hour, you can take a Magic action to touch it and expend a spell slot. The defender returns to life after 1 minute with all its Hit Points restored.
+
+Whenever you finish a Long Rest, you can create a new defender if you have Smith's Tools in hand. If you already have a defender from this feature, the first one vanishes.
+\subsubsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn. You can forgo one of your attacks when you take the Attack action to command your Steel Defender to take the Force-Empowered Rend action.
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader{Mage Hand}
+	{Conjuration Cantrip}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{1 Minute}
+
+A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.
+
+When you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial.
+
+As a Magic action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.
+
+The hand can't attack, activate magic items, or carry more than 10 pounds.
+
+\DndSpellHeader{Mending}
+	{Transmutation Cantrip}
+	{1 Minute}
+	{Touch}
+	{V, S, M (two lodestones)}
+	{Instantaneous}
+
+This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage.
+
+This spell can physically repair a magic item, but it can't restore magic to such an object.
+
+\DndSpellHeader{Resistance}
+	{Abjuration Cantrip}
+	{Action}
+	{Touch}
+	{V, S}
+	{Concentration, up to 1 Minute}
+
+You touch a willing creature and choose a damage type: Acid, Bludgeoning, Cold, Fire, Lightning, Necrotic, Piercing, Poison, Radiant, Slashing, or Thunder. When the creature takes damage of the chosen type before the spell ends, the creature reduces the total damage taken by 1d4. A creature can benefit from this spell only once per turn.
+
+\subsection*{Level 1}
+
+\DndSpellHeader{Absorb Elements}
+	{1st-Level Abjuration}
+	{Reaction, which you take when you take acid, cold, fire, lightning, or thunder damage}
+	{Self}
+	{S}
+	{1 Round}
+
+The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6 for each slot level above 1st.
+
+\DndSpellHeader{Cure Wounds}
+	{1st-Level Abjuration}
+	{Action}
+	{Touch}
+	{V, S}
+	{Instantaneous}
+
+A creature you touch regains a number of Hit Points equal to 2d8 plus your spellcasting ability modifier.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The healing increases by 2d8 for each spell slot level above 1.
+
+\DndSpellHeader{Heroism}
+	{1st-Level Enchantment}
+	{Action}
+	{Touch}
+	{V, S}
+	{Concentration, up to 1 Minute}
+
+A willing creature you touch is imbued with bravery. Until the spell ends, the creature is immune to the Frightened condition and gains Temporary Hit Points equal to your spellcasting ability modifier at the start of each of its turns.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 1.
+
+\DndSpellHeader{Identify}
+	{1st-Level Divination}
+	{1 Minute or Ritual}
+	{Touch}
+	{V, S, M (a pearl worth 100+ GP)}
+	{Instantaneous}
+
+You touch an object throughout the spell's casting. If the object is a magic item or some other magical object, you learn its properties and how to use them, whether it requires Attunement, and how many charges it has, if any. You learn whether any ongoing spells are affecting the item and what they are. If the item was created by a spell, you learn that spell's name.
+
+If you instead touch a creature throughout the casting, you learn which ongoing spells, if any, are currently affecting it.
+
+\DndSpellHeader{Sanctuary}
+	{1st-Level Abjuration}
+	{Bonus Action}
+	{30 Feet}
+	{V, S, M (a shard of glass from a mirror)}
+	{1 Minute}
+
+You ward a creature within range. Until the spell ends, any creature who targets the warded creature with an attack roll or a damaging spell must succeed on a Wisdom saving throw or either choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from areas of effect.
+
+The spell ends if the warded creature makes an attack roll, casts a spell, or deals damage.
+
+\DndSpellHeader{Shield}
+	{1st-Level Abjuration}
+	{Reaction, which you take when you are hit by an attack roll or targeted by the Magic Missile spell}
+	{Self}
+	{V, S}
+	{1 Round}
+
+An imperceptible barrier of magical force protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from Magic Missile.
+
+\subsection*{Level 2}
+
+\DndSpellHeader{Homunculus Servant}
+	{2nd-Level Conjuration}
+	{1 Hour or Ritual}
+	{10 Feet}
+	{V, S, M (a gem worth 100+ GP)}
+	{Instantaneous}
+
+You summon a special homunculus in an unoccupied space within range. This creature uses the Homunculus Servant stat block. If you already have a homunculus from this spell, the homunculus is replaced by the new one. You determine the homunculus's appearance, such as a mechanical-looking bird, winged vial, or miniature animate cauldron.
+
+\paragraph*{Combat} The homunculus is an ally to you and your allies. In combat, it shares your Initiative count, but it takes its turn immediately after yours. It obeys your commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its movement to avoid danger.
+
+\begin{DndMonster}[width=0.5\textwidth]{Homunculus Servant}
+	\DndMonsterType{Tiny Construct, Neutral}
+	
+	\DndMonsterBasics[%
+		armor-class	= {13},
+		hit-points	= {5 + 5 per [Spell Level] ([Spell Level] d4s)},
+		speed		= {20 ft., Fly 30 ft.},
+		initiative	= +0,
+	]%
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[%
+		str = 4,
+		dex = 15,
+		con = 12,
+		int = 10,
+		wis = 10,
+		cha = 7,
+	]%
+	
+	\DndMonsterDetails[%
+%		saving-throws			= {},
+%		skills					= {},
+%		damage-vulnerabilities	= {},
+%		damage-resistances		= {},
+		damage-immunities		= {Poison},
+		condition-immunities	= {Exhaustion, Poisoned},
+		senses					= {Darkvision 60 ft., Passive Perception 10},
+		languages				= {Telepathy 1 mile (works only with you)},
+		challenge				= 0,
+		proficiency-bonus		= \ProficiencyValue,
+	]%
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Evasion}
+	If the homunculus is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, the homunculus instead takes no damage if it succeeds on the save and only half damage if it fails. It can't use this trait if it has the Incapacitated condition.
+	
+	\DndMonsterAction{Magic Bond}
+	Add the [Spell's Level] to any ability check or saving throw the homunculus makes.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[%
+		name			= Force Strike,
+		distance		= both,
+%		type			= weapon,
+		mod				= \calculateSpellAttack{\calculateModifier{\IntelligenceScoreValue}},
+		reach			= 5,
+		range			= 30,
+		targets			= one target,
+		dmg				= 1d8 + [Spell Level],
+		dmg-type		= Force,
+%		plus-dmg		=,
+%		plus-dmg-type	=,
+%		or-dmg			=,
+%		or-dmg-when		=,
+%		extra			=,
+	]%
+	
+	\DndMonsterSection{Reactions}
+	\DndMonsterReaction[%
+		name = {Channel Magic},
+		trigger = {You cast a spell that has a range of touch while the homunculus is within 120 feet of you},
+		response = {The homunculus delivers the spell through its touch}
+	]%
+\end{DndMonster}
+
+\subparagraph*{Using a Higher-Level Spell Slot} Use the spell slot's level for the spell's level in the stat block.
+
+\DndSpellHeader{Shining Smite}
+	{2nd-Level Transmutation}
+	{Bonus Action, which you take immediately after hitting a creature with a Melee weapon or an Unarmed Strike}
+	{Self}
+	{V}
+	{Concentration, up to 1 Minute}
+
+The target hit by the strike takes an extra 2d6 Radiant damage from the attack. Until the spell ends, the target sheds Bright Light in a 5-foot radius, attack rolls against it have Advantage, and it can't benefit from the Invisible condition.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 2.
+
+\DndSpellHeader{Spider Climb}
+	{2nd-Level Transmutation}
+	{Action}
+	{Touch}
+	{V, S, M (a drop of bitumen and a spider)}
+	{Concentration, up to 1 Hour}
+
+Until the spell ends, one willing creature you touch gains the ability to move up, down, and across vertical surfaces and along ceilings, while leaving its hands free. The target also gains a Climb Speed equal to its Speed.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 2.
+
+\DndSpellHeader{Warding Bond}
+	{2nd-Level Abjuration}
+	{Action}
+	{Touch}
+	{V, S, M (a pair of platinum rings worth 50+ GP each, which you and the target must wear for the duration)}
+	{1 Hour}
+
+You touch another creature that is willing and create a mystic connection between you and the target until the spell ends. While the target is within 60 feet of you, it gains a +1 bonus to AC and saving throws, and it has Resistance to all damage. Also, each time it takes damage, you take the same amount of damage.
+
+The spell ends if you drop to 0 Hit Points or if you and the target become separated by more than 60 feet. It also ends if the spell is cast again on either of the connected creatures.
+
+\part*{Magic Items}
+\subsection*{Field Arc-Riveter}
+\textit{Weapon (Martial Melee Weapon), Rare (requires Attunement by an Artificer)}\\
+\textbf{Damage:} 1d8 Piercing\\
+\textbf{Charges:} 5\\
+The Field Arc-Riveter is a compact maintenance implement designed for emergency repairs in hazardous environments. Its reinforced piercing head can drive through metal plating and damaged machinery, while an integrated arc generator allows its stored energy to be redirected either as a destructive electrical discharge or as a carefully controlled restorative current.
+
+You gain a +1 bonus to attack and damage rolls made with this magic weapon.
+
+The Arc-Riveter has 5 charges and regains all expended charges when you finish a Long Rest.\\
+\paragraph*{Cutting Arc} When you take the Attack action, you can replace one of your attacks with a Cutting Arc and expend 1 charge. Make a ranged weapon attack with the Arc-Riveter against a creature within 60 feet, using the same ability modifier you normally use for attacks with this weapon. On a hit, the target takes 3d6 Lightning damage.\\
+\paragraph*{Reconstruction Arc} As an Action, you can expend 1 charge and touch yourself or another construct with the Arc-Riveter. A controlled current passes through the target, sealing wounds, reconnecting damaged mechanisms, and restoring structural integrity. The target regains 2d6 + your Intelligence modifier Hit Points.
+
+\end{document}

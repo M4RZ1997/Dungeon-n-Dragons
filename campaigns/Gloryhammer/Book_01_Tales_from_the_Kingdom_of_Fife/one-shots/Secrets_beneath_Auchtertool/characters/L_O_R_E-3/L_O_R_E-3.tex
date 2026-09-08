@@ -1,0 +1,913 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{L.O.R.E-3}
+\PlayerName{M4RZ} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Wizard}
+\Subclass{Order of Scribes}
+\Background{Sage}
+\Race{Warforged}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{5} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{8}
+\DexterityRolledScore{11}
+\ConstitutionRolledScore{15}
+\IntelligenceRolledScore{16}
+\WisdomRolledScore{8}
+\CharismaRolledScore{13}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{1}	% +1 Sage Background
+\IntelligenceScoreBonus{4}	% +2 Sage Background, +2 ASI
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{P}
+\WisdomProficiency{P}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{E}			% Sage Background, Scholar Expertise
+\HistoryProficiency{P}			% Sage Background
+\InvestigationProficiency{P}	% Wizard Class
+\NatureProficiency{}
+\ReligionProficiency{P}			% Wizard Class
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{}
+\PerceptionProficiency{P}		% Warforged Specialized Design
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
+\ArmorClass{\intcalcAdd{10}{\intcalcAdd{1}{\calculateModifier{\DexterityScoreValue}}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{23} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d6}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{}
+\MediumArmor{}
+\HeavyArmor{}
+\Shields{}
+
+\WeaponsProficiency{Simple Weapons}
+\ToolsProficiency{Calligrapher's Supplies, Cartographer's Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Quarterstaff}{L.O.R.E-3}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} b}{Versatile (1d8)}
+\addWeaponStatistic{Dagger}{L.O.R.E-3}{DEX}{P}{0}{1d4 + \intcalcAdd{0}{\calculateModifier{\DexterityScoreValue}} p}{Finesse, Light, Thrown (20/60)}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Magnetobolt}{BOTH}{\calculateModifier{\IntelligenceScoreValue}}{2d6 Force}{Knock Prone, STR save}
+\addSpellStatistic{Mind Sliver}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d6 Psychic}{Subtract 1d4 from next Saving Throw, INT save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{Q}{\textbf{Ritual Adept}}
+\AddClassFeature{Q}{\textbf{Arcane Recovery}}
+\AddClassFeature{Q}{\textbf{Scholar}\\Arcana Expertise}
+\AddClassFeature{Q}{\textbf{Order of Scribes}\begin{itemize}
+	\item[\CustomItemLabel{B}] Wizardly Quill
+	\item Awakened Spellbook
+\end{itemize}}
+\AddClassFeature{Q}{\textbf{Memorize Spell}}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Mechanical Nature}}
+\AddSpeciesFeature{E}{\textbf{Construct Resilience}\\Poison Resistance and Advantage against the Poisoned condition.}
+\AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Perception Proficiency, Cartographer's Tools}
+\AddSpeciesFeature{E}{\textbf{Tireless}\\No Exhaustion from dehydration, malnutrition, or suffocation}
+% FEATS
+\AddFeat{\textbf{Magic Initiate}\begin{itemize}
+	\item Magnetobolt, Mending
+	\item Binding Pledge
+\end{itemize}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{7 Years}
+\Height{6'3''}
+\Weight{410 lbs}
+\Eyes{Blue-Gray}
+\Skin{Brass}
+\Hair{}
+\CharacterAppearance{full-size} % (vertical/horizontal/full-size/none) !Full-Size will distort image to fit entire field!
+	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/L_O_R_E-3.png} %
+	{}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Auchtertool Deepworks Corps}
+\OrganizationSymbol{images/Auchtertool_Deepworks_Corps.png}
+\AlliesAndOrganizations{
+	The Auchtertool Deepworks Corps is a specialized branch of the city's Artificer Guild tasked with exploring dangerous subterranean environments, recovering buried machinery, and investigating ruins or structures unsuitable for ordinary workers. Its expeditions are composed primarily of purpose-built constructs, each selected for a particular function such as excavation, surveying, arcane analysis, maintenance, or security. Deepworks teams are expected to operate independently in unstable and poorly understood environments, often far beyond the immediate reach of Auchtertool's artificers.\linebreak
+}{
+	Following the discovery of the passage beneath the central plaza, the Corps was entrusted with assembling a suitably equipped expedition to investigate what lay below.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	L.O.R.E-3 is built as a dedicated arcane research platform, its slender warforged frame incorporating numerous lenses, runic sensors, and calibration instruments for examining unfamiliar magical phenomena. Its hands are exceptionally precise, fitted with retractable styluses and fine engraving tools suited to calligraphy, cartography, and the transcription of delicate runes. L.O.R.E-3 rarely operates without the Codex Veritas, an awakened spellbook that serves as both companion and primary research archive, responding to the construct as new knowledge is recorded within its pages. Rotating optical lenses and supplementary articulated instruments allow L.O.R.E-3 to inspect objects from several angles at once, giving the unit the unmistakable appearance of a scholar built to catalogue anything that can be understood - and investigate anything that cannot.
+}
+
+% BACKGROUND
+\Characterbackground{
+	L.O.R.E-3 was constructed approximately seven years ago as part of Auchtertool's effort to create a dedicated platform for the study of arcane phenomena. Rather than being designed for labour or warfare, the unit was built around an unusually sophisticated cognitive core intended to process magical theory, historical records, runic systems, and complex patterns far beyond the capabilities of most constructs. The result was one of the most intelligent machines ever produced by the Auchtertool Foundries.
+
+	Since its activation, L.O.R.E-3 has served the city's artificers as an arcane diagnostician, examining enchanted objects, translating obscure inscriptions, documenting magical anomalies, and assisting with research into technologies whose functions are not immediately understood. Its work is closely supported by the awakened spellbook Codex Veritas, which acts as both research archive and companion, preserving the discoveries accumulated throughout the unit's service.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Untranslated Rune Shard:} A fragment of inscribed black stone recovered during an earlier investigation. Despite years of study, L.O.R.E-3 has never deciphered it and refuses to classify the matter as closed.\\\\
+	\textbf{First Finished Map:} A carefully preserved hand-drawn map produced shortly after L.O.R.E-3 learned cartography. Its measurements are slightly imperfect, but the construct keeps it as evidence of knowledge acquired rather than installed.\\\\
+	\textbf{Vial of Archivist's Ink:} A small sealed bottle of deep blue ink mixed personally by the artificer who first taught L.O.R.E-3 calligraphy. It is rarely used and reserved only for discoveries considered truly significant.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	I record unfamiliar symbols, phrases, and phenomena immediately; undocumented information is information at risk of being lost. I become intensely focused when presented with something I cannot identify, sometimes continuing an analysis long after others have lost interest.
+}
+\Alignment{Lawful Neutral}
+
+\Ideals{
+	\textbf{Understanding.} Nothing should remain mysterious merely because it is ancient, difficult, or unfamiliar. Every secret can be approached through careful study.
+}
+
+\Bonds{
+	The Codex Veritas contains years of shared research and accumulated knowledge. L.O.R.E-3 regards its preservation as equally important as protecting its own continued operation.
+}
+
+\Flaws{
+	L.O.R.E-3 struggles to leave unanswered questions alone and may spend far too long examining an anomaly when the wiser course would simply be to move on.
+}
+
+% LANGUAGES
+\Languages{Common, Dwarvish}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Quarterstaff, 2 Daggers\\
+	Calligrapher's Supplies, Cartographer's Tools\\
+	Robe, Backpack, Book, Ink, Ink Pen, Lamp, 10 flasks of Oil, 10 sheets of Parchment, Tinderbox
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Codex Veritas}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Wizard}
+\SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{1} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{1} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{3}
+\ThirdLevelSpellSlotsTotal{2}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Light}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{Verbal, 1 Hour}
+	{V, M}
+\addPreparedSpell{0}
+	{Mage Hand}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S, 1 Minute}
+	{V, S}
+\addPreparedSpell{0}
+	{Magnetobolt}
+	{Action}
+	{90 Feet}
+	{}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+\addPreparedSpell{0}
+	{Mending}
+	{1 Min}
+	{Touch}
+	{}
+	{}
+	{T}
+	{Verbal, Somatic}
+	{V}
+\addPreparedSpell{0}
+	{Message}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{T}
+	{Somatic, 1 Round}
+	{S, M}
+\addPreparedSpell{0}
+	{Mind Sliver}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{Verbal}
+	{V}
+
+\addPreparedSpell{1}
+	{Binding Pledge}
+	{1 Min}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{V, S, 10 Days}
+	{V, S, M, Ritual}
+\addPreparedSpell{1}
+	{Chromatic Orb}
+	{Action}
+	{90 Feet}
+	{}
+	{}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Comprehend Languages}
+	{Ritual}
+	{Self}
+	{}
+	{T}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Detect Magic}
+	{Ritual}
+	{Self}
+	{T}
+	{T}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+\addPreparedSpell{1}
+	{Distort Value}
+	{1 Min}
+	{Touch}
+	{}
+	{}
+	{}
+	{Verbal, 8 Hours}
+	{V}
+\addPreparedSpell{1}
+	{Identify}
+	{Ritual}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Illusory Script}
+	{Ritual}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{Somatic, 10 Days}
+	{S, M}
+\addPreparedSpell{1}
+	{Intaglio}
+	{Ritual}
+	{Self}
+	{T}
+	{T}
+	{T}
+	{Verbal, Somatic}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Mage Armor}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 8 Hours}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Shield}
+	{Reaction}
+	{Self}
+	{}
+	{}
+	{T}
+	{V, S, 1 Round}
+	{V, S}
+\addPreparedSpell{1}
+	{Tenser's Floating Disk}
+	{Ritual}
+	{30 Feet}
+	{}
+	{T}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+	
+\addPreparedSpell{2}
+	{Borrowed Knowledge}
+	{Action}
+	{Self}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Mind Spike}
+	{Action}
+	{120 Feet}
+	{T}
+	{}
+	{}
+	{Somatic}
+	{S}
+\addPreparedSpell{2}
+	{Skywrite}
+	{Ritual}
+	{Sight}
+	{T}
+	{T}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+\addPreparedSpell{2}
+	{Unraveling Whisper}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S, 1 Round}
+	{V, S}
+	
+\addPreparedSpell{3}
+	{Conjure Constructs}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{T}
+	{Verbal, Somatic}
+	{V, S}
+\addPreparedSpell{3}
+	{Scarlet Dawn}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{Verbal, Somatic}
+	{V, S}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Warforged Traits}
+\subsection*{Construct Resilience}
+You have Resistance to Poison damage. You also have Advantage on saving throws to avoid or end the Poisoned condition.
+\subsection*{Integrated Protection}
+You gain a +1 bonus to your Armor Class. In addition, armor you have donned can't be removed against your will while you're alive.
+\subsection*{Sentry's Rest}
+You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 6 hours if you spend those hours in an inactive, motionless state. During this time, you appear inert but remain conscious.
+\subsection*{Specialized Design}
+\textit{Acrobatics Proficiency, Drum Proficiency}\\
+You gain one skill proficiency and one tool proficiency of your choice.
+\subsection*{Tireless}
+You don't gain Exhaustion levels from dehydration, malnutrition, or suffocation.
+
+\section*{Feats}
+\subsection*{Magic Initiate (Wizard)}
+You gain the following benefits.
+\subsubsection*{Two Cantrips}
+\textbf{Magnetobolt, Mending}\\
+You learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for this feat's spells (choose when you select this feat).
+\subsubsection*{Level 1 Spell}
+\textbf{Binding Pledge}\\
+Choose a level 1 spell from the same list you selected for this feat's cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have.
+\subsubsection*{Spell Change}
+Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.
+
+\section*{Wizard Traits}
+\subsection*{Ritual Adept}
+You can cast any spell as a Ritual if that spell has the Ritual tag and the spell is in your spellbook. You needn't have the spell prepared, but you must read from the book to cast a spell in this way.
+\subsection*{Arcane Recovery}
+You can regain some of your magical energy by studying your spellbook. When you finish a Short Rest, you can choose expended spell slots to recover. The spell slots can have a combined level equal to no more than half your Wizard level (round up), and none of the slots can be level 6 or higher. For example, if you're a level 4 Wizard, you can recover up to two levels' worth of spell slots, regaining either one level 2 spell slot or two level 1 spell slots.
+
+Once you use this feature, you can't do so again until you finish a Long Rest.
+\subsection*{Scholar}
+\textbf{Arcana Expertise}\\
+While studying magic, you also specialized in another field of study. Choose one of the following skills in which you have proficiency: Arcana, History, Investigation, Medicine, Nature, or Religion. You have Expertise in the chosen skill.
+\subsection*{Order of Scribes}
+\subsubsection*{Wizardly Quill}
+As a bonus action, you can magically create a Tiny quill in your free hand. The magic quill has the following properties:
+\begin{itemize}
+	\item The quill doesn't require ink. When you write with it, it produces ink in a color of your choice on the writing surface.
+	\item The time you must spend to copy a spell into your spellbook equals 2 minutes per spell level if you use the quill for the transcription.
+	\item You can erase anything you write with the quill if you wave the feather over the text as a bonus action, provided the text is within 5 feet of you.
+\end{itemize}
+This quill disappears if you create another one or if you die.
+\subsubsection*{Awakened Spellbook}
+Using specially prepared inks and ancient incantations passed down by your wizardly order, you have awakened an arcane sentience within your spellbook.
+
+While you are holding the book, it grants you the following benefits:
+\begin{itemize}
+	\item You can use the book as a spellcasting focus for your wizard spells.
+	\item When you cast a wizard spell with a spell slot, you can temporarily replace its damage type with a type that appears in another spell in your spellbook, which magically alters the spell's formula for this casting only. The latter spell must be of the same level as the spell slot you expend.
+	\item When you cast a wizard spell as a ritual, you can use the spell's normal casting time, rather than adding 10 minutes to it. Once you use this benefit, you can't do so again until you finish a long rest.
+\end{itemize}
+If necessary, you can replace the book over the course of a short rest by using your Wizardly Quill to write arcane sigils in a blank book or a magic spellbook to which you're attuned. At the end of the rest, your spellbook's consciousness is summoned into the new book, which the consciousness transforms into your spellbook, along with all its spells. If the previous book still existed somewhere, all the spells vanish from its pages.
+\subsection*{Memorize Spell}
+Whenever you finish a Short Rest, you can study your spellbook and replace one of the level 1+ Wizard spells you have prepared for your Spellcasting feature with another level 1+ spell from the book.
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader{Light}
+	{Evocation Cantrip}
+	{Action}
+	{Touch}
+	{V, M (a firefly or phosphorescent moss)}
+	{1 Hour}
+
+You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The light can be colored as you like.
+
+Covering the object with something opaque blocks the light. The spell ends if you cast it again.
+
+\DndSpellHeader{Mage Hand}
+	{Conjuration Cantrip}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{1 Minute}
+
+A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.
+
+When you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial.
+
+As a Magic action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.
+
+The hand can't attack, activate magic items, or carry more than 10 pounds.
+
+\DndSpellHeader{Magnetobolt}
+	{Evocation Cantrip}
+	{Action}
+	{90 Feet}
+	{V, S}
+	{Instantaneous}
+
+A near-invisible pulse of arcanomagnetic energy shoots towards a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d6 force damage and must succeed on a Strength saving throw or be knocked prone. A creature made of ferrous metal or wearing ferrous armour has disadvantage on this saving throw.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d6 when you reach levels \textbf{5 (2d6)}, 11 (3d6), and 17 (4d6).
+
+\DndSpellHeader{Mending}
+	{Transmutation Cantrip}
+	{1 Minute}
+	{Touch}
+	{V, S, M (two lodestones)}
+	{Instantaneous}
+
+This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage.
+
+This spell can physically repair a magic item, but it can't restore magic to such an object.
+
+\DndSpellHeader{Message}
+	{Transmutation Cantrip}
+	{Action}
+	{120 Feet}
+	{S, M (a copper wire)}
+	{1 Round}
+
+You point toward a creature within range and whisper a message. The target (and only the target) hears the message and can reply in a whisper that only you can hear.
+
+You can cast this spell through solid objects if you are familiar with the target and know it is beyond the barrier. Magical silence; 1 foot of stone, metal, or wood; or a thin sheet of lead blocks the spell.
+
+\DndSpellHeader{Mind Sliver}
+	{Enchantment Cantrip}
+	{Action}
+	{60 Feet}
+	{V}
+	{Instantaneous}
+
+You try to temporarily sliver the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 Psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d6 when you reach levels \textbf{5 (2d6)}, 11 (3d6), and 17 (4d6).
+
+\subsection*{Level 1}
+
+\DndSpellHeader{Binding Pledge}
+	{1st-Level Divination}
+	{1 Minute or Ritual}
+	{Touch}
+	{V, S, M (a book of religious or legal importance)}
+	{10 Days}
+
+When you cast the spell, a willing creature within range makes a promise, swears an oath, or enters into a contract. For the duration of the spell, you immediately know if the creature breaks that promise, oath, or contract. If this happens, for the remainder of the duration of the spell, you know the distance and direction to the creature. If this spell is dispelled, you immediately know it but don't learn the distance and direction to the creature.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The duration becomes 30 days (level 3-4 slot) or 1 year (level 5-6 slot). If you use a level 7+ spell slot, the spell lasts until dispelled.
+
+\DndSpellHeader{Chromatic Orb}
+	{1st-Level Evocation}
+	{Action}
+	{90 Feet}
+	{V, S, M (a diamond worth 50+ GP)}
+	{Instantaneous}
+
+You hurl an orb of energy at a target within range. Choose Acid, Cold, Fire, Lightning, Poison, or Thunder for the type of orb you create, and then make a ranged spell attack against the target. On a hit, the target takes 3d8 damage of the chosen type.
+
+If you roll the same number on two or more of the d8s, the orb leaps to a different target of your choice within 30 feet of the target. Make an attack roll against the new target, and make a new damage roll. The orb can't leap again unless you cast the spell with a level 2+ spell slot.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d8 for each spell slot level above 1. The orb can leap a maximum number of times equal to the level of the slot expended, and a creature can be targeted only once by each casting of this spell.
+
+\DndSpellHeader{Comprehend Languages}
+	{1st-Level Divination}
+	{Action or Ritual}
+	{Self}
+	{V, S, M (a pinch of soot and salt)}
+	{1 Hour}
+
+For the duration, you understand the literal meaning of any language that you hear or see signed. You also understand any written language that you see, but you must be touching the surface on which the words are written. It takes about 1 minute to read one page of text. This spell doesn't decode symbols or secret messages.
+
+\DndSpellHeader{Detect Magic}
+	{1st-Level Divination}
+	{Action or Ritual}
+	{Self}
+	{V, S}
+	{Concentration, up to 10 Minutes}
+
+For the duration, you sense the presence of magical effects within 30 feet of yourself. If you sense such effects, you can take the Magic action to see a faint aura around any visible creature or object in the area that bears the magic, and if an effect was created by a spell, you learn the spell's school of magic.
+
+The spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead.
+
+\DndSpellHeader{Distort Value}
+	{1st-Level Illusion}
+	{1 Minute}
+	{Touch}
+	{V}
+	{8 Hours}
+
+Do you need to squeeze a few more gold pieces out of a merchant as you try to sell that weird octopus statue you liberated from the chaos temple? Do you need to downplay the worth of some magical assets when the tax collector stops by? Distort value has you covered.
+
+You cast this spell on an object no more than 1 foot on a side, doubling the object's perceived value by adding illusory flourishes or polish to it, or reducing its perceived value by half with the help of illusory scratches, dents, and other unsightly features. Anyone examining the object can ascertain its true value with a successful Intelligence (Investigation) check against your spell save DC.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the maximum size of the object increases by 1 foot for each slot level above 1st.
+
+\DndSpellHeader{Identify}
+	{1st-Level Divination}
+	{1 Minute or Ritual}
+	{Touch}
+	{V, S, M (a pearl worth 100+ GP)}
+	{Instantaneous}
+
+You touch an object throughout the spell's casting. If the object is a magic item or some other magical object, you learn its properties and how to use them, whether it requires Attunement, and how many charges it has, if any. You learn whether any ongoing spells are affecting the item and what they are. If the item was created by a spell, you learn that spell's name.
+
+If you instead touch a creature throughout the casting, you learn which ongoing spells, if any, are currently affecting it.
+
+\DndSpellHeader{Illusory Script}
+	{1st-Level Illusion}
+	{1 Minute or Ritual}
+	{Touch}
+	{S, M (ink worth 10+ GP, which the spell consumes)}
+	{10 Days}
+
+You write on parchment, paper, or another suitable material and imbue it with an illusion that lasts for the duration. To you and any creatures you designate when you cast the spell, the writing appears normal, seems to be written in your hand, and conveys whatever meaning you intended when you wrote the text. To all others, the writing appears as if it were written in an unknown or magical script that is unintelligible. Alternatively, the illusion can alter the meaning, handwriting, and language of the text, though the language must be one you know.
+
+If the spell is dispelled, the original script and the illusion both disappear.
+
+A creature that has Truesight can read the hidden message.
+
+\DndSpellHeader{Intaglio}
+	{1st-Level Transmutation}
+	{Action or Ritual}
+	{Touch}
+	{V, S, M (a quill or a vial of ink)}
+	{Concentration, up to 1 Hour}
+
+You create a duplicate of a text or image. During the spell's duration, you can take a Magic action to trace your hand over any non-magical text or image on a surface within range. You copy the text or image onto a new medium that you provide, such as another book or parchement. This spell copies a single page with each Magic action. When copying a spellbook, you can do so using the same method as you would replace a spellbook, except the time and GP requirements are both halved.
+
+\DndSpellHeader{Mage Armor}
+	{1st-Level Abjuration}
+	{Action}
+	{Touch}
+	{V, S, M (a piece of cured leather)}
+	{8 Hours}
+
+You touch a willing creature who isn't wearing armor. Until the spell ends, the target's base AC becomes 13 plus its Dexterity modifier. The spell ends early if the target dons armor.
+
+\DndSpellHeader{Shield}
+	{1st-Level Abjuration}
+	{Reaction, which you take when you are hit by an attack roll or targeted by the Magic Missile spell}
+	{Self}
+	{V, S}
+	{1 Round}
+
+An imperceptible barrier of magical force protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from Magic Missile.
+
+\DndSpellHeader{Tenser's Floating Disk}
+	{1st-Level Conjuration}
+	{Action or Ritual}
+	{30 Feet}
+	{V, S, M (a drop of mercury)}
+	{1 Hour}
+
+This spell creates a circular, horizontal plane of force, 3 feet in diameter and 1 inch thick, that floats 3 feet above the ground in an unoccupied space of your choice that you can see within range. The disk remains for the duration and can hold up to 500 pounds. If more weight is placed on it, the spell ends, and everything on the disk falls to the ground.
+
+The disk is immobile while you are within 20 feet of it. If you move more than 20 feet away from it, the disk follows you so that it remains within 20 feet of you. It can move across uneven terrain, up or down stairs, slopes and the like, but it can't cross an elevation change of 10 feet or more. For example, the disk can't move across a 10-foot-deep pit, nor could it leave such a pit if it was created at the bottom.
+
+If you move more than 100 feet from the disk (typically because it can't move around an obstacle to follow you), the spell ends.
+
+\subsection*{Level 2}
+
+\DndSpellHeader{Borrowed Knowledge}
+	{2nd-Level Divination}
+	{Action}
+	{Self}
+	{V, S, M (a book worth at least 25 gp)}
+	{1 Hour}
+
+You draw on knowledge from spirits of the past. Choose one skill in which you lack proficiency. For the spell's duration, you have proficiency in the chosen skill. The spell ends early if you cast it again.
+
+\DndSpellHeader{Mind Spike}
+	{2nd-Level Divination}
+	{Action}
+	{120 Feet}
+	{S}
+	{Concentration, up to 1 Hour}
+
+You drive a spike of psionic energy into the mind of one creature you can see within range. The target makes a Wisdom saving throw, taking 3d8 Psychic damage on a failed save or half as much damage on a successful one. On a failed save, you also always know the target's location until the spell ends, but only while the two of you are on the same plane of existence. While you have this knowledge, the target can't become hidden from you, and if it has the Invisible condition, it gains no benefit from that condition against you.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d8 for each spell slot level above 2.
+
+\DndSpellHeader{Skywrite}
+	{2nd-Level Transmutation}
+	{Action or Ritual}
+	{Sight}
+	{V, S}
+	{Concentration, up to 1 Hour}
+
+You cause up to ten words to form in a part of the sky you can see. The words appear to be made of cloud and remain in place for the spell's duration. The words dissipate when the spell ends. A strong wind can disperse the clouds and end the spell early.
+
+\DndSpellHeader{Unraveling Whisper}
+	{2nd-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{1 Round}
+
+Choose a creature you can see within range and whisper a frightful phrase that only the target can hear. The target must make a Wisdom saving throw. On a failed save, the target takes 2d6 Psychic damage and has the Frightened condition until the start of your next turn. On a successful save, the target takes half as much damage only.
+
+While Frightened in this way, the creature has Vulnerability to your choice of Bludgeoning, Piercing, or Slashing damage.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 2.
+
+\subsection*{Level 3}
+
+\DndSpellHeader{Conjure Constructs}
+	{3rd-Level Conjuration}
+	{Action}
+	{60 Feet}
+	{V, S, M (a brass cog)}
+	{Concentration, up to 10 Minutes}
+
+You conjure a group of intangible, orderly spirits that appear as a Medium group of modrons or other Constructs in an unoccupied space you can see within range. The spirits last for the duration. When you cast this spell and as a Magic action on subsequent turns, you can command the spirits to target one creature or object you can see within 5 feet of the spirits and create one of the following effects:
+
+\paragraph*{Clockwork Force} The target makes a Dexterity saving throw, taking 3d6 Force damage on a failed save or half as much damage on a successful one.
+
+\paragraph*{Orderly Ward} The target gains Temporary Hit Points equal to 1d6 plus your spellcasting ability modifier.
+
+When you move on your turn, you can also move the spirits up to 30 feet to an unoccupied space you can see.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage and Temporary Hit Points both increase by 1d6 for each spell slot level above 3.
+
+\DndSpellHeader{Scarlet Dawn}
+	{3rd-Level Evocation}
+	{Action}
+	{120 Feet}
+	{V, S}
+	{Instantaneous}
+
+Crimson light shines down in a 20-foot-radius, 60-foot-high Cylinder centered on a point within range. Each creature in that area that isn't a Construct or Undead must make a Constitution saving throw, taking 4d10 Necrotic damage on a failed save or half as much damage on a successful one. Constructs and Undead in the area regain 4d10 Hit Points.
+
+If any of this spell's area overlaps with an area of Darkness created by a spell of level 3 or lower, that other spell is dispelled.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d10 and the level of spell that can be dispelled increases by 1 for each spell slot level above 3.
+
+\part*{Magic Items}
+\subsection*{Codex Veritas}
+\textit{Wondrous Item (Spellbook), Rare (requires Attunement by a Wizard)}\\
+The Codex Veritas is an awakened spellbook bound in reinforced brass and dark leather, its pages threaded with faintly luminous arcane script. Rather than remaining fixed upon the page, its writing constantly rearranges itself as the book compares new information against everything previously recorded within it. When accompanying its wielder, the Codex frequently hovers nearby, opening itself to relevant passages or filling its margins with observations of its own.
+
+The Codex functions as your spellbook and Spellcasting Focus and possesses all properties granted by the Awakened Spellbook feature. While using the Codex Veritas as your Spellcasting Focus, you gain a +1 bonus to your spell attack rolls and Spell Save DC.\\
+\paragraph*{Living Index} Whenever you make an Intelligence (Arcana, History, Investigation, or Religion) check to examine a magical object, spell, rune, inscription, or other arcane phenomenon, the Codex automatically searches its accumulated records for relevant information. You have Advantage on the check.\\
+\paragraph*{Veritas Analysis} When you cast Identify using the Codex, its analysis penetrates magical obfuscation normally concealed from the spell. In addition to the information normally revealed, you learn whether the target carries a curse, possesses concealed magical properties, or requires an unusual condition for its powers to function. If sufficient evidence exists, the Codex may also provide information concerning the object's approximate origin or purpose.\\
+\paragraph*{Cross-Reference} When you encounter writing, symbols, or magical notation that you cannot immediately understand, you can spend 10 minutes allowing the Codex to compare them against its accumulated records. The DM tells you whether the markings resemble any language, magical tradition, culture, or system previously known to the Codex. This property does not automatically translate unknown writing or solve ciphers, but may provide clues to their origin or structure.
+
+\end{document}
