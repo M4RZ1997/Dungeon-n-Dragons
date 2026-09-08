@@ -328,16 +328,18 @@ A being not built - but assembled.
 % #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
 % --------------------------------------------------------------------------------------------------------------- %
 \Equipment{
+	\textbf{Scroll of Control Weather}, \textbf{Scroll of Earthquake},  \textbf{Eversmoking Bottle}\\
 	Alchemist's Tools, Mason's Tools, Carpenter's Tools, Thieves' Tools, Tinker's Tools, Woodcarver's Tools, Lute
 }
 %% Attuned Magic Items (Max 3, every other is ignored)
 \addAttunedMagicItem{All-Purpose Tool +3}
 \addAttunedMagicItem{Chronolometer}
+\addAttunedMagicItem{Ventilating Lungs}
 %% Gold
 \CP{}
 \SP{5}
 \EP{}
-\GP{1459}
+\GP{1559}
 \PP{}
 
 % --------------------------------------------------------------------------------------------------------------- %
@@ -2388,5 +2390,31 @@ While attuned to this device, you have a +1 bonus to Intelligence saving throws.
 \paragraph*{Fate Swap} As a reaction when a creature you can see within 30 feet of you takes damage, that creature gains an additional action if it is the creature's turn, or can take an action immediately even though it isn't the creature's turn. Once you use this feature of the chronolometer, it cannot be used again until the next dawn.
 
 \paragraph*{Part of a Whole} While this component is not installed in the Orrery of the Wanderer, its magic might function sporadically or with unpredictable side effects, as determined by the DM.
+\vfill\eject
+\subsection*{Ventilating Lungs}
+\textit{Wondrous Item, rare (requires attunement)}\\
+These metallic nodules were created in response to the poisonous gases used on the battlefields of the Last War. When you attune to these lungs, they replace the lungs in your chest, which disappear. The lungs allow you to breathe normally, even in an antimagic field, and their breathing function can't be suppressed by magic.
+
+Outside an antimagic field or any other effect that suppresses magic, these lungs allow you to breathe normally in any environment (including a vacuum), and you have advantage on saving throws against harmful gases such as those created by a Cloudkill spell, a Stinking Cloud spell, inhaled poisons, and gaseous breath weapons .
+
+As an action, you can use these lungs to exhale a gust of wind, as if you had cast the Gust of Wind spell (spell save DC 15) with no components. This property of the lungs can't be used again until the next dawn.
+
+If your attunement to the lungs ends, your original lungs reappear.
+
+\DndSpellHeader
+  {Gust of Wind}
+  {2nd-Level Evocation}
+  {Action}
+  {Self (60-footline)}
+  {V, S}
+  {Concentration, up to 1 Minute}
+
+A line of strong wind 60 feet long and 10 feet wide blasts from you in a direction you choose for the spell's duration. Each creature that starts its turn in the line must succeed on a DC 15 Strength saving throw or be pushed 15 feet away from you in a direction following the line.
+
+Any creature in the line must spend 2 feet of movement for every 1 foot it moves when moving closer to you.
+
+The gust disperses gas or vapor, and it extinguishes candles, torches, and similar unprotected flames in the area. It causes protected flames, such as those of lanterns, to dance wildly and has a 50 percent chance to extinguish them.
+
+As a bonus action on each of your turns before the spell ends, you can change the direction in which the line blasts from you.
 
 \end{document}
