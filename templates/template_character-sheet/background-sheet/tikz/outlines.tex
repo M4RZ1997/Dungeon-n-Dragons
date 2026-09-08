@@ -5,14 +5,18 @@
 \ifthenelse{\equal{\CharacterAppearancePictureOrientation}{none} \OR \equal{\CharacterAppearancePictureOrientation}{}}{}{%
 	\begin{scope}
 		\clip (41,125.5) arc[start angle=-90, end angle=-140, radius=13] -- (30.75,130.5) -- ++(0,228) arc[start angle=140, end angle=90, radius=13] -- (41,363.5) -- ++(152.5,0) arc[start angle=90, end angle=40, radius=13] -- (203.75,358.5) -- ++(0,-228) arc[start angle=-40, end angle=-90, radius=13] -- (193.5,125.5) -- cycle;
-		\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{horizontal}}{%
-			\pgfmathsetmacro{\vpos}{125.5 + \caYShift}
-			\pgfmathsetmacro{\hpos}{117.25 + \caXShift}
-			\node[anchor=north, inner sep=0pt] at (\hpos, \vpos) {\includegraphics[width=173pt, keepaspectratio]{\CharacterAppearancePictureValue}};
+		\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{full-size}}{%
+			\node[anchor=north, inner sep=0pt] at (117.25,126) {\includegraphics[width=173pt, height=236.75pt]{\CharacterAppearancePictureValue}};
 		}{%
-			\pgfmathsetmacro{\vpos}{125.5 + \caYShift}
-			\pgfmathsetmacro{\hpos}{74 + \caXShift}
-			\node[anchor=north, inner sep=0pt] at (\hpos, \vpos) {\includegraphics[width=86.5pt, height=170pt, keepaspectratio]{\CharacterAppearancePictureValue}};
+			\ifthenelse{\equal{\CharacterAppearancePictureOrientation}{horizontal}}{%
+				\pgfmathsetmacro{\vpos}{125.5 + \caYShift}
+				\pgfmathsetmacro{\hpos}{117.25 + \caXShift}
+				\node[anchor=north, inner sep=0pt] at (\hpos, \vpos) {\includegraphics[width=173pt, keepaspectratio]{\CharacterAppearancePictureValue}};
+			}{%
+				\pgfmathsetmacro{\vpos}{125.5 + \caYShift}
+				\pgfmathsetmacro{\hpos}{74 + \caXShift}
+				\node[anchor=north, inner sep=0pt] at (\hpos, \vpos) {\includegraphics[width=86.5pt, height=170pt, keepaspectratio]{\CharacterAppearancePictureValue}};
+			}%
 		}%
 	\end{scope}
 }
