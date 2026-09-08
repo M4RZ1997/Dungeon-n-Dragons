@@ -1,0 +1,555 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage{\PATH templates/template_dungeon/dungeon_commands}
+\usepackage{\PATH templates/template_monster/monster_commands}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{Naivara Emberglade}
+\PlayerName{M4RZ-Crafting} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Monk}
+\Subclass{{\footnotesize Way of the Ascendant Dragon}}
+\Background{Sailor}
+\Race{Summer Eladrin}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{6} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{10}
+\DexterityRolledScore{15}
+\ConstitutionRolledScore{13}
+\IntelligenceRolledScore{8}
+\WisdomRolledScore{15}
+\CharismaRolledScore{12}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{3}		% +2 Sailor Background, +1 ASI
+\ConstitutionScoreBonus{1}	% +1 ASI
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{1}		% +1 Sailor Background
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{P}
+\DexterityProficiency{P}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{P}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{P}
+\InvestigationProficiency{}
+\NatureProficiency{P}
+\ReligionProficiency{P}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{}
+\PerceptionProficiency{P}
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{45}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
+\ArmorClass{\intcalcAdd{10}{\intcalcAdd{1}{\intcalcAdd{\calculateModifier{\WisdomScoreValue}}{\calculateModifier{\DexterityScoreValue}}}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{36} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{}
+\MediumArmor{}
+\HeavyArmor{}
+\Shields{}
+
+\WeaponsProficiency{Simple weapons and Martial weapons that have the Light property}
+\ToolsProficiency{Navigator's Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Scythed Arm Blades}{NaivaraEmberglade}{DEX}{P}{2}{1d8 +\intcalcAdd{2}{\calculateModifier{\DexterityScoreValue}} p}{Finesse, Light, Nick}
+\addWeaponStatistic{Dagger}{NaivaraEmberglade}{DEX}{P}{0}{1d4 \calculateModifier{\DexterityScoreValue} p}{Finesse, Light, Thrown (20/60)}
+\addWeaponStatistic{Spear}{NaivaraEmberglade}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} p}{Thrown (20/60), Versatile (1d8)}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{NaivaraEmberglade}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue}}{Bludgeoning or Force damage}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Breath of the Dragon}{DC}{\calculateModifier{\WisdomScoreValue}}{2d8}{Acid, Cold, Fire, Lightning, or Poison}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{E}{\textbf{Martial Arts}\begin{itemize}
+	\item[\CustomItemLabel{B}] Bonus Unarmed Strike
+	\item Martial Arts Die (d8)
+	\item Dexterous Attack
+\end{itemize}}
+\AddClassFeature{E}{\textbf{Unarmored Defense}\\AC: \intcalcAdd{10}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\WisdomScoreValue}}}}
+\AddClassFeature{E}{\textbf{Monk's Focus} (6 Focus Points)\begin{itemize}
+	\item[\CustomItemLabel{B}] Flurry of Blows
+	\item[\CustomItemLabel{B}] Patient Defense
+	\item[\CustomItemLabel{B}] Step of the Wind
+\end{itemize}}
+\AddClassFeature{E}{\textbf{Unarmored Movement}\\15 ft. Speed Increase}
+\AddClassFeature{L}{\textbf{Uncanny Metabolism} (1 / LR)}
+\AddClassFeature{R}{\textbf{Deflect Attacks}\\\\}
+\AddClassFeature{E}{\textbf{Draconic Disciple}\begin{itemize}
+	\item[\CustomItemLabel{R}] Draconic Presence
+	\item Draconic Strike
+\end{itemize}}
+\AddClassFeature{A}{\textbf{Breath of the Dragon} (\intcalcAdd{0}{\ProficiencyValue} Uses)\\2d8}
+\AddClassFeature{R}{\textbf{Slow Fall}}
+\AddClassFeature{E}{\textbf{Extra Attack}}
+\AddClassFeature{E}{\textbf{Stunning Strike}}
+\AddClassFeature{E}{\textbf{Empowered Strikes}\\Unarmed Strikes can deal Force damage}
+\AddClassFeature{L}{\textbf{Wings Unfurled} (\intcalcAdd{0}{\ProficiencyValue} Uses)\\Flying Speed for 1 Round}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Darkvision}}
+\AddSpeciesFeature{E}{\textbf{Fey Ancestry}\\Advantage against Charmed condition}
+\AddSpeciesFeature{B}{\textbf{Fey Step (Summer)} (\intcalcAdd{0}{\ProficiencyValue} Uses / LR)\\Misty Step variant with Fire AoE}
+\AddSpeciesFeature{E}{\textbf{Keen Sense}\\Perception Proficiency}
+\AddSpeciesFeature{E}{\textbf{Trance}}
+% FEATS
+\AddFeat{\textbf{Tavern Brawler}\begin{itemize}
+	\item Enhanced Unarmed Strike
+	\item Damage Rerolls
+	\item Improvised Weaponry
+	\item Push
+\end{itemize}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{412}
+\Height{5'10}
+\Weight{150}
+\Eyes{Bright Amber}
+\Skin{Bronze}
+\Hair{Copper-Red}
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{11} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{-0.2em} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Naivara_Emberglade.jpg} %
+	{%
+		% Expects 2 Arguments "{@}{@}" in vertical mode, and 1 Argument "@" in horizontal/none mode
+		{\hspace*{-0.65em}Naivara Emberglade carries herself with effortless confidence, every movement flowing with practiced grace. Her sun-kissed skin glows faintly like the last light of dusk, while long copper-}{red hair cascades down her back, threaded with tiny golden leaves that never wither. Bright amber eyes shimmer with warmth and curiosity. Practical seafarer's attire lies beneath saffron robes, while polished dragon-bone scythed arm blades complete her imposing silhouette.}
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Caelthir Tribe}
+\OrganizationSymbol{../../../../images/Factions/Caelthir.png}
+\AlliesAndOrganizations{
+	The Caelthir Tribe, who call themselves the Children of the Hidden Moon, is a secluded community united by a common purpose: protecting those stranded from the Feywild and uncovering the secrets of the mysterious portals that bind the two realms. Within their hidden village of Ty Coeden, Fey Eladrin, Korreds, Satyrs, Centaurs, and other Fey creatures work together, combining their knowledge in hopes of one day reopening a stable path home. The tribe values harmony with nature, self-reliance, and the preservation of Fey traditions, while remaining wary of the wider mortal world. Every new arrival is\linebreak
+}{
+	welcomed as kin, for each carries experiences that may help solve the mystery of the portals. Though many Caelthir long to return to the Feywild, others have begun to see Caledonia as their new home, creating a quiet divide between preserving the past and embracing the future.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Naivara keeps meticulous journals documenting ancient ruins, forgotten faiths, and every known Fey portal she encounters, believing each discovery may one day guide her people home. Her dragon-bone arm blades are revered heirlooms of her monastic order, fashioned from the remains of a venerable dragon that died peacefully in the Feywild. She maintains them with quiet devotion, treating them as sacred relics rather than weapons. Although disciplined, she delights in sailing, claiming that the rhythm of wind and waves echoes the flow of draconic ki. She instinctively studies unfamiliar temples, monuments, and historical sites before anything else, often recalling legends or forgotten customs from memory. During meditation, faint golden embers drift harmlessly around her, and those nearby sometimes swear they hear the distant rumble of a dragon's breath carried upon the breeze. Despite her long life, she remains genuinely curious, always eager to learn from cultures beyond her own.
+}
+
+% BACKGROUND
+\Characterbackground{
+	Naivara Emberglade devoted herself to the Way of the Ascendant Dragon long before the Caelthir were stranded upon the Material Plane. Within the Feywild, she trained in a secluded monastery that revered dragons as exemplars of wisdom, discipline, and harmony, eventually inheriting a pair of dragon-bone scythed arm blades fashioned from the remains of an ancient dragon that had passed peacefully. She has carried these sacred relics ever since.
+
+When an unstable portal swept her into the Material Plane, Naivara stood among the first Fey Eladrin to establish what would become Ty Coeden in the Woods of Lomond. As the settlement slowly grew, she helped protect its people, chart the surrounding wilderness, and preserve the customs of the Feywild for future generations.
+
+Though the Caelthir rarely ventured beyond their hidden home, Naivara became one of the settlement's most trusted keepers of history and religion, recording every tale of their lost homeland and every discovery concerning the mysterious portals. She believes that understanding both the past and the nature of these rifts is the surest path to one day leading her people safely back to the Feywild.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Weathered Navigator's Journal}\\
+	A leather-bound tome filled with meticulous maps, records of magical phenomena, and observations of every known Fey portal, temple, and ancient ruin she has encountered.\\
+	\textbf{Golden Ember Prayer Beads}\\
+	A strand of smooth amber and carved wooden beads gifted by her monastery. She uses them during meditation and before every voyage, believing they keep her mind as steady as a dragon in flight.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	Calm and disciplined, Naivara meets every challenge with patient resolve. She eagerly shares her knowledge, believing wisdom grows when it is passed to others, and faces the unknown with quiet confidence rather than fear.
+}
+\Alignment{Lawful Good}
+
+\Ideals{
+	Knowledge preserves hope. Understanding history and the portals will one day lead the Caelthir home.
+}
+
+\Bonds{
+	She is devoted to Ty Coeden, her ancient monastic order, and the dragon-bone heirlooms entrusted to her care.
+}
+
+\Flaws{
+	She struggles to abandon ancient traditions and often places duty above her own happiness or safety.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish, Draconic}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Spear, 6 Daggers\\
+	Tinker's Tools, Navigator's Tools\\
+	Backpack, Bedroll, 2 flasks of Oil, 10 days of Rations, Rope, Tinderbox, 10 Torches, and Waterskin.
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Scythed Arm Blades (2)}
+\addAttunedMagicItem{Cloak of Protection}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{}
+\SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+\section*{Summer Eladrin Traits}
+\subsection*{Darkvision}
+You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.
+\subsection*{Fey Ancestry}
+You have advantage on saving throws you make to avoid or end the charmed condition on yourself.
+\subsection*{Fey Step}
+\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses, \intcalcAdd{0}{\ProficiencyValue} Fire damage}\\
+As a Bonus Action, you can magically teleport up to 30 feet to an unoccupied space you can see. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+
+Immediately after you use your Fey Step, each creature of your choice that you can see within 5 feet of you takes fire damage equal to your proficiency bonus.
+\subsection*{Keen Senses}
+You have proficiency in the Perception skill.
+\subsection*{Trance}
+You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.
+
+\section*{Feats}
+\subsection*{Tavern Brawler}
+You gain the following benefits.
+
+\paragraph*{Enhanced Unarmed Strike} When you hit with your Unarmed Strike and deal damage, you can deal Bludgeoning damage equal to 1d4 plus your Strength modifier instead of the normal damage of an Unarmed Strike.
+
+\paragraph*{Damage Rerolls} Whenever you roll a damage die for your Unarmed Strike, you can reroll the die if it rolls a 1, and you must use the new roll.
+
+\paragraph*{Improvised Weaponry} You have proficiency with improvised weapons.
+
+\paragraph*{Push} When you hit a creature with an Unarmed Strike as part of the Attack action on your turn, you can deal damage to the target and also push it 5 feet away from you. You can use this benefit only once per turn.
+
+\section*{Monk Traits}
+\subsection*{Martial Arts}
+\textbf{Martial Arts Die: d8}\\
+Your practice of martial arts gives you mastery of combat styles that use your Unarmed Strike and Monk weapons, which are the following:
+\begin{itemize}
+	\item Simple Melee Weapons
+	\item Martial Melee Weapons that have the Light property
+\end{itemize}
+
+You gain the following benefits while you are unarmed or wielding only Monk weapons and you aren't wearing armor or wielding a Shield.
+
+\paragraph*{Bonus Unarmed Strike} You can make an Unarmed Strike as a Bonus Action.
+
+\paragraph*{Martial Arts Die} You can roll 1d6 in place of the normal damage of your Unarmed Strike or Monk weapons. This die changes as you gain Monk levels, as shown in the Martial Arts column of the Monk Features table.
+
+\paragraph*{Dexterous Attacks} You can use your Dexterity modifier instead of your Strength modifier for the attack and damage rolls of your Unarmed Strikes and Monk weapons. In addition, when you use the Grapple or Shove option of your Unarmed Strike, you can use your Dexterity modifier instead of your Strength modifier to determine the save DC.
+\subsection*{Unarmored Defense}
+\textbf{AC: \intcalcAdd{10}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\WisdomScoreValue}}}}\\
+While you aren't wearing armor or wielding a Shield, your base Armor Class equals 10 plus your Dexterity and Wisdom modifiers.
+\subsection*{Monk's Focus}
+Your focus and martial training allow you to harness a well of extraordinary energy within yourself. This energy is represented by Focus Points. Your Monk level determines the number of points you have, as shown in the Focus Points column of the Monk Features table.
+
+You can expend these points to enhance or fuel certain Monk features. You start knowing three such features: Flurry of Blows, Patient Defense, and Step of the Wind, each of which is detailed below.
+
+When you expend a Focus Point, it is unavailable until you finish a Short or Long Rest, at the end of which you regain all your expended points.
+
+Some features that use Focus Points require your target to make a saving throw. The save DC equals 8 plus your Wisdom modifier and Proficiency Bonus.
+
+\paragraph*{Flurry of Blows} You can expend 1 Focus Point to make two Unarmed Strikes as a Bonus Action.
+
+\paragraph*{Patient Defense} You can take the Disengage action as a Bonus Action. Alternatively, you can expend 1 Focus Point to take both the Disengage and the Dodge actions as a Bonus Action.
+
+\paragraph*{Step of the Wind} You can take the Dash action as a Bonus Action. Alternatively, you can expend 1 Focus Point to take both the Disengage and Dash actions as a Bonus Action, and your jump distance is doubled for the turn.
+\subsection*{Unarmored Movement}
+\textbf{Speed Increase: 15 ft.}\\
+Your speed increases by 10 feet while you aren't wearing armor or wielding a Shield. This bonus increases when you reach certain Monk levels, as shown on the Monk Features table.
+\subsection*{Uncanny Metabolism}
+When you roll Initiative, you can regain all expended Focus Points. When you do so, roll your Martial Arts die, and regain a number of Hit Points equal to your Monk level plus the number rolled.
+
+Once you use this feature, you can't use it again until you finish a Long Rest.
+\subsection*{Deflect Attacks}
+When an attack roll hits you and its damage includes Bludgeoning, Piercing, or Slashing damage, you can take a Reaction to reduce the attack's total damage against you. The reduction equals 1d10 plus your Dexterity modifier and Monk level.
+
+If you reduce the damage to 0, you can expend 1 Focus Point to redirect some of the attack's force. If you do so, choose a creature you can see within 5 feet of yourself if the attack was a melee attack or a creature you can see within 60 feet of yourself that isn't behind Total Cover if the attack was a ranged attack. That creature must succeed on a Dexterity saving throw or take damage equal to two rolls of your Martial Arts die plus your Dexterity modifier. The damage is the same type dealt by the attack.
+\subsection*{Way of the Ascendant Dragon}
+\subsubsection*{Draconic Disciple}
+You can channel draconic power to magnify your presence and imbue your unarmed strikes with the essence of a dragon's breath. You gain the following benefits:
+
+\paragraph*{Draconic Presence} If you fail a Charisma (Intimidation) or Charisma (Persuasion) check, you can use your reaction to reroll the check, as you tap into the mighty presence of dragons. Once this feature turns a failure into a success, you can't use it again until you finish a long rest.
+
+\paragraph*{Draconic Strike} When you damage a target with an unarmed strike, you can change the damage type to acid, cold, fire, lightning, or poison.
+
+\paragraph*{Tongue of Dragons} You learn to speak, read, and write Draconic or one other language of your choice.
+\subsubsection*{Breath of the Dragon}
+\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses}
+You can channel destructive waves of energy, like those created by the dragons you emulate. When you take the Attack action on your turn, you can replace one of the attacks with an exhalation of draconic energy in either a 20-foot cone or a 30-foot line that is 5 feet wide (your choice). Choose a damage type: acid, cold, fire, lightning, or poison. Each creature in that area must make a Dexterity saving throw against your ki save DC, taking damage of the chosen type equal to two rolls of your Martial Arts die on a failed save, or half as much damage on a successful one.
+
+At 11th level, the damage of this feature increases to three rolls of your Martial Arts die.
+
+You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. While you have no uses available, you can spend 2 ki points to use this feature again.
+\subsubsection*{Wings Unfurled}
+When you use your Step of the Wind, you can unfurl spectral draconic wings from your back that vanish at the end of your turn. While the wings exist, you have a flying speed equal to your walking speed.
+
+You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+\subsection*{Slow Fall}
+You can take a Reaction when you fall to reduce any damage you take from the fall by an amount equal to five times your Monk level.
+\subsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn.
+\subsection*{Stunning Strike}
+Once per turn when you hit a creature with a Monk weapon or an Unarmed Strike, you can expend 1 Focus Point to attempt a stunning strike. The target must make a Constitution saving throw. On a failed save, the target has the Stunned condition until the start of your next turn. On a successful save, the target's Speed is halved until the start of your next turn, and the next attack roll made against the target before then has Advantage.
+\subsection*{Empowered Strikes}
+Whenever you deal damage with your Unarmed Strike, it can deal your choice of Force damage or its normal damage type.
+
+\part*{Magic Items}
+\subsection*{Scythed Arm Blades}
+\textit{Weapon (Shortsword), Rare (Requires Attunement)}\\
+{\entryfont These steel arm blades are razor sharp, 4-foot-long scythes that are fastened to two locking bracers made of spinal bones. The fasteners are made from fine leather with steel buckles. Delerium crystals are embedded in the armbands, infusing the blades with energy.
+
+These magic shortswords function as a pair and must be wielded together for their magic properties to function. Attuning to the shortswords counts as being attuned to one magic item.
+
+You gain a +2 bonus to attack and damage rolls made with these magic shortswords. While attuned to these weapons, you can activate the Nick mastery property in addition to a different mastery property you're using with these weapons.
+
+\paragraph*{Finesse} When making an attack with a Finesse weapon, use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls.
+
+\paragraph*{Light} When you take the Attack action on your turn and attack with a Light weapon, you can make one extra attack as a Bonus Action later on the same turn. That extra attack must be made with a different Light weapon, and you don't add your ability modifier to the extra attack's damage unless that modifier is negative. For example, you can attack with a Shortsword in one hand and a Dagger in the other using the Attack action and a Bonus Action, but you don't add your Strength or Dexterity modifier to the damage roll of the Bonus Action unless that modifier is negative.
+
+\paragraph*{Mastery: Nick} When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.}
+\subsection*{Cloak of Protection}
+\textit{Wondrous Item, Uncommon (Requires Attunement)}\\
+You gain a +1 bonus to Armor Class and saving throws while you wear this cloak.
+
+
+\DungeonSheetGeometry
+\section*{Beast of Blight}
+{\entryfont The Beast of Blight was once known as Farryn of the Greenwood, a druidic protector of the natural cycle who delved into forbidden lore to save her dead lover. Her love was virtuous, but in the end, it caused nothing but pain. Rot overtook the druid, and she is now a monstrous being that spreads and thrives on decay. The Beast of Blight moves effortlessly through decay and spews putrid spores when roused to anger.
+
+\paragraph*{Secret} Buried deep within the Beast of Blight, a tiny fragment of Farryn still exists. If shown an image of her lost love, the ignited memory will burn away the rot.}
+
+\section*{Bullywug}
+{\entryfont Life as a bullywug is nasty, brutish, and wet. These frog-headed amphibious humanoids must stay constantly moist, dwelling in rainy forests, marshes, and damp caves. Always hungry and thoroughly evil, bullywugs overwhelm opponents with superior numbers when they can, but they flee from serious threats to search for easier prey.
+
+Bullywugs have green, gray, or mottled yellow skin that shifts through shades of gray, green, and brown, allowing them to blend in with their surroundings. They wear crude armor and wield simple weapons, and can deliver a powerful bite to foes that press too close.
+
+\paragraph*{Foul Aristocracy} Bullywugs consider themselves the right and proper rulers of the swamps. They follow an etiquette of sorts when dealing with outsiders and each other, subject to the whims and fancies of their leader-a self-styled lord of the muck. Bullywugs introduce themselves with grand-sounding titles, make great shows of bowing and debasing themselves before their superiors, and endlessly vie to win their superiors' favor.
+
+A bullywug has two ways to advance among its kind. It can either murder its rivals, though it must take pains to keep its criminal deeds secret, or it can find a treasure or magic item and present it as tribute or a token of obeisance to its liege. A bullywug that murders its rivals without cunning is likely to be executed, so it's more common for bullywugs to stage raids against caravans and settlements, with the goal of securing precious baubles to impress their lords and win their good graces. Invariably, such fine goods are reduced to filthy tatters through abuse and neglect. Once a gift loses its sheen, a bullywug lord invariably demands that its subjects bring it more treasure as tribute.
+
+\paragraph*{Unruly Diplomacy} Bullywugs love nothing more than lording over those who trespass on their territories. Their warriors attempt to capture intruders rather than simply slaying them.
+
+Captives are dragged before the king or queen-a bullywug of unusually large size-and forced to beg for mercy. Bribes, treasure, and flattery can trick the bullywug ruler into letting its captives go, but not before it tries to impress its "guests" with the majesty of its treasure and its realm. Struck with a deep inferiority complex, bullywug lords fancy themselves as kings and queens, but desperately crave the fear and respect of outsiders.}
+
+\section*{Centipede Hag}
+{\entryfont Centipede hags are grotesque witches that revel in disease and filth, filling their presence with the scuttling vermin they adore. Their magic thrives in the corruption and warping of bodies, and they often engage in horrifying experimentation in grafting, swapping, and combining body parts to create nightmarish new creatures.
+
+\paragraph*{Secret} Centipede hags draw more than strength from the filth that covers them; it is the essence of their being. Scrubbing it away dissolves the hag.}
+
+\section*{Cobalt Foxes}
+{\entryfont The Cobalt Fox itself is appraised as a very intelligent and often supportive fey helping other creatures and humanoids to find there way back to civilization or crucial infrastructure as well as towards feeding and drinking grounds. However, these creature can get highly aggressive and territorial if they sense harm towards their lair and are considered extremely ferocious if their cubs are in danger.}
+
+\section*{\LARGE Incarnation of Transcience}
+{\entryfont The incarnations of transience represent all that is fleeting or ephemeral. Despite their apparent bulk, these incarnations are actually ephemeral beings with only a spectral existence in material reality. Each incarnation resembles a saurian behemoth with an axolotl face, a many-frilled tail, and a hulking back covered in bright-orange pustules.}
+
+\section*{Wellwyrm}
+{\entryfont Wellwyrms are serpents originally touched by cruel Fey masters. The wyrms live in shallow waters where land-dwelling creatures frequent, such as wells and watering holes, lying in wait to coil around unsuspecting victims. Wellwyrms then drag their prey into water, or into burrows they dig under seemingly safe ground, to drown or suffocate.
+
+\paragraph*{Secret} The sound of a hunting horn drives wellwyrms into a panicked frenzy.}
+
+\section*{Worgs}
+{\entryfont Sometimes mistaken at first for giant wolves, worgs are vicious hunters. These sapient predators can speak and often taunt their prey, enjoying the taste of fear in their meals.}
+\subsection*{Dire Worgs}
+{\entryfont Dire worgs are larger than common worgs and possess a supernaturally terrifying howl. They frequently hunt alongside ettins, ogres, and trolls.}
+\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt]%
+	\node (mainpicture) at (0,0) {};
+	\MonsterShortInfoBox{0.5cm}% Shift Horizontal Short Info Box
+		{17cm}% Shift Vertical Short Info Box
+		{-8}% Rotation Angle Short Info Box
+		{4.5cm}% Width of Short-Info Box
+		{4}% Number of Lines in Textbox (might be adjusted after 1 compile) 
+		{\LARGE \textbf{WARNING:\\DANGEROUS}}%
+\end{tikzpicture}
+
+\end{document}

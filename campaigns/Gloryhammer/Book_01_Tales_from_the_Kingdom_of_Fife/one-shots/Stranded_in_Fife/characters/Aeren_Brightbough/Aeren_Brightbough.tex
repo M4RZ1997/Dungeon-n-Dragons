@@ -1,0 +1,804 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{Aeren Brightbough}
+\PlayerName{M4RZ-Crafting} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Paladin}
+\Subclass{Oath of the Crown}
+\Background{Verdant Shield Mercenary} % Flaming Fist Mercenary renamed
+\Race{Spring Eladrin}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{6} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{16}
+\DexterityRolledScore{7}
+\ConstitutionRolledScore{14}
+\IntelligenceRolledScore{11}
+\WisdomRolledScore{11}
+\CharismaRolledScore{15}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{2}		% +2 Verdant Shield Mercenary Background
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{2}	% ASI
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{1}		% +1 Verdant Shield Mercenary Background
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{}
+\WisdomProficiency{P}
+\CharismaProficiency{P}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{P}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{P}
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{P}
+\PerformanceProficiency{}
+\PersuasionProficiency{P}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{16}{3}}
+
+% HIT POINTS
+\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{45} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d10}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{P}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{\ }
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Devotee's Censer}{AerenBrightbough}{STR}{P}{0}{1d8 \calculateModifier{\StrengthScoreValue} b}{+ 1d8 Radiant, Sap}
+\addWeaponStatistic{Javelin}{AerenBrightbough}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} p}{Thrown (30/120), Slow}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{AerenBrightbough}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{B}{\textbf{Lay on Hands}\\Heal Pool: \intcalcMul{5}{\LevelValue}}
+\AddClassFeature{E}{\textbf{Weapon Mastery}\begin{itemize}
+	\item Flail (Sap)
+	\item Javelin (Slow)
+\end{itemize}}
+\AddClassFeature{E}{\textbf{Fighting Style}\\Protection}
+\AddClassFeature{L}{\textbf{Paladin's Smite} (1 time free / LR)}
+\AddClassFeature{L}{\textbf{Channel Divinity} (2 Uses / LR)\begin{itemize}
+	\item[\CustomItemLabel{B}] Divine Sense
+	\item[\CustomItemLabel{B}] Champion Challenge
+	\item[\CustomItemLabel{B}] Turn the Tide
+\end{itemize}}
+\AddClassFeature{E}{\textbf{Extra Attack}}
+\AddClassFeature{L}{\textbf{Faithful Steed} (1 time free / LR)}
+\AddClassFeature{E}{\textbf{Aura of Protection}\\Bonus to Saving Throws: \calculateModifier{\CharismaScoreValue}}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Darkvision}}
+\AddSpeciesFeature{E}{\textbf{Fey Ancestry}\\Advantage against Charmed condition}
+\AddSpeciesFeature{B}{\textbf{Fey Step (Spring)} (\intcalcAdd{0}{\ProficiencyValue} Uses / LR)\\Misty Step variant (Self or others)}
+\AddSpeciesFeature{E}{\textbf{Keen Sense}\\Perception Proficiency}
+\AddSpeciesFeature{E}{\textbf{Trance}}
+% FEATS
+\AddFeat{\textbf{Tough}}
+\AddFeat{\textbf{Protection (Fighting Style)}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{287}
+\Height{6'4 ft}
+\Weight{240}
+\Eyes{Emerald Green}
+\Skin{Fair}
+\Hair{Ash Blonde}
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{10} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Aeren_Brightbough.jpg} %
+	{%
+		% Expects 2 Arguments "{@}{@}" in vertical mode, and 1 Argument "@" in horizontal/none mode
+		{Aeren possesses a broad, powerfully built frame that reflects years of disciplined martial training. His fair skin, emerald-green eyes, and neatly braided ash-blond}{hair embody the vibrant vitality of a Spring Eladrin. He wears well-maintained chain mail beneath a green cloak fastened with a silver brooch shaped like intertwining branches.}
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Caelthir Tribe}
+\OrganizationSymbol{../../../../images/Factions/Caelthir.png}
+\AlliesAndOrganizations{
+	The Caelthir Tribe, who call themselves the Children of the Hidden Moon, is a secluded community united by a common purpose: protecting those stranded from the Feywild and uncovering the secrets of the mysterious portals that bind the two realms. Within their hidden village of Ty Coeden, Fey Eladrin, Korreds, Satyrs, Centaurs, and other Fey creatures work together, combining their knowledge in hopes of one day reopening a stable path home. The tribe values harmony with nature, self-reliance, and the preservation of Fey traditions, while remaining wary of the wider mortal world. Every new arrival is\linebreak
+}{
+	welcomed as kin, for each carries experiences that may help solve the mystery of the portals. Though many Caelthir long to return to the Feywild, others have begun to see Caledonia as their new home, creating a quiet divide between preserving the past and embracing the future.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Aeren's presence is reassuring long before he speaks. He instinctively positions himself between companions and potential danger, often taking the least comfortable watch or the most exposed seat without a second thought. The fragrant incense drifting from his devotee's censer is blended according to an old Feywild recipe once used by the Verdant Shield Mercenary Guild to calm frightened civilians after battle. Though immensely strong, he handles children, injured animals, and delicate objects with remarkable gentleness. His chain mail is meticulously maintained, each repaired link marking a blow that never reached someone under his protection. He remembers the names of those he has sworn to defend, considering every promise a sacred obligation. Around Ty Coeden, younger Caelthir often seek his guidance, knowing he listens before offering advice. He believes true leadership is measured not by those who follow willingly, but by those who feel safest standing beside you.
+}
+
+% BACKGROUND
+\Characterbackground{
+	Aeren Brightbough was born in the Feywild, where he joined the renowned Verdant Shield Mercenaries at a young age. Unlike many who sought fame or fortune, Aeren accepted contracts to safeguard settlements, escort travelers through dangerous regions, and defend those unable to defend themselves. His courage and unwavering sense of duty earned him the respect of his comrades, eventually leading him to swear the Oath of the Crown - not to a monarch, but to the ideals of unity, responsibility, and selfless service.
+
+When an unstable portal carried him to the Material Plane nearly two centuries ago, Ty Coeden was still a small settlement struggling to establish itself within the Woods of Lomond. Recognizing a community in desperate need of capable defenders, Aeren pledged his sword and shield to the Caelthir without hesitation.
+
+Over the decades, he became one of Ty Coeden's most dependable guardians, patrolling its borders, training younger warriors, and standing as the first line of defense whenever danger threatened. Though he still remembers the beauty of the Feywild, Aeren believes protecting those beside him today is the surest way to honor the home he left behind.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Verdant Shield Badge}\\
+	A polished silver brooch bearing the crest of the Verdant Shield Mercenary Company. Though the company was lost to the Feywild, Aeren wears it to remember those who taught him that strength exists to protect others.\\
+	\textbf{Book of Oaths}\\
+	A weathered leather-bound journal containing every vow Aeren has made to protect a person, place, or cause. He never removes a name, believing that every promise remains a part of who he is, whether fulfilled or not.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	Aeren is steadfast, compassionate, and slow to anger. He instinctively shields others from harm, believing every life under his care is worth any sacrifice. He leads through quiet example rather than commanding words.
+}
+\Alignment{Lawful Good}
+
+\Ideals{
+	Duty is measured by those you protect, not by the glory you earn. A guardian stands firm so others may live without fear.
+}
+
+\Bonds{
+	He has pledged his life to Ty Coeden and considers every member of the Caelthir family under his protection.
+}
+
+\Flaws{
+	He bears burdens alone, rarely asking for help, and often risks his own life without considering the cost to himself.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	\textbf{Repulsion Shield}, 6 Javelins, Chain Shirt (Stealth Disadvantage)\\
+	Backpack, Blanket, Holy Water, Lamp, 7 days of Rations, Robe, Tinderbox
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Devotee's Censer}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Paladin}
+\SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{2}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{1}
+	{Bless}
+	{Action}
+	{30 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Command}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{Compelled Duel}
+	{Bonus Action}
+	{30 Feet}
+	{T}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{Divine Smite}
+	{Bonus Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{Shield of Faith}
+	{Bonus Action}
+	{60 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Thunderous Smite}
+	{Bonus Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+
+\addPreparedSpell{2}
+	{Find Steed}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{2}
+	{Invigorate}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{S, 1 Hour}
+	{S, M}
+\addPreparedSpell{2}
+	{Prayer of Healing}
+	{10 Min}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{2}
+	{Shining Smite}
+	{Bonus Action}
+	{Self}
+	{T}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{2}
+	{Warding Bond}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Zone of Truth}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V, S, 10 Minutes}
+	{V, S}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+\section*{Spring Eladrin Traits}
+\subsection*{Darkvision}
+You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.
+\subsection*{Fey Ancestry}
+You have advantage on saving throws you make to avoid or end the charmed condition on yourself.
+\subsection*{Fey Step}
+\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses}\\
+As a Bonus Action, you can magically teleport up to 30 feet to an unoccupied space you can see. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+
+When you use your Fey Step, you can touch one willing creature within 5 feet of you. That creature then teleports instead of you, appearing in an unoccupied space of your choice that you can see within 30 feet of you.
+\subsection*{Keen Senses}
+You have proficiency in the Perception skill.
+\subsection*{Trance}
+You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.
+
+\section*{Feats}
+\subsection*{Tough}
+Your Hit Point maximum increases by an amount equal to twice your character level when you gain this feat. Whenever you gain a character level thereafter, your Hit Point maximum increases by an additional 2 Hit Points.
+\subsection*{Protection (Fighting Style)}
+When a creature you can see attacks a target other than you that is within 5 feet of you, you can take a Reaction to interpose your Shield if you're holding one. You impose Disadvantage on the triggering attack roll and all other attack rolls against the target until the start of your next turn if you remain within 5 feet of the target.
+
+\section*{Paladin Traits}
+\subsection*{Lay on Hands}
+\textbf{Heal Pool: \intcalcMul{5}{\LevelValue}}\\
+Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you finish a Long Rest. With that pool, you can restore a total number of Hit Points equal to five times your Paladin level.
+
+As a Bonus Action, you can touch a creature (which could be yourself) and draw power from the pool of healing to restore a number of Hit Points to that creature, up to the maximum amount remaining in the pool.
+
+You can also expend 5 Hit Points from the pool of healing power to remove the Poisoned condition from the creature; those points don't also restore Hit Points to the creature.
+\subsection*{Weapon Mastery}
+Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longswords and Javelins.
+
+Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Halberds and Flails.
+\subsubsection*{Sap (Flail)}
+If you hit a creature with this weapon, that creature has Disadvantage on its next attack roll before the start of your next turn.
+\subsubsection*{Slow (Javelin)}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+\subsubsection*{Sap (Longsword)}
+\subsection*{Fighting Style}
+\textbf{Protection}\\
+You gain a Fighting Style feat of your choice. Instead of choosing one of those feats, you can choose the option below.
+
+\paragraph*{Blessed Warrior} You learn two Cleric cantrips of your choice. Guidance and Sacred Flame are recommended. The chosen cantrips count as Paladin spells for you, and Charisma is your spellcasting ability for them. Whenever you gain a Paladin level, you can replace one of these cantrips with another Cleric cantrip.
+\subsection*{Paladin's Smite}
+You always have the Divine Smite spell prepared. In addition, you can cast it without expending a spell slot, but you must finish a Long Rest before you can cast it in this way again.
+\subsection*{Channel Divinity}
+You can channel divine energy directly from the Outer Planes, using it to fuel magical effects. You start with one such effect: Divine Sense, which is described below. Other Paladin features give additional Channel Divinity effect options. Each time you use this class's Channel Divinity, you choose which effect from this class to create.
+
+You can use this class's Channel Divinity twice. You regain one of its expended uses when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. You gain an additional use when you reach Paladin level 11.
+
+If a Channel Divinity effect requires a saving throw, the DC equals the spell save DC from this class's Spellcasting feature.
+\subsubsection*{Divine Sense}
+As a Bonus Action, you can open your awareness to detect Celestials, Fiends, and Undead. For the next 10 minutes or until you have the Incapacitated condition, you know the location of any creature of those types within 60 feet of yourself, and you know its creature type. Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated, as with the Hallow spell.
+\subsubsection*{Champion Challenge}
+As a bonus action, you issue a challenge that compels other creatures to do battle with you. Each creature of your choice that you can see within 30 feet of you must make a Wisdom saving throw. On a failed save, a creature can't willingly move more than 30 feet away from you. This effect ends on the creature if you are incapacitated or die or if the creature is more than 30 feet away from you.
+\subsubsection*{Turn the Tide}
+As a bonus action, you can bolster injured creatures with your Channel Divinity. Each creature of your choice that can hear you within 30 feet of you regains hit points equal to 1d6 + your Charisma modifier (minimum of 1) if it has no more than half of its hit points.
+\subsection*{Oath of the Crown}
+\subsubsection*{Tenets of the Crown}
+The tenets of the Oath of the Crown are often set by the sovereign to which their oath is sworn, but generally emphasize the following tenets.
+
+\paragraph*{Law} The law is paramount. It is the mortar that holds the stones of civilization together, and it must be respected.
+
+\paragraph*{Loyalty} Your word is your bond. Without loyalty, oaths and laws are meaningless.
+
+\paragraph*{Courage} You must be willing to do what needs to be done for the sake of order, even in the face of overwhelming odds. If you don't act, then who will?
+
+\paragraph*{Responsibility} You must deal with the consequences of your actions, and you are responsible for fulfilling your duties and obligations.
+\subsubsection*{Oath Spells}
+You gain oath spells at the paladin levels listed.\\
+\begin{DndTable}[header=Oath of the Crown Spells]{llX}
+				& Paladin Level	& Spells\\
+	\textbullet	& 3rd			& Command, Compelled Duel\\
+	\textbullet	& 5th			& Warding Bond, Zone of Truth\\
+				& 9th			& Aura of Vitality, Spirit Guardians\\
+				& 13th			& Banishment, Guardian of Faith\\
+				& 17th			& Circle of Power, Geas
+\end{DndTable}
+\subsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn.
+\subsection*{Faithful Steed}
+You can call on the aid of an otherworldly steed. You always have the Find Steed spell prepared.
+
+You can also cast the spell once without expending a spell slot, and you regain the ability to do so when you finish a Long Rest.
+\subsection*{Aura of Protection}
+\textbf{Saving Throw Bonus: \calculateModifier{\CharismaScoreValue}}\\
+You radiate a protective, unseeable aura in a 10-foot Emanation that originates from you. The aura is inactive while you have the Incapacitated condition.
+
+You and your allies in the aura gain a bonus to saving throws equal to your Charisma modifier (minimum bonus of +1).
+
+If another Paladin is present, a creature can benefit from only one Aura of Protection at a time; the creature chooses which aura while in them.
+
+\section*{Spells}
+\subsection*{Level 1}
+
+\DndSpellHeader{Bless}
+	{1st-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V, S, M (a Holy Symbol worth 5+ GP)}
+	{Concentration, up to 1 Minute}
+
+You bless up to three creatures within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target adds 1d4 to the attack roll or save.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 1.
+
+\DndSpellHeader{Command}
+	{1st-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V}
+	{Instantaneous}
+
+You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. Choose the command from these options:
+
+\paragraph*{Approach} The target moves toward you by the shortest and most direct route, ending its turn if it moves within 5 feet of you.
+
+\paragraph*{Drop} The target drops whatever it is holding and then ends its turn.
+
+\paragraph*{Flee} The target spends its turn moving away from you by the fastest available means.
+
+\paragraph*{Grovel} The target has the Prone condition and then ends its turn.
+
+\paragraph*{Halt} On its turn, the target doesn't move and takes no action or Bonus Action.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can affect one additional creature for each spell slot level above 1.
+
+\DndSpellHeader{Compelled Duel}
+	{1st-Level Enchantment}
+	{Bonus Action}
+	{30 Feet}
+	{V}
+	{Concentration, up to 1 Minute}
+
+You try to compel a creature into a duel. One creature that you can see within range makes a Wisdom saving throw. On a failed save, the target has Disadvantage on attack rolls against creatures other than you, and it can't willingly move to a space that is more than 30 feet away from you.
+
+The spell ends if you make an attack roll against a creature other than the target, if you cast a spell on an enemy other than the target, if an ally of yours damages the target, or if you end your turn more than 30 feet away from the target.
+
+\DndSpellHeader{Divine Smite}
+	{1st-Level Evocation}
+	{Bonus Action, which you take immediately after hitting a target with a Melee weapon or an Unarmed Strike}
+	{Self}
+	{V}
+	{Instantaneous}
+
+The target takes an extra 2d8 Radiant damage from the attack. The damage increases by 1d8 if the target is a Fiend or an Undead.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d8 for each spell slot level above 1.
+
+\DndSpellHeader{Shield of Faith}
+	{1st-Level Abjuration}
+	{Bonus Action}
+	{60 Feet}
+	{V, S, M (a prayer scroll)}
+	{Concentration, up to 10 Minutes}
+
+A shimmering field surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration.
+
+\DndSpellHeader{Thunderous Smite}
+	{1st-Level Evocation}
+	{Bonus Action, which you take immediately after hitting a target with a Melee weapon or an Unarmed Strike}
+	{Self}
+	{V}
+	{Instantaneous}
+
+Your strike rings with thunder that is audible within 300 feet of you, and the target takes an extra 2d6 Thunder damage from the attack. Additionally, if the target is a creature, it must succeed on a Strength saving throw or be pushed 10 feet away from you and have the Prone condition.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 1.
+
+\subsection*{Level 2}
+\DndSpellHeader{Find Steed}
+	{2nd-Level Conjuration}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{Instantaneous}
+
+You summon an otherworldly being that appears as a loyal steed in an unoccupied space of your choice within range. This creature uses the Otherworldly Steed stat block. If you already have a steed from this spell, the steed is replaced by the new one.
+
+The steed resembles a Large, rideable animal of your choice, such as a horse, a camel, a dire wolf, or an elk. Whenever you cast the spell, choose the steed's creature type - Celestial, Fey, or Fiend - which determines certain traits in the stat block.
+
+Combat. The steed is an ally to you and your allies. In combat, it shares your Initiative count, and it functions as a controlled mount while you ride it (as defined in the rules on mounted combat). If you have the Incapacitated condition, the steed takes its turn immediately after yours and acts independently, focusing on protecting you.
+
+Disappearance of the Steed. The steed disappears if it drops to 0 Hit Points or if you die. When it disappears, it leaves behind anything it was wearing or carrying. If you cast this spell again, you decide whether you summon the steed that disappeared or a different one.
+
+\begin{DndMonster}[width=0.5\textwidth]{Otherworldly Steed}
+	\DndMonsterType{Large Celestial, Fey, or Fiend, Neutral}
+	
+	\DndMonsterBasics[
+		armor-class	= {10 + Spell Level},
+		hit-points	= {5 + 10 * Spell Level (Spell Level d10s) HP},
+		speed		= {60 ft., Fly 60 ft. (requires level 4+ spell)},
+		initiative	= +1,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 18,
+		dex = 12,
+		con = 14,
+		int = 6,
+		wis = 12,
+		cha = 8,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+%		skills					= {},
+		%damage-vulnerabilities	= {},
+		%damage-resistances		= {cold},
+		%damage-immunities		= {},
+		%condition-immunities	= {},
+		senses					= {Passive Perception 11},
+		languages				= -,
+		challenge				= -,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Life Bond} When you regain Hit Points from a level 1+ spell, the steed regains the same number of Hit Points if you're within 5 feet of it.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Otherworldly Slam,
+		distance		= melee,
+		%type			= weapon,
+		mod				= \SpellAttackBonusValue,
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= 1d8 + Spell Level,
+		dmg-type		= {Radiant (Celestial), Psychic (Fey), or Necrotic (Fiend)},
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+%		extra			= {},
+	]
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterSavingThrowEffect[
+		name = {Fell Glare (Fiend Only; Recharges after a Long Rest)},
+%		description = {},
+		save_skill = {Wisdom},
+		save_dc = {\SpellSaveDifficultyClassValue},
+		targets = {one creature within 60 feet the steed can see},
+		failure = {The target has the Frightened condition until the end of your next turn},
+%		success = {},
+%		extra={}
+	]
+	
+	\DndMonsterAction{Fey Step (Fey Only; Recharges after a Long Rest)}
+	The steed teleports, along with its rider, to an unoccupied space of your choice up to 60 feet away from itself.
+	
+	\DndMonsterAction{Healing Touch (Celestial Only; Recharges after a Long Rest)}
+	One creature within 5 feet of the steed regains a number of Hit Points equal to 2d8 + the spell's level.
+\end{DndMonster}
+
+\DndSpellHeader{Invigorate}
+	{2nd-Level Abjuration}
+	{Action}
+	{30 Feet}
+	{S, M (a syringe and a blood sample)}
+	{1 Hour}
+
+Choose up to three creatures within range. Each target gains 10 temporary hit points.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the temporary hit points increase by 5 for each slot level above 2nd.
+
+\DndSpellHeader{Prayer of Healing}
+	{2nd-Level Abjuration}
+	{10 Minutes}
+	{30 Feet}
+	{V}
+	{Instantaneous}
+
+Up to five creatures of your choice who remain within range for the spell's entire casting gain the benefits of a Short Rest and also regain 2d8 Hit Points. A creature can't be affected by this spell again until that creature finishes a Long Rest.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The healing increases by 1d8 for each spell slot level above 2.
+
+\DndSpellHeader{Shining Smite}
+	{2nd-Level Transmutation}
+	{Bonus Action, which you take immediately after hitting a creature with a Melee weapon or an Unarmed Strike}
+	{Self}
+	{V}
+	{Concentration, up to 1 Minute}
+
+The target hit by the strike takes an extra 2d6 Radiant damage from the attack. Until the spell ends, the target sheds Bright Light in a 5-foot radius, attack rolls against it have Advantage, and it can't benefit from the Invisible condition.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 2.
+
+\DndSpellHeader{Warding Bond}
+	{2nd-Level Abjuration}
+	{Action}
+	{Touch}
+	{V, S, M (a pair of platinum rings worth 50+ GP each, which you and the target must wear for the duration)}
+	{1 Hour}
+
+You touch another creature that is willing and create a mystic connection between you and the target until the spell ends. While the target is within 60 feet of you, it gains a +1 bonus to AC and saving throws, and it has Resistance to all damage. Also, each time it takes damage, you take the same amount of damage.
+
+The spell ends if you drop to 0 Hit Points or if you and the target become separated by more than 60 feet. It also ends if the spell is cast again on either of the connected creatures.
+
+\DndSpellHeader{Zone of Truth}
+	{2nd-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{10 Minutes}
+
+You create a magical zone that guards against deception in a 15-foot-radius Sphere centered on a point within range. Until the spell ends, a creature that enters the spell's area for the first time on a turn or starts its turn there makes a Charisma saving throw. On a failed save, a creature can't speak a deliberate lie while in the radius. You know whether a creature succeeds or fails on this save.
+
+An affected creature is aware of the spell and can avoid answering questions to which it would normally respond with a lie. Such a creature can be evasive yet must be truthful.
+
+\part*{Magic Items}
+\subsection*{Devotee's Censer}
+\textit{Weapon (Flail), Rare (Requires Attunement By a Cleric or Paladin)}\\
+{\entryfont The rounded head of this flail is perforated with tiny holes, arranged in symbols and patterns. The flail counts as a holy symbol for you. When you hit with an attack using this magic flail, the target takes an extra 1d8 radiant damage.
+
+As a bonus action, you can speak the command word to cause the flail to emanate a thin cloud of incense out to 10 feet for 1 minute. At the start of each of your turns, you and any other creatures in the incense each regain 1d4 hit points. This property can't be used again until the next dawn.}
+\subsection*{Repulsion Shield}
+\textit{Shield, Uncommon}\\
+{\entryfont You gain a +1 bonus to Armor Class while wielding this shield.
+
+The shield has 4 charges. While holding it, when a Large or smaller creature within 5 feet of you hits you with a melee attack roll, you can take a Reaction to expend 1 of the shield's charges and push the attacker up to 15 feet straight away. The shield regains 1d4 expended charges daily at dawn.}
+
+\end{document}

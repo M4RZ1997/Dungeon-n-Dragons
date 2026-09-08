@@ -1,0 +1,1328 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{Eithne Mossbraid}
+\PlayerName{M4RZ-Crafting} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Druid}
+\Subclass{Circle of the Land}
+\Background{Guide}
+\Race{Korred}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{6} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{14}
+\DexterityRolledScore{9}
+\ConstitutionRolledScore{15}
+\IntelligenceRolledScore{9}
+\WisdomRolledScore{16}
+\CharismaRolledScore{12}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{2}		% ASI
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{1}	% Guide Background
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{2}		% Guide Background
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{P}
+\WisdomProficiency{P}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{P}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{P}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{}
+\SurvivalProficiency{P}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Small}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{15}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{35} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Cartographer's Tools, Herbalism Kit}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Thorned Greatclub}{EithneMossbraid}{STR}{P}{1}{1d8 + \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{Two-Handed}
+\addWeaponStatistic{Shortbow}{EithneMossbraid}{DEX}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} p}{Ranged (80/320), Two-Handed}
+\addWeaponStatistic{Sickle}{EithneMossbraid}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} s}{Light}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Test}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Land's Aid}{DC}{\calculateModifier{\WisdomScoreValue}}{2d6}{Necrotic, CON save, 2d6 Heal on one creature}
+\addSpellStatistic{Fire Bolt}{ATK}{\calculateModifier{\WisdomScoreValue}}{2d10}{Fire}
+\addSpellStatistic{Gray Gaze}{DC}{\calculateModifier{\WisdomScoreValue}}{\intcalcAdd{0}{\ProficiencyValue}}{Necrotic, CON save, Disadv. on next DEX save}
+\addSpellStatistic{Thorn Whip}{ATK}{\calculateModifier{\WisdomScoreValue}}{2d6}{Piercing and pull 10 feet}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{E}{\textbf{Druidic}}
+\AddClassFeature{E}{\textbf{Primal Order (Warden)}\\Proficiency with Martial Weapons and Medium Armor}
+\AddClassFeature{A}{\textbf{Wild Companion}}
+\AddClassFeature{B}{\textbf{Wild Shape}\\3 Uses per Long Rest}
+\AddClassFeature{A}{\textbf{Land's Aid}\\AoE effect dealing 2d6 Necrotic damage and heals one creature for 2d6}
+\AddClassFeature{E}{\textbf{Wild Resurgence}}
+\AddClassFeature{E}{\textbf{Natural Recovery}}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Burrow Speed}}
+\AddSpeciesFeature{E}{\textbf{Command Hair}\begin{itemize}
+	\item[\CustomItemLabel{B}] Use Hair Rope to entangle a Large or smaller creature (DC \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\StrengthScoreValue}}})
+	\item Hair Rope HP: \intcalcMul{2}{\LevelValue}
+	\item Hair Rope AC: \intcalcAdd{10}{\calculateModifier{\ConstitutionScoreValue}}
+\end{itemize}}
+\AddSpeciesFeature{L}{\textbf{Innate Spellcasting} (\intcalcAdd{0}{\ProficiencyValue} Uses / LR)}
+\AddSpeciesFeature{E}{\textbf{Stone Camouflage}\\ Advantage when hiding in rocky terrain}
+\AddSpeciesFeature{E}{\textbf{Stone's Strength}\\Melee Weapon attacks deal 1 additional damage die while on the ground}
+% FEATS
+\AddFeat{\textbf{Magic Initiate (Druid)}\begin{itemize}
+	\item \textbf{Cantrips}\\Druidcraft, Smokescreen
+	\item \textbf{1st-Level}\\Faerie Fire
+\end{itemize}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{186}
+\Height{3'11 ft}
+\Weight{124 lbs}
+\Eyes{Amber}
+\Skin{Granite Gray}
+\Hair{Jet-Black}
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{14} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Eithne_Mossbraid.png} %
+	{%
+		% Expects 2 Arguments "{@}{@}" in vertical mode, and 1 Argument "@" in horizontal/none mode
+		{Eithne Mossbraid is a stout Korred with weathered gray skin, warm amber eyes, and an impossibly long jet-black braid adorned with polished stone beads and moss - coloured cords. She wears practical garments of sun-}{bleached leather and ochre linen, her rugged appearance reflecting the harsh beauty of the arid lands she calls home.}
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Caelthir Tribe}
+\OrganizationSymbol{../../../../images/Factions/Caelthir.png}
+\AlliesAndOrganizations{
+	The Caelthir Tribe, who call themselves the Children of the Hidden Moon, is a secluded community united by a common purpose: protecting those stranded from the Feywild and uncovering the secrets of the mysterious portals that bind the two realms. Within their hidden village of Ty Coeden, Fey Eladrin, Korreds, Satyrs, Centaurs, and other Fey creatures work together, combining their knowledge in hopes of one day reopening a stable path home. The tribe values harmony with nature, self-reliance, and the preservation of Fey traditions, while remaining wary of the wider mortal world. Every new arrival is\linebreak
+}{
+	welcomed as kin, for each carries experiences that may help solve the mystery of the portals. Though many Caelthir long to return to the Feywild, others have begun to see Caledonia as their new home, creating a quiet divide between preserving the past and embracing the future.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Eithne is patient, soft-spoken, and seldom hurried, preferring to observe before acting. She believes every landscape, no matter how harsh or barren, deserves respect and protection, seeing resilience as nature's greatest strength. She is fascinated by unusual rock formations, fossils, and naturally balanced stones, often pausing to admire or study them. Whenever she makes camp, she instinctively builds a small stone cairn as a gesture of gratitude to the land. Though reserved among strangers, she is kind and welcoming to those displaced from their homes, understanding the uncertainty of beginning anew. Eithne values perseverance over talent, believing that even the smallest seed can flourish in the most unforgiving ground if given enough time.
+}
+
+% BACKGROUND
+\Characterbackground{
+	Born among a clan of Korreds in the Feywild, Eithne Mossbraid spent her youth wandering windswept hills, ancient stone circles, and arid landscapes. Drawn to nature's harshest environments, she devoted herself to the Circle of the Arid Land, believing resilience was the truest expression of the natural world. As a druid, she watched over sacred places where even the smallest signs of life endured against the odds.
+
+Many years later, a shimmering portal appeared without warning and swept Eithne into the Material Plane, leaving her stranded in the Woods of Lomond. Though the Feywild was lost to her, she was not alone. For generations, mysterious portals had displaced Fey creatures into Caledonia, and those refugees had long since founded the village of Ty Coeden.
+
+Welcomed by its inhabitants, Eithne found purpose among those who shared her fate. She now serves as one of Ty Coeden's druids, safeguarding the surrounding wilderness and helping newly arrived refugees adapt to their unfamiliar home. Though she still hopes to one day return to the Feywild, Eithne believes that every land deserves a guardian, even one she never expected to call home.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Sunstone Fossil}\\
+	A smooth fossilized shell found in the Feywild, reminding her of the home she still hopes to see again.\\\\
+	\textbf{Traveler's Cairn Stone}\\
+	A rounded river stone etched with a simple spiral, taken from the first cairn she built after arriving in Caledonia.\\\\
+	\textbf{Dried Moonblossom}\\
+	A carefully preserved flower gifted by a Caelthir elder, symbolizing that even those far from home can put down new roots.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	Patient and observant, I rarely rush my decisions. I find beauty where others see only hardship and treat every land with quiet respect.
+}
+\Alignment{Chaotic Neutral}
+
+\Ideals{
+	\textbf{Resilience.} Even the harshest land can nurture life if given time and care.
+}
+
+\Bonds{
+	The Caelthir Tribe is my family, and I will protect those stranded far from the home they lost.
+}
+
+\Flaws{
+	I struggle to let go of the past and often hesitate to trust those who exploit nature for personal gain.
+}
+
+% LANGUAGES
+\Languages{Common, Druidic, Elvish}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Sickle, Shortbow, 20 Arrows\\
+	Cartographer's Tools, Herbalism Kit, \textbf{Ritual Stone} (Druidic Focus)\\
+	Backpack, Bedroll, 2 flasks of Oil, 10 days of Rations, Rope, Tinderbox, 10 Torches, and Waterskin
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Thorned Greatclub}
+\addAttunedMagicItem{Barrier Tattoo (Medium)}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Druid}
+\SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{3}
+\ThirdLevelSpellSlotsTotal{3}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Druidcraft}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{0}
+	{Fire Bolt}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{0}
+	{Gray Gaze}
+	{Bonus Action}
+	{20 Feet}
+	{}
+	{}
+	{T}
+	{V, S, M}
+	{V, S, M}
+\addPreparedSpell{0}
+	{Mold Earth}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{S}
+	{S}
+\addPreparedSpell{0}
+	{Smokescreen}
+	{Action}
+	{Self}
+	{T}
+	{}
+	{T}
+	{V, S, M}
+	{V, S, M}
+\addPreparedSpell{0}
+	{Thorn Whip}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{V, S, M}
+	{V, S, M}
+
+\addPreparedSpell{1}
+	{Absorb Elements}
+	{Reaction}
+	{Self}
+	{}
+	{}
+	{}
+	{S}
+	{S}
+\addPreparedSpell{1}
+	{Burning Hands}
+	{Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Earth Tremor}
+	{Action}
+	{10 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Entangle}
+	{Action}
+	{90 Feet}
+	{T}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Faerie Fire}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{Thorn Armor}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, M}
+	{V, S, M}
+
+\addPreparedSpell{2}
+	{Blur}
+	{Action}
+	{Self}
+	{T}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{2}
+	{Earthbind}
+	{Action}
+	{150 Feet}
+	{T}
+	{}
+	{T}
+	{V, S, M}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Enlarge/Reduce}
+	{Action}
+	{30 Feet}
+	{T}
+	{}
+	{T}
+	{V, S, M}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Overgrow}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{T}
+	{V, S, M}
+	{V, S, M}
+
+\addPreparedSpell{3}
+	{Conjure Plants}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{3}
+	{Erupting Earth}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{T}
+	{V, S, M}
+	{V, S, M}
+\addPreparedSpell{3}
+	{Fireball}
+	{Action}
+	{300 Feet}
+	{T}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{3}
+	{Meld into Stone}
+	{Action}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{V, S}
+	{V, S}
+\addPreparedSpell{3}
+	{\small Plant Growth (Overgrowth)}
+	{Action}
+	{150 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{3}
+	{\small Plant Growth (Enrichment)}
+	{8 Hours}
+	{150 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+% SPELLCASTING PRE5E24 PAGE
+%\renderoldspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Korred Traits}
+\subsection*{Burrow}
+You have a Burrow Speed equal to your Speed.
+\subsection*{Command Hair}
+\textbf{DC = \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}; HP = \intcalcMul{2}{\LevelValue}, AC = \intcalcAdd{10}{\calculateModifier{\ConstitutionScoreValue}}}\\
+You have a 50-foot-long rope woven into you hair. As a Bonus Action, you can command one such rope within 30 feet of you to move up to 20 feet and entangle a Large or smaller creature that you can see. The target must succeed on a Dexterity Saving Throw:
+\begin{center}
+	DC = 8 + Strength modifier + Proficiency Bonus
+\end{center}
+or become grappled by the rope (Escape DC same). Until this Grapple ends, the target is Restrained. You can use a Bonus Action to release the target, which is also freed if you die or become incapacitated.
+
+You rope of hair has HP equal to twice your Level and has AC = 10 + Constitution modifier. The hair rope regains 1 Hit Point at the start of each of your turns while it has at least 1 Hit Point and you are alive. If the rope drops to 0 Hit Points, it is destroyed and can be rewoven by you during a Long Rest.
+\subsection*{Innate Spellcasting}
+When you reach Level 5 you gain the ability to cast "Meld into Stone". Wisdom is your Spellcasting Ability. At level 7 you learn "Stone Shape" and at Level 9 you learn "Commune with Nature". You can cast a total number of spells using this ability equal to your Proficiency Bonus per Long Rest.
+\subsection*{Stone Camouflage}
+You have Advantage on Dexterity (Stealth) checks made to hide in rocky terrain.
+\subsection*{Stone's Strength}
+While on the ground, you deal 1 extra die of damage with any melee weapon attack. When you reach level 5 you gain an additional extra dice. At Level 12 the total increases to 3, and at Level 17 to 4.
+
+\section*{Feat}
+\subsection*{Magic Initiate (Druid)}
+You gain the following benefits.
+\paragraph*{Two Cantrips} You learn two cantrips of your choice from the Druid spell list. Wisdom is your spellcasting ability for this feat's spells (choose when you select this feat).
+\paragraph*{Level 1 Spell} Choose a level 1 spell from the same list you selected for this feat's cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have.
+
+\section*{Druid Traits}
+\subsection*{Primal Order - Warden}
+Trained for battle, you gain proficiency with Martial weapons and training with Medium armor.
+
+\subsection*{Wild Companion}
+You can summon a nature spirit that assumes an animal form to aid you. As a Magic action, you can expend a spell slot or a use of Wild Shape to cast the Find Familiar spell without Material Components.
+
+When you cast the spell in this way, the familiar is Fey and disappears when you finish a Long Rest.
+
+\subsection*{Wild Shape}
+As a Bonus Action, you shape-shift into a Beast form that you have learned for this feature (Brown Bear, Giant Octopus, Ice Spider, Tiger). You stay in that form for a number of hours equal to half your Druid level or until you use Wild Shape again, have the Incapacitated condition, or die. You can also leave the form early as a Bonus Action.
+\paragraph*{Rules While Shape-Shifted} While in a form, you retain your personality, memories, and ability to speak, and the following rules apply:
+\subparagraph*{Temporary Hit Points} You gain a number of Temporary Hit Points equal to your Druid level. \textbf{(\intcalcMul{1}{\LevelValue} Temporary HP)}
+\subparagraph*{Game Statistics} Your game statistics are replaced by the Beast's stat block, but you retain your creature type; Hit Points; Hit Point Dice; Intelligence, Wisdom, and Charisma scores; class features; languages; and feats. You also retain your skill and saving throw proficiencies and use your Proficiency Bonus for them, in addition to gaining the proficiencies of the creature. If a skill or saving throw modifier in the Beast's stat blocks higher than yours, use the one in the stat block.
+\subparagraph*{No Spellcasting} You can't cast spells, but shapeshifting doesn't break your Concentration or otherwise interfere with a spell you've already cast.
+\subparagraph*{Objects} Your ability to handle objects is determined by the form's limbs rather than your own. In addition, you choose whether your equipment falls in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it's practical for the new form to wear a piece of equipment based on the creature's size and shape. Your equipment doesn't change size or shape to match the new form, and any equipment that the new form can't wear must either fall to the ground or merge with the form. Equipment that merges with the form has no effect while you're in that form.
+
+\subsection*{Circle of the Land}
+\subsubsection*{Circle fo the Land Spells (Arid)}
+Whenever you finish a Long Rest, choose one type of land: arid, polar, temperate, or tropical. Consult the table below that corresponds to the chosen type; you have the spells listed for your Druid level and lower prepared.
+\begin{DndTable}[header=Arid Land]{llX}
+				& Druid Level	& Spell \\
+	\textbullet	& 3rd			& Blur, Burning Hands, Fire Bolt\\
+	\textbullet	& 5th			& Fireball\\
+				& 7th			& Blight\\
+				& 9th			& Wall of Stone
+\end{DndTable}
+\subsubsection*{Land's Aid}
+As a Magic action, you can expend a use of your Wild Shape and choose a point within 60 feet of yourself. Vitality-giving flowers and life-draining thorns appear for a moment in a 10-foot-radius Sphere centered on that point. Each creature of your choice in the Sphere must make a Constitution saving throw against your spell save DC, taking 2d6 Necrotic damage on a failed save or half as much damage on a successful one. One creature of your choice in that area regains 2d6 Hit Points.
+
+The damage and healing increase by 1d6 when you reach Druid levels 10 (3d6) and 14 (4d6).
+\subsubsection*{Natural Recovery}
+You can cast one of the level 1+ spells that you have prepared from your Circle Spells feature without expending a spell slot, and you must finish a Long Rest before you do so again.
+
+In addition, when you finish a Short Rest, you can choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your Druid level (round up), and none of them can be level 6+. For example, if you're a level 6 Druid, you can recover up to three levels' worth of spell slots. You can recover a level 3 spell slot, a level 2 and a level 1 spell slot, or three level 1 spell slots. Once you recover spell slots with this feature, you can't do so again until you finish a Long Rest.
+
+\subsection*{Wild Resurgence}
+Once on each of your turns, if you have no uses of Wild Shape left, you can give yourself one use by expending a spell slot (no action required).
+
+In addition, you can expend one use of Wild Shape (no action required) to give yourself a level 1 spell slot, but you can't do so again until you finish a Long Rest.
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader{Druidcraft}
+	{Transmutation Cantrip}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{Instantaneous}
+
+Whispering to the spirits of nature, you create one of the following effects within range.
+
+\paragraph*{Weather Sensor} You create a Tiny, harmless sensory effect that predicts what the weather will be at your location for the next 24 hours. The effect might manifest as a golden orb for clear skies, a cloud for rain, falling snowflakes for snow, and so on. This effect persists for 1 round.
+
+\paragraph*{Bloom} You instantly make a flower blossom, a seed pod open, or a leaf bud bloom.
+
+\paragraph*{Sensory Effect} You create a harmless sensory effect, such as falling leaves, spectral dancing fairies, a gentle breeze, the sound of an animal, or the faint odor of skunk. The effect must fit in a 5-foot Cube.
+
+\paragraph*{Fire Play} You light or snuff out a candle, a torch, or a campfire.
+
+\DndSpellHeader{Fire Bolt}
+	{Evocation Cantrip}
+	{Action}
+	{120 Feet}
+	{V, S}
+	{Instantaneous}
+
+You hurl a mote of fire at a creature or an object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Fire damage. A flammable object hit by this spell starts burning if it isn't being worn or carried.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d10 when you reach \textbf{levels 5 (2d10)}, 11 (3d10), and 17 (4d10).
+
+\DndSpellHeader{Gray Gaze}
+	{Transmutation Cantrip}
+	{Bonus Action}
+	{20 Feet}
+	{V, S, M (a pebble with a hole in it)}
+	{Instantaneous}
+
+You turn your gaze on one creature you can see within range. If the target can see your eyes, their body stiffens and cracks as if it were turning to stone. The target must succeed on a Constitution saving throw or take Necrotic damage equal to your Proficiency Bonus and have Disadvantage on the next Dexterity saving throw it makes before the end of its next turn.
+
+\DndSpellHeader{Mold Earth}
+	{Transmutation Cantrip}
+	{Action}
+	{30 Feet}
+	{S}
+	{Instantaneous or 1 Hour (see below)}
+
+You choose a portion of dirt or stone that you can see within range and that fits within a 5-foot cube. You manipulate it in one of the following ways:
+
+\begin{itemize}
+	\item If you target an area of loose earth, you can instantaneously excavate it, move it along the ground, and deposit it up to 5 feet away. This movement doesn't involve enough force to cause damage.
+	\item You cause shapes, colors, or both to appear on the dirt or stone, spelling out words, creating images, or shaping patterns. The changes last for 1 hour.
+	\item If the dirt or stone you target is on the ground, you cause it to become difficult terrain. Alternatively, you can cause the ground to become normal terrain if it is already difficult terrain. This change lasts for 1 hour.
+\end{itemize}
+
+If you cast this spell multiple times, you can have no more than two of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action.
+
+\DndSpellHeader{Smokescreen}
+	{Conjuration Cantrip}
+	{Action}
+	{Self (5-foot-radius cylinder)}
+	{V, S, M (a puffball mushroom)}
+	{Concentration, up to 1 Round}
+
+You spew a thick cloud of dense black smoke that forms a 5-foot-diameter, 10-foot-high cylinder centred on you that lasts until the start of your next turn The smoke heavily obscures its area When you cast the spell, you can choose whether the cloud remains in the location where you cast it or moves with you, centred on you
+
+When you reach higher levels, the size of the cloud you can create with this spell increases When you reach 5th level, the cloud has a maximum diameter of 15 feet and a height of 20 feet; at 11th level this increases to 25 feet and 30 feet; and at 17th level this increases to 35 feet and 40 feet You choose how big the cloud is in each dimension up to this maximum each time that you cast it.
+
+\DndSpellHeader{Thorn Whip}
+	{Transmutation Cantrip}
+	{Action}
+	{30 Feet}
+	{V, S, M (the stem of a plant with thorns)}
+	{Instantaneous}
+
+You create a vine-like whip covered in thorns that lashes out at your command toward a creature in range. Make a melee spell attack against the target. On a hit, the target takes 1d6 Piercing damage, and if it is Large or smaller, you can pull it up to 10 feet closer to you.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d6 when you reach \textbf{levels 5 (2d6)}, 11 (3d6), and 17 (4d6).
+
+\subsection*{Level 1}
+
+\DndSpellHeader{Absorb Elements}
+	{1st-Level Abjuration}
+	{Reaction, which you take when you take Acid, Cold, Fire, Lightning, or Thunder damage}
+	{Self}
+	{S}
+	{1 Round}
+
+The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6 for each slot level above 1st.
+
+\DndSpellHeader{Burning Hands}
+	{1st-Level Evocation}
+	{Action}
+	{Self}
+	{V, S}
+	{Instantaneous}
+
+A thin sheet of flames shoots forth from you. Each creature in a 15-foot Cone makes a Dexterity saving throw, taking 3d6 Fire damage on a failed save or half as much damage on a successful one.
+
+Flammable objects in the Cone that aren't being worn or carried start burning.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 1.
+
+\DndSpellHeader{Earth Tremor}
+	{1st-Level Evocation}
+	{Action}
+	{10 Feet}
+	{V, S}
+	{Instantaneous}
+
+You cause a tremor in the ground within range. Each creature other than you in that area must make a Dexterity saving throw. On a failed save, a creature takes 1d6 bludgeoning damage and is knocked prone. If the ground in that area is loose earth or stone, it becomes difficult terrain until cleared, with each 5-foot-diameter portion requiring at least 1 minute to clear by hand.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st.
+
+\DndSpellHeader{Entangle}
+	{1st-Level Conjuration}
+	{Action}
+	{90 Feet}
+	{V, S}
+	{Concentration, up to 1 Minute}
+
+Grasping plants sprout from the ground in a 20-foot square within range. For the duration, these plants turn the ground in the area into Difficult Terrain. They disappear when the spell ends.
+
+Each creature (other than you) in the area when you cast the spell must succeed on a Strength saving throw or have the Restrained condition until the spell ends. A Restrained creature can take an action to make a Strength (Athletics) check against your spell save DC. On a success, it frees itself from the grasping plants and is no longer Restrained by them.
+
+\DndSpellHeader{Fairie Fire}
+	{1st-Level Evocation}
+	{Action}
+	{60 Feet}
+	{V}
+	{Concentration, up to 1 Minute}
+
+Objects in a 20-foot Cube within range are outlined in blue, green, or violet light (your choice). Each creature in the Cube is also outlined if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed Dim Light in a 10-foot radius and can't benefit from the Invisible condition.
+
+Attack rolls against an affected creature or object have Advantage if the attacker can see it.
+
+\DndSpellHeader{Thorn Armor}
+	{1st-Level Abjuration}
+	{Action}
+	{Touch}
+	{V, S, M (a rose)}
+	{10 Minutes}
+
+When you cast this spell, a flexible exoskeleton covered in thorns appears around a willing target within range. The target gains 3d6 Temporary Hit Points. If a creature hits the target with a melee attack roll before the spell ends, that creature takes Piercing damage equal to the number of Temporary Hit Points lost as a result of the attack. This spell ends early if the target has no remaining Temporary Hit Points granted by this spell.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The target gains an additional 2d6 Temporary Hit Points for each spell slot level above 1.
+
+\subsection*{Level 2}
+
+\DndSpellHeader{Blur}
+	{2nd-Level Illusion}
+	{Action}
+	{Self}
+	{V}
+	{Concentration, up to 1 Minute}
+
+Your body becomes blurred. For the duration, any creature has Disadvantage on attack rolls against you. An attacker is immune to this effect if it perceives you with Blindsight or Truesight.
+
+\DndSpellHeader{Earthbind}
+	{2nd-Level Transmutation}
+	{Action}
+	{300 Feet}
+	{V}
+	{Concentration, up to 1 Minute}
+
+Choose one creature you can see within range. Yellow strips of magical energy loop around the creature. The target must succeed on a Strength saving throw, or its flying speed (if any) is reduced to 0 feet for the spell's duration. An airborne creature affected by this spell safely descends at 60 feet per round until it reaches the ground or the spell ends.
+
+\DndSpellHeader{Enlarge / Reduce}
+	{2nd-Level Transmutation}
+	{Action}
+	{30 Feet}
+	{V, S, M (a pinch of powdered iron)}
+	{Concentration, up to 1 Minute}
+
+For the duration, the spell enlarges or reduces a creature or an object you can see within range (see the chosen effect below). A targeted object must be neither worn nor carried. If the target is an unwilling creature, it can make a Constitution saving throw. On a successful save, the spell has no effect.
+
+Everything that a targeted creature is wearing and carrying changes size with it. Any item it drops returns to normal size at once. A thrown weapon or piece of ammunition returns to normal size immediately after it hits or misses a target.
+
+\paragraph*{Enlarge} The target's size increases by one category - from Medium to Large, for example. The target also has Advantage on Strength checks and Strength saving throws. The target's attacks with its enlarged weapons or Unarmed Strikes deal an extra 1d4 damage on a hit.
+
+\paragraph*{Reduce} The target's size decreases by one category - from Medium to Small, for example. The target also has Disadvantage on Strength checks and Strength saving throws. The target's attacks with its reduced weapons or Unarmed Strikes deal 1d4 less damage on a hit (this can't reduce the damage below 1).
+
+\DndSpellHeader{Overgrow}
+	{3rd-Level Transmutation}
+	{Action}
+	{60 Feet}
+	{V, S, M (a single seed)}
+	{Concentration, up to 1 Minute}
+
+When you cast this spell, choose a creature or an object within range that is Huge or smaller and not being worn or carried within range. Vibrant vines quickly grow around the target, pinning it into place and making it easier to traverse.
+
+If the target is a creature, it must succeed on a Strength saving throw or have the Restrained condition until the spell ends. The creature can repeat the saving throw at the end of each of its turns, ending the Restrained condition on a success.
+
+If the target is an object, it can't be moved from its current location and creatures that climb the object don't spend extra movement. A creature can make a Strength (Athletics) check against your spell save DC to wrest the object out of the vines so it can be moved. If the object is too heavy for the creature to move, this action fails.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can choose an additional target for each spell slot level above 2.
+
+\subsection*{Level 3}
+
+\DndSpellHeader{Conjure Plants}
+	{3rd-Level Conjuration}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{Concentration, up to 10 Minutes}
+
+You conjure animated plants that appear as a Large mass of vines, stems, shoots, roots, and leaves in an unoccupied space you can see within range. The vegetation lasts for the duration.
+
+While you're within 5 feet of the plants or sharing a space with them, you are considered to be in a Lightly Obscured area. Other creatures cannot enter the same space as the plants. When you move on your turn, you can also move the plants up to 30 feet to an unoccupied space you can see.
+
+Whenever the plants move within 5 feet of a creature you can see, and whenever a creature you can see enters a space within 5 feet of the plants or ends its turn there, you can force that creature to make a Dexterity saving throw. On a failed save, the creature takes 3d6 Slashing damage. A creature makes this save only once per turn.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 3.
+
+\DndSpellHeader{Erupting Earth}
+	{3rd-Level Transmutation}
+	{Action}
+	{120 Feet}
+	{V, S, M (a piece of obsidian)}
+	{Instantaneous}
+
+Choose a point you can see on the ground within range. A fountain of churned earth and stone erupts in a 20-foot cube centered on that point. Each creature in that area must make a Dexterity saving throw. A creature takes 3d12 bludgeoning damage on a failed save, or half as much damage on a successful one. Additionally, the ground in that area becomes difficult terrain until cleared. Each 5-foot-square portion of the area requires at least 1 minute to clear by hand.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d12 for each slot level above 3rd.
+
+\DndSpellHeader{Fireball}
+	{3rd-Level Evocation}
+	{Action}
+	{150 Feet}
+	{V, S, M (a ball of bat guano and sulfur)}
+	{Instantaneous}
+
+A bright streak flashes from you to a point you choose within range and then blossoms with a low roar into a fiery explosion. Each creature in a 20-foot-radius Sphere centered on that point makes a Dexterity saving throw, taking 8d6 Fire damage on a failed save or half as much damage on a successful one.
+
+Flammable objects in the area that aren't being worn or carried start burning.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 3.
+
+\DndSpellHeader{Meld into Stone}
+	{3rd-Level Transmutation}
+	{Action or Ritual}
+	{Touch}
+	{V, S}
+	{8 Hours}
+
+You step into a stone object or surface large enough to fully contain your body, merging yourself and your equipment with the stone for the duration. You must touch the stone to do so. Nothing of your presence remains visible or otherwise detectable by nonmagical senses.
+
+While merged with the stone, you can't see what occurs outside it, and any Wisdom (Perception) checks you make to hear sounds outside it are made with Disadvantage. You remain aware of the passage of time and can cast spells on yourself while merged in the stone. You can use 5 feet of movement to leave the stone where you entered it, which ends the spell. You otherwise can't move.
+
+Minor physical damage to the stone doesn't harm you, but its partial destruction or a change in its shape (to the extent that you no longer fit within it) expels you and deals 6d6 Force damage to you. The stone's complete destruction (or transmutation into a different substance) expels you and deals 50 Force damage to you. If expelled, you move into an unoccupied space closest to where you first entered and have the Prone condition.
+
+\DndSpellHeader{Plant Growth}
+	{3rd-Level Transmutation}
+	{Action (Overgrowth) or 8 hours (Enrichment)}
+	{150 Feet}
+	{V, S}
+	{Instantaneous}
+
+This spell channels vitality into plants. The casting time you use determines whether the spell has the Overgrowth or the Enrichment effect below.
+
+\paragraph*{Overgrowth} Choose a point within range. All normal plants in a 100-foot-radius Sphere centered on that point become thick and overgrown. A creature moving through that area must spend 4 feet of movement for every 1 foot it moves. You can exclude one or more areas of any size within the spell's area from being affected.
+
+\paragraph*{Enrichment} All plants in a half-mile radius centered on a point within range become enriched for 365 days. The plants yield twice the normal amount of food when harvested. They can benefit from only one Plant Growth per year.
+
+\part*{Magic Items}
+\subsection*{Thorned Greatclub}
+\textit{Weapon (Greatclub), Rare (Requires Attunement)}\\
+{\entryfont You gain a +1 bonus to attack rolls and damage rolls made with this magic weapon.
+
+\paragraph*{Thorn Snare} On a hit, you can wrap the target in the blade’s thorny vines. The target takes an additional 1d6 Piercing damage and must make a DC 12 Strength saving throw. A Large or larger creature has Advantage on this save. On a failed save, the target has the Restrained condition for 1 minute or until it frees itself.
+
+While Restrained, the target takes 1d6 Piercing damage at the start of each of its turns. The target or a creature within reach of it can take an action to make a DC 12 Strength (Athletics) check. On a success, the target is freed. This property can be used a number of times per day equal to your proficiency bonus.}
+
+\subsection*{Barrier Tattoo (Medium)}
+\textit{Wondrous Item (Tattoo), Rare (Requires Attunement)}\\
+{\entryfont Produced by a special needle, this magic tattoo depicts protective imagery and uses ink that resembles liquid metal.
+
+\paragraph*{Tattoo Attunement} To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.
+
+If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.
+
+\paragraph*{Protection} While you aren't wearing armor, the tattoo grants you an Armor Class of 15 + your Dexterity modifier (maximum of +2). You can use a shield and still gain this benefit.}
+
+\part*{Shape-Shifting Options}
+\section*{Little Wildcat}
+%\begin{tikzpicture}[overlay, remember picture, inner sep=0pt, outer sep=0pt, path fading=fade down]%
+%	\node[anchor=south west] at (current page.south west) {%
+%		\begin{minipage}{\paperwidth}%%
+%        	\centering\includegraphics[width=\paperwidth]{images/Wolf_Spider_Black_Bear_background}%
+%      	\end{minipage}%
+%	};%
+%\end{tikzpicture}%
+\vspace*{-2.7\fontdimen6\font}\hfill\\
+\begin{DndMonster}[width=0.5\textwidth]{Little Wildcat}
+	\DndMonsterType{Tiny or Small Beast (Ambusher)}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{15}{2} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \LevelValue~temp HP},
+		speed		= {40 ft., Climb 30 ft.},
+		initiative	= +2,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 8,
+		dex = 15,
+		con = 12,
+		int = 9,
+		wis = 18,
+		cha = 12,
+	]
+	
+	\DndMonsterDetails[
+		%saving-throws			= {},
+		skills					= {Acrobatics +\intcalcAdd{2}{\ProficiencyValue}, Perception +\intcalcAdd{4}{\ProficiencyValue}, Stealth +\intcalcAdd{2}{\intcalcMul{2}{\ProficiencyValue}}},
+		%damage-vulnerabilities	= {},
+		%damage-resistances		= {cold},
+		%damage-immunities		= {},
+		%condition-immunities	= {},
+		senses					= {Darkvision 60 ft., Passive Perception \intcalcAdd{10}{\intcalcAdd{4}{\ProficiencyValue}}},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Agile Landing} The wildcat takes no damage from falling 40 feet or less, provided they aren't incapacitated.
+	
+	\DndMonsterAction{Hunter's Pounce} If the wildcat hits a Small or smaller target and had advantage on the attack roll, the target is grappled (escape DC 12). While grappling the target in this way, the wildcat can't attack another creature.
+	
+	\DndMonsterAction{Natural Camouflage} The wildcat has advantage on Dexterity (Stealth) checks made in their native terrain.
+	
+	\DndMonsterAction{Sprint (Recharges after a Short or Long Rest)} When the wildcat moves on their turn in combat, they can triple their speed until the end of their turn.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +\intcalcAdd{2}{\ProficiencyValue},
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d4 + 2},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{1d4},
+		plus-dmg-type	= Piercing,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+		extra			= { if the target is Grappled or Restrained},
+	]
+	
+	\DndMonsterAttack[
+		name			= Claw,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +\intcalcAdd{2}{\ProficiencyValue},
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d4 + 2},
+		dmg-type		= Slashing,
+		plus-dmg		= \DndDice{1d4},
+		plus-dmg-type	= Piercing,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+		extra			= { if the wildcat had Advantage on the attack roll},
+	]
+\end{DndMonster}
+\vfill\eject
+\section*{Jaculi}
+\begin{DndMonster}[width=0.5\textwidth]{Jaculi}
+	\DndMonsterType{Large Beast}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{15}{2} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \LevelValue~temp HP},
+		speed		= {30 ft., Climb 20 ft.},
+		initiative	= +2,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 15,
+		dex = 14,
+		con = 11,
+		int = 9,
+		wis = 18,
+		cha = 12,
+	]
+	
+	\DndMonsterDetails[
+		%saving-throws			= {},
+		skills					= {Athletics +\intcalcAdd{2}{\ProficiencyValue}, Perception +\intcalcAdd{4}{\ProficiencyValue}, Stealth +\intcalcAdd{2}{\ProficiencyValue}},
+		%damage-vulnerabilities	= {},
+		%damage-resistances		= {cold},
+		%damage-immunities		= {},
+		%condition-immunities	= {},
+		senses					= {Blindsight 30 ft., Passive Perception \intcalcAdd{10}{\intcalcAdd{4}{\ProficiencyValue}}},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Camouflage} The jaculi has advantage on Dexterity (Stealth) checks made to hide.
+	
+	\DndMonsterAction{Keen Smell} The jaculi has advantage on Wisdom (Perception) checks that rely on smell.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +\intcalcAdd{2}{\ProficiencyValue},
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+%		extra			= {},
+	]
+	
+	\DndMonsterAction{Spring}
+	The Jaculi springs up to 30 feet in a straight line and makes a Bite attack against a target within its reach. This attack has Advantage if the Jaculi springs at least 10 feet. If the attack hits, the bite deals an extra \DndDice{2d6} Piercing damage.
+\end{DndMonster}
+\vfill\eject
+\section*{Giant Goat}
+\begin{DndMonster}[width=0.5\textwidth]{Giant Goat}
+	\DndMonsterType{Large Beast}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{15}{1} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \LevelValue~temp HP},
+		speed		= {40 ft., Climb 30 ft.},
+		initiative	= +1,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 17,
+		dex = 13,
+		con = 12,
+		int = 9,
+		wis = 18,
+		cha = 12,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {STR +\intcalcAdd{3}{\ProficiencyValue}},
+		skills					= {Perception +\intcalcAdd{4}{\ProficiencyValue}},
+		%damage-vulnerabilities	= {},
+		%damage-resistances		= {cold},
+		%damage-immunities		= {},
+		%condition-immunities	= {},
+		senses					= {Darkvision 60 ft., Passive Perception \intcalcAdd{10}{\intcalcAdd{4}{\ProficiencyValue}}},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Ram,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +\intcalcAdd{3}{\ProficiencyValue},
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 3},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+		extra			= {. If the target is a Large or smaller creature and the goat moved 20+ feet straight toward it immediately before the hit, the target takes an extra \DndDice{2d4} Bludgeoning damage and has the Prone condition},
+	]
+\end{DndMonster}
+\vfill\eject
+\section*{Camel}
+\begin{DndMonster}[width=0.5\textwidth]{Camel}
+	\DndMonsterType{Large Beast}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{15}{1} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \LevelValue~temp HP},
+		speed		= {50 ft.},
+		initiative	= +1,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 17,
+		dex = 13,
+		con = 19,
+		int = 9,
+		wis = 18,
+		cha = 12,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {STR +\intcalcAdd{3}{\ProficiencyValue}, CON +\intcalcAdd{4}{\ProficiencyValue}},
+		skills					= {Perception +\intcalcAdd{4}{\ProficiencyValue}},
+		%damage-vulnerabilities	= {},
+		%damage-resistances		= {cold},
+		%damage-immunities		= {},
+		%condition-immunities	= {},
+		senses					= {Passive Perception \intcalcAdd{10}{\intcalcAdd{4}{\ProficiencyValue}}},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Beast of Burden} The camel is considered to be one size larger for the purpose of determining their carrying capacity.
+	
+	\DndMonsterAction{Desert Dweller} The camel ignores difficult terrain created by dirt or sand. They can tolerate temperatures as high as 120° Fahrenheit.
+	
+	\DndMonsterAction{Metabolic Reserves} The camel can go without water for up to 7 days, and without food for up to 90 days.
+	
+	\DndMonsterAction{Stubborn} The camel has Advantage on saving throws made to avoid or end the Charmed, Frightened, or Prone condition on themselves.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Kick,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +\intcalcAdd{3}{\ProficiencyValue},
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d10 + 3},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+		extra			= {, and the target must succeed on a DC 13 Strength saving throw or be knocked prone},
+	]
+	
+	\DndMonsterSection{Bonus Actions}
+	\DndMonsterSavingThrowEffect[
+		name = {Bilious Spit (Recharge 5-6)},
+		description = {The camel vomits bile onto a creature},
+		save_skill = {Constitution},
+		save_dc = {14},
+		targets = {one creature the camel can see within 10 feet},
+		failure = {The target is Poisoned for 1 Minute},
+%		success = {},
+		extra={If the target fails the save by 5 or more, they are also blinded while poisoned in this way. At the end of each of its turns the creature can repeat the save}
+	]
+\end{DndMonster}
+\vfill\eject
+\section*{Rothé}
+\begin{DndMonster}[width=0.5\textwidth]{Rothé}
+	\DndMonsterType{Large Beast}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{15}{0} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \LevelValue~temp HP},
+		speed		= {30 ft.},
+		initiative	= +0,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 18,
+		dex = 10,
+		con = 14,
+		int = 9,
+		wis = 18,
+		cha = 12,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+%		skills					= {},
+		%damage-vulnerabilities	= {},
+		%damage-resistances		= {cold},
+		%damage-immunities		= {},
+		%condition-immunities	= {},
+		senses					= {Darkvision 30 ft., Passive Perception \intcalcAdd{10}{4}},
+		languages				= -,
+		challenge				= 1/4,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Charge} If the Rothé moves at least 20 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra \DndDice{2d6} Piercing damage.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Gore,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +\intcalcAdd{4}{\ProficiencyValue},
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 4},
+		dmg-type		= Piercing,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+%		extra			= {},
+	]
+\end{DndMonster}
+\vfill\eject
+\section*{Crocodile}
+\begin{DndMonster}[width=0.5\textwidth]{Crocodile}
+	\DndMonsterType{Large Beast}
+	
+	\DndMonsterBasics[
+		armor-class	= {\intcalcAdd{15}{0} (Natural Armor)},
+		hit-points	= {\MaxHitPointsValue\ + \LevelValue~temp HP},
+		speed		= {20 ft., Swim 30 ft.},
+		initiative	= +0,
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	
+	\DndMonsterAbilityScores[
+		str = 15,
+		dex = 10,
+		con = 13,
+		int = 9,
+		wis = 18,
+		cha = 12,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {},
+		skills					= {Stealth +\intcalcAdd{0}{\ProficiencyValue}},
+		%damage-vulnerabilities	= {},
+		%damage-resistances		= {cold},
+		%damage-immunities		= {},
+		%condition-immunities	= {},
+		senses					= {Passive Perception \intcalcAdd{10}{4}},
+		languages				= -,
+		challenge				= 1/2,
+		proficiency-bonus		= \ProficiencyValue,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Hold Breath} The crocodile can hold its breath for 1 hour.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,
+		%type			= weapon,
+		mod				= +\intcalcAdd{2}{\ProficiencyValue},
+		reach			= 5,
+		%range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 2},
+		dmg-type		= Piercing,
+%		plus-dmg		= ,
+%		plus-dmg-type	= ,
+		%or-dmg			= ,
+		%or-dmg-when	= ,
+		extra			= {. If the target is a Medium or smaller creature, it has the Grappled condition (escape DC 12). While Grappled, the target has the Restrained condition.},
+	]
+\end{DndMonster}
+
+\end{document}

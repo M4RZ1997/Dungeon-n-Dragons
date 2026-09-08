@@ -1,0 +1,1004 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{Nerisse Frostwhisper}
+\PlayerName{M4RZ-Crafting} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Sorcerer}
+\Subclass{Aberrant}
+\Background{Fey-Blessed}
+\Race{Winter Eladrin}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{6} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{9}
+\DexterityRolledScore{12}
+\ConstitutionRolledScore{14}
+\IntelligenceRolledScore{10}
+\WisdomRolledScore{11}
+\CharismaRolledScore{15}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{2}		% +2 Fey-Blessed Background
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{3}		% +1 Fey-Blesse Background, +2 ASI
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{P}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{P}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{P}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{P}
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{P}
+\PerformanceProficiency{P}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{10}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{25} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d6}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{}
+\MediumArmor{}
+\HeavyArmor{}
+\Shields{}
+
+\WeaponsProficiency{Simple Weapons}
+\ToolsProficiency{Horn}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Spear}{NerisseFrostwhisper}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} p}{Thrown (20/60), Versatile (1d8)}
+\addWeaponStatistic{Dagger}{NerisseFrostwhisper}{DEX}{P}{0}{1d4 \calculateModifier{\DexterityScoreValue} p}{Finees, Light, Thrown (20/60)}
+\addWeaponStatistic{Light Crossbow}{NerisseFrostwhisper}{DEX}{P}{0}{1d8 \calculateModifier{\DexterityScoreValue} p}{Ranged (80/320), Loading, Two-Handed}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{NerisseFrostwhisper}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Fire Bolt}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d10}{Fire}
+\addSpellStatistic{Frostbite}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d6}{Cold, Disadvantage on next Weapon Attack Roll}
+\addSpellStatistic{Mind Sliver}{DC}{\calculateModifier{\CharismaScoreValue}}{2d6}{Psychic, INT save}
+\addSpellStatistic{Sorcerous Burst}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d8}{Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{B}{\textbf{Innate Sorcery}\begin{itemize}
+	\item Spell Save DC increase +1
+	\item Advantage on Spell Attack Rolls
+\end{itemize}}
+\AddClassFeature{L}{\textbf{Font of Magic}\\Sorcery Points: 6}
+\AddClassFeature{E}{\textbf{Metamagic}\begin{itemize}
+	\item Subtle Spell
+	\item Twinned Spell
+\end{itemize}}
+\AddClassFeature{B}{\textbf{Telepathic Speech}}
+\AddClassFeature{E}{\textbf{Sorcerous Restoration}}
+\AddClassFeature{E}{\textbf{Psionic Sorcery}}
+\AddClassFeature{E}{\textbf{Psychic Defenses}\\Resistance to Psychic damage and Advantage against Charmed and Frightened}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Darkvision}}
+\AddSpeciesFeature{E}{\textbf{Fey Ancestry}\\Advantage against Charmed condition}
+\AddSpeciesFeature{B}{\textbf{Fey Step (Winter)} (\intcalcAdd{0}{\ProficiencyValue} Uses / LR)\\Misty Step variant with Frightening Aura}
+\AddSpeciesFeature{E}{\textbf{Keen Sense}\\Perception Proficiency}
+\AddSpeciesFeature{E}{\textbf{Trance}}
+% FEATS
+\AddFeat{\textbf{Magic Initiate (Wizard)}\begin{itemize}
+	\item \textbf{Cantrips}\\Eye Burn, Frightful Start
+	\item \textbf{1st-Level}\\Cause Fear
+\end{itemize}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{86}
+\Height{5'7 ft}
+\Weight{126}
+\Eyes{Sapphire Blue}
+\Skin{Porcelain}
+\Hair{Icy-Blue}
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{9} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Nerisse_Frostwhisper.jpg} %
+	{%
+		% Expects 2 Arguments "{@}{@}" in vertical mode, and 1 Argument "@" in horizontal/none mode
+		{Nerisse possesses an ethereal beauty that is equal parts captivating and unsettling. Her pale complexion contrasts with long silver-white hair that fades}{into icy blue at the tips, framing piercing sapphire eyes that seldom reveal her thoughts. Delicate snowflake-like markings shimmer faintly across her temples in cold light. She favors elegant robes of deep blue and white, embroidered with subtle frost patterns that lend her an air of quiet, otherworldly mystery.}
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Caelthir Tribe}
+\OrganizationSymbol{../../../../images/Factions/Caelthir.png}
+\AlliesAndOrganizations{
+	The Caelthir Tribe, who call themselves the Children of the Hidden Moon, is a secluded community united by a common purpose: protecting those stranded from the Feywild and uncovering the secrets of the mysterious portals that bind the two realms. Within their hidden village of Ty Coeden, Fey Eladrin, Korreds, Satyrs, Centaurs, and other Fey creatures work together, combining their knowledge in hopes of one day reopening a stable path home. The tribe values harmony with nature, self-reliance, and the preservation of Fey traditions, while remaining wary of the wider mortal world. Every new arrival is\linebreak
+}{
+	welcomed as kin, for each carries experiences that may help solve the mystery of the portals. Though many Caelthir long to return to the Feywild, others have begun to see Caledonia as their new home, creating a quiet divide between preserving the past and embracing the future.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Nerisse approaches magic with the curiosity of a scholar rather than the caution of a traditional sorcerer, meticulously recording how different creatures react to her spells and unusual magical phenomena. She is fascinated by the instinctive fear inspired by ancient Fey beings, believing it to be one of the oldest forms of magic rather than a mere emotion. Her cloak seems to shift subtly even while she stands perfectly still, making it difficult to focus on her for long. She often pauses mid-conversation when inspiration strikes, hurriedly adding observations to a small notebook before continuing as though nothing happened. Despite her unsettling research, she is polite, articulate, and genuinely enjoys discussing magical theory with anyone willing to indulge her curiosity. When deeply focused, the air around her grows noticeably colder, whispers seem to drift through the silence, and nearby shadows briefly resemble antlered or winged figures before fading away.
+}
+
+% BACKGROUND
+\Characterbackground{
+	Nerisse Frostwhisper was born in Ty Coeden, knowing the Material Plane as her only home while growing up surrounded by elders who spoke fondly of the Feywild they had lost. From an early age, she displayed an exceptional affinity for magic and an insatiable curiosity about the creatures that occasionally emerged from the unstable portals scattered throughout the Woods of Lomond.
+
+	Rather than fearing these beings, Nerisse became captivated by the strange aura many of them possessed. She noticed that even seasoned warriors instinctively hesitated before certain Fey creatures, as though confronted by something ancient and beyond mortal understanding. Determined to uncover the source of this phenomenon, she devoted herself to magical experimentation, refining her innate sorcery to reproduce that same primal dread without relying on cruelty or illusion.
+
+	Her unconventional research earned curious glances from many within the Caelthir, yet her findings repeatedly proved invaluable when defending Ty Coeden from dangerous Fey incursions. Today, Nerisse continues to catalogue every magical anomaly, convinced that fear is not merely an emotion, but an ancient language woven into the oldest magic of the Feywild itself - one she is only beginning to understand.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Frostbound Research Journal}\\
+	A thick notebook filled with meticulous observations on Fey creatures, magical anomalies, and the instinctive fear they inspire. Its margins overflow with sketches, theories, and hastily written experiments.\\
+	\textbf{Whisperglass Vial}\\
+	A delicate crystal vial containing shimmering frost gathered from a Winter Fey portal. Nerisse studies its ever-changing patterns whenever she develops new magical theories.\\
+	\textbf{Silver Chime of Reflection}\\
+	A small silver wind chime crafted by an elder of Ty Coeden when Nerisse was a child. Its soft, haunting tone helps her settle her thoughts before conducting magical experiments and reminds her that even unsettling magic should serve to protect, not to harm.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	Nerisse is endlessly curious and quietly observant, treating every strange occurrence as an opportunity to learn. She remains remarkably composed even in frightening situations, believing fear is best understood through calm reflection rather than panic.
+}
+\Alignment{Neutral Good}
+
+\Ideals{
+	Fear is one of the oldest expressions of magic. By understanding it, she can better protect the Caelthir from the unknown.
+}
+
+\Bonds{
+	She is devoted to Ty Coeden and to uncovering the true nature of the ancient Fey magic that shaped her people.
+}
+
+\Flaws{
+	Her fascination with dangerous magical phenomena sometimes outweighs her sense of caution, leading her to underestimate the risks of her own experiments.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Light Crossbow, Spear, 3 Daggers, 20 Bolts\\
+	Horn\\
+	Backpack, Caltrops, Crowbar, 2 flasks of Oil, 10 days of Rations, Rope, Tinderbox, 10 Torches, and Waterskin
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Cloak of Displacement}
+\addAttunedMagicItem{Rod of Retribution}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Sorcerer}
+\SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{3}
+\ThirdLevelSpellSlotsTotal{3}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Eye Burn}
+	{Reaction}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 1 Round}
+	{V, S, M}
+\addPreparedSpell{0}
+	{Fire Bolt}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{0}
+	{Frightful Start}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 1 Round}
+	{V, S, M}
+\addPreparedSpell{0}
+	{Frostbite}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{0}
+	{Light}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V}
+	{V, M}
+\addPreparedSpell{0}
+	{Mind Sliver}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{0}
+	{Minor Illusion}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{S, 1 Minute}
+	{S, M}
+\addPreparedSpell{0}
+	{Sorcerous Burst}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+
+\addPreparedSpell{1}
+	{Arms of Hadar}
+	{Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Cause Fear}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{Chromatic Orb}
+	{Action}
+	{90 Feet}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Dissonant Whispers}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{Ghost Light}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Mage Armor}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 8 Hours}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Silent Image}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+
+\addPreparedSpell{2}
+	{Calm Emotions}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{2}
+	{Detect Thoughts}
+	{Action}
+	{Self}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Hold Person}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Scorching Ray}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{2}
+	{Tasha's Mind Whip}
+	{Action}
+	{90 Feet}
+	{}
+	{}
+	{}
+	{V, 1 Round}
+	{V}
+	
+\addPreparedSpell{3}
+	{Enrage}
+	{Action}
+	{120 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{3}
+	{Fear}
+	{Action}
+	{Self}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{3}
+	{Hunger of Hadar}
+	{Action}
+	{150 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{3}
+	{Lightning Bolt}
+	{Action}
+	{Self}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{3}
+	{Sending}
+	{Action}
+	{Unlimited}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+\section*{Winter Eladrin Traits}
+\subsection*{Darkvision}
+You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.
+\subsection*{Fey Ancestry}
+You have advantage on saving throws you make to avoid or end the charmed condition on yourself.
+\subsection*{Fey Step}
+\textbf{\intcalcAdd{0}{\ProficiencyValue} Uses, DC: \intcalcAdd{8}{\intcalcAdd{\ProficiencyValue}{\calculateModifier{\CharismaScoreValue}}}}\\
+As a Bonus Action, you can magically teleport up to 30 feet to an unoccupied space you can see. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+
+When you use your Fey Step, one creature of your choice that you can see within 5 feet of you before you teleport must succeed on a Wisdom saving throw or be frightened of you until the end of your next turn.
+\subsection*{Keen Senses}
+You have proficiency in the Perception skill.
+\subsection*{Trance}
+You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.
+
+\section*{Feats}
+\subsection*{Magic Initiate (Wizard)}
+You gain the following benefits.
+\subsubsection*{Two Cantrips}
+\textbf{Eye Burn, Frightful Start}\\
+You learn two cantrips of your choice from the Cleric, Druid, or Wizard spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for this feat's spells (choose when you select this feat).
+\subsubsection*{Level 1 Spell}
+\textbf{Cause Fear}\\
+Choose a level 1 spell from the same list you selected for this feat's cantrips. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have.
+
+\section*{Sorcerer Traits}
+\subsection*{Innate Sorcery}
+An event in your past left an indelible mark on you, infusing you with simmering magic. As a Bonus Action, you can unleash that magic for 1 minute, during which you gain the following benefits:
+\begin{itemize}
+	\item The spell save DC of your Sorcerer spells increases by 1.
+	\item You have Advantage on the attack rolls of Sorcerer spells you cast.
+\end{itemize}
+You can use this feature twice, and you regain all expended uses of it when you finish a Long Rest.
+\subsection*{Font of Magic}
+You can tap into the wellspring within yourself. This wellspring is represented by Sorcery Points, which allow you to create a variety of magical effects.
+
+You have 2 Sorcery Points, and you gain more as you reach higher levels, as shown in the Sorcery Points column of the Sorcery Features table. You can't have more Sorcery Points than the number shown in the table for your level. You regain all expended Sorcery Points when you finish a Long Rest.
+
+You can use your Sorcery Points to fuel the options below, along with other features, such as Metamagic, that use those points.
+
+\paragraph*{Converting Spell Slots to Sorcery Points} You can expend a spell slot to gain a number of Sorcery Points equal to the slot's level (no action required)
+
+\paragraph*{Creating Spell Slots} As a Bonus Action, you can transform unexpended Sorcery Points into one spell slot. The Creating Spell Slot table shows the cost of creating a spell slot of a given level, and it lists the minimum Sorcerer level you must be to create a slot. You can create a spell slot no higher than level 5.
+
+Any spell slot you create with this feature vanishes when you finish a Long Rest.
+\begin{DndTable}[header=Creating Spell Slots]{ccc}
+	\textbf{Spell Slot Lvl} & \textbf{Sorcery Point Cost} & \textbf{Min. Sorcerer Lvl} \\
+	1 & 2 & 2 \\
+	2 & 3 & 3 \\
+	3 & 5 & 5 \\
+	4 & 6 & 7 \\
+	5 & 7 & 9 \\
+\end{DndTable}
+\subsection*{Metamagic}
+\textbf{Sorcery Points: 6}\\
+Because your magic flows from within, you can alter your spells to suit your needs; you gain two Metamagic options of your choice from "Metamagic Options" later in this class's description. You use the chosen options to temporarily modify spells you cast. To use an option, you must spend the number of Sorcery Points that it costs.
+
+You can use only one Metamagic option on a spell when you cast it unless otherwise noted in one of those options.
+
+Whenever you gain a Sorcerer level, you can replace one of your Metamagic options with one you don't know. You gain two more options at Sorcerer level 10 and two more at Sorcerer level 17.
+\subsubsection*{Subtle Spell}
+\textit{Cost: 1 Sorcery Point}\\
+When you cast a spell, you can spend 1 Sorcery Point to cast it without any Verbal, Somatic, or Material components, except Material components that are consumed by the spell or that have a cost specified in the spell.
+\subsubsection*{Twinned Spell}
+\textit{Cost: 1 Sorcery Point}\\
+When you cast a spell, such as Charm Person, that can be cast with a higher-level spell slot to target an additional creature, you can spend 1 Sorcery Point to increase the spell's effective level by 1.
+\subsection*{Aberrant Sorcery}
+\subsubsection*{Psionic Spells}
+When you reach a Sorcerer level specified in the Psionic Spells table, you thereafter always have the listed spells prepared.
+\begin{DndTable}[header=Psionic Spells]{llX}
+				& Sorcerer Level	& Spells\\
+	\textbullet	& 3rd				& Arms of Hadar, Calm Emotions, Detect Thoughts, Dissonant Whispers, Mind Sliver\\
+	\textbullet	& 5th				& Hunger of Hadar, Sending\\
+				& 7th				& Evard's Black Tentacles, Summon Aberration\\
+				& 9th				& Rary's Telepathic Bond, Telekinesis\\
+\end{DndTable}
+\subsubsection*{Telepathic Speech}
+You can form a telepathic connection between your mind and the mind of another. As a Bonus Action, choose one creature you can see within 30 feet of yourself. You and the chosen creature can communicate telepathically with each other while the two of you are within a number of miles of each other equal to your Charisma modifier (minimum of 1 mile). To understand each other, you each must mentally use a language the other knows.
+
+The telepathic connection lasts for a number of minutes equal to your Sorcerer level. It ends early if you use this ability to form a connection with a different creature.
+\subsubsection*{Psionic Sorcery}
+When you cast any level 1+ spell from your Psionic Spells feature, you can cast it by expending a spell slot as normal or by spending a number of Sorcery Points equal to the spell's level. If you cast the spell using Sorcery Points, it requires no Verbal or Somatic components, and it requires no Material components unless they are consumed by the spell or have a cost specified in it.
+\subsubsection*{Psychic Defenses}
+You have Resistance to Psychic damage, and you have Advantage on saving throws to avoid or end the Charmed or Frightened condition.
+\subsection*{Sorcerous Restoration}
+When you finish a Short Rest, you can regain expended Sorcery Points, but no more than a number equal to half your Sorcerer level (round down). Once you use this feature, you can't do so again until you finish a Long Rest.
+
+\section*{Spells}
+\subsection*{Cantrip}
+\DndSpellHeader{Eye Burn}
+	{Transmutation Cantrip}
+	{Reaction, which you take when a creature you can see within range targets you with an attack}
+	{30 Feet}
+	{V, S, M (a smear of camphor)}
+	{1 Round}
+
+You sting the eyes of a creature attacking you. The target must make a Constitution saving throw (a creature with Blindsight or Immunity to the Blinded condition succeeds automatically). On a failed save, the target has the Blinded condition until the end of the turn. On a successful save, it must subtract 1d4 from the triggering attack roll. The target automatically succeeds on its saves against your subsequent casting of this spell for 24 hours.
+
+\DndSpellHeader{Fire Bolt}
+	{Evocation Cantrip}
+	{Action}
+	{120 Feet}
+	{V, S}
+	{Instantaneous}
+
+You hurl a mote of fire at a creature or an object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Fire damage. A flammable object hit by this spell starts burning if it isn't being worn or carried.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d10 when you reach \textbf{levels 5 (2d10)}, 11 (3d10), and 17 (4d10).
+
+\DndSpellHeader{Frightful Start}
+	{Illusion Cantrip}
+	{Action}
+	{30 Feet}
+	{V, S, M (a dead spider)}
+	{1 Round}
+
+You twist your visage to scare a creature that you can see within range. The creature must succeed on a Wisdom saving throw or have the Frightened condition until the start of your next turn.
+
+\DndSpellHeader{Frostbite}
+	{Evocation Cantrip}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{Instantaneous}
+
+You cause numbing frost to form on one creature that you can see within range. The target must make a Constitution saving throw. On a failed save, the target takes 1d6 cold damage, and it has disadvantage on the next weapon attack roll it makes before the end of its next turn.
+
+\subparagraph*{Cantrip Upgrade} The spell's damage increases by 1d6 when you reach \textbf{5th level (2d6)}, 11th level (3d6), and 17th level (4d6).
+
+\DndSpellHeader{Light}
+	{Evocation Cantrip}
+	{Action}
+	{Touch}
+	{V, M (a firefly or phosphorescent moss)}
+	{1 Hour}
+
+You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. The light can be colored as you like.
+
+Covering the object with something opaque blocks the light. The spell ends if you cast it again.
+
+\DndSpellHeader{Mind Sliver}
+	{Enchantment Cantrip}
+	{Action}
+	{60 Feet}
+	{V}
+	{Instantaneous}
+
+You try to temporarily sliver the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 Psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d6 when you reach \textbf{levels 5 (2d6)}, 11 (3d6), and 17 (4d6).
+
+\DndSpellHeader{Minor Illusion}
+	{Illusion Cantrip}
+	{Action}
+	{30 Feet}
+	{S, M (a bit of fleece)}
+	{1 Minute}
+
+You create a sound or an image of an object within range that lasts for the duration. See the descriptions below for the effects of each. The illusion ends if you cast this spell again.
+
+If a creature takes a Study action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature.
+
+\paragraph*{Sound} If you create a sound, its volume can range from a whisper to a scream. It can be your voice, someone else's voice, a lion's roar, a beating of drums, or any other sound you choose. The sound continues unabated throughout the duration, or you can make discrete sounds at different times before the spell ends.
+
+\paragraph*{Image} If you create an image of an object—such as a chair, muddy footprints, or a small chest—it must be no larger than a 5-foot Cube. The image can't create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, since things can pass through it.
+
+\DndSpellHeader{Sorcerous Burst}
+	{Evocation Cantrip}
+	{Action}
+	{120 Feet}
+	{V, S}
+	{Instantaneous}
+
+You cast sorcerous energy at one creature or object within range. Make a ranged attack roll against the target. On a hit, the target takes 1d8 damage of a type you choose: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder.
+
+If you roll an 8 on a d8 for this spell, you can roll another d8, and add it to the damage. When you cast this spell, the maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d8 when you reach \textbf{levels 5 (2d8)}, 11 (3d8), and 17 (4d8).
+
+\subsection*{Level 1}
+\DndSpellHeader{Arms of Hadar}
+	{1st-Level Conjuration}
+	{Action}
+	{Self}
+	{V, S}
+	{Instantaneous}
+
+Invoking Hadar, you cause tendrils to erupt from yourself. Each creature in a 10-foot Emanation originating from you makes a Strength saving throw. On a failed save, a target takes 2d6 Necrotic damage and can't take Reactions until the start of its next turn. On a successful save, a target takes half as much damage only.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 1.
+
+\DndSpellHeader{Cause Fear}
+	{1st-Level Necromancy}
+	{Action}
+	{60 Feet}
+	{V}
+	{Concentration, up to 1 Minute}
+
+You awaken the sense of mortality in one creature you can see within range. A construct or an undead is immune to this effect. The target must succeed on a Wisdom saving throw or become frightened of you until the spell ends. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st. The creatures must be within 30 feet of each other when you target them.
+
+\DndSpellHeader{Chromatic Orb}
+	{1st-Level Evocation}
+	{Action}
+	{90 Feet}
+	{V, S, M (a diamond worth 50+ GP)}
+	{Instantaneous}
+
+You hurl an orb of energy at a target within range. Choose Acid, Cold, Fire, Lightning, Poison, or Thunder for the type of orb you create, and then make a ranged spell attack against the target. On a hit, the target takes 3d8 damage of the chosen type.
+
+If you roll the same number on two or more of the d8s, the orb leaps to a different target of your choice within 30 feet of the target. Make an attack roll against the new target, and make a new damage roll. The orb can't leap again unless you cast the spell with a level 2+ spell slot.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d8 for each spell slot level above 1. The orb can leap a maximum number of times equal to the level of the slot expended, and a creature can be targeted only once by each casting of this spell.
+
+\DndSpellHeader{Dissonant Whispers}
+	{1st-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V}
+	{Instantaneous}
+
+One creature of your choice that you can see within range hears a discordant melody in its mind. The target makes a Wisdom saving throw. On a failed save, it takes 3d6 Psychic damage and must immediately use its Reaction, if available, to move as far away from you as it can, using the safest route. On a successful save, the target takes half as much damage only.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 1.
+
+\DndSpellHeader{Ghost Light}
+	{1st-Level Evocation}
+	{Action}
+	{Touch}
+	{V, S, M (a clear marble)}
+	{1 Hour}
+
+You touch one object that is no larger than 10 feet in any dimension and specify any number of creatures you can see within 10 feet. Until the spell ends, the object sheds silvery Bright Light in a 20-foot radius and Dim Light for an additional 20 feet. This light is only visible to the creatures you specified during the casting of the spell; all other creatures perceive the area affected by the light as they regularly would.
+
+\DndSpellHeader{Mage Armor}
+	{1st-Level Abjuration}
+	{Action}
+	{Touch}
+	{V, S, M (a piece of cured leather)}
+	{8 Hours}
+
+You touch a willing creature who isn't wearing armor. Until the spell ends, the target's base AC becomes 13 plus its Dexterity modifier. The spell ends early if the target dons armor.
+
+\DndSpellHeader{Silent Armor}
+	{1st-Level Illusion}
+	{Action}
+	{60 Feet}
+	{V, S, M (a bit of fleece)}
+	{Concentration, up to 10 Minutes}
+
+You create the image of an object, a creature, or some other visible phenomenon that is no larger than a 15-foot Cube. The image appears at a spot within range and lasts for the duration. The image is purely visual; it isn't accompanied by sound, smell, or other sensory effects.
+
+As a Magic action, you can cause the image to move to any spot within range. As the image changes location, you can alter its appearance so that its movements appear natural for the image. For example, if you create an image of a creature and move it, you can alter the image so that it appears to be walking.
+
+Physical interaction with the image reveals it to be an illusion, since things can pass through it. A creature that takes a Study action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image.
+
+\subsection*{Level 2}
+\DndSpellHeader{Calm Emotions}
+	{2nd-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{Concentration, up to 1 Minute}
+
+Each Humanoid in a 20-foot-radius Sphere centered on a point you choose within range must succeed on a Charisma saving throw or be affected by one of the following effects (choose for each creature):
+\begin{itemize}
+	\item The creature has Immunity to the Charmed and Frightened conditions until the spell ends. If the creature was already Charmed or Frightened, those conditions are suppressed for the duration.
+	\item The creature becomes Indifferent about creatures of your choice that it's Hostile toward. This indifference ends if the target takes damage or witnesses its allies taking damage. When the spell ends, the creature's attitude returns to normal.
+\end{itemize}
+
+\DndSpellHeader{Detect Thoughts}
+	{2nd-Level Divination}
+	{Action}
+	{Self}
+	{V, S, M (1 Copper Piece)}
+	{Concentration, up to 1 Minute}
+
+You activate one of the effects below. Until the spell ends, you can activate either effect as a Magic action on your later turns.
+
+\paragraph*{Sense Thoughts} You sense the presence of thoughts within 30 feet of yourself that belong to creatures that know languages or are telepathic. You don't read the thoughts, but you know that a thinking creature is present.
+
+The spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead.
+
+\paragraph*{Read Thoughts} Target one creature you can see within 30 feet of yourself or one creature within 30 feet of yourself that you detected with the Sense Thoughts option. You learn what is most on the target's mind right now. If the target doesn't know any languages and isn't telepathic, you learn nothing.
+
+As a Magic action on your next turn, you can try to probe deeper into the target's mind. If you probe deeper, the target makes a Wisdom saving throw. On a failed save, you discern the target's reasoning, emotions, and something that looms large in its mind (such as a worry, love, or hate). On a successful save, the spell ends. Either way, the target knows that you are probing into its mind, and until you shift your attention away from the target's mind, the target can take an action on its turn to make an Intelligence (Arcana) check against your spell save DC, ending the spell on a success.
+
+\DndSpellHeader{Hold Person}
+	{2nd-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V, S, M (a straight piece of iron)}
+	{Concentration, up to 1 Minute}
+
+Choose a Humanoid that you can see within range. The target must succeed on a Wisdom saving throw or have the Paralyzed condition for the duration. At the end of each of its turns, the target repeats the save, ending the spell on itself on a success.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional Humanoid for each spell slot level above 2.
+
+\DndSpellHeader{Scorching Ray}
+	{2nd-Level Evocation}
+	{Action}
+	{120 Feet}
+	{V, S}
+	{Instantaneous}
+
+You hurl three fiery rays. You can hurl them at one target within range or at several. Make a ranged spell attack for each ray. On a hit, the target takes 2d6 Fire damage.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You create one additional ray for each spell slot level above 2.
+
+\DndSpellHeader{Tasha's Mind Whip}
+	{2nd-Level Enchantment}
+	{Action}
+	{90 Feet}
+	{V}
+	{1 Round}
+
+You psychically lash out at one creature you can see within range. The target must make an Intelligence saving throw. On a failed save, the target takes 3d6 psychic damage, and it can't take a reaction until the end of its next turn. Moreover, on its next turn, it must choose whether it gets a move, an action, or a bonus action; it gets only one of the three. On a successful save, the target takes half as much damage and suffers none of the spell's other effects.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd. The creatures must be within 30 feet of each other when you target them.
+
+\subsection*{Level 3}
+\DndSpellHeader{Enrage}
+	{3rd-Level Enchantment}
+	{Action}
+	{120 Feet}
+	{V, S, M (a red handkerchief)}
+	{Concentration, up to 1 Minute}
+
+You attempt to create violent emotions in a group of people Each humanoid in a 20-foot-radius sphere centred on a point you choose within range must make a Charisma saving throw; a creature can choose to fail this saving throw if it wishes A creature that fails this saving throw becomes enraged for the duration
+
+While enraged, a target becomes hostile towards all creatures An enraged creature that is concentrating on a spell must succeed on a DC 10 Constitution saving throw at the start of each of its turns or lose concentration on the spell
+
+As an action, you can force an enraged creature to use its reaction to make one melee weapon attack against one randomly determined creature within the enraged creature's reach If the enraged creature was friendly towards the target of its attack before this spell was cast, the enraged creature can repeat the saving throw immediately after making the attack, ending the effect on itself on a success.
+
+An enraged creature can repeat the saving throw whenever it takes damage, ending the effect on itself on a success When the spell ends, the creature reverts to its previous disposition again, unless the GM rules otherwise.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher and use an action to force an enraged creature to make a melee weapon attack, you can force one additional enraged creature to make a melee weapon attack for each slot level above 3rd.
+
+\DndSpellHeader{Fear}
+	{3rd-Level Illusion}
+	{Action}
+	{Self}
+	{V, S, M (a white feather)}
+	{Concentration, up to 1 Minute}
+
+Each creature in a 30-foot Cone must succeed on a Wisdom saving throw or drop whatever it is holding and have the Frightened condition for the duration.
+
+A Frightened creature takes the Dash action and moves away from you by the safest route on each of its turns unless there is nowhere to move. If the creature ends its turn in a space where it doesn't have line of sight to you, the creature makes a Wisdom saving throw. On a successful save, the spell ends on that creature.
+
+\DndSpellHeader{Hunger of Hadar}
+	{3rd-Level Conjuration}
+	{Action}
+	{150 Feet}
+	{V, S, M (a pickled tentacle)}
+	{Concentration, up to 1 Minute}
+
+You open a gateway to the Far Realm, a region infested with unspeakable horrors. A 20-foot-radius Sphere of Darkness appears, centered on a point within range and lasting for the duration. The Sphere is Difficult Terrain, and it is filled with strange whispers and slurping noises, which can be heard up to 30 feet away. No light, magical or otherwise, can illuminate the area, and creatures fully within it have the Blinded condition.
+
+Any creature that starts its turn in the area takes 2d6 Cold damage. Any creature that ends its turn there must succeed on a Dexterity saving throw or take 2d6 Acid damage from otherworldly tentacles.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The Cold or Acid damage (your choice) increases by 1d6 for each spell slot level above 3.
+
+\DndSpellHeader{Lightning Bolt}
+	{3rd-Level Evocation}
+	{Action}
+	{Self}
+	{V, S, M (a bit of fur and a crystal rod)}
+	{Instantaneous}
+
+A stroke of lightning forming a 100-foot-long, 5-foot-wide Line blasts out from you in a direction you choose. Each creature in the Line makes a Dexterity saving throw, taking 8d6 Lightning damage on a failed save or half as much damage on a successful one.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 3.
+
+\DndSpellHeader{Sending}
+	{3rd-Level Divination}
+	{Action}
+	{Unlimited}
+	{V, S, M (a copper wire)}
+	{Instantaneous}
+
+You send a short message of 25 words or fewer to a creature you have met or a creature described to you by someone who has met it. The target hears the message in its mind, recognizes you as the sender if it knows you, and can answer in a like manner immediately. The spell enables targets to understand the meaning of your message.
+
+You can send the message across any distance and even to other planes of existence, but if the target is on a different plane than you, there is a 5 percent chance that the message doesn't arrive. You know if the delivery fails.
+
+Upon receiving your message, a creature can block your ability to reach it again with this spell for 8 hours. If you try to send another message during that time, you learn that you are blocked, and the spell fails.
+
+\part*{Magic Items}
+\subsection*{Cloak of Displacement}
+\textit{Wondrous Item, Rare (Requires Attunement)}\\
+{\entryfont While you wear this cloak, it magically projects an illusion that makes you appear to be standing in a place near your actual location, causing any creature to have Disadvantage on attack rolls against you. If you take damage, the property ceases to function until the start of your next turn. This property is suppressed while your Speed is 0.}
+\subsection*{Rod of Retribution}
+\textit{Rod, Uncommon (Requires Attunement)}\\
+{\entryfont This adamantine rod is tipped with a glowing crystalline eye. The rod has 3 charges and regains all its expended charges daily at dawn.
+
+When a creature you can see within 60 feet of you damages you while you are holding this rod, you can use your reaction to expend 1 of the rod's charges to force the creature to make a DC 13 Dexterity saving throw. The creature takes 2d10 lightning damage on a failed save, or half as much damage on a successful one.}
+
+\end{document}

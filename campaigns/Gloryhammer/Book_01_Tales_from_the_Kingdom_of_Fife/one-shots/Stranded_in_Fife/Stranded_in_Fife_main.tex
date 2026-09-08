@@ -1,0 +1,108 @@
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../}
+
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+\usepackage{\PATH templates/template_adventure/adventure_commands}
+\usepackage{\PATH templates/template_sectioning/sectioning_commands}
+
+\usepackage{\PATH templates/template_dungeon/dungeon_commands}
+\usepackage{\PATH templates/template_monster/monster_commands}
+%\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet} FAULTY INPUT?
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+\usepackage{\PATH templates/template_elements/panels}
+\usepackage{\PATH templates/template_resource/resource_commands}
+
+
+\graphicspath{{./images}}
+
+\newrefformat{or}{\hyperref[#1]{\LinkFont{Optional Rule \ifnumcomp{\getrefnumber{#1}}<10{0}{}\ref{#1}}}}
+
+\begin{document}
+	\DungeonSheetGeometry
+
+	\AdventureTitlePage[%
+		showbanner,
+		headerfont				= {\darkcrystalfont / 40},
+		adventuretitlefont		= {\digitalfont / 25},
+		footerfont				= {\digitalfont / 10},
+		shadowfy-header-color	= {GloryhammerFeywild / GloryhammerDarkFeywild},
+		shadowfy-footer-color	= {GloryhammerFeywild / black},
+	]%
+	{0cm}%
+	{2cm}%
+	{width=\paperwidth}%
+	{bookcover_Stranded_in_Fife.png}%
+	{%
+		{FrontCover}{Front-Cover}{Art}{ChatGPT}{Stranded in Fife}{ChatGPT}%
+	}%
+	{Gloryhammer}%
+	{Stranded in Fife}%
+	{The Gloryhammer "One Shot" - Stranded in Fife}%
+	
+	\clearpage
+	\setcounter{tocdepth}{2}
+	\tableofcontents
+	
+	\DndSetThemeColor[PhbTan]
+	
+	\input{chapters/chapter00}
+	\input{chapters/chapter01}
+	\input{chapters/chapter02}
+	\input{chapters/chapter03}
+		
+	\chapter*{Cliffhanger}\stepcounter{chapter}\phantomsection\addcontentsline{toc}{chapter}{Cliffhanger}
+	\begin{DndReadAloud}
+		Moonlight filters through the canopy as the scene shifts away from Ty Coeden, following a narrow game trail deeper into the Woods of Lomond.
+
+		A lone roe deer cautiously steps into a small clearing.
+		
+		Its ears twitch.
+		
+		Something moves beyond the treeline.
+		
+		The deer freezes.
+		
+		Three pairs of glowing blue eyes slowly emerge from the darkness.
+		
+		The creatures remain hidden within the undergrowth, their forms obscured by tangled branches, but their heavy breathing and deliberate movements make one thing unmistakably clear:
+		
+		These are no ordinary foxes.
+		
+		The deer bolts.
+		
+		The unseen predators surge after it, their pursuit swift and eerily silent. Branches bend and brush aside as they weave effortlessly between the trees.
+		
+		Then...
+		
+		All three stop simultaneously.
+		
+		Their heads lift.
+		
+		They sniff the night air.
+		
+		Slowly, in perfect unison, they turn toward a faint light flickering in the far distance—the lanterns of Ty Coeden, still glowing beneath the ancient canopy.
+		
+		For a long moment, they remain perfectly still.
+		
+		Then one lets out a low, rumbling growl.
+		
+		\textbf{Fade to black.}
+	\end{DndReadAloud}
+	
+	\AdventureLastPage[]{}			% Message
+		{bookcover_last_page_2.png}	% Background Picture
+		{2.25cm}						% X-Shift
+		{0cm}						% Y-Shift
+		{height=\paperheight}		% Graphics-Options (height, width)
+		{ChatGPT}					% URL
+		{Zircon Foxes}				% Image-Name
+		{ChatGPT}					% Artist
+\end{document}

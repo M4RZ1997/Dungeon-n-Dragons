@@ -1,0 +1,648 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{Ronan}
+\PlayerName{M4RZ-Crafting} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Ranger}
+\Subclass{Monster Slayer}
+\Background{Beast Hunter}
+\Race{Centaur}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{6} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{11}
+\DexterityRolledScore{14}
+\ConstitutionRolledScore{13}
+\IntelligenceRolledScore{10}
+\WisdomRolledScore{15}
+\CharismaRolledScore{10}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{2}		% +2 Beast Hunter Background
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{3}		% +1 Beast Hunter Background, +2 ASI
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{P}
+\DexterityProficiency{P}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{P}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{P}
+\InsightProficiency{P}
+\MedicineProficiency{P}
+\PerceptionProficiency{E}
+\SurvivalProficiency{P}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{50}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{12}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{40} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d10}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons}
+\ToolsProficiency{Leatherworker's Tools, Woodcarver's Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Archet Hunting Bow}{Ronan}{WIS}{P}{2}{1d8 \calculateModifier{\WisdomScoreValue} p}{Ranged (150/600), Heavy, Two-Handed}
+\addWeaponStatistic{Scimitar}{Ronan}{DEX}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} s}{Finesse, Light}
+\addWeaponStatistic{Shortsword}{Ronan}{DEX}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} p}{Finesse, Light}
+% UNARMED STRIKE
+\addWeaponStatistic{Hooves}{Ronan}{STR}{P}{0}{1d6 b}{}
+\addWeaponStatistic{Unarmed Strike}{Ronan}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{L}{\textbf{Favored Enemy}\\Free Hunter's Mark (3 Uses)}
+\AddClassFeature{E}{\textbf{Weapon Mastery}\begin{itemize}
+	\item Longbow (Slow)
+	\item Shortsword (Vex)
+\end{itemize}}
+\AddClassFeature{E}{\textbf{Deft Explorer}\\Perception Expertise}
+\AddClassFeature{E}{\textbf{Fighting Style}\\Archery}
+\AddClassFeature{E}{\textbf{Monster Slayer Magic}}
+\AddClassFeature{A}{\textbf{Hunter's Sense}\\\intcalcAdd{0}{\calculateModifier{\WisdomScoreValue}} Uses}
+\AddClassFeature{B}{\textbf{Slayer's Prey}}
+\AddClassFeature{E}{\textbf{Extra Attack}}
+\AddClassFeature{E}{\textbf{Roving}\\+10ft Speed, Swim Speed}
+\AddClassFeature{E}{\textbf{Supernatural Defense}}
+% SPECIES TRAITS
+\AddSpeciesFeature{B}{\textbf{Charge}}
+\AddSpeciesFeature{E}{\textbf{Equine Build}}
+\AddSpeciesFeature{E}{\textbf{Hooves}\\Alternative Unarmed Strike}
+\AddSpeciesFeature{E}{\textbf{Natural Affinity}\\Medicine Proficiency}
+% FEATS
+\AddFeat{\textbf{Blood Hound}\begin{itemize}
+	\item Motion Sensor
+	\item No Hiding
+\end{itemize}}
+\AddFeat{\textbf{Archery}\\+2 Bonus to Ranged Attacks}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{34}
+\Height{7'1 ft}
+\Weight{1'020 lbs}
+\Eyes{Amber}
+\Skin{Chestnut}
+\Hair{Auburn}
+\CharacterAppearance{horizontal} % (vertical/horizontal/none)
+	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{4.5cm} % Picture Y-Shift (absolute value)
+	{images/Ronan.jpg} %
+	{%
+		% Expects 2 Arguments "{@}{@}" in vertical mode, and 1 Argument "@" in horizontal/none mode
+		Ronan is noticeably smaller and leaner than most centaurs, with a wiry, athletic build that favors agility over strength. His chestnut equine coat fades into darker legs, while his human features are framed by shoulder-length auburn hair and a neatly trimmed beard. His keen amber eyes constantly scan his surroundings.
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Caelthir Tribe}
+\OrganizationSymbol{../../../../images/Factions/Caelthir.png}
+\AlliesAndOrganizations{
+	The Caelthir Tribe, who call themselves the Children of the Hidden Moon, is a secluded community united by a common purpose: protecting those stranded from the Feywild and uncovering the secrets of the mysterious portals that bind the two realms. Within their hidden village of Ty Coeden, Fey Eladrin, Korreds, Satyrs, Centaurs, and other Fey creatures work together, combining their knowledge in hopes of one day reopening a stable path home. The tribe values harmony with nature, self-reliance, and the preservation of Fey traditions, while remaining wary of the wider mortal world. Every new arrival is\linebreak
+}{
+	welcomed as kin, for each carries experiences that may help solve the mystery of the portals. Though many Caelthir long to return to the Feywild, others have begun to see Caledonia as their new home, creating a quiet divide between preserving the past and embracing the future.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Ronan has an uncanny sense of direction and can often retrace a path after seeing it only once. He instinctively notices broken twigs, disturbed moss, or unusual birdsong that others overlook. During quiet moments, he whittles small animal figurines from fallen branches, leaving them tucked beneath old trees for children or wandering travellers to discover. He enjoys listening to the sounds of the forest at dawn, believing each morning has its own distinct chorus. Ronan rarely raises his voice, even in tense situations, and prefers long silences over needless conversation. He carefully maintains his bow and arrows every evening, treating them with the same respect others reserve for family heirlooms. Though modest about his accomplishments, he quietly remembers every kindness shown to him and often repays it when least expected.
+}
+
+% BACKGROUND
+\Characterbackground{
+	Ronan was born noticeably smaller than the other foals of his herd, a difference that followed him into adulthood. While his peers excelled in contests of strength and thunderous charges through the forest, he struggled to keep pace. Rather than surrender to frustration, he devoted himself to the skills that required patience instead of power. He learned every game trail winding through the Woods of Lomond, mastered the longbow, and became an unmatched tracker whose greatest victories came before an arrow was ever loosed.
+
+	As he matured, Ronan took on the role of a border warden for the centaur clans, quietly watching the hidden paths that led into their territory. His keen eyes and calm judgement often prevented conflict before it began, whether by guiding lost travellers away, detecting dangerous beasts, or warning his people of approaching threats.
+
+	Although some outsiders mistake his reserved nature for timidity, those who know Ronan understand that courage is not measured by physical strength. He has earned the respect of his tribe through unwavering dedication, proving that perseverance, wisdom, and a steady hand can protect the forest just as surely as the mightiest warrior.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Carved Charm}\\
+	A small wooden fox, carefully carved by Ronan during long patrols. Though worn smooth by time, he carries it as a reminder that cleverness often triumphs over strength.\\
+	\textbf{Weathered Antler Whistle}\\
+	Fashioned from the shed antler of a woodland stag, its soft call can be heard only a short distance away. Ronan uses it to signal trusted allies without disturbing the forest.\\
+	\textbf{River Stone Compass}\\
+	A flat, pale stone marked with naturally intersecting veins that resemble a compass rose. Ronan found it beside a secluded stream and keeps it as a token that every journey has a path home.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	Patient and observant, Ronan listens far more than he speaks. He trusts careful preparation over bold action and finds comfort in the quiet rhythms of the wilderness.
+}
+\Alignment{Neutral Good}
+
+\Ideals{
+	True strength is measured by wisdom, perseverance, and the willingness to protect others.
+}
+
+\Bonds{
+	The Woods of Lomond and his centaur kin are his home. He will defend them from any threat, no matter the cost.
+}
+
+\Flaws{
+	Ronan often doubts his own abilities and hesitates to rely on others, believing every burden should be his alone.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish, Dwarvish, Sylvan}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Shortsword, Scimitar, Studded Leather Armor\\
+	5 \textbf{Bloodseeker Arrow}, 5 \textbf{Fell Arrow}, 10 \textbf{Winged Arrow}\\
+	Leatherworker's Tools, Woodcarver's Tools\\
+	Backpack, Bedroll, 2 flasks of Oil, 10 days of Rations, Rope, Tinderbox, 10 Torches, and Waterskin.
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Archet Hunting Bow}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Ranger}
+\SpellcastingAbility{WIS} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{2}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{1}
+	{Assisted Aim}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S, 1 Minute}
+	{V, S}
+\addPreparedSpell{1}
+	{Blood Rush}
+	{Bonus Action}
+	{Self}
+	{}
+	{}
+	{}
+	{S}
+	{S}
+\addPreparedSpell{1}
+	{Hunter's Mark}
+	{Bonus Action}
+	{90 Feet}
+	{T}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{\footnotesize Protection from Evil and Good}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{T}
+	{V, S, M}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Tremor}
+	{Action}
+	{Self}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+
+\addPreparedSpell{2}
+	{Barkskin}
+	{Bonus Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Cordon of Arrows}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 8 Hours}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Sanguine Secrets}
+	{Bonus Action}
+	{30 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 1 Round}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Zone of Truth}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V, S, 10 Minutes}
+	{V, S}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Centaur Traits}
+\subsection*{Charge}
+If you move at least 30 feet straight toward a target and then hit it with a melee weapon attack on the same turn, you can immediately follow that attack with a bonus action, making one attack against the target with your hooves.
+\subsection*{Equine Build}
+You count as one size larger when determining your carrying capacity and the weight you can push or drag.
+
+In addition, any climb that requires hands and feet is especially difficult for you because of your equine legs. When you make such a climb, each foot of movement costs you 4 extra feet instead of the normal 1 extra foot.
+\subsection*{Hooves}
+You have hooves that you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier bludgeoning damage, instead of the bludgeoning damage normal for an unarmed strike.
+\subsection*{Natural Affinity}
+\textbf{Medicine Proficiency}\\
+Your fey connection to nature gives you an intuitive connection to the natural world and the animals within it. You therefore have proficiency in one of the following skills of your choice: Animal Handling, Medicine, Nature, or Survival.
+
+\section*{Feats}
+\subsection*{Blood Hound}
+Your senses are heightened beyond those of most folk. Whether these senses were strengthened through training or the loss of other senses, or they simply matured as you did, you are a master of finding those whom you seek. You gain the following benefits.
+
+\paragraph*{Motion Sensor} Whenever a creature that is Small or larger moves within 10 feet of you while you do not have the Unconscious condition, you immediately become aware of its presence.
+
+\paragraph*{No Hiding} You have Advantage on Wisdom (Perception) checks that rely on sound or smell.
+\subsection*{Fighting Style: Archery}
+You gain a +2 bonus to attack rolls you make with Ranged weapons.
+
+\section*{Ranger Traits}
+\subsection*{Favored Enemy}
+You always have the Hunter's Mark spell prepared. You can cast it twice without expending a spell slot, and you regain all expended uses of this ability when you finish a Long Rest.
+
+The number of times you can cast the spell without a spell slot increases when you reach certain Ranger levels, as shown in the Favored Enemy column of the Ranger Features table.
+\subsection*{Weapon Mastery}
+\textbf{Longbow, Shortsword}\\
+Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords.
+
+Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Longswords.
+\subsubsection*{Slow (Longbow)}
+If you hit a creature with this weapon and deal damage to it, you can reduce its Speed by 10 feet until the start of your next turn. If the creature is hit more than once by weapons that have this property, the Speed reduction doesn't exceed 10 feet.
+\subsubsection*{Vex (Shortsword)}
+If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+\subsection*{Deft Explorer}
+\textbf{Perception Expertise; Sylvan, Dwarvish}\\
+Thanks to your travels, you gain the following benefits.
+
+\paragraph*{Expertise} Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in that skill.
+
+\paragraph*{Languages} You know two languages of your choice from the language tables in chapter 2.
+\subsection*{Fighting Style}
+\textbf{Archery}\\
+You gain a Fighting Style feat of your choice. Instead of choosing one of those feats, you can choose the option below.
+\subsection*{Monster Slayer Magic}
+Starting at 3rd level, you learn an additional spell when you reach certain levels in this class, as shown in the Monster Slayer Spells table. The spell counts as a ranger spell for you, but it doesn't count against the number of ranger spells you know.
+\begin{DndTable}[header=Monster Slayer Spells]{llX}
+				& Ranger Level	& Spells\\
+	\textbullet	& 3rd			& Protection from Evil and Good\\
+	\textbullet	& 5th			& Zone of Truth\\
+				& 9th			& Magic Circle\\
+				& 13th			& Banishment\\
+				& 17th			& Hold Monster
+\end{DndTable}
+\subsection*{Hunter's Sense}
+At 3rd level, you gain the ability to peer at a creature and magically discern how best to hurt it. As an Action, choose one creature you can see within 60 feet of you. You immediately learn whether the creature has any damage immunities, resistances, or vulnerabilities and what they are. If the creature is hidden from divination magic, you sense that it has no damage immunities, resistances, or vulnerabilities.
+
+You can use this feature a number of times equal to your Wisdom modifier (minimum of once). You regain all expended uses of it when you finish a long rest.
+\subsection*{Slayer's Prey}
+Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra 1d6 damage from the weapon.
+
+This benefit lasts until you finish a short or long rest. It ends early if you designate a different creature.
+\subsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn.
+\subsection*{Roving}
+Your Speed increases by 10 feet while you aren't wearing Heavy armor. You also have a Swim Speed equal to your Speed.
+\subsection*{Supernatural Defense}
+At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Prey forces you to make a saving throw and whenever you make an ability check to escape that target's grapple, add 1d6 to your roll.
+
+\section*{Spells}
+\subsection*{Level 1}
+
+\DndSpellHeader{Assisted Aim}
+	{1st-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{1 Minute}
+
+You invigorate up to three creatures within range with improved accuracy. Each target gains a +1 bonus to attack rolls it makes with Ranged weapons. Additionally, the normal and long range of Ranged weapons wielded by a target are doubled for the spell's duration.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 1.
+
+\DndSpellHeader{Blood Rush}
+	{1st-Level Transmutation (Sangromancy)}
+	{Bonus Action}
+	{Self}
+	{S}
+	{Instantaneous}
+
+As part of casting this spell, you must expend one Hit Point Die or the spell automatically fails. Roll the Hit Point Die twice, and regain a number of Hit Points equal to the added roll plus your spellcasting ability modifier.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can expend one additional Hit Point Die for each spell slot level above 1.
+
+\DndSpellHeader{Hunter's Mark}
+	{1st-Level Divination}
+	{Bonus Action}
+	{90 Feet}
+	{V}
+	{Concentration, up to 1 Hour}
+
+You magically mark one creature you can see within range as your quarry. Until the spell ends, you deal an extra 1d6 Force damage to the target whenever you hit it with an attack roll. You also have Advantage on any Wisdom (Perception or Survival) check you make to find it.
+
+If the target drops to 0 Hit Points before this spell ends, you can take a Bonus Action to move the mark to a new creature you can see within range.
+
+\subparagraph*{Using a Higher-Level Spell Slot} Your Concentration can last longer with a spell slot of level 3-4 (up to 8 hours) or 5+ (up to 24 hours).
+
+\DndSpellHeader{Protection from Evil and Good}
+	{1st-Level Abjuration}
+	{Action}
+	{Touch}
+	{V, S, M (a flask of Holy Water worth 25+ GP, which the spell consumes)}
+	{Concentration, up to 10 Minutes}
+
+Until the spell ends, one willing creature you touch is protected against creatures that are Aberrations, Celestials, Elementals, Fey, Fiends, or Undead. The protection grants several benefits. Creatures of those types have Disadvantage on attack rolls against the target. The target also can't be possessed by or gain the Charmed or Frightened conditions from them. If the target is already possessed, Charmed, or Frightened by such a creature, the target has Advantage on any new saving throw against the relevant effect.
+
+\DndSpellHeader{Tremor}
+	{1st-Level Evocation}
+	{Action}
+	{Self}
+	{V, S, M (small bell)}
+	{Concentration, up to 1 Minute}
+
+The ground around you in a 15-foot Emanation begins to shake violently. You are unaffected by the tremors. The ground is considered Difficult Terrain and whenever the Emanation enters a creature's space, a creature enters the Emanation, or the creature ends its turn there, the creature makes a Dexterity saving throw. On a failed save, the creature takes 1d6 Bludgeoning damage and has the Prone condition. A creature makes this save only once per turn.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 1.
+
+\subsection*{Level 2}
+\DndSpellHeader{Barkskin}
+	{2nd-Level Transmutation}
+	{Bonus Action}
+	{Touch}
+	{V, S, M (a handful of oak bark)}
+	{1 Hour}
+
+You touch a willing creature. Until the spell ends, the target's skin assumes a bark-like appearance, and the target has an Armor Class of 17 if its AC is lower than that.
+
+\DndSpellHeader{Cordon of Arrows}
+	{2nd-Level Transmutation}
+	{Action}
+	{Touch}
+	{V, S, M (four or more arrows or bolts)}
+	{8 Hours}
+
+You touch up to four nonmagical Arrows or Bolts and plant them in the ground in your space. Until the spell ends, the ammunition can't be physically uprooted, and whenever a creature other than you enters a space within 30 feet of the ammunition for the first time on a turn or ends its turn there, one piece of ammunition flies up to strike it. The creature must succeed on a Dexterity saving throw or take 2d4 Piercing damage. The piece of ammunition is then destroyed. The spell ends when none of the ammunition remains planted in the ground.
+
+When you cast this spell, you can designate any creatures you choose, and the spell ignores them.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The amount of ammunition that can be affected increases by two for each spell slot level above 2.
+
+\DndSpellHeader{Sanguine Secrets}
+	{2nd-Level Divination}
+	{Bonus Action}
+	{30 Feet}
+	{V, S, M (a drop of blood, which the spell consumes)}
+	{1 Round}
+
+You draw knowledge through the power of blood about a creature you can see within range. You learn the target's species and creature type, its current Hit Points, and any conditions affecting it. You also learn if it has any of the following, and, if so, what they are: Vulnerability, Resistance, or Immunity to damage or conditions. Additionally, the next ability check or attack roll you make against the target before the end of your next turn has Advantage.
+
+\DndSpellHeader{Zone of Truth}
+	{2nd-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{10 Minutes}
+
+You create a magical zone that guards against deception in a 15-foot-radius Sphere centered on a point within range. Until the spell ends, a creature that enters the spell's area for the first time on a turn or starts its turn there makes a Charisma saving throw. On a failed save, a creature can't speak a deliberate lie while in the radius. You know whether a creature succeeds or fails on this save.
+
+An affected creature is aware of the spell and can avoid answering questions to which it would normally respond with a lie. Such a creature can be evasive yet must be truthful.
+
+\part*{Magic Items}
+\subsection*{Archet Hunting Longbow}
+\textit{Weapon (Longbow), Unknown (Requires Attunement)}\\
+{\entryfont When making a weapon attack roll with an Archet hunting bow, you can use your Wisdom modifier instead of your Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls. In addition, when you score a critical hit with an Archet hunting bow, you can roll one additional weapon damage die and add it to the extra damage.}
+\vfill\eject
+\section*{Magical Ammunition}
+\subsection*{Bloodseeker Arrow}
+\textit{Ammunition (Arrow), Very Rare}\\
+Ranged attack rolls made with this ammunition have advantage against any creature that doesn't have all its hit points.
+\subsection*{Fell Arrow}
+\textit{Ammunition (Arrow), Unknown}\\
+When you score a critical hit with this weapon, you can roll two additional weapon damage dice and add them to the extra damage.
+\subsection*{Winged Arrow}
+\textit{Ammunition (Arrow), Uncommon}\\
+Ranged weapon attack rolls made with this ammunition ignore half and three-quarters cover. In addition, attacking at long range doesn't impose disadvantage on ranged weapon attack rolls made with this ammunition.
+\end{document}

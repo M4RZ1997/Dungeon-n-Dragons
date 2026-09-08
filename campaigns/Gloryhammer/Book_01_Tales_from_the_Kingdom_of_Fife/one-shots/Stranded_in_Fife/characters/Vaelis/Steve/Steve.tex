@@ -1,0 +1,451 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{Steve}
+\PlayerName{M4RZ-Crafting} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Rogue}
+\Subclass{Misfortune Bringer}
+\Background{Crossroads Gambler}
+\Race{Human?}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{6} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{11}
+\DexterityRolledScore{14}
+\ConstitutionRolledScore{13}
+\IntelligenceRolledScore{12}
+\WisdomRolledScore{11}
+\CharismaRolledScore{16}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{2}		% +2 Crossroads Gamble
+\ConstitutionScoreBonus{1}	% +1 Crossroads Gambler
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{2}		% ASI
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{P}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{P}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{P}
+\StealthProficiency{E}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{E}
+\MedicineProficiency{}
+\PerceptionProficiency{E}
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{E}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{P}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{30}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{36} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{}
+\HeavyArmor{}
+\Shields{}
+
+\WeaponsProficiency{Simple Weapons, Martial Weapons with Finesse or Light property}
+\ToolsProficiency{Thieves' Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Dagger}{Steve}{DEX}{P}{0}{1d4 \calculateModifier{\DexterityScoreValue} p}{Finesse, Light, Thrown (20/60)}
+\addWeaponStatistic{Shortbow}{Steve}{DEX}{P}{0}{1d6 \calculateModifier{\DexterityScoreValue} s}{Ranged (60/240), Two-Handed}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Steve}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{E}{\textbf{Expertise}\\Stealth, Deception Expertise}
+\AddClassFeature{E}{\textbf{Sneak Attack}}
+\AddClassFeature{E}{\textbf{Thieves' Cant}}
+\AddClassFeature{E}{\textbf{Weapon Mastery}\begin{itemize}
+	\item Dagger (Nick)
+	\item Shortbow (Vex)
+\end{itemize}}
+\AddClassFeature{B}{\textbf{Cunning Action}\\Dash, Disengage, Hide}
+\AddClassFeature{B}{\textbf{Evil Eye}}
+\AddClassFeature{E}{\textbf{Misfortunist}\begin{itemize}
+	\item[\CustomItemLabel{R}] Curse of the Debilitated
+	\item[\CustomItemLabel{R}] Curse of the Inept
+\end{itemize}}
+\AddClassFeature{B}{\textbf{Steady Aim}}
+\AddClassFeature{E}{\textbf{Cunning Strike}\\Poison, Trip, Withdraw\\}
+\AddClassFeature{R}{\textbf{Uncanny Dodge}}
+\AddClassFeature{E}{\textbf{Expertise}\\Insight, Perception Expertise}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{???}
+% FEATS
+\AddFeat{\textbf{Fate Gambler}\begin{itemize}
+	\item Bet Big
+	\item[\CustomItemLabel{B}] Win Big
+\end{itemize}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{}
+\Height{5'10 ft}
+\Weight{163 lbs}
+\Eyes{Steel Gray}
+\Skin{Pale Ivory}
+\Hair{Brown}
+\CharacterAppearance{vertical} % (vertical/horizontal/none)
+	{11} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Steve.jpg} %
+	{%
+		% Expects 2 Arguments "{@}{@}" in vertical mode, and 1 Argument "@" in horizontal/none mode
+		{Steve is a young man of average height and build, with neatly trimmed brown hair, pale skin, and calm grey eyes. He wears simple, practical traveler's clothing in muted earth}{tones that never seems especially worn or distinctive. His features are unremarkable yet faintly difficult to remember, his smile carries an oddly perfect symmetry, and his expressions occasionally seem just a fraction too measured}
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Caelthir Tribe}
+\OrganizationSymbol{../../../../../images/Factions/Caelthir.png}
+\AlliesAndOrganizations{
+	The Caelthir Tribe, who call themselves the Children of the Hidden Moon, is a secluded community united by a common purpose: protecting those stranded from the Feywild and uncovering the secrets of the mysterious portals that bind the two realms. Within their hidden village of Ty Coeden, Fey Eladrin, Korreds, Satyrs, Centaurs, and other Fey creatures work together, combining their knowledge in hopes of one day reopening a stable path home. The tribe values harmony with nature, self-reliance, and the preservation of Fey traditions, while remaining wary of the wider mortal world. Every new arrival is\linebreak
+}{
+	welcomed as kin, for each carries experiences that may help solve the mystery of the portals. Though many Caelthir long to return to the Feywild, others have begun to see Caledonia as their new home, creating a quiet divide between preserving the past and embracing the future.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Steve speaks with quiet confidence but occasionally pauses for the briefest moment before answering simple personal questions, as though recalling details rather than memories. He has an unusual habit of subtly mirroring the posture, gestures, or expressions of whoever he spends time with, never quite realizing he is doing it. He rarely shares stories from his past and seems genuinely uncertain when asked about childhood customs or family traditions. Despite this, he is endlessly curious about people, carefully observing their mannerisms, speech, and routines with almost scholarly interest. He adapts remarkably quickly to unfamiliar social circles, fitting in with surprising ease after only a short time. Beneath his calm exterior lies a persistent desire to understand what truly makes someone an individual, leaving him fascinated by the small quirks and imperfections that others barely notice about themselves.
+}
+
+% BACKGROUND
+\Characterbackground{
+	???
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Weathered Coin}\\
+	A tarnished silver coin from a kingdom Steve cannot identify. He keeps it tucked into a hidden pocket, convinced it must have belonged to someone important, though he cannot explain why.\\
+	\textbf{Plain Brass Locket}\\
+	An inexpensive locket containing no portrait or inscription. Its emptiness feels oddly comforting, and Steve has never considered replacing it with a picture.\\
+	\textbf{Carved Bone Die}\\
+	A six-sided die with slightly uneven faces, worn smooth from years of idle fidgeting. Steve absentmindedly rolls it whenever he finds himself uncertain or deep in thought.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	Steve is observant, adaptable, and quietly inquisitive. He instinctively studies those around him, borrowing habits without realizing it. Calm under pressure, he avoids unnecessary attention and prefers listening to speaking, believing every person has something worth learning.
+}
+\Alignment{Neutral Good}
+
+\Ideals{
+	Identity is shaped by choices, not appearances. Understanding others is the surest path to understanding oneself.
+}
+
+\Bonds{
+	He treasures the few companions who accept him without demanding he prove who he is, even if he cannot explain why their trust matters so deeply.
+}
+
+\Flaws{
+	He struggles to define who he truly is, often changing his behavior to match those around him and avoiding conversations about his past.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish, Thieves' Cant}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Shortbow, 20 Arrows\\
+	Thieves' Tools\\
+	Backpack, Ball Bearings, Bell, 10 Candles, Crowbar, Hooded Lantern, 7 flasks of Oil, 5 days of Rations, Rope, Tinderbox, Waterskin
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Cloak of Elvenkind}
+\addAttunedMagicItem{Dagger of Blindsight}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{}
+\SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+\section*{Feat}
+\subsection*{Fate Gambler}
+Coming out ahead, whether in games of chance or in life-or-death contention, fills you with resolve and vigor. You gain the following benefits.
+\paragraph*{Bet Big} If you don't already have it, you gain Heroic Inspiration whenever you succeed on an ability check made against another creature, when you reduce a creature to 0 Hit Points, or when a creature fails a saving throw you forced it to make. If, in any of these cases, the creature has a CR of 0 or lacks a CR (such as another player character), you don't gain Heroic Inspiration.
+\paragraph*{Win Big} As a Bonus Action, you can expend your Heroic Inspiration to gain a number of Temporary Hit Points equal to your level.
+
+\section*{Rogue Traits}
+\subsection*{Expertise}
+\textbf{Deception, Stelth Expertise}\\
+You gain Expertise in two of your skill proficiencies of your choice. Sleight of Hand and Stealth are recommended if you have proficiency in them.
+\subsection*{Sneak Attack}
+\textbf{Sneak Attack: 3d6}\\
+You know how to strike subtly and exploit a foe's distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack roll if you have Advantage on the roll and the attack uses a Finesse or a Ranged weapon. The extra damage's type is the same as the weapon's type.
+
+You don't need Advantage on the attack roll if at least one of your allies is within 5 feet of the target, the ally doesn't have the Incapacitated condition, and you don't have Disadvantage on the attack roll.
+
+The extra damage increases as you gain Rogue levels, as shown in the Sneak Attack column of the Rogue Features table.
+\subsection*{Thieves' Cant}
+You picked up various languages in the communities where you plied your roguish talents. You know Thieves' Cant and one other language of your choice, which you choose from the language tables in chapter 2.
+\subsection*{Weapon Mastery}
+Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Daggers and Shortbows.
+
+Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Shortswords.
+\subsubsection*{Nick (Dagger)}
+When you make the extra attack of the Light property, you can make it as part of the Attack action instead of as a Bonus Action. You can make this extra attack only once per turn.
+\subsubsection*{Vex (Shortbow)}
+If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+\subsection*{Cunning Action}
+Your quick thinking and agility allow you to move and act quickly. On your turn, you can take one of the following actions as a Bonus Action: Dash, Disengage, or Hide.
+\subsection*{Misfortune Bringer}
+\subsubsection*{Evil Eye}
+You can place a minor curse with a glance. As a Bonus Action, choose a creature you can see within 60 feet of yourself to be cursed by your Evil Eye. While a creature is cursed by your Evil Eye, you can deal Sneak Attack damage to the creature if you don't have Disadvantage on the attack roll.
+
+The creature remains cursed by your Evil Eye for 1 minute or until you curse a different creature with your Evil Eye, whichever comes first.
+\subsubsection*{Misfortunist}
+You learn Misfortunes that you can inflict on those cursed by your Evil Eye.
+
+\paragraph*{Misfortunes} You learn two Misfortunes of your choice, which are detailed under "Misfortunes" below.
+
+You learn an additional Misfortune of your choice when you reach Rogue levels 9, 13, and 17. When you finish a Long Rest, you can replace one Misfortune you know with a different one.
+
+\paragraph*{Jinx Points} You have 4 Jinx Points. You gain 2 additional Jinx Points at Rogue level 13. To use a Misfortune option, you must spend the number of Jinx Points that it costs.
+
+You regain all expended Jinx Points when you finish a Short or Long Rest.
+
+\paragraph*{Saving Throws} If a Misfortune requires a saving throw, the DC equals 8 + your Charisma or Intelligence modifier (your choice) + your Proficiency Bonus.
+\subsubsection*{Curse of the Debilitated}
+\textbf{Cost: 1 Jinx Point}\\
+When a creature cursed by your Evil Eye takes damage, you can take a Reaction and spend 1 Jinx Point to roll 1d12. The creature takes Necrotic damage equal to the roll.
+
+After you use this Misfortune, the creature is no longer cursed by your Evil Eye.
+\subsubsection*{Curse of the Inept}
+\textbf{Cost: 1 Jinx Point}\\
+After a creature you can see that is cursed by your Evil Eye makes a D20 Test, you can take a Reaction and spend 1 Jinx Point to make the target reroll, and it must use the new roll.
+
+After you use this Misfortune, the creature is no longer cursed by your Evil Eye.
+\subsection*{Steady Aim}
+As a Bonus Action, you give yourself Advantage on your next attack roll on the current turn. You can use this feature only if you haven't moved during this turn, and after you use it, your Speed is 0 until the end of the current turn.
+\subsection*{Cunning Strike}
+You've developed cunning ways to use your Sneak Attack. When you deal Sneak Attack damage, you can add one of the following Cunning Strike effects. Each effect has a die cost, which is the number of Sneak Attack damage dice you must forgo to add the effect. You remove the die before rolling, and the effect occurs immediately after the attack's damage is dealt. For example, if you add the Poison effect, remove 1d6 from the Sneak Attack's damage before rolling.
+
+If a Cunning Strike effect requires a saving throw, the DC equals 8 plus your Dexterity modifier and Proficiency Bonus.
+
+\paragraph*{Poison (Cost: 1d6)} You add a toxin to your strike, forcing the target to make a Constitution saving throw. On a failed save, the target has the Poisoned condition for 1 minute. At the end of each of its turns, the Poisoned target repeats the save, ending the effect on itself on a success.
+
+To use this effect, you must have a Poisoner's Kit on your person.
+
+\paragraph*{Trip (Cost: 1d6)} If the target is Large or smaller, it must succeed on a Dexterity saving throw or have the Prone condition.
+
+\paragraph*{Withdraw (Cost: 1d6)} Immediately after the attack, you move up to half your Speed without provoking Opportunity Attacks.
+\subsection*{Uncanny Dodge}
+When an attacker that you can see hits you with an attack roll, you can take a Reaction to halve the attack's damage against you (round down).
+\subsection*{Expertise}
+\textbf{Insight, Perception Expertise}\\
+You gain Expertise in two of your Skill Proficiencies of your choice.
+
+\part*{Magic Items}
+\subsection*{Cloak of Elvenkind}
+\textit{Wondrous Item, Uncommon (Requires Attunement)}\\
+{\entryfont While you wear this cloak, Wisdom (Perception) checks made to perceive you have Disadvantage, and you have Advantage on Dexterity (Stealth) checks.}
+\subsection*{Dagger of Blindsight}
+\textit{Weapon (Dagger), Rare (Requires Attunement)}\\
+{\entryfont This rare magic item requires attunement. A creature attuned to it gains blindsight out to a range of 30 feet. The dagger has a saw-toothed edge and a black pearl nested in its pommel.}
+
+\end{document}

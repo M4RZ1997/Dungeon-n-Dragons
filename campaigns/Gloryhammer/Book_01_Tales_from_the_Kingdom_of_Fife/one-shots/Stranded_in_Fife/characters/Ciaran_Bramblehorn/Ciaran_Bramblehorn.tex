@@ -1,0 +1,761 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{Ciaran Bramblehorn}
+\PlayerName{M4RZ-Crafting} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Bard}
+\Subclass{College of Glamour}
+\Background{Carouser}
+\Race{Satyr}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{6} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{8}
+\DexterityRolledScore{15}
+\ConstitutionRolledScore{13}
+\IntelligenceRolledScore{12}
+\WisdomRolledScore{13}
+\CharismaRolledScore{16}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{0}
+\DexterityScoreBonus{1}		% +1 Carouser Background
+\ConstitutionScoreBonus{0}
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{4}		% +2 Carouser Background, +2 ASI
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{P}
+\ConstitutionProficiency{}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{P}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{}
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{P}
+\SleightOfHandProficiency{P}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{E}
+\InvestigationProficiency{}
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{P}
+\MedicineProficiency{}
+\PerceptionProficiency{}
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{P}
+\IntimidationProficiency{}
+\PerformanceProficiency{E}
+\PersuasionProficiency{P}
+
+\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{35}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{13}{\calculateModifier{\DexterityScoreValue}}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{36} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{}
+\HeavyArmor{}
+\Shields{}
+
+\WeaponsProficiency{Simple Weapons}
+\ToolsProficiency{Bagpipes, Drum, Panflute, Lute, Dice Set}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Dagger}{CiaranBramblehorn}{DEX}{P}{0}{1d4 \calculateModifier{\DexterityScoreValue} p}{Finesse, Light, Thrown (20/60)}
+% UNARMED STRIKE
+\addWeaponStatistic{Ram}{CiaranBramblehorn}{STR}{P}{0}{1d6 \calculateModifier{\StrengthScoreValue} b}{}
+\addWeaponStatistic{Unarmed Strike}{CiaranBramblehorn}{STR}{P}{0}{\intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Vicious Mockery}{ATK}{\calculateModifier{\CharismaScoreValue}}{2d6}{Psychic, Disadvantage on next Attack Roll}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{B}{\textbf{Bardic Inspiration}\\\intcalcAdd{0}{\calculateModifier{\CharismaScoreValue}} Uses, d8}
+\AddClassFeature{E}{\textbf{Expertise}\\Performance, History Expertise}
+\AddClassFeature{E}{\textbf{Jack of all Trades}}
+\AddClassFeature{B}{\textbf{Mantle of Inspiration}}
+\AddClassFeature{E}{\textbf{Enthralling Performance}}
+\AddClassFeature{E}{\textbf{Font of Inspiration}}
+\AddClassFeature{B}{\textbf{Mantle of Majesty}\\Cast Command for free}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Ram}\\Unarmed Strike Alternative}
+\AddSpeciesFeature{E}{\textbf{Magic Resistance}\\Advantage against Spells}
+\AddSpeciesFeature{E}{\textbf{Mirthful Leaps}\\+1d8 feet jump distance/height}
+% FEATS
+\AddFeat{\textbf{Tireless Reveler}\\\intcalcAdd{0}{\ProficiencyValue} Uses per SR/LR}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{32}
+\Height{5'8 ft}
+\Weight{152 lbs}
+\Eyes{Emerald Green}
+\Skin{Lightly Tanned}
+\Hair{Red-Brown}
+\CharacterAppearance{horizontal} % (vertical/horizontal/none)
+	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value)
+	{4.5cm} % Picture Y-Shift (absolute value)
+	{images/Ciaran_Bramblehorn.jpg} %
+	{%
+		% Expects 2 Arguments "{@}{@}" in vertical mode, and 1 Argument "@" in horizontal/none mode
+		Ciaran Bramblehorn is a lithe satyr with a chestnut goat's coat, ivory horns that sweep gracefully backward, and bright emerald eyes that sparkle with playful confidence. His wavy red-brown hair falls to his shoulders, often adorned with fresh flowers or colorful ribbons. He favors finely tailored forest-green and burgundy garments accented with silver embroidery.
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Caelthir Tribe}
+\OrganizationSymbol{../../../../images/Factions/Caelthir.png}
+\AlliesAndOrganizations{
+	The Caelthir Tribe, who call themselves the Children of the Hidden Moon, is a secluded community united by a common purpose: protecting those stranded from the Feywild and uncovering the secrets of the mysterious portals that bind the two realms. Within their hidden village of Ty Coeden, Fey Eladrin, Korreds, Satyrs, Centaurs, and other Fey creatures work together, combining their knowledge in hopes of one day reopening a stable path home. The tribe values harmony with nature, self-reliance, and the preservation of Fey traditions, while remaining wary of the wider mortal world. Every new arrival is\linebreak
+}{
+	welcomed as kin, for each carries experiences that may help solve the mystery of the portals. Though many Caelthir long to return to the Feywild, others have begun to see Caledonia as their new home, creating a quiet divide between preserving the past and embracing the future.
+}
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	Ciaran treats every conversation as a performance, effortlessly weaving compliments, stories, and gentle humor into even the briefest encounter. He keeps a small journal filled with unusual customs, songs, and historical anecdotes gathered from every settlement he visits, convinced they will one day inspire the perfect tale. Since arriving in Ty Coeden, he has enthusiastically embraced Caelthir traditions, though he occasionally misinterprets their customs with amusing results. He has a habit of offering fresh flowers or handwoven wreaths as tokens of appreciation after memorable meetings. Quiet moments often find him practicing melodies inspired by birdsong and rustling leaves, constantly refining his repertoire. Although naturally sociable, he rarely reveals his own worries, preferring to maintain an air of confidence and delight. Secretly, he fears that if his charm ever fails, others may find him far less remarkable than the persona he so carefully presents.
+}
+
+% BACKGROUND
+\Characterbackground{
+	Ciaran Bramblehorn spent much of his life wandering the Feywild, where satyr revels, timeless feasts, and grand performances shaped his love of music and storytelling. Fascinated by the tales behind every melody, he sought forgotten ballads and ancient legends, believing that understanding another's history was the key to earning their admiration. His remarkable charm eventually drew the attention of the College of Glamour, where he refined both his artistry and his enchanting presence.
+
+Only recently, one of the unpredictable Fey portals carried Ciaran into the Woods of Lomond. Unable to return, he was welcomed into Ty Coeden by the Caelthir Tribe, who recognized him as another soul stranded between worlds. Though grateful for their hospitality, he still views his stay as temporary and eagerly questions anyone who might know more about the unstable portals.
+
+Ciaran has quickly become a familiar face at village celebrations, where his performances lift spirits and strengthen bonds among the refugees. Beneath his effortless charisma, however, he carefully studies those around him, believing every person carries a story worth discovering—and that winning a heart begins with truly understanding it.
+}
+
+% TREASURES
+\Treasure{
+	\textbf{Whisperwind}\\
+	A finely carved pan flute of pale rowan wood, etched with swirling Fey motifs. It accompanied Ciaran's first public performance in the Feywild and remains his most cherished instrument.\\
+	\textbf{The Wayfarer's Songbook}\\
+	A weathered leather-bound journal containing ancient ballads, historical notes, and melodies gathered from both the Feywild and the mortal realm, with blank pages awaiting future discoveries.\\
+	\textbf{Bramble's Welcome}\\
+	A silver brooch shaped like an unfurling bramble, presented by the Caelthir Tribe when they welcomed Ciaran into Ty Coeden as one of their own despite his recent arrival.
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	Ciaran is effortlessly charming and endlessly curious about others, believing every stranger has a story worth hearing. He delights in making people smile and rarely lets a conversation end without a compliment or clever anecdote.
+}
+\Alignment{Chaotic Good}
+
+\Ideals{
+	A heart won through kindness and understanding is more enduring than one won through force or fear.
+}
+
+\Bonds{
+	He owes the Caelthir Tribe a debt of gratitude for welcoming him into Ty Coeden and hopes to repay their kindness.
+}
+
+\Flaws{
+	He craves admiration and can become overly concerned with how others perceive him, sometimes masking his true feelings behind an irresistible smile.
+}
+
+% LANGUAGES
+\Languages{Common, Elvish}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	\textbf{Glamoured Studded Leather}, 2 Dagger\\
+	Panflute\\
+	Backpack, Bedroll, Bell, Bullseye Lanter, 3 Costumes, Mirror, 8 flasks of Oil, 9 days of Rations, Tinderbox, a waterskin
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Reveler's Concertina}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Bard}
+\SpellcastingAbility{CHA} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{2} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{3}
+\ThirdLevelSpellSlotsTotal{3}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Friends}
+	{Action}
+	{10 Feet}
+	{T}
+	{}
+	{T}
+	{S}
+	{S, M}
+\addPreparedSpell{0}
+	{Stalker's Eye}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{0}
+	{Vicious Mockery}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+
+\addPreparedSpell{1}
+	{Charm Person}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Command}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{Daydream}
+	{Action}
+	{30 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Dissonant Whispers}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{1}
+	{Tasha's Hideous Laughter}
+	{Action}
+	{30 Feet}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+
+\addPreparedSpell{2}
+	{Calm Emotions}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{2}
+	{Enthrall}
+	{Action}
+	{60 Feet}
+	{T}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{2}
+	{Unraveling Whisper}
+	{Action}
+	{30 Feet}
+	{}
+	{}
+	{}
+	{V, S, 1 Round}
+	{V, S}
+
+\addPreparedSpell{3}
+	{Fast Friends}
+	{Action}
+	{30 Feet}
+	{T}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{3}
+	{Mass Healing Word}
+	{Bonus Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{V}
+	{V}
+\addPreparedSpell{3}
+	{Mireball}
+	{Action}
+	{150 Feet}
+	{}
+	{}
+	{T}
+	{V, S, 1 Minute}
+	{V, S, M}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Satyr Traits}
+\subsection*{Ram}
+You can use your head and horns to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier bludgeoning damage, instead of the bludgeoning damage normal for an unarmed strike.
+\subsection*{Magic Resistance}
+You have advantage on saving throws against spells.
+\subsection*{Mirthful Leaps}
+Whenever you make a long jump or a high jump, you can roll a d8 and add the number rolled to the number of feet you cover, even when making a standing jump. This extra distance costs movement as usual.
+\subsection*{Reveler}
+As an embodiment of revelry, you have proficiency in the Performance and Persuasion skills, and you have proficiency with one musical instrument of your choice.
+
+\section*{Feats}
+\subsection*{Tireless Reveler}
+When an ally you can see within 60 feet of yourself expends Heroic Inspiration, you can gain Heroic Inspiration if you lack it. You can use this benefit a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Short or Long Rest.
+
+\section*{Bard Traits}
+\subsection*{Bardic Inspiration}
+\textbf{Uses: \intcalcAdd{0}{\calculateModifier{\CharismaScoreValue}}, d8}\\
+You can supernaturally inspire others through words, music, or dance. This inspiration is represented by your Bardic Inspiration die, which is a d6.
+
+\paragraph*{Using Bardic Inspiration} As a Bonus Action, you can inspire another creature within 60 feet of yourself who can see or hear you. That creature gains one of your Bardic Inspiration dice. A creature can have only one Bardic Inspiration die at a time.
+
+Once within the next hour when the creature fails a D20 Test, the creature can roll the Bardic Inspiration die and add the number rolled to the d20, potentially turning the failure into a success. A Bardic Inspiration die is expended when it's rolled.
+
+\paragraph*{Number of Uses} You can confer a Bardic Inspiration die a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.
+
+\paragraph*{At Higher Levels} Your Bardic Inspiration die changes when you reach certain Bard levels, as shown in the Bardic Die column of the Bard Features table. The die becomes a \textbf{d8 at level 5}, a d10 at level 10, and a d12 at level 15.
+\subsection*{Expertise}
+\textbf{Performance, History Expertise}\\
+You gain Expertise in two of your skill proficiencies of your choice. Performance and Persuasion are recommended if you have proficiency in them.
+
+At Bard level 9, you gain Expertise in two more of your skill proficiencies of your choice.
+\subsection*{Jack of All Trades}
+You can add half your Proficiency Bonus (round down) to any ability check you make that uses a skill proficiency you lack and that doesn't otherwise use your Proficiency Bonus.
+
+For example, if you make a Strength (Athletics) check and lack Athletics proficiency, you can add half your Proficiency Bonus to the check.
+\subsection*{College of Glamour}
+\subsubsection*{Mantle of Inspiration}
+When you join the College of Glamour at 3rd level, you gain the ability to weave a song of fey magic that imbues your allies with vigor and speed.
+
+As a bonus action, you can expend one use of your Bardic Inspiration to grant yourself a wondrous appearance. When you do so, choose a number of creatures you can see and that can see you within 60 feet of you, up to a number equal to your Charisma modifier (minimum of one). Each of them gains 5 temporary hit points. When a creature gains these temporary hit points, it can immediately use its reaction to move up to its speed, without provoking opportunity attacks.
+
+The number of temporary hit points increases when you reach certain levels in this class, increasing to \textbf{8 at 5th level}, 11 at 10th level, and 14 at 15th level.
+\subsubsection*{Enthralling Performance}
+Starting at 3rd level, you can charge your performance with seductive, fey magic.
+
+If you perform for at least 1 minute, you can attempt to inspire wonder in your audience by singing, reciting a poem, or dancing. At the end of the performance, choose a number of humanoids within 60 feet of you who watched and listened to all of it, up to a number equal to your Charisma modifier (minimum of one). Each target must succeed on a Wisdom saving throw against your spell save DC or be charmed by you. While charmed in this way, the target idolizes you, it speaks glowingly of you to anyone who talks to it, and it hinders anyone who opposes you, although it avoids violence unless it was already inclined to fight on your behalf. This effect ends on a target after 1 hour, if it takes any damage, if you attack it, or if it witnesses you attacking or damaging any of its allies.
+
+If a target succeeds on its saving throw, the target has no hint that you tried to charm it.
+
+Once you use this feature, you can't use it again until you finish a short or long rest.
+\subsubsection*{Mantle of Majesty}
+At 6th level, you gain the ability to cloak yourself in a fey magic that makes others want to serve you. As a bonus action, you cast command, without expending a spell slot, and you take on an appearance of unearthly beauty for 1 minute or until your concentration ends (as if you were concentrating on a spell). During this time, you can cast command as a bonus action on each of your turns, without expending a spell slot.
+
+Any creature charmed by you automatically fails its saving throw against the command you cast with this feature.
+
+Once you use this feature, you can't use it again until you finish a long rest.
+\subsection*{Font of Inspiration}
+You now regain all your expended uses of Bardic Inspiration when you finish a Short or Long Rest.
+
+In addition, you can expend a spell slot (no action required) to regain one expended use of Bardic Inspiration.
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader{Friends}
+	{Enchantment Cantrip}
+	{Action}
+	{10 Feet}
+	{S, M (some makeup)}
+	{Concentration, up to 1 Minute}
+
+You magically emanate a sense of friendship toward one creature you can see within range. The target must succeed on a Wisdom saving throw or have the Charmed condition for the duration. The target succeeds automatically if it isn't a Humanoid, if you're fighting it, or if you have cast this spell on it within the past 24 hours.
+
+The spell ends early if the target takes damage or if you make an attack roll, deal damage, or force anyone to make a saving throw. When the spell ends, the target knows it was Charmed by you.
+
+\DndSpellHeader{Stalker's Eye}
+	{Enchantment Cantrip}
+	{Action}
+	{Touch}
+	{V, S, M (small magnifying lens)}
+	{Concentration, up to 1 Minute}
+
+A willing creature you touch gains a preternatural ability to perceive the weaknesses in a creature's defences. The first time the creature makes an attack while under the effect of this spell, it makes the attack with advantage. After it makes an attack, the spell ends.
+
+This spell augments the creature's ability to strike at vital points when you reach certain levels When you reach 5th level, the augmented attack scores a critical hit on a roll of \textbf{19 or 20}. At 11th level, this range is increased to 18 to 20, and at 17th level, this range becomes 17 to 20.
+
+\DndSpellHeader{Vicious Mockery}
+	{Enchantment Cantrip}
+	{Action}
+	{60 Feet}
+	{V}
+	{Instantaneous}
+
+You unleash a string of insults laced with subtle enchantments at one creature you can see or hear within range. The target must succeed on a Wisdom saving throw or take 1d6 Psychic damage and have Disadvantage on the next attack roll it makes before the end of its next turn.
+
+\subparagraph*{Cantrip Upgrade} The damage increases by 1d6 when you reach \textbf{levels 5 (2d6)}, 11 (3d6), and 17 (4d6).
+
+\subsection*{Level 1}
+
+\DndSpellHeader{Charm Person}
+	{1st-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{1 Hour}
+
+One Humanoid you can see within range makes a Wisdom saving throw. It does so with Advantage if you or your allies are fighting it. On a failed save, the target has the Charmed condition until the spell ends or until you or your allies damage it. The Charmed creature is Friendly to you. When the spell ends, the target knows it was Charmed by you.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 1.
+
+\DndSpellHeader{Command}
+	{1st-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V}
+	{Instantaneous}
+
+You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. Choose the command from these options:
+
+\paragraph*{Approach} The target moves toward you by the shortest and most direct route, ending its turn if it moves within 5 feet of you.
+
+\paragraph*{Drop} The target drops whatever it is holding and then ends its turn.
+
+\paragraph*{Flee} The target spends its turn moving away from you by the fastest available means.
+
+\paragraph*{Grovel} The target has the Prone condition and then ends its turn.
+
+\paragraph*{Halt} On its turn, the target doesn't move and takes no action or Bonus Action.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can affect one additional creature for each spell slot level above 1.
+
+\DndSpellHeader{Daydream}
+	{1st-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V, S, M (a tiny, four-panelled window)}
+	{Concentration, up to 1 Minute}
+
+You float some mildly distracting thoughts into the mind of a humanoid you can see within range The target must succeed on a Wisdom saving throw or have disadvantage on Wisdom (Perception) checks (taking a -5 penalty to its passive Perception as a result of this disadvantage) until the spell ends. A creature immune to being charmed is unaffected by this spell.
+
+A creature that succeeds on the saving throw by 5 or more is aware that an attempt was made to influence it with magic Otherwise, the creature remains unaware of the magic that affected it.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st, or you can extend the range of the spell by 30 feet for each slot level above 1st.
+
+\DndSpellHeader{Dissonant Whispers}
+	{1st-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V}
+	{Instantaneous}
+
+One creature of your choice that you can see within range hears a discordant melody in its mind. The target makes a Wisdom saving throw. On a failed save, it takes 3d6 Psychic damage and must immediately use its Reaction, if available, to move as far away from you as it can, using the safest route. On a successful save, the target takes half as much damage only.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The damage increases by 1d6 for each spell slot level above 1.
+
+\DndSpellHeader{Tasha's Hideous Laughter}
+	{1st-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V, S, M (a tart and a feather)}
+	{Concentration, up to 1 Minute}
+
+One creature of your choice that you can see within range makes a Wisdom saving throw. On a failed save, it has the Prone and Incapacitated conditions for the duration. During that time, it laughs uncontrollably if it's capable of laughter, and it can't end the Prone condition on itself.
+
+At the end of each of its turns and each time it takes damage, it makes another Wisdom saving throw. The target has Advantage on the save if the save is triggered by damage. On a successful save, the spell ends.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 1.
+
+\subsection*{Level 2}
+
+\DndSpellHeader{Calm Emotions}
+	{2nd-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{Concentration, up to 1 Minute}
+
+Each Humanoid in a 20-foot-radius Sphere centered on a point you choose within range must succeed on a Charisma saving throw or be affected by one of the following effects (choose for each creature):
+
+\begin{itemize}
+	\item The creature has Immunity to the Charmed and Frightened conditions until the spell ends. If the creature was already Charmed or Frightened, those conditions are suppressed for the duration.
+	\item The creature becomes Indifferent about creatures of your choice that it's Hostile toward. This indifference ends if the target takes damage or witnesses its allies taking damage. When the spell ends, the creature's attitude returns to normal.
+\end{itemize}
+
+\DndSpellHeader{Enthrall}
+	{2nd-Level Enchantment}
+	{Action}
+	{60 Feet}
+	{V, S}
+	{Concentration, up to 1 Minute}
+
+You weave a distracting string of words, causing creatures of your choice that you can see within range to make a Wisdom saving throw. Any creature you or your companions are fighting automatically succeeds on this save. On a failed save, a target has a -10 penalty to Wisdom (Perception) checks and Passive Perception until the spell ends.
+
+\DndSpellHeader{Unraveling Whisper}
+	{2nd-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V, S}
+	{1 Round}
+
+Choose a creature you can see within range and whisper a frightful phrase that only the target can hear. The target must make a Wisdom saving throw. On a failed save, the target takes 2d6 Psychic damage and has the Frightened condition until the start of your next turn. On a successful save, the target takes half as much damage only.
+
+While Frightened in this way, the creature has Vulnerability to your choice of Bludgeoning, Piercing, or Slashing damage.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 2.
+
+\subsection*{Level 3}
+
+\DndSpellHeader{Fast Friends}
+	{3rd-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V}
+	{Concentration, up to 1 Hour}
+
+When you need to make sure something gets done, you can't rely on vague promises, sworn oaths, or binding contracts of employment. When you cast this spell, choose one humanoid within range that can see and hear you, and that can understand you. The creature must succeed on a Wisdom saving throw or become charmed by you for the duration. While the creature is charmed in this way, it undertakes to perform any services or activities you ask of it in a friendly manner, to the best of its ability.
+
+You can set the creature new tasks when a previous task is completed, or if you decide to end its current task. If the service or activity might cause harm to the creature, or if it conflicts with the creature's normal activities and desires, the creature can make another Wisdom saving throw to try to end the effect. This save is made with advantage if you or your companions are fighting the creature. If the activity would result in certain death for the creature, the spell ends.
+
+When the spell ends, the creature knows it was charmed by you.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd.
+
+\DndSpellHeader{Mass Healing Word}
+	{3rd-Level Abjuration}
+	{Bonus Action}
+	{60 Feet}
+	{V}
+	{Instantaneous}
+
+Up to six creatures of your choice that you can see within range regain Hit Points equal to 2d4 plus your spellcasting ability modifier.
+
+\subparagraph*{Using a Higher-Level Spell Slot} The healing increases by 1d4 for each spell slot level above 3.
+
+\DndSpellHeader{Mireball}
+	{3rd-Level Conjuration}
+	{Action}
+	{150 Feet}
+	{V, S, M (a tiny ball of guano and mud)}
+	{1 Minute}
+
+A blob of gloopy mud splunks from your pointed finger to a point you choose within range where it splooges with a wet burp into an explosion of sludge Each creature in a 15-foot-radius sphere centred on that point must make a Strength saving throw On a failed save a target takes 3d10 bludgeoning damage and is knocked prone On a successful one, it takes half as much damage and is not knocked prone.
+
+In addition, all surfaces within the area become covered in unpredictably slick and sticky patches of mud for the duration. The first time a creature moves through the muddy the area on its turn it must succeed on a Dexterity saving throw against your spell save DC or fall prone A creature moving through the area at half speed doesn't need to make the saving throw.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d10 for each slot level above 3rd.
+
+\part*{Magic Items}
+\subsection*{Reveler's Concertina}
+\textit{Wondrous Item, Instrument, Rare (Requires Attunement By a Bard)}\\
+{\entryfont While holding this concertina, you gain a +2 bonus to the saving throw DC of your bard spells.
+
+As an action, you can use the concertina to cast Otto's Irresistible Dance from the item. This property of the concertina can't be used again until the next dawn.}
+
+\DndSpellHeader{Otto's Irresistible Dance}
+	{6th-Level Enchantment}
+	{Action}
+	{30 Feet}
+	{V}
+	{Concentration, up to 1 Minute}
+
+One creature that you can see within range must make a Wisdom saving throw. On a successful save, the target dances comically until the end of its next turn, during which it must spend all its movement to dance in place.
+
+On a failed save, the target has the Charmed condition for the duration. While Charmed, the target dances comically, must use all its movement to dance in place, and has Disadvantage on Dexterity saving throws and attack rolls, and other creatures have Advantage on attack rolls against it. On each of its turns, the target can take an action to collect itself and repeat the save, ending the spell on itself on a success.
+
+\subsection*{Glamoured Studded Leather}
+\textit{Light Armor (Studded Leather Armor), Rare}\\
+{\entryfont While wearing this armor, you gain a +1 bonus to Armor Class. You can also take a Bonus Action to cause the armor to assume the appearance of a normal set of clothing or some other kind of armor. You decide what it looks like—including color, style, and accessories—but the armor retains its normal bulk and weight. The illusory appearance lasts until you use this property again or doff the armor.}
+\end{document}
