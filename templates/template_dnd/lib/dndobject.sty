@@ -1,0 +1,149 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Monster environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stat block made to look like the Monster Manual NPC definitions
+\DeclareTColorBox {DndObjectNoBg} { O{} m }
+  {
+    enhanced,
+    frame~hidden,
+    boxrule     = 0pt,
+    breakable,
+    parbox      = false,
+    boxsep      = 0pt,
+    toptitle    = 3mm,
+    left        = 0pt,
+    right       = 0pt,
+    sharp~corners,
+    opacityback = 0,
+    colframe    = titleterracotta,
+    fonttitle   = \DndFontStatBlockTitle,
+    fontupper   = \DndFontStatBlockBody,
+    fontlower   = \DndFontStatBlockBody,
+    title       = {#2 - Object},
+    coltitle    = titleterracotta,
+    #1
+  }
+
+% Stat block made to look like stat blocks in the PHB.
+\DeclareTColorBox {DndObjectBg} { O{} m }
+  {
+    enhanced,
+    frame~hidden,
+    before~skip      = 12pt plus 3pt minus 3pt,
+    boxrule          = 0pt,
+    breakable,
+    parbox           = false,
+    boxsep           = 2pt,
+    toptitle         = 8pt,
+    top              = 0pt,
+    left             = 2pt,
+    right            = 2pt,
+    bottom           = 7pt,
+    sharp~corners,
+    oversize         = 0pt,
+    borderline~north = {3pt} {0pt}   {titleterracotta},
+    borderline~north = {2pt} {0.5pt} {objectstatblockribbon},
+    borderline~south = {3pt} {0pt}   {titleterracotta},
+    borderline~south = {2pt} {0.5pt} {objectstatblockribbon},
+    colback          = objectstatblockbg,
+    colbacktitle     = objectstatblockbg,
+    colframe         = titleterracotta,
+    fonttitle        = \DndFontStatBlockTitle,
+    coltitle         = titleterracotta,
+    fontupper    	 = \small\entryfont,
+    fontlower        = \DndFontStatBlockBody,
+    title            = {#2~~-~~Object},
+    #1
+  }
+
+% Alias DndMonster to correct background type
+\bool_if:NTF \l__dnd_show_background_bool
+  {
+    \let\DndObject\DndObjectBg
+    \let\endDndObject\endDndObjectBg
+  }{
+    \let\DndObject\DndObjectNoBg
+    \let\endDndObject\endDndObjectNoBg
+  }
+
+% Fancy DnD 5e stat block rule
+\NewDocumentCommand {\DndObjectLine} {}
+  {
+    \par \vspace{-2pt} \noindent
+    \begin {tikzpicture}
+      \draw [ titleterracotta, fill = titleterracotta ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \linewidth, 0.05 );
+    \end {tikzpicture}
+    \par
+  }
+
+% A description variant used to list creature attributes.
+\newlist {__dnd_object_attributes} {description} {1}
+\setlist [__dnd_object_attributes]
+  {
+    before   = \color {titleterracotta},
+    font     = \entryfont,
+    labelsep = \l__dnd_space_dim,
+    nosep,
+  }
+
+% Only prints the item label if the value was supplied
+\cs_new_protected_nopar:Npn \__dnd_if_object_attribute:nn #1#2
+  {
+    \tl_if_empty:NF {#1}
+      { \item [#2] #1 }
+  }
+
+%% Siege basics
+\keys_define:nn { dnd / object / basics }
+  {
+	armor-class .tl_set:N          = \l__armor_class_tl,
+	armor-class .initial:n         = 10,
+	armor-class .value_required:n  = true,
+	armorclass .meta:n = { armor-class = {#1} },
+	
+	hit-points .tl_set:N         = \l__hit_points_tl,
+	hit-points .initial:n        = \DndDice {1d8},
+	hit-points .value_required:n = true,
+	hitpoints .meta:n = { hit-points = {#1} },
+	
+	damage-threshold .tl_set:N          = \l__damage_threshold_tl,
+	damage-threshold .initial:n         = 0,
+	damage-threshold .value_required:n  = true,
+	damagethreshold .meta:n = { damage-threshold = {#1} },
+    
+	damage-vulnerabilities .tl_set:N         = \l__damage_vulnerabilities_tl,
+	damage-vulnerabilities .value_required:n = true,
+	damagevulnerabilities .meta:n = { damage-vulnerabilities = {#1} },
+	
+	damage-resistances .tl_set:N         = \l__damage_resistances_tl,
+	damage-resistances .value_required:n = true,
+	damageresistances .meta:n = { damage-resistances = {#1} },
+	
+	damage-immunities .tl_set:N         = \l__damage_immunities_tl,
+	damage-immunities .value_required:n = true,
+	damageimmunities .meta:n = { damage-immunities = {#1} },
+  }
+
+\cs_new_protected_nopar:Npn \__dnd_object_basics:
+  {
+      \begin {__dnd_object_attributes}
+        \item [\armorclassname] 		\l__armor_class_tl
+        \item [\hitpointsname]  		\l__hit_points_tl
+        \item [\damagethresholdname]	\l__damage_threshold_tl
+      	\__dnd_if_object_attribute:nn {\l__damage_vulnerabilities_tl} {\dvulname}
+      	\__dnd_if_object_attribute:nn {\l__damage_resistances_tl}     {\dresname}
+      	\__dnd_if_object_attribute:nn {\l__damage_immunities_tl}      {\dimmname}
+      \end {__dnd_object_attributes}
+  }
+
+\NewDocumentCommand {\DndObjectBasics} {o}
+  {
+    \group_begin:
+      \keys_set:nn { dnd / object / basics } {#1}
+      \DndObjectLine
+      \__dnd_object_basics:
+    \group_end:
+  }
+
