@@ -1,0 +1,26 @@
+% ------------------------------------------------------------------------------------------------- %
+%							sectioning_commands.sty  	Marcel Zauder 23/08/2026					%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Character Header  Full-Page  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\renewcommand{\thechapter}{\Roman{chapter}}%
+\newcommand{\chapterpage}[9]{%
+	\clearpage%
+	\thispagestyle{empty}%
+	\stepcounter{chapter}%
+	\begin{tikzpicture}[overlay,remember picture]%
+		\ifthenelse{\equal{#2}{}}{}{%
+			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};%
+			\addImageDBEntry{#6}{Page \thepage}{Background~Art}{#7}{#8}{#9}%
+		}%
+		\node[yshift=0.075\paperheight] at (current page.center) {\DndFontPart\DndContour{Chapter~\thechapter}};%
+		\node[yshift=-0.025\paperheight] at (current page.center) {\DndFontPartSubordinate\DndContour{#1}};%
+	\end{tikzpicture}%
+	\phantomsection\addcontentsline{toc}{chapter}{#1}%
+	\clearpage%
+}%

@@ -141,7 +141,7 @@
 			\addImageDBEntry{#6}{Page \thepage}{Act-Cover Art}{#7}{#8}{#9}%
 		}%
 		\node[yshift=0.075\paperheight] at (current page.center) {\DndFontPart\DndContour{Act~\thepart}};%
-		\node[yshift=-0.025\paperheight] at (current page.center) {\DndFontPart\DndContour{#1}};%
+		\node[yshift=-0.025\paperheight] at (current page.center) {\DndFontPartSubordinate\DndContour{#1}};%
 	\end{tikzpicture}%
 	\phantomsection\addcontentsline{toc}{part}{#1}%
 	\clearpage%

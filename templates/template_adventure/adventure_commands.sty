@@ -4,10 +4,187 @@
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ------------------------------------------- Variables ------------------------------------------- %
+\newif\ifshowbanner
+\showbannerfalse
 
+\newcommand{\headerfont}{\entryfont}
+\newcommand{\headerfontsize}{40}
+\newcommand{\adventuretitlefont}{\entryfont}
+\newcommand{\adventuretitlefontsize}{25}
+\newcommand{\footerfont}{\entryfont}
+\newcommand{\footerfontsize}{12}
+
+\newcommand{\primaryheadercolor}{black}
+\newcommand{\secondaryheadercolor}{white}
+\newcommand{\primaryfootercolor}{black}
+\newcommand{\secondaryfootercolor}{white}
+
+\newcommand{\ThanksSpacing}{3cm}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Option Processing #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\ExplSyntaxOn
+\keys_define:nn { adventure-title-page }
+{
+	showbanner .code:n =
+	{
+		\showbannertrue
+	},
+	
+	headerfont .code:n =
+	{
+		\seq_set_split:Nnn \l_tmpa_seq_headerfont { / } { #1 }
+		\renewcommand{\headerfont}{ \seq_item:Nn \l_tmpa_seq_headerfont { 1 } }
+		\renewcommand{\headerfontsize}{ \seq_item:Nn \l_tmpa_seq_headerfont { 2 } }
+	},
+	
+	adventuretitlefont .code:n =
+	{
+		\seq_set_split:Nnn \l_tmpa_seq_adventuretitlefont { / } { #1 }
+		\renewcommand{\adventuretitlefont}{ \seq_item:Nn \l_tmpa_seq_adventuretitlefont { 1 } }
+		\renewcommand{\adventuretitlefontsize}{ \seq_item:Nn \l_tmpa_seq_adventuretitlefont { 2 } }
+	},
+	
+	footerfont .code:n =
+	{
+		\seq_set_split:Nnn \l_tmpa_seq_footerfont { / } { #1 }
+		\renewcommand{\footerfont}{ \seq_item:Nn \l_tmpa_seq_footerfont { 1 } }
+		\renewcommand{\footerfontsize}{ \seq_item:Nn \l_tmpa_seq_footerfont { 2 } }
+	},
+	
+	shadowfy-header-color .code:n =
+	{
+		\seq_set_split:Nnn \l_tmpa_seq_header_color { / } { #1 }
+		\renewcommand{\primaryheadercolor}{ \seq_item:Nn \l_tmpa_seq_header_color { 1 } }
+		\renewcommand{\secondaryheadercolor}{ \seq_item:Nn \l_tmpa_seq_header_color { 2 } }
+	},
+	
+	shadowfy-footer-color .code:n =
+	{
+		\seq_set_split:Nnn \l_tmpa_seq_footer_color { / } { #1 }
+		\renewcommand{\primaryfootercolor}{ \seq_item:Nn \l_tmpa_seq_footer_color { 1 } }
+		\renewcommand{\secondaryfootercolor}{ \seq_item:Nn \l_tmpa_seq_footer_color { 2 } }
+	},
+}
+\ExplSyntaxOff
 % ------------------------------------------------------------------------------------------------- %
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 % #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  One-Shot  Titlepage  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\ExplSyntaxOn
+\NewDocumentCommand{\AdventureTitlePage}{ O{} mmmmmmmm }{%
+	% Reset options
+	\showbannerfalse
+
+	\renewcommand{\headerfont}{\entryfont}
+	\renewcommand{\headerfontsize}{40}
+	\renewcommand{\adventuretitlefont}{\entryfont}
+	\renewcommand{\adventuretitlefontsize}{25}
+	\renewcommand{\footerfont}{\entryfont}
+	\renewcommand{\footerfontsize}{12}
+	
+	\renewcommand{\primaryheadercolor}{black}
+	\renewcommand{\secondaryheadercolor}{white}
+	\renewcommand{\primaryfootercolor}{black}
+	\renewcommand{\secondaryfootercolor}{white}
+	
+	\keys_set:nn { adventure-title-page } { #1 }
+	
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember~picture,overlay]
+		\node[opacity=1,inner~sep=0pt,xshift=#2,yshift=#3] at (current~page.center){\includegraphics[#4, keepaspectratio]{#5}};
+		\addImageDBEntry#6
+		
+		\ifshowbanner
+			% Homebrew Banner
+			\node[xshift=-0.3\paperwidth, yshift=-0.325\paperheight] at (current~page.center){%
+				\includegraphics[width=0.4\paperwidth, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/Homebrew_Banner.png%
+				}%
+			};%
+			% Homebrew DnD
+			\node[xshift=-0.45\paperwidth, yshift=-0.31725\paperheight] at (current~page.center){%
+				\includegraphics[width=0.075\paperheight, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/icons/Dragon-D.png%
+				}%
+			};%
+			% M4RZ-Crafting Logo
+			\node[xshift=0.39\paperwidth, yshift=-0.405\paperheight] at (current~page.center){%
+				\includegraphics[width=0.2\paperwidth, keepaspectratio]{%
+					\PATH templates/utilities/images/titlepage/icons/M4RZ-Crafting_icon.png%
+				}%
+			};%
+		\fi
+		
+		\node[yshift=0.405\paperheight] at (current~page.center) {%
+			\ShadowfyStream{\primaryheadercolor}{\secondaryheadercolor}{\headerfont}{\headerfontsize}{#7}%
+		};%
+		
+		\coordinate (redline-left) at ($(current~page.center) + (-0.3\paperwidth, 0.375\paperheight)$);
+		\draw [rulered, fill=red] (redline-left) -- ++( 0.3\paperwidth, 0.075 ) -- ++( 0.3\paperwidth, -0.075 ) -- ++( -0.3\paperwidth, -0.075 );
+		
+		\node[yshift=0.35\paperheight] at (current~page.center) {%
+			\ShadowfyStream[0.8]{\primaryheadercolor}{\secondaryheadercolor}{\adventuretitlefont}{\adventuretitlefontsize}{#8}%
+		};%
+		
+		\def\primarycolor{\primaryfootercolor}
+		\def\secondarycolor{\secondaryfootercolor}
+		\node[xshift=-0.105\paperwidth, yshift=-0.405\paperheight] at (current~page.center) {%
+			\footerfont\fontsize{\footerfontsize}{1.2\footerfontsize}\selectfont\shadowfy{#9}%
+		};%
+	\end{tikzpicture}
+}%
+\ExplSyntaxOff
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  One-Shot  Last Page  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\ExplSyntaxOn
+\NewDocumentCommand{\AdventureLastPage}{ O{} mmmmmmmm }{%
+	\clearpage%
+	\thispagestyle{empty}%
+	\begin{tikzpicture}[remember~picture,overlay]%
+		\node[opacity=1,inner~sep=0pt,xshift=#4,yshift=#5] at (current~page.center){\includegraphics[#6,  keepaspectratio]{#3}};%
+		\addImageDBEntry{BackCover}{Back~Cover}{Art}{#7}{#8}{#9}%
+		\node[opacity=1,inner~sep=0pt] at (current~page.center){%
+			\includegraphics[height=\paperheight, keepaspectratio]{%
+				\PATH templates/utilities/images/titlepage/backcover-black-part.png%
+			}%
+		};%
+		
+		% Thank you Message and List
+		\def\primarycolor{MarzRed}%
+		\def\secondarycolor{black!80}%
+		%\def\secondarycolor{MarzDarkRed}%
+		\def\stackgap{0.1pt}
+		\node[yshift=0.1\paperheight, xshift=-0.25\paperwidth, align=center, text~width=0.5\textwidth] at (current~page.center) {%
+			\begin{minipage}{1\textwidth}
+				\centering
+				\begin{minipage}{0.8\textwidth}
+					\centering\shadowfiedSCTitle{Big} ~ \shadowfiedSCTitle{Thanks} ~ \shadowfiedSCTitle{To} ~ \shadowfiedSCTitle{These} ~ \shadowfiedSCTitle{Artists}
+				\end{minipage}
+				\par\vspace*{\ThanksSpacing}%
+				\begin{minipage}{0.9\textwidth}
+					\large\begin{itemize}[label=\textcolor{white}{\textbullet}, leftmargin=*, align=left]
+						\DTLforeach*{imageDB}{\thisPage=Page, \thisAdditionalInformation=AdditionalInformation, \thisURL=URL, \thisArtName=ArtName, \thisArtist=Artist}{%
+							\item \textcolor{white}{\thisPage \ \thisAdditionalInformation :}~\textcolor{orange}{\href{\thisURL}{\thisArtName \ by~\thisArtist}}
+						}
+					\end{itemize}
+				\end{minipage}
+		\end{minipage}
+		};
+		
+		% 5E-MC Symbol
+		\node[yshift=-0.4\paperheight, xshift=-0.25\paperwidth] at (current~page.center) {%
+			\includegraphics[width=0.25\paperwidth, keepaspectratio]{%
+				\PATH  templates/utilities/images/titlepage/icons/5eMC.png%
+			}%
+		};%
+	\end{tikzpicture}
+}%
+\ExplSyntaxOff
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+
+
 \newcommand{\adventureHeader}[4]{%
 	\def\temp{#1}\ifthenelse{\equal{\temp}{}}{\def\shadowfyfont{\titlefont}}{\def\shadowfyfont{#1}}%
 	\node[yshift=0.405\paperheight] at (current page.center) {\shadowfyBookTitleName{#2}};
