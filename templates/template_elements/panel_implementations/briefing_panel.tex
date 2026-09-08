@@ -1,0 +1,972 @@
+% ------------------------------------------------------------------------------------------------- %
+%								briefing_panel.tex  Marcel Zauder 24/08/2026						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\newcommand{\BriefingPanelTitle}{}
+\newcommand{\BriefingPanelSubTitle}{}
+\newcommand{\BriefingPanelCrest}{}
+\newcommand{\BriefingPanelDivider}{}
+\newcommand{\BriefingPanelItemSymbol}{}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Colours  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\definecolor{briefingpanelblue}{HTML}{246B9F}
+\definecolor{briefingpanelbluedark}{HTML}{123A59}
+\definecolor{briefingpanelbluelight}{HTML}{74C5E8}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Boolean  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newbool{bBriefingPanelFirstItem}
+
+\newsavebox{\BriefingPanelSymbolBox}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Lengths  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ------------------------------------------------------------------------
+% Dimensions
+% ------------------------------------------------------------------------
+\newlength{\BriefingPanelWidth}
+\newlength{\BriefingPanelContentWidth}
+% ------------------------------------------------------------------------
+% Offsets
+% ------------------------------------------------------------------------
+\newlength{\BriefingPanelPadding}
+\newlength{\BriefingPanelItemRightPadding}
+\newlength{\BriefingPanelChomfer}
+\newlength{\BriefingPanelInnerInset}
+\newlength{\BriefingPanelInnerChomfer}
+\newlength{\BriefingPanelSymbolWidth}
+\newlength{\BriefingPanelSymbolGap}
+\newlength{\BriefingPanelItemSep}
+
+\setlength{\BriefingPanelPadding}{11pt}
+\setlength{\BriefingPanelItemRightPadding}{12pt}
+\setlength{\BriefingPanelChomfer}{10pt}
+\setlength{\BriefingPanelInnerInset}{5pt}
+\setlength{\BriefingPanelInnerChomfer}{7pt}
+\setlength{\BriefingPanelSymbolWidth}{18pt}
+\setlength{\BriefingPanelSymbolGap}{2pt}
+\setlength{\BriefingPanelItemSep}{6pt}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- Default Symbols ---------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-# Default Crest (Ship's Steering Wheel) #-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\BriefingPanelDefaultCrest}{}{%
+	\begin{tikzpicture}[%
+		x=1pt,
+		y=1pt,
+		baseline=-.5ex
+	]%
+		\draw[%
+			color=briefingpanelblue,
+			line width=0.6pt
+		]%
+			(0,8) -- (0,-8)
+			(-8,0) -- (8,0)
+			(-5.5,5.5) -- (5.5,-5.5)
+			(-5.5,-5.5) -- (5.5,5.5);
+		
+		\draw[%
+			color=briefingpanelbluedark,
+			line width=0.6pt
+		]%
+			(0,0) circle[radius=5pt];
+		
+		\fill[briefingpanelbluelight]
+			(0,0) circle[radius=1pt];
+	\end{tikzpicture}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Default Divider (Line with Diamond)  #-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\BriefingPanelDefaultDivider}{}{%
+	\noindent
+	\makebox[\linewidth][c]{%
+		\begin{tikzpicture}[x=1pt, y=1pt]
+			\draw[%
+				color=briefingpanelblue,
+				line width=0.45pt
+			]%
+				(-0.42\linewidth,0) -- (-5pt,0) (5pt,0) -- (0.42\linewidth,0);
+			
+			\draw[%
+				color=briefingpanelblue,
+				line width=0.45pt
+			]%
+				(0,3pt) -- (3pt,0) -- (0,-3pt) -- (-3pt,0) -- cycle;
+		\end{tikzpicture}
+	}%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Default Item Symbol (Diamond) #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\BriefingPanelDefaultItemSymbol}{}{%
+	\draw[%
+		color=briefingpanelbluedark,
+		line width=0.6pt
+	]%
+		(0,4) -- (4,0) -- (0,-4) -- (-4,0) -- cycle;
+		
+	\fill[briefingpanelbluelight]
+		(0,0) circle[radius=0.8pt];
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------- Options  Processing -------------------------------------- %
+\ExplSyntaxOn
+\keys_define:nn { dnd / briefingpanel }
+{%
+	width .code:n =
+	{%
+		\renewcommand{\BriefingPanelWidth}{#1}
+	},%
+	
+	title .code:n =
+	{%
+		\renewcommand{\BriefingPanelTitle}{#1}
+	},%
+	
+	subtitle .code:n =
+	{%
+		\renewcommand{\BriefingPanelSubTitle}{#1}
+	},%
+	
+	crest .code:n =
+	{%
+		\renewcommand{\BriefingPanelCrest}{#1}
+	},%
+	
+	divider .code:n =
+	{%
+		\renewcommand{\BriefingPanelDivider}{#1}
+	},%
+	
+	item-symbol .code:n =
+	{%
+		\renewcommand{\BriefingPanelItemSymbol}{#1}
+	},%
+}%
+\ExplSyntaxOff
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Reset Briefing Panel Values  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\BriefingPanelReset}{}{%
+	\renewcommand{\BriefingPanelWidth}{\linewidth}
+	\renewcommand{\BriefingPanelTitle}{Mission~Briefing}
+	\renewcommand{\BriefingPanelSubTitle}{Expedition~Directives}
+	\renewcommand{\BriefingPanelCrest}{\BriefingPanelDefaultCrest}
+	\renewcommand{\BriefingPanelDivider}{\BriefingPanelDefaultDivider}
+	\renewcommand{\BriefingPanelItemSymbol}{\BriefingPanelDefaultItemSymbol}
+	
+	\booltrue{bBriefingPanelFirstItem}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- Briefing Item ----------------------------------------- %
+\NewDocumentCommand{\BriefingItem}{ O{} +m }{%
+	% Always begin the item on a fresh line
+	\par
+	% ------------------------------------------------------------------------
+	% Separator between entries
+	% ------------------------------------------------------------------------
+	\ifbool{bBriefingPanelFirstItem}{}{%
+		\vspace{\BriefingPanelItemSep}
+		{
+			\color{briefingpanelblue!25}
+			\hrule height 0.35pt
+		}
+		\vspace{\BriefingPanelItemSep}
+	}%
+	
+	\boolfalse{bBriefingPanelFirstItem}
+	% ------------------------------------------------------------------------
+	% Entry
+	% ------------------------------------------------------------------------
+	\noindent
+	\begin{minipage}[t]{\BriefingPanelSymbolWidth}
+
+		\vspace{0pt}
+		\centering
+		\begin{tikzpicture}[x=1pt, y=1pt, baseline=-.5ex]
+			\def\temp{#1}
+			\ifthenelse{\equal{\temp}{}}%
+			{
+				\BriefingPanelItemSymbol%
+			}
+			{
+				#1
+			}
+		\end{tikzpicture}
+
+	\end{minipage}%
+	\hspace{\BriefingPanelSymbolGap}%
+	\begin{minipage}[t]
+	{
+		\dimexpr\linewidth
+		- \BriefingPanelSymbolWidth
+		- \BriefingPanelSymbolGap
+		- \BriefingPanelItemRightPadding
+		\relax
+	}
+		\vspace{0pt}
+		#2
+	\end{minipage}
+	\par
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- Briefing  Panel ---------------------------------------- %
+\ExplSyntaxOn
+\NewDocumentEnvironment{BriefingPanel}{ O{} +b }{%
+	\group_begin:
+	% ------------------------------------------------------------------------
+	% Defaults + Keys
+	% ------------------------------------------------------------------------
+	\BriefingPanelReset
+	\keys_set:nn{ dnd / briefingpanel }{ #1 }
+	% ------------------------------------------------------------------------
+	% Calculate internal width
+	% ------------------------------------------------------------------------
+	\setlength{\BriefingPanelContentWidth}{\BriefingPanelWidth - 2\BriefingPanelPadding}
+	% ------------------------------------------------------------------------
+	% Panel
+	% ------------------------------------------------------------------------
+	\par\vspace{6pt plus 2pt minus 2pt}\noindent
+	\begin{tikzpicture}
+		% --------------------------------------------------------------------
+		% Content
+		% --------------------------------------------------------------------
+		\node[
+			anchor=north~west,
+			inner~xsep=\BriefingPanelPadding,
+			inner~ysep=\BriefingPanelPadding,
+			outer~sep=0pt
+		] (frame) at (0,0)
+		{%
+			\begin{minipage}{\BriefingPanelContentWidth}
+				\group_begin:
+				% ------------------------------------------------------------
+				% Header
+				% ------------------------------------------------------------
+				\centering\vspace{-3pt}
+				\ifthenelse{\equal{\BriefingPanelCrest}{}}{}{%
+					\BriefingPanelCrest\par\vspace{3pt}
+				}%
+				
+				\ifthenelse{\equal{\BriefingPanelTitle}{}}{}{%
+					\color{briefingpanelbluedark}\Large\bfseries\scshape\DndContour{\BriefingPanelTitle}\par
+				}%
+				
+				\ifthenelse{\equal{\BriefingPanelSubTitle}{}}{}{%
+					\vspace{1pt}\color{briefingpanelblue}\small\scshape\BriefingPanelSubTitle\par
+				}%
+				
+				\ifthenelse{\equal{\BriefingPanelDivider}{}}{}{%
+					\vspace{1pt}\BriefingPanelDivider\vspace{-5pt}
+				}%
+				\group_end:
+				% ------------------------------------------------------------
+				% Entries
+				% ------------------------------------------------------------
+				#2
+			\end{minipage}
+		};%
+		% --------------------------------------------------------------------
+		% Chamfered Double Outline
+		% --------------------------------------------------------------------		
+		% --- outer frame coordinates
+		\coordinate (briefingnorthwest)
+			at ([shift={(0.8pt,-0.8pt)}]frame.north~west);
+		\coordinate (briefingnortheast)
+			at ([shift={(-0.8pt,-0.8pt)}]frame.north~east);
+		\coordinate (briefingsoutheast)
+			at ([shift={(-0.8pt,0.8pt)}]frame.south~east);
+		\coordinate (briefingsouthwest)
+			at ([shift={(0.8pt,0.8pt)}]frame.south~west);
+		
+		% --- inner frame coordinates
+		\coordinate (innernorthwest)
+			at ([shift={(\BriefingPanelInnerInset,-\BriefingPanelInnerInset)}]briefingnorthwest);
+		\coordinate (innernortheast)
+			at ([shift={(-\BriefingPanelInnerInset,-\BriefingPanelInnerInset)}]briefingnortheast);
+		\coordinate (innersoutheast)
+			at ([shift={(-\BriefingPanelInnerInset,\BriefingPanelInnerInset)}]briefingsoutheast);
+		\coordinate (innersouthwest)
+			at ([shift={(\BriefingPanelInnerInset,\BriefingPanelInnerInset)}]briefingsouthwest);
+		
+		% --- outer frame
+		\draw[
+			color=briefingpanelbluedark,
+			line~width=3pt,
+			line~join=miter
+		]
+			([xshift=\BriefingPanelChomfer]briefingnorthwest)
+			-- ([xshift=-\BriefingPanelChomfer]briefingnortheast)
+			-- ([yshift=-\BriefingPanelChomfer]briefingnortheast)
+			-- ([yshift=\BriefingPanelChomfer]briefingsoutheast)
+			-- ([xshift=-\BriefingPanelChomfer]briefingsoutheast)
+			-- ([xshift=\BriefingPanelChomfer]briefingsouthwest)
+			-- ([yshift=\BriefingPanelChomfer]briefingsouthwest)
+			-- ([yshift=-\BriefingPanelChomfer]briefingnorthwest)
+			-- cycle;
+		
+		% --- inner frame
+		\draw[
+			color=briefingpanelblue,
+			line~width=0.5pt,
+			line~join=miter,
+			opacity=0.85
+		]
+			([xshift=\BriefingPanelInnerChomfer]innernorthwest)
+			-- ([xshift=-\BriefingPanelInnerChomfer]innernortheast)
+			-- ([yshift=-\BriefingPanelInnerChomfer]innernortheast)
+			-- ([yshift=\BriefingPanelInnerChomfer]innersoutheast)
+			-- ([xshift=-\BriefingPanelInnerChomfer]innersoutheast)
+			-- ([xshift=\BriefingPanelInnerChomfer]innersouthwest)
+			-- ([yshift=\BriefingPanelInnerChomfer]innersouthwest)
+			-- ([yshift=-\BriefingPanelInnerChomfer]innernorthwest)
+			-- cycle;
+	\end{tikzpicture}
+	\par
+	\vspace{6pt plus 2pt minus 2pt}
+}{\group_end:}%
+\ExplSyntaxOff
+
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- Special  Crests ---------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Cogwheel + Compass Needle #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\BriefingPanelCogwheelCompassNeedleCrest}{}{%
+	\begin{tikzpicture}[
+		x=1pt,
+		y=1pt,
+		baseline=-0.5ex,
+		line cap=round,
+		line join=round
+	]
+		% ---------------------------------------------------------------------
+		% Parameters
+		% ---------------------------------------------------------------------
+		\def\InnerRingRadius{5.2}
+		\def\OuterRingRadius{7.2}
+		\def\ToothOuterRadius{9.0}
+		\def\NeedleLong{4.2}
+		\def\NeedleShort{1.8}
+
+		% ---------------------------------------------------------------------
+		% Gear teeth
+		% ---------------------------------------------------------------------
+		\foreach \a in {0,45,...,315}
+		{
+			\draw[
+				color=briefingpanelbluedark,
+				line width=0.65pt
+			]
+				(\a-8:\OuterRingRadius)
+				-- (\a-8:\ToothOuterRadius)
+				-- (\a+8:\ToothOuterRadius)
+				-- (\a+8:\OuterRingRadius);
+		}
+
+		% ---------------------------------------------------------------------
+		% Gear ring
+		% ---------------------------------------------------------------------
+		\draw[
+			color=briefingpanelbluedark,
+			line width=0.65pt
+		]
+			(0,0) circle[radius=\OuterRingRadius];
+
+		\draw[
+			color=briefingpanelblue,
+			line width=0.65pt
+		]
+			(0,0) circle[radius=\InnerRingRadius];
+
+		% ---------------------------------------------------------------------
+		% Minimal compass needle
+		% ---------------------------------------------------------------------
+		\draw[
+			color=briefingpanelbluelight,
+			line width=0.6pt
+		]
+			(0,\NeedleLong)
+			-- (\NeedleShort,0)
+			-- (0,-\NeedleLong)
+			-- (-\NeedleShort,0)
+			-- cycle;
+
+		% small center
+		\fill[briefingpanelblue]
+			(0,0) circle[radius=0.8pt];
+	\end{tikzpicture}%
+}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- Special Divider ---------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Ornate Gear  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\BriefingPanelOrnateGearDivider}{}{%
+	\makebox[\linewidth][c]{%
+		\begin{tikzpicture}[
+			x=1pt,
+			y=1pt,
+			baseline=-0.5ex,
+			line cap=round,
+			line join=round
+		]
+			% -----------------------------------------------------------------
+			% Main outer lines
+			% -----------------------------------------------------------------
+			\fill[briefingpanelbluedark]
+				(-0.475\linewidth,0.3)
+				-- (-0.285\linewidth,0.8)
+				-- (-0.285\linewidth,-0.8)
+				-- (-0.475\linewidth,-0.3)
+				-- cycle;
+			
+			\fill[briefingpanelbluedark]
+				(0.475\linewidth,0.3)
+				-- (0.285\linewidth,0.8)
+				-- (0.285\linewidth,-0.8)
+				-- (0.475\linewidth,-0.3)
+				-- cycle;
+			
+			% -----------------------------------------------------------------
+			% Outer terminal diamonds
+			% -----------------------------------------------------------------
+			\foreach \x in {-0.475\linewidth,0.475\linewidth}
+			{
+				\fill[briefingpanelbluedark]
+					(\x,0) ++(-2pt,0)
+					-- ++(2.0pt,2.0pt)
+					-- ++(2.0pt,-2.0pt)
+					-- ++(-2.0pt,-2.0pt)
+					-- cycle;
+			}
+			
+			% -----------------------------------------------------------------
+			% Hollow diamonds
+			% -----------------------------------------------------------------
+			\foreach \x in {-0.265\linewidth,0.265\linewidth}
+			{
+				\filldraw[
+					draw=briefingpanelbluedark,
+					fill=briefingpanelbluelight,
+					line width=1.5pt
+				]
+					(\x,0) ++(-2.2pt,0)
+					-- ++(2.2pt,2.2pt)
+					-- ++(2.2pt,-2.2pt)
+					-- ++(-2.2pt,-2.2pt)
+					-- cycle;
+			}
+			
+			% -----------------------------------------------------------------
+			% Main inner lines
+			% -----------------------------------------------------------------
+			\draw[
+				briefingpanelbluedark,
+				line width=1.2pt
+			]
+				(-0.245\linewidth,0) -- (-0.05\linewidth,0);
+			\draw[
+				briefingpanelbluedark,
+				line width=1.2pt
+			]
+				(0.245\linewidth,0) -- (0.05\linewidth,0);
+			
+			% -----------------------------------------------------------------
+			% Small connector diamonds
+			% -----------------------------------------------------------------
+			\foreach \x in {-0.2\linewidth,0.2\linewidth}
+			{
+				\fill[briefingpanelbluedark]
+					(\x,0) ++(-1.5pt,0)
+					-- ++(1.5pt,1.5pt)
+					-- ++(1.5pt,-1.5pt)
+					-- ++(-1.5pt,-1.5pt)
+					-- cycle;
+			}
+			
+			% -----------------------------------------------------------------
+			% Double decorative lines
+			% -----------------------------------------------------------------
+			% Left
+			%% Lower
+			\fill[
+				briefingpanelblue
+			]
+				(-0.2\linewidth,-2.5pt)
+				-- ++(0.5pt,-0.8pt)
+				-- (-0.05\linewidth,-3.3pt)
+				arc[start angle=180, end angle=260, radius=6pt] 
+				arc[start angle=247, end angle=180, radius=7pt]
+				-- (-0.04725\linewidth,-2.5pt)
+				-- cycle;
+			%% Upper
+			\fill[
+				briefingpanelblue
+			]
+				(-0.125\linewidth,2.5pt)
+				-- ++(0.5pt,0.8pt)
+				-- (-0.05\linewidth,3.3pt)
+				arc[start angle=180, end angle=100, radius=6pt] 
+				arc[start angle=113, end angle=180, radius=7pt]
+				-- (-0.04725\linewidth,2.5pt)
+				-- cycle;
+			
+			% RIGHT
+			%% Lower
+			\fill[
+				briefingpanelblue
+			]
+				(0.2\linewidth,-2.5pt)
+				-- ++(-0.5pt,-0.8pt)
+				-- (0.05\linewidth,-3.3pt)
+				arc[start angle=0, end angle=-80, radius=6pt] 
+				arc[start angle=-67, end angle=0, radius=7pt]
+				-- (0.04725\linewidth,-2.5pt)
+				-- cycle;
+			%% Upper
+			\fill[
+				briefingpanelblue
+			]
+				(0.125\linewidth,2.5pt)
+				-- ++(-0.5pt,0.8pt)
+				-- (0.05\linewidth,3.3pt)
+				arc[start angle=0, end angle=80, radius=6pt] 
+				arc[start angle=67, end angle=0, radius=7pt]
+				-- (0.04725\linewidth,2.5pt)
+				-- cycle;
+			
+			% -----------------------------------------------------------------
+			% Small dots beside central ornament
+			% -----------------------------------------------------------------
+			\fill[briefingpanelbluedark]
+				(-0.05\linewidth,0) circle[radius=1.3pt]
+				(0.05\linewidth,0) circle[radius=1.3pt];
+
+			% -----------------------------------------------------------------
+			% Central cogwheel
+			% -----------------------------------------------------------------
+			\foreach \angle in {0,30,...,330}
+			{
+				\fill[briefingpanelbluedark]
+					(\angle-7:7pt)
+					-- (\angle-7:8.5pt)
+					-- (\angle+7:8.5pt)
+					-- (\angle+7:7pt)
+					-- cycle;
+			}
+			\draw[
+				color=briefingpanelblue,
+				line width=1.45pt
+			]
+				(0,0) circle[radius=6.45pt];
+			
+			% -----------------------------------------------------------------
+			% Inner four-point star
+			% -----------------------------------------------------------------
+			\fill[briefingpanelbluelight]
+				(0,5.2pt)
+				
+				.. controls (-0.2pt,2pt) and (-0.6pt,0.6pt) ..
+				(-4.0pt,0)
+				
+				.. controls (-0.6pt,-0.6pt) and (-0.2pt,-2pt) ..
+				(0,-5.2pt)
+				
+				.. controls (0.2pt,-2pt) and (0.6pt,-0.6pt) ..
+				(4.0pt,0)
+				
+				.. controls (0.6pt,0.6pt) and (0.2pt,2pt) ..
+				(0,5.2pt)
+				
+				-- cycle;
+		\end{tikzpicture}%
+	}%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------- Special  Item Symbols ------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Pickaxe and Lantern  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\PickaxeShape}{%
+	% Handle
+	\draw[
+		color=briefingpanelbluedark,
+		line width=1.25pt,
+		line cap=round
+	]
+		(0,-8.0) -- (0,3.2);
+
+	% Solid pick head
+	\filldraw[
+		fill=briefingpanelblue,
+		draw=briefingpanelblue,
+		line width=0.3pt,
+		line join=round
+	]
+		(-5.0,2.8)
+		.. controls (-3.9,4.1) and (-2.0,4.8) ..
+		(-0.7,3.95)
+
+		-- (-0.5,3.25)
+		-- (0.5,3.25)
+		-- (0.7,3.95)
+
+		.. controls (2.0,4.8) and (3.9,4.1) ..
+		(5.0,2.8)
+
+		.. controls (3.7,3.25) and (1.9,3.45) ..
+		(0.7,2.8)
+
+		-- (-0.7,2.8)
+
+		.. controls (-1.9,3.45) and (-3.7,3.25) ..
+		(-5.0,2.8)
+
+		-- cycle;
+
+	% Collar
+	\fill[briefingpanelbluedark]
+		(0,3.0) circle[radius=0.75pt];
+}
+\NewDocumentCommand{\BriefingPanelPickaxesLanternItemSymbol}{}{%
+	% ---------------------------------------------------------------------
+	% Crossed Pickaxes
+	% ---------------------------------------------------------------------
+	\begin{scope}[xshift=1pt]
+		\begin{scope}[rotate=-52, xshift=2pt]
+			\PickaxeShape
+		\end{scope}
+	\end{scope}
+	
+	\begin{scope}[xshift=-1pt]
+		\begin{scope}[rotate=52, xshift=-2pt]
+			\PickaxeShape
+		\end{scope}
+	\end{scope}
+	
+	% ---------------------------------------------------------------------
+	% Lantern
+	% ---------------------------------------------------------------------
+	\begin{scope}[yshift=-1.5pt]
+		% Lantern handle
+		\draw[
+			color=briefingpanelblue,
+			line width=0.75pt
+		]
+			(-1.8,2.8)
+			.. controls (-1.6,5.2) and (1.6,5.2) ..
+			(1.8,2.8);
+
+		% Top cap
+		\draw[
+			color=briefingpanelblue,
+			line width=0.8pt
+		]
+			(-2.0,2.8)
+			-- (2.0,2.8)
+			-- (1.6,2.0)
+			-- (-1.6,2.0)
+			-- cycle;
+
+		% Lantern body
+		\draw[
+			color=briefingpanelblue,
+			line width=0.85pt,
+			fill=briefingpanelbluelight!12
+		]
+			(-1.7,2.0)
+			-- (-2.4,-2.6)
+			-- (-1.5,-3.6)
+			-- (1.5,-3.6)
+			-- (2.4,-2.6)
+			-- (1.7,2.0)
+			-- cycle;
+
+		% Inner glass
+		\draw[
+			color=briefingpanelbluedark,
+			line width=0.55pt
+		]
+			(-1.0,1.1)
+			-- (-1.35,-2.2)
+			-- (1.35,-2.2)
+			-- (1.0,1.1)
+			-- cycle;
+
+		% Flame / light
+		\draw[
+			color=briefingpanelbluelight,
+			line width=0.55pt,
+			fill=briefingpanelbluelight!35
+		]
+			(0,-1.7)
+			.. controls (-0.9,-0.7) and (-0.4,0.0) ..
+			(0,0.7)
+			.. controls (0.4,0.0) and (0.9,-0.7) ..
+			(0,-1.7)
+			-- cycle;
+
+		% Base
+		\draw[
+			color=briefingpanelblue,
+			line width=0.85pt
+		]
+			(-1.8,-3.6) -- (1.8,-3.6)
+			(-2.2,-4.2) -- (2.2,-4.2);
+	\end{scope}
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Quill and  Scroll #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\BriefingPanelQuillScrollItemSymbol}{}{%
+	\begin{scope}[scale=1.2, xshift=-1.5pt, yshift=1.5pt]
+		% ---------------------------------------------------------------------
+		% Parchment body
+		% ---------------------------------------------------------------------
+		\filldraw[
+			fill=briefingpanelbluelight!12,
+			draw=briefingpanelblue,
+			line width=0.55pt,
+			line join=round
+		]
+			(-2.5,2.5)
+			-- (2.5,2.5)
+			-- (2.5,0.75)
+
+			.. controls (2.5,0.40) and (2.05,0.25) ..
+			(2.05,0)
+
+			.. controls (2.05,-0.25) and (2.5,-0.40) ..
+			(2.5,-0.75)
+
+			-- (2.5,-2.5)
+			-- (-2.5,-2.5)
+			-- (-2.5,-0.75)
+
+			.. controls (-2.5,-0.40) and (-2.05,-0.25) ..
+			(-2.05,0)
+
+			.. controls (-2.05,0.25) and (-2.5,0.40) ..
+			(-2.5,0.75)
+
+			-- cycle;
+		
+		% ---------------------------------------------------------------------
+		% Roller end caps
+		% ---------------------------------------------------------------------
+		\filldraw[
+			fill=briefingpanelbluelight,
+			draw=briefingpanelblue,
+			line width=0.5pt
+		]
+			(-3.35,2.75) circle[radius=0.42pt]
+			( 3.35,2.75) circle[radius=0.42pt]
+			(-3.35,-2.75) circle[radius=0.42pt]
+			( 3.35,-2.75) circle[radius=0.42pt];
+
+		% ---------------------------------------------------------------------
+		% Top roller
+		% ---------------------------------------------------------------------
+		\filldraw[
+			fill=briefingpanelblue,
+			draw=briefingpanelbluedark,
+			line width=0.55pt,
+			rounded corners=0.5pt
+		]
+			(-3.05,2.35) rectangle (3.05,3.15);
+
+		% Slight highlight
+		\draw[
+			color=briefingpanelbluelight,
+			line width=0.35pt,
+			opacity=0.7
+		]
+			(-2.45,2.95) -- (2.25,2.95);
+
+		% ---------------------------------------------------------------------
+		% Bottom roller
+		% ---------------------------------------------------------------------
+		\filldraw[
+			fill=briefingpanelblue,
+			draw=briefingpanelbluedark,
+			line width=0.55pt,
+			rounded corners=0.5pt
+		]
+			(-3.05,-3.15) rectangle (3.05,-2.35);
+
+		% Slight highlight
+		\draw[
+			color=briefingpanelbluelight,
+			line width=0.35pt,
+			opacity=0.7
+		]
+			(-2.45,-2.55) -- (2.25,-2.55);
+
+		% ---------------------------------------------------------------------
+		% Writing
+		% ---------------------------------------------------------------------
+		\draw[
+			color=briefingpanelbluedark,
+			line width=0.42pt,
+			line cap=round
+		]
+			(-1.7,1.55) -- (1.65,1.55)
+			(-1.7,0.85) -- (1.65,0.85)
+			(-1.7,-0.25) -- (1.65,-0.25)
+			(-1.7,-0.95) -- (0.85,-0.95)
+			(-0.6,-1.65) -- (1.65,-1.65);
+	\end{scope}
+	
+	\begin{scope}[xshift=2.5pt, yshift=-0.5pt]
+		% Quill Spine (Rachis/Calamus)
+	    \draw[line width=0.1pt, line cap=round, briefingpanelbluedark] 
+	        (0,0) .. controls (0.2,2) and (1.2,4.5) .. (2,6);
+	    
+	    % Left side of the feather vane
+	    \fill[fill=briefingpanelblue] 
+	        (0.08,0.8) .. controls (-1.0,2.5) and (-0.5,4.8) .. (2,6)
+	        .. controls (1.2,4.6) and (0.3,2.2) .. (0.15,1.1) -- cycle;
+	        
+	    % Right side of the feather vane
+	    \fill[fill=briefingpanelbluelight] 
+	        (0.15,0.7) .. controls (1.2,2.0) and (2.0,4.5) .. (2,6)
+	        .. controls (1.4,4.5) and (0.6,2.1) .. (0.22,0.9) -- cycle;
+	\end{scope}
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Shields  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\BriefingPanelShieldItemSymbol}{}{%
+	% -------------------------------------------------------------------------
+		% Outer shield
+		% ---------------------------------------------------------------------
+		\filldraw[
+			fill=briefingpanelbluelight!12,
+			draw=briefingpanelblue,
+			line width=0.8pt
+		]
+			(-3.6,3.3)
+			.. controls (-2.0,3.7) and (2.0,3.7) ..
+			(3.6,3.3)
+
+			-- (3.35,0.4)
+
+			.. controls (3.2,-2.0) and (1.7,-3.8) ..
+			(0,-4.8)
+
+			.. controls (-1.7,-3.8) and (-3.2,-2.0) ..
+			(-3.35,0.4)
+
+			-- cycle;
+
+		% ---------------------------------------------------------------------
+		% Inner reinforced border
+		% ---------------------------------------------------------------------
+		\draw[
+			color=briefingpanelbluedark,
+			line width=0.5pt
+		]
+			(-2.75,2.55)
+			.. controls (-1.4,2.85) and (1.4,2.85) ..
+			(2.75,2.55)
+
+			-- (2.55,0.4)
+
+			.. controls (2.4,-1.4) and (1.25,-2.9) ..
+			(0,-3.75)
+
+			.. controls (-1.25,-2.9) and (-2.4,-1.4) ..
+			(-2.55,0.4)
+
+			-- cycle;
+
+		% ---------------------------------------------------------------------
+		% Central reinforcing ridge
+		% ---------------------------------------------------------------------
+		\draw[
+			color=briefingpanelblue,
+			line width=0.55pt
+		]
+			(0,2.6) -- (0,-3.55);
+
+		% ---------------------------------------------------------------------
+		% Upper reinforcing band
+		% ---------------------------------------------------------------------
+		\draw[
+			color=briefingpanelblue,
+			line width=0.55pt
+		]
+			(-2.6,1.8)
+			.. controls (-1.2,2.05) and (1.2,2.05) ..
+			(2.6,1.8);
+
+		% ---------------------------------------------------------------------
+		% Rivets
+		% ---------------------------------------------------------------------
+		\fill[briefingpanelbluedark]
+			(-1.9,1.6) circle[radius=0.35pt]
+			( 1.9,1.6) circle[radius=0.35pt]
+			(0,-2.3)   circle[radius=0.35pt];
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Treasures #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\BriefingPanelTreasureItemSymbol}{}{%
+	% ---------------------------------------------------------------------
+	% Gem
+	% ---------------------------------------------------------------------
+	\path[
+		fill=briefingpanelblue,
+		draw=briefingpanelbluedark,
+		line width=0.2pt,
+		line join=round,
+		even odd rule
+	]
+		(0,-4.45) -- (4.6,0) -- (2.25,2.15) -- (0.55,2.15) -- (2.65,0.25) -- (3.75,0) -- (2.65,-0.25) -- cycle
+		(0,-4.45) -- (-4.6,0) -- (-2.25,2.15) -- (-0.55,2.15) -- (-2.65,0.25) -- (-3.75,0) -- (-2.65,-0.25) -- cycle;
+	% ---------------------------------------------------------------------
+	% Central sparkle
+	% ---------------------------------------------------------------------
+	\path[
+		fill=briefingpanelbluelight,
+		draw=none,
+		line join=round,
+		even odd rule
+	]
+		(0,3.35)
+		
+		.. controls (-0.12,1.60) and (-0.30,0.55) ..
+		(-1.05,0.25)
+
+		.. controls (-1.70,0.10) and (-2.65,0.05) ..
+		(-3,0)
+
+		.. controls (-2.65,-0.05) and (-1.70,-0.10) ..
+		(-1.05,-0.25)
+
+		.. controls (-0.30,-0.55) and (-0.12,-1.80) ..
+		(0,-3.25)
+
+		.. controls (0.12,-1.80) and (0.30,-0.55) ..
+		(1.05,-0.25)
+
+		.. controls (1.70,-0.10) and (2.65,-0.05) ..
+		(3,0)
+
+		.. controls (2.65,0.05) and (1.70,0.10) ..
+		(1.05,0.25)
+
+		.. controls (0.30,0.55) and (0.12,1.60) ..
+		(0,3.35)
+
+		-- cycle;
+}%

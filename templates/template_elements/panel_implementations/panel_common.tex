@@ -1,0 +1,158 @@
+% ------------------------------------------------------------------------------------------------- %
+%								panel_common.tex  	Marcel Zauder 24/08/2026						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\NewDocumentCommand{\PanelColumnBreak}{}{%
+	&
+}
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% ----------------------------------------- TikZ  PreSets ----------------------------------------- %
+% ------------------------------------------------------------------------
+% Path Styles
+% ------------------------------------------------------------------------
+\makeatletter
+\tikzset{
+    use path for main/.code={%
+        \tikz@addmode{%
+            \expandafter\pgfsyssoftpath@setcurrentpath
+            \csname tikz@intersect@path@name@#1\endcsname
+        }%
+    },
+    use path for actions/.code={%
+        \expandafter\def\expandafter\tikz@preactions\expandafter{%
+            \tikz@preactions
+            \expandafter\let\expandafter\tikz@actions@path
+            \csname tikz@intersect@path@name@#1\endcsname
+        }%
+    },
+    use path/.style={
+        use path for main=#1,
+        use path for actions=#1,
+    }
+}
+\makeatother
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- Outline Paths ----------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% ------------------------------------ Ornamental Outline Path ------------------------------------ %
+\NewDocumentCommand{\OrnamentalOutlinePaths}{}{%
+	\coordinate (splitnorthwest)
+		at ([shift={(1.5pt,-1.5pt)}]frame.north west);
+	
+	\coordinate (splitnortheast)
+		at ([shift={(-1.5pt,-1.5pt)}]frame.north east);
+	
+	\coordinate (splitsoutheast)
+		at ([shift={(-1.5pt,1.5pt)}]frame.south east);
+	
+	\coordinate (splitsouthwest)
+		at ([shift={(1.5pt,1.5pt)}]frame.south west);
+	
+	% Inner ornamental contour.
+	\path[name path=split ornament 1]
+		([yshift=-4pt]splitnorthwest)
+		
+		[rounded corners=0.5pt]
+		-- ++(23pt,0)
+		
+		[rounded corners=2pt]
+		-- ++(3pt,-4pt)
+		
+		-- ([shift={(-26pt,-8pt)}]splitnortheast)
+		
+		[rounded corners=0.5pt]
+		-- ++(3pt,4pt)
+		
+		[rounded corners=4pt]
+		-- ([yshift=-4pt]splitnortheast)
+		
+		-- ([yshift=4pt]splitsoutheast)
+		
+		[rounded corners=0.5pt]
+		-- ++(-23pt,0)
+		
+		[rounded corners=2pt]
+		-- ++(-3pt,4pt)
+		
+		-- ([shift={(26pt,8pt)}]splitsouthwest)
+		
+		[rounded corners=0.5pt]
+		-- ++(-3pt,-4pt)
+		
+		[rounded corners=4pt]
+		-- ([yshift=4pt]splitsouthwest)
+		
+		-- cycle;
+		
+	% Outer ornamental contour.
+	\path[rounded corners=0.5pt, name path=split ornament 2]
+		([yshift=-20pt]splitnorthwest)
+		
+		-- ++(-4pt,3pt)
+		-- ++(0,4pt)
+		
+		to[out=0,in=-90]
+		([shift={(8pt,0pt)}]splitnorthwest)
+		
+		-- ([shift={(34pt,0pt)}]splitnorthwest)
+		
+		-- ([shift={(-8pt,0pt)}]splitnortheast)
+		
+		to[out=-90,in=180]
+		([shift={(4pt,-13pt)}]splitnortheast)
+		
+		-- ++(0,-4pt)
+		-- ++(-4pt,-3pt)
+		
+		-- ([yshift=20pt]splitsoutheast)
+		
+		-- ++(4pt,-3pt)
+		-- ++(0,-4pt)
+		
+		to[out=180,in=90]
+		([shift={(-8pt,0pt)}]splitsoutheast)
+		
+		-- ([shift={(8pt,0pt)}]splitsouthwest)
+		
+		to[out=90,in=0]
+		([shift={(-4pt,13pt)}]splitsouthwest)
+		
+		-- ++(0,4pt)
+		-- ++(4pt,3pt)
+		
+		-- cycle;
+}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Ornaments ------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% ------------------------------------- Fire Spitting  Dragon ------------------------------------- %
+\NewDocumentCommand{\OrnamentFireSpittingDragon}{O{1}}{%
+	\begin{tikzpicture}[
+		baseline=-0.45ex,
+		xscale=#1,
+		transform shape
+	]
+		\node[inner sep=0pt,outer sep=0pt] at (0,0) {\includegraphics[width=1.85cm]{%
+			\PATH templates/utilities/images/decals/horizontal_dragon.png%
+		}};%
+	\end{tikzpicture}%
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% ---------------------------------------- Vertical Wyvern ---------------------------------------- %
+\NewDocumentCommand{\OrnamentVerticalWyvern}{O{1}}{%
+	\begin{tikzpicture}[
+		baseline=-0.45ex,
+		xscale=#1,
+		transform shape
+	]
+		\node[inner sep=0pt,outer sep=0pt, opacity=0.15] at (0,0) {\includegraphics[height=1.85cm]{%
+			\PATH templates/utilities/images/decals/vertical_dragon.png%
+		}};%
+	\end{tikzpicture}%
+}
