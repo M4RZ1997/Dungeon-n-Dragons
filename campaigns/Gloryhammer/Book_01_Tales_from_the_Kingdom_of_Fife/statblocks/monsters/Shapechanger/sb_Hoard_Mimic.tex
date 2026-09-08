@@ -1,0 +1,93 @@
+\begin{DndMonster}[width=0.5\textwidth]{Hoard Mimic\phantomsection\addcontentsline{toc}{subsection}{Hoard Mimic}\label{monster:HoardMimic}}
+	\DndMonsterType{Huge Monstrosity (Shapechanger), Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {14},
+		initiative	= +1,
+		hit-points  = {\DndDice{13d12 + 39}},
+		speed       = {30 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 21,
+		dex = 12,
+		con = 17,
+		int = 10,
+		wis = 16,
+		cha = 10,
+	]
+	
+	\DndMonsterDetails[
+		saving-throws			= {CON +6, WIS +6},
+		skills					= {Persuasion +3, Stealth +6},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+%		damage-immunities		= {Poison},
+		condition-immunities	= {Prone},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 60 ft., Passive Perception 13},
+		languages				= {Common, Draconic, Telepathy 120 ft.},
+		challenge				= 8,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Adhesive (Object Form Only)} The mimic adheres to anything that touches it. A creature adhered to the mimic is also Grappled by it (Escape DC 16). Ability checks made to escape this grapple have Disadvantage.
+	
+	\DndMonsterAction{False Appearance (Hoard Form Only)}
+	If the mimic is motionless at the start of combat, it has Advantage on its Initiative Roll. Moreover, if a creature hasn't observed the mimic move or act, that creature must succeed on a DC 18 Intelligence (Investigation) Check to discern that the mimic is animate.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The mimic makes one Bite attack and two Pseudopod attacks.
+	
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +8,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d10 + 5},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{2d6},
+		plus-dmg-type	= Acid,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {, and the target must succeed on a DC 12 Constitution Saving Throw or take \DndDice{2d4} Poison damage},
+	]
+	
+	\DndMonsterAttack[
+		name			= Pseudopod,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +8,
+		reach			= 10,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 5},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {. If the mimic is in object form, the target is subjected to its Adhesive trait},
+	]
+	
+	\DndMonsterSavingThrowEffect[%
+		name		= {Caustic Mist (Recharge 5-6)},	%
+		description	= {The mimic sprays a fine mist of acid in a 30-foot cone},			%
+		save_skill	= {Dexterity},				%
+		save_dc		= {14},						%
+		targets		= {each creature in the area},				%
+		failure		= {The creature takes \DndDice{6d8} Acid damage and is Blinded until the end of its next turn},%
+		success		= {The creature takes half as much damage and isn't Blinded},				%
+%		extra		= {Extra}					%
+	]%
+	
+	\DndMonsterAction{Shapechanger}
+	The mimic transforms into a hoard or back into its true, amorphous form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies.
+\end{DndMonster}

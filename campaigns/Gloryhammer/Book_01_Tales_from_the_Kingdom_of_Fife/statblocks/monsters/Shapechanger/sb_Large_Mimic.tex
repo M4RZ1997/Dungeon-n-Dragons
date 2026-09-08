@@ -1,0 +1,77 @@
+\begin{DndMonster}[width=0.5\textwidth]{Large Mimic\phantomsection\addcontentsline{toc}{subsection}{Large Mimic}\label{monster:LargeMimic}}
+	\DndMonsterType{Large Monstrosity (Shapechanger), Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {12},
+		initiative	= +1,
+		hit-points  = {\DndDice{9d10 + 18}},
+		speed       = {15 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 17,
+		dex = 12,
+		con = 15,
+		int = 5,
+		wis = 13,
+		cha = 8,
+	]
+	
+	\DndMonsterDetails[
+%		saving-throws			= {STR +4, CON +4},
+		skills					= {Stealth +2},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Necrotic},
+		damage-immunities		= {Acid},
+		condition-immunities	= {Prone},
+%		gear					= {Dagger, Vial of Poison (Basic)},
+		senses					= {Darkvision 60 ft., Passive Perception 11},
+		languages				= {-},
+		challenge				= 2,
+		proficiency-bonus		= +2,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Grappler} The mimic has Advantage on attack rolls against any creature grappled by it.
+
+	\DndMonsterAction{Adhesive (Object Form Only)} The mimic adheres to anything that touches it. A Huge or smaller creature adhered to the mimic is also Grappled by it (Escape DC 13). Ability checks made to escape this grapple have Disadvantage.
+
+	\DndMonsterAction{False Appearance (Object Form Only)} While the mimic remains motionless, it is indistinguishable from an ordinary object.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Bite,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 3},
+		dmg-type		= Piercing,
+		plus-dmg		= \DndDice{1d8},
+		plus-dmg-type	= Acid,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+%		extra			= {},
+	]
+	
+	\DndMonsterAttack[
+		name			= Pseudopod,
+		distance		= melee,	% valid options are in the set {both,melee,ranged}
+%		type			= weapon,	% valid options are in the set {weapon,spell}
+		mod				= +5,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d8 + 3},
+		dmg-type		= Bludgeoning,
+%		plus-dmg		= \DndDice{1d6},
+%		plus-dmg-type	= Poison,
+%		or-dmg			= \DndDice{1d20},
+%		or-dmg-when		= { if used with two hands},
+		extra			= {. If the mimic is in object form, the target is subjected to its Adhesive trait},
+	]
+\end{DndMonster}
