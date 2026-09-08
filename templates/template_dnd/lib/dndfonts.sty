@@ -35,12 +35,19 @@
     % Sectioning commands
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Part
-    part-family .tl_set:N         = \l__dnd_part_family_tl,
-    part-family .initial:n        = \normalfont,
-    part-family .value_required:n = true,
-    part-style .tl_set:N         = \l__dnd_part_style_tl,
-    part-style .initial:n        = \color{titlered} \Huge \scshape,
-    part-style .value_required:n = true,
+    part-family .tl_set:N			= \l__dnd_part_family_tl,
+    part-family .initial:n			= \normalfont,
+    part-family .value_required:n	= true,
+    part-style .tl_set:N			= \l__dnd_part_style_tl,
+    part-style .initial:n			= \color{titlered} \fontsize{36pt}{42pt}\selectfont \scshape,
+    part-style .value_required:n	= true,
+    % Part Subordinate
+    part-family .tl_set:N			= \l__dnd_part_subordinate_family_tl,
+    part-family .initial:n			= \normalfont,
+    part-family .value_required:n	= true,
+    part-style .tl_set:N			= \l__dnd_part_subordinate_style_tl,
+    part-style .initial:n			= \color{titlered} \fontsize{32pt}{38pt}\selectfont \scshape,
+    part-style .value_required:n	= true,
     % Chapter
     chapter-family .tl_set:N         = \l__dnd_chapter_family_tl,
     chapter-family .initial:n        = \normalfont,
@@ -257,6 +264,9 @@
 % Sectioning commands
 \NewDocumentCommand{\DndFontPart}{}
   { \l__dnd_part_family_tl \l__dnd_part_style_tl}
+
+\NewDocumentCommand{\DndFontPartSubordinate}{}
+  { \l__dnd_part_subordinate_family_tl \l__dnd_part_subordinate_style_tl}
 
 \NewDocumentCommand{\DndFontChapter}{}
   { \l__dnd_chapter_family_tl \l__dnd_chapter_style_tl }
