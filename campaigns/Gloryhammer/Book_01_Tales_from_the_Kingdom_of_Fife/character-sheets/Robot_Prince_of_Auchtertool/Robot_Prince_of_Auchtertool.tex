@@ -1,0 +1,810 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+\usepackage{\PATH templates/template_resource/resource_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{Robot Prince of Auchtertool}
+\PlayerName{M4RZ-Crafting} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Artificer}
+\Subclass{Armorer (Infiltrator)}
+\Background{Noble}
+\Race{Warforged}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{6} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{13}
+\DexterityRolledScore{14}
+\ConstitutionRolledScore{15}
+\IntelligenceRolledScore{15}
+\WisdomRolledScore{9}
+\CharismaRolledScore{12}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{1}		% +1 Noble Background
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{1}	% ASI +1
+\IntelligenceScoreBonus{3}	% +2 Noble Background, ASI +1
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{}
+\DexterityProficiency{}
+\ConstitutionProficiency{P}
+\IntelligenceProficiency{P}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{P}		% Skilled
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{P}		% Skilled
+\SleightOfHandProficiency{}
+\StealthProficiency{P}			% Skilled
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{P}			% Artificer
+\HistoryProficiency{P}			% Noble Background
+\InvestigationProficiency{P}	% Artificer
+\NatureProficiency{}
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{}
+\InsightProficiency{}
+\MedicineProficiency{}
+\PerceptionProficiency{P}		% Warforged Spezialization
+\SurvivalProficiency{}
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{}
+\PerformanceProficiency{}
+\PersuasionProficiency{P}		% Noble Background
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{35}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+%\EquipShield
+\ArmorClass{\intcalcAdd{1}{17}}
+
+% HIT POINTS
+%\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{41} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d8}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{P}
+\Shields{P}
+
+\WeaponsProficiency{Simple Weapons}
+\ToolsProficiency{Cartographer's Tools, Navigator's Tools, Thieves' Tools, Tinker's Tools, Smith's Tools}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Armblade}{RobotPrince}{STR}{P}{+2}{1d8 s}{special}
+\addWeaponStatistic{Lightning Launcher}{RobotPrince}{INT}{P}{0}{1d6}{Lightning, ranged (90/300 ft.), INT mod}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{RobotPrince}{STR}{P}{0}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}} b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+\addSpellStatistic{Green-Flame Blade}{ATK}{\calculateModifier{\IntelligenceScoreValue}}{+1d8}{Fire, leap to another creature (1d8 + \intcalcAdd{0}{\calculateModifier{\IntelligenceScoreValue}} Fire)}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{E}{\textbf{Magical Tinkering}}
+\AddClassFeature{L}{\textbf{Infuse Item}%
+	\begin{itemize}%
+		\item Boots of the Winding Path
+		\item Enhanced Arcane Focus%
+		\item Enhanced Defense%
+		\item Enhanced Weapon%
+		\item Resistant Armor%
+		\item Spell-Refueling Ring%
+	\end{itemize}%
+}%
+\AddClassFeature{E}{\textbf{Tools of the Trade}}
+\AddClassFeature{A}{\textbf{Arcane Armor}\\Infiltrator Armor Model}
+\AddClassFeature{E}{\textbf{Extra Attack}}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Constructed Resilience}}
+\AddSpeciesFeature{E}{\textbf{Sentry's Rest}}
+\AddSpeciesFeature{E}{\textbf{Integrated Protection}\\+1 Bonus to Armor Class and armor cannot be removed unwillingly}
+\AddSpeciesFeature{E}{\textbf{Specialized Design}\\Perception Proficiency\\Navigator's Tools Proficiency}
+% FEATS
+\AddFeat{\textbf{Skilled}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{}
+\Height{}
+\Weight{}
+\Eyes{}
+\Skin{}
+\Hair{}
+\CharacterAppearance{horizontal} % (vertical/horizontal/none)
+	{-2} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{0} % Picture Y-Shift (absolute value)
+	{images/Robot_Prince_of_Auchtertool.png} %
+	{%
+		{\ }{\ }
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Lordship of Auchtertool}
+\OrganizationSymbol{images/Lordship_of_Auchtertool.png}
+\AdditionalFeaturesAndTraits{
+	\ 
+}
+	
+% ADDITIONAL FEATURES & TRAITS
+\AlliesAndOrganizations{
+	The Lordship of Auchtertool is a gleaming forge-city where arcane runes and mechanical gears merge to animate clockwork guardians and towering warforged. Artificers, forge-clerics, and arcane engineers fill its streets with automata familiars, steam-driven sentinels, and inventions that blur flesh and steel. At its head stands the Mecha-Lord - once a master artificer now encased in enchanted iron - and his heir, the Robot Prince, a sentient bronze construct powered by elemental cores. Together they guide Auchtertool as the kingdom's unrivaled nexus of magical innovation and mechanical marvels.
+}{\ }
+
+% BACKGROUND
+\Characterbackground{
+	\ 
+}
+
+% TREASURES
+\Treasure{
+	\ 
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	\ 
+}
+\Alignment{Lawful Neutral}
+
+\Ideals{
+	\ 
+}
+
+\Bonds{
+	\ 
+}
+
+\Flaws{
+	\ 
+}
+
+% LANGUAGES
+\Languages{Common, Dwarvish, Gnomish}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Pearl (100 GP), Thieves' Tools, Tinker's Tools, Smith's Tools\\
+	backpack, bedroll, 2 flasks of oil, 10 days of rations, tinderbox, 10 torches, waterskin, 50 ft. of hempen rope
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Armblade +2}
+\addAttunedMagicItem{Winged Splint Armor}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingClass{Artificer}
+\SpellcastingAbility{INT} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+\FirstLevelSpellSlotsTotal{4}
+\SecondLevelSpellSlotsTotal{3}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+\addPreparedSpell{0}
+	{Green-Flame Blade}
+	{Action}
+	{Self}
+	{}
+	{}
+	{T}
+	{S}
+	{S, M}
+\addPreparedSpell{0}
+	{Mending}
+	{1 Min}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S}
+	
+\addPreparedSpell{1}
+	{Catapult}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{}
+	{S}
+	{S}
+\addPreparedSpell{1}
+	{Detect Magic}
+	{Action}
+	{Self}
+	{}
+	{T}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Expeditious Retreat}
+	{Bonus Action}
+	{Self}
+	{T}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Identify}
+	{Action}
+	{Touch}
+	{}
+	{T}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{1}
+	{Magic Missile}
+	{Action}
+	{120 Feet}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+\addPreparedSpell{1}
+	{Thunderwave}
+	{Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S}
+	{V, S}
+	
+\addPreparedSpell{2}
+	{Darkvision}
+	{Action}
+	{Touch}
+	{}
+	{}
+	{T}
+	{V, S, 8 Hours}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Enhance Ability}
+	{Action}
+	{Touch}
+	{T}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Mirror Image}
+	{Action}
+	{Self}
+	{}
+	{}
+	{}
+	{V, S, 1 Minute}
+	{V, S}
+\addPreparedSpell{2}
+	{See Invisibility}
+	{Action}
+	{Self}
+	{}
+	{}
+	{T}
+	{V, S, 1 Hour}
+	{V, S, M}
+\addPreparedSpell{2}
+	{Shatter}
+	{Action}
+	{60 Feet}
+	{}
+	{}
+	{T}
+	{V, S}
+	{V, S, M}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Warforged Traits}
+\subsection*{Constructed Resilience}
+You were created to have remarkable fortitude, represented by the following benefits:
+\begin{itemize}
+	\item You have advantage on saving throws against being poisoned, and you have resistance to poison damage.
+	\item You don't need to eat, drink, or breathe.
+	\item You are immune to disease.
+	\item You don't need to sleep, and magic can't put you to sleep.
+\end{itemize}
+\subsection*{Sentry's Rest}
+When you take a long rest, you must spend at least six hours in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious, and you can see and hear as normal.
+\subsection*{Integrated Protection}
+Your body has built-in defensive layers, which can be enhanced with armor.
+\begin{itemize}
+	\item You gain a +1 bonus to Armor Class.
+	\item You can don only armor with which you have proficiency. To don armor, you must incorporate it into your body over the course of 1 hour, during which you must remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.
+	\item While you live, your armor can't be removed from your body against your will.
+\end{itemize}
+\subsection*{Specialized Design}
+\textit{Navigator's Tools, Perception Proficiency}\\
+You gain one skill proficiency and one tool proficiency of your choice.
+
+\section*{Feats}
+\subsection*{Skilled}
+\textbf{Athletics, Acrobatics, and Stealth Proficiency}\\
+You gain proficiency in any combination of three skills or tools of your choice.
+
+
+\section*{Artificer Traits}
+\subsection*{Magical Tinkering}
+At 1st level, you've learned how to invest a spark of magic into mundane objects. To use this ability, you must have thieves' tools or artisan's tools in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:
+\begin{itemize}
+	\item The object sheds bright light in a 5-foot radius and dim light for an additional 5 feet.
+	\item Whenever tapped by a creature, the object emits a recorded message that can be heard up to 10 feet away. You utter the message when you bestow this property on the object, and the recording can be no more than 6 seconds long.
+	\item The object continuously emits your choice of an odor or a nonverbal sound (wind, waves, chirping, or the like). The chosen phenomenon is perceivable up to 10 feet away.
+	\item A static visual effect appears on one of the object's surfaces. This effect can be a picture, up to 25 words of text, lines and shapes, or a mixture of these elements, as you like.
+\end{itemize}
+The chosen property lasts indefinitely. As an action, you can touch the object and end the property early.
+
+You can bestow magic on multiple objects, touching one object each time you use this feature, though a single object can only bear one property at a time. The maximum number of objects you can affect with this feature at one time is equal to your Intelligence modifier (minimum of one object). If you try to exceed your maximum, the oldest property immediately ends, and then the new property applies.
+\subsection*{Infuse Item}
+\textbf{6 Known, 3 Infused Items at a time}\\
+At 2nd level, you've gained the ability to imbue mundane items with certain magical infusions, turning those objects into magic items.
+\subsubsection*{Infusions Known}
+\paragraph*{Boots of the Winding Path}\hfill\\
+\textit{Item: A pair of boots (requires attunement)}\\
+While wearing these boots, a creature can teleport up to 15 feet as a bonus action to an unoccupied space the creature can see. The creature must have occupied that space at some point during the current turn.
+\paragraph*{Enhanced Arcane Focus}\hfill\\
+\textit{Item: A rod, staff or wand (requires attunement)}\\
+While holding this item, a creature gains +1 bonus to spell attack rolls. In addition, the creature ignores half cover when making a spell attack.
+
+The bonus increases to +2 when you reach 10th level in this class.
+\paragraph*{Enhanced Defense}\hfill\\
+\textit{Item: A suit of armor or a shield}\\
+A creature gains a +1 bonus to Armor Class while wearing (armor) or wielding (shield) the infused item.
+
+The bonus increases to +2 when you reach 10th level in this class.
+\paragraph*{Enhanced Weapon}\hfill\\
+\textit{Item: A simple or martial weapon}\\
+This magic weapon grants a +1 bonus to attack and damage rolls made with it.
+
+The bonus increases to +2 when you reach 10th level in this class.
+\paragraph*{Resistant Armor}\hfill\\
+\textit{Item: A Suit or Armor (requires attunement)}\\
+While wearing this armor, a creature has resistance to one of the following damage types, which you choose when you infuse the item: acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant, or thunder.
+\paragraph*{Spell-Refueling Ring}\hfill\\
+\textit{Item: A Ring (requires attunement)}\\
+While wearing this ring, the creature can recover one expended spell slot as an action. The recovered slot can be of 3rd level or lower. Once used, the ring can't be used again until the next dawn.
+\subsubsection*{Infusing an Item}
+Whenever you finish a long rest, you can touch a nonmagical object and imbue it with one of your artificer infusions, turning it into a magic item. An infusion works on only certain kinds of objects, as specified in the infusion's description. If the item requires attunement, you can attune yourself to it the instant you infuse the item. If you decide to attune to the item later, you must do so using the normal process for attunement (see the attunement rules in the Dungeon Master's Guide).
+
+Your infusion remains in an item indefinitely, but when you die, the infusion vanishes after a number of days equal to your Intelligence modifier (minimum of 1 day). The infusion also vanishes if you replace your knowledge of the infusion.
+
+You can infuse more than one nonmagical object at the end of a long rest; the maximum number of objects appears in the Infused Items column of the Artificer table. You must touch each of the objects, and each of your infusions can be in only one object at a time. Moreover, no object can bear more than one of your infusions at a time. If you try to exceed your maximum number of infusions, the oldest infusion ends, and then the new infusion applies.
+
+If an infusion ends on an item that contains other things, like a bag of holding, its contents harmlessly appear in and around its space.
+\subsection*{Armorer}
+\subsubsection*{Tools of Trade}
+\textbf{Smith's Tools Proficiency}\\
+When you adopt this specialization at 3rd level, you gain proficiency with heavy armor. You also gain proficiency with smith's tools. If you already have this tool proficiency, you gain proficiency with one other type of artisan's tools of your choice.
+\subsubsection*{Armorer Spells}
+Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Armorer Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.
+\begin{DndTable}[header=Armorer Spells]{llX}
+				& Artificer Level	& Armorer Spells					\\
+	\textbullet	& 3rd				& Magic Missile, Thunderwave		\\
+	\textbullet	& 5th				& Mirror Image, Shatter				\\
+				& 9th				& Hypnotic Pattern, Lightning Bolt	\\
+				& 13th				& Fire Shield, Greater Invisibility	\\
+				& 17th				& Passwall, Wall of Force			\\
+\end{DndTable}
+\subsubsection*{Arcane Armor}
+Beginning at 3rd level, your metallurgical pursuits have led to you making armor a conduit for your magic. As an action, you can turn a suit of armor you are wearing into Arcane Armor, provided you have smith's tools in hand.
+
+You gain the following benefits while wearing this armor:
+
+\begin{itemize}
+	\item If the armor normally has a Strength requirement, the arcane armor lacks this requirement for you.
+	\item You can use the arcane armor as a spellcasting focus for your artificer spells.
+	\item The armor attaches to you and can't be removed against your will. It also expands to cover your entire body, although you can retract or deploy the helmet as a bonus action. The armor replaces any missing limbs, functioning identically to a body part it is replacing.
+	\item You can doff or don the armor as an action.
+\end{itemize}
+
+The armor continues to be Arcane Armor until you don another suit of armor or you die.
+\subsubsection*{Armor Model}
+Beginning at 3rd level, you can customize your Arcane Armor. When you do so, choose one of the following armor models: Guardian or \textbf{Infiltrator}. The model you choose gives you special benefits while you wear it.
+
+Each model includes a special weapon. When you attack with that weapon, you can add your Intelligence modifier, instead of Strength or Dexterity, to the attack and damage rolls.
+\paragraph*{Infiltrator} You customize your armor for subtle undertakings. It has the following features:
+\begin{itemize}
+	\item \textbf{Lightning Launcher} A gemlike node appears on one of your armored fists or on the chest (your choice). It counts as a simple ranged weapon, with a normal range of 90 feet and a long range of 300 feet, and it deals 1d6 lightning damage on a hit. Once on each of your turns when you hit a creature with it, you can deal an extra 1d6 lightning damage to that target.
+	\item \textbf{Powered Steps} Your walking speed increases by 5 feet.
+	\item \textbf{Dampening Field} You have advantage on Dexterity (Stealth) checks. If the armor normally imposes disadvantage on such checks, the advantage and disadvantage cancel each other, as normal.
+\end{itemize}
+\subsubsection*{Extra Attack}
+Starting at 5th level, you can attack twice, rather than once, whenever you take the Attack action on your turn.
+
+\section*{Spells}
+\subsection*{Cantrip}
+
+\DndSpellHeader
+  {Green-Flame Blade}
+  {Evocation Cantrip}
+  {Action}
+  {Self (5-foot radius)}
+  {S, M (a melee weapon worth at least 1 sp)}
+  {Instantaneous}
+
+You brandish the weapon used in the spell's casting and make a melee attack with it against one creature within 5 feet of you. On a hit, the target suffers the weapon attack's normal effects, and you can cause green fire to leap from the target to a different creature of your choice that you can see within 5 feet of it. The second creature takes fire damage equal to your spellcasting ability modifier.
+
+\subparagraph*{Cantrip Upgrade} At 5th level, the melee attack deals an extra 1d8 fire damage to the target on a hit, and the fire damage to the second creature increases to 1d8 + your spellcasting ability modifier. Both damage rolls increase by 1d8 at 11th level (2d8 and 2d8) and 17th level (3d8 and 3d8).
+
+\DndSpellHeader
+  {Mending}
+  {Transmutation Cantrip}
+  {1 Minute}
+  {Touch}
+  {V, S, M (two lodestones)}
+  {Instantaneous}
+
+This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage.
+
+This spell can physically repair a magic item or construct, but the spell can't restore magic to such an object.
+
+\subsection*{Level 1}
+
+\DndSpellHeader
+  {Catapult}
+  {1st-Level Transmutation}
+  {Action}
+  {60 Feet}
+  {S}
+  {Instantaneous}
+
+Choose one object weighing 1 to 5 pounds within range that isn't being worn or carried. The object flies in a straight line up to 90 feet in a direction you choose before falling to the ground, stopping early if it impacts against a solid surface. If the object would strike a creature, that creature must make a Dexterity saving throw. On a failed save, the object strikes the target and stops moving. When the object strikes something, the object and what it strikes each take 3d8 bludgeoning damage.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the maximum weight of objects that you can target with this spell increases by 5 pounds, and the damage increases by 1d8, for each slot level above 1st.
+
+\DndSpellHeader
+  {Detect Magic}
+  {1st-Level Divination (Ritual)}
+  {Action}
+  {Self}
+  {V, S}
+  {Concentration, Up to 10 Minutes}
+
+For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any.
+
+The spell can penetrate most barriers, but is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.
+
+\DndSpellHeader
+  {Expeditious Retreat}
+  {1st-Level Transmutation}
+  {Bonus Action}
+  {Self}
+  {V, S}
+  {Concentration, up to 10 Minutes}
+
+This spell allows you to move at an incredible pace. When you cast this spell, and then as a bonus action on each of your turns until the spell ends, you can take the Dash action.
+
+\DndSpellHeader
+  {Identify}
+  {1st-Level Divination (Ritual)}
+  {1 Minute}
+  {Touch}
+  {V, S, M (a pearl worth at least 100 gp and an owl feather)}
+  {Instantaneous}
+
+You choose one object that you must touch throughout the casting of the spell. If it is a magic item or some other magic-imbued object, you learn its properties and how to use them, whether it requires attunement to use, and how many charges it has, if any. You learn whether any spells are affecting the item and what they are. If the item was created by a spell, you learn which spell created it.
+
+If you instead touch a creature throughout the casting, you learn what spells, if any, are currently affecting it.
+
+\DndSpellHeader
+  {Magic Missile}
+  {1st-Level Evocation}
+  {Action}
+  {120 Feet}
+  {V, S}
+  {Instantaneous}
+
+You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously and you can direct them to hit one creature or several.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the spell creates one more dart for each slot level above 1st.
+
+\DndSpellHeader
+  {Thunderwave}
+  {1st-Level Evocation}
+  {Action}
+  {Self (15-Foot Cube)}
+  {V, S}
+  {Instantaneous}
+
+A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d8 thunder damage and is pushed 10 feet away from you. On a successful save, the creature takes half as much damage and isn't pushed.
+
+In addition, unsecured objects that are completely within the area of effect are automatically pushed 10 feet away from you by the spell’s effect, and the spell emits a thunderous boom audible out to 300 feet.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.
+
+\subsection*{Level 2}
+
+\DndSpellHeader
+  {Darkvision}
+  {2nd-Level Transmutation}
+  {Action}
+  {Touch}
+  {V, S, M (either a pinch of dried carrot or an agate)}
+  {8 Hours}
+
+You touch a willing creature to grant it the ability to see in the dark. For the duration, that creature has darkvision out to a range of 60 feet.
+
+\DndSpellHeader
+  {Enhance Ability}
+  {2nd-Level Transmutation}
+  {Action}
+  {Touch}
+  {V, S, M (fur or a feather)}
+  {Concentration, Up to 1 Hour}
+
+You touch a creature and choose Strength, Dexterity, Intelligence, Wisdom, or Charisma. For the duration, the target has Advantage on ability checks using the chosen ability.
+
+\subparagraph*{Using a Higher-Level Spell Slot} You can target one additional creature for each spell slot level above 2. You can choose a different ability for each target.
+
+\DndSpellHeader
+  {Mirror Image}
+  {2nd-Level Illusion}
+  {Action}
+  {Self}
+  {V, S}
+  {1 Minute}
+
+Three illusory duplicates of yourself appear in your space. Until the spell ends, the duplicates move with you and mimic your actions, shifting position so it's impossible to track which image is real. You can use your action to dismiss the illusory duplicates.
+
+Each time a creature targets you with an attack during the spell's duration, roll a d20 to determine whether the attack instead targets one of your duplicates.
+
+If you have three duplicates, you must roll a 6 or higher to change the attack's target to a duplicate. With two duplicates, you must roll an 8 or higher. With one duplicate, you must roll an 11 or higher.
+
+A duplicate's AC equals 10 + your Dexterity modifier. If an attack hits a duplicate, the duplicate is destroyed. A duplicate can be destroyed only by an attack that hits it. It ignores all other damage and effects. The spell ends when all three duplicates are destroyed.
+
+A creature is unaffected by this spell if it can't see, if it relies on senses other than sight, such as blindsight, or if it can perceive illusions as false, as with truesight.
+
+\DndSpellHeader
+  {See Invisibility}
+  {2nd-Level Divination}
+  {Action}
+  {Self}
+  {V, S, M (a pinch of talc and a small sprinkling of powdered silver)}
+  {1 Hour}
+  
+For the duration, you see invisible creatures and objects as if they were visible, and you can see into the Ethereal Plane. Ethereal creatures and objects appear ghostly and translucent.
+
+\DndSpellHeader
+  {Shatter}
+  {2nd-Level Evocation}
+  {Action}
+  {60 Feet}
+  {V, S, M (a chip of mica)}
+  {Instantaneous}
+
+A sudden loud ringing noise, painfully intense, erupts from a point of your choice within range. Each creature in a 10-foot-radius sphere centered on that point must make a Constitution saving throw. A creature takes 3d8 thunder damage on a failed save, or half as much damage on a successful one. A creature made of inorganic material such as stone, crystal, or metal has disadvantage on this saving throw.
+
+A nonmagical object that isn't being worn or carried also takes the damage if it's in the spell's area.
+
+\subparagraph*{Using a Higher-Level Spell Slot} When you cast this spell using a spell slot of 3rd level or higher, the damage increases by 1d8 for each slot level above 2nd.
+
+\vfill\eject
+
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Armblade +2:}}\\
+1d20 + STR-Modifier + Proficiency Modifier + 2\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\intcalcAdd{\ProficiencyValue}{2}}}
+\\
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Armblade +2:}}\\
+1d8 + STR-Modifier + 2\\
+\indent Current Max: \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{2}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Lightning Launcher:}}\\
+1d20 + INT-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\IntelligenceScoreValue}}{\ProficiencyValue}}
+\\
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Lightning Launcher:}}\\
+1d6 + INT-Modifier\\
+\indent Current Max: \intcalcAdd{6}{\calculateModifier{\IntelligenceScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier (min. 1)\\
+\indent Current Max: \intcalcMax{1}{\intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}}
+
+\part*{Magic Items}
+
+\subsection*{Armblade +2}
+\textit{Weapon (Longsword), rare (requires attunement by a warforged)}\\
+An armblade is a magic weapon that attaches to your arm, becoming inseparable from you as long as you're attuned to it. To attune to this item, you must hold it against your forearm for the entire attunement period.
+
+As a bonus action, you can retract the armblade into your forearm or extend it from there. While it is extended, you can use the weapon as if you were holding it, and you can't use that hand for other purposes.
+
+\subsection*{Winged Splint Armor}
+\textit{Armor (Splint), uncommon (requires attunement)}\\
+While you wear this armor, you have a flying speed equal to your walking speed. You can use the armor to fly for up to 4 hours, all at once or in several shorter flights, each one using a minimum of 1 minute from the duration. If you are flying when the duration expires, you descend at a rate of 30 feet per round until you land.
+
+The armor regain 2 hours of flying capability for every 12 hours they aren't in use.
+
+\end{document}

@@ -1,0 +1,491 @@
+\documentclass[letterpaper,openany,oneside,twocolumn]{book}
+
+\newcommand{\PATH}{../../../../../}
+
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER-SHEET  TEMPLATE  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Edition and Backend can be specified when loading the character-sheet template:
+
+%% edition = { pre5e24 /  5e24 }
+%%% Layout of the Character Information and Spell Sheet are set to the specified version
+%%% The background sheet is always based on the pre5e24 version
+%%% The spell sheet of the pre5e24 can always be accessed via "\renderoldspellsheet" to hold more spells
+
+%% backend = { postscript / tikz }
+%%% Using TikZ may lead to faster compilation times on some machines
+%%% The character sheet of the pre5e24 edition is still using PostScript (WIP)
+\usepackage[edition=5e24, backend=tikz]{\PATH templates/template_character-sheet/character-sheet-stylesheet}
+\usepackage{\PATH templates/template_magic-item/magic-items_commands}
+
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  CHARACTER INFORMATION  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\CharacterName{The Hootsman}
+\PlayerName{M4RZ-Crafting} % Player Name is only displayed in the pre5e24 edition
+
+\Class{Barbarian}
+\Subclass{Path of the Berserker}
+\Background{Farmer}
+\Race{Human}
+%% Multiclass
+%\MultiClassMainLevel{2}
+%\MultiClass{Warlock}
+
+\Level{9} % Automatically sets XP and Proficiency Bonus
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# ABILITY  SCORES #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% UNMODIFIED ABILITY SCORES
+% Modifiers, Saving Throws and Skills are calculated automatically
+\StrengthRolledScore{16}
+\DexterityRolledScore{14}
+\ConstitutionRolledScore{13}
+\IntelligenceRolledScore{11}
+\WisdomRolledScore{14}
+\CharismaRolledScore{10}
+
+% SCORE MODIFIERS (ASI, Background and Race Boni)
+\StrengthScoreBonus{4}			% +2 Farmer BG, +2 ASI
+\DexterityScoreBonus{0}
+\ConstitutionScoreBonus{3}		% +1 Farmer BG, +2 ASI
+\IntelligenceScoreBonus{0}
+\WisdomScoreBonus{0}
+\CharismaScoreBonus{0}
+
+\calculateAbilityScores{}
+
+% ABILITY MODIFIERS BONUS (Bonus to modifiers without adjusting the Score)
+\StrengthModifierBonus{0}
+\DexterityModifierBonus{0}
+\ConstitutionModifierBonus{0}
+\IntelligenceModifierBonus{0}
+\WisdomModifierBonus{0}
+\CharismaModifierBonus{0}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PROFICIENCIES AND EXPERTISE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SAVING THROWS {Proficient = P, Experties = E}
+\StrengthProficiency{P}
+\DexterityProficiency{}
+\ConstitutionProficiency{P}
+\IntelligenceProficiency{}
+\WisdomProficiency{}
+\CharismaProficiency{}
+
+%% Bonus to only Saving Throw (i.e. Ring of Protection)
+\StrengthSavingThrowBonus{0}
+\DexteritySavingThrowBonus{0}
+\ConstitutionSavingThrowBonus{0}
+\IntelligenceSavingThrowBonus{0}
+\WisdomSavingThrowBonus{0}
+\CharismaSavingThrowBonus{0}
+
+\calculateScoreModifiersAndSavingThrows{}
+
+% SKILL PROFICIENCY
+% \SkillProficiency[#1]{#2}
+%%	#1 = Bonus to this Skill (i.e. Stone of Good Luck)
+%%	#2 = {Proficient = P, Experties = E}
+%% STRENGTH SKILLS
+\AthleticsProficiency{P}		% Barbarian
+
+%% DEXTERITY SKILLS
+\AcrobaticsProficiency{}
+\SleightOfHandProficiency{}
+\StealthProficiency{}
+
+%% INTELLIGENCE SKILLS
+\ArcanaProficiency{}
+\HistoryProficiency{}
+\InvestigationProficiency{}
+\NatureProficiency{P}			% Farmer BG
+\ReligionProficiency{}
+
+%% WISDOM SKILLS
+\AnimalHandlingProficiency{P}	% Farmer BG
+\InsightProficiency{}
+\MedicineProficiency{}
+\PerceptionProficiency{P}		% Warforged Spezialized Design
+\SurvivalProficiency{P}			% Barbarian (Primal Knowledge)
+
+%% CHARISMA SKILLS
+\DeceptionProficiency{}
+\IntimidationProficiency{P}		% Barbarian
+\PerformanceProficiency{}
+\PersuasionProficiency{}
+
+%\JackOfAllTrades{1} % Adds half Proficiency Bonus to each Skill and Initiative
+\calculateAllSkillModifiers{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# CHARACTER STATS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% HEROIC INSPIRATION
+\Inspiration{}
+
+% INITIATIVE MODIFIER
+\InitiativeModifier{0}
+
+% SPEED
+\Speed{40}
+
+% SIZE
+\Size{Medium}
+
+% PASSIVE PERCEPTION
+\PassivePerceptionModifier{0}
+
+% ARMOR CLASS (\Equip Shield does not adjust AC-Value)
+\EquipShield
+\ArmorClass{\intcalcAdd{10}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}} % Unarmored Defense 10 + DEX mod + CON mod
+
+% HIT POINTS
+\ToughFeat{1} % Automatic Tough Feat Integration
+\MaxHitPointsRolled{63} % Without Constitution Bonus, is added automatically
+\CurrentHitPoints{\MaxHitPointsValue}
+\TemporaryHitPoints{}
+\HitDice{d12}
+\HitDiceSpent{0}
+%% Multiclass
+%\MultiClassHitDice{d10}
+%\MultiClassHitDiceSpent{0}
+
+% EQUIPMENT TRAINING AND PROFICIENCIES
+%% ARMOR {Proficient = P}
+\LightArmor{P}
+\MediumArmor{P}
+\HeavyArmor{}
+\Shields{P}
+
+\WeaponsProficiency{Simple and Martial Weapons}
+\ToolsProficiency{Saxophon (Musical Instrument)}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# WEAPONS AND DAMAGE CANTRIPS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% WEAPONS
+% \addWeaponStatistic{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%%	#1 = Name of Weapon
+%%	#2 = Handle (usually Playername, but arbitrary)
+%%	#3 = Attack-Skill (STR, DEX, INT, WIS, CHA)
+%%	#4 = Proficiency (proficient = P, expertise = E)
+%%	#5 = Bonus Attack Modifier (i.e. Weapon +1)
+%%	#6 = Damage + Damage Type
+%%	#7 = Notes
+\addWeaponStatistic{Battleaxe of Unst}{Hootsman}{STR}{P}{+1}{1d8 s}{versatile (1d10)}
+\addWeaponStatistic{Greataxe}{Hootsman}{STR}{P}{0}{1d12 s}{heavy, two-handed}
+\addWeaponStatistic{Handaxe}{Hootsman}{STR}{P}{0}{1d6 s}{light, thrown (Range 20/60)}
+% UNARMED STRIKE
+\addWeaponStatistic{Unarmed Strike}{Hootsman}{STR}{P}{0}{1d4 b}{}
+% DAMAGE CANTRIPS
+% \addSpellStatistic{#1}{#2}{#3}{#4}{#5}
+%%	#1 = Name of Spell
+%%	#2 = Attack Modifier or DC {ATK, DC, BOTH}
+%%	#3 = Skill (i.e. \calculateModifier{\IntelligenceScoreValue})
+%%	#6 = Damage
+%%	#7 = Notes
+%\addSpellStatistic{Spell}{DC}{\calculateModifier{\IntelligenceScoreValue}}{2d8}{Force and push 10 feet, CON save}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# FEATURES AND TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% Action = A, Bonus Action = B, Reaction = R, Limited Use = L
+% \CustomItemLabel{#1} can be used in nested itemize environments to access labels for Action, Bonus Action etc.
+% CLASS FEATURE
+\AddClassFeature{B}{\textbf{Rage}\\Uses: 4, Rage Damage: +3}
+\AddClassFeature{E}{\textbf{Unarmored Defense}\\ AC = 10 + DEX + CON}
+\AddClassFeature{E}{\textbf{Weapon Mastery}
+	\begin{itemize}
+		\item Battleaxe
+		\item Greataxe
+		\item Handaxe
+	\end{itemize}
+}
+\AddClassFeature{E}{\textbf{Danger Sense}\\Advantage on Dexterity Saving Throws}
+\AddClassFeature{E}{\textbf{Reckless Attack}}
+\AddClassFeature{E}{\textbf{Frenzy}\\Additional 3d6 damage when Reckless Attack in Rage}
+\AddClassFeature{E}{\textbf{Mindless Rage}\\Charmed and Frightened Immunity while in Rage}
+\AddClassFeature{E}{\textbf{Extra Attack}}
+\AddClassFeature{E}{\textbf{Feral Instinct}\\Advantage on Initiative}
+\AddClassFeature{B}{\textbf{Instinctive Pounce}}
+\AddClassFeature{E}{\textbf{Brutal Strike}}
+% SPECIES TRAITS
+\AddSpeciesFeature{E}{\textbf{Resourceful}\\Heroic Inspiration after every Long Rest}
+\AddSpeciesFeature{E}{\textbf{Skillful}\\Perception Proficiency}
+% FEATS
+\AddFeat{\textbf{Tavern Brawler}}
+\AddFeat{\textbf{Tough}}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# BACKGROUND & APPEARANCE #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% APPEARANCE
+\Age{}
+\Height{}
+\Weight{}
+\Eyes{}
+\Skin{}
+\Hair{}
+\CharacterAppearance{horizontal} % (vertical/horizontal/none)
+	{0} % Main-Text Offset (Steps of 15.75 [equal to line-height])
+	{0} % Picture X-Shift (absolute value, no effect in vertical mode)
+	{0} % Picture Y-Shift (absolute value)
+	{images/The_Hootsman.png} %
+	{%
+		{\ }{\ }
+	}%
+
+% ORGANIZATION & ALLIES
+\OrganizationName{Barbarian Clan of Unst}
+\OrganizationSymbol{images/Organisation.png}
+\AlliesAndOrganizations{\ }{\ }
+
+% ADDITIONAL FEATURES & TRAITS
+\AdditionalFeaturesAndTraits{
+	\ 
+}
+
+% BACKGROUND
+\Characterbackground{
+	\ 
+}
+
+% TREASURES
+\Treasure{
+	\ 
+}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# SPELLS, PERSONALITY  TRAITS  AND  EQUIPMENT #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# PERSONALITY  TRAITS #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\PersonalityTraits{
+	\ 
+}
+\Alignment{Chaotic Neutral}
+
+\Ideals{
+	\ 
+}
+
+\Bonds{
+	\ 
+}
+
+\Flaws{
+	\ 
+}
+
+% LANGUAGES
+\Languages{Common, Sylvan}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  EQUIPMENT  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\Equipment{
+	Greataxe, 2 Handaxes, Saxophon
+}
+%% Attuned Magic Items (Max 3, every other is ignored)
+\addAttunedMagicItem{Battleaxe of Unst}
+%% Gold
+\CP{}
+\SP{}
+\EP{}
+\GP{}
+\PP{}
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#  SPELL  #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+% SPELLCASTING STATS
+\SpellcastingAbility{} % STR, DEX, CON, INT, WIS, CHA
+\SpellSaveDCModifier{0} % any modifier that isn't contained in "8 + Ability Modifier + Proficiency Bonus"
+\SpellAttackModifier{0} % any modifier that isn't contained in "Ability Modifier + Proficiency Bonus"
+%% Calculate Modifier, DC, and Attack Bonus
+\CalculateSpellStatistics{}
+
+% SPELL SLOTS
+%\FirstLevelSpellSlotsTotal{}
+
+% ADD SPELLS
+% \addPreparedSpell{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Name
+%%	#3 = Casting Time
+%%	#4 = Range
+%%	#5 = Concentration {T}
+%%	#6 = Ritual {T}
+%%	#7 = Required Material {T}
+%%	#8 = Notes
+%%	#9 = All Spell Components (for old spell sheet)
+
+% \AddSpell{#1}{#2}{#3}{#4} (Adds spell only to old spell sheet)
+%%	#1 = Spell-Level { 0 - 9 }
+%%	#2 = Spell Prepared {True, False}
+%%	#3 = Spell Name
+%%	#4 = Spell Components {V, S, M}
+
+%! If the maximum number of spells that can be displayed is exceeded a warning is added to the log and the spell is ommitted from being displayed !%
+
+% --------------------------------------------------------------------------------------------------------------- %
+% #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# DOCUMENT  START #+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+#+# %
+% --------------------------------------------------------------------------------------------------------------- %
+\begin{document}
+
+\newgeometry{left=0cm,right=0cm,top=0cm,bottom=0cm}
+\onecolumn
+
+
+% CHARACTER PAGE
+\rendercharactersheet
+
+% BACKSTORY PAGE
+\renderbackgroundsheet
+
+% SPELLCASTING PAGE
+\renderspellsheet
+
+
+\restoregeometry
+\twocolumn
+
+\chapter*{Features, Magic Items and Spells}
+
+\section*{Human Traits}
+\subsection*{Resourceful}
+You gain Heroic Inspiration whenever you finish a Long Rest.
+\subsection*{Skillful}
+\textbf{Perception Proficiency}\\
+You gain proficiency in one skill of your choice.
+\subsection*{Versatile}
+\textbf{Tavern Brawler}\\
+You gain an Origin feat of your choice.
+
+\section*{Feats}
+\subsection*{Tavern Brawler}
+You gain the following benefits.
+\subparagraph*{Enhanced Unarmed Strike} When you hit with your Unarmed Strike and deal damage, you can deal Bludgeoning damage equal to 1d4 plus your Strength modifier instead of the normal damage of Unarmed Strike.
+\subparagraph*{Damage Rerolls} Whenever you roll a damage die for your Unarmed Strike, you can reroll the die if it rolls a 1, and you must use the new roll.
+\subparagraph*{Improvised Weaponry} You have proficiency with improvised weapons.
+\subparagraph*{Push} When you hit a creature with an Unarmed Strike as part of the Attack action on your turn, you can deal damage to the target and also push it 5 feet away from you. You can use this benefit only once per turn.
+\subsection*{Tough}
+Your Hit Point maximum increases by an amount equal to twice your character level when you gain this feat. Whenever you gain a character level thereafter, your Hit Point maximum increases by an additional 2 Hit Points.
+
+\section*{Barbarian Traits}
+\subsection*{Rage}
+\textbf{Uses: 4, Rage Damage: +3}\\
+You can imbue yourself with a primal power called Rage, a force that grants you extraordinary might and resilience. You can enter it as a Bonus Action if you aren't wearing Heavy armor.
+You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.
+While active, your Rage follows the rules below.
+\subparagraph*{Damage Resistance} You have Resistance to Bludgeoning, Piercing, and Slashing damage.
+\subparagraph*{Rage Damage} When you make an attack using Strength - with either a weapon or an Unarmed Strike - and deal damage to the target, you gain a bonus to the damage that increases as you gain levels as a Barbarian, as shown in the Rage Damage column of the Barbarian Features table.
+\subparagraph*{Strength Advantage} You have Advantage on Strength checks and Strength saving throws.
+\subparagraph*{No Concentration or Spells} You can't maintain Concentration, and you can't cast spells.
+\subparagraph*{Duration} The Rage lasts until the end of your next turn, and it ends early if you don Heavy armor or have the Incapacitated condition. If your Rage is still active on your next turn, you can extend the Rage for another round by doing one of the following:
+\begin{itemize}
+	\item Make an attack roll against an enemy.
+	\item Force an enemy to make a saving throw.
+	\item Take a Bonus Action to extend your Rage.
+\end{itemize}
+Each time the Rage is extended, it lasts until the end of your next turn. You can maintain a Rage for up to 10 minutes.
+\subsection*{Unarmored Defense}
+\textbf{AC = \intcalcAdd{10}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\calculateModifier{\ConstitutionScoreValue}}}}\\
+While you aren't wearing any armor, your base Armor Class equals 10 plus your Dexterity and Constitution modifiers. You can use a Shield and still gain this benefit.
+\subsection*{Weapon Mastery}
+\textbf{Known Weapon Masteries: 3}\\
+Your training with weapons allows you to use the mastery properties of two kinds of Simple or Martial Melee weapons of your choice, such as Greataxes and Handaxes. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.
+
+When you reach certain Barbarian levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Barbarian Features table.
+\subsubsection*{Battleaxe - Topple}
+\textbf{DC (Strength): \intcalcAdd{8}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}}\\
+If you hit a creature with this weapon, you can force the creature to make a Constitution saving throw (DC 8 plus the ability modifier used to make the attack roll and your Proficiency Bonus). On a failed save, the creature has the Prone condition.
+\subsubsection*{Greataxe - Cleave}
+If you hit a creature with a melee attack roll using this weapon, you can make a melee attack roll with the weapon against a second creature within 5 feet of the first that is also within your reach. On a hit the second creature takes the weapon's damage, but don't add your ability modifier to that damage unless that modifier is negative. You can make this extra attack only once per turn.
+\subsubsection*{Handaxe - Vex}
+If you hit a creature with this weapon and deal damage to the creature, you have Advantage on your next attack roll against that creature before the end of your next turn.
+\subsection*{Danger Sense}
+You gain an uncanny sense of when things aren't as they should be, giving you an edge when you dodge perils. You have Advantage on Dexterity saving throws unless you have the Incapacitated condition.
+\subsection*{Reckless Attack}
+You can throw aside all concern for defense to attack with increased ferocity. When you make your first attack roll on your turn, you can decide to attack recklessly. Doing so gives you Advantage on attack rolls using Strength until the start of your next turn, but attack rolls against you have Advantage during that time.
+\subsection*{Path of the Berserker}
+\subsubsection*{Frenzy}
+\textbf{Additional Damage: 3d6}\\
+If you use Reckless Attack while your Rage is active you deal extra damage to the first target you hit on your turn with a Strength-based attack. To determine the extra damage, roll a number of d6s equal to your Rage Damage bonus, and add them together. The damage has the same type as the weapon or Unarmed Strike used for the attack.
+\subsubsection*{Mindless Rage}
+You have Immunity to the Charmed and Frightened conditions while your Rage is active. If you're Charmed or Frightened when you enter your Rage, the condition ends on you.
+\subsection*{Primal Knowledge}
+\textbf{Survival Proficiency}\\
+You gain proficiency in another skill of your choice from the skill list available to Barbarians at level 1.
+
+In addition, while your Rage is active, you can channel primal power when you attempt certain tasks; whenever you make an ability check using one of the following skills, you can make it as a Strength check even if it normally uses a different ability: Acrobatics, Intimidation, Perception, Stealth, Survival. When you use this ability, your Strength represents primal power coursing though you, honing your agility, bearing, and senses.
+\subsection*{Extra Attack}
+You can attack twice instead of once whenever you take the Attack action on your turn.
+\subsection*{Fast Movement}
+Your speed increases by 10 feet while you aren't wearing Heavy armor.
+\subsection*{Feral instinct}
+Your instincts are so honed that you have Advantage on Initiative rolls.
+\subsection*{Instinctive Pounce}
+As part of the Bonus Action you take to enter your Rage, you can move up to half your Speed.
+\subsection*{Brutal Strike}
+If you use Reckless Attack, you can forgo any Advantage on one Strength-based attack roll of your choice on your turn. The chosen attack roll mustn't have Disadvantage. If the chosen attack roll hits, the target takes an extra 1d10 damage of the same type dealt by the weapon or Unarmed Strike, and you can cause a Brutal Strike effect of your choice. You have the following effect options.
+\subparagraph*{Forceful Blow} The target is pushed 15 feet straight away from you. You can then move up to half your Speed straight toward the target without provoking Opportunity Attacks.
+\subparagraph*{Hamstring Blow} The target's Speed is reduced by 15 feet until the start of your next turn. A target can be affected by only one Hamstring blow at a time - the most recent one.
+  
+\vfill\eject
+\section*{Miscellaneous}
+\subsection*{Attack and Damage Rolls}
+\subsubsection*{Melee Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Dagger (Finesse):}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Spear (Throwable):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max (melee): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}\\
+\indent Current Max (thrown): \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\\
+\underline{\textit{Spear (Versatile):}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Dagger (Finesse):}}\\
+1d4 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{4}{\calculateModifier{\DexterityScoreValue}}
+\\
+\underline{\textit{Spear (Throwable):}}\\
+1d6 + STR-Modifier\\
+\indent Current Max (melee): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (thrown): \intcalcAdd{6}{\calculateModifier{\StrengthScoreValue}}
+\\
+\underline{\textit{Spear (Versatile):}}\\
+1d8 + STR-Modifier\\
+\indent Current Max (one-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}\\
+\indent Current Max (two-handed): \intcalcAdd{8}{\calculateModifier{\StrengthScoreValue}}
+\subsubsection*{Ranged Weapons}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Light Crossbow:}}\\
+1d20 + DEX-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\DexterityScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Light Crossbow:}}\\
+1d8 + DEX-Modifier\\
+\indent Current Max: \intcalcAdd{8}{\calculateModifier{\DexterityScoreValue}}
+\subsubsection*{Special Attacks}
+\paragraph*{Attack Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1d20 + STR-Modifier + Proficiency Modifier\\
+\indent Current Max: \intcalcAdd{20}{\intcalcAdd{\calculateModifier{\StrengthScoreValue}}{\ProficiencyValue}}
+\paragraph*{Damage Roll}\hfill\\
+\underline{\textit{Unarmed Strike:}}\\
+1 + STR-Modifier\\
+\indent Current Max: \intcalcAdd{1}{\calculateModifier{\StrengthScoreValue}}
+
+\part*{Magic Items}
+
+\subsection*{Battleaxe of Unst}
+\end{document}
