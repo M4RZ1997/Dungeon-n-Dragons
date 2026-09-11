@@ -1,0 +1,777 @@
+% ------------------------------------------------------------------------------------------------- %
+%								encounter_panel.tex  Marcel Zauder 24/08/2026						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\newcommand{\EncounterDifficultyValue}{}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Logos #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\EncounterTriggerLogo}{%
+	\includegraphics[
+		width=\EncounterBlockLogoSize,
+		height=\EncounterBlockLogoSize,
+		keepaspectratio
+	]{\PATH templates/utilities/images/icons/trigger-icon.png}%
+}%
+\newcommand{\EncounterCreaturesLogo}{%
+	\includegraphics[
+		width=\EncounterBlockLogoSize,
+		height=\EncounterBlockLogoSize,
+		keepaspectratio
+	]{\PATH templates/utilities/images/icons/creatures-icon.png}%
+}%
+\newcommand{\EncounterDifficultyLogo}{%
+	\includegraphics[
+		width=\EncounterBlockLogoSize,
+		height=\EncounterBlockLogoSize,
+		keepaspectratio
+	]{\PATH templates/utilities/images/icons/difficulty-icon.png}%
+}%
+\newcommand{\EncounterTacticsLogo}{%
+	\includegraphics[
+		width=\EncounterBlockLogoSize,
+		height=\EncounterBlockLogoSize,
+		keepaspectratio
+	]{\PATH templates/utilities/images/icons/tactics-icon.png}%
+}%
+\newcommand{\EncounterRewardsLogo}{%
+	\includegraphics[
+		width=\EncounterBlockLogoSize,
+		height=\EncounterBlockLogoSize,
+		keepaspectratio
+	]{\PATH templates/utilities/images/icons/rewards-icon.png}%
+}%
+\newcommand{\EncounterConclusionLogo}{%
+	\includegraphics[
+		width=\EncounterBlockLogoSize,
+		height=\EncounterBlockLogoSize,
+		keepaspectratio
+	]{\PATH templates/utilities/images/icons/conclusion-icon.png}%
+}%
+\newcommand{\EncounterHazardsLogo}{%
+	\includegraphics[
+		width=\EncounterBlockLogoSize,
+		height=\EncounterBlockLogoSize,
+		keepaspectratio
+	]{\PATH templates/utilities/images/icons/hazards-icon.png}%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Backgrounds  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\EncounterTriggerBackground}{%
+	\includegraphics[
+		height=\EncounterBlockBackgroundHeight,
+		keepaspectratio
+	]{\PATH templates/utilities/images/backgrounds/encounter/trigger-background.png}%
+}%
+\newcommand{\EncounterCreaturesBackground}{%
+	\includegraphics[
+		height=\EncounterBlockBackgroundHeight,
+		keepaspectratio
+	]{\PATH templates/utilities/images/backgrounds/encounter/creatures-background.png}%
+}%
+\newcommand{\EncounterDifficultyBackground}{%
+	\includegraphics[
+		height=\EncounterBlockBackgroundHeight,
+		keepaspectratio
+	]{\PATH templates/utilities/images/backgrounds/encounter/difficulty-background.png}%
+}%
+\newcommand{\EncounterTacticsBackground}{%
+	\includegraphics[
+		height=\EncounterBlockBackgroundHeight,
+		keepaspectratio
+	]{\PATH templates/utilities/images/backgrounds/encounter/tactics-background.png}%
+}%
+\newcommand{\EncounterConclusionBackground}{%
+	\includegraphics[
+		height=\EncounterBlockBackgroundHeight,
+		keepaspectratio
+	]{\PATH templates/utilities/images/backgrounds/encounter/conclusion-background.png}%
+}%
+\newcommand{\EncounterRewardsBackground}{%
+	\includegraphics[
+		height=\EncounterBlockBackgroundHeight,
+		keepaspectratio
+	]{\PATH templates/utilities/images/backgrounds/encounter/rewards-background.png}%
+}%
+\newcommand{\EncounterHazardsBackground}{%
+	\includegraphics[
+		height=\EncounterBlockBackgroundHeight,
+		keepaspectratio
+	]{\PATH templates/utilities/images/backgrounds/encounter/hazards-background.png}%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Difficulty Pips  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\EncounterDifficultyPipFilled}{%
+	\includegraphics[
+		width=\EncounterDifficultyPipSize,
+		keepaspectratio
+	]{\PATH templates/utilities/images/icons/difficulty-pip-filled.png}%
+}
+\newcommand{\EncounterDifficultyPipEmpty}{%
+	\includegraphics[
+		width=\EncounterDifficultyPipSize,
+		keepaspectratio
+	]{\PATH templates/utilities/images/icons/difficulty-pip-empty.png}%
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Colours  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\definecolor{encounterpanelblue}		{HTML}	{365563}
+\definecolor{encounterpanelred}			{HTML}	{74251F}
+\definecolor{encounterpanelgold}		{HTML}	{B49A5A}
+\definecolor{encounterpaneldark}		{HTML}	{4A321C}
+\definecolor{encounterpanelbackground}	{HTML}	{F2E9D5}
+
+\definecolor{encounterblockbackground}	{HTML}	{F7F0DF}
+\definecolor{encounterblockdark}		{HTML}	{4A321C}
+\definecolor{encounterblockgold}		{HTML}	{B89A52}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Lengths  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+% ----------------------------------------------------------------------------
+% Dimensions
+% ----------------------------------------------------------------------------
+\newlength{\EncounterPanelCornerSize}
+\setlength{\EncounterPanelCornerSize}{40pt}
+
+\newlength{\EncounterPanelFrameWidth}
+\setlength{\EncounterPanelFrameWidth}{1.8pt}
+
+\newlength{\EncounterBlockCornerSize}
+\setlength{\EncounterBlockCornerSize}{7pt}
+
+\newlength{\EncounterBlockFrameWidth}
+\setlength{\EncounterBlockFrameWidth}{1.8pt}
+
+\def\logowidthmul{0.14}
+\def\headerwidthmul{0.65}
+
+\newlength{\EncounterBlockMinHeight}
+\setlength{\EncounterBlockMinHeight}{55pt}
+
+% ----------------------------------------------------------------------------
+% Encounter Pannel Banner
+% ----------------------------------------------------------------------------
+\newlength{\EncounterBannerWidth}
+\setlength{\EncounterBannerWidth}{0.8\linewidth}
+
+\newlength{\EncounterBannerLift}
+\setlength{\EncounterBannerLift}{-0.5mm}
+
+% ----------------------------------------------------------------------------
+% Logo and Background Sizes
+% ----------------------------------------------------------------------------
+\newlength{\EncounterBlockLogoSize}
+\setlength{\EncounterBlockLogoSize}{33pt}
+
+\newlength{\EncounterBlockBackgroundHeight}
+\setlength{\EncounterBlockBackgroundHeight}{50pt}
+
+% ----------------------------------------------------------------------------
+% Difficulty Pips
+% ----------------------------------------------------------------------------
+\newlength{\EncounterDifficultyPipSize}
+\setlength{\EncounterDifficultyPipSize}{10pt}
+\newlength{\EncounterDifficultyPipSep}
+\setlength{\EncounterDifficultyPipSep}{2pt}
+
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------------- Outline -------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Panel Corners #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\EncounterPanelCorner}[3]{%
+	\pgfmathsetlengthmacro{\EncounterCornerXShift}{%
+		#2 * 0.175 * \EncounterPanelCornerSize%
+	}%
+	\pgfmathsetlengthmacro{\EncounterCornerYShift}{%
+		#3 * -1 * 0.175 * \EncounterPanelCornerSize%
+	}%
+	
+	\node[transform shape, anchor=#1]
+		at ($ (frame.#1) + (\EncounterCornerXShift,\EncounterCornerYShift) $) {%
+		\scalebox{#2}[#3]{%
+			\includegraphics[width=\EncounterPanelCornerSize, keepaspectratio]{%
+				\PATH templates/utilities/images/backgrounds/encounter/corner-ornament.png
+			}%
+		}%
+	};%
+}%
+\newcommand{\EncounterPanelCorners}{%
+	% Top left corner
+	\EncounterPanelCorner{north west}{-1}{-1}
+	% Top right corner
+	\EncounterPanelCorner{north east}{1}{-1}
+	% Bottom left corner
+	\EncounterPanelCorner{south west}{-1}{1}
+	% Bottom right corner
+	\EncounterPanelCorner{south east}{1}{1}
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Encounter Panel  Banner  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\EncounterPanelBanner}[1]{%
+	% ------------------------------------------------------------------------
+	% Banner
+	% ------------------------------------------------------------------------
+	\node[inner sep=0pt] (EncounterBanner) at ($ (frame.north) + (0,\EncounterBannerLift) $) {%
+		\includegraphics[width=\EncounterBannerWidth]{%
+			\PATH templates/utilities/images/backgrounds/encounter/encounter-banner.png%
+		}%
+	};%
+	% ------------------------------------------------------------------------
+	% Title
+	% ------------------------------------------------------------------------
+	\def\BannerTitle{#1}
+	\path[
+        decorate,
+        decoration={
+            text along path,
+            text align={center},
+            raise=-0.2ex,
+            text format delimiters={|}{|},
+            text={|\normalsize\bfseries\scshape\color{white}|\BannerTitle}
+        }
+    ]
+    ($(EncounterBanner.west)+(8mm,-2mm)$)
+        .. controls
+            ($(EncounterBanner.center)+(0,2mm)$)
+            and
+            ($(EncounterBanner.center)+(0,2mm)$)
+        ..
+    ($(EncounterBanner.east)+(-8mm,-2mm)$);
+    
+    \node at ($(EncounterBanner.center)+(0,-6mm)$) {\tiny\scshape peril shapes story};
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Encounter Block  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\EncounterBlockFramePath}{%
+	% Top edge
+	($(frame.north west)+(\EncounterBlockCornerSize,0)$)
+	--
+	($(frame.north east)+(-\EncounterBlockCornerSize,0)$)
+
+	% Top-right inward corner
+	.. controls
+		($(frame.north east)+(-\EncounterBlockCornerSize,-\EncounterBlockCornerSize)$)
+		and
+		($(frame.north east)+(0,-\EncounterBlockCornerSize)$)
+	..
+	($(frame.north east)+(0,-\EncounterBlockCornerSize)$)
+
+	% Right edge
+	--
+	($(frame.south east)+(0,\EncounterBlockCornerSize)$)
+
+	% Bottom-right inward corner
+	.. controls
+		($(frame.south east)+(-\EncounterBlockCornerSize,\EncounterBlockCornerSize)$)
+		and
+		($(frame.south east)+(-\EncounterBlockCornerSize,0)$)
+	..
+	($(frame.south east)+(-\EncounterBlockCornerSize,0)$)
+
+	% Bottom edge
+	--
+	($(frame.south west)+(\EncounterBlockCornerSize,0)$)
+
+	% Bottom-left inward corner
+	.. controls
+		($(frame.south west)+(\EncounterBlockCornerSize,0)$)
+		and
+		($(frame.south west)+(\EncounterBlockCornerSize,\EncounterBlockCornerSize)$)
+	..
+	($(frame.south west)+(0,\EncounterBlockCornerSize)$)
+
+	% Left edge
+	--
+	($(frame.north west)+(0,-\EncounterBlockCornerSize)$)
+
+	% Top-left inward corner
+	.. controls
+		($(frame.north west)+(0,-\EncounterBlockCornerSize)$)
+		and
+		($(frame.north west)+(\EncounterBlockCornerSize,-\EncounterBlockCornerSize)$)
+	..
+	($(frame.north west)+(\EncounterBlockCornerSize,0)$)
+
+	-- cycle
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Logo  Block  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\EncounterLogoBlockFramePath}{%
+	% Top edge
+	($(frame.north west)+(\EncounterBlockCornerSize,0)$)
+	--
+	($(frame.north west)+(\logowidthmul\linewidth,0)$)
+	
+	% Top-right inward corner
+	.. controls
+		($(frame.north west)+(\logowidthmul\linewidth,0)+(0,-\EncounterBlockCornerSize)$)
+		and
+		($(frame.north west)+(\logowidthmul\linewidth,0)+(\EncounterBlockCornerSize,-\EncounterBlockCornerSize)$)
+	..
+	($(frame.north west)+(\logowidthmul\linewidth,0)+(\EncounterBlockCornerSize,-\EncounterBlockCornerSize)$)
+	
+	% Right edge
+	--
+	($(frame.south west)+(\logowidthmul\linewidth,0)+(\EncounterBlockCornerSize,\EncounterBlockCornerSize)$)
+	
+	% Top-right inward corner
+	.. controls
+		($(frame.south west)+(\logowidthmul\linewidth,0)+(0,\EncounterBlockCornerSize)$)
+		and
+		($(frame.south west)+(\logowidthmul\linewidth,0)$)
+	..
+	($(frame.south west)+(\logowidthmul\linewidth,0)$)
+
+	% Bottom edge
+	--
+	($(frame.south west)+(\EncounterBlockCornerSize,0)$)
+
+	% Bottom-left inward corner
+	.. controls
+		($(frame.south west)+(\EncounterBlockCornerSize,0)$)
+		and
+		($(frame.south west)+(\EncounterBlockCornerSize,\EncounterBlockCornerSize)$)
+	..
+	($(frame.south west)+(0,\EncounterBlockCornerSize)$)
+
+	% Left edge
+	--
+	($(frame.north west)+(0,-\EncounterBlockCornerSize)$)
+
+	% Top-left inward corner
+	.. controls
+		($(frame.north west)+(0,-\EncounterBlockCornerSize)$)
+		and
+		($(frame.north west)+(\EncounterBlockCornerSize,-\EncounterBlockCornerSize)$)
+	..
+	($(frame.north west)+(\EncounterBlockCornerSize,0)$)
+
+	-- cycle
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Header  Block #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\EncounterHeaderBlockFramePath}{%
+	% Top edge
+	($(frame.north west)+(\EncounterBlockCornerSize,0)$)
+	--
+	($(frame.north west)+(\headerwidthmul\linewidth,0)$)
+	
+	% Right edge
+	--
+	($(frame.north west)+(\headerwidthmul\linewidth,0)+(0,-\EncounterBlockCornerSize)$)
+	.. controls
+		($(frame.north west)+(\headerwidthmul\linewidth,0)+(-0.5\EncounterBlockCornerSize,-\EncounterBlockCornerSize)$)
+		and
+		($(frame.north west)+(\headerwidthmul\linewidth,0)+(-0.5\EncounterBlockCornerSize,-1.5\EncounterBlockCornerSize)$)
+	..
+	($(frame.north west)+(\headerwidthmul\linewidth,0)+(-0.5\EncounterBlockCornerSize,-1.5\EncounterBlockCornerSize)$)
+	.. controls
+		($(frame.north west)+(\headerwidthmul\linewidth,0)+(-1.5\EncounterBlockCornerSize,-1.5\EncounterBlockCornerSize)$)
+		and
+		($(frame.north west)+(\headerwidthmul\linewidth,0)+(-1.5\EncounterBlockCornerSize,-2.5\EncounterBlockCornerSize)$)
+	..
+	($(frame.north west)+(\headerwidthmul\linewidth,0)+(-1.5\EncounterBlockCornerSize,-2.5\EncounterBlockCornerSize)$)
+	
+	% Bottom edge
+	--
+	($(frame.north west)+(\logowidthmul\linewidth,0)+(2\EncounterBlockCornerSize,-2.5\EncounterBlockCornerSize)$)
+	
+	% Left bottom corner
+	.. controls
+		($(frame.north west)+(\logowidthmul\linewidth,0)+(2\EncounterBlockCornerSize,-1.5\EncounterBlockCornerSize)$)
+		and
+		($(frame.north west)+(\logowidthmul\linewidth,0)+(\EncounterBlockCornerSize,-1.5\EncounterBlockCornerSize)$)
+	..
+	($(frame.north west)+(\logowidthmul\linewidth,0)+(\EncounterBlockCornerSize,-1.5\EncounterBlockCornerSize)$)
+	
+	% Return
+	--
+	($(frame.north west)+(\logowidthmul\linewidth,0)+(0,-1.5\EncounterBlockCornerSize)$) -- cycle;
+	
+		
+		
+}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- Encounter Block ---------------------------------------- %
+\NewTColorBox{EncounterBlock}{ O{} m }{%
+	enhanced,
+	width=\linewidth,
+	% ------------------------------------------------------------------------
+	colback=white,
+	opacityback=0,
+	% ------------------------------------------------------------------------
+	% Disable ordinary tcolorbox frame
+	% ------------------------------------------------------------------------
+	frame hidden,
+	boxrule=0pt,
+	sharp corners,
+	% ------------------------------------------------------------------------
+	% Minimum height
+	% ------------------------------------------------------------------------
+	height from={\EncounterBlockMinHeight} to {\textheight},
+	% ------------------------------------------------------------------------
+	boxsep=0pt,
+	left={\dimexpr \logowidthmul\linewidth + \EncounterBlockCornerSize + 10pt\relax},
+	right=40pt,
+	top={\dimexpr 2.5\EncounterBlockCornerSize + 6pt \relax},
+	bottom=7pt,
+	% ------------------------------------------------------------------------
+	before skip=4pt,
+	after skip=4pt,
+	fontupper=\scriptsize,
+	% ------------------------------------------------------------------------
+	% Reset Difficulty Value
+	% ------------------------------------------------------------------------
+	before upper={%
+		\gdef\EncounterDifficultyValue{}%
+	},
+	% ------------------------------------------------------------------------
+	% Underlying background, header banner and bezel outline
+	% ------------------------------------------------------------------------
+	underlay={%
+		% --------------------------------------------------------------------
+		% Background
+		% --------------------------------------------------------------------
+		\fill[encounterblockbackground] \EncounterBlockFramePath;
+		\begin{scope}
+			\path[clip] \EncounterBlockFramePath;
+			\node[anchor=south east, opacity=0.45, inner sep=0pt] at (frame.south east) {\EncounterBlockBackground{#2}};
+		\end{scope}
+		% --------------------------------------------------------------------
+		% Header Banner
+		% --------------------------------------------------------------------
+		\filldraw[
+			fill=encounterpanelred,
+			draw=encounterblockdark,
+			line width=\EncounterBlockFrameWidth,
+			line join=round
+		]
+			\EncounterHeaderBlockFramePath;
+		\draw[
+			draw=encounterblockgold,
+			line width=0.55,
+			line join=round
+		]
+			\EncounterHeaderBlockFramePath;
+		% --------------------------------------------------------------------
+		% Dark heavy bezel
+		% --------------------------------------------------------------------
+		\draw[
+			draw=encounterblockdark,
+			line width=\EncounterBlockFrameWidth,
+			line join=round
+		]
+			\EncounterBlockFramePath;
+		% --------------------------------------------------------------------
+		% Logo
+		% --------------------------------------------------------------------
+		\filldraw[
+			fill=encounterpanelred,
+			draw=encounterblockdark,
+			line width=\EncounterBlockFrameWidth,
+			line join=round
+		]
+			\EncounterLogoBlockFramePath;
+	},
+	% ------------------------------------------------------------------------
+	% Finish
+	% ------------------------------------------------------------------------
+	finish={%
+		% --------------------------------------------------------------------
+		% Header
+		% --------------------------------------------------------------------
+		\node[
+    		anchor=west,
+    		inner sep=0pt,
+    		text=white,
+    		font=\large\bfseries\scshape
+		] at (
+			$(frame.north west)
+				+(\logowidthmul\linewidth,0)
+				+(2.25\EncounterBlockCornerSize,-1.25\EncounterBlockCornerSize) $
+		) {%
+			\EncounterBlockTitle{#2}%
+		};
+		% --------------------------------------------------------------------
+		% Logo
+		% --------------------------------------------------------------------
+        \coordinate (EncounterLogoRight) at (
+			$ (frame.west)
+				+(\logowidthmul\linewidth,0)
+				+(\EncounterBlockCornerSize,0) $
+		);
+		\node[inner sep=0pt]
+			at ($(frame.west)!0.5!(EncounterLogoRight)$) {%
+				\EncounterBlockLogo{#2}%
+		};
+		% --------------------------------------------------------------------
+		% Thin gold highlight through the bezel
+		% --------------------------------------------------------------------
+		\draw[
+			draw=encounterblockgold,
+			line width=0.65pt,
+			line join=round
+		]
+			\EncounterBlockFramePath;
+		% --------------------------------------------------------------------
+		% Logo
+		% --------------------------------------------------------------------
+		\draw[
+			draw=encounterblockgold,
+			line width=0.65pt,
+			line join=round
+		]
+			\EncounterLogoBlockFramePath;
+		% --------------------------------------------------------------------
+		% Difficulty indicator, if applicable
+		% --------------------------------------------------------------------
+    	\EncounterDrawDifficulty{#2}
+	},
+	% ------------------------------------------------------------------------
+	#1%
+}%
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Encounter Block Types #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\NewDocumentCommand{\DeclareEncounterBlockType}{ m m m m }{%
+    \expandafter\def\csname EncounterBlockTitle@#1\endcsname{#2}%
+    \expandafter\def\csname EncounterBlockLogo@#1\endcsname{#3}%
+    \expandafter\def\csname EncounterBlockBackground@#1\endcsname{#4}%
+}
+\NewDocumentCommand{\EncounterBlockTitle}{ m }{%
+    \ifcsname EncounterBlockTitle@#1\endcsname
+        \csname EncounterBlockTitle@#1\endcsname
+    \else
+        \PackageError
+            {panel_commands}
+            {Unknown EncounterBlock type '#1'}
+            {Declare the type using \string\DeclareEncounterBlockType.}%
+    \fi
+}
+\NewDocumentCommand{\EncounterBlockLogo}{ m }{%
+    \ifcsname EncounterBlockLogo@#1\endcsname
+        \csname EncounterBlockLogo@#1\endcsname
+    \else
+        \PackageError
+            {panel_commands}
+            {Unknown EncounterBlock type '#1'}
+            {Declare the type using \string\DeclareEncounterBlockType.}%
+    \fi
+}
+\NewDocumentCommand{\EncounterBlockBackground}{ m }{%
+    \ifcsname EncounterBlockBackground@#1\endcsname
+        \csname EncounterBlockBackground@#1\endcsname
+    \else
+        \PackageError
+            {panel_commands}
+            {Unknown EncounterBlock type '#1'}
+            {Declare the type using \string\DeclareEncounterBlockType.}%
+    \fi
+}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Register  Block-Types #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\DeclareEncounterBlockType
+	{trigger}
+	{Trigger}
+	{\EncounterTriggerLogo}
+	{\EncounterTriggerBackground}
+
+\DeclareEncounterBlockType
+	{creatures}
+	{Creatures}
+	{\EncounterCreaturesLogo}
+	{\EncounterCreaturesBackground}
+
+\DeclareEncounterBlockType
+	{difficulty}
+	{Difficulty}
+	{\EncounterDifficultyLogo}
+	{\EncounterDifficultyBackground}
+
+\DeclareEncounterBlockType
+	{tactics}
+	{Tactics}
+	{\EncounterTacticsLogo}
+	{\EncounterTacticsBackground}
+
+\DeclareEncounterBlockType
+	{rewards}
+	{Rewards}
+	{\EncounterRewardsLogo}
+	{\EncounterRewardsBackground}
+
+\DeclareEncounterBlockType
+	{conclusion}
+	{Conclusion}
+	{\EncounterConclusionLogo}
+	{\EncounterConclusionBackground}
+
+\DeclareEncounterBlockType
+	{hazards}
+	{Hazards}
+	{\EncounterHazardsLogo}
+	{\EncounterHazardsBackground}
+% ------------------------------------------------------------------------------------------------- %
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Encounter  Difficulty #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\ExplSyntaxOn
+\NewDocumentCommand{\EncounterDrawDifficulty}{m}
+{%
+    \str_if_eq:nnT {#1} {difficulty}%
+    {%
+        \tl_if_blank:eF { \EncounterDifficultyValue }%
+        {%
+            \EncounterDifficultyPipNode%
+            {%
+                \EncounterDifficultyDisplay%
+                {%
+                    \EncounterDifficultyValue%
+                }%
+            }%
+        }%
+    }%
+}%
+\NewDocumentCommand{\EncounterDifficultyDisplay}{m}
+{
+	\str_case_e:nnF {#1}
+	{
+		{Trivial}  { \EncounterDifficultyPips{1} }
+		{Easy}     { \EncounterDifficultyPips{2} }
+		{Moderate} { \EncounterDifficultyPips{3} }
+		{Hard}     { \EncounterDifficultyPips{4} }
+		{Deadly}   { \EncounterDifficultyPips{5} }
+	}
+	{
+		\PackageError
+			{panel_commands}
+			{Unknown~encounter~difficulty~'#1'}
+			{Valid~difficulties~are~Trivial,~Easy,~Moderate,~Hard,~and~Deadly~(case-sensitive).}
+	}
+}
+\NewDocumentCommand{\EncounterDifficultyPips}{m}
+{
+	\int_step_inline:nn {5}
+	{
+		\int_compare:nTF { ##1 <= #1 }
+		{
+			\EncounterDifficultyPipFilled
+		}
+		{
+			\EncounterDifficultyPipEmpty
+		}
+
+		\int_compare:nT { ##1 < 5 }
+		{
+			\hspace{\EncounterDifficultyPipSep}
+		}
+	}
+}
+\ExplSyntaxOff
+\newcommand{\EncounterDifficultyPipNode}[1]{%
+    \coordinate (EncounterHeaderEnd) at
+    (
+        $ (frame.north west)
+          +(\headerwidthmul\linewidth,0) $
+    );
+
+    \coordinate (EncounterPipRightRef) at
+    (
+        $ (frame.north east)
+          +(-\EncounterBlockCornerSize,0) $
+    );
+
+    \path let
+        \p1 = (EncounterHeaderEnd),
+        \p2 = (EncounterPipRightRef)
+    in
+    node[
+        anchor=center,
+        inner sep=0pt
+    ] at
+    (
+        {0.5*(\x1+\x2)},
+        {\y1 - 1.25\EncounterBlockCornerSize}
+    )
+    {#1};
+}
+
+\newcommand{\EncounterDifficulty}[1]{\gdef\EncounterDifficultyValue{#1}\textbf{\footnotesize #1}}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- Encounter Panel ---------------------------------------- %
+\NewTColorBox{EncounterPanel}{ O{} m }{%
+	enhanced,
+	width=\linewidth,
+	colback=encounterpanelbackground,
+	% ------------------------------------------------------------------------
+	% Disable ordinary tcolorbox frame
+	% ------------------------------------------------------------------------
+	frame hidden,
+	boxrule=0pt,
+	sharp corners,
+	% ------------------------------------------------------------------------
+	boxsep=0pt,
+	left=7pt,
+	right=7pt,
+	top=10mm,
+	bottom=25pt,
+	before skip=8pt,
+	after skip=8pt,
+	% ------------------------------------------------------------------------
+	% Underlying bottom background
+	% ------------------------------------------------------------------------
+	underlay={%
+		\begin{scope}
+			\node[anchor=south, inner sep=0pt] at (frame.south) {%
+				\includegraphics[width=\linewidth, keepaspectratio]{%
+					\PATH templates/utilities/images/backgrounds/encounter/bottom-background.png%
+				}%
+			};
+		\end{scope}
+		\begin{scope}
+			\node[anchor=north, inner sep=0pt, opacity=0.6] at (frame.north) {%
+				\includegraphics[width=\linewidth, keepaspectratio]{%
+					\PATH templates/utilities/images/backgrounds/encounter/top-background.png%
+				}%
+			};
+		\end{scope}
+		
+		\EncounterPanelCorners
+		
+		\node at ($(frame.south) + (0,12.5pt)$) {\tiny\scshape same roads. different legends.};
+	},%
+	% ------------------------------------------------------------------------
+	% Overlay
+	% ------------------------------------------------------------------------
+	overlay={%
+		% Your existing frame drawing here...
+		\draw[encounterpaneldark, line width=\EncounterPanelFrameWidth]
+			(frame.north west) rectangle (frame.south east);
+		\draw[encounterpanelgold, line width=0.55pt]
+			(frame.north west) rectangle (frame.south east);
+		
+		% Corners
+		\EncounterPanelCorners
+		
+		% Banner title
+		\EncounterPanelBanner{#2}
+	},
+	% ------------------------------------------------------------------------
+	% Finish
+	% ------------------------------------------------------------------------
+	finish={%
+	},%
+	#1%
+}
