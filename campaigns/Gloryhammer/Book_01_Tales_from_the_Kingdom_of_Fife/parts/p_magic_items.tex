@@ -24,34 +24,35 @@
 \input{magic_items/mi_Staff_of_Chronurgy}
 
 \chapter*{Homebrew}\stepcounter{chapter}\phantomsection\addcontentsline{toc}{chapter}{Homebrew}
-\section*{Broken Armour Piece}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Broken Armour Piece}\label{mi:Broken Armour Piece}
-\textit{Wondrous Item, Rare (Requires Attunement))}\\
-{\entryfont This jagged shard of scorched plate armour is cold to the touch, its blackened metal veined with dull crimson cracks that never emit warmth. Though broken and incomplete, it clings unnaturally to those who handle it.
+\subsection*{Arcane Insulator}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Arcane Insulator}\label{mi:ArcaneInsulator}
+\textit{Wondrous Item, Uncommon (Requires Attunement)}\\
+{\entryfont This compact artificer's device consists of several copper coils, articulated metal plates, and small arcane conductors. When attached near a source of unstable magic, the device projects a thin insulating field intended to shield magical energy from outside interference. The device has 10 uses.
 
-When touching the fragment, the creature immediately becomes attuned to it. This attunement ignores the normal time required and does not require any consent.
+\subparagraph*{Arcane Insulation} Once per turn, whenever the \hyperref[mi:EmberboundFragment]{\LinkFont{Emberbound Fragment}} would reduce Fire Damage you deal, the Arcane Insulator activates. The fragment's penalty is ignored for half of the Fire Damage Dice rolled, rounded up. The Arcane Insulator then expends one use.
 
-\paragraph*{Curse} This item is cursed. Attuning to it curses you until you are targeted by a Remove Curse spell or similar magic. As long as you remain cursed, you are unwilling to part with the fragment. If it leaves your possession, it magically reappears in your pocket, pack, or among your belongings at the next dawn.
+\subparagraph*{Catastrophic Failure} When the Arcane Insulator expends its final use, the device overloads and explodes. You must make a \textbf{DC 13 Dexterity Saving Throw}, taking 2d6 Fire Damage and 2d6 Force Damage on a failed save, or half as much damage on a successful one. The Arcane Insulator is destroyed.}
 
-The curse deepens the longer you remain attuned to the fragment. The later stages of this curse cannot be detected, identified, or revealed by spells such as identify, divination magic, experimentation, or any other means before they manifest. When a new stage takes effect, its effects become immediately obvious to the attuned creature.
+\subsection*{Feyfire Kindling}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Feyfire Kindling}\label{mi:FeyfireKindling}
+\textit{Wondrous Item, Uncommon, Consumable}\\
+{\entryfont A small bundle of silvery twigs, dried leaves, and aromatic resin gathered from plants touched by the Feywild. When ignited, the kindling burns with shifting crimson and golden flames that give off little smoke.
 
-\subparagraph*{Smothered Embers (Stage 1)} After four days attuned to the fragment, whenever you make an Attack Roll for a Spell or Weapon Attack that deals Fire damage, you take a -1 penalty to the attack roll. In addition, whenever you roll Fire Damage, reduce the result of each individual Damage Die by 1 (minimum of 1 per die).
+As an Action, you can ignite the kindling and expose the \hyperref[mi:EmberboundFragment]{\LinkFont{Emberbound Fragment}} to its flames. The fragment consumes the magical fire, destroying the kindling and becoming temporarily satiated. For the next 24 hours, the penalties to Attack Rolls and Fire Damage Dice imposed by the Emberbound Fragment are suppressed.}
 
-\subparagraph*{Fading Inferno (Stage 2)} After seven days attuned to the fragment, the penalty to Attack Rolls becomes -2, and each individual Fire Damage Die is reduced by 2 (minimum of 1 per die).
-
-\subparagraph*{Ashen Ruin (Stage 3)} After nine days attuned to the fragment, you have Disadvantage on Attack Rolls for Spells or Weapon Attacks that deal Fire Damage instead of taking the previous attack roll penalty. Fire Damage Dice remain reduced as in Stage 2.}
-
-\section*{Heroic Inspiration Cog}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Heroic Inspiration Cog}\label{mi:HeroicInspirationCog}
-\indent\textit{Wondrous Item, uncommon}\\
+\subsection*{Heroic Inspiration Cog}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Heroic Inspiration Cog}\label{mi:HeroicInspirationCog}
+\textit{Wondrous Item, Uncommon}\\
 {\entryfont This item can only be used by a construct. When you use an action to integrate the cog into your mechanical body, you gain an Heroic Inspiration. Once this property has been used, it can't be used again, and the cog becomes nonmagical.}
-\section*{Key to Wondrous Place}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Key to a Wondrous Place}\label{mi:WondrousPlaceKey}
+
+\subsection*{Key to Wondrous Place}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Key to a Wondrous Place}\label{mi:WondrousPlaceKey}
+
+\input{magic_items/mi_Emberbound_Fragment}
 
 \chapter*{Magic Items}\stepcounter{chapter}\phantomsection\addcontentsline{toc}{chapter}{Magic Items}
-\section*{Cast-Off Armour}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Cast-Off Armour}\label{mi:CastOffArmour}
+\subsection*{Cast-Off Armour}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Cast-Off Armour}\label{mi:CastOffArmour}
 
 \textit{Armour (light, medium, or heavy), common}\\
-You can doff this armour as an action.
+{\entryfont You can doff this armour as an action.}
 
-\section*{\hspace*{-0.1em}Overgrown Barkshield}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Overgrown Barkshield}\label{mi:OvergrownBarkshield}
+\subsection*{Overgrown Barkshield}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Overgrown Barkshield}\label{mi:OvergrownBarkshield}
 
 \indent\textit{Shield, uncommon (requires attunement)}\\
 {\entryfont This crude shield made of bark and wood teems with life as if it were still part of a tree. The smell of sap and various fragrant flowers perfumes the air around you.
@@ -67,7 +68,10 @@ When this effect ends, the barkshield falls from its place on your torso, fading
 
 \paragraph*{Vines and Thorns} While attuned to this shield, you can use an action to animate one of the shield's thorny vines and make a melee weapon attack (+5 to hit, reach 30 ft.) against one target. On a hit, the target takes 2d8 piercing damage, and, if the target is a Large or smaller creature, or an object that weighs less than 500 pounds, you pull it up to 10 feet closer to you.}
 
-\section*{Shield of Expression}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Shield of Expression}\label{mi:ShieldOfExpression}
+\subsection*{Potion of Maximum Power}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Potion of Maximum Power}\label{mi:PotionMaximumPower}
+\textit{Potion, Rare}\\
+{\entryfont The first time you cast a damage-dealing spell of 4th level or lower within 1 minute after drinking the potion, instead of rolling dice to determine the damage dealt, you can instead use the highest number possible for each die.}
 
+\subsection*{Shield of Expression}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Shield of Expression}\label{mi:ShieldOfExpression}
 \textit{Shield, common}\\
-The front of this shield is shaped in the likeness of a face. While bearing the shield, you can use a bonus action to alter the face's expression.
+{\entryfont The front of this shield is shaped in the likeness of a face. While bearing the shield, you can use a bonus action to alter the face's expression.}

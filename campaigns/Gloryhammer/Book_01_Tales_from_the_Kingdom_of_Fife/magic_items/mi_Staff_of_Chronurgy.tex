@@ -3,7 +3,12 @@
 \ItemFolder{}
 
 \chapter*{Staff of Chronurgy}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Staff of Chronurgy}
-\itemDescriptionAndImage{Wondrous Staff, Artifact (requires attunement by a Class-Lvl 3+ Wizard or Sorcerer)}{images/Magic_Items/Staff_of_Chronurgy.png}{6cm}\\
+\MagicItemTypeAndImage[%
+	top-margin		= -1.25cm,
+	bottom-margin	= -1.75cm,
+	image-width		= 1.2\columnwidth,
+	image-position	= -1cm,
+]{Wondrous Staff, Artifact (requires attunement by a Class-Lvl 3+ Wizard or Sorcerer)}{images/Magic_Items/Staff_of_Chronurgy.png}
 
 \begin{tikzpicture}[remember picture, overlay]%
 	\node[xshift=0.55\columnwidth, yshift=-0.25\paperheight] at (current page.center) {\includegraphics[width=1.1\columnwidth]{%

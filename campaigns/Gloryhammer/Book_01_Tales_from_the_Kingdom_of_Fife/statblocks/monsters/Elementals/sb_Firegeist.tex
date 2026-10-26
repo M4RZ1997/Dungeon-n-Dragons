@@ -1,0 +1,80 @@
+\begin{DndMonster}[width=0.5\textwidth]{Firegeist\phantomsection\addcontentsline{toc}{subsection}{Firegeist}\label{monster:Firegeist}}
+	\DndMonsterType{Small Elemental, Neutral Evil}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {14},
+		initiative	= +4,
+		hit-points  = {\DndDice{15d6 + 30}},
+		speed       = {40 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 7,
+		dex = 18,
+		con = 14,
+		int = 4,
+		wis = 16,
+		cha = 6,
+	]
+		
+	\DndMonsterDetails[
+%		saving-throws			= {},
+		skills					= {Perceptioon +5},
+%		damage-vulnerabilities	= {Cold},
+%		damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+		damage-immunities		= {Fire, Poison},
+		condition-immunities	= {Exhaustion, Grappled, Paralyzed, Petrified, Poisoned, Prone, Restrained, Unconscious},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 60 ft., Passive Perception 15},
+		languages				= {Primordial (Ignan)},
+		challenge				= 2,
+%		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+    \DndMonsterAction{Elemental Nature}
+	The Firegeist doesn't require air, food, drink, or sleep.
+	
+    \DndMonsterAction{Hide by Firelight}
+	The Firegeist has Advantage on Dexterity (Stealth) Checks made to hide in fire or in areas lit by non-magical fire.
+	
+    \DndMonsterAction{Magical Light Sensitivity}
+	While in an area of light created by a spell or other magical effect, the Firegeist has Disadvantage on Attack Rolls and Ability Checks.
+	
+    \DndMonsterAction{Variable Illumination}
+	The Firegeist sheds dim light in a 5- to 20-foot radius. It can alter the radius as a Bonus Action.
+	
+    \DndMonsterAction{Water Susceptibility}
+	For every 5 feet the Firegeist moves in water, or for every gallon of water splashed on it, it takes 1 Cold damage.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAttack[
+		name			= Burning Slam,
+		distance		= melee, % valid options are in the set {both,melee,ranged},
+%		type			= weapon, %valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 4},
+		dmg-type		= Bludgeoning,
+		plus-dmg		= \DndDice{2d6},
+		plus-dmg-type	= Fire,
+%		or-dmg			= ,
+%		or-dmg-when		= {},
+		extra			= {. If the target is a flammable object, it ignites. If the target is a creature, the target must succeed on a DC 13 Dexterity Saving Throw or ignite. Until a creature takes an Action to douse the fire, the target takes \DndDice{1d6} Fire damage at the start of each of its turns},
+	]
+	
+	\DndMonsterSavingThrowEffect[
+		name = {Burning Terror (Recharge 5-6)},
+		description = {The Firegeist assaults the mind of one creature with the painful, humiliating memory of the Firegeist's first death},
+		save_skill = {Wisdom},
+		save_dc = {13},
+		targets = {one creature within 30 feet the Firegeist can see},
+		failure = {The target takes \DndDice{4d6} Fire damage and is Frightened for 1 minute},
+		success = {Half damage only},
+		extra={While Frightened, the creature takes \DndDice{1d6} Fire damage at the start of each of its turns. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success}
+	]
+\end{DndMonster}

@@ -3,7 +3,12 @@
 \ItemFolder{}
 
 \chapter*{Knife of Evil}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Knife of Evil}
-\itemDescriptionAndImage{Wondrous Dagger, legendary (requires attunement)}{images/Magic_Items/Knife_of_Evil.png}{5.5cm}\\
+\MagicItemTypeAndImage[%
+	top-margin		= -1.25cm,
+	bottom-margin	= -1.75cm,
+	image-width		= 1.2\columnwidth,
+	image-position	= -1cm,
+]{Wondrous Dagger, legendary (requires attunement)}{images/Magic_Items/Knife_of_Evil.png}
 
 \begin{tikzpicture}[remember picture, overlay]%
 	\node[xshift=0.75\columnwidth] at (current page.center) {\includegraphics[width=1\columnwidth]{%

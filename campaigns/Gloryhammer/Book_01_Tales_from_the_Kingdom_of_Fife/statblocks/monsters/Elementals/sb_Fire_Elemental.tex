@@ -1,0 +1,69 @@
+\begin{DndMonster}[width=0.5\textwidth]{Fire Elemental\phantomsection\addcontentsline{toc}{subsection}{Fire Elemental}\label{monster:FireElemental}}
+	\DndMonsterType{Large Elemental, Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {13},
+		initiative	= +3,
+		hit-points  = {\DndDice{11d10 + 33}},
+		speed       = {50 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 10,
+		dex = 17,
+		con = 16,
+		int = 6,
+		wis = 10,
+		cha = 7,
+	]
+		
+	\DndMonsterDetails[
+%		saving-throws			= {},
+		skills					= {Perceptioon +5},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Bludgeoning, Piercing, and Slashing},
+		damage-immunities		= {Fire, Poison},
+		condition-immunities	= {Exhaustion, Grappled, Paralyzed, Petrified, Poisoned, Prone, Restrained, Unconscious},
+%		gear					= {Leather Armor, Light Crossbow, Scimitar},
+		senses					= {Darkvision 60 ft., Passive Perception 10},
+		languages				= {Primordial (Ignan)},
+		challenge				= 5,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+    \DndMonsterAction{Fire Aura}
+	At the end of each of the elemental's turns, each creature in a 10-foot Emanation originating from the elemental takes \DndDice{1d10} Fire damage. Creatures and flammable objects in the Emanation start burning.
+	
+    \DndMonsterAction{Fire Form}
+	The elemental can move through a space as narrow as 1 inch without expending extra movement to do so, and it can enter a creature's space and stop there. The first time it enters a creature's space on a turn, that creature takes \DndDice{1d10} Fire damage.
+	
+    \DndMonsterAction{Illumination}
+	The elemental sheds Bright Light in a 30-foot radius and Dim Light for an additional 30 feet.
+	
+    \DndMonsterAction{Water Susceptibility}
+	The elemental takes \DndDice{1d6} Cold damage for every 5 feet the elemental moves in water or for every gallon of water splashed on it.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The elemental makes two Burn attacks.
+	
+	\DndMonsterAttack[
+		name			= Burn,
+		distance		= melee, % valid options are in the set {both,melee,ranged},
+%		type			= weapon, %valid options are in the set {weapon,spell}
+		mod				= +6,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{2d6 + 3},
+		dmg-type		= Fire,
+%		plus-dmg		= \DndDice{2d6},
+%		plus-dmg-type	= Fire,
+%		or-dmg			= ,
+%		or-dmg-when		= {},
+		extra			= {. If the target is a creature or a flammable object, it starts burning},
+	]
+\end{DndMonster}

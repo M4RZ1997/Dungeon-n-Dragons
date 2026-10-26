@@ -3,7 +3,12 @@
 \ItemFolder{}
 
 \chapter*{Hammer of Glory}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Hammer of Glory}
-\itemDescriptionAndImage{Wondrous Warhammer, Artifact (requires attunement by a Class-Lvl 3+ Barbarian, Fighter, or Forge Cleric)}{images/Magic_Items/Hammer_of_Glory.png}{6cm}\\
+\MagicItemTypeAndImage[%
+	top-margin		= -1.25cm,
+	bottom-margin	= -1.75cm,
+	image-width		= 1.2\columnwidth,
+	image-position	= -1cm,
+]{Wondrous Warhammer, Artifact (requires attunement by a Class-Lvl 3+ Barbarian, Fighter, or Forge Cleric)}{images/Magic_Items/Hammer_of_Glory.png}
 
 \begin{tikzpicture}[remember picture, overlay]%
 	\node[xshift=0.55\columnwidth, yshift=-0.35\paperheight] at (current page.center) {\includegraphics[width=1.3\columnwidth]{%

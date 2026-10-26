@@ -1,0 +1,69 @@
+\begin{DndMonster}[width=0.5\textwidth]{Fire Elemental Myrmidon\phantomsection\addcontentsline{toc}{subsection}{Fire Elemental Myrmidon}\label{monster:FireElementalMyrmidon}}
+	\DndMonsterType{Medium Elemental, Neutral}
+	
+	% If you want to use commas in the key values, enclose the values in braces.
+	\DndMonsterBasics[
+		armor-class = {18 (Plate Armor)},
+		initiative	= +4,
+		hit-points  = {\DndDice{19d8 + 38}},
+		speed       = {40 ft.},
+	]
+	
+	\renewcommand{\AbilityScoreSpacer}{~}
+	\DndMonsterAbilityScores[
+		str = 13,
+		dex = 18,
+		con = 15,
+		int = 9,
+		wis = 10,
+		cha = 10,
+	]
+		
+	\DndMonsterDetails[
+%		saving-throws			= {},
+		skills					= {Perceptioon +5},
+%		damage-vulnerabilities	= {Cold},
+		damage-resistances		= {Bludgeoning, Piercing, and Slashing from nonmagical attacks},
+		damage-immunities		= {Fire, Poison},
+		condition-immunities	= {Paralyzed, Petrified, Poisoned, Prone},
+		gear					= {Scimitar},
+		senses					= {Darkvision 60 ft., Passive Perception 10},
+		languages				= {Primordial (Ignan)},
+		challenge				= 7,
+		proficiency-bonus		= +3,
+	]
+	
+	\DndMonsterSection{Traits}
+	\DndMonsterAction{Illumination}
+	The Myrmidon sheds bright light in a 20-foot radius and dim light in a 40-foot radius.
+	
+    \DndMonsterAction{Magic Weapons}
+    The Myrmidon's weapon attacks are magical.
+	
+    \DndMonsterAction{Water Susceptibility}
+	For every 5 feet the Myrmidon moves in 1 foot or more of water, it takes \DndDice{1d4} Cold damage.
+	
+	\DndMonsterSection{Actions}
+	\DndMonsterAction{Multiattack}
+	The Myrmidon makes three scimitar attacks.
+	
+	\DndMonsterAttack[
+		name			= Scimitar,
+		distance		= melee, % valid options are in the set {both,melee,ranged},
+%		type			= weapon, %valid options are in the set {weapon,spell}
+		mod				= +7,
+		reach			= 5,
+%		range			= 20/60,
+		targets			= one target,
+		dmg				= \DndDice{1d6 + 4},
+		dmg-type		= Slashing,
+%		plus-dmg		= \DndDice{2d6},
+%		plus-dmg-type	= Fire,
+%		or-dmg			= ,
+%		or-dmg-when		= {},
+%		extra			= {},
+	]
+	
+	\DndMonsterAction{Fiery Strikes (Recharge 6)}
+	The Myrmidon uses Multiattack. Each attack that hits deals an extra \DndDice{1d10} Fire damage.
+\end{DndMonster}

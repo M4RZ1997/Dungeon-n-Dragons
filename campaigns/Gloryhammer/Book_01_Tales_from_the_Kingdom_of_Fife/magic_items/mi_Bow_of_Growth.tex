@@ -3,7 +3,12 @@
 \ItemFolder{}
 
 \chapter*{Bow of Growth}\stepcounter{section}\phantomsection\addcontentsline{toc}{section}{Bow of Growth}
-\itemDescriptionAndImage{Wondrous Bow, Artifact (requires attunement by a Class-Lvl 3+ Ranger or Arcane Archer)}{images/Magic_Items/Bow_of_Growth.png}{6cm}\\
+\MagicItemTypeAndImage[%
+	top-margin		= -1.25cm,
+	bottom-margin	= -1.75cm,
+	image-width		= 1.2\columnwidth,
+	image-position	= -1cm,
+]{Wondrous Bow, Artifact (requires attunement by a Class-Lvl 3+ Ranger or Arcane Archer)}{images/Magic_Items/Bow_of_Growth.png}
 
 \begin{tikzpicture}[remember picture, overlay]%
 	\node[xshift=0.7\columnwidth, yshift=-0.375\paperheight, rotate=-60] at (current page.center) {\includegraphics[width=0.9\columnwidth]{%
