@@ -10,10 +10,11 @@
 \usepackage{\PATH templates/utilities/shadowfy}
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
-
-\usepackage{\PATH templates/template_class/class_commands}
+\usepackage[style=class]{\PATH templates/template_document/document_styles}
 
 \usepackage{\PATH templates/utilities/ornamented}
+\usepackage{adjustbox}
+\usepackage{makecell}
 
 \ClassName{Advisor}
 
@@ -79,13 +80,13 @@
 	\begin{itemize}
 		\item (a) a shortbow and quiver of 20 arrows or (b) any simple weapon
 		\item (a) a book or (b) a case for maps or scrolls
-		\item (a) a diplomat’s pack or (b) an entertainer's pack
+		\item (a) a diplomat's pack or (b) an entertainer's pack
 		\item Leather armor, a handaxe and a scholar's pack
 	\end{itemize}
 	
 	\begin{adjustwidth}{-1em}{-1.5em}\begin{ornamentedbox}
 	\begin{DndTable}[width=\linewidth, header=The Advisor]{llXr}
-		\textbf{Level}  	&\makecell[l]{\textbf{Proficiency} \\ \textbf{Bonus}}	&\textbf{Features}					&\makecell[r]{\textbf{Advice} \\ \textbf{Die}}\\
+		\textbf{Level}  	&\makecell[c]{\textbf{Proficiency} \\ \textbf{Bonus}}	&\textbf{Features}					&\makecell[r]{\textbf{Advice} \\ \textbf{Die}}\\
 		1st					&\multicolumn{1}{c}{+2}		&Expertise, Word of Advice			&1d4				\\
 		2nd					&\multicolumn{1}{c}{+2}		&Common Knowledge, Master of One	&2d4				\\
 		3rd					&\multicolumn{1}{c}{+2}		&Field of Expertise					&3d4				\\
@@ -125,7 +126,7 @@
 	
 	You can never have more advice dice than what is specified in the Advisor table for your current level. Each time you provide guidance or support by using an advice die, it is expended. You regain all of your expended advice dice when you finish a long rest.
 	
-	\subparagraph*{Saving Throws} When you choose to subtract the number rolled, the target can choose to make an Intelligence saving throw to avoid following your word’s effects. The saving throw DC is calculated as follows:
+	\subparagraph*{Saving Throws} When you choose to subtract the number rolled, the target can choose to make an Intelligence saving throw to avoid following your word's effects. The saving throw DC is calculated as follows:
 	\begin{center}
 		\textbf{Advice Save DC} = 8 + your Proficiency Bonus + \\your Intelligence Modifier
 	\end{center}
@@ -144,7 +145,7 @@
 	At 3rd level, you choose a Field of Expertise that you utilize in the application of your Advisor abilities: Arcanology, Archeology, Criminology, Polemology, Theology or Zoology - detailed at the end of the class description. Your archetype choice grants you features at 3rd level and then again at 6th, 10th, 14th and 18th level.
 	
 	\subsection*{Ability Score Improvement}
-	When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.
+	When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.
 	
 	Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.
 	
@@ -188,7 +189,7 @@
 	You learn three cantrips: Vicious Mockery and two other cantrips of your choice from the wizard spell list. You learn another wizard cantrip of your choice at 10th level.
 	
 	\subparagraph*{Spell Slots}
-	The Arcanology Spellcasting table shows how many spell slots you have to cast your wizard spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell’s level or higher. You regain all expended spell slots when you finish a long rest.\\
+	The Arcanology Spellcasting table shows how many spell slots you have to cast your wizard spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.\\
 	For example, if you know the 1st-level spell charm person and have a 1st-level and a 2nd-level spell slot available, you can cast charm person using either slot.
 
 	\begin{tikzpicture}[remember picture, overlay]
@@ -204,7 +205,7 @@
 	
 	The spells you learn at 8th, 14th, and 20th level can come from any school of magic.
 	
-	Whenever you gain a level in this class, you can replace one of the wizard spells you know with another spell of your choice from the wizard spell list. The new spell must be of a level for which you have spell slots, and it must be a divination and enchantment spell, unless you’re replacing the spell you gained at 3rd, 8th, 14th, or 20th level from any school of magic.
+	Whenever you gain a level in this class, you can replace one of the wizard spells you know with another spell of your choice from the wizard spell list. The new spell must be of a level for which you have spell slots, and it must be a divination and enchantment spell, unless you're replacing the spell you gained at 3rd, 8th, 14th, or 20th level from any school of magic.
 	
 	\subparagraph*{Spellcasting Ability}
 	Intelligence is your spellcasting ability for your wizard spells, since your magic comes from the same places as your knowledge of the world. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.
@@ -253,11 +254,11 @@
 	\subsubsection*{Convincing Words}
 	\textnormal{\textit{6th-level Arcanology feature}}
 	
-	Your elegant words and enchanting gaze can magically enthrall another creature. When a creature that you can see within 30 feet of you fails a saving throw against your word of advice, it becomes charmed by you until the end of your next turn. The charmed creature’s speed drops to 0, and the creature is incapacitated and visibly dazed.
+	Your elegant words and enchanting gaze can magically enthrall another creature. When a creature that you can see within 30 feet of you fails a saving throw against your word of advice, it becomes charmed by you until the end of your next turn. The charmed creature's speed drops to 0, and the creature is incapacitated and visibly dazed.
 	
 	On subsequent turns, you can spend an advice die and use your action to maintain this effect, extending its duration until the end of your next turn. However, the effect ends if you move more than 30 feet away from the creature, if the creature can neither see nor hear you, or if the creature takes damage.
 	
-	Once the effect ends, you can’t use this feature on that creature again until you finish a long rest.
+	Once the effect ends, you can't use this feature on that creature again until you finish a long rest.
 	
 	\subsubsection*{Malevolent Mockery}
 	\textnormal{\textit{10th-level Arcanology feature}}
@@ -269,7 +270,7 @@
 	\subsubsection*{Mastered Knowledge}
 	\textnormal{\textit{14th-level Arcanology feature}}
 	
-	You gain proficiency with the Intelligence (Arcana) skill if you don’t already have it and gain advantage on any ability check that uses that proficiency.
+	You gain proficiency with the Intelligence (Arcana) skill if you don't already have it and gain advantage on any ability check that uses that proficiency.
 	
 	Additionally, when a creature within 30 feet of you succeeds on an Intelligence (Arcana) check, you regain 1 Advice Die.
 	
@@ -305,7 +306,7 @@
 	\subsubsection*{Mastered Knowledge}
 	\textnormal{\textit{14th-level Archeology feature}}
 	
-	You gain proficiency with the Intelligence (History) skill if you don’t already have it and gain advantage on any ability check that uses that proficiency.
+	You gain proficiency with the Intelligence (History) skill if you don't already have it and gain advantage on any ability check that uses that proficiency.
 	
 	Additionally, when a creature within 30 feet of you succeeds on an Intelligence (History) check, you regain 1 Advice Die.
 	
@@ -322,7 +323,7 @@
 	\subsubsection*{Bonus Proficiencies}
 	\textnormal{\textit{3rd-level Criminology feature}}
 	
-	You gain proficiency with thieves’ tools and learn the thieves’ cant language.
+	You gain proficiency with thieves' tools and learn the thieves' cant language.
 	
 	\subsubsection*{Phony Pharynx}
 	\textnormal{\textit{3rd-level Criminology feature}}
@@ -344,7 +345,7 @@
 	\subsubsection*{Uncanny Dodge}
 	\textnormal{\textit{6th-level Criminology feature}}
 	
-	When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack’s damage against you.
+	When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you.
 	
 	\subsubsection*{Muscle Memory}
 	\textnormal{\textit{10th-level Criminology feature}}
@@ -397,7 +398,7 @@
 	\subsubsection*{Mastered Knowledge}
 	\textnormal{\textit{14th-level Polemology feature}}
 	
-	You gain proficiency with the Strength (Athletics) skill if you don’t already have it and gain advantage on any ability check that uses that proficiency.
+	You gain proficiency with the Strength (Athletics) skill if you don't already have it and gain advantage on any ability check that uses that proficiency.
 	
 	Additionally, when a creature within 30 feet of you succeeds on a Strength (Athletics) check, you regain 1 Advice Die.
 	
@@ -478,7 +479,7 @@
 	\subsubsection*{Mastered Knowledge}
 	\textnormal{\textit{14th-level Theology feature}}
 	
-	You gain proficiency with the Intelligence (Religion) skill if you don’t already have it and gain advantage on any ability check that uses that proficiency.
+	You gain proficiency with the Intelligence (Religion) skill if you don't already have it and gain advantage on any ability check that uses that proficiency.
 	
 	Additionally, when a creature within 30 feet of you succeeds on an Intelligence (Religion) check, you regain 1 Advice Die.
 	
@@ -498,11 +499,11 @@
 	\subsubsection*{Animal Apprentice}
 	\textnormal{\textit{3rd-level Zoology feature}}
 	
-	A well trusted assistant is common to find alongside a zoology expert. The animal apprentice is friendly to you and your companions, and it obeys your commands. See this creature’s game statistics in the Animal Apprentice stat block, which uses your proficiency bonus (PB) in several places.
+	A well trusted assistant is common to find alongside a zoology expert. The animal apprentice is friendly to you and your companions, and it obeys your commands. See this creature's game statistics in the Animal Apprentice stat block, which uses your proficiency bonus (PB) in several places.
 	
 	In combat, the apprentice shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the Dodge action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are incapacitated, the apprentice can take any action of its choice, not just Dodge.
 	
-	If the apprentice dies, you can obtain a new apprentice by spending 8 hours bonding with a small or smaller beast that isn’t hostile to you.
+	If the apprentice dies, you can obtain a new apprentice by spending 8 hours bonding with a small or smaller beast that isn't hostile to you.
 	
 	\subsubsection*{Word of the Wild}
 	\textnormal{\textit{3rd-level Zoology feature}}
@@ -529,9 +530,9 @@
 	\end{itemize}
 	
 	\subsubsection*{Mastered Knowledge}
-	\textnormal{\textit{14th-level Archeology feature}}
+	\textnormal{\textit{14th-level Zoology feature}}
 	
-	You gain proficiency with the Wisdom (Animal Handling) skill if you don’t already have it and gain advantage on any ability check that uses that proficiency.
+	You gain proficiency with the Wisdom (Animal Handling) skill if you don't already have it and gain advantage on any ability check that uses that proficiency.
 	
 	Additionally, when a creature within 30 feet of you succeeds on a Wisdom (Animal Handling) check, you regain 1 Advice Die.
 	
