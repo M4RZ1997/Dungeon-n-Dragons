@@ -1,0 +1,44 @@
+\documentclass[letterpaper,openany,twoside,twocolumn]{book}
+
+\newcommand{\PATH}{../}
+
+\usepackage{\PATH templates/utilities/image-db}
+\usepackage{\PATH templates/utilities/m4rz-fonts}
+\usepackage{\PATH templates/utilities/m4rz-colors}
+\usepackage{\PATH templates/utilities/miscellaneous}
+\usepackage{\PATH templates/utilities/shadowfy}
+
+\usepackage[justified]{\PATH templates/template_dnd/dnd}
+\usepackage[style=all]{\PATH templates/template_document/document_styles}
+
+\usepackage{\PATH templates/template_elements/dnd_elements}
+
+%\usepackage[edition=5e24]{\PATH templates/template_character-sheet/character-sheet-stylesheet} FAULTY INPUT?
+
+
+\graphicspath{{./images}}
+
+\newrefformat{or}{\hyperref[#1]{\LinkFont{Optional Rule \ifnumcomp{\getrefnumber{#1}}<10{0}{}\ref{#1}}}}
+
+\begin{document}
+	\DungeonSheetGeometry
+
+	\adventureTitlePage{GloryhammerIceBlue/GloryhammerIce}%
+		{0cm}%
+		{0cm}%
+		{height=\paperheight}%
+		{example-image-b}%
+		{%
+			{Gloryhammer1}{Page \thepage}{Art}{https://casinodundee.com/}{Tales from the Kingdom of Fife}{GLORYHAMMER}%
+		}%
+		{{\darkcrystalfont}{Gloryhammer}{\digitalfont}{Tales from the Kingdom of Fife}}%
+		{{\digitalfont}{The Gloryhammer - Tales from the Kingdom of Fife Campaign}}%
+		{GloryhammerIce/black}%
+	
+	\clearpage
+	\setcounter{tocdepth}{2}
+	\tableofcontents
+	
+	
+	\input{./Panels/panels}
+\end{document}
