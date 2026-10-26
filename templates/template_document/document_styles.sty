@@ -1,0 +1,87 @@
+% ------------------------------------------------------------------------------------------------- %
+%								document_styles.sty  Marcel Zauder 09/08/2023						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------- PATH to Superfolder -------------------------------------- %
+\providecommand{\PATH}{} % Each tex file needs to provide the relative path to the superfolder
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------- Required Packages --------------------------------------- %
+\RequirePackage{\PATH templates/template_document/sectioning_style_commands}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\newcommand{\ThanksSpacing}{3cm}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------- Style-Specific  PATHS ------------------------------------- %
+\ExplSyntaxOn
+\keys_define:nn { document-style / options }
+{
+	style .code:n	=
+	{
+		\str_case_e:nnF {#1}
+		{	
+			{all}		{% Loads all provided packages
+				\RequirePackage{\PATH templates/template_document/adventure/adventure_style_commands}%
+				\RequirePackage{\PATH templates/template_document/book/book_style_commands}%
+				\RequirePackage{\PATH templates/template_document/region/region_style_commands}%
+				
+				\RequirePackage{\PATH templates/template_document/class/class_style_commands}%
+				\RequirePackage{\PATH templates/template_document/dungeon/dungeon_style_commands}%
+				\RequirePackage{\PATH templates/template_document/magic-item/magic-item_style_commands}%
+				\RequirePackage{\PATH templates/template_document/monster/monster_style_commands}%
+				\RequirePackage{\PATH templates/template_document/npc/non-player-character_style_commands}%
+				\RequirePackage{\PATH templates/template_document/race/race_style_commands}%
+			}
+			{adventure}	{
+				\RequirePackage{\PATH templates/template_document/adventure/adventure_style_commands}%
+				
+				\RequirePackage{\PATH templates/template_document/dungeon/dungeon_style_commands}%
+				\RequirePackage{\PATH templates/template_document/magic-item/magic-item_style_commands}%
+				\RequirePackage{\PATH templates/template_document/monster/monster_style_commands}%
+				\RequirePackage{\PATH templates/template_document/npc/non-player-character_style_commands}%
+			}
+			{book}		{%
+				\RequirePackage{\PATH templates/template_document/adventure/adventure_style_commands}%
+				\RequirePackage{\PATH templates/template_document/book/book_style_commands}%
+				
+				\RequirePackage{\PATH templates/template_document/dungeon/dungeon_style_commands}%
+				\RequirePackage{\PATH templates/template_document/magic-item/magic-item_style_commands}%
+				\RequirePackage{\PATH templates/template_document/monster/monster_style_commands}%
+				\RequirePackage{\PATH templates/template_document/npc/non-player-character_style_commands}%
+			}
+			{region}	{%
+				\RequirePackage{\PATH templates/template_document/region/region_style_commands}%
+				
+				\RequirePackage{\PATH templates/template_document/dungeon/dungeon_style_commands}%
+				\RequirePackage{\PATH templates/template_document/monster/monster_style_commands}%
+				\RequirePackage{\PATH templates/template_document/npc/non-player-character_style_commands}%
+				\RequirePackage{\PATH templates/template_document/region/region_style_commands}%
+			}
+			{bastion}	{%
+				\RequirePackage{\PATH templates/template_document/bastion/bastion_style_commands}
+				
+				\RequirePackage{\PATH templates/template_document/dungeon/dungeon_style_commands}%
+			}
+			
+			{class}		{\RequirePackage{\PATH templates/template_document/class/class_style_commands}}
+			{dungeon}	{\RequirePackage{\PATH templates/template_document/dungeon/dungeon_style_commands}}
+			{magic-item}{\RequirePackage{\PATH templates/template_document/magic-item/magic-item_style_commands}}
+			{monster}	{\RequirePackage{\PATH templates/template_document/monster/monster_style_commands}}
+			{npc}		{\RequirePackage{\PATH templates/template_document/npc/non-player-character_style_commands}}
+			{race}		{\RequirePackage{\PATH templates/template_document/race/race_style_commands}}
+		}
+		{
+			\PackageError
+				{ document-style }
+				{ Unknown~document~style~'#1' }
+				{ Valid~styles~are~adventure,~book,~region,~class,~dungeon,~magic-item,~monster,~npc,~and~race. }
+		}
+	},
+	style	.value_required:n	= true,
+}
+
+\ProcessKeysOptions { document-style / options }
+\ExplSyntaxOff

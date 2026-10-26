@@ -1,0 +1,83 @@
+% ------------------------------------------------------------------------------------------------- %
+%						magic_items_commands.sty 	 Marcel Zauder 23/03/2021						%
+% Stylesheet by Marcel                                                                              %
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Variables ------------------------------------------- %
+\newcommand{\ItemCategoryValue}{}
+\newcommand{\ItemSubCategoryValue}{}
+\newcommand{\ItemFolderValue}{}
+
+\newcommand{\ItemCategory}[1]{\renewcommand{\ItemCategoryValue}{#1}}
+\newcommand{\ItemSubCategory}[1]{\renewcommand{\ItemSubCategoryValue}{/#1}}
+\newcommand{\ItemFolder}[1]{\renewcommand{\ItemFolderValue}{#1}}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------- Item Description  and Image ---------------------------------- %
+\newcommand{\itemDescriptionAndImage}[4][1.3\columnwidth]{%
+	\begin{tikzpicture}[remember picture, overlay]%
+		\node[yshift=0.8cm, anchor=west] {\textit{#2}};%
+		\ifthenelse{\equal{#3}{example}}{%
+			\node[xshift=-2.25cm, yshift=0.5cm, anchor=north west] {\includegraphics[width=#1]{%
+				example-image-b%
+			}};%
+		}{%
+			\ifthenelse{\equal{\ItemCategoryValue}{}}{
+				\node[xshift=-2.25cm, yshift=0.5cm, anchor=north west] {\includegraphics[width=#1]{%
+					#3%
+				}};%
+			}{%
+				\node[xshift=-2.25cm, yshift=0.5cm, anchor=north west] {\includegraphics[width=#1]{%
+					\PATH magic_items/\ItemCategoryValue\ItemSubCategoryValue/\ItemFolderValue/images/#3%
+				}};%
+			}%
+		}%
+	\end{tikzpicture}%
+	\vspace*{#4}%
+}%
+
+\ExplSyntaxOn
+\keys_define:nn { dnd / magic-item }
+  {
+	top-margin		.tl_set:N			= \l__top_margin_tl,
+	top-margin		.initial:n			= -1.25cm,
+	top-margin		.value_required:n	= true,
+	bottom-margin	.tl_set:N			= \l__bottom_margin_tl,
+	bottom-margin	.initial:n			= -1.5cm,
+	bottom-margin	.value_required:n	= true,
+	image-width		.tl_set:N			= \l__image_width_tl,
+	image-width		.initial:n			= 1.3\columnwidth,
+	image-width		.value_required:n	= true,
+	image-position	.tl_set:N			= \l__image_position_tl,
+	image-position	.initial:n			= 0cm,
+  }
+
+\NewDocumentCommand{\MagicItemTypeAndImage}{ O{} mm }{%
+	\group_begin:%
+	\begin{tikzpicture}[remember~picture, overlay]%
+		\node[yshift=0.8cm, anchor=west] {\textit{#2}};%
+	\end{tikzpicture}%
+	\keys_set:nn { dnd / magic-item } {#1}%
+	\vspace*{\l__top_margin_tl}%
+	\begin{center}%
+		\hspace*{\l__image_position_tl}%
+		\begin{tikzpicture}%
+			\ifthenelse{\equal{#3}{example}}{%
+				\node[inner~sep=0pt] {\includegraphics[width=\l__image_width_tl]{example-image-b}};
+			}{%
+				\ifthenelse{\equal{\ItemCategoryValue}{}}{
+					\node[inner~sep=0pt] {\includegraphics[width=\l__image_width_tl]{%
+						#3%
+					}};%
+				}{%
+					\node[inner~sep=0pt] {\includegraphics[width=\l__image_width_tl]{%
+						\PATH magic_items/\ItemCategoryValue\ItemSubCategoryValue/\ItemFolderValue/images/#3%
+					}};%
+				}%
+			}%
+		\end{tikzpicture}%
+	\end{center}%
+	\vspace*{\l__bottom_margin_tl}\hfill\\%
+	\group_end:%
+}
+\ExplSyntaxOff
