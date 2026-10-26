@@ -9,12 +9,7 @@
 \usepackage{\PATH templates/utilities/shadowfy}
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
-
-\usepackage{\PATH templates/template_book/book_commands}
-\usepackage{\PATH templates/template_dungeon/dungeon_commands}
-\usepackage{\PATH templates/template_monster/monster_commands}
-\usepackage{\PATH templates/template_region/region_commands}
-\usepackage{\PATH templates/template_resource/resource_commands}
+\usepackage[style=region]{\PATH templates/template_document/document_styles}
 
 \begin{document}
 	% Titlepage	
@@ -41,7 +36,7 @@
 	
 	% Final Page
 	\renewcommand{\ThanksSpacing}{1cm}
-	\bookLastPage
+	\regionLastPage
 		{images/backcover_the_Poisonous_Delta.jpg}
 		{0cm}
 		{-8.5cm}

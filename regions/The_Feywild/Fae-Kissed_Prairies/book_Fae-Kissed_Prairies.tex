@@ -9,12 +9,7 @@
 \usepackage{\PATH templates/utilities/shadowfy}
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
-
-\usepackage{\PATH templates/template_book/book_commands}
-\usepackage{\PATH templates/template_dungeon/dungeon_commands}
-\usepackage{\PATH templates/template_monster/monster_commands}
-\usepackage{\PATH templates/template_region/region_commands}
-\usepackage{\PATH templates/template_resource/resource_commands}
+\usepackage[style=region]{\PATH templates/template_document/document_styles}
 
 \begin{document}
 	% Titlepage	
@@ -39,7 +34,7 @@
 	\input{monsters/Hypnomoth/Hypnomoth_input.tex}
 	
 	% Final Page
-	\bookLastPage
+	\regionLastPage
 		{images/backcover_Fae-Kissed_Prairies.jpg}
 		{0cm}
 		{3cm}

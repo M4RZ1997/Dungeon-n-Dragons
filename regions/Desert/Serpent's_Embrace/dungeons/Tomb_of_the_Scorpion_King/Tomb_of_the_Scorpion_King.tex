@@ -1,5 +1,3 @@
-\RequirePackage{pdfmanagement-testphase}
-\DeclareDocumentMetadata{}
 \documentclass[letterpaper,openany,twoside,twocolumn]{book}
 
 \newcommand{\PATH}{../../../../../}
@@ -11,10 +9,9 @@
 \usepackage{\PATH templates/utilities/shadowfy}
 
 \usepackage[justified]{\PATH templates/template_dnd/dnd}
+\usepackage[style=dungeon]{\PATH templates/template_document/document_styles}
 
-\usepackage{\PATH templates/template_book/book_commands}
-\usepackage{\PATH templates/template_dungeon/dungeon_commands}
-\usepackage{\PATH templates/template_resource/resource_commands}
+\usepackage{\PATH templates/template_elements/dnd_elements}
 
 \begin{document}
 	\DungeonSheetGeometry
