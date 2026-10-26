@@ -1,41 +1,16 @@
 % ------------------------------------------------------------------------------------------------- %
-%								book_commands.sty  	Marcel Zauder 02/04/2023						%
+%							region_style_commands.sty  	Marcel Zauder 02/04/2023					%
 % Stylesheet by Marcel                                                                              %
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ------------------------------------------- Variables ------------------------------------------- %
-\newcommand{\ThanksSpacing}{3cm}
-% ------------------------------------------------------------------------------------------------- %
-% ################################################################################################# %
-% -------------------------------------------- Patches -------------------------------------------- %
-% Multicols Environment overwrites \hbadness and \vbadness
-\makeatletter
-    \apptocmd{\multicols}{%
-        \hbadness=99999\relax
-        \vbadness=99999\relax
-    }{}{\PackageWarning{DnD Patching}{Patching \string\multicols\space failed}}
-\makeatother
-% ------------------------------------------------------------------------------------------------- %
-% ################################################################################################# %
-% ----------------------------------------- ToC  Commands ----------------------------------------- %
-% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-% #-#-#-#-#-#-#-#-#-#-#-#-#-#-# Removes "Chapter ##:"  from ToC Entry #-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\titlecontents{chapter}
-	[0pt] % left
-	{ \addvspace{.1in} \DndFontTocChapter } % above-code
-	{} % numbered-entry-format
-	{} % numberless-entry-format
-	{\titlerule*{.}\contentspage} % filler-page-format
-% ------------------------------------------------------------------------------------------------- %
-% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  ToC Plain-Style  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
+
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ------------------------------------------- Titlepage ------------------------------------------- %
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  Book  Titlepage  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\newcommand{\bookTitlePage}[9]{%
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Region  Titlepage #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\regionTitlePage}[9]{%
 	\begin{titlepage}
 		\begin{tikzpicture}[remember picture,overlay]
 			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};
@@ -69,14 +44,14 @@
 			};%
 			
 			\def\stackgap{0.01pt}
-			\node[yshift=-0.415\paperheight, xshift=-0.075\paperwidth, text width=16cm] at (current page.center) {\titlefont{ \shadowfy{#9}}};
+			\node[yshift=-0.415\paperheight, xshift=-0.075\paperwidth, text width=16cm] at (current page.center) {\titlefont{ \shadowfy{A collection of monsters and dungeons found in the #9}}};
 		\end{tikzpicture}
 	\end{titlepage}
 }%
 % ------------------------------------------------------------------------------------------------- %
 % +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Dungeon Last Page #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\newcommand{\bookLastPage}[8]{%
+% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# Region Last Page #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
+\newcommand{\regionLastPage}[8]{%
 	\clearpage%
 	\thispagestyle{empty}%
 	\begin{tikzpicture}[remember picture,overlay]%
@@ -125,40 +100,4 @@
 			}%
 		};%
 	\end{tikzpicture}%
-}%
-% ------------------------------------------------------------------------------------------------- %
-% ################################################################################################# %
-% --------------------------------------- Part Display Page --------------------------------------- %
-% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#  ACT Version  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\renewcommand{\thepart}{\Roman{part}}%
-\newcommand{\actpart}[9]{%
-	\clearpage%
-	\stepcounter{part}%
-	\begin{tikzpicture}[overlay,remember picture]%
-		\ifthenelse{\equal{#2}{}}{}{%
-			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};%
-			\addImageDBEntry{#6}{Page \thepage}{Act-Cover Art}{#7}{#8}{#9}%
-		}%
-		\node[yshift=0.075\paperheight] at (current page.center) {\DndFontPart\DndContour{Act~\thepart}};%
-		\node[yshift=-0.025\paperheight] at (current page.center) {\DndFontPartSubordinate\DndContour{#1}};%
-	\end{tikzpicture}%
-	\phantomsection\addcontentsline{toc}{part}{#1}%
-	\clearpage%
-}%
-% ------------------------------------------------------------------------------------------------- %
-% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-% #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# BLANK Version #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-# %
-\renewcommand{\thepart}{\Roman{part}}%
-\newcommand{\blankpart}[9]{%
-	\clearpage%
-	\begin{tikzpicture}[overlay,remember picture]%
-		\ifthenelse{\equal{#2}{}}{}{%
-			\node[opacity=1,inner sep=0pt,xshift=#3,yshift=#4] at (current page.center){\includegraphics[#5, keepaspectratio]{#2}};%
-			\addImageDBEntry{#6}{Page \thepage}{Act-Cover Art}{#7}{#8}{#9}%
-		}%
-		\node at (current page.center) {\DndFontPart\DndContour{#1}};%
-	\end{tikzpicture}%
-	\phantomsection\addcontentsline{toc}{part}{#1}%
-	\clearpage%
 }%
